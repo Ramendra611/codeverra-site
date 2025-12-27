@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://ramendra611.github.io/codeverra-site/"
 languageCode = "en-us"
 title = "codeverra"
 theme = "PaperMod"

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>codeverra</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:1313/codeverra-site/</link>
     <description>Recent content on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/codeverra-site/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome to the Codeverra Blog</title>
-      <link>http://localhost:1313/blogs/welcome/</link>
+      <link>http://localhost:1313/codeverra-site/blogs/welcome/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/welcome/</guid>
+      <guid>http://localhost:1313/codeverra-site/blogs/welcome/</guid>
       <description>&lt;p&gt;Welcome to the Codeverra blog.&lt;/p&gt;
 &lt;p&gt;This space is where I’ll share:&lt;/p&gt;
 &lt;ul&gt;
@@ -27,8 +27,8 @@
 &lt;iframe
   width=&#34;560&#34;
   height=&#34;315&#34;
-  src=&#34;https://www.youtube.com/embed/VIDEO_ID&#34;
-  title=&#34;YouTube video&#34;
+  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB8lMqv5mJSJHl9g42Yo9DRg&#34;
+  title=&#34;Python and DSA playlist&#34;
   frameborder=&#34;0&#34;
   allowfullscreen&gt;
 &lt;/iframe&gt;
@@ -39,7 +39,16 @@
 &lt;iframe
   width=&#34;560&#34;
   height=&#34;315&#34;
-  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB8lMqv5mJSJHl9g42Yo9DRg&#34;
+  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB_1SrUdxiXj7xASrEa_M2XQ&#34;
+  title=&#34;Python and DSA playlist&#34;
+  frameborder=&#34;0&#34;
+  allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;h3 id=&#34;leetcode-with-python-in-hindi-100daysofleetcode&#34;&gt;Leetcode with Python in Hindi #100DaysOfLeetcode&lt;/h3&gt;
+&lt;iframe
+  width=&#34;560&#34;
+  height=&#34;315&#34;
+  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB_1SrUdxiXj7xASrEa_M2XQ&#34;
   title=&#34;Python and DSA playlist&#34;
   frameborder=&#34;0&#34;
   allowfullscreen&gt;
