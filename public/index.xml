@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>codeverra</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on codeverra</description>
+    <generator>Hugo -- 0.153.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome to the Codeverra Blog</title>
+      <link>http://localhost:1313/blogs/welcome/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/welcome/</guid>
+      <description>&lt;p&gt;Welcome to the Codeverra blog.&lt;/p&gt;
+&lt;p&gt;This space is where I’ll share:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clear explanations of core concepts&lt;/li&gt;
+&lt;li&gt;problem-solving approaches&lt;/li&gt;
+&lt;li&gt;learning strategies for Python, DSA, and AI&lt;/li&gt;
+&lt;li&gt;notes that go deeper than short-form content&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;start-here-recommended&#34;&gt;Start here (recommended)&lt;/h2&gt;
+&lt;p&gt;If you’re new, start with this video where I explain how I approach teaching and learning:&lt;/p&gt;
+&lt;iframe
+  width=&#34;560&#34;
+  height=&#34;315&#34;
+  src=&#34;https://www.youtube.com/embed/VIDEO_ID&#34;
+  title=&#34;YouTube video&#34;
+  frameborder=&#34;0&#34;
+  allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;learning-playlists&#34;&gt;Learning playlists&lt;/h2&gt;
+&lt;p&gt;Here are some curated playlists you can follow:&lt;/p&gt;
+&lt;h3 id=&#34;python--dsa&#34;&gt;Python &amp;amp; DSA&lt;/h3&gt;
+&lt;iframe
+  width=&#34;560&#34;
+  height=&#34;315&#34;
+  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB8lMqv5mJSJHl9g42Yo9DRg&#34;
+  title=&#34;Python and DSA playlist&#34;
+  frameborder=&#34;0&#34;
+  allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;hr&gt;
+&lt;p&gt;More structured posts and learning paths coming soon.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
