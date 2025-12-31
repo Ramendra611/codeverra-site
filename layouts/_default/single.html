@@ -30,7 +30,7 @@
   </header>
 
   {{- with .Params.tags }}
-  <div class="post-tags post-tags-top">
+  <div class="entry-tags post-tags-top">
     {{- range . }}
     <a class="tag" href="{{ site.BaseURL }}tags/{{ . | urlize }}/">{{ . }}</a>
     {{- end }}
