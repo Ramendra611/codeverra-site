@@ -12,13 +12,23 @@ enableRobotsTXT = true
   showToc = true
   tocOpen = true
   ShowReadingTime = true
+  enableGitInfo = true
   ShowWordCount = true
   ShowBreadCrumbs = true
+  ShowPostMeta = true
+  ShowLastMod = true
   [params.label]
     text = "codeverra"
     icon = "images/CODEVERRA.jpg"
     iconHeight = 32
     link = "/"
+
+enableGitInfo = false
+
+[frontmatter]
+  date = [':filename', ':default']
+  lastmod = ['lastmod', ':fileModTime']
+  publishDate = [':filename', ':default']
 
 [[menu.main]]
   name = "Home"
