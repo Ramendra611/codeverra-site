@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blogs on codeverra</title>
-    <link>http://localhost:1313/codeverra-site/blogs/</link>
+    <link>http://localhost:53406/blogs/</link>
     <description>Recent content in Blogs on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/codeverra-site/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:53406/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Practical DSA Learning Roadmap</title>
+      <link>http://localhost:53406/blogs/dsa_roadmap/</link>
+      <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:53406/blogs/dsa_roadmap/</guid>
+      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
+    </item>
     <item>
       <title>Welcome to the Codeverra Blog</title>
-      <link>http://localhost:1313/codeverra-site/blogs/welcome/</link>
+      <link>http://localhost:53406/blogs/welcome/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/codeverra-site/blogs/welcome/</guid>
+      <guid>http://localhost:53406/blogs/welcome/</guid>
       <description>&lt;p&gt;Welcome to the Codeverra blog.&lt;/p&gt;
 &lt;p&gt;This space is where I’ll share:&lt;/p&gt;
 &lt;ul&gt;

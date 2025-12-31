@@ -9,6 +9,10 @@ enableRobotsTXT = true
   description = "Learn about learning Python, DSA, Machine Learning, and AI with clarity."
   defaultTheme = "auto"
   disableThemeToggle = false
+  showToc = true
+  tocOpen = true
+  ShowReadingTime = true
+  ShowWordCount = true
   [params.label]
     text = "codeverra"
     icon = "images/CODEVERRA.jpg"
@@ -39,6 +43,8 @@ enableRobotsTXT = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+
 
 
 
