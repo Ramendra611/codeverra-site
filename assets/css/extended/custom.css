@@ -33,3 +33,46 @@
     background: var(--tertiary);
     color: var(--primary);
 }
+
+.post-tags-top {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Top-of-post tags (contextual, muted) */
+.post-tags-top .tag {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.85rem;
+    padding: 4px 10px;
+}
+
+.post-tags-top .tag:hover {
+    background: var(--tertiary);
+    color: var(--primary);
+}
+
+/* Allow top tags to receive clicks */
+.post-header {
+    position: relative;
+}
+
+.post-tags-top {
+    position: relative;
+    z-index: 5;
+}
+
+.post-tags-top a {
+    pointer-events: auto;
+}
+
+/* Bottom-of-post tags (PaperMod default) */
+.post-tags a,
+.post-footer .tag,
+.post-footer a[href*="/tags/"] {
+    text-transform: lowercase;
+}

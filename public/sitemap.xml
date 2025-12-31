@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blogs/dsa_roadmap/</loc>
+    <loc>http://localhost:57617/blogs/dsa_roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/algorithms/</loc>
+    <loc>http://localhost:57617/tags/algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-structures/</loc>
+    <loc>http://localhost:57617/tags/data-structures/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dsa/</loc>
+    <loc>http://localhost:57617/tags/dsa/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/learning-roadmap/</loc>
+    <loc>http://localhost:57617/tags/learning-roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/problem-solving/</loc>
+    <loc>http://localhost:57617/tags/problem-solving/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:57617/tags/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/welcome/</loc>
+    <loc>http://localhost:57617/blogs/welcome/</loc>
     <lastmod>2025-12-27T08:14:25+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:57617/about/</loc>
     <lastmod>2025-12-27T07:14:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/</loc>
+    <loc>http://localhost:57617/blogs/</loc>
     <lastmod>2025-12-27T08:03:39+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:57617/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:57617/</loc>
     <lastmod>2025-12-27T07:34:03+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/courses/</loc>
+    <loc>http://localhost:57617/courses/</loc>
     <lastmod>2025-12-27T07:00:18+05:30</lastmod>
   </url>
 </urlset>

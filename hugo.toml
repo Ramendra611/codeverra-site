@@ -27,7 +27,7 @@ enableGitInfo = false
 
 [frontmatter]
   date = [':filename', ':default']
-  lastmod = ['lastmod', ':fileModTime']
+  lastmod = ["lastmod", ":git", ":fileModTime"]
   publishDate = [':filename', ':default']
 
 [[menu.main]]

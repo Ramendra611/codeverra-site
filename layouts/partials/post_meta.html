@@ -22,10 +22,9 @@ site.Params.DateFormat)))) }}
 )) }}
 {{- end -}}
 
-
 {{- if not (.Param "hideAuthor") -}}
 {{- with (partial "author.html" .) }}
-{{- $scratch.Add "meta" (slice (printf "<span>%s</span>" .)) }}
+{{- $scratch.Add "meta" (slice (printf "<span>By %s</span>" .)) }}
 {{- end }}
 {{- end }}
 
