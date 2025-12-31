@@ -82,7 +82,8 @@
     {{- with .Params.tags }}
     <div class="entry-tags">
         {{- range . }}
-        <a class="tag" href="{{ " /tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+        <a class="tag" href="{{ site.BaseURL }}tags/{{ . | urlize }}/">{{ . |title }}</a>
+
         {{- end }}
     </div>
     {{- end }}
