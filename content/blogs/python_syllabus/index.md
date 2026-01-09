@@ -328,6 +328,35 @@ This guide covers:
 - Packaging and distribution  
 - Resume and project preparation  
 
+### 25. Python Programming Playlist
+
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB8xV-Jzh0JYQ8fmckdh--pu&si=8oIfIdpaqQxYKpXR"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB9R6knaQqcZ58JIVVRYu0tb&si=MKraBdmi0DBuuD-0"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB_oVJJeNpd3wpGAjf-gYCgU&si=bGjNgZw_B2-0z5F4"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
 ---
+
 
 More structured Python learning guides and hands-on roadmaps coming soon.

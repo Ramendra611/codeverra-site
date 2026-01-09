@@ -209,3 +209,23 @@ Dynamic Programming is not suitable when:
 - Both properties are essential for applying Dynamic Programming  
 
 A solid understanding of these concepts is crucial for mastering advanced algorithmic problem solving.
+
+##  Dynamic Programming playlists
+
+Here are some curated playlists you can follow:
+
+### Python & DSA
+
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB-64yhKXib333YGRpq_rPYr&si=6UOY9RvW8dpemRyQ"
+  title="Dynamic Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+---
+
+More structured posts and learning paths coming soon.
+
