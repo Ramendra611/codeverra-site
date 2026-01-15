@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>codeverra</title>
-    <link>http://localhost:53859/</link>
+    <link>http://localhost:57447/</link>
     <description>Recent content on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:53859/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:57447/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Practical DSA Learning Roadmap</title>
-      <link>http://localhost:53859/blogs/dsa_roadmap/</link>
+      <link>http://localhost:57447/blogs/dsa_roadmap/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/dsa_roadmap/</guid>
+      <guid>http://localhost:57447/blogs/dsa_roadmap/</guid>
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
     </item>
     <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
-      <link>http://localhost:53859/blogs/time_complexity/</link>
+      <link>http://localhost:57447/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/time_complexity/</guid>
+      <guid>http://localhost:57447/blogs/time_complexity/</guid>
       <description>A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.</description>
     </item>
     <item>
       <title>Array Patterns for Problem Solving</title>
-      <link>http://localhost:53859/blogs/array_patterns/</link>
+      <link>http://localhost:57447/blogs/array_patterns/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/array_patterns/</guid>
+      <guid>http://localhost:57447/blogs/array_patterns/</guid>
       <description>A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.</description>
     </item>
     <item>
       <title>BFS vs DFS Explained Clearly</title>
-      <link>http://localhost:53859/blogs/bfs_dfs/</link>
+      <link>http://localhost:57447/blogs/bfs_dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/bfs_dfs/</guid>
+      <guid>http://localhost:57447/blogs/bfs_dfs/</guid>
       <description>A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.</description>
     </item>
     <item>
       <title>Binary Search Explained Clearly</title>
-      <link>http://localhost:53859/blogs/binary_search/</link>
+      <link>http://localhost:57447/blogs/binary_search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/binary_search/</guid>
+      <guid>http://localhost:57447/blogs/binary_search/</guid>
       <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:53859/blogs/python_syllabus/</link>
+      <link>http://localhost:57447/blogs/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/python_syllabus/</guid>
+      <guid>http://localhost:57447/blogs/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
     <item>
       <title>Concept of Dynamic Programming Explained Clearly</title>
-      <link>http://localhost:53859/blogs/dynamic_programming/</link>
+      <link>http://localhost:57447/blogs/dynamic_programming/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/dynamic_programming/</guid>
+      <guid>http://localhost:57447/blogs/dynamic_programming/</guid>
       <description>A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.</description>
     </item>
     <item>
       <title>Different Sorting Algorithms Explained Clearly</title>
-      <link>http://localhost:53859/blogs/sorting_algo/</link>
+      <link>http://localhost:57447/blogs/sorting_algo/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/sorting_algo/</guid>
+      <guid>http://localhost:57447/blogs/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
     </item>
     <item>
       <title>Recursion Explained from Basics</title>
-      <link>http://localhost:53859/blogs/recursion/</link>
+      <link>http://localhost:57447/blogs/recursion/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/recursion/</guid>
+      <guid>http://localhost:57447/blogs/recursion/</guid>
       <description>A clear and beginner-friendly explanation of recursion, covering how it works, its components, types, advantages, disadvantages, and use cases.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://localhost:53859/blogs/searching_in_arrays/</link>
+      <link>http://localhost:57447/blogs/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/searching_in_arrays/</guid>
+      <guid>http://localhost:57447/blogs/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
     </item>
     <item>
       <title>Test test test</title>
-      <link>http://localhost:53859/blogs/test_blog/</link>
+      <link>http://localhost:57447/blogs/test_blog/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/test_blog/</guid>
+      <guid>http://localhost:57447/blogs/test_blog/</guid>
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
     </item>
     <item>
       <title>Welcome to the Codeverra Blog</title>
-      <link>http://localhost:53859/blogs/welcome/</link>
+      <link>http://localhost:57447/blogs/welcome/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53859/blogs/welcome/</guid>
+      <guid>http://localhost:57447/blogs/welcome/</guid>
       <description>&lt;p&gt;Welcome to the Codeverra blog.&lt;/p&gt;
 &lt;p&gt;This space is where I’ll share:&lt;/p&gt;
 &lt;ul&gt;

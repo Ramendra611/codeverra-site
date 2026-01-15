@@ -108,9 +108,7 @@
     </footer>
     {{- end }}
     <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-    {{- if and (eq $index 3) (not $.IsHome) }}
-    {{ partial "course-tile.html" . }}
-    {{- end }}
+    
 </article>
 {{- end }}
 </div>
