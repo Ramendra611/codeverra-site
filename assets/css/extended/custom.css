@@ -1,70 +1,44 @@
-.post-entry {
-  position: relative;
+/* =========================================================
+   1. GLOBAL COLOR THEME
+   Change colors ONLY here to update the entire site
+   ========================================================= */
+
+:root {
+  /* Brand accents */
+  --color-accent-primary: #4F46E5;
+  --color-accent-secondary: #22D3EE;
+  --color-accent-success: #22C55E;
+
+  /* Backgrounds */
+  --color-bg-page: #0F1115;
+  --color-bg-card: #1C1F26;
+
+  /* Text */
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #9CA3AF;
+
+  /* Borders / dividers */
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
 }
 
-.entry-tags {
-  position: relative;
-  z-index: 5;
+/* Map custom colors to theme variables */
+:root {
+  --entry: var(--color-bg-card);
 }
 
-.entry-tags a {
-  pointer-events: auto;
+/* =========================================================
+   2. GLOBAL LAYOUT TWEAKS
+   ========================================================= */
+
+.main {
+  max-width: 1200px;
 }
 
-.entry-tags {
-  margin-top: 6px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+/* =========================================================
+   3. BLOG LIST PAGE (GRID + CARDS)
+   ========================================================= */
 
-.entry-tags a {
-  font-size: 0.85rem;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: var(--code-bg);
-  color: var(--secondary);
-  border: 1px solid var(--border);
-  text-decoration: none;
-  line-height: 1.4;
-}
-
-.entry-tags a:hover {
-  background: var(--tertiary);
-  color: var(--primary);
-}
-
-.post-tags-top {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-/* Allow top tags to receive clicks */
-.post-header {
-  position: relative;
-}
-
-.post-tags-top {
-  position: relative;
-  z-index: 5;
-}
-
-.post-tags-top a {
-  pointer-events: auto;
-}
-
-/* Bottom-of-post tags (PaperMod default) */
-.post-tags a,
-.post-footer .tag,
-.post-footer a[href*="/tags/"] {
-  text-transform: lowercase;
-}
-
-/* Blogs page: grid layout for blog cards */
-/* Blogs page: grid layout for posts only */
+/* Grid layout */
 body.list .post-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -90,19 +64,85 @@ body.list .first-entry {
   grid-column: auto;
 }
 
-/* Increase overall content width */
-.main {
-  max-width: 1200px;
+/* =========================================================
+   4. TAGS (BLOG CARDS & POSTS)
+   ========================================================= */
+
+.post-entry {
+  position: relative;
 }
 
-/* Home page course tile */
-/* ==============================
-   Home page – course tile
-   ============================== */
+.entry-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.entry-tags a {
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  line-height: 1.4;
+  pointer-events: auto;
+}
+
+.entry-tags a:hover {
+  background: var(--tertiary);
+  color: var(--primary);
+}
+
+/* Tags shown at top of post */
+.post-header {
+  position: relative;
+}
+
+.post-tags-top {
+  margin: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.post-tags-top a {
+  pointer-events: auto;
+}
+
+/* Bottom-of-post tags */
+.post-tags a,
+.post-footer .tag,
+.post-footer a[href*="/tags/"] {
+  text-transform: lowercase;
+}
+
+/* =========================================================
+   5. HOME PAGE – COURSE TILE
+   ========================================================= */
 
 .home-course-tile {
+  position: relative;
   width: 100%;
   margin: 2.5rem 0;
+}
+
+/* Subtle accent glow */
+.home-course-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(600px circle at top left,
+      color-mix(in srgb, var(--color-accent-primary) 12%, transparent),
+      transparent 40%);
+  pointer-events: none;
 }
 
 .home-course-tile__inner {
@@ -110,13 +150,15 @@ body.list .first-entry {
   grid-template-columns: 1.3fr 1fr;
   gap: 2.5rem;
   padding: 3rem;
-  background: linear-gradient(135deg,
-      var(--entry) 0%,
-      rgba(0, 0, 0, 0.02) 100%);
+  background: var(--color-bg-card);
   border-radius: var(--radius);
   align-items: center;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 25%, transparent),
+    0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* Text */
 .home-course-tile__label {
   font-size: 0.75rem;
   opacity: 0.7;
@@ -127,26 +169,43 @@ body.list .first-entry {
 .home-course-tile__title {
   margin: 0.75rem 0 1rem;
   font-size: 1.6rem;
+  color: var(--color-text-primary);
 }
 
 .home-course-tile__description {
   max-width: 42ch;
+  color: var(--color-text-secondary);
+}
+
+/* Actions */
+.home-course-tile__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
 }
 
 .home-course-tile__cta {
-  display: inline-block;
-  margin-top: 1.25rem;
-  padding: 0.6rem 1.2rem;
+  background: var(--color-accent-primary);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.6rem 1.3rem;
   border-radius: 6px;
   font-weight: 500;
 }
 
-.home-course-tile__meta {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  opacity: 0.65;
+.home-course-tile__cta:hover {
+  background: color-mix(in srgb, var(--color-accent-primary) 85%, #000);
 }
 
+.home-course-tile__meta {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  color: var(--color-text-secondary);
+}
+
+/* Image */
 .home-course-tile__image img {
   width: 100%;
   height: auto;
@@ -163,20 +222,206 @@ body.list .first-entry {
 }
 
 
-.home-course-tile__actions {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
+.home-course-tile__features {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.home-course-tile__features li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.home-course-tile__features li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
+}
+
+/* =========================================================
+   Home page – course audience
+   ========================================================= */
+
+.home-course-audience {
+  margin: 2.5rem 0 3.5rem;
+  max-width: 800px;
+}
+
+.home-course-audience h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.home-course-audience ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
   gap: 0.6rem;
-  align-items: flex-start;
 }
 
-.home-course-tile__cta {
-  background: var(--accent, #4f46e5);
-  color: #fff;
-  text-decoration: none;
+.home-course-audience li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--color-text-secondary);
 }
 
-.home-course-tile__cta:hover {
-  opacity: 0.9;
+.home-course-audience li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
 }
+
+
+/* #### course badge #### */
+.course-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.9rem;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  background: color-mix(in srgb,
+      var(--color-accent-success) 85%,
+      #000);
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-accent-success) 60%, transparent),
+    0 6px 18px color-mix(in srgb, var(--color-accent-success) 35%, transparent);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff0008;
+  box-shadow: 0 0 8px rgba(11, 234, 74, 0.8);
+}
+
+.course-features {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.course-features li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.course-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-success);
+  font-weight: 600;
+}
+
+.course-audience-title {
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.course-audience {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.course-audience li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.course-audience li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-success);
+}
+
+.home-course-tile__actions {
+  margin-top: 1.2rem;
+}
+
+
+
+
+
+
+/* ###### Header Refinement ##### */
+
+/* Header refinement */
+header,
+.nav {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.nav a {
+  opacity: 0.75;
+}
+
+/* .nav a.active,
+.nav a:hover {
+  opacity: 1;
+  color: var(--color-accent-primary);
+} */
+
+
+header {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+
+
+/* #### Nav link  heirarchy ### */
+/* .nav a {
+  font-weight: 400;
+  opacity: 0.7;
+} */
+
+
+
+
+/* .nav a.active {
+  font-weight: 600;
+  opacity: 1;
+  color: var(--color-accent-primary);
+} */
+
+
+/* #### Logo Hover ### */
+
+/* .logo:hover {
+  color: var(--color-accent-secondary);
+} */
