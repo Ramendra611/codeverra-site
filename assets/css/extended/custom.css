@@ -1,71 +1,74 @@
 /* =========================================================
    1. GLOBAL COLOR THEME
-   Change colors ONLY here to update the entire site
    ========================================================= */
 
 :root {
-  /* Brand accents */
   --color-accent-primary: #4F46E5;
   --color-accent-secondary: #22D3EE;
   --color-accent-success: #22C55E;
 
-  /* Backgrounds */
   --color-bg-page: #0F1115;
   --color-bg-card: #1C1F26;
 
-  /* Text */
   --color-text-primary: #E5E7EB;
   --color-text-secondary: #9CA3AF;
 
-  /* Borders / dividers */
   --color-border-subtle: rgba(255, 255, 255, 0.06);
 }
 
-/* Map custom colors to theme variables */
+/* Map to theme */
 :root {
   --entry: var(--color-bg-card);
 }
 
 /* =========================================================
-   2. GLOBAL LAYOUT TWEAKS
+   2. GLOBAL TYPOGRAPHY & LAYOUT
    ========================================================= */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
 
 .main {
   max-width: 1200px;
 }
 
 /* =========================================================
-   3. BLOG LIST PAGE (GRID + CARDS)
+   3. BLOG LIST PAGE (GRID)
    ========================================================= */
 
-/* Grid layout */
 body.list .post-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   body.list .post-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   body.list .post-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Ensure first-entry does not span columns */
 body.list .first-entry {
   grid-column: auto;
 }
 
 /* =========================================================
-   4. TAGS (BLOG CARDS & POSTS)
+   4. TAGS
    ========================================================= */
 
 .post-entry {
@@ -89,8 +92,6 @@ body.list .first-entry {
   color: var(--secondary);
   border: 1px solid var(--border);
   text-decoration: none;
-  line-height: 1.4;
-  pointer-events: auto;
 }
 
 .entry-tags a:hover {
@@ -98,33 +99,8 @@ body.list .first-entry {
   color: var(--primary);
 }
 
-/* Tags shown at top of post */
-.post-header {
-  position: relative;
-}
-
-.post-tags-top {
-  margin: 8px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  position: relative;
-  z-index: 5;
-}
-
-.post-tags-top a {
-  pointer-events: auto;
-}
-
-/* Bottom-of-post tags */
-.post-tags a,
-.post-footer .tag,
-.post-footer a[href*="/tags/"] {
-  text-transform: lowercase;
-}
-
 /* =========================================================
-   5. HOME PAGE – COURSE TILE
+   5. HOME PAGE – COURSE TILE 
    ========================================================= */
 
 .home-course-tile {
@@ -133,7 +109,7 @@ body.list .first-entry {
   margin: 2.5rem 0;
 }
 
-/* Subtle accent glow */
+/* Accent glow */
 .home-course-tile::before {
   content: "";
   position: absolute;
@@ -145,6 +121,7 @@ body.list .first-entry {
   pointer-events: none;
 }
 
+/* Core layout */
 .home-course-tile__inner {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -158,154 +135,20 @@ body.list .first-entry {
     0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Text */
-.home-course-tile__label {
-  font-size: 0.75rem;
-  opacity: 0.7;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.home-course-tile__title {
-  margin: 0.75rem 0 1rem;
-  font-size: 1.6rem;
-  color: var(--color-text-primary);
-}
-
-.home-course-tile__description {
-  max-width: 42ch;
-  color: var(--color-text-secondary);
-}
-
-/* Actions */
-.home-course-tile__actions {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: flex-start;
-}
-
-.home-course-tile__cta {
-  background: var(--color-accent-primary);
-  color: #ffffff;
-  text-decoration: none;
-  padding: 0.6rem 1.3rem;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-.home-course-tile__cta:hover {
-  background: color-mix(in srgb, var(--color-accent-primary) 85%, #000);
-}
-
-.home-course-tile__meta {
-  font-size: 0.85rem;
-  opacity: 0.65;
-  color: var(--color-text-secondary);
-}
-
-/* Image */
-.home-course-tile__image img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .home-course-tile__inner {
-    grid-template-columns: 1fr;
-    padding: 2rem;
-  }
-}
-
-
-.home-course-tile__features {
-  margin: 1.2rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem 1.5rem;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-}
-
-.home-course-tile__features li {
-  position: relative;
-  padding-left: 1rem;
-}
-
-.home-course-tile__features li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-accent-primary);
-}
-
-/* =========================================================
-   Home page – course audience
-   ========================================================= */
-
-.home-course-audience {
-  margin: 2.5rem 0 3.5rem;
-  max-width: 800px;
-}
-
-.home-course-audience h3 {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  color: var(--color-text-primary);
-}
-
-.home-course-audience ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.home-course-audience li {
-  position: relative;
-  padding-left: 1.2rem;
-  color: var(--color-text-secondary);
-}
-
-.home-course-audience li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-accent-primary);
-}
-
-
-/* #### course badge #### */
+/* Badge */
 .course-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-
+  gap: 0.4rem;
   padding: 0.35rem 0.75rem;
-  margin-bottom: 0.9rem;
-  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-
-  color: #ffffff;
-  background: color-mix(in srgb,
-      var(--color-accent-success) 85%,
-      #000);
-
+  color: #fff;
+  background: color-mix(in srgb, var(--color-accent-success) 85%, #000);
   border-radius: 999px;
-
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--color-accent-success) 60%, transparent),
-    0 6px 18px color-mix(in srgb, var(--color-accent-success) 35%, transparent);
 }
 
 .live-dot {
@@ -313,18 +156,30 @@ body.list .first-entry {
   height: 8px;
   border-radius: 50%;
   background: #ff0008;
-  box-shadow: 0 0 8px rgba(11, 234, 74, 0.8);
 }
 
+/* Text */
+.home-course-tile__title {
+  margin: 0.6rem 0 0.8rem;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.home-course-tile__description {
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+/* Features */
 .course-features {
-  margin: 1.2rem 0 0;
+  margin: 0.8rem 0 1.2rem;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.6rem 1.5rem;
+  gap: 0.6rem 1.4rem;
   font-size: 0.9rem;
-  color: var(--color-text-primary);
 }
 
 .course-features li {
@@ -340,16 +195,16 @@ body.list .first-entry {
   font-weight: 600;
 }
 
+/* Audience */
 .course-audience-title {
-  margin-top: 1.8rem;
-  margin-bottom: 0.6rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0.4rem;
   font-size: 0.95rem;
-  font-weight: 500;
   color: var(--color-text-secondary);
 }
 
 .course-audience {
-  margin: 0;
+  margin: 0 0 1.2rem;
   padding: 0;
   list-style: none;
   display: grid;
@@ -370,18 +225,62 @@ body.list .first-entry {
   color: var(--color-accent-success);
 }
 
+/* CTA */
 .home-course-tile__actions {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
+.home-course-tile__cta {
+  background: var(--color-accent-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
 
+/* Image */
+.home-course-tile__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
 
+/* =========================================================
+   6. MOBILE OVERRIDES 
+   ========================================================= */
 
+@media (max-width: 768px) {
+  .home-course-tile__inner {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
 
+  /* Image should appear near top on mobile */
+  .home-course-tile__image {
+    order: 1;
+    margin-bottom: 1rem;
+  }
 
-/* ###### Header Refinement ##### */
+  .home-course-tile__content {
+    order: 2;
+  }
 
-/* Header refinement */
+  .home-course-tile__image img {
+    max-height: 240px;
+    object-fit: cover;
+  }
+
+  .course-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   7. HEADER REFINEMENT
+   ========================================================= */
+
 header,
 .nav {
   border-bottom: 1px solid var(--color-border-subtle);
@@ -390,38 +289,3 @@ header,
 .nav a {
   opacity: 0.75;
 }
-
-/* .nav a.active,
-.nav a:hover {
-  opacity: 1;
-  color: var(--color-accent-primary);
-} */
-
-
-header {
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-
-
-/* #### Nav link  heirarchy ### */
-/* .nav a {
-  font-weight: 400;
-  opacity: 0.7;
-} */
-
-
-
-
-/* .nav a.active {
-  font-weight: 600;
-  opacity: 1;
-  color: var(--color-accent-primary);
-} */
-
-
-/* #### Logo Hover ### */
-
-/* .logo:hover {
-  color: var(--color-accent-secondary);
-} */
