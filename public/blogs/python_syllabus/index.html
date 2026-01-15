@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Complete Python Programming Syllabus (Beginner to Advanced) | codeverra</title>
+<meta name="keywords" content="python, programming, learning-roadmap, software-development, beginners">
+<meta name="description" content="A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blogs/python_syllabus/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a9cca72100063f45e555601cecfcf091330b4d1f2478aad0bb915e15ea27d924.css" integrity="sha256-qcynIQAGP0XlVWAc7PzwkTMLTR8keKrQu5FeFeon2SQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blogs/python_syllabus/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blogs/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Complete Python Programming Syllabus (Beginner to Advanced)
+    </h1>
+    <div class="post-description">
+      A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.
+    </div>
+    <div class="post-meta"><span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>581 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    <a class="tag" href="http://localhost:1313/tags/programming/">programming</a>
+    <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+    <a class="tag" href="http://localhost:1313/tags/software-development/">software-development</a>
+    <a class="tag" href="http://localhost:1313/tags/beginners/">beginners</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/python-syllabus-cover.png" alt="Python programming learning roadmap">
+        <figcaption>Python syllabus from beginner to advanced</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#beginner-level--python-foundations" aria-label="Beginner Level — Python Foundations">Beginner Level — Python Foundations</a><ul>
+                        
+                <li>
+                    <a href="#1-introduction-to-python" aria-label="1. Introduction to Python">1. Introduction to Python</a></li>
+                <li>
+                    <a href="#2-python-basics--syntax" aria-label="2. Python Basics &amp; Syntax">2. Python Basics &amp; Syntax</a></li>
+                <li>
+                    <a href="#3-input-output--operators" aria-label="3. Input, Output &amp; Operators">3. Input, Output &amp; Operators</a></li>
+                <li>
+                    <a href="#4-control-flow" aria-label="4. Control Flow">4. Control Flow</a><ul>
+                        
+                <li>
+                    <a href="#conditional-statements" aria-label="Conditional Statements">Conditional Statements</a></li>
+                <li>
+                    <a href="#looping-statements" aria-label="Looping Statements">Looping Statements</a></li>
+                <li>
+                    <a href="#loop-control" aria-label="Loop Control">Loop Control</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#intermediate-level--core-python-concepts" aria-label="Intermediate Level — Core Python Concepts">Intermediate Level — Core Python Concepts</a><ul>
+                        
+                <li>
+                    <a href="#5-strings" aria-label="5. Strings">5. Strings</a></li>
+                <li>
+                    <a href="#6-lists" aria-label="6. Lists">6. Lists</a></li>
+                <li>
+                    <a href="#7-tuples" aria-label="7. Tuples">7. Tuples</a></li>
+                <li>
+                    <a href="#8-sets" aria-label="8. Sets">8. Sets</a></li>
+                <li>
+                    <a href="#9-dictionaries" aria-label="9. Dictionaries">9. Dictionaries</a></li>
+                <li>
+                    <a href="#10-functions" aria-label="10. Functions">10. Functions</a></li>
+                <li>
+                    <a href="#11-modules--packages" aria-label="11. Modules &amp; Packages">11. Modules &amp; Packages</a></li></ul>
+                </li>
+                <li>
+                    <a href="#advanced-level--professional-python" aria-label="Advanced Level — Professional Python">Advanced Level — Professional Python</a><ul>
+                        
+                <li>
+                    <a href="#12-file-handling" aria-label="12. File Handling">12. File Handling</a></li>
+                <li>
+                    <a href="#13-exception-handling" aria-label="13. Exception Handling">13. Exception Handling</a></li>
+                <li>
+                    <a href="#14-object-oriented-programming-oop" aria-label="14. Object-Oriented Programming (OOP)">14. Object-Oriented Programming (OOP)</a></li>
+                <li>
+                    <a href="#15-advanced-python-concepts" aria-label="15. Advanced Python Concepts">15. Advanced Python Concepts</a></li>
+                <li>
+                    <a href="#16-python-standard-library" aria-label="16. Python Standard Library">16. Python Standard Library</a></li>
+                <li>
+                    <a href="#17-testing--debugging" aria-label="17. Testing &amp; Debugging">17. Testing &amp; Debugging</a></li></ul>
+                </li>
+                <li>
+                    <a href="#specialized--career-oriented-topics" aria-label="Specialized &amp; Career-Oriented Topics">Specialized &amp; Career-Oriented Topics</a><ul>
+                        
+                <li>
+                    <a href="#18-data-structures--algorithms-with-python" aria-label="18. Data Structures &amp; Algorithms with Python">18. Data Structures &amp; Algorithms with Python</a></li>
+                <li>
+                    <a href="#19-automation--scripting" aria-label="19. Automation &amp; Scripting">19. Automation &amp; Scripting</a></li>
+                <li>
+                    <a href="#20-python-for-web-development" aria-label="20. Python for Web Development">20. Python for Web Development</a></li>
+                <li>
+                    <a href="#21-python-for-data--ai" aria-label="21. Python for Data &amp; AI">21. Python for Data &amp; AI</a></li>
+                <li>
+                    <a href="#22-performance--optimization" aria-label="22. Performance &amp; Optimization">22. Performance &amp; Optimization</a></li>
+                <li>
+                    <a href="#23-real-world-projects" aria-label="23. Real-World Projects">23. Real-World Projects</a></li>
+                <li>
+                    <a href="#24-interview--professional-topics" aria-label="24. Interview &amp; Professional Topics">24. Interview &amp; Professional Topics</a></li>
+                <li>
+                    <a href="#25-python-programming-playlist" aria-label="25. Python Programming Playlist">25. Python Programming Playlist</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Python is one of the most versatile and beginner-friendly programming languages in the world. From web development and automation to data science and AI, Python forms the backbone of modern software development.</p>
+<p>This syllabus is designed as a <strong>structured learning roadmap</strong>, not just a list of topics. It focuses on building strong fundamentals, clear thinking, and professional-level coding skills.</p>
+<p>This guide covers:</p>
+<ul>
+<li>Python fundamentals from scratch</li>
+<li>Core programming concepts</li>
+<li>Advanced Python features</li>
+<li>Career-oriented applications</li>
+<li>Interview and professional preparation</li>
+</ul>
+<hr>
+<h2 id="beginner-level--python-foundations">Beginner Level — Python Foundations<a hidden class="anchor" aria-hidden="true" href="#beginner-level--python-foundations">#</a></h2>
+<h3 id="1-introduction-to-python">1. Introduction to Python<a hidden class="anchor" aria-hidden="true" href="#1-introduction-to-python">#</a></h3>
+<ul>
+<li>What is Python</li>
+<li>History and features of Python</li>
+<li>Applications of Python</li>
+<li>Python vs other languages</li>
+<li>Installing Python</li>
+<li>Python versions</li>
+<li>Running Python programs</li>
+<li>Python interactive shell</li>
+<li>Writing your first Python program</li>
+</ul>
+<hr>
+<h3 id="2-python-basics--syntax">2. Python Basics &amp; Syntax<a hidden class="anchor" aria-hidden="true" href="#2-python-basics--syntax">#</a></h3>
+<ul>
+<li>Python keywords</li>
+<li>Identifiers</li>
+<li>Indentation and code structure</li>
+<li>Comments (single-line and multi-line)</li>
+<li>Variables and naming conventions</li>
+<li>Data types overview</li>
+<li>Type checking using <code>type()</code></li>
+<li>Type conversion</li>
+</ul>
+<hr>
+<h3 id="3-input-output--operators">3. Input, Output &amp; Operators<a hidden class="anchor" aria-hidden="true" href="#3-input-output--operators">#</a></h3>
+<ul>
+<li>Input using <code>input()</code></li>
+<li>Output using <code>print()</code></li>
+<li>Formatted output</li>
+<li>Arithmetic operators</li>
+<li>Relational operators</li>
+<li>Logical operators</li>
+<li>Assignment operators</li>
+<li>Operator precedence</li>
+</ul>
+<hr>
+<h3 id="4-control-flow">4. Control Flow<a hidden class="anchor" aria-hidden="true" href="#4-control-flow">#</a></h3>
+<h4 id="conditional-statements">Conditional Statements<a hidden class="anchor" aria-hidden="true" href="#conditional-statements">#</a></h4>
+<ul>
+<li><code>if</code></li>
+<li><code>if-else</code></li>
+<li><code>elif</code></li>
+<li>Nested conditions</li>
+</ul>
+<h4 id="looping-statements">Looping Statements<a hidden class="anchor" aria-hidden="true" href="#looping-statements">#</a></h4>
+<ul>
+<li><code>for</code> loop</li>
+<li><code>while</code> loop</li>
+</ul>
+<h4 id="loop-control">Loop Control<a hidden class="anchor" aria-hidden="true" href="#loop-control">#</a></h4>
+<ul>
+<li><code>break</code></li>
+<li><code>continue</code></li>
+<li><code>pass</code></li>
+</ul>
+<hr>
+<h2 id="intermediate-level--core-python-concepts">Intermediate Level — Core Python Concepts<a hidden class="anchor" aria-hidden="true" href="#intermediate-level--core-python-concepts">#</a></h2>
+<h3 id="5-strings">5. Strings<a hidden class="anchor" aria-hidden="true" href="#5-strings">#</a></h3>
+<ul>
+<li>String creation</li>
+<li>Indexing and slicing</li>
+<li>String methods</li>
+<li>String formatting</li>
+<li>Escape characters</li>
+<li>Immutability</li>
+<li>String operations</li>
+</ul>
+<hr>
+<h3 id="6-lists">6. Lists<a hidden class="anchor" aria-hidden="true" href="#6-lists">#</a></h3>
+<ul>
+<li>Creating lists</li>
+<li>Indexing and slicing</li>
+<li>List methods</li>
+<li>Nested lists</li>
+<li>Iterating through lists</li>
+<li>List comprehensions</li>
+</ul>
+<hr>
+<h3 id="7-tuples">7. Tuples<a hidden class="anchor" aria-hidden="true" href="#7-tuples">#</a></h3>
+<ul>
+<li>Creating tuples</li>
+<li>Tuple operations</li>
+<li>Tuple unpacking</li>
+<li>Difference between list and tuple</li>
+<li>Use cases</li>
+</ul>
+<hr>
+<h3 id="8-sets">8. Sets<a hidden class="anchor" aria-hidden="true" href="#8-sets">#</a></h3>
+<ul>
+<li>Set creation</li>
+<li>Set methods</li>
+<li>Set operations</li>
+<li>Difference between set and list</li>
+<li>Use cases</li>
+</ul>
+<hr>
+<h3 id="9-dictionaries">9. Dictionaries<a hidden class="anchor" aria-hidden="true" href="#9-dictionaries">#</a></h3>
+<ul>
+<li>Dictionary creation</li>
+<li>Accessing elements</li>
+<li>Dictionary methods</li>
+<li>Iterating dictionaries</li>
+<li>Nested dictionaries</li>
+<li>Real-world use cases</li>
+</ul>
+<hr>
+<h3 id="10-functions">10. Functions<a hidden class="anchor" aria-hidden="true" href="#10-functions">#</a></h3>
+<ul>
+<li>Defining functions</li>
+<li>Function parameters</li>
+<li>Return values</li>
+<li>Default arguments</li>
+<li>Keyword arguments</li>
+<li>Variable-length arguments (<code>*args</code>, <code>**kwargs</code>)</li>
+<li>Scope (local and global)</li>
+<li>Lambda functions</li>
+</ul>
+<hr>
+<h3 id="11-modules--packages">11. Modules &amp; Packages<a hidden class="anchor" aria-hidden="true" href="#11-modules--packages">#</a></h3>
+<ul>
+<li>Importing modules</li>
+<li>Built-in modules</li>
+<li>Creating custom modules</li>
+<li>Python packages</li>
+<li><code>__name__ == &quot;__main__&quot;</code></li>
+<li>Virtual environments</li>
+</ul>
+<hr>
+<h2 id="advanced-level--professional-python">Advanced Level — Professional Python<a hidden class="anchor" aria-hidden="true" href="#advanced-level--professional-python">#</a></h2>
+<h3 id="12-file-handling">12. File Handling<a hidden class="anchor" aria-hidden="true" href="#12-file-handling">#</a></h3>
+<ul>
+<li>Reading files</li>
+<li>Writing files</li>
+<li>File modes</li>
+<li>Working with CSV files</li>
+<li>JSON handling</li>
+<li>Context managers using <code>with</code></li>
+</ul>
+<hr>
+<h3 id="13-exception-handling">13. Exception Handling<a hidden class="anchor" aria-hidden="true" href="#13-exception-handling">#</a></h3>
+<ul>
+<li>Types of errors</li>
+<li><code>try</code> and <code>except</code></li>
+<li><code>else</code> and <code>finally</code></li>
+<li>Multiple exceptions</li>
+<li>Custom exceptions</li>
+<li>Debugging techniques</li>
+</ul>
+<hr>
+<h3 id="14-object-oriented-programming-oop">14. Object-Oriented Programming (OOP)<a hidden class="anchor" aria-hidden="true" href="#14-object-oriented-programming-oop">#</a></h3>
+<ul>
+<li>Classes and objects</li>
+<li>Constructors</li>
+<li>Instance and class variables</li>
+<li>Methods</li>
+<li>Encapsulation</li>
+<li>Inheritance</li>
+<li>Polymorphism</li>
+<li>Abstraction</li>
+<li>Magic methods (<code>__str__</code>, <code>__len__</code>, etc.)</li>
+</ul>
+<hr>
+<h3 id="15-advanced-python-concepts">15. Advanced Python Concepts<a hidden class="anchor" aria-hidden="true" href="#15-advanced-python-concepts">#</a></h3>
+<ul>
+<li>List, set, and dictionary comprehensions</li>
+<li>Iterators and generators</li>
+<li>Decorators</li>
+<li>Closures</li>
+<li>Shallow vs deep copy</li>
+<li>Memory management</li>
+<li>Garbage collection</li>
+</ul>
+<hr>
+<h3 id="16-python-standard-library">16. Python Standard Library<a hidden class="anchor" aria-hidden="true" href="#16-python-standard-library">#</a></h3>
+<ul>
+<li><code>math</code></li>
+<li><code>random</code></li>
+<li><code>datetime</code></li>
+<li><code>collections</code></li>
+<li><code>itertools</code></li>
+<li><code>functools</code></li>
+<li><code>os</code></li>
+<li><code>sys</code></li>
+</ul>
+<hr>
+<h3 id="17-testing--debugging">17. Testing &amp; Debugging<a hidden class="anchor" aria-hidden="true" href="#17-testing--debugging">#</a></h3>
+<ul>
+<li>Assertions</li>
+<li>Unit testing</li>
+<li>Writing test cases</li>
+<li>Testing frameworks overview</li>
+<li>Debugging tools</li>
+<li>Logging</li>
+</ul>
+<hr>
+<h2 id="specialized--career-oriented-topics">Specialized &amp; Career-Oriented Topics<a hidden class="anchor" aria-hidden="true" href="#specialized--career-oriented-topics">#</a></h2>
+<h3 id="18-data-structures--algorithms-with-python">18. Data Structures &amp; Algorithms with Python<a hidden class="anchor" aria-hidden="true" href="#18-data-structures--algorithms-with-python">#</a></h3>
+<ul>
+<li>Time and space complexity</li>
+<li>Arrays and strings</li>
+<li>Stacks and queues</li>
+<li>Linked lists</li>
+<li>Trees</li>
+<li>Graphs</li>
+<li>Dynamic programming</li>
+<li>Greedy algorithms</li>
+<li>Recursion and backtracking</li>
+</ul>
+<hr>
+<h3 id="19-automation--scripting">19. Automation &amp; Scripting<a hidden class="anchor" aria-hidden="true" href="#19-automation--scripting">#</a></h3>
+<ul>
+<li>File and folder automation</li>
+<li>Web scraping basics</li>
+<li>Task scheduling</li>
+<li>Command-line tools</li>
+<li>Automation projects</li>
+</ul>
+<hr>
+<h3 id="20-python-for-web-development">20. Python for Web Development<a hidden class="anchor" aria-hidden="true" href="#20-python-for-web-development">#</a></h3>
+<ul>
+<li>Backend fundamentals</li>
+<li>REST APIs</li>
+<li>JSON and HTTP</li>
+<li>Web frameworks overview</li>
+<li>Request–response cycle</li>
+</ul>
+<hr>
+<h3 id="21-python-for-data--ai">21. Python for Data &amp; AI<a hidden class="anchor" aria-hidden="true" href="#21-python-for-data--ai">#</a></h3>
+<ul>
+<li>NumPy basics</li>
+<li>Pandas basics</li>
+<li>Data cleaning</li>
+<li>Basic data visualization</li>
+<li>Working with datasets</li>
+</ul>
+<hr>
+<h3 id="22-performance--optimization">22. Performance &amp; Optimization<a hidden class="anchor" aria-hidden="true" href="#22-performance--optimization">#</a></h3>
+<ul>
+<li>Code optimization</li>
+<li>Profiling</li>
+<li>Efficient data handling</li>
+<li>Best practices</li>
+<li>PEP 8 guidelines</li>
+<li>Type hints</li>
+</ul>
+<hr>
+<h3 id="23-real-world-projects">23. Real-World Projects<a hidden class="anchor" aria-hidden="true" href="#23-real-world-projects">#</a></h3>
+<ul>
+<li>Beginner mini projects</li>
+<li>Automation projects</li>
+<li>API-based projects</li>
+<li>Data-driven projects</li>
+<li>End-to-end Python applications</li>
+</ul>
+<hr>
+<h3 id="24-interview--professional-topics">24. Interview &amp; Professional Topics<a hidden class="anchor" aria-hidden="true" href="#24-interview--professional-topics">#</a></h3>
+<ul>
+<li>Common Python interview questions</li>
+<li>DSA problem solving</li>
+<li>Design patterns</li>
+<li>Code optimization</li>
+<li>Packaging and distribution</li>
+<li>Resume and project preparation</li>
+</ul>
+<h3 id="25-python-programming-playlist">25. Python Programming Playlist<a hidden class="anchor" aria-hidden="true" href="#25-python-programming-playlist">#</a></h3>
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB8xV-Jzh0JYQ8fmckdh--pu&si=8oIfIdpaqQxYKpXR"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB9R6knaQqcZ58JIVVRYu0tb&si=MKraBdmi0DBuuD-0"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB_oVJJeNpd3wpGAjf-gYCgU&si=bGjNgZw_B2-0z5F4"
+  title="Python Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+---
+<p>More structured Python learning guides and hands-on roadmaps coming soon.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+      <li><a href="http://localhost:1313/tags/programming/">Programming</a></li>
+      <li><a href="http://localhost:1313/tags/learning-roadmap/">Learning-Roadmap</a></li>
+      <li><a href="http://localhost:1313/tags/software-development/">Software-Development</a></li>
+      <li><a href="http://localhost:1313/tags/beginners/">Beginners</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

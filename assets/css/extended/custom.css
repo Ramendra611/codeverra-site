@@ -1,64 +1,182 @@
 .post-entry {
-    position: relative;
+  position: relative;
 }
 
 .entry-tags {
-    position: relative;
-    z-index: 5;
+  position: relative;
+  z-index: 5;
 }
 
 .entry-tags a {
-    pointer-events: auto;
+  pointer-events: auto;
 }
 
 .entry-tags {
-    margin-top: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .entry-tags a {
-    font-size: 0.85rem;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--code-bg);
-    color: var(--secondary);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    line-height: 1.4;
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  line-height: 1.4;
 }
 
 .entry-tags a:hover {
-    background: var(--tertiary);
-    color: var(--primary);
+  background: var(--tertiary);
+  color: var(--primary);
 }
 
 .post-tags-top {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* Allow top tags to receive clicks */
 .post-header {
-    position: relative;
+  position: relative;
 }
 
 .post-tags-top {
-    position: relative;
-    z-index: 5;
+  position: relative;
+  z-index: 5;
 }
 
 .post-tags-top a {
-    pointer-events: auto;
+  pointer-events: auto;
 }
 
 /* Bottom-of-post tags (PaperMod default) */
 .post-tags a,
 .post-footer .tag,
 .post-footer a[href*="/tags/"] {
-    text-transform: lowercase;
+  text-transform: lowercase;
+}
+
+/* Blogs page: grid layout for blog cards */
+/* Blogs page: grid layout for posts only */
+body.list .post-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  body.list .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  body.list .post-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure first-entry does not span columns */
+body.list .first-entry {
+  grid-column: auto;
+}
+
+/* Increase overall content width */
+.main {
+  max-width: 1200px;
+}
+
+/* Home page course tile */
+/* ==============================
+   Home page – course tile
+   ============================== */
+
+.home-course-tile {
+  width: 100%;
+  margin: 2.5rem 0;
+}
+
+.home-course-tile__inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  padding: 3rem;
+  background: linear-gradient(135deg,
+      var(--entry) 0%,
+      rgba(0, 0, 0, 0.02) 100%);
+  border-radius: var(--radius);
+  align-items: center;
+}
+
+.home-course-tile__label {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.home-course-tile__title {
+  margin: 0.75rem 0 1rem;
+  font-size: 1.6rem;
+}
+
+.home-course-tile__description {
+  max-width: 42ch;
+}
+
+.home-course-tile__cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.home-course-tile__meta {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+.home-course-tile__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .home-course-tile__inner {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+}
+
+
+.home-course-tile__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.home-course-tile__cta {
+  background: var(--accent, #4f46e5);
+  color: #fff;
+  text-decoration: none;
+}
+
+.home-course-tile__cta:hover {
+  opacity: 0.9;
 }

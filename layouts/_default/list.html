@@ -4,6 +4,10 @@
 {{- partial "index_profile.html" . }}
 {{- else }} {{/* if not profileMode */}}
 
+{{- if .IsHome }}
+{{ partial "home-course-tile.html" . }}
+{{- end }}
+
 {{- if not .IsHome | and .Title }}
 <header class="page-header">
     {{- partial "breadcrumbs.html" . }}
@@ -51,7 +55,13 @@
 {{- partial "home_info.html" . }}
 {{- end }}
 
+{{- if and .IsHome (eq $paginator.PageNumber 1) }}
+{{ partial "home-course-tile.html" . }}
+{{- end }}
+
 {{- $term := .Data.Term }}
+
+<div class="post-grid">
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -98,8 +108,12 @@
     </footer>
     {{- end }}
     <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    {{- if and (eq $index 3) (not $.IsHome) }}
+    {{ partial "course-tile.html" . }}
+    {{- end }}
 </article>
 {{- end }}
+</div>
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53859&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Analysis of Time Complexity Explained with Python Examples | codeverra</title>
+<meta name="keywords" content="dsa, time-complexity, algorithms, python, problem-solving">
+<meta name="description" content="A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:53859/blogs/time_complexity/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a9cca72100063f45e555601cecfcf091330b4d1f2478aad0bb915e15ea27d924.css" integrity="sha256-qcynIQAGP0XlVWAc7PzwkTMLTR8keKrQu5FeFeon2SQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:53859/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:53859/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:53859/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:53859/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:53859/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:53859/blogs/time_complexity/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:53859/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:53859/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:53859/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:53859/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:53859/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:53859/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:53859/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:53859/blogs/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Analysis of Time Complexity Explained with Python Examples
+    </h1>
+    <div class="post-description">
+      A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.
+    </div>
+    <div class="post-meta"><span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>784 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:53859/tags/dsa/">dsa</a>
+    <a class="tag" href="http://localhost:53859/tags/time-complexity/">time-complexity</a>
+    <a class="tag" href="http://localhost:53859/tags/algorithms/">algorithms</a>
+    <a class="tag" href="http://localhost:53859/tags/python/">python</a>
+    <a class="tag" href="http://localhost:53859/tags/problem-solving/">problem-solving</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:53859/images/time-complexity-cover.png" alt="Analysis of time complexity">
+        <figcaption>Understanding algorithm efficiency with Python</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-what-is-time-complexity" aria-label="1. What Is Time Complexity?">1. What Is Time Complexity?</a></li>
+                <li>
+                    <a href="#2-why-time-complexity-matters" aria-label="2. Why Time Complexity Matters">2. Why Time Complexity Matters</a></li>
+                <li>
+                    <a href="#3-asymptotic-notations" aria-label="3. Asymptotic Notations">3. Asymptotic Notations</a><ul>
+                        
+                <li>
+                    <a href="#big-o-o" aria-label="Big O (O)">Big O (O)</a></li>
+                <li>
+                    <a href="#big-%cf%89-omega" aria-label="Big Ω (Omega)">Big Ω (Omega)</a></li>
+                <li>
+                    <a href="#big-%ce%b8-theta" aria-label="Big Θ (Theta)">Big Θ (Theta)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-common-time-complexities-overview" aria-label="4. Common Time Complexities (Overview)">4. Common Time Complexities (Overview)</a></li>
+                <li>
+                    <a href="#5-o1--constant-time" aria-label="5. O(1) — Constant Time">5. O(1) — Constant Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-text-only" aria-label="Python Example (Text Only)">Python Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-olog-n--logarithmic-time" aria-label="6. O(log n) — Logarithmic Time">6. O(log n) — Logarithmic Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation-1" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-binary-search--text-only" aria-label="Python Example (Binary Search – Text Only)">Python Example (Binary Search – Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#7-on--linear-time" aria-label="7. O(n) — Linear Time">7. O(n) — Linear Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation-2" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-text-only-1" aria-label="Python Example (Text Only)">Python Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#8-on-log-n--linearithmic-time" aria-label="8. O(n log n) — Linearithmic Time">8. O(n log n) — Linearithmic Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation-3" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-merge-sort-idea--text-only" aria-label="Python Example (Merge Sort Idea – Text Only)">Python Example (Merge Sort Idea – Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#9-on--quadratic-time" aria-label="9. O(n²) — Quadratic Time">9. O(n²) — Quadratic Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation-4" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-text-only-2" aria-label="Python Example (Text Only)">Python Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#10-o2%e2%81%bf--exponential-time" aria-label="10. O(2ⁿ) — Exponential Time">10. O(2ⁿ) — Exponential Time</a><ul>
+                        
+                <li>
+                    <a href="#explanation-5" aria-label="Explanation">Explanation</a></li>
+                <li>
+                    <a href="#python-example-naive-fibonacci--text-only" aria-label="Python Example (Naive Fibonacci – Text Only)">Python Example (Naive Fibonacci – Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#11-loop-based-complexity-analysis" aria-label="11. Loop-Based Complexity Analysis">11. Loop-Based Complexity Analysis</a><ul>
+                        
+                <li>
+                    <a href="#single-loop" aria-label="Single Loop">Single Loop</a></li>
+                <li>
+                    <a href="#nested-loop" aria-label="Nested Loop">Nested Loop</a></li>
+                <li>
+                    <a href="#loop-with-halving" aria-label="Loop with Halving">Loop with Halving</a></li></ul>
+                </li>
+                <li>
+                    <a href="#12-combining-complexities" aria-label="12. Combining Complexities">12. Combining Complexities</a><ul>
+                        
+                <li>
+                    <a href="#example" aria-label="Example">Example</a></li>
+                <li>
+                    <a href="#dominant-term-rule" aria-label="Dominant Term Rule">Dominant Term Rule</a></li></ul>
+                </li>
+                <li>
+                    <a href="#13-best-average-and-worst-case" aria-label="13. Best, Average, and Worst Case">13. Best, Average, and Worst Case</a><ul>
+                        
+                <li>
+                    <a href="#linear-search-example-text-only" aria-label="Linear Search Example (Text Only)">Linear Search Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#14-space-vs-time-tradeoff" aria-label="14. Space vs Time Tradeoff">14. Space vs Time Tradeoff</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Time complexity is one of the most important concepts in Data Structures and Algorithms. It helps you understand how an algorithm behaves as the input size grows and why some solutions fail to scale.</p>
+<p>This guide explains time complexity step-by-step using simple explanations and Python examples written purely as text, focusing on intuition rather than heavy mathematics.</p>
+<hr>
+<h2 id="1-what-is-time-complexity">1. What Is Time Complexity?<a hidden class="anchor" aria-hidden="true" href="#1-what-is-time-complexity">#</a></h2>
+<p>Time complexity measures how the running time of an algorithm grows as the input size increases.</p>
+<p>It does not measure actual seconds taken by the program.<br>
+Instead, it focuses on how fast execution grows relative to input size n.</p>
+<p>The focus is on growth rate, not machine speed.</p>
+<hr>
+<h2 id="2-why-time-complexity-matters">2. Why Time Complexity Matters<a hidden class="anchor" aria-hidden="true" href="#2-why-time-complexity-matters">#</a></h2>
+<p>Time complexity helps you:</p>
+<ul>
+<li>Compare different algorithms</li>
+<li>Predict performance for large inputs</li>
+<li>Perform better in coding interviews and competitive programming</li>
+<li>Avoid inefficient solutions early</li>
+</ul>
+<p>Efficient code is essential for scalable real-world systems.</p>
+<hr>
+<h2 id="3-asymptotic-notations">3. Asymptotic Notations<a hidden class="anchor" aria-hidden="true" href="#3-asymptotic-notations">#</a></h2>
+<h3 id="big-o-o">Big O (O)<a hidden class="anchor" aria-hidden="true" href="#big-o-o">#</a></h3>
+<p>Represents the worst-case time complexity.<br>
+It is the most commonly used notation in interviews.</p>
+<h3 id="big-ω-omega">Big Ω (Omega)<a hidden class="anchor" aria-hidden="true" href="#big-ω-omega">#</a></h3>
+<p>Represents the best-case time complexity.</p>
+<h3 id="big-θ-theta">Big Θ (Theta)<a hidden class="anchor" aria-hidden="true" href="#big-θ-theta">#</a></h3>
+<p>Represents the average-case time complexity.</p>
+<hr>
+<h2 id="4-common-time-complexities-overview">4. Common Time Complexities (Overview)<a hidden class="anchor" aria-hidden="true" href="#4-common-time-complexities-overview">#</a></h2>
+<p>O(1) – Constant<br>
+O(log n) – Logarithmic<br>
+O(n) – Linear<br>
+O(n log n) – Linearithmic<br>
+O(n²) – Quadratic<br>
+O(2ⁿ) – Exponential</p>
+<hr>
+<h2 id="5-o1--constant-time">5. O(1) — Constant Time<a hidden class="anchor" aria-hidden="true" href="#5-o1--constant-time">#</a></h2>
+<h3 id="explanation">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation">#</a></h3>
+<p>The execution time does not depend on the input size.</p>
+<h3 id="python-example-text-only">Python Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-text-only">#</a></h3>
+<p>A function that returns the first element of an array always runs in constant time, regardless of how large the array is.</p>
+<p>For example:<br>
+def get_first_element(arr):<br>
+return arr[0]</p>
+<p>This is the fastest possible time complexity.</p>
+<hr>
+<h2 id="6-olog-n--logarithmic-time">6. O(log n) — Logarithmic Time<a hidden class="anchor" aria-hidden="true" href="#6-olog-n--logarithmic-time">#</a></h2>
+<h3 id="explanation-1">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation-1">#</a></h3>
+<p>The input size is reduced by half in every step.</p>
+<h3 id="python-example-binary-search--text-only">Python Example (Binary Search – Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-binary-search--text-only">#</a></h3>
+<p>Binary search repeatedly divides the search space into two halves.</p>
+<p>Example logic:<br>
+Initialize low and high pointers.<br>
+Find the middle element.<br>
+Compare the middle element with the target.<br>
+Discard half of the array in each step.</p>
+<p>Because the input is halved every time, the complexity is O(log n).</p>
+<hr>
+<h2 id="7-on--linear-time">7. O(n) — Linear Time<a hidden class="anchor" aria-hidden="true" href="#7-on--linear-time">#</a></h2>
+<h3 id="explanation-2">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation-2">#</a></h3>
+<p>Execution time grows directly proportional to input size.</p>
+<h3 id="python-example-text-only-1">Python Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-text-only-1">#</a></h3>
+<p>Finding the maximum element in an array requires checking every element once.</p>
+<p>Example logic:<br>
+Initialize maximum with the first element.<br>
+Traverse the array.<br>
+Update maximum whenever a larger value is found.</p>
+<p>If the input size doubles, execution time also doubles.</p>
+<hr>
+<h2 id="8-on-log-n--linearithmic-time">8. O(n log n) — Linearithmic Time<a hidden class="anchor" aria-hidden="true" href="#8-on-log-n--linearithmic-time">#</a></h2>
+<h3 id="explanation-3">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation-3">#</a></h3>
+<p>This complexity appears in efficient sorting algorithms.</p>
+<h3 id="python-example-merge-sort-idea--text-only">Python Example (Merge Sort Idea – Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-merge-sort-idea--text-only">#</a></h3>
+<p>Merge sort divides the array into halves recursively and then merges them.</p>
+<p>Divide step takes log n time.<br>
+Merge step takes n time.</p>
+<p>Overall complexity becomes O(n log n), which is optimal for sorting.</p>
+<hr>
+<h2 id="9-on--quadratic-time">9. O(n²) — Quadratic Time<a hidden class="anchor" aria-hidden="true" href="#9-on--quadratic-time">#</a></h2>
+<h3 id="explanation-4">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation-4">#</a></h3>
+<p>Occurs when nested loops are used over the input.</p>
+<h3 id="python-example-text-only-2">Python Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-text-only-2">#</a></h3>
+<p>Printing all pairs of elements in an array requires two loops.</p>
+<p>Example logic:<br>
+For each element i in the array,<br>
+loop again through the array for j,<br>
+print the pair (i, j).</p>
+<p>If input size doubles, execution time becomes four times slower.</p>
+<hr>
+<h2 id="10-o2ⁿ--exponential-time">10. O(2ⁿ) — Exponential Time<a hidden class="anchor" aria-hidden="true" href="#10-o2ⁿ--exponential-time">#</a></h2>
+<h3 id="explanation-5">Explanation<a hidden class="anchor" aria-hidden="true" href="#explanation-5">#</a></h3>
+<p>Each input creates multiple recursive calls.</p>
+<h3 id="python-example-naive-fibonacci--text-only">Python Example (Naive Fibonacci – Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-naive-fibonacci--text-only">#</a></h3>
+<p>The naive recursive Fibonacci function calls itself twice for each value of n.</p>
+<p>This leads to exponential growth in function calls.</p>
+<p>Such solutions are extremely slow for large inputs and should be avoided unless optimized using Dynamic Programming.</p>
+<hr>
+<h2 id="11-loop-based-complexity-analysis">11. Loop-Based Complexity Analysis<a hidden class="anchor" aria-hidden="true" href="#11-loop-based-complexity-analysis">#</a></h2>
+<h3 id="single-loop">Single Loop<a hidden class="anchor" aria-hidden="true" href="#single-loop">#</a></h3>
+<p>A loop that runs from 1 to n executes n times.<br>
+Time complexity: O(n)</p>
+<h3 id="nested-loop">Nested Loop<a hidden class="anchor" aria-hidden="true" href="#nested-loop">#</a></h3>
+<p>A loop inside another loop, each running n times.<br>
+Time complexity: O(n²)</p>
+<h3 id="loop-with-halving">Loop with Halving<a hidden class="anchor" aria-hidden="true" href="#loop-with-halving">#</a></h3>
+<p>A loop where the value is divided by 2 in every iteration.<br>
+Time complexity: O(log n)</p>
+<hr>
+<h2 id="12-combining-complexities">12. Combining Complexities<a hidden class="anchor" aria-hidden="true" href="#12-combining-complexities">#</a></h2>
+<h3 id="example">Example<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h3>
+<p>If one loop runs n times and another independent loop also runs n times:</p>
+<p>Total time = O(n + n)<br>
+Final complexity = O(n)</p>
+<h3 id="dominant-term-rule">Dominant Term Rule<a hidden class="anchor" aria-hidden="true" href="#dominant-term-rule">#</a></h3>
+<p>O(n² + n + 1) simplifies to O(n²)</p>
+<p>Always keep the term with the highest growth rate.</p>
+<hr>
+<h2 id="13-best-average-and-worst-case">13. Best, Average, and Worst Case<a hidden class="anchor" aria-hidden="true" href="#13-best-average-and-worst-case">#</a></h2>
+<h3 id="linear-search-example-text-only">Linear Search Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#linear-search-example-text-only">#</a></h3>
+<p>Best case: Target found at the first position → O(1)<br>
+Average case: Target found somewhere in the array → O(n)<br>
+Worst case: Target not present or at last position → O(n)</p>
+<hr>
+<h2 id="14-space-vs-time-tradeoff">14. Space vs Time Tradeoff<a hidden class="anchor" aria-hidden="true" href="#14-space-vs-time-tradeoff">#</a></h2>
+<p>Sometimes extra memory is used to reduce time complexity.</p>
+<p>Examples include:</p>
+<ul>
+<li>Using hash sets to reduce lookup time</li>
+<li>Using dynamic programming arrays to avoid recomputation</li>
+</ul>
+<p>This tradeoff is very common in real-world applications.</p>
+<hr>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Understanding time complexity helps you:</p>
+<ul>
+<li>Write efficient and scalable code</li>
+<li>Choose the right algorithm</li>
+<li>Crack coding interviews</li>
+<li>Build real-world systems</li>
+</ul>
+<p>Mastering time complexity is non-negotiable for anyone serious about Data Structures and Algorithms.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:53859/tags/dsa/">Dsa</a></li>
+      <li><a href="http://localhost:53859/tags/time-complexity/">Time-Complexity</a></li>
+      <li><a href="http://localhost:53859/tags/algorithms/">Algorithms</a></li>
+      <li><a href="http://localhost:53859/tags/python/">Python</a></li>
+      <li><a href="http://localhost:53859/tags/problem-solving/">Problem-Solving</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:53859/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

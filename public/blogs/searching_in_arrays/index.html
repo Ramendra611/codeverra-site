@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Searching in Arrays (Sorted and Unsorted) | codeverra</title>
+<meta name="keywords" content="dsa, arrays, searching, algorithms, problem-solving">
+<meta name="description" content="A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blogs/searching_in_arrays/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a9cca72100063f45e555601cecfcf091330b4d1f2478aad0bb915e15ea27d924.css" integrity="sha256-qcynIQAGP0XlVWAc7PzwkTMLTR8keKrQu5FeFeon2SQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blogs/searching_in_arrays/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blogs/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Searching in Arrays (Sorted and Unsorted)
+    </h1>
+    <div class="post-description">
+      A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.
+    </div>
+    <div class="post-meta"><span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>547 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+    <a class="tag" href="http://localhost:1313/tags/arrays/">arrays</a>
+    <a class="tag" href="http://localhost:1313/tags/searching/">searching</a>
+    <a class="tag" href="http://localhost:1313/tags/algorithms/">algorithms</a>
+    <a class="tag" href="http://localhost:1313/tags/problem-solving/">problem-solving</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/searching-arrays-cover.png" alt="Searching in arrays">
+        <figcaption>Searching techniques in sorted and unsorted arrays</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-searching-in-an-unsorted-array" aria-label="1. Searching in an Unsorted Array">1. Searching in an Unsorted Array</a><ul>
+                        
+                <li>
+                    <a href="#characteristics" aria-label="Characteristics">Characteristics</a></li>
+                <li>
+                    <a href="#linear-search" aria-label="Linear Search">Linear Search</a><ul>
+                        
+                <li>
+                    <a href="#concept" aria-label="Concept">Concept</a></li>
+                <li>
+                    <a href="#python-example-text-only" aria-label="Python Example (Text Only)">Python Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#time-complexity" aria-label="Time Complexity">Time Complexity</a></li>
+                <li>
+                    <a href="#when-to-use-linear-search" aria-label="When to Use Linear Search">When to Use Linear Search</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-searching-in-a-sorted-array" aria-label="2. Searching in a Sorted Array">2. Searching in a Sorted Array</a><ul>
+                        
+                <li>
+                    <a href="#characteristics-1" aria-label="Characteristics">Characteristics</a></li>
+                <li>
+                    <a href="#binary-search" aria-label="Binary Search">Binary Search</a><ul>
+                        
+                <li>
+                    <a href="#concept-1" aria-label="Concept">Concept</a></li>
+                <li>
+                    <a href="#python-example-text-only-1" aria-label="Python Example (Text Only)">Python Example (Text Only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#time-complexity-1" aria-label="Time Complexity">Time Complexity</a></li>
+                <li>
+                    <a href="#when-to-use-binary-search" aria-label="When to Use Binary Search">When to Use Binary Search</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-comparison-sorted-vs-unsorted-searching" aria-label="3. Comparison: Sorted vs Unsorted Searching">3. Comparison: Sorted vs Unsorted Searching</a></li>
+                <li>
+                    <a href="#4-important-interview-insight" aria-label="4. Important Interview Insight">4. Important Interview Insight</a></li>
+                <li>
+                    <a href="#5-real-world-examples" aria-label="5. Real-World Examples">5. Real-World Examples</a><ul>
+                        
+                <li>
+                    <a href="#unsorted-array-searching" aria-label="Unsorted Array Searching">Unsorted Array Searching</a></li>
+                <li>
+                    <a href="#sorted-array-searching" aria-label="Sorted Array Searching">Sorted Array Searching</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-common-mistakes-to-avoid" aria-label="6. Common Mistakes to Avoid">6. Common Mistakes to Avoid</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Searching is the process of determining whether a given element exists in an array and, if required, returning its index.</p>
+<p>The choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.</p>
+<hr>
+<h2 id="1-searching-in-an-unsorted-array">1. Searching in an Unsorted Array<a hidden class="anchor" aria-hidden="true" href="#1-searching-in-an-unsorted-array">#</a></h2>
+<h3 id="characteristics">Characteristics<a hidden class="anchor" aria-hidden="true" href="#characteristics">#</a></h3>
+<ul>
+<li>Elements are not arranged in any specific order</li>
+<li>No assumptions can be made about element positions</li>
+<li>Linear search is the primary technique used</li>
+</ul>
+<hr>
+<h3 id="linear-search">Linear Search<a hidden class="anchor" aria-hidden="true" href="#linear-search">#</a></h3>
+<h4 id="concept">Concept<a hidden class="anchor" aria-hidden="true" href="#concept">#</a></h4>
+<p>Each element of the array is checked one by one until the target element is found or the array ends.</p>
+<h4 id="python-example-text-only">Python Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-text-only">#</a></h4>
+<p>The algorithm starts from the first element and compares each element with the target value.<br>
+If a match is found, the index is returned.<br>
+If the loop finishes without a match, -1 is returned.</p>
+<p>Example logic:<br>
+Traverse the array from index 0 to the last index.<br>
+Compare each element with the target value.<br>
+Stop when the element is found.</p>
+<hr>
+<h3 id="time-complexity">Time Complexity<a hidden class="anchor" aria-hidden="true" href="#time-complexity">#</a></h3>
+<ul>
+<li>Best case: O(1)</li>
+<li>Average case: O(n)</li>
+<li>Worst case: O(n)</li>
+</ul>
+<hr>
+<h3 id="when-to-use-linear-search">When to Use Linear Search<a hidden class="anchor" aria-hidden="true" href="#when-to-use-linear-search">#</a></h3>
+<ul>
+<li>The array is unsorted</li>
+<li>The array size is small</li>
+<li>Only a few searches are required</li>
+<li>Simplicity is more important than performance</li>
+</ul>
+<hr>
+<h2 id="2-searching-in-a-sorted-array">2. Searching in a Sorted Array<a hidden class="anchor" aria-hidden="true" href="#2-searching-in-a-sorted-array">#</a></h2>
+<h3 id="characteristics-1">Characteristics<a hidden class="anchor" aria-hidden="true" href="#characteristics-1">#</a></h3>
+<ul>
+<li>Elements are arranged in ascending or descending order</li>
+<li>Efficient searching techniques can be applied</li>
+<li>Binary search is commonly used</li>
+</ul>
+<hr>
+<h3 id="binary-search">Binary Search<a hidden class="anchor" aria-hidden="true" href="#binary-search">#</a></h3>
+<h4 id="concept-1">Concept<a hidden class="anchor" aria-hidden="true" href="#concept-1">#</a></h4>
+<p>Binary search repeatedly divides the search space into halves by comparing the target value with the middle element.</p>
+<p>If the target is smaller than the middle element, the search continues in the left half.<br>
+If the target is larger, the search continues in the right half.</p>
+<hr>
+<h4 id="python-example-text-only-1">Python Example (Text Only)<a hidden class="anchor" aria-hidden="true" href="#python-example-text-only-1">#</a></h4>
+<p>The algorithm maintains two pointers: low and high.<br>
+The middle element is calculated.<br>
+The target is compared with the middle element.<br>
+Half of the array is discarded in each step.</p>
+<p>This process continues until the element is found or the search space becomes empty.</p>
+<hr>
+<h3 id="time-complexity-1">Time Complexity<a hidden class="anchor" aria-hidden="true" href="#time-complexity-1">#</a></h3>
+<ul>
+<li>Best case: O(1)</li>
+<li>Average case: O(log n)</li>
+<li>Worst case: O(log n)</li>
+</ul>
+<hr>
+<h3 id="when-to-use-binary-search">When to Use Binary Search<a hidden class="anchor" aria-hidden="true" href="#when-to-use-binary-search">#</a></h3>
+<ul>
+<li>The array is already sorted</li>
+<li>The dataset is large</li>
+<li>Multiple searches are required</li>
+<li>Faster performance is needed</li>
+</ul>
+<hr>
+<h2 id="3-comparison-sorted-vs-unsorted-searching">3. Comparison: Sorted vs Unsorted Searching<a hidden class="anchor" aria-hidden="true" href="#3-comparison-sorted-vs-unsorted-searching">#</a></h2>
+<p>Aspect: Searching Method<br>
+Unsorted Array: Linear search<br>
+Sorted Array: Binary search</p>
+<p>Aspect: Time Complexity<br>
+Unsorted Array: O(n)<br>
+Sorted Array: O(log n)</p>
+<p>Aspect: Precondition<br>
+Unsorted Array: No requirement<br>
+Sorted Array: Array must be sorted</p>
+<p>Aspect: Speed<br>
+Unsorted Array: Slower<br>
+Sorted Array: Faster</p>
+<p>Aspect: Implementation<br>
+Unsorted Array: Simple<br>
+Sorted Array: Moderate</p>
+<hr>
+<h2 id="4-important-interview-insight">4. Important Interview Insight<a hidden class="anchor" aria-hidden="true" href="#4-important-interview-insight">#</a></h2>
+<p>Sorting an unsorted array takes O(n log n) time.</p>
+<p>For a single search operation, sorting first and then applying binary search is inefficient.</p>
+<p>However, if multiple searches are required, sorting the array once and then using binary search becomes beneficial.</p>
+<p>This tradeoff is commonly tested in interviews.</p>
+<hr>
+<h2 id="5-real-world-examples">5. Real-World Examples<a hidden class="anchor" aria-hidden="true" href="#5-real-world-examples">#</a></h2>
+<h3 id="unsorted-array-searching">Unsorted Array Searching<a hidden class="anchor" aria-hidden="true" href="#unsorted-array-searching">#</a></h3>
+<ul>
+<li>User-entered data</li>
+<li>Log files</li>
+<li>Sensor readings</li>
+</ul>
+<h3 id="sorted-array-searching">Sorted Array Searching<a hidden class="anchor" aria-hidden="true" href="#sorted-array-searching">#</a></h3>
+<ul>
+<li>Contact lists</li>
+<li>Dictionaries</li>
+<li>Database indexes</li>
+<li>Ranking systems</li>
+</ul>
+<hr>
+<h2 id="6-common-mistakes-to-avoid">6. Common Mistakes to Avoid<a hidden class="anchor" aria-hidden="true" href="#6-common-mistakes-to-avoid">#</a></h2>
+<ul>
+<li>Applying binary search on an unsorted array</li>
+<li>Ignoring edge cases such as empty arrays</li>
+<li>Not analyzing time complexity</li>
+<li>Using inefficient searching methods for large datasets</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Linear search is suitable for unsorted arrays and small datasets.<br>
+Binary search is ideal for sorted arrays and large datasets.</p>
+<p>Choosing the correct searching technique is fundamental to writing efficient and scalable algorithms.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/dsa/">Dsa</a></li>
+      <li><a href="http://localhost:1313/tags/arrays/">Arrays</a></li>
+      <li><a href="http://localhost:1313/tags/searching/">Searching</a></li>
+      <li><a href="http://localhost:1313/tags/algorithms/">Algorithms</a></li>
+      <li><a href="http://localhost:1313/tags/problem-solving/">Problem-Solving</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
