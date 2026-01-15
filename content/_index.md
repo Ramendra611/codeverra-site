@@ -4,7 +4,7 @@ title: "codeverra"
 
 ## Learn Python, DSA, and AI the right way !!
 
-Structured learning, clear explanations, and a strong focus on fundamentals for serious learners and interview preparation.
+Structured learning, clear explanations, and a strong focus on fundamentals for anyone starting their programming journey.
 
 [View Courses](https://learn.codeverra.com/courses)
 
@@ -17,16 +17,6 @@ Structured learning, clear explanations, and a strong focus on fundamentals for 
 - Fundamentals of Data Science with Python
 - Machine Learning foundations
 - Generative AI
-
----
-
-## Courses
-
-### Python + DSA
-From basics to advanced interview problems.
-[Explore course](https://learn.codeverra.com/courses)
-
-More structured programs coming soon.
 
 ---
 
