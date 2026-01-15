@@ -10,21 +10,13 @@ Structured learning, clear explanations, and a strong focus on fundamentals for 
 
 ---
 
-## What I teach
+## What will you learn
 
-- Python for problem solving and interviews
-- Data Structures & Algorithms with clarity
+- Fundamentals of Python Programming
+- Data Structures & Algorithms using Python
+- Fundamentals of Data Science with Python
 - Machine Learning foundations
-- Generative AI (coming soon)
-
----
-
-## How I teach
-
-- Concept-first, not shortcut-driven
-- Clear intuition before implementation
-- Practical problem-solving approach
-- Interview-oriented but fundamentals-focused
+- Generative AI
 
 ---
 

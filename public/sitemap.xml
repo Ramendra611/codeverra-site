@@ -2,42 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:57617/blogs/dsa_roadmap/</loc>
+    <loc>http://localhost:53859/blogs/dsa_roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/algorithms/</loc>
+    <loc>http://localhost:53859/tags/algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/data-structures/</loc>
+    <loc>http://localhost:53859/blogs/time_complexity/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/dsa/</loc>
+    <loc>http://localhost:53859/blogs/array_patterns/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/learning-roadmap/</loc>
+    <loc>http://localhost:53859/tags/arrays/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/problem-solving/</loc>
+    <loc>http://localhost:53859/tags/beginners/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/tags/</loc>
+    <loc>http://localhost:53859/tags/bfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:57617/blogs/welcome/</loc>
+    <loc>http://localhost:53859/blogs/bfs_dfs/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/binary_search/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/binary-search/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/python_syllabus/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/dynamic_programming/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/data-structures/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/dfs/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/sorting_algo/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/dsa/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/dynamic-programming/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/graphs/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/learning-roadmap/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/patterns/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/problem-solving/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/programming/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/python/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/recursion/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/recursion/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/searching/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/searching_in_arrays/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/software-development/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/sorting-algorithms/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/test_blog/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/time-complexity/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/tags/traversal/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:53859/blogs/welcome/</loc>
     <lastmod>2025-12-27T08:14:25+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:57617/about/</loc>
+    <loc>http://localhost:53859/about/</loc>
     <lastmod>2025-12-27T07:14:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:57617/blogs/</loc>
+    <loc>http://localhost:53859/blogs/</loc>
     <lastmod>2025-12-27T08:03:39+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:57617/categories/</loc>
+    <loc>http://localhost:53859/categories/</loc>
   </url><url>
-    <loc>http://localhost:57617/</loc>
+    <loc>http://localhost:53859/</loc>
     <lastmod>2025-12-27T07:34:03+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:57617/courses/</loc>
+    <loc>http://localhost:53859/courses/</loc>
     <lastmod>2025-12-27T07:00:18+05:30</lastmod>
   </url>
 </urlset>

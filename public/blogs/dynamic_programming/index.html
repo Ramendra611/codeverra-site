@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Concept of Dynamic Programming Explained Clearly | codeverra</title>
+<meta name="keywords" content="dsa, dynamic-programming, algorithms, problem-solving">
+<meta name="description" content="A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blogs/dynamic_programming/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a9cca72100063f45e555601cecfcf091330b4d1f2478aad0bb915e15ea27d924.css" integrity="sha256-qcynIQAGP0XlVWAc7PzwkTMLTR8keKrQu5FeFeon2SQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blogs/dynamic_programming/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blogs/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Concept of Dynamic Programming Explained Clearly
+    </h1>
+    <div class="post-description">
+      A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.
+    </div>
+    <div class="post-meta"><span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>698 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+    <a class="tag" href="http://localhost:1313/tags/dynamic-programming/">dynamic-programming</a>
+    <a class="tag" href="http://localhost:1313/tags/algorithms/">algorithms</a>
+    <a class="tag" href="http://localhost:1313/tags/problem-solving/">problem-solving</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/dynamic-programming-cover.png" alt="Dynamic programming concepts">
+        <figcaption>Understanding overlapping subproblems and optimal substructure</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-what-is-dynamic-programming" aria-label="1. What Is Dynamic Programming?">1. What Is Dynamic Programming?</a></li>
+                <li>
+                    <a href="#2-overlapping-subproblems" aria-label="2. Overlapping Subproblems">2. Overlapping Subproblems</a><ul>
+                        
+                <li>
+                    <a href="#definition" aria-label="Definition">Definition</a></li>
+                <li>
+                    <a href="#why-overlapping-subproblems-matter" aria-label="Why Overlapping Subproblems Matter">Why Overlapping Subproblems Matter</a></li>
+                <li>
+                    <a href="#example-fibonacci-numbers" aria-label="Example: Fibonacci Numbers">Example: Fibonacci Numbers</a></li>
+                <li>
+                    <a href="#impact-without-dynamic-programming" aria-label="Impact Without Dynamic Programming">Impact Without Dynamic Programming</a></li>
+                <li>
+                    <a href="#impact-with-dynamic-programming" aria-label="Impact With Dynamic Programming">Impact With Dynamic Programming</a></li>
+                <li>
+                    <a href="#key-takeaway" aria-label="Key Takeaway">Key Takeaway</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-optimal-substructure" aria-label="3. Optimal Substructure">3. Optimal Substructure</a><ul>
+                        
+                <li>
+                    <a href="#definition-1" aria-label="Definition">Definition</a></li>
+                <li>
+                    <a href="#why-optimal-substructure-matters" aria-label="Why Optimal Substructure Matters">Why Optimal Substructure Matters</a></li>
+                <li>
+                    <a href="#example-shortest-path-problem" aria-label="Example: Shortest Path Problem">Example: Shortest Path Problem</a></li>
+                <li>
+                    <a href="#another-example-knapsack-problem" aria-label="Another Example: Knapsack Problem">Another Example: Knapsack Problem</a></li>
+                <li>
+                    <a href="#key-takeaway-1" aria-label="Key Takeaway">Key Takeaway</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-relationship-between-overlapping-subproblems-and-optimal-substructure" aria-label="4. Relationship Between Overlapping Subproblems and Optimal Substructure">4. Relationship Between Overlapping Subproblems and Optimal Substructure</a></li>
+                <li>
+                    <a href="#5-how-dynamic-programming-uses-these-concepts-together" aria-label="5. How Dynamic Programming Uses These Concepts Together">5. How Dynamic Programming Uses These Concepts Together</a></li>
+                <li>
+                    <a href="#6-example-combining-both-concepts" aria-label="6. Example Combining Both Concepts">6. Example Combining Both Concepts</a></li>
+                <li>
+                    <a href="#7-when-dynamic-programming-should-not-be-used" aria-label="7. When Dynamic Programming Should Not Be Used">7. When Dynamic Programming Should Not Be Used</a></li>
+                <li>
+                    <a href="#summary" aria-label="Summary">Summary</a></li>
+                <li>
+                    <a href="#dynamic-programming-playlists" aria-label="Dynamic Programming playlists">Dynamic Programming playlists</a><ul>
+                        
+                <li>
+                    <a href="#python--dsa" aria-label="Python &amp; DSA">Python &amp; DSA</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Dynamic Programming (DP) is a powerful algorithmic technique used to solve problems that can be broken down into smaller subproblems whose solutions are reused to efficiently compute the final result.</p>
+<p>Unlike brute-force approaches or naive recursion, Dynamic Programming avoids unnecessary recomputation and significantly improves performance.</p>
+<hr>
+<h2 id="1-what-is-dynamic-programming">1. What Is Dynamic Programming?<a hidden class="anchor" aria-hidden="true" href="#1-what-is-dynamic-programming">#</a></h2>
+<p>Dynamic Programming is a method of solving problems by:</p>
+<ul>
+<li>Dividing a problem into smaller subproblems</li>
+<li>Solving each subproblem only once</li>
+<li>Storing the solution of each subproblem</li>
+<li>Using stored solutions to build the final answer</li>
+</ul>
+<p>The word dynamic refers to solving problems step by step, while programming refers to structured problem-solving rather than coding.</p>
+<hr>
+<h2 id="2-overlapping-subproblems">2. Overlapping Subproblems<a hidden class="anchor" aria-hidden="true" href="#2-overlapping-subproblems">#</a></h2>
+<h3 id="definition">Definition<a hidden class="anchor" aria-hidden="true" href="#definition">#</a></h3>
+<p>A problem has overlapping subproblems if the same subproblems are solved multiple times while solving the larger problem.</p>
+<p>Repeated computation of the same subproblems makes naive solutions inefficient.</p>
+<hr>
+<h3 id="why-overlapping-subproblems-matter">Why Overlapping Subproblems Matter<a hidden class="anchor" aria-hidden="true" href="#why-overlapping-subproblems-matter">#</a></h3>
+<p>When subproblems overlap:</p>
+<ul>
+<li>Recursive solutions perform redundant computations</li>
+<li>Time complexity increases rapidly</li>
+<li>The same values are recalculated again and again</li>
+</ul>
+<p>Dynamic Programming addresses this issue by storing the result of each subproblem so that it is computed only once.</p>
+<hr>
+<h3 id="example-fibonacci-numbers">Example: Fibonacci Numbers<a hidden class="anchor" aria-hidden="true" href="#example-fibonacci-numbers">#</a></h3>
+<p>The Fibonacci sequence is defined as:</p>
+<p>F(n) depends on F(n−1) and F(n−2)</p>
+<p>While computing F(5):</p>
+<ul>
+<li>F(5) depends on F(4) and F(3)</li>
+<li>F(4) again depends on F(3) and F(2)</li>
+<li>F(3) is calculated multiple times</li>
+</ul>
+<p>Here, F(3) and F(2) are overlapping subproblems.</p>
+<hr>
+<h3 id="impact-without-dynamic-programming">Impact Without Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#impact-without-dynamic-programming">#</a></h3>
+<ul>
+<li>Time complexity becomes exponential</li>
+<li>A large number of repeated calculations occur</li>
+</ul>
+<hr>
+<h3 id="impact-with-dynamic-programming">Impact With Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#impact-with-dynamic-programming">#</a></h3>
+<ul>
+<li>Computed values are stored in a table or array</li>
+<li>Each subproblem is solved once</li>
+<li>Time complexity reduces significantly, often to linear</li>
+</ul>
+<hr>
+<h3 id="key-takeaway">Key Takeaway<a hidden class="anchor" aria-hidden="true" href="#key-takeaway">#</a></h3>
+<p>The presence of overlapping subproblems indicates that memoization or tabulation can greatly improve efficiency.</p>
+<hr>
+<h2 id="3-optimal-substructure">3. Optimal Substructure<a hidden class="anchor" aria-hidden="true" href="#3-optimal-substructure">#</a></h2>
+<h3 id="definition-1">Definition<a hidden class="anchor" aria-hidden="true" href="#definition-1">#</a></h3>
+<p>A problem has optimal substructure if its optimal solution can be constructed from optimal solutions of its subproblems.</p>
+<p>In simpler terms, solving smaller parts optimally leads to an optimal solution for the entire problem.</p>
+<hr>
+<h3 id="why-optimal-substructure-matters">Why Optimal Substructure Matters<a hidden class="anchor" aria-hidden="true" href="#why-optimal-substructure-matters">#</a></h3>
+<p>Dynamic Programming assumes that:</p>
+<ul>
+<li>Subproblems can be solved optimally</li>
+<li>Combining optimal subproblem solutions produces a global optimal solution</li>
+</ul>
+<p>If this assumption does not hold, Dynamic Programming cannot guarantee correct results.</p>
+<hr>
+<h3 id="example-shortest-path-problem">Example: Shortest Path Problem<a hidden class="anchor" aria-hidden="true" href="#example-shortest-path-problem">#</a></h3>
+<p>Consider finding the shortest path from city A to city D via city B.</p>
+<p>The shortest path from A to D consists of:</p>
+<ul>
+<li>The shortest path from A to B</li>
+<li>The shortest path from B to D</li>
+</ul>
+<p>If either subpath is not optimal, the final path will also not be optimal.</p>
+<p>This confirms that the shortest path problem has optimal substructure.</p>
+<hr>
+<h3 id="another-example-knapsack-problem">Another Example: Knapsack Problem<a hidden class="anchor" aria-hidden="true" href="#another-example-knapsack-problem">#</a></h3>
+<p>In the 0/1 Knapsack problem:</p>
+<ul>
+<li>The optimal solution for capacity W</li>
+<li>Depends on optimal solutions for smaller capacities</li>
+</ul>
+<p>This confirms the existence of optimal substructure.</p>
+<hr>
+<h3 id="key-takeaway-1">Key Takeaway<a hidden class="anchor" aria-hidden="true" href="#key-takeaway-1">#</a></h3>
+<p>Optimal substructure ensures that local optimal solutions contribute to a globally optimal solution.</p>
+<hr>
+<h2 id="4-relationship-between-overlapping-subproblems-and-optimal-substructure">4. Relationship Between Overlapping Subproblems and Optimal Substructure<a hidden class="anchor" aria-hidden="true" href="#4-relationship-between-overlapping-subproblems-and-optimal-substructure">#</a></h2>
+<p>Dynamic Programming is applicable only when both properties exist.</p>
+<p>Overlapping subproblems help avoid repeated work.<br>
+Optimal substructure ensures correctness of the solution.</p>
+<p>If subproblems do not overlap, Dynamic Programming provides no efficiency benefit.<br>
+If optimal substructure does not exist, Dynamic Programming may produce incorrect results.</p>
+<hr>
+<h2 id="5-how-dynamic-programming-uses-these-concepts-together">5. How Dynamic Programming Uses These Concepts Together<a hidden class="anchor" aria-hidden="true" href="#5-how-dynamic-programming-uses-these-concepts-together">#</a></h2>
+<p>To apply Dynamic Programming effectively:</p>
+<ul>
+<li>Identify the subproblems</li>
+<li>Check whether subproblems repeat</li>
+<li>Verify the presence of optimal substructure</li>
+<li>Define a DP state to represent subproblems</li>
+<li>Formulate a recurrence relation</li>
+<li>Store and reuse results</li>
+</ul>
+<hr>
+<h2 id="6-example-combining-both-concepts">6. Example Combining Both Concepts<a hidden class="anchor" aria-hidden="true" href="#6-example-combining-both-concepts">#</a></h2>
+<p>Problem: Minimum cost to reach the end.</p>
+<ul>
+<li>Cost to reach a step depends on minimum cost of previous steps</li>
+<li>The same steps are evaluated multiple times</li>
+<li>Optimal cost at each step depends on optimal costs of earlier steps</li>
+</ul>
+<p>This problem has both overlapping subproblems and optimal substructure.</p>
+<p>Therefore, Dynamic Programming is applicable.</p>
+<hr>
+<h2 id="7-when-dynamic-programming-should-not-be-used">7. When Dynamic Programming Should Not Be Used<a hidden class="anchor" aria-hidden="true" href="#7-when-dynamic-programming-should-not-be-used">#</a></h2>
+<p>Dynamic Programming is not suitable when:</p>
+<ul>
+<li>Subproblems are independent</li>
+<li>A greedy approach produces better results</li>
+<li>Recursion depth is small and no repetition occurs</li>
+</ul>
+<hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<ul>
+<li>Overlapping subproblems reduce efficiency without Dynamic Programming</li>
+<li>Optimal substructure ensures correctness of solutions</li>
+<li>Both properties are essential for applying Dynamic Programming</li>
+</ul>
+<p>A solid understanding of these concepts is crucial for mastering advanced algorithmic problem solving.</p>
+<h2 id="dynamic-programming-playlists">Dynamic Programming playlists<a hidden class="anchor" aria-hidden="true" href="#dynamic-programming-playlists">#</a></h2>
+<p>Here are some curated playlists you can follow:</p>
+<h3 id="python--dsa">Python &amp; DSA<a hidden class="anchor" aria-hidden="true" href="#python--dsa">#</a></h3>
+<iframe
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB-64yhKXib333YGRpq_rPYr&si=6UOY9RvW8dpemRyQ"
+  title="Dynamic Programming playlist"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+<hr>
+<p>More structured posts and learning paths coming soon.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/dsa/">Dsa</a></li>
+      <li><a href="http://localhost:1313/tags/dynamic-programming/">Dynamic-Programming</a></li>
+      <li><a href="http://localhost:1313/tags/algorithms/">Algorithms</a></li>
+      <li><a href="http://localhost:1313/tags/problem-solving/">Problem-Solving</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

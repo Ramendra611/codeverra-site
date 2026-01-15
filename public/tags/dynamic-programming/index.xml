@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Dynamic-Programming on codeverra</title>
+    <link>http://localhost:53859/tags/dynamic-programming/</link>
+    <description>Recent content in Dynamic-Programming on codeverra</description>
+    <generator>Hugo -- 0.153.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:53859/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concept of Dynamic Programming Explained Clearly</title>
+      <link>http://localhost:53859/blogs/dynamic_programming/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:53859/blogs/dynamic_programming/</guid>
+      <description>A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.</description>
+    </item>
+  </channel>
+</rss>
