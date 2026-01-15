@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Arrays on codeverra</title>
-    <link>http://localhost:1313/tags/arrays/</link>
+    <link>http://localhost:57728/tags/arrays/</link>
     <description>Recent content in Arrays on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/arrays/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:57728/tags/arrays/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Array Patterns for Problem Solving</title>
-      <link>http://localhost:1313/blogs/array_patterns/</link>
+      <link>http://localhost:57728/blogs/array_patterns/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/array_patterns/</guid>
+      <guid>http://localhost:57728/blogs/array_patterns/</guid>
       <description>A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://localhost:1313/blogs/searching_in_arrays/</link>
+      <link>http://localhost:57728/blogs/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/searching_in_arrays/</guid>
+      <guid>http://localhost:57728/blogs/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
     </item>
   </channel>
