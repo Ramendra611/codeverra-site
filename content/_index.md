@@ -6,7 +6,7 @@ title: "codeverra"
 
 Structured learning, clear explanations, and a strong focus on fundamentals for anyone starting their programming journey.
 
-[View Courses](https://learn.codeverra.com/courses)
+[View Courses](https://learn.codeverra.com/s/store)
 
 ---
 
