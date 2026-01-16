@@ -75,6 +75,24 @@ body.list .first-entry {
   position: relative;
 }
 
+/* .post-content a {
+  text-decoration: none;
+  border-bottom: none;
+} */
+
+.post-content a {
+  border-bottom: none !important;
+  box-shadow: 0 0px;
+}
+
+/* .page-about .post-content a {
+  box-shadow: none !important;
+} */
+/* 
+.page-about .post-content a {
+  box-shadow: none !important;
+} */
+
 .entry-tags {
   margin-top: 6px;
   display: flex;
@@ -414,7 +432,87 @@ About me
   border: 1px solid var(--color-border-subtle);
 }
 
+
 /* SOCIALS */
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  /* THIS fixes the large vertical spacing */
+  margin-top: 1rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+.social-links a:hover {
+  color: var(--color-accent-primary);
+  transform: translateX(3px);
+}
+.social-link:hover {
+  color: var(--color-accent-primary);
+}
+
+.social-links .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.social-links .icon.youtube {
+  color: #FF0000;
+}
+
+.social-links .icon.linkedin {
+  color: #0A66C2;
+}
+
+.social-links .icon.whatsapp {
+  color: #25D366;
+}
+
+.social-links .icon.email {
+  color: var(--color-text-secondary);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: normal;
+  overflow: visible;
+}
+
+.social-icon,
+.social-link svg {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.social-icon.whatsapp {
+  color: #25D366;
+  transform: translateY(1px);
+  margin-left: 25px;
+}
+.social-link span,
+.social-link {
+  align-items: center;
+  overflow: visible;
+}
+
+
+
 .about-tile__socials {
   margin-top: 1.4rem;
   display: flex;
