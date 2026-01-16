@@ -9,20 +9,6 @@
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://192.168.0.103:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A Practical DSA Learning Roadmap</title>
-      <link>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</guid>
-      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
-    </item>
-    <item>
-      <title>A Practical DSA Learning Roadmap</title>
-      <link>http://192.168.0.103:1313/blogs/dsa_roadmap/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/dsa_roadmap/</guid>
-      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
-    </item>
-    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://192.168.0.103:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -51,25 +37,11 @@
       <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
     </item>
     <item>
-      <title>Concept of Dynamic Programming Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/dynamic_programming/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/dynamic_programming/</guid>
-      <description>A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.</description>
-    </item>
-    <item>
       <title>Different Sorting Algorithms Explained Clearly</title>
       <link>http://192.168.0.103:1313/blogs/sorting_algo/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
-    </item>
-    <item>
-      <title>Recursion Explained from Basics</title>
-      <link>http://192.168.0.103:1313/blogs/recursion/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/recursion/</guid>
-      <description>A clear and beginner-friendly explanation of recursion, covering how it works, its components, types, advantages, disadvantages, and use cases.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>

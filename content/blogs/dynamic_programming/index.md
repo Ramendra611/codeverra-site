@@ -12,8 +12,7 @@ draft: false
 tags:
   - dsa
   - dynamic-programming
-  - algorithms
-  - problem-solving
+
 cover:
   image: "images/dynamic-programming-cover.png"
   alt: "Dynamic programming concepts"

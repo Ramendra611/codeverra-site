@@ -3,20 +3,28 @@
 
         <!-- LEFT: TEXT -->
         <div class="about-tile__text">
+            {{ if not .Params.hideAboutTitle }}
             <h2 class="about-tile__title">About me</h2>
+            {{ end }}
 
-            <h3 class="about-tile__name">Kumar Ramendra</h3>
+            <h4 class="about-tile__name">Kumar Ramendra</h4>
             <p class="about-tile__role">
-                Software Engineer @ Google | DSA & Python Educator
+                Software Engineer @ Google 
             </p>
 
-            <p class="about-tile__description">
-                I’m a software engineer (AI/ML) with 7+ years of experience working across
-                machine learning, IoT, and data-driven product development. I’ve built and
-                scaled real-world systems at companies like Wakefit, Twilio, and Dozee.
-                Alongside industry work, I’ve spent hundreds of hours teaching Python and
-                data science to beginners and early-career engineers.
-            </p>
+            <div class="about-tile__description">
+                <p>
+                Hey there! I’m a software engineer specialising in AI/ML. I’ve spent 7+ years building and scaling real-world
+                systems across machine learning, IoT, and data-driven products at fast-moving teams and startups.</p>
+                Alongside industry work, I’ve spent hundreds of hours teaching Python, Data Science, ML,
+                and DSA to beginners and early-career engineers through classroom and online sessions.
+                
+                <p>I teach because I know how intimidating programming can feel when it’s taught the wrong way. My focus is simple: break concepts down, make them click, and help learners build real confidence.Codeverra is built around this philosophy. If you’ve ever felt stuck with programming, you’re in the right place.</p>
+            
+                <p>Feel free to write to me at ram@codeverra or reach out on my socials. Let's do this together!</p>    
+            
+            
+            </div>
 
             <!-- SOCIALS -->
             <!-- SOCIALS -->
@@ -47,7 +55,7 @@
                 <!-- WHATSAPP -->
                 <a href="https://chat.whatsapp.com/DDeDFMpUAJc1x7dQXaYPl8" target="_blank" class="social-pill social-pill--whatsapp">
             
-                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor">
                         <path
                             d="M16 0C7.164 0 0 7.164 0 16c0 2.82.738 5.57 2.14 7.99L0 32l8.27-2.1A15.93 15.93 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.09c-2.5 0-4.95-.66-7.1-1.9l-.5-.29-4.9 1.25 1.3-4.78-.32-.52A13.08 13.08 0 1 1 16 29.09zm7.55-9.8c-.41-.21-2.43-1.2-2.81-1.34-.38-.14-.66-.21-.94.21-.28.41-1.08 1.34-1.33 1.62-.24.28-.48.31-.89.1-.41-.21-1.73-.64-3.29-2.04-1.21-1.08-2.02-2.41-2.26-2.82-.24-.41-.03-.63.18-.84.19-.19.41-.48.62-.72.21-.24.28-.41.41-.69.14-.28.07-.52-.03-.73-.1-.21-.94-2.27-1.29-3.11-.34-.82-.69-.71-.94-.72h-.8c-.28 0-.73.1-1.11.52-.38.41-1.45 1.42-1.45 3.46 0 2.04 1.48 4.01 1.69 4.29.21.28 2.92 4.45 7.08 6.24.99.43 1.76.69 2.36.88.99.31 1.89.27 2.6.16.79-.12 2.43-.99 2.77-1.95.34-.96.34-1.78.24-1.95-.1-.17-.38-.27-.79-.48z" />
                     </svg>

@@ -6,9 +6,10 @@
 
 {{- if .IsHome }}
 {{ partial "home-course-tile.html" . }}
+{{ partial "about-me-tile.html" . }}
 {{- end }}
 
-{{ partial "about-me-tile.html" . }}
+<!-- {{ partial "about-me-tile.html" . }} -->
 
 
 {{- if not .IsHome | and .Title }}

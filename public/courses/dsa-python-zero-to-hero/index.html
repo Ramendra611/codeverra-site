@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>DSA with Python: Zero to Hero | codeverra</title>
+<meta name="keywords" content="">
+<meta name="description" content="A beginner-first, structured course to learn Python and Data Structures from scratch.">
+<meta name="author" content="">
+<link rel="canonical" href="http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.556de52fa6e2735b7370f6dbc9e2adceb33d023b727e19dccde3e13f19d91e1c.css" integrity="sha256-VW3lL6bic1tzcPbbyeKtzrM9AjtyfhnczePhPxnZHhw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.0.103:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.103:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.103:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.0.103:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.0.103:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://192.168.0.103:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://192.168.0.103:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://192.168.0.103:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.0.103:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.0.103:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.0.103:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://192.168.0.103:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.103:1313/courses/">Courses</a></div>
+    <h1 class="post-title entry-hint-parent">
+      DSA with Python: Zero to Hero
+    </h1>
+    <div class="post-description">
+      A beginner-first, structured course to learn Python and Data Structures from scratch.
+    </div>
+    <div class="post-meta"><span>1 min</span>&nbsp;·&nbsp;<span>163 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Jan 16, 2026</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://192.168.0.103:1313/images/DSA-with-python-live-course.png" alt="">
+        
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#what-this-course-covers" aria-label="What this course covers">What this course covers</a></li>
+                <li>
+                    <a href="#how-this-course-is-taught" aria-label="How this course is taught">How this course is taught</a></li>
+                <li>
+                    <a href="#who-this-course-is-for" aria-label="Who this course is for">Who this course is for</a></li>
+                <li>
+                    <a href="#course-format" aria-label="Course format">Course format</a></li>
+                <li>
+                    <a href="#enrollment" aria-label="Enrollment">Enrollment</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>This course is designed for <strong>complete beginners</strong> who want to build a strong foundation in Python and Data Structures.
+If you’ve ever felt lost while learning DSA, this course is built specifically for you.</p>
+<hr>
+<h2 id="what-this-course-covers">What this course covers<a hidden class="anchor" aria-hidden="true" href="#what-this-course-covers">#</a></h2>
+<ul>
+<li>Python fundamentals for problem solving</li>
+<li>Core data structures (arrays, strings, recursion, linked lists, stacks, queues, trees, graphs)</li>
+<li>Step-by-step algorithmic thinking</li>
+<li>Writing clean and readable code</li>
+<li>Building confidence through consistent practice</li>
+</ul>
+<p>You can view the <strong>detailed curriculum breakdown here</strong>:<br>
+<a href="/blogs/dsa-with-python-curriculum/"
+target="_blank"
+rel="noopener noreferrer">
+📖 Complete DSA with Python Curriculum →
+</a></p>
+<hr>
+<h2 id="how-this-course-is-taught">How this course is taught<a hidden class="anchor" aria-hidden="true" href="#how-this-course-is-taught">#</a></h2>
+<ul>
+<li>Beginner-first explanations</li>
+<li>Live sessions with interaction</li>
+<li>Concepts broken down using examples</li>
+<li>Focus on <em>what</em> and  <em>why</em> before <em>how</em></li>
+<li>Practice-driven learning (not passive watching)</li>
+</ul>
+<hr>
+<h2 id="who-this-course-is-for">Who this course is for<a hidden class="anchor" aria-hidden="true" href="#who-this-course-is-for">#</a></h2>
+<ul>
+<li>Beginners with little or no programming experience</li>
+<li>Students struggling with DSA concepts</li>
+<li>Working professionals restarting fundamentals</li>
+</ul>
+<hr>
+<h2 id="course-format">Course format<a hidden class="anchor" aria-hidden="true" href="#course-format">#</a></h2>
+<ul>
+<li>Live classes + recordings</li>
+<li>Structured modules</li>
+<li>Regular practice problems</li>
+<li>Notes and references provided</li>
+</ul>
+<hr>
+<h2 id="enrollment">Enrollment<a hidden class="anchor" aria-hidden="true" href="#enrollment">#</a></h2>
+<p>👉 <strong>Enrollment is currently open.</strong><br>
+Click the button below to join the course.</p>
+<p><a href="https://learn.codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
+target="_blank"
+rel="noopener noreferrer"
+style="
+display: inline-block;
+margin-top: 1.5rem;
+padding: 0.85rem 1.75rem;
+border-radius: 10px;
+background: #4F46E5;
+color: #ffffff;
+text-decoration: none;
+font-weight: 600;
+font-size: 1rem;
+">
+Enroll Now
+</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://192.168.0.103:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

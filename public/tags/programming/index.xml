@@ -15,12 +15,5 @@
       <guid>http://192.168.0.103:1313/blogs/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
-    <item>
-      <title>Recursion Explained from Basics</title>
-      <link>http://192.168.0.103:1313/blogs/recursion/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/recursion/</guid>
-      <description>A clear and beginner-friendly explanation of recursion, covering how it works, its components, types, advantages, disadvantages, and use cases.</description>
-    </item>
   </channel>
 </rss>
