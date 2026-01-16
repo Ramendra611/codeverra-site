@@ -320,8 +320,8 @@ About me
    ========================================================= */
 
 .about-tile {
-  padding: 0rem 0rem;
-  background-color: var(--color-bg-card);
+  padding: 4rem 1.5rem;
+  background-color: var(--color-bg-page);
 }
 
 .about-tile__inner {
@@ -338,7 +338,7 @@ About me
   grid-template-columns: 1fr 180px;
   gap: 3rem;
 
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 25%, transparent), 0 20px 40px rgba(0, 0, 0, .4);
+  /* box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 25%, transparent), 0 20px 40px rgba(0, 0, 0, .4); */
 }
 
 .about-image {
