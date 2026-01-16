@@ -12,9 +12,7 @@ draft: false
 tags:
   - dsa
   - arrays
-  - problem-solving
-  - patterns
-  - algorithms
+
 cover:
   image: "images/array-patterns-cover.png"
   alt: "Array problem-solving patterns"

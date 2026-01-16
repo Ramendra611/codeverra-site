@@ -52,6 +52,9 @@
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
 {{- end }}
+{{- if .IsHome }}
+{{- $pages = first 3 $pages }}
+{{- end }}
 
 {{- $paginator := .Paginate $pages }}
 
@@ -65,6 +68,11 @@
 
 {{- $term := .Data.Term }}
 
+{{- if .IsHome }}
+<section class="home-blogs-section">
+    <h2 class="home-section-title">Blogs</h2>
+    {{- end }}
+
 <div class="post-grid">
 {{- range $index, $page := $paginator.Pages }}
 
@@ -72,9 +80,9 @@
 
 {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
 {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
+{{- $class = "post-entry" }}
 {{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
+{{- $class = "post-entry" }}
 {{- end }}
 
 <article class="{{ $class }}">
@@ -116,6 +124,10 @@
 </article>
 {{- end }}
 </div>
+
+{{- if .IsHome }}
+</section>
+{{- end }}
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">

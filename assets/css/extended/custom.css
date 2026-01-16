@@ -47,7 +47,7 @@ h4 {
 
 body.list .post-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
 }
 
@@ -320,8 +320,9 @@ About me
    ========================================================= */
 
 .about-tile {
-  padding: 0rem 0rem;
-  background-color: var(--color-bg-card);
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-page);
+  border: none;
 }
 
 .about-tile__inner {
@@ -697,4 +698,26 @@ About Page
 /* Headings inside about page */
 .about-page h2 {
   margin-bottom: 1rem;
+}
+
+
+/* Home page – Blogs section separation */
+.home-blogs-section {
+  margin-top: 1rem;
+  /* space after About tile */
+  padding-top: 2.5rem;
+  /* breathing room */
+}
+
+.home-blogs-section {
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* Blogs heading on home */
+.home-section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
 }

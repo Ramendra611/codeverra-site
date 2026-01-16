@@ -23,13 +23,6 @@
       <description></description>
     </item>
     <item>
-      <title>Beginners</title>
-      <link>http://192.168.0.103:1313/tags/beginners/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/tags/beginners/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Bfs</title>
       <link>http://192.168.0.103:1313/tags/bfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -86,24 +79,10 @@
       <description></description>
     </item>
     <item>
-      <title>Patterns</title>
-      <link>http://192.168.0.103:1313/tags/patterns/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/tags/patterns/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Problem-Solving</title>
       <link>http://192.168.0.103:1313/tags/problem-solving/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/tags/problem-solving/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Programming</title>
-      <link>http://192.168.0.103:1313/tags/programming/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/tags/programming/</guid>
       <description></description>
     </item>
     <item>
@@ -128,13 +107,6 @@
       <description></description>
     </item>
     <item>
-      <title>Software-Development</title>
-      <link>http://192.168.0.103:1313/tags/software-development/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/tags/software-development/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Sorting-Algorithms</title>
       <link>http://192.168.0.103:1313/tags/sorting-algorithms/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -153,6 +125,34 @@
       <link>http://192.168.0.103:1313/tags/traversal/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/tags/traversal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beginners</title>
+      <link>http://192.168.0.103:1313/tags/beginners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/tags/beginners/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Patterns</title>
+      <link>http://192.168.0.103:1313/tags/patterns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/tags/patterns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>http://192.168.0.103:1313/tags/programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/tags/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Development</title>
+      <link>http://192.168.0.103:1313/tags/software-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/tags/software-development/</guid>
       <description></description>
     </item>
   </channel>

@@ -13,8 +13,7 @@ tags:
   - dsa
   - binary-search
   - searching
-  - algorithms
-  - problem-solving
+
 cover:
   image: "images/binary-search-cover.png"
   alt: "Binary search algorithm"
