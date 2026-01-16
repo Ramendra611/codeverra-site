@@ -15,6 +15,27 @@
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
     </item>
     <item>
+      <title>DSA with Python: Zero to Hero</title>
+      <link>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</guid>
+      <description>A beginner-first, structured course to learn Python and Data Structures from scratch.</description>
+    </item>
+    <item>
+      <title>DSA With Python - Zero to Hero (Curriculum)</title>
+      <link>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</guid>
+      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
+    </item>
+    <item>
+      <title>DSA Live Practice Series</title>
+      <link>http://192.168.0.103:1313/courses/dsa-live-practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/courses/dsa-live-practice/</guid>
+      <description>Daily live problem-solving sessions to build consistency in DSA.</description>
+    </item>
+    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://192.168.0.103:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -62,13 +83,6 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
-    </item>
-    <item>
-      <title>DSA With Python - Zero to Hero</title>
-      <link>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</guid>
-      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
     </item>
     <item>
       <title>Recursion Explained from Basics</title>

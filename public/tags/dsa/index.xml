@@ -10,13 +10,6 @@
     <atom:link href="http://192.168.0.103:1313/tags/dsa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Practical DSA Learning Roadmap</title>
-      <link>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-zth/</guid>
-      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
-    </item>
-    <item>
-      <title>A Practical DSA Learning Roadmap</title>
       <link>http://192.168.0.103:1313/blogs/dsa_roadmap/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/blogs/dsa_roadmap/</guid>
@@ -63,6 +56,13 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
+    </item>
+    <item>
+      <title>DSA With Python - Zero to Hero</title>
+      <link>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</guid>
+      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
     </item>
     <item>
       <title>Recursion Explained from Basics</title>
