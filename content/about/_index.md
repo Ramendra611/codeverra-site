@@ -6,7 +6,7 @@ title: "About Me"
 <img
   src="/images/ramendra-photo.jpg"
   alt="Ram"
-  style="max-width: 500px; border-radius: 32px; margin-bottom: 1rem;"
+  class="about-image"
 />
 Hey there! My name is [Ram](https://www.linkedin.com/in/kumarramendra). I’m a software engineer at Google specialising in AI/ML. I’ve spent 7+ years building and scaling real-world systems across machine learning, IoT, and data-driven products at fast-moving teams and startups. Alongside industry work, I’ve spent hundreds of hours teaching Python, Data Science, ML, and DSA to beginners and early-career engineers through classroom and online sessions.
 
@@ -14,8 +14,7 @@ I teach because I know how intimidating programming can feel when it’s taught 
 
 Codeverra is built around this philosophy. If you’ve ever felt stuck with programming, you’re in the right place.
 
-Feel free to write to me at **ram@codeverra** or reach out on my socials. Let's do this together!
-
+Feel free to write to me at **ram@codeverra.com** or reach out on my socials. Let's do this together!
 
 <h3>Find me online</h3>
 
@@ -62,16 +61,15 @@ Feel free to write to me at **ram@codeverra** or reach out on my socials. Let's 
 ## Learn with Me on YouTube
 You can checkout my DSA playlist, Python Playlist and live sessions on Leetcode problem solving on my channel. 
 
-<div style="
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
-  margin-top: 1rem;
-">
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/ljPbU4f8TX8?si=L1frj_p6vWbCxGaW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-grid">
+<div class= "video-wrapper">
+ <iframe  src="https://www.youtube.com/embed/ljPbU4f8TX8?si=L1frj_p6vWbCxGaW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/w6l0_bGyVp4?si=vdAvLLz33hJalXD7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class= "video-wrapper">
+<iframe  src="https://www.youtube.com/embed/w6l0_bGyVp4?si=vdAvLLz33hJalXD7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 </div>
 
