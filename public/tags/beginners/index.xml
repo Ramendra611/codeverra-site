@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Beginners on codeverra</title>
-    <link>http://localhost:58124/tags/beginners/</link>
+    <link>http://192.168.0.103:1313/tags/beginners/</link>
     <description>Recent content in Beginners on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:58124/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.0.103:1313/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:58124/blogs/python_syllabus/</link>
+      <link>http://192.168.0.103:1313/blogs/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:58124/blogs/python_syllabus/</guid>
+      <guid>http://192.168.0.103:1313/blogs/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
   </channel>

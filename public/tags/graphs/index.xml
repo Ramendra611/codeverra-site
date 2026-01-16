@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Graphs on codeverra</title>
-    <link>http://localhost:58124/tags/graphs/</link>
+    <link>http://192.168.0.103:1313/tags/graphs/</link>
     <description>Recent content in Graphs on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:58124/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.0.103:1313/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BFS vs DFS Explained Clearly</title>
-      <link>http://localhost:58124/blogs/bfs_dfs/</link>
+      <link>http://192.168.0.103:1313/blogs/bfs_dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:58124/blogs/bfs_dfs/</guid>
+      <guid>http://192.168.0.103:1313/blogs/bfs_dfs/</guid>
       <description>A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.</description>
     </item>
   </channel>

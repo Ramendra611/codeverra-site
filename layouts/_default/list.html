@@ -8,6 +8,9 @@
 {{ partial "home-course-tile.html" . }}
 {{- end }}
 
+{{ partial "about-me-tile.html" . }}
+
+
 {{- if not .IsHome | and .Title }}
 <header class="page-header">
     {{- partial "breadcrumbs.html" . }}
