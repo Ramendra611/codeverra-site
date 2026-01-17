@@ -9,13 +9,6 @@
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://192.168.0.103:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Analysis of Time Complexity Explained with Python Examples</title>
-      <link>http://192.168.0.103:1313/blogs/time_complexity/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/time_complexity/</guid>
-      <description>A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.</description>
-    </item>
-    <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
       <link>http://192.168.0.103:1313/blogs/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>

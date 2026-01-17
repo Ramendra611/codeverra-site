@@ -5,6 +5,8 @@ weight: 2
 cover:
   image: "/images/LIVE DSA PRACTICE SERIES-7.png"
   responsiveImages: true
+type: courses
+course: true
 ---
 
 ## DSA Live Practice Series

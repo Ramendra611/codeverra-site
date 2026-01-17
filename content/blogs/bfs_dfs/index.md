@@ -17,7 +17,7 @@ tags:
   - traversal
   - algorithms
 cover:
-  image: "images/bfs-vs-dfs-cover.png"
+  image: "/images/blog-images/bfs-dfs.jpg"
   alt: "BFS vs DFS graph traversal"
   caption: "Understanding BFS and DFS traversal techniques"
   relative: true

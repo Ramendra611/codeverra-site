@@ -5,6 +5,8 @@ weight: 1
 cover:
   image: "/images/DSA-with-python-live-course.png"
   responsiveImages: true
+type: courses
+course: true
 ---
 
 
