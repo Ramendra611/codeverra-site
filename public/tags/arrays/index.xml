@@ -15,12 +15,5 @@
       <guid>http://192.168.0.103:1313/blogs/array_patterns/</guid>
       <description>A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.</description>
     </item>
-    <item>
-      <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://192.168.0.103:1313/blogs/searching_in_arrays/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/searching_in_arrays/</guid>
-      <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
-    </item>
   </channel>
 </rss>

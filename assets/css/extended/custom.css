@@ -721,3 +721,38 @@ About Page
   margin-bottom: 1.5rem;
   color: var(--color-text-primary);
 }
+
+
+/* Only course listing tiles */
+.courses .post-entry {
+  background: linear-gradient(180deg, #23242a, #1c1d22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* COURSE BADGE */
+.course-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #22c55e;
+  color: #0b0f0d;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* COURSE META */
+.course-meta {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* COURSE CTA */
+.course-cta {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-success);
+}

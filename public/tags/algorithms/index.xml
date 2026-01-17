@@ -9,39 +9,11 @@
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://192.168.0.103:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Analysis of Time Complexity Explained with Python Examples</title>
-      <link>http://192.168.0.103:1313/blogs/time_complexity/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/time_complexity/</guid>
-      <description>A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.</description>
-    </item>
-    <item>
-      <title>Array Patterns for Problem Solving</title>
-      <link>http://192.168.0.103:1313/blogs/array_patterns/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/array_patterns/</guid>
-      <description>A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.</description>
-    </item>
-    <item>
       <title>BFS vs DFS Explained Clearly</title>
       <link>http://192.168.0.103:1313/blogs/bfs_dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://192.168.0.103:1313/blogs/bfs_dfs/</guid>
       <description>A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.</description>
-    </item>
-    <item>
-      <title>Binary Search Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/binary_search/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/binary_search/</guid>
-      <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
-    </item>
-    <item>
-      <title>Different Sorting Algorithms Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/sorting_algo/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
-      <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
