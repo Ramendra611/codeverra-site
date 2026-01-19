@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Courses on codeverra</title>
-    <link>http://192.168.0.103:1313/courses/</link>
+    <link>http://localhost:1313/courses/</link>
     <description>Recent content in Courses on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://192.168.0.103:1313/courses/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/courses/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DSA with Python: Zero to Hero</title>
-      <link>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</link>
+      <link>http://localhost:1313/courses/dsa-python-zero-to-hero/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</guid>
-      <description>A beginner-first, structured course to learn Python and Data Structures from scratch.</description>
+      <guid>http://localhost:1313/courses/dsa-python-zero-to-hero/</guid>
+      <description>&lt;p&gt;This course is designed for &lt;strong&gt;complete beginners&lt;/strong&gt; who want to build a strong foundation in Python and Data Structures.&#xA;If you’ve ever felt lost while learning DSA, this course is built specifically for you.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-this-course-covers&#34;&gt;What this course covers&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Python fundamentals for problem solving&lt;/li&gt;&#xA;&lt;li&gt;Core data structures (arrays, strings, recursion, linked lists, stacks, queues, trees, graphs)&lt;/li&gt;&#xA;&lt;li&gt;Step-by-step algorithmic thinking&lt;/li&gt;&#xA;&lt;li&gt;Writing clean and readable code&lt;/li&gt;&#xA;&lt;li&gt;Building confidence through consistent practice&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You can view the &lt;strong&gt;detailed curriculum breakdown here&lt;/strong&gt;:&lt;br&gt;&#xA;&lt;a href=&#34;http://localhost:1313/blogs/dsa-with-python-curriculum/&#34;&#xD;&#xA;target=&#34;_blank&#34;&#xD;&#xA;rel=&#34;noopener noreferrer&#34;&gt;&#xA;📖 Complete DSA with Python Curriculum →&#xA;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>DSA Live Practice Series</title>
-      <link>http://192.168.0.103:1313/courses/dsa-live-practice/</link>
+      <link>http://localhost:1313/courses/dsa-live-practice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/courses/dsa-live-practice/</guid>
-      <description>Daily live problem-solving sessions to build consistency in DSA.</description>
+      <guid>http://localhost:1313/courses/dsa-live-practice/</guid>
+      <description>&lt;h2 id=&#34;dsa-live-practice-series&#34;&gt;DSA Live Practice Series&lt;/h2&gt;&#xA;&lt;p&gt;This is a live, topic-focused practice series designed for learners who already have basic familiarity with Data Structures and Algorithms and want to strengthen their problem-solving skills through guided live sessions.&lt;/p&gt;&#xA;&lt;p&gt;The sessions are not a structured DSA course from scratch. Instead, each live class will focus on one specific DSA concept or pattern such as recursion, trees, dynamic programming, graphs, sliding window, two pointers, and similar topics. The emphasis will be on intuition, patterns, common mistakes, and problem-solving approaches, rather than syllabus completion.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

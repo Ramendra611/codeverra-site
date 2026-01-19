@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Binary-Search on codeverra</title>
-    <link>http://192.168.0.103:1313/tags/binary-search/</link>
+    <link>http://localhost:1313/tags/binary-search/</link>
     <description>Recent content in Binary-Search on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.103:1313/tags/binary-search/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/binary-search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Binary Search Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/binary_search/</link>
+      <link>http://localhost:1313/blogs/binary_search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/binary_search/</guid>
-      <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
+      <guid>http://localhost:1313/blogs/binary_search/</guid>
+      <description>&lt;p&gt;Binary Search is an efficient searching algorithm used to find an element in a sorted array by repeatedly dividing the search space into half.&lt;/p&gt;&#xA;&lt;p&gt;Unlike linear search, which checks elements one by one, binary search eliminates half of the remaining elements at each step. This makes it significantly faster for large datasets.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;key-requirement&#34;&gt;Key Requirement&lt;/h2&gt;&#xA;&lt;p&gt;Binary search can only be applied when the array is already sorted.&lt;/p&gt;&#xA;&lt;p&gt;The sorting order can be:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

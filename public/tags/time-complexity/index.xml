@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Time-Complexity on codeverra</title>
-    <link>http://192.168.0.103:1313/tags/time-complexity/</link>
+    <link>http://localhost:1313/tags/time-complexity/</link>
     <description>Recent content in Time-Complexity on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.103:1313/tags/time-complexity/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/time-complexity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
-      <link>http://192.168.0.103:1313/blogs/time_complexity/</link>
+      <link>http://localhost:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/time_complexity/</guid>
-      <description>A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.</description>
+      <guid>http://localhost:1313/blogs/time_complexity/</guid>
+      <description>&lt;p&gt;Time complexity is one of the most important concepts in Data Structures and Algorithms. It helps you understand how an algorithm behaves as the input size grows and why some solutions fail to scale.&lt;/p&gt;&#xA;&lt;p&gt;This guide explains time complexity step-by-step using simple explanations and Python examples written purely as text, focusing on intuition rather than heavy mathematics.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-what-is-time-complexity&#34;&gt;1. What Is Time Complexity?&lt;/h2&gt;&#xA;&lt;p&gt;Time complexity measures how the running time of an algorithm grows as the input size increases.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

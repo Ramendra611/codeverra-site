@@ -2,129 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://192.168.0.103:1313/blogs/dsa_roadmap/</loc>
+    <loc>http://localhost:1313/blogs/dsa_roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/algorithms/</loc>
+    <loc>http://localhost:1313/courses/dsa-python-zero-to-hero/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blogs/dsa-with-python-curriculum/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/time_complexity/</loc>
+    <loc>http://localhost:1313/courses/dsa-live-practice/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/array_patterns/</loc>
+    <loc>http://localhost:1313/blogs/time_complexity/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/arrays/</loc>
+    <loc>http://localhost:1313/blogs/array_patterns/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/beginners/</loc>
+    <loc>http://localhost:1313/tags/arrays/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/bfs/</loc>
+    <loc>http://localhost:1313/tags/beginners/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/bfs_dfs/</loc>
+    <loc>http://localhost:1313/tags/bfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/binary_search/</loc>
+    <loc>http://localhost:1313/blogs/bfs_dfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/binary-search/</loc>
+    <loc>http://localhost:1313/blogs/binary_search/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/python_syllabus/</loc>
+    <loc>http://localhost:1313/tags/binary-search/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/dynamic_programming/</loc>
+    <loc>http://localhost:1313/blogs/python_syllabus/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/data-structures/</loc>
+    <loc>http://localhost:1313/blogs/dynamic_programming/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/dfs/</loc>
+    <loc>http://localhost:1313/tags/data-structures/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/sorting_algo/</loc>
+    <loc>http://localhost:1313/tags/dfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/dsa/</loc>
+    <loc>http://localhost:1313/blogs/sorting_algo/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</loc>
+    <loc>http://localhost:1313/tags/dsa/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/dynamic-programming/</loc>
+    <loc>http://localhost:1313/tags/dynamic-programming/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/graphs/</loc>
+    <loc>http://localhost:1313/tags/graphs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/learning-roadmap/</loc>
+    <loc>http://localhost:1313/tags/learning-roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/patterns/</loc>
+    <loc>http://localhost:1313/tags/patterns/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/problem-solving/</loc>
+    <loc>http://localhost:1313/tags/problem-solving/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/programming/</loc>
+    <loc>http://localhost:1313/tags/programming/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/python/</loc>
+    <loc>http://localhost:1313/tags/python/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/recursion/</loc>
+    <loc>http://localhost:1313/tags/recursion/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/recursion/</loc>
+    <loc>http://localhost:1313/blogs/recursion/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/searching/</loc>
+    <loc>http://localhost:1313/tags/searching/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/searching_in_arrays/</loc>
+    <loc>http://localhost:1313/blogs/searching_in_arrays/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/software-development/</loc>
+    <loc>http://localhost:1313/tags/software-development/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/sorting-algorithms/</loc>
+    <loc>http://localhost:1313/tags/sorting-algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/test_blog/</loc>
+    <loc>http://localhost:1313/blogs/test_blog/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/time-complexity/</loc>
+    <loc>http://localhost:1313/tags/time-complexity/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/tags/traversal/</loc>
+    <loc>http://localhost:1313/tags/traversal/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/welcome/</loc>
-    <lastmod>2025-12-27T08:14:25+05:30</lastmod>
+    <loc>http://localhost:1313/blogs/welcome/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/about/</loc>
-    <lastmod>2026-01-16T17:21:00+05:30</lastmod>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/blogs/</loc>
-    <lastmod>2025-12-27T08:03:39+05:30</lastmod>
+    <loc>http://localhost:1313/blogs/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://192.168.0.103:1313/</loc>
-    <lastmod>2026-01-16T13:54:34+05:30</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
   </url><url>
-    <loc>http://192.168.0.103:1313/courses/</loc>
-    <lastmod>2026-01-16T17:34:51+05:30</lastmod>
-  </url><url>
-    <loc>http://192.168.0.103:1313/courses/dsa-live-practice/</loc>
-    <lastmod>2026-01-16T17:43:40+05:30</lastmod>
-  </url><url>
-    <loc>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</loc>
-    <lastmod>2026-01-16T17:45:31+05:30</lastmod>
+    <loc>http://localhost:1313/courses/</loc>
+    <lastmod>2026-01-16T21:13:08+05:30</lastmod>
   </url>
 </urlset>

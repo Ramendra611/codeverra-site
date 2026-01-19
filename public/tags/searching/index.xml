@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Searching on codeverra</title>
-    <link>http://192.168.0.103:1313/tags/searching/</link>
+    <link>http://localhost:1313/tags/searching/</link>
     <description>Recent content in Searching on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.103:1313/tags/searching/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/searching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Binary Search Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/binary_search/</link>
+      <link>http://localhost:1313/blogs/binary_search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/binary_search/</guid>
-      <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
+      <guid>http://localhost:1313/blogs/binary_search/</guid>
+      <description>&lt;p&gt;Binary Search is an efficient searching algorithm used to find an element in a sorted array by repeatedly dividing the search space into half.&lt;/p&gt;&#xA;&lt;p&gt;Unlike linear search, which checks elements one by one, binary search eliminates half of the remaining elements at each step. This makes it significantly faster for large datasets.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;key-requirement&#34;&gt;Key Requirement&lt;/h2&gt;&#xA;&lt;p&gt;Binary search can only be applied when the array is already sorted.&lt;/p&gt;&#xA;&lt;p&gt;The sorting order can be:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://192.168.0.103:1313/blogs/searching_in_arrays/</link>
+      <link>http://localhost:1313/blogs/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/searching_in_arrays/</guid>
-      <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
+      <guid>http://localhost:1313/blogs/searching_in_arrays/</guid>
+      <description>&lt;p&gt;Searching is the process of determining whether a given element exists in an array and, if required, returning its index.&lt;/p&gt;&#xA;&lt;p&gt;The choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-searching-in-an-unsorted-array&#34;&gt;1. Searching in an Unsorted Array&lt;/h2&gt;&#xA;&lt;h3 id=&#34;characteristics&#34;&gt;Characteristics&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Elements are not arranged in any specific order&lt;/li&gt;&#xA;&lt;li&gt;No assumptions can be made about element positions&lt;/li&gt;&#xA;&lt;li&gt;Linear search is the primary technique used&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;linear-search&#34;&gt;Linear Search&lt;/h3&gt;&#xA;&lt;h4 id=&#34;concept&#34;&gt;Concept&lt;/h4&gt;&#xA;&lt;p&gt;Each element of the array is checked one by one until the target element is found or the array ends.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
