@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patterns on codeverra</title>
+    <link>http://localhost:1313/tags/patterns/</link>
+    <description>Recent content in Patterns on codeverra</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/patterns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Array Patterns for Problem Solving</title>
+      <link>http://localhost:1313/blogs/array_patterns/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/array_patterns/</guid>
+      <description>&lt;p&gt;Array patterns are recurring problem-solving techniques used to solve a wide variety of array problems efficiently.&lt;/p&gt;&#xA;&lt;p&gt;Instead of memorizing individual solutions, understanding these patterns helps you recognize how to approach a problem and design an optimal solution.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-traversal-pattern&#34;&gt;1. Traversal Pattern&lt;/h2&gt;&#xA;&lt;h3 id=&#34;concept&#34;&gt;Concept&lt;/h3&gt;&#xA;&lt;p&gt;The traversal pattern involves visiting each element of the array once or in a fixed manner.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;when-to-use&#34;&gt;When to Use&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Finding maximum or minimum elements&lt;/li&gt;&#xA;&lt;li&gt;Printing all elements&lt;/li&gt;&#xA;&lt;li&gt;Counting frequency&lt;/li&gt;&#xA;&lt;li&gt;Simple condition checks&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;explanation-example&#34;&gt;Explanation Example&lt;/h3&gt;&#xA;&lt;p&gt;Traverse the array from the first element to the last, updating the required result as you move forward.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

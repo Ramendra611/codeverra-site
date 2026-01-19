@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
+<<<<<<< HEAD:public/tags/sorting-algorithms/index.xml
+    <title>Sorting-Algorithms on codeverra</title>
+    <link>http://localhost:1313/tags/sorting-algorithms/</link>
+    <description>Recent content in Sorting-Algorithms on codeverra</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sorting-algorithms/index.xml" rel="self" type="application/rss+xml" />
+=======
     <title>Sorting on codeverra</title>
     <link>http://192.168.0.103:1313/tags/sorting/</link>
     <description>Recent content in Sorting on codeverra</description>
@@ -8,12 +17,13 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://192.168.0.103:1313/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6:public/tags/sorting/index.xml
     <item>
       <title>Different Sorting Algorithms Explained Clearly</title>
-      <link>http://192.168.0.103:1313/blogs/sorting_algo/</link>
+      <link>http://localhost:1313/blogs/sorting_algo/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
-      <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
+      <guid>http://localhost:1313/blogs/sorting_algo/</guid>
+      <description>&lt;p&gt;Sorting is the process of arranging elements in a specific order, usually ascending or descending, to make data easier to search, analyze, and process.&lt;/p&gt;&#xA;&lt;p&gt;Sorting plays a critical role in computer science because many algorithms perform efficiently only on sorted data.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-bubble-sort&#34;&gt;1. Bubble Sort&lt;/h2&gt;&#xA;&lt;h3 id=&#34;concept&#34;&gt;Concept&lt;/h3&gt;&#xA;&lt;p&gt;Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order. Larger elements gradually move to the end of the array, similar to bubbles rising to the surface.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,3 +1,1 @@
 User-agent: *
-Disallow: /
-Sitemap: http://192.168.0.103:1313/sitemap.xml

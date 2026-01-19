@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recursion on codeverra</title>
-    <link>http://192.168.0.103:1313/tags/recursion/</link>
+    <link>http://localhost:1313/tags/recursion/</link>
     <description>Recent content in Recursion on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.103:1313/tags/recursion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/recursion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Recursion Explained from Basics</title>
-      <link>http://192.168.0.103:1313/blogs/recursion/</link>
+      <link>http://localhost:1313/blogs/recursion/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/blogs/recursion/</guid>
-      <description>A clear and beginner-friendly explanation of recursion, covering how it works, its components, types, advantages, disadvantages, and use cases.</description>
+      <guid>http://localhost:1313/blogs/recursion/</guid>
+      <description>&lt;p&gt;Recursion is a programming technique in which a function calls itself to solve a problem by breaking it down into smaller and simpler subproblems.&lt;/p&gt;&#xA;&lt;p&gt;Instead of solving the entire problem at once, recursion focuses on solving a reduced version of the problem repeatedly until a stopping condition is reached.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-recursion&#34;&gt;What Is Recursion?&lt;/h2&gt;&#xA;&lt;p&gt;In recursion, a function solves a problem by calling itself with a smaller input.&lt;/p&gt;&#xA;&lt;p&gt;Each recursive call works on a reduced version of the original problem until it reaches a point where no further calls are needed.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
