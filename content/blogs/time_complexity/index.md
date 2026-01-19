@@ -12,11 +12,8 @@ draft: false
 tags:
   - dsa
   - time-complexity
-  - algorithms
-  - python
-  - problem-solving
 cover:
-  image: "images/time-complexity-cover.png"
+  image: "/images/blog-images/time-complexity-analysis.png"
   alt: "Analysis of time complexity"
   caption: "Understanding algorithm efficiency with Python"
   relative: true

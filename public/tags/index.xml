@@ -23,6 +23,7 @@
       <description></description>
     </item>
     <item>
+<<<<<<< HEAD
       <title>Beginners</title>
       <link>http://localhost:1313/tags/beginners/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -30,6 +31,8 @@
       <description></description>
     </item>
     <item>
+=======
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
       <title>Bfs</title>
       <link>http://localhost:1313/tags/bfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -86,6 +89,7 @@
       <description></description>
     </item>
     <item>
+<<<<<<< HEAD
       <title>Patterns</title>
       <link>http://localhost:1313/tags/patterns/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -93,6 +97,8 @@
       <description></description>
     </item>
     <item>
+=======
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
       <title>Problem-Solving</title>
       <link>http://localhost:1313/tags/problem-solving/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -100,6 +106,7 @@
       <description></description>
     </item>
     <item>
+<<<<<<< HEAD
       <title>Programming</title>
       <link>http://localhost:1313/tags/programming/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -107,6 +114,8 @@
       <description></description>
     </item>
     <item>
+=======
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
       <title>Python</title>
       <link>http://localhost:1313/tags/python/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -128,6 +137,7 @@
       <description></description>
     </item>
     <item>
+<<<<<<< HEAD
       <title>Software-Development</title>
       <link>http://localhost:1313/tags/software-development/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -139,6 +149,12 @@
       <link>http://localhost:1313/tags/sorting-algorithms/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/sorting-algorithms/</guid>
+=======
+      <title>Sorting</title>
+      <link>http://192.168.0.103:1313/tags/sorting/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/tags/sorting/</guid>
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
       <description></description>
     </item>
     <item>

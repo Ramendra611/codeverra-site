@@ -16,9 +16,15 @@ tags:
   - algorithms
   - problem-solving
 cover:
+<<<<<<< HEAD
   image: "images/binary-search-cover.png"
   alt: "Binary search algorithm"
   caption: "Understanding binary search step by step"
+=======
+  image: "/images/blog-images/bfs-dfs.jpg"
+  alt: "BFS vs DFS graph traversal"
+  caption: "Understanding BFS and DFS traversal techniques"
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
   relative: true
   hidden: false
 

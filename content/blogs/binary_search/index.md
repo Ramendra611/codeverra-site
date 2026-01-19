@@ -13,10 +13,9 @@ tags:
   - dsa
   - binary-search
   - searching
-  - algorithms
-  - problem-solving
+
 cover:
-  image: "images/binary-search-cover.png"
+  image: "/images/blog-images/binary-search.jpg"
   alt: "Binary search algorithm"
   caption: "Understanding binary search step by step"
   relative: true

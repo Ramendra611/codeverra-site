@@ -23,6 +23,13 @@
       <description>&lt;h1 id=&#34;about-this-guide&#34;&gt;About This Guide&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! This guide serves as the complete reference material for our live course, organizing all topics, concepts, and learning outcomes in a structured, progressive manner.&lt;/p&gt;&#xA;&lt;h3 id=&#34;for-course-students&#34;&gt;For Course Students&lt;/h3&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re enrolled in the live course, this blog is your companion resource that:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mirrors the course structure&lt;/strong&gt; - Every module taught in class is documented here&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Serves as a reference&lt;/strong&gt; - Quickly look up concepts, syntax, and examples&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Tracks your progress&lt;/strong&gt; - Follow along and check off completed modules&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Provides continuity&lt;/strong&gt; - Never miss a beat even if you miss a session&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;for-self-learners&#34;&gt;For Self-Learners&lt;/h3&gt;&#xA;&lt;p&gt;Even if you&amp;rsquo;re not enrolled in the course, this roadmap is designed to be:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>DSA With Python - Zero to Hero (Curriculum)</title>
+      <link>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/blogs/dsa-with-python-curriculum/</guid>
+      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
+    </item>
+    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://localhost:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -61,8 +68,13 @@
       <title>Different Sorting Algorithms Explained Clearly</title>
       <link>http://localhost:1313/blogs/sorting_algo/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+<<<<<<< HEAD
       <guid>http://localhost:1313/blogs/sorting_algo/</guid>
       <description>&lt;p&gt;Sorting is the process of arranging elements in a specific order, usually ascending or descending, to make data easier to search, analyze, and process.&lt;/p&gt;&#xA;&lt;p&gt;Sorting plays a critical role in computer science because many algorithms perform efficiently only on sorted data.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-bubble-sort&#34;&gt;1. Bubble Sort&lt;/h2&gt;&#xA;&lt;h3 id=&#34;concept&#34;&gt;Concept&lt;/h3&gt;&#xA;&lt;p&gt;Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order. Larger elements gradually move to the end of the array, similar to bubbles rising to the surface.&lt;/p&gt;</description>
+=======
+      <guid>http://192.168.0.103:1313/blogs/sorting_algo/</guid>
+      <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
     </item>
     <item>
       <title>Recursion Explained from Basics</title>

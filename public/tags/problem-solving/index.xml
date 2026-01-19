@@ -9,6 +9,7 @@
     <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/problem-solving/index.xml" rel="self" type="application/rss+xml" />
     <item>
+<<<<<<< HEAD
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://localhost:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -44,6 +45,8 @@
       <description>&lt;p&gt;Searching is the process of determining whether a given element exists in an array and, if required, returning its index.&lt;/p&gt;&#xA;&lt;p&gt;The choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-searching-in-an-unsorted-array&#34;&gt;1. Searching in an Unsorted Array&lt;/h2&gt;&#xA;&lt;h3 id=&#34;characteristics&#34;&gt;Characteristics&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Elements are not arranged in any specific order&lt;/li&gt;&#xA;&lt;li&gt;No assumptions can be made about element positions&lt;/li&gt;&#xA;&lt;li&gt;Linear search is the primary technique used&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;linear-search&#34;&gt;Linear Search&lt;/h3&gt;&#xA;&lt;h4 id=&#34;concept&#34;&gt;Concept&lt;/h4&gt;&#xA;&lt;p&gt;Each element of the array is checked one by one until the target element is found or the array ends.&lt;/p&gt;</description>
     </item>
     <item>
+=======
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
       <title>Test test test</title>
       <link>http://localhost:1313/blogs/test_blog/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>

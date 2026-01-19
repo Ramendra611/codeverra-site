@@ -11,10 +11,9 @@ tocopen: true
 draft: false
 tags:
   - dsa
-  - arrays
   - searching
   - algorithms
-  - problem-solving
+
 cover:
   image: "images/searching-arrays-cover.png"
   alt: "Searching in arrays"

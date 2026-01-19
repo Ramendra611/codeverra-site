@@ -11,6 +11,7 @@ tocopen: true
 draft: false
 tags:
   - dsa
+<<<<<<< HEAD
   - binary-search
   - searching
   - algorithms
@@ -19,6 +20,14 @@ cover:
   image: "images/binary-search-cover.png"
   alt: "Binary search algorithm"
   caption: "Understanding binary search step by step"
+=======
+  - arrays
+
+cover:
+  image: "/images/blog-images/array-patterns.jpg"
+  alt: "Array problem-solving patterns"
+  caption: "Common array patterns for efficient problem solving"
+>>>>>>> 22e67fc9b8dc4370fa0b29712db2a38bdf75b4a6
   relative: true
   hidden: false
 
