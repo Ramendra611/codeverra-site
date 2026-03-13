@@ -12,9 +12,6 @@ draft: false
 tags:
   - dsa
   - recursion
-  - programming
-  - algorithms
-  - problem-solving
 cover:
   image: "images/recursion-cover.png"
   alt: "Recursion concept"

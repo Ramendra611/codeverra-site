@@ -1,64 +1,758 @@
+/* =========================================================
+   1. GLOBAL COLOR THEME
+   ========================================================= */
+
+:root {
+  --color-accent-primary: #4F46E5;
+  --color-accent-secondary: #22D3EE;
+  --color-accent-success: #22C55E;
+
+  --color-bg-page: #0F1115;
+  --color-bg-card: #1C1F26;
+
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #9CA3AF;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+}
+
+/* Map to theme */
+:root {
+  --entry: var(--color-bg-card);
+}
+
+/* =========================================================
+   2. GLOBAL TYPOGRAPHY & LAYOUT
+   ========================================================= */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.main {
+  max-width: 1200px;
+}
+
+/* =========================================================
+   3. BLOG LIST PAGE (GRID)
+   ========================================================= */
+
+body.list .post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  body.list .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body.list .post-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.list .first-entry {
+  grid-column: auto;
+}
+
+/* =========================================================
+   4. TAGS
+   ========================================================= */
+
 .post-entry {
-    position: relative;
+  position: relative;
 }
 
+/* .post-content a {
+  text-decoration: none;
+  border-bottom: none;
+} */
+
+.post-content a {
+  border-bottom: none !important;
+  box-shadow: 0 0px;
+}
+
+/* .page-about .post-content a {
+  box-shadow: none !important;
+} */
+/* 
+.page-about .post-content a {
+  box-shadow: none !important;
+} */
+
 .entry-tags {
-    position: relative;
-    z-index: 5;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 5;
 }
 
 .entry-tags a {
-    pointer-events: auto;
-}
-
-.entry-tags {
-    margin-top: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.entry-tags a {
-    font-size: 0.85rem;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--code-bg);
-    color: var(--secondary);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    line-height: 1.4;
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  text-decoration: none;
 }
 
 .entry-tags a:hover {
-    background: var(--tertiary);
-    color: var(--primary);
+  background: var(--tertiary);
+  color: var(--primary);
 }
 
-.post-tags-top {
-    margin-top: 8px;
-    margin-bottom: 8px;
+/* =========================================================
+   5. HOME PAGE – COURSE TILE 
+   ========================================================= */
+
+.home-course-tile {
+  position: relative;
+  width: 100%;
+  margin: 2.5rem 0;
+}
+
+/* Accent glow */
+.home-course-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(600px circle at top left,
+      color-mix(in srgb, var(--color-accent-primary) 12%, transparent),
+      transparent 40%);
+  pointer-events: none;
+}
+
+/* Core layout */
+.home-course-tile__inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  padding: 3rem;
+  background: var(--color-bg-card);
+  border-radius: 18px;
+  align-items: center;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 25%, transparent),
+    0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Badge */
+.course-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: color-mix(in srgb, var(--color-accent-success) 85%, #000);
+  border-radius: 999px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff0008;
+}
+
+/* Text */
+.home-course-tile__title {
+  margin: 0.6rem 0 0.8rem;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.home-course-tile__description {
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+/* Features */
+.course-features {
+  margin: 0.8rem 0 1.2rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+}
+
+.course-features li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.course-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-success);
+  font-weight: 600;
+}
+
+/* Audience */
+.course-audience-title {
+  margin-top: 1.4rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.course-audience {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.course-audience li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.course-audience li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-success);
+}
+
+/* CTA */
+.home-course-tile__actions {
+  margin-top: 1rem;
+}
+
+.home-course-tile__cta {
+  background: var(--color-accent-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Image */
+.home-course-tile__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   6. MOBILE OVERRIDES 
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .home-course-tile__inner {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  /* Image should appear near top on mobile */
+  .home-course-tile__image {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+
+  .home-course-tile__content {
+    order: 2;
+  }
+
+  .home-course-tile__image img {
+    max-height: 240px;
+    object-fit: cover;
+  }
+
+  .course-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   7. HEADER REFINEMENT
+   ========================================================= */
+
+header,
+.nav {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.nav a {
+  opacity: 0.75;
+}
+
+
+
+/* 
+####################
+About me
+######################### */
+
+/* =========================================================
+   ABOUT ME TILE — FINAL STABLE VERSION
+   ========================================================= */
+
+.about-tile {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-page);
+  border: none;
+}
+
+.about-tile__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 18px;
+
+  padding: 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 3rem;
+
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 25%, transparent), 0 20px 40px rgba(0, 0, 0, .4);
+}
+
+.about-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 24px;
+  margin: 1.5rem 0;
+}
+
+/* Grid layout for YouTube section */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Responsive video wrapper */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TEXT */
+.about-tile__title {
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 1.2rem;
+}
+
+.about-tile__name {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.about-tile__role {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.4rem;
+}
+
+.about-tile__description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  color: var(--color-text-primary);
+}
+
+.about-tile__description p:last-child {
+  margin-bottom: 0;
+}
+.about-tile__description p:last-child {
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+.about-tile__description p+p {
+  margin-top: 1.25rem;
+}
+
+/* IMAGE */
+.about-tile__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-tile__image img {
+  width: 460px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+
+/* SOCIALS */
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  /* THIS fixes the large vertical spacing */
+  margin-top: 1rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+.social-links a:hover {
+  color: var(--color-accent-primary);
+  transform: translateX(3px);
+}
+.social-link:hover {
+  color: var(--color-accent-primary);
+}
+
+.social-links .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.social-links .icon.youtube {
+  color: #FF0000;
+}
+
+.social-links .icon.linkedin {
+  color: #0A66C2;
+}
+
+.social-links .icon.whatsapp {
+  color: #25D366;
+}
+
+.social-links .icon.email {
+  color: var(--color-text-secondary);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: normal;
+  overflow: visible;
+}
+
+.social-icon,
+.social-link svg {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.social-icon.whatsapp {
+  color: #25D366;
+  transform: translateY(1px);
+  margin-left: 25px;
+}
+.social-link span,
+.social-link {
+  align-items: center;
+  overflow: visible;
+}
+
+
+
+.about-tile__socials {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  /* IMPORTANT */
+
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  text-decoration: none;
+
+  white-space: nowrap;
+  /* KEY FIX */
+  width: fit-content;
+  /* KEY FIX */
+  max-width: none;
+  /* KEY FIX */
+  flex-shrink: 0;
+  /* KEY FIX */
+
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.social-pill svg {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  /* KEY FIX */
+  min-height: 14px;
+  /* KEY FIX */
+  fill: var(--color-accent-primary);
+  flex-shrink: 0;
+  /* KEY FIX */
+}
+
+/* Brand colors */
+.social-pill--youtube svg {
+  fill: #FF0000;
+}
+
+.social-pill--linkedin svg {
+  fill: #0A66C2;
+}
+
+.social-pill--whatsapp svg {
+  fill: #25D366;
+}
+.social-pill:hover {
+  border-color: var(--color-accent-primary);
+  background-color: rgba(79, 70, 229, 0.12);
+}
+.about-tile__socials {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  /* keeps mobile safe */
+}
+
+/* =========================================================
+   MOBILE — BULLETPROOF
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .about-tile__inner {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
 }
 
-/* Allow top tags to receive clicks */
-.post-header {
-    position: relative;
+@media (max-width: 768px) {
+  .about-tile__title {
+    order: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .about-tile__name {
+    order: 3;
+  }
+
+  .about-tile__role {
+    order: 4;
+  }
+
+  .about-tile__image {
+    order: 2;
+    /* IMAGE AFTER ABOUT ME / NAME / ROLE */
+    align-self: center;
+    margin: 0.5rem 0;
+  }
+
+  .about-tile__description {
+    order: 5;
+  }
+
+  .about-tile__socials {
+    order: 6;
+  }
 }
 
-.post-tags-top {
-    position: relative;
-    z-index: 5;
+@media (max-width: 768px) {
+  .about-tile__text {
+    display: contents;
+  }
 }
 
-.post-tags-top a {
-    pointer-events: auto;
+
+/* ###############
+About Page
+############### */
+.about-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
 }
 
-/* Bottom-of-post tags (PaperMod default) */
-.post-tags a,
-.post-footer .tag,
-.post-footer a[href*="/tags/"] {
-    text-transform: lowercase;
+.about-section h2 {
+  margin-bottom: 1rem;
+}
+
+.about-section ul {
+  padding-left: 1.2rem;
+}
+
+.about-section li {
+  margin-bottom: 0.6rem;
+}
+
+/* PLAYLISTS */
+.playlist-grid {
+  display: grid;
+
+  /* CHANGE: force exactly 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 2rem auto 0;
+}
+
+.playlist-grid iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* =========================================================
+   ABOUT PAGE COHESION FIX
+   ========================================================= */
+
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* Shared section styling */
+.about-block {
+  margin-top: 3.5rem;
+  padding: 2.5rem;
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Headings inside about page */
+.about-page h2 {
+  margin-bottom: 1rem;
+}
+
+
+/* Home page – Blogs section separation */
+.home-blogs-section {
+  margin-top: 1rem;
+  /* space after About tile */
+  padding-top: 2.5rem;
+  /* breathing room */
+}
+
+.home-blogs-section {
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* Blogs heading on home */
+.home-section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+
+/* Only course listing tiles */
+.courses .post-entry {
+  background: linear-gradient(180deg, #23242a, #1c1d22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* COURSE BADGE */
+.course-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #22c55e;
+  color: #0b0f0d;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* COURSE META */
+.course-meta {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* COURSE CTA */
+.course-cta {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-success);
 }

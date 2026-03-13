@@ -11,9 +11,8 @@ tocopen: true
 draft: false
 tags:
   - dsa
-  - sorting-algorithms
-  - algorithms
-  - problem-solving
+  - sorting
+
 cover:
   image: "images/sorting-algorithms-cover.png"
   alt: "Sorting algorithms"

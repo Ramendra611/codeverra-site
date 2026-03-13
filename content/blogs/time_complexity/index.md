@@ -12,11 +12,8 @@ draft: false
 tags:
   - dsa
   - time-complexity
-  - algorithms
-  - python
-  - problem-solving
 cover:
-  image: "images/time-complexity-cover.png"
+  image: "/images/blog-images/time-complexity-analysis.png"
   alt: "Analysis of time complexity"
   caption: "Understanding algorithm efficiency with Python"
   relative: true
@@ -86,9 +83,11 @@ The execution time does not depend on the input size.
 ### Python Example (Text Only)
 A function that returns the first element of an array always runs in constant time, regardless of how large the array is.
 
-For example:  
+For example: 
+```python 
 def get_first_element(arr):  
     return arr[0]
+```
 
 This is the fastest possible time complexity.
 

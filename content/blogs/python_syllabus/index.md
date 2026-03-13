@@ -11,10 +11,8 @@ tocopen: true
 draft: false
 tags:
   - python
-  - programming
   - learning-roadmap
-  - software-development
-  - beginners
+
 cover:
   image: "images/python-syllabus-cover.png"
   alt: "Python programming learning roadmap"
