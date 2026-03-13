@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Binary Search Explained Clearly | codeverra</title>
 <meta name="keywords" content="dsa, binary-search, searching">
 <meta name="description" content="A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="https://learn.codeverra.com/blogs/binary_search/">
+<link rel="canonical" href="http://192.168.0.100:1313/blogs/binary_search/">
 
 
 
@@ -18,15 +18,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.0.100:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.100:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.100:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.0.100:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.0.100:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/binary_search/">
+<link rel="alternate" hreflang="en" href="http://192.168.0.100:1313/blogs/binary_search/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,86 +78,14 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://learn.codeverra.com/blogs/binary_search/">
-  <meta property="og:site_name" content="codeverra">
-  <meta property="og:title" content="Binary Search Explained Clearly">
-  <meta property="og:description" content="A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blogs">
-    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
-    <meta property="article:tag" content="Dsa">
-    <meta property="article:tag" content="Binary-Search">
-    <meta property="article:tag" content="Searching">
-    <meta property="og:image" content="https://learn.codeverra.com/blogs/binary_search/images/blog-images/binary-search.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://learn.codeverra.com/blogs/binary_search/images/blog-images/binary-search.jpg">
-<meta name="twitter:title" content="Binary Search Explained Clearly">
-<meta name="twitter:description" content="A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Blogs",
-      "item": "https://learn.codeverra.com/blogs/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Binary Search Explained Clearly",
-      "item": "https://learn.codeverra.com/blogs/binary_search/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Binary Search Explained Clearly",
-  "name": "Binary Search Explained Clearly",
-  "description": "A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.",
-  "keywords": [
-    "dsa", "binary-search", "searching"
-  ],
-  "articleBody": "Binary Search is an efficient searching algorithm used to find an element in a sorted array by repeatedly dividing the search space into half.\nUnlike linear search, which checks elements one by one, binary search eliminates half of the remaining elements at each step. This makes it significantly faster for large datasets.\nKey Requirement Binary search can only be applied when the array is already sorted.\nThe sorting order can be:\nAscending order Descending order If the array is not sorted, binary search will not work correctly.\nHow Binary Search Works The algorithm follows these steps:\nFind the middle element of the array Compare the middle element with the target value If both are equal, the search is complete If the target is smaller, search the left half If the target is larger, search the right half Repeat the process until the element is found or the search space becomes empty At each step, half of the remaining elements are discarded.\nExample Walkthrough Sorted array:\n[10, 20, 30, 40, 50, 60]\nTarget element:\n40\nStep-by-step process:\nMiddle element is 30, target is larger, so search the right half New middle element is 50, target is smaller, so search the left half Middle element becomes 40, element found This demonstrates how binary search reduces the search space efficiently.\nPython Example (Text Only) The iterative binary search approach works as follows:\nInitialize two pointers named low and high Calculate the middle index Compare the middle element with the target Update the low or high pointer accordingly Continue until the element is found or the range becomes invalid If the element is found, its index is returned.\nIf not found, the function returns -1.\nTime Complexity Best case: O(1) when the middle element is the target Average case: O(log n) Worst case: O(log n) Binary search remains efficient even for very large datasets.\nSpace Complexity Iterative binary search: O(1) because no extra space is used Recursive binary search: O(log n) due to the recursion call stack When to Use Binary Search Binary search is ideal when:\nThe data is already sorted The dataset is large Fast searching is required Multiple search operations are expected When Not to Use Binary Search Binary search should be avoided when:\nThe array is unsorted The dataset is very small Only one search is required and sorting cost is high Interview Insight Sorting an unsorted array takes O(n log n) time.\nFor a single search operation, sorting the array first and then applying binary search is inefficient.\nHowever, when multiple searches are required, sorting once and using binary search multiple times becomes a better approach.\nConclusion Binary search is one of the most important searching algorithms in computer science.\nIt provides excellent performance on sorted data and is widely used in real-world systems such as databases, indexing engines, and search services.\nUnderstanding binary search is fundamental for mastering Data Structures and Algorithms.\n",
-  "wordCount" : "484",
-  "inLanguage": "en",
-  "image":"https://learn.codeverra.com/blogs/binary_search/images/blog-images/binary-search.jpg","datePublished": "2025-12-30T00:00:00Z",
-  "dateModified": "2025-12-31T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "codeverra"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://learn.codeverra.com/blogs/binary_search/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "codeverra",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://learn.codeverra.com/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
-                        
-                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
+            <a href="http://192.168.0.100:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://192.168.0.100:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -184,22 +112,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://learn.codeverra.com/" title="Home">
+                <a href="http://192.168.0.100:1313/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/courses/" title="Courses">
+                <a href="http://192.168.0.100:1313/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/about/" title="About">
+                <a href="http://192.168.0.100:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
+                <a href="http://192.168.0.100:1313/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -210,7 +138,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="http://192.168.0.100:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.100:1313/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       Binary Search Explained Clearly
     </h1>
@@ -222,12 +150,12 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
-    <a class="tag" href="https://learn.codeverra.com/tags/binary-search/">binary-search</a>
-    <a class="tag" href="https://learn.codeverra.com/tags/searching/">searching</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/dsa/">dsa</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/binary-search/">binary-search</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/searching/">searching</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="https://learn.codeverra.com/images/blog-images/binary-search.jpg" alt="Binary search algorithm">
+        <img loading="eager" src="http://192.168.0.100:1313/images/blog-images/binary-search.jpg" alt="Binary search algorithm">
         <figcaption>Understanding binary search step by step</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -357,16 +285,16 @@ If not found, the function returns -1.</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
-      <li><a href="https://learn.codeverra.com/tags/binary-search/">Binary-Search</a></li>
-      <li><a href="https://learn.codeverra.com/tags/searching/">Searching</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/dsa/">Dsa</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/binary-search/">Binary-Search</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/searching/">Searching</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="http://192.168.0.100:1313/">codeverra</a></span> · 
 
     <span>
         Powered by

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Analysis of Time Complexity Explained with Python Examples | codeverra</title>
 <meta name="keywords" content="dsa, time-complexity">
 <meta name="description" content="A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="https://learn.codeverra.com/blogs/time_complexity/">
+<link rel="canonical" href="http://192.168.0.100:1313/blogs/time_complexity/">
 
 
 
@@ -18,15 +18,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.0.100:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.100:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.100:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.0.100:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.0.100:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/time_complexity/">
+<link rel="alternate" hreflang="en" href="http://192.168.0.100:1313/blogs/time_complexity/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,85 +78,14 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://learn.codeverra.com/blogs/time_complexity/">
-  <meta property="og:site_name" content="codeverra">
-  <meta property="og:title" content="Analysis of Time Complexity Explained with Python Examples">
-  <meta property="og:description" content="A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blogs">
-    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
-    <meta property="article:tag" content="Dsa">
-    <meta property="article:tag" content="Time-Complexity">
-    <meta property="og:image" content="https://learn.codeverra.com/blogs/time_complexity/images/blog-images/time-complexity-analysis.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://learn.codeverra.com/blogs/time_complexity/images/blog-images/time-complexity-analysis.png">
-<meta name="twitter:title" content="Analysis of Time Complexity Explained with Python Examples">
-<meta name="twitter:description" content="A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Blogs",
-      "item": "https://learn.codeverra.com/blogs/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Analysis of Time Complexity Explained with Python Examples",
-      "item": "https://learn.codeverra.com/blogs/time_complexity/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Analysis of Time Complexity Explained with Python Examples",
-  "name": "Analysis of Time Complexity Explained with Python Examples",
-  "description": "A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.",
-  "keywords": [
-    "dsa", "time-complexity"
-  ],
-  "articleBody": "Time complexity is one of the most important concepts in Data Structures and Algorithms. It helps you understand how an algorithm behaves as the input size grows and why some solutions fail to scale.\nThis guide explains time complexity step-by-step using simple explanations and Python examples written purely as text, focusing on intuition rather than heavy mathematics.\n1. What Is Time Complexity? Time complexity measures how the running time of an algorithm grows as the input size increases.\nIt does not measure actual seconds taken by the program.\nInstead, it focuses on how fast execution grows relative to input size n.\nThe focus is on growth rate, not machine speed.\n2. Why Time Complexity Matters Time complexity helps you:\nCompare different algorithms Predict performance for large inputs Perform better in coding interviews and competitive programming Avoid inefficient solutions early Efficient code is essential for scalable real-world systems.\n3. Asymptotic Notations Big O (O) Represents the worst-case time complexity.\nIt is the most commonly used notation in interviews.\nBig Ω (Omega) Represents the best-case time complexity.\nBig Θ (Theta) Represents the average-case time complexity.\n4. Common Time Complexities (Overview) O(1) – Constant\nO(log n) – Logarithmic\nO(n) – Linear\nO(n log n) – Linearithmic\nO(n²) – Quadratic\nO(2ⁿ) – Exponential\n5. O(1) — Constant Time Explanation The execution time does not depend on the input size.\nPython Example (Text Only) A function that returns the first element of an array always runs in constant time, regardless of how large the array is.\nFor example:\ndef get_first_element(arr): return arr[0] This is the fastest possible time complexity.\n6. O(log n) — Logarithmic Time Explanation The input size is reduced by half in every step.\nPython Example (Binary Search – Text Only) Binary search repeatedly divides the search space into two halves.\nExample logic:\nInitialize low and high pointers.\nFind the middle element.\nCompare the middle element with the target.\nDiscard half of the array in each step.\nBecause the input is halved every time, the complexity is O(log n).\n7. O(n) — Linear Time Explanation Execution time grows directly proportional to input size.\nPython Example (Text Only) Finding the maximum element in an array requires checking every element once.\nExample logic:\nInitialize maximum with the first element.\nTraverse the array.\nUpdate maximum whenever a larger value is found.\nIf the input size doubles, execution time also doubles.\n8. O(n log n) — Linearithmic Time Explanation This complexity appears in efficient sorting algorithms.\nPython Example (Merge Sort Idea – Text Only) Merge sort divides the array into halves recursively and then merges them.\nDivide step takes log n time.\nMerge step takes n time.\nOverall complexity becomes O(n log n), which is optimal for sorting.\n9. O(n²) — Quadratic Time Explanation Occurs when nested loops are used over the input.\nPython Example (Text Only) Printing all pairs of elements in an array requires two loops.\nExample logic:\nFor each element i in the array,\nloop again through the array for j,\nprint the pair (i, j).\nIf input size doubles, execution time becomes four times slower.\n10. O(2ⁿ) — Exponential Time Explanation Each input creates multiple recursive calls.\nPython Example (Naive Fibonacci – Text Only) The naive recursive Fibonacci function calls itself twice for each value of n.\nThis leads to exponential growth in function calls.\nSuch solutions are extremely slow for large inputs and should be avoided unless optimized using Dynamic Programming.\n11. Loop-Based Complexity Analysis Single Loop A loop that runs from 1 to n executes n times.\nTime complexity: O(n)\nNested Loop A loop inside another loop, each running n times.\nTime complexity: O(n²)\nLoop with Halving A loop where the value is divided by 2 in every iteration.\nTime complexity: O(log n)\n12. Combining Complexities Example If one loop runs n times and another independent loop also runs n times:\nTotal time = O(n + n)\nFinal complexity = O(n)\nDominant Term Rule O(n² + n + 1) simplifies to O(n²)\nAlways keep the term with the highest growth rate.\n13. Best, Average, and Worst Case Linear Search Example (Text Only) Best case: Target found at the first position → O(1)\nAverage case: Target found somewhere in the array → O(n)\nWorst case: Target not present or at last position → O(n)\n14. Space vs Time Tradeoff Sometimes extra memory is used to reduce time complexity.\nExamples include:\nUsing hash sets to reduce lookup time Using dynamic programming arrays to avoid recomputation This tradeoff is very common in real-world applications.\nConclusion Understanding time complexity helps you:\nWrite efficient and scalable code Choose the right algorithm Crack coding interviews Build real-world systems Mastering time complexity is non-negotiable for anyone serious about Data Structures and Algorithms.\n",
-  "wordCount" : "784",
-  "inLanguage": "en",
-  "image":"https://learn.codeverra.com/blogs/time_complexity/images/blog-images/time-complexity-analysis.png","datePublished": "2025-12-30T00:00:00Z",
-  "dateModified": "2025-12-31T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "codeverra"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://learn.codeverra.com/blogs/time_complexity/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "codeverra",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://learn.codeverra.com/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
-                        
-                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
+            <a href="http://192.168.0.100:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://192.168.0.100:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -183,22 +112,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://learn.codeverra.com/" title="Home">
+                <a href="http://192.168.0.100:1313/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/courses/" title="Courses">
+                <a href="http://192.168.0.100:1313/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/about/" title="About">
+                <a href="http://192.168.0.100:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
+                <a href="http://192.168.0.100:1313/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -209,7 +138,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="http://192.168.0.100:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.100:1313/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       Analysis of Time Complexity Explained with Python Examples
     </h1>
@@ -221,11 +150,11 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
-    <a class="tag" href="https://learn.codeverra.com/tags/time-complexity/">time-complexity</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/dsa/">dsa</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/time-complexity/">time-complexity</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="https://learn.codeverra.com/images/blog-images/time-complexity-analysis.png" alt="Analysis of time complexity">
+        <img loading="eager" src="http://192.168.0.100:1313/images/blog-images/time-complexity-analysis.png" alt="Analysis of time complexity">
         <figcaption>Understanding algorithm efficiency with Python</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -479,15 +408,15 @@ Worst case: Target not present or at last position → O(n)</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
-      <li><a href="https://learn.codeverra.com/tags/time-complexity/">Time-Complexity</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/dsa/">Dsa</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/time-complexity/">Time-Complexity</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="http://192.168.0.100:1313/">codeverra</a></span> · 
 
     <span>
         Powered by

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Searching in Arrays (Sorted and Unsorted) | codeverra</title>
 <meta name="keywords" content="dsa, searching, algorithms">
 <meta name="description" content="A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="https://learn.codeverra.com/blogs/searching_in_arrays/">
+<link rel="canonical" href="http://192.168.0.100:1313/blogs/searching_in_arrays/">
 
 
 
@@ -18,15 +18,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.0.100:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.100:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.100:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.0.100:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.0.100:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/searching_in_arrays/">
+<link rel="alternate" hreflang="en" href="http://192.168.0.100:1313/blogs/searching_in_arrays/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,86 +78,14 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://learn.codeverra.com/blogs/searching_in_arrays/">
-  <meta property="og:site_name" content="codeverra">
-  <meta property="og:title" content="Searching in Arrays (Sorted and Unsorted)">
-  <meta property="og:description" content="A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blogs">
-    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
-    <meta property="article:tag" content="Dsa">
-    <meta property="article:tag" content="Searching">
-    <meta property="article:tag" content="Algorithms">
-    <meta property="og:image" content="https://learn.codeverra.com/blogs/searching_in_arrays/images/searching-arrays-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://learn.codeverra.com/blogs/searching_in_arrays/images/searching-arrays-cover.png">
-<meta name="twitter:title" content="Searching in Arrays (Sorted and Unsorted)">
-<meta name="twitter:description" content="A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Blogs",
-      "item": "https://learn.codeverra.com/blogs/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Searching in Arrays (Sorted and Unsorted)",
-      "item": "https://learn.codeverra.com/blogs/searching_in_arrays/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Searching in Arrays (Sorted and Unsorted)",
-  "name": "Searching in Arrays (Sorted and Unsorted)",
-  "description": "A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.",
-  "keywords": [
-    "dsa", "searching", "algorithms"
-  ],
-  "articleBody": "Searching is the process of determining whether a given element exists in an array and, if required, returning its index.\nThe choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.\n1. Searching in an Unsorted Array Characteristics Elements are not arranged in any specific order No assumptions can be made about element positions Linear search is the primary technique used Linear Search Concept Each element of the array is checked one by one until the target element is found or the array ends.\nPython Example (Text Only) The algorithm starts from the first element and compares each element with the target value.\nIf a match is found, the index is returned.\nIf the loop finishes without a match, -1 is returned.\nExample logic:\nTraverse the array from index 0 to the last index.\nCompare each element with the target value.\nStop when the element is found.\nTime Complexity Best case: O(1) Average case: O(n) Worst case: O(n) When to Use Linear Search The array is unsorted The array size is small Only a few searches are required Simplicity is more important than performance 2. Searching in a Sorted Array Characteristics Elements are arranged in ascending or descending order Efficient searching techniques can be applied Binary search is commonly used Binary Search Concept Binary search repeatedly divides the search space into halves by comparing the target value with the middle element.\nIf the target is smaller than the middle element, the search continues in the left half.\nIf the target is larger, the search continues in the right half.\nPython Example (Text Only) The algorithm maintains two pointers: low and high.\nThe middle element is calculated.\nThe target is compared with the middle element.\nHalf of the array is discarded in each step.\nThis process continues until the element is found or the search space becomes empty.\nTime Complexity Best case: O(1) Average case: O(log n) Worst case: O(log n) When to Use Binary Search The array is already sorted The dataset is large Multiple searches are required Faster performance is needed 3. Comparison: Sorted vs Unsorted Searching Aspect: Searching Method\nUnsorted Array: Linear search\nSorted Array: Binary search\nAspect: Time Complexity\nUnsorted Array: O(n)\nSorted Array: O(log n)\nAspect: Precondition\nUnsorted Array: No requirement\nSorted Array: Array must be sorted\nAspect: Speed\nUnsorted Array: Slower\nSorted Array: Faster\nAspect: Implementation\nUnsorted Array: Simple\nSorted Array: Moderate\n4. Important Interview Insight Sorting an unsorted array takes O(n log n) time.\nFor a single search operation, sorting first and then applying binary search is inefficient.\nHowever, if multiple searches are required, sorting the array once and then using binary search becomes beneficial.\nThis tradeoff is commonly tested in interviews.\n5. Real-World Examples Unsorted Array Searching User-entered data Log files Sensor readings Sorted Array Searching Contact lists Dictionaries Database indexes Ranking systems 6. Common Mistakes to Avoid Applying binary search on an unsorted array Ignoring edge cases such as empty arrays Not analyzing time complexity Using inefficient searching methods for large datasets Conclusion Linear search is suitable for unsorted arrays and small datasets.\nBinary search is ideal for sorted arrays and large datasets.\nChoosing the correct searching technique is fundamental to writing efficient and scalable algorithms.\n",
-  "wordCount" : "547",
-  "inLanguage": "en",
-  "image":"https://learn.codeverra.com/blogs/searching_in_arrays/images/searching-arrays-cover.png","datePublished": "2025-12-30T00:00:00Z",
-  "dateModified": "2025-12-31T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "codeverra"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://learn.codeverra.com/blogs/searching_in_arrays/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "codeverra",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://learn.codeverra.com/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
-                        
-                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
+            <a href="http://192.168.0.100:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://192.168.0.100:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -184,22 +112,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://learn.codeverra.com/" title="Home">
+                <a href="http://192.168.0.100:1313/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/courses/" title="Courses">
+                <a href="http://192.168.0.100:1313/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/about/" title="About">
+                <a href="http://192.168.0.100:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
+                <a href="http://192.168.0.100:1313/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -210,7 +138,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="http://192.168.0.100:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.100:1313/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       Searching in Arrays (Sorted and Unsorted)
     </h1>
@@ -222,12 +150,12 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
-    <a class="tag" href="https://learn.codeverra.com/tags/searching/">searching</a>
-    <a class="tag" href="https://learn.codeverra.com/tags/algorithms/">algorithms</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/dsa/">dsa</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/searching/">searching</a>
+    <a class="tag" href="http://192.168.0.100:1313/tags/algorithms/">algorithms</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="https://learn.codeverra.com/images/searching-arrays-cover.png" alt="Searching in arrays">
+        <img loading="eager" src="http://192.168.0.100:1313/images/searching-arrays-cover.png" alt="Searching in arrays">
         <figcaption>Searching techniques in sorted and unsorted arrays</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -424,16 +352,16 @@ Binary search is ideal for sorted arrays and large datasets.</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
-      <li><a href="https://learn.codeverra.com/tags/searching/">Searching</a></li>
-      <li><a href="https://learn.codeverra.com/tags/algorithms/">Algorithms</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/dsa/">Dsa</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/searching/">Searching</a></li>
+      <li><a href="http://192.168.0.100:1313/tags/algorithms/">Algorithms</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="http://192.168.0.100:1313/">codeverra</a></span> · 
 
     <span>
         Powered by

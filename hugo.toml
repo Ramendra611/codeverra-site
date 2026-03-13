@@ -1,4 +1,6 @@
 baseURL = "https://learn.codeverra.com/"
+relativeURLs = true
+canonifyURLs = true
 languageCode = "en-us"
 title = "codeverra"
 theme = "PaperMod"
@@ -6,6 +8,7 @@ theme = "PaperMod"
 enableRobotsTXT = true
 
 [params]
+  author = "Ram"
   description = "Learn about learning Python, DSA, Machine Learning, and AI with clarity."
   defaultTheme = "auto"
   disableThemeToggle = false
