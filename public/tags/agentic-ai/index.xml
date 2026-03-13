@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Agentic AI on codeverra</title>
+    <link>http://192.168.0.103:1313/tags/agentic-ai/</link>
+    <description>Recent content in Agentic AI on codeverra</description>
+    <generator>Hugo -- 0.153.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://192.168.0.103:1313/tags/agentic-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Agentic AI</title>
+      <link>http://192.168.0.103:1313/blogs/introduction_to_agentic_ai/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://192.168.0.103:1313/blogs/introduction_to_agentic_ai/</guid>
+      <description>Beginner first approach to getting started with Agentic AI</description>
+    </item>
+  </channel>
+</rss>
