@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Array Patterns for Problem Solving | codeverra</title>
 <meta name="keywords" content="dsa, arrays">
 <meta name="description" content="A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="http://192.168.0.103:1313/blogs/array_patterns/">
+<link rel="canonical" href="https://learn.codeverra.com/blogs/array_patterns/">
 
 
 
@@ -19,14 +19,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://192.168.0.103:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.103:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.103:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://192.168.0.103:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://192.168.0.103:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://192.168.0.103:1313/blogs/array_patterns/">
+<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/array_patterns/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,14 +78,85 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://learn.codeverra.com/blogs/array_patterns/">
+  <meta property="og:site_name" content="codeverra">
+  <meta property="og:title" content="Array Patterns for Problem Solving">
+  <meta property="og:description" content="A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
+    <meta property="article:tag" content="Dsa">
+    <meta property="article:tag" content="Arrays">
+    <meta property="og:image" content="https://learn.codeverra.com/blogs/array_patterns/images/blog-images/array-patterns.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://learn.codeverra.com/blogs/array_patterns/images/blog-images/array-patterns.jpg">
+<meta name="twitter:title" content="Array Patterns for Problem Solving">
+<meta name="twitter:description" content="A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://learn.codeverra.com/blogs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Array Patterns for Problem Solving",
+      "item": "https://learn.codeverra.com/blogs/array_patterns/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Array Patterns for Problem Solving",
+  "name": "Array Patterns for Problem Solving",
+  "description": "A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.",
+  "keywords": [
+    "dsa", "arrays"
+  ],
+  "articleBody": "Array patterns are recurring problem-solving techniques used to solve a wide variety of array problems efficiently.\nInstead of memorizing individual solutions, understanding these patterns helps you recognize how to approach a problem and design an optimal solution.\n1. Traversal Pattern Concept The traversal pattern involves visiting each element of the array once or in a fixed manner.\nWhen to Use Finding maximum or minimum elements Printing all elements Counting frequency Simple condition checks Explanation Example Traverse the array from the first element to the last, updating the required result as you move forward.\nTime Complexity O(n)\n2. Sliding Window Pattern Concept The sliding window pattern processes a fixed-size or variable-size window that slides over the array, avoiding repeated computation.\nWhen to Use Subarray sum problems Maximum or minimum in a window Longest or shortest subarray problems Explanation Example Instead of recalculating the sum for every subarray, update the window by adding the next element and removing the previous one.\nTime Complexity O(n)\n3. Two Pointer Pattern Concept The two pointer pattern uses two pointers that move through the array, either from both ends or in the same direction.\nWhen to Use Sorted arrays Pair sum problems Removing duplicates Reversing arrays Explanation Example One pointer starts at the beginning and another at the end. Based on conditions, one of the pointers is moved inward.\nTime Complexity O(n)\n4. Prefix Sum Pattern Concept The prefix sum pattern precomputes cumulative sums so that range queries can be answered efficiently.\nWhen to Use Range sum queries Subarray sum problems Performance optimization scenarios Explanation Example Store cumulative sums in an auxiliary array where each index represents the sum of elements up to that index.\nTime Complexity Preprocessing: O(n)\nQuery: O(1)\n5. Kadane’s Algorithm (Maximum Subarray) Concept Kadane’s algorithm is a Dynamic Programming technique used to find the maximum sum of a contiguous subarray.\nWhen to Use Maximum sum subarray problems Problems involving contiguous segments Explanation Example Maintain a running sum and reset it whenever it becomes worse than starting fresh from the current element.\nTime Complexity O(n)\n6. Frequency Count Pattern Concept This pattern uses extra space, such as an array or hashmap, to count the frequency of elements.\nWhen to Use Detecting duplicates Anagram checking Majority element problems Explanation Example Traverse the array and update a frequency record for each element encountered.\nTime Complexity O(n)\n7. Sorting-Based Pattern Concept Sorting the array first can simplify the logic of many problems.\nWhen to Use Pair or triplet problems Merging intervals Duplicate handling Explanation Example After sorting, elements that satisfy conditions often appear next to each other, reducing problem complexity.\nTime Complexity O(n log n)\n8. Binary Search on Arrays Concept Binary search repeatedly divides the search space into half to efficiently locate elements or answers.\nWhen to Use Sorted arrays Search problems Optimization problems such as binary search on answer Explanation Example Compare the middle element with the target and eliminate half of the array in each step.\nTime Complexity O(log n)\n9. Subarray Pattern Concept This pattern deals with problems involving continuous segments of an array.\nWhen to Use Subarray sum problems Longest or shortest subarray problems Zero-sum subarray problems Key Insight Sliding window or prefix sum techniques are often applied to solve these problems efficiently.\n10. In-Place Modification Pattern Concept The in-place modification pattern updates the array without using extra space.\nWhen to Use Removing elements Rearranging arrays Memory-constrained problems Explanation Example Use an index to overwrite unwanted elements while traversing the array.\nTime and Space Complexity Time complexity: O(n)\nSpace complexity: O(1)\nSummary of Array Patterns Traversal Pattern\nUse case: Basic operations\nSliding Window Pattern\nUse case: Subarrays\nTwo Pointer Pattern\nUse case: Sorted arrays\nPrefix Sum Pattern\nUse case: Range queries\nKadane’s Algorithm\nUse case: Maximum subarray\nFrequency Count Pattern\nUse case: Duplicates and counting\nSorting-Based Pattern\nUse case: Simplifying logic\nBinary Search Pattern\nUse case: Fast searching\nSubarray Pattern\nUse case: Contiguous segments\nIn-Place Modification Pattern\nUse case: Space optimization\nKey Learning Advice Identify array constraints Check whether the array is sorted Look for subarray or pair conditions Try to reduce nested loops Think in terms of patterns, not individual problems Conclusion Mastering array patterns significantly improves your problem-solving ability.\nOnce you recognize the underlying pattern, designing an efficient solution becomes much easier and faster.\n",
+  "wordCount" : "715",
+  "inLanguage": "en",
+  "image":"https://learn.codeverra.com/blogs/array_patterns/images/blog-images/array-patterns.jpg","datePublished": "2025-12-30T00:00:00Z",
+  "dateModified": "2025-12-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "codeverra"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://learn.codeverra.com/blogs/array_patterns/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "codeverra",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://learn.codeverra.com/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://192.168.0.103:1313/" accesskey="h" title="codeverra (Alt + H)">
-                    <img src="http://192.168.0.103:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
+                        
+                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -112,22 +183,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://192.168.0.103:1313/" title="Home">
+                <a href="https://learn.codeverra.com/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/courses/" title="Courses">
+                <a href="https://learn.codeverra.com/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/about/" title="About">
+                <a href="https://learn.codeverra.com/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/blogs/" title="Blogs">
+                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -138,7 +209,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://192.168.0.103:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.103:1313/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       Array Patterns for Problem Solving
     </h1>
@@ -150,11 +221,11 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="http://192.168.0.103:1313/tags/dsa/">dsa</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/arrays/">arrays</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/arrays/">arrays</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="http://192.168.0.103:1313/images/blog-images/array-patterns.jpg" alt="Array problem-solving patterns">
+        <img loading="eager" src="https://learn.codeverra.com/images/blog-images/array-patterns.jpg" alt="Array problem-solving patterns">
         <figcaption>Common array patterns for efficient problem solving</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -506,15 +577,15 @@ Use case: Space optimization</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://192.168.0.103:1313/tags/dsa/">Dsa</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/arrays/">Arrays</a></li>
+      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
+      <li><a href="https://learn.codeverra.com/tags/arrays/">Arrays</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://192.168.0.103:1313/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
 
     <span>
         Powered by

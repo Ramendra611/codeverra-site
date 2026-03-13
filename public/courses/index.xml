@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Courses on codeverra</title>
-    <link>http://192.168.0.103:1313/courses/</link>
+    <link>https://learn.codeverra.com/courses/</link>
     <description>Recent content in Courses on codeverra</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <atom:link href="http://192.168.0.103:1313/courses/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://learn.codeverra.com/courses/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DSA with Python: Zero to Hero</title>
-      <link>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</link>
+      <link>https://learn.codeverra.com/courses/dsa-python-zero-to-hero/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/courses/dsa-python-zero-to-hero/</guid>
+      <guid>https://learn.codeverra.com/courses/dsa-python-zero-to-hero/</guid>
       <description>A beginner-first, structured course to learn Python and Data Structures from scratch.</description>
     </item>
     <item>
       <title>DSA Live Practice Series</title>
-      <link>http://192.168.0.103:1313/courses/dsa-live-practice/</link>
+      <link>https://learn.codeverra.com/courses/dsa-live-practice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.103:1313/courses/dsa-live-practice/</guid>
+      <guid>https://learn.codeverra.com/courses/dsa-live-practice/</guid>
       <description>Daily live problem-solving sessions to build consistency in DSA.</description>
     </item>
   </channel>

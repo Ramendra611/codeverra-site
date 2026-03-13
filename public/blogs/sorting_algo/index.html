@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Different Sorting Algorithms Explained Clearly | codeverra</title>
 <meta name="keywords" content="dsa, sorting">
 <meta name="description" content="A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="http://192.168.0.103:1313/blogs/sorting_algo/">
+<link rel="canonical" href="https://learn.codeverra.com/blogs/sorting_algo/">
 
 
 
@@ -19,14 +19,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://192.168.0.103:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.103:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.103:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://192.168.0.103:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://192.168.0.103:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://192.168.0.103:1313/blogs/sorting_algo/">
+<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/sorting_algo/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,14 +78,85 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://learn.codeverra.com/blogs/sorting_algo/">
+  <meta property="og:site_name" content="codeverra">
+  <meta property="og:title" content="Different Sorting Algorithms Explained Clearly">
+  <meta property="og:description" content="A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
+    <meta property="article:tag" content="Dsa">
+    <meta property="article:tag" content="Sorting">
+    <meta property="og:image" content="https://learn.codeverra.com/blogs/sorting_algo/images/sorting-algorithms-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://learn.codeverra.com/blogs/sorting_algo/images/sorting-algorithms-cover.png">
+<meta name="twitter:title" content="Different Sorting Algorithms Explained Clearly">
+<meta name="twitter:description" content="A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://learn.codeverra.com/blogs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Different Sorting Algorithms Explained Clearly",
+      "item": "https://learn.codeverra.com/blogs/sorting_algo/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Different Sorting Algorithms Explained Clearly",
+  "name": "Different Sorting Algorithms Explained Clearly",
+  "description": "A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.",
+  "keywords": [
+    "dsa", "sorting"
+  ],
+  "articleBody": "Sorting is the process of arranging elements in a specific order, usually ascending or descending, to make data easier to search, analyze, and process.\nSorting plays a critical role in computer science because many algorithms perform efficiently only on sorted data.\n1. Bubble Sort Concept Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order. Larger elements gradually move to the end of the array, similar to bubbles rising to the surface.\nWorking Idea Compare adjacent elements Swap them if they are in the wrong order Repeat the process for all elements Time Complexity Best case: O(n) Average case: O(n²) Worst case: O(n²) Space Complexity O(1)\nKey Points Very simple to understand Highly inefficient for large datasets 2. Selection Sort Concept Selection Sort repeatedly selects the smallest element from the unsorted portion of the array and places it at its correct position.\nWorking Idea Find the minimum element Swap it with the first unsorted element Repeat for the remaining elements Time Complexity Best case: O(n²) Average case: O(n²) Worst case: O(n²) Space Complexity O(1)\nKey Points Requires fewer swaps than Bubble Sort Still slow for large inputs 3. Insertion Sort Concept Insertion Sort builds the sorted array one element at a time by inserting each element into its correct position in the already sorted part.\nWorking Idea Take one element at a time Insert it into the correct position in the sorted portion Time Complexity Best case: O(n) Average case: O(n²) Worst case: O(n²) Space Complexity O(1)\nKey Points Efficient for small or nearly sorted datasets Used in real-world hybrid sorting algorithms 4. Merge Sort Concept Merge Sort follows the divide-and-conquer approach by dividing the array into halves, sorting each half, and then merging them back together.\nWorking Idea Divide the array into two halves Recursively sort both halves Merge the sorted halves Time Complexity Best case: O(n log n) Average case: O(n log n) Worst case: O(n log n) Space Complexity O(n)\nKey Points Stable sorting algorithm Very efficient for large datasets 5. Quick Sort Concept Quick Sort selects a pivot element and arranges elements smaller than the pivot on one side and larger elements on the other side.\nWorking Idea Choose a pivot element Partition the array around the pivot Recursively sort the subarrays Time Complexity Best case: O(n log n) Average case: O(n log n) Worst case: O(n²) Space Complexity O(log n) due to recursion stack\nKey Points Very fast in practice Not stable by default 6. Heap Sort Concept Heap Sort uses a heap data structure to repeatedly extract the maximum element and place it at the end of the array.\nWorking Idea Build a max heap Remove the largest element Place it at the end Repeat the process Time Complexity Best case: O(n log n) Average case: O(n log n) Worst case: O(n log n) Space Complexity O(1)\nKey Points In-place sorting algorithm Not stable 7. Counting Sort Concept Counting Sort counts the occurrences of each element and uses this information to place elements directly into their correct positions.\nWorking Idea Count the frequency of each element Compute cumulative counts Place elements in sorted order Time Complexity O(n + k), where k is the range of values\nSpace Complexity O(n + k)\nKey Points Extremely fast for small range data Not a comparison-based sorting algorithm 8. Radix Sort Concept Radix Sort sorts numbers digit by digit, starting from the least significant digit and moving to the most significant digit.\nWorking Idea Sort numbers by each digit Use a stable sorting method at each step Time Complexity O(n × d), where d is the number of digits\nSpace Complexity O(n)\nKey Points Works well for integers Not comparison-based 9. Bucket Sort Concept Bucket Sort distributes elements into different buckets, sorts each bucket individually, and then combines all buckets to form the sorted array.\nWorking Idea Create buckets Distribute elements into buckets Sort each bucket Combine the results Time Complexity Average case: O(n + k) Worst case: O(n²) Space Complexity O(n)\nKey Points Efficient for uniformly distributed data Comparison of Sorting Algorithms Bubble Sort\nBest: O(n)\nAverage: O(n²)\nWorst: O(n²)\nStable: Yes\nSelection Sort\nBest: O(n²)\nAverage: O(n²)\nWorst: O(n²)\nStable: No\nInsertion Sort\nBest: O(n)\nAverage: O(n²)\nWorst: O(n²)\nStable: Yes\nMerge Sort\nBest: O(n log n)\nAverage: O(n log n)\nWorst: O(n log n)\nStable: Yes\nQuick Sort\nBest: O(n log n)\nAverage: O(n log n)\nWorst: O(n²)\nStable: No\nHeap Sort\nBest: O(n log n)\nAverage: O(n log n)\nWorst: O(n log n)\nStable: No\nCounting Sort\nBest: O(n + k)\nAverage: O(n + k)\nWorst: O(n + k)\nStable: Yes\nRadix Sort\nBest: O(n × d)\nAverage: O(n × d)\nWorst: O(n × d)\nStable: Yes\nChoosing the Right Sorting Algorithm Small dataset → Insertion Sort Large dataset → Merge Sort or Quick Sort Memory constraints → Heap Sort Known range of values → Counting Sort Real-world systems → Hybrid algorithms Conclusion No single sorting algorithm is best for all situations.\nUnderstanding the strengths and limitations of each sorting algorithm allows you to choose the most efficient approach for a given problem and dataset.\n",
+  "wordCount" : "857",
+  "inLanguage": "en",
+  "image":"https://learn.codeverra.com/blogs/sorting_algo/images/sorting-algorithms-cover.png","datePublished": "2025-12-30T00:00:00Z",
+  "dateModified": "2025-12-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "codeverra"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://learn.codeverra.com/blogs/sorting_algo/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "codeverra",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://learn.codeverra.com/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://192.168.0.103:1313/" accesskey="h" title="codeverra (Alt + H)">
-                    <img src="http://192.168.0.103:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
+                        
+                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -112,22 +183,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://192.168.0.103:1313/" title="Home">
+                <a href="https://learn.codeverra.com/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/courses/" title="Courses">
+                <a href="https://learn.codeverra.com/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/about/" title="About">
+                <a href="https://learn.codeverra.com/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/blogs/" title="Blogs">
+                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -138,7 +209,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://192.168.0.103:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.103:1313/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       Different Sorting Algorithms Explained Clearly
     </h1>
@@ -150,11 +221,11 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="http://192.168.0.103:1313/tags/dsa/">dsa</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/sorting/">sorting</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/sorting/">sorting</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="http://192.168.0.103:1313/images/sorting-algorithms-cover.png" alt="Sorting algorithms">
+        <img loading="eager" src="https://learn.codeverra.com/images/sorting-algorithms-cover.png" alt="Sorting algorithms">
         <figcaption>Understanding different sorting techniques</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -597,15 +668,15 @@ Stable: Yes</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://192.168.0.103:1313/tags/dsa/">Dsa</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/sorting/">Sorting</a></li>
+      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
+      <li><a href="https://learn.codeverra.com/tags/sorting/">Sorting</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://192.168.0.103:1313/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
 
     <span>
         Powered by

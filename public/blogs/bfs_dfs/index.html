@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>BFS vs DFS Explained Clearly | codeverra</title>
 <meta name="keywords" content="dsa, bfs, dfs, graphs, traversal, algorithms">
 <meta name="description" content="A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.">
 <meta name="author" content="codeverra">
-<link rel="canonical" href="http://192.168.0.103:1313/blogs/bfs_dfs/">
+<link rel="canonical" href="https://learn.codeverra.com/blogs/bfs_dfs/">
 
 
 
@@ -19,14 +19,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://192.168.0.103:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.0.103:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.0.103:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://192.168.0.103:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://192.168.0.103:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://learn.codeverra.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://learn.codeverra.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://learn.codeverra.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://learn.codeverra.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://learn.codeverra.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://192.168.0.103:1313/blogs/bfs_dfs/">
+<link rel="alternate" hreflang="en" href="https://learn.codeverra.com/blogs/bfs_dfs/">
 <noscript>
     <style>
         #theme-toggle,
@@ -78,14 +78,89 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://learn.codeverra.com/blogs/bfs_dfs/">
+  <meta property="og:site_name" content="codeverra">
+  <meta property="og:title" content="BFS vs DFS Explained Clearly">
+  <meta property="og:description" content="A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
+    <meta property="article:tag" content="Dsa">
+    <meta property="article:tag" content="Bfs">
+    <meta property="article:tag" content="Dfs">
+    <meta property="article:tag" content="Graphs">
+    <meta property="article:tag" content="Traversal">
+    <meta property="article:tag" content="Algorithms">
+    <meta property="og:image" content="https://learn.codeverra.com/blogs/bfs_dfs/images/blog-images/bfs-dfs.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://learn.codeverra.com/blogs/bfs_dfs/images/blog-images/bfs-dfs.jpg">
+<meta name="twitter:title" content="BFS vs DFS Explained Clearly">
+<meta name="twitter:description" content="A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://learn.codeverra.com/blogs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "BFS vs DFS Explained Clearly",
+      "item": "https://learn.codeverra.com/blogs/bfs_dfs/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "BFS vs DFS Explained Clearly",
+  "name": "BFS vs DFS Explained Clearly",
+  "description": "A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.",
+  "keywords": [
+    "dsa", "bfs", "dfs", "graphs", "traversal", "algorithms"
+  ],
+  "articleBody": "Graphs and trees are non-linear data structures. To process or explore them, traversal algorithms are used.\nThe two most important traversal techniques are:\nBreadth-First Search (BFS) Depth-First Search (DFS) Both algorithms visit all nodes in a graph or tree, but their strategies and use-cases differ significantly.\n1. Breadth-First Search (BFS) Concept Breadth-First Search explores a graph level by level.\nIt visits all neighbors of a node before moving deeper into the graph.\nIn simple terms, BFS explores nodes in increasing order of distance from the starting node.\nHow BFS Works Start from a source node Visit the node and mark it as visited Visit all its immediate neighbors Then visit neighbors of neighbors Continue until all reachable nodes are visited Data Structure Used Queue\nWhy Queue Is Used BFS follows the First In, First Out (FIFO) principle.\nNodes discovered earlier are processed first, ensuring level-wise traversal.\nBFS Example (Step-by-Step) Graph structure:\nA connected to B and C\nB connected to D\nStarting from node A:\nVisit A, queue contains A Visit B and C, queue contains B and C Visit D, queue contains C and D Traversal order becomes:\nA → B → C → D\nTime Complexity Time complexity of BFS is O(V + E)\nWhere:\nV is the number of vertices E is the number of edges Each vertex and edge is processed once.\nSpace Complexity Space complexity is O(V)\nThis is because the queue and visited structure may store all vertices.\nApplications of BFS Finding shortest path in unweighted graphs Level-order traversal of trees Finding minimum number of steps Social networks (degrees of connection) Web crawling 2. Depth-First Search (DFS) Concept Depth-First Search explores a graph by going as deep as possible before backtracking.\nIn simple terms, DFS explores one complete path before trying another path.\nHow DFS Works Start from a source node Visit a neighbor Continue visiting deeper neighbors When no unvisited neighbor exists, backtrack Repeat until all nodes are visited Data Structure Used Stack\nThis can be:\nAn explicit stack Or an implicit recursion stack Why Stack Is Used DFS follows the Last In, First Out (LIFO) principle.\nThe most recently visited node is explored first.\nDFS Example (Step-by-Step) Graph structure:\nA connected to B and C\nB connected to D\nStarting from node A:\nVisit A Go to B Go to D Backtrack Visit C Traversal order becomes:\nA → B → D → C\nTime Complexity Time complexity of DFS is O(V + E)\nSame as BFS.\nSpace Complexity Space complexity is O(V)\nThis is due to the recursion stack or explicit stack used during traversal.\nApplications of DFS Cycle detection Topological sorting Finding connected components Path existence problems Solving mazes and puzzles Backtracking problems 3. Key Conceptual Differences Traversal Strategy BFS explores breadth first.\nDFS explores depth first.\nData Structure BFS uses a queue.\nDFS uses a stack or recursion.\nShortest Path BFS guarantees the shortest path in unweighted graphs.\nDFS does not guarantee the shortest path.\n4. BFS vs DFS Comparison Traversal Style\nBFS: Level-wise\nDFS: Depth-wise\nData Structure\nBFS: Queue\nDFS: Stack or recursion\nShortest Path\nBFS: Yes (for unweighted graphs)\nDFS: No\nMemory Usage\nBFS: Higher\nDFS: Lower\nImplementation\nBFS: Iterative\nDFS: Recursive or iterative\nUse Case\nBFS: Minimum distance problems\nDFS: Exhaustive search problems\n5. When to Use BFS vs DFS Use BFS When You need the shortest path Distance or level matters The graph is unweighted You are searching for the nearest solution Use DFS When You need to explore all possibilities Memory is limited Solving puzzles or backtracking problems Detecting cycles or connectivity Conclusion Breadth-First Search and Depth-First Search are foundational graph traversal algorithms.\nUnderstanding their traversal strategies, data structures, complexities, and use-cases is essential for solving graph problems efficiently in interviews and real-world applications.\n",
+  "wordCount" : "630",
+  "inLanguage": "en",
+  "image":"https://learn.codeverra.com/blogs/bfs_dfs/images/blog-images/bfs-dfs.jpg","datePublished": "2025-12-30T00:00:00Z",
+  "dateModified": "2025-12-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "codeverra"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://learn.codeverra.com/blogs/bfs_dfs/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "codeverra",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://learn.codeverra.com/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://192.168.0.103:1313/" accesskey="h" title="codeverra (Alt + H)">
-                    <img src="http://192.168.0.103:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+            <a href="https://learn.codeverra.com/" accesskey="h" title="codeverra (Alt + H)">
+                        
+                    <img src="https://learn.codeverra.com/images/CODEVERRA_hu_e57fc89e693792c1.jpg" alt="" aria-label="logo"
                         height="32">codeverra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -112,22 +187,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://192.168.0.103:1313/" title="Home">
+                <a href="https://learn.codeverra.com/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/courses/" title="Courses">
+                <a href="https://learn.codeverra.com/courses/" title="Courses">
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/about/" title="About">
+                <a href="https://learn.codeverra.com/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://192.168.0.103:1313/blogs/" title="Blogs">
+                <a href="https://learn.codeverra.com/blogs/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
@@ -138,7 +213,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://192.168.0.103:1313/">Home</a>&nbsp;»&nbsp;<a href="http://192.168.0.103:1313/blogs/">Blogs</a></div>
+    <div class="breadcrumbs"><a href="https://learn.codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="https://learn.codeverra.com/blogs/">Blogs</a></div>
     <h1 class="post-title entry-hint-parent">
       BFS vs DFS Explained Clearly
     </h1>
@@ -150,15 +225,15 @@
 </div>
   </header>
   <div class="entry-tags post-tags-top">
-    <a class="tag" href="http://192.168.0.103:1313/tags/dsa/">dsa</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/bfs/">bfs</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/dfs/">dfs</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/graphs/">graphs</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/traversal/">traversal</a>
-    <a class="tag" href="http://192.168.0.103:1313/tags/algorithms/">algorithms</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/dsa/">dsa</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/bfs/">bfs</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/dfs/">dfs</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/graphs/">graphs</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/traversal/">traversal</a>
+    <a class="tag" href="https://learn.codeverra.com/tags/algorithms/">algorithms</a>
   </div> 
 <figure class="entry-cover">
-        <img loading="eager" src="http://192.168.0.103:1313/images/blog-images/bfs-dfs.jpg" alt="BFS vs DFS graph traversal">
+        <img loading="eager" src="https://learn.codeverra.com/images/blog-images/bfs-dfs.jpg" alt="BFS vs DFS graph traversal">
         <figcaption>Understanding BFS and DFS traversal techniques</figcaption>
 </figure><div class="toc">
     <details  open>
@@ -418,19 +493,19 @@ DFS: Exhaustive search problems</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://192.168.0.103:1313/tags/dsa/">Dsa</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/bfs/">Bfs</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/dfs/">Dfs</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/graphs/">Graphs</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/traversal/">Traversal</a></li>
-      <li><a href="http://192.168.0.103:1313/tags/algorithms/">Algorithms</a></li>
+      <li><a href="https://learn.codeverra.com/tags/dsa/">Dsa</a></li>
+      <li><a href="https://learn.codeverra.com/tags/bfs/">Bfs</a></li>
+      <li><a href="https://learn.codeverra.com/tags/dfs/">Dfs</a></li>
+      <li><a href="https://learn.codeverra.com/tags/graphs/">Graphs</a></li>
+      <li><a href="https://learn.codeverra.com/tags/traversal/">Traversal</a></li>
+      <li><a href="https://learn.codeverra.com/tags/algorithms/">Algorithms</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://192.168.0.103:1313/">codeverra</a></span> · 
+        <span>&copy; 2026 <a href="https://learn.codeverra.com/">codeverra</a></span> · 
 
     <span>
         Powered by
