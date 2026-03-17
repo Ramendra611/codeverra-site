@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Data-Analysis | codeverra</title>
+<meta name="keywords" content="">
+<meta name="description" content="Learn about learning Python, DSA, Machine Learning, and AI with clarity.">
+<meta name="author" content="Ram">
+<link rel="canonical" href="http://localhost:1313/tags/data-analysis/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.c39a5f4a728c35b301c0c581797dfe1f88fde7ddf78b8eaf2785e93d851fa38f.css" integrity="sha256-w5pfSnKMNbMBwMWBeX3&#43;H4j95933i46vJ4XpPYUfo48=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/data-analysis/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/data-analysis/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+    <h1>
+        Data-Analysis
+    </h1>
+</header>
+
+
+
+<div class="post-grid">
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/pandas_ipl.png" alt="pandas practice on IPL dataset">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Practice Pandas on IPL Dataset
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
+    </div>
+    <div class="entry-content">
+        <p>Pandas Practice Sheet — IPL Dataset A complete two-table exploration: from match summaries to ball-by-ball intelligence Why IPL Is the Best Dataset for Pandas After Zomato The Zomato dataset taught you how to clean a single messy table. The IPL dataset teaches you something more important: how to work with two related tables and merge them to answer questions neither table can answer alone.
+This is how data exists in every real company — not as one giant flat file, but as a set of related tables that you must join, aggregate across levels, and reason about carefully.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>38 min</span>&nbsp;·&nbsp;<span>8014 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Practice Pandas on IPL Dataset" href="http://localhost:1313/blogs/ipl_pandas/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/pandas_titanic.png" alt="pandas practice on titanic dataset">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Practice Pandas on Titanic Dataset
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
+    </div>
+    <div class="entry-content">
+        <p>Pandas Practice Sheet — Titanic Dataset 20 Questions from Zero to Advanced, with Full Solutions Getting the Dataset The Titanic dataset is hosted publicly and can be loaded directly into pandas — no download needed.
+Direct CSV URL (no login required):
+https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv Load it in one line:
+import pandas as pd df = pd.read_csv(&#34;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&#34;) Or load via seaborn (also free, slightly different column names):
+import seaborn as sns df = sns.load_dataset(&#34;titanic&#34;) Always run df.head() and df.info() before answering any question — knowing your data is half the battle.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5165 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Practice Pandas on Titanic Dataset" href="http://localhost:1313/blogs/titanic_pandas/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/pandas_zomato.png" alt="practice pandas on zomato dataset">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Practice Pandas on Zomato Dataset
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Pandas Practice Sheet — Zomato Bangalore Dataset A complete guided exploration: from raw messy data to real business insights Why This Dataset? The Titanic dataset is clean, small, and predictable. The Zomato Bangalore dataset is the opposite — it is genuinely messy in the way real-world data is messy. Ratings stored as strings like &#34;3.8/5&#34;. Costs formatted as &#34;450&#34; with comma-separators (&#34;1,200&#34;). The cuisines column has multiple cuisines packed into one cell separated by commas. Several columns have inconsistent values, duplicates, and missing data scattered across them.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>34 min</span>&nbsp;·&nbsp;<span>7207 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Practice Pandas on Zomato Dataset" href="http://localhost:1313/blogs/pandas_zomato/"></a>
+    
+</article>
+</div>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -2,156 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>codeverra</title>
-    <link>http://192.168.0.100:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo -- 0.158.0</generator>
     <language>en-us</language>
-    <atom:link href="http://192.168.0.100:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Practical DSA Learning Roadmap</title>
-      <link>http://192.168.0.100:1313/blogs/dsa_roadmap/</link>
+      <link>http://localhost:1313/blogs/dsa_roadmap/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/dsa_roadmap/</guid>
+      <guid>http://localhost:1313/blogs/dsa_roadmap/</guid>
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
     </item>
     <item>
       <title>DSA with Python: Zero to Hero</title>
-      <link>http://192.168.0.100:1313/courses/dsa-python-zero-to-hero/</link>
+      <link>http://localhost:1313/courses/dsa-python-zero-to-hero/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/courses/dsa-python-zero-to-hero/</guid>
+      <guid>http://localhost:1313/courses/dsa-python-zero-to-hero/</guid>
       <description>A beginner-first, structured course to learn Python and Data Structures from scratch.</description>
     </item>
     <item>
       <title>DSA With Python - Zero to Hero (Curriculum)</title>
-      <link>http://192.168.0.100:1313/blogs/dsa-with-python-curriculum/</link>
+      <link>http://localhost:1313/blogs/dsa-with-python-curriculum/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/dsa-with-python-curriculum/</guid>
+      <guid>http://localhost:1313/blogs/dsa-with-python-curriculum/</guid>
       <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
     </item>
     <item>
       <title>DSA Live Practice Series</title>
-      <link>http://192.168.0.100:1313/courses/dsa-live-practice/</link>
+      <link>http://localhost:1313/courses/dsa-live-practice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/courses/dsa-live-practice/</guid>
+      <guid>http://localhost:1313/courses/dsa-live-practice/</guid>
       <description>Daily live problem-solving sessions to build consistency in DSA.</description>
     </item>
     <item>
+      <title>Exception Handling in Python - Complete Guide</title>
+      <link>http://localhost:1313/blogs/exception_handling/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/exception_handling/</guid>
+      <description>Learn about try-except-finally and custom exceptions in Python</description>
+    </item>
+    <item>
+      <title>Higher Order Functions and Decorators in Python</title>
+      <link>http://localhost:1313/blogs/decorators/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/decorators/</guid>
+      <description>Learn about higher order functions like map, filter, reduce and decorators </description>
+    </item>
+    <item>
+      <title>Iterators and Generators in Python - Complete Guide</title>
+      <link>http://localhost:1313/blogs/iterators_generators/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/iterators_generators/</guid>
+      <description>Learn about iterables and iterators and generators in python</description>
+    </item>
+    <item>
+      <title>Itertools Module in Python - Complete Guide</title>
+      <link>http://localhost:1313/blogs/itertools/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/itertools/</guid>
+      <description>Learn about the very useful itertools library in python</description>
+    </item>
+    <item>
+      <title>Practice Pandas on IPL Dataset</title>
+      <link>http://localhost:1313/blogs/ipl_pandas/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/ipl_pandas/</guid>
+      <description>Master data analysis in Python using the pandas library using hands on practice on IPL dataset</description>
+    </item>
+    <item>
+      <title>Practice Pandas on Titanic Dataset</title>
+      <link>http://localhost:1313/blogs/titanic_pandas/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/titanic_pandas/</guid>
+      <description>Master data analysis in Python using the pandas library using hands on practice on Titanic dataset</description>
+    </item>
+    <item>
+      <title>Practice Pandas on Zomato Dataset</title>
+      <link>http://localhost:1313/blogs/pandas_zomato/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/pandas_zomato/</guid>
+      <description>Master data analysis in Python using the pandas library using hands on practice on Zomato dataset</description>
+    </item>
+    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
-      <link>http://192.168.0.100:1313/blogs/time_complexity/</link>
+      <link>http://localhost:1313/blogs/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/time_complexity/</guid>
+      <guid>http://localhost:1313/blogs/time_complexity/</guid>
       <description>A beginner-friendly and practical guide to understanding time complexity with clear explanations and Python examples written as plain text.</description>
     </item>
     <item>
       <title>Array Patterns for Problem Solving</title>
-      <link>http://192.168.0.100:1313/blogs/array_patterns/</link>
+      <link>http://localhost:1313/blogs/array_patterns/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/array_patterns/</guid>
+      <guid>http://localhost:1313/blogs/array_patterns/</guid>
       <description>A structured guide to common array problem-solving patterns, helping you identify the right approach instead of memorizing solutions.</description>
     </item>
     <item>
       <title>BFS vs DFS Explained Clearly</title>
-      <link>http://192.168.0.100:1313/blogs/bfs_dfs/</link>
+      <link>http://localhost:1313/blogs/bfs_dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/bfs_dfs/</guid>
+      <guid>http://localhost:1313/blogs/bfs_dfs/</guid>
       <description>A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.</description>
     </item>
     <item>
       <title>Binary Search Explained Clearly</title>
-      <link>http://192.168.0.100:1313/blogs/binary_search/</link>
+      <link>http://localhost:1313/blogs/binary_search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/binary_search/</guid>
+      <guid>http://localhost:1313/blogs/binary_search/</guid>
       <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://192.168.0.100:1313/blogs/python_syllabus/</link>
+      <link>http://localhost:1313/blogs/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/python_syllabus/</guid>
+      <guid>http://localhost:1313/blogs/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
     <item>
       <title>Concept of Dynamic Programming Explained Clearly</title>
-      <link>http://192.168.0.100:1313/blogs/dynamic_programming/</link>
+      <link>http://localhost:1313/blogs/dynamic_programming/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/dynamic_programming/</guid>
+      <guid>http://localhost:1313/blogs/dynamic_programming/</guid>
       <description>A clear and conceptual explanation of Dynamic Programming, focusing on overlapping subproblems and optimal substructure with intuitive examples.</description>
     </item>
     <item>
       <title>Different Sorting Algorithms Explained Clearly</title>
-      <link>http://192.168.0.100:1313/blogs/sorting_algo/</link>
+      <link>http://localhost:1313/blogs/sorting_algo/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/sorting_algo/</guid>
+      <guid>http://localhost:1313/blogs/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
     </item>
     <item>
       <title>Recursion Explained from Basics</title>
-      <link>http://192.168.0.100:1313/blogs/recursion/</link>
+      <link>http://localhost:1313/blogs/recursion/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/recursion/</guid>
+      <guid>http://localhost:1313/blogs/recursion/</guid>
       <description>A clear and beginner-friendly explanation of recursion, covering how it works, its components, types, advantages, disadvantages, and use cases.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://192.168.0.100:1313/blogs/searching_in_arrays/</link>
+      <link>http://localhost:1313/blogs/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/searching_in_arrays/</guid>
+      <guid>http://localhost:1313/blogs/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
-    </item>
-    <item>
-      <title>Test test test</title>
-      <link>http://192.168.0.100:1313/blogs/test_blog/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/test_blog/</guid>
-      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
-    </item>
-    <item>
-      <title>Welcome to the Codeverra Blog</title>
-      <link>http://192.168.0.100:1313/blogs/welcome/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/welcome/</guid>
-      <description>&lt;p&gt;Welcome to the Codeverra blog.&lt;/p&gt;
-&lt;p&gt;This space is where I’ll share:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;clear explanations of core concepts&lt;/li&gt;
-&lt;li&gt;problem-solving approaches&lt;/li&gt;
-&lt;li&gt;learning strategies for Python, DSA, and AI&lt;/li&gt;
-&lt;li&gt;notes that go deeper than short-form content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;start-here-recommended&#34;&gt;Start here (recommended)&lt;/h2&gt;
-&lt;p&gt;If you’re new, start with this video where I explain how I approach teaching and learning:&lt;/p&gt;
-&lt;iframe
-  width=&#34;560&#34;
-  height=&#34;315&#34;
-  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB8lMqv5mJSJHl9g42Yo9DRg&#34;
-  title=&#34;Python and DSA playlist&#34;
-  frameborder=&#34;0&#34;
-  allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;learning-playlists&#34;&gt;Learning playlists&lt;/h2&gt;
-&lt;p&gt;Here are some curated playlists you can follow:&lt;/p&gt;
-&lt;h3 id=&#34;python--dsa&#34;&gt;Python &amp;amp; DSA&lt;/h3&gt;
-&lt;iframe
-  width=&#34;560&#34;
-  height=&#34;315&#34;
-  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB_1SrUdxiXj7xASrEa_M2XQ&#34;
-  title=&#34;Python and DSA playlist&#34;
-  frameborder=&#34;0&#34;
-  allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;h3 id=&#34;leetcode-with-python-in-hindi-100daysofleetcode&#34;&gt;Leetcode with Python in Hindi #100DaysOfLeetcode&lt;/h3&gt;
-&lt;iframe
-  width=&#34;560&#34;
-  height=&#34;315&#34;
-  src=&#34;https://www.youtube.com/embed/videoseries?list=PLo8TPLc6QbB_1SrUdxiXj7xASrEa_M2XQ&#34;
-  title=&#34;Python and DSA playlist&#34;
-  frameborder=&#34;0&#34;
-  allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;hr&gt;
-&lt;p&gt;More structured posts and learning paths coming soon.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
