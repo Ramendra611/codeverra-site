@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Searching on codeverra</title>
-    <link>http://192.168.0.100:1313/tags/searching/</link>
+    <link>http://localhost:1313/tags/searching/</link>
     <description>Recent content in Searching on codeverra</description>
-    <generator>Hugo -- 0.153.3</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.100:1313/tags/searching/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/searching/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Practice Pandas on IPL Dataset</title>
+      <link>http://localhost:1313/blogs/ipl_pandas/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/ipl_pandas/</guid>
+      <description>&lt;h1 id=&#34;pandas-practice-sheet--ipl-dataset&#34;&gt;Pandas Practice Sheet — IPL Dataset&lt;/h1&gt;&#xA;&lt;h3 id=&#34;a-complete-two-table-exploration-from-match-summaries-to-ball-by-ball-intelligence&#34;&gt;A complete two-table exploration: from match summaries to ball-by-ball intelligence&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-ipl-is-the-best-dataset-for-pandas-after-zomato&#34;&gt;Why IPL Is the Best Dataset for Pandas After Zomato&lt;/h2&gt;&#xA;&lt;p&gt;The Zomato dataset taught you how to clean a single messy table. The IPL dataset teaches you something more important: &lt;strong&gt;how to work with two related tables and merge them to answer questions neither table can answer alone.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is how data exists in every real company — not as one giant flat file, but as a set of related tables that you must join, aggregate across levels, and reason about carefully.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Practice Pandas on Zomato Dataset</title>
+      <link>http://localhost:1313/blogs/pandas_zomato/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/pandas_zomato/</guid>
+      <description>&lt;h1 id=&#34;pandas-practice-sheet--zomato-bangalore-dataset&#34;&gt;Pandas Practice Sheet — Zomato Bangalore Dataset&lt;/h1&gt;&#xA;&lt;h3 id=&#34;a-complete-guided-exploration-from-raw-messy-data-to-real-business-insights&#34;&gt;A complete guided exploration: from raw messy data to real business insights&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-this-dataset&#34;&gt;Why This Dataset?&lt;/h2&gt;&#xA;&lt;p&gt;The Titanic dataset is clean, small, and predictable. The Zomato Bangalore dataset is the opposite — it is &lt;strong&gt;genuinely messy in the way real-world data is messy&lt;/strong&gt;. Ratings stored as strings like &lt;code&gt;&amp;quot;3.8/5&amp;quot;&lt;/code&gt;. Costs formatted as &lt;code&gt;&amp;quot;450&amp;quot;&lt;/code&gt; with comma-separators (&lt;code&gt;&amp;quot;1,200&amp;quot;&lt;/code&gt;). The &lt;code&gt;cuisines&lt;/code&gt; column has multiple cuisines packed into one cell separated by commas. Several columns have inconsistent values, duplicates, and missing data scattered across them.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Binary Search Explained Clearly</title>
-      <link>http://192.168.0.100:1313/blogs/binary_search/</link>
+      <link>http://localhost:1313/blogs/binary_search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/binary_search/</guid>
-      <description>A clear and structured explanation of binary search, including how it works, requirements, examples, complexities, and interview insights.</description>
+      <guid>http://localhost:1313/blogs/binary_search/</guid>
+      <description>&lt;p&gt;Binary Search is an efficient searching algorithm used to find an element in a sorted array by repeatedly dividing the search space into half.&lt;/p&gt;&#xA;&lt;p&gt;Unlike linear search, which checks elements one by one, binary search eliminates half of the remaining elements at each step. This makes it significantly faster for large datasets.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;key-requirement&#34;&gt;Key Requirement&lt;/h2&gt;&#xA;&lt;p&gt;Binary search can only be applied when the array is already sorted.&lt;/p&gt;&#xA;&lt;p&gt;The sorting order can be:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://192.168.0.100:1313/blogs/searching_in_arrays/</link>
+      <link>http://localhost:1313/blogs/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://192.168.0.100:1313/blogs/searching_in_arrays/</guid>
-      <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
+      <guid>http://localhost:1313/blogs/searching_in_arrays/</guid>
+      <description>&lt;p&gt;Searching is the process of determining whether a given element exists in an array and, if required, returning its index.&lt;/p&gt;&#xA;&lt;p&gt;The choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-searching-in-an-unsorted-array&#34;&gt;1. Searching in an Unsorted Array&lt;/h2&gt;&#xA;&lt;h3 id=&#34;characteristics&#34;&gt;Characteristics&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Elements are not arranged in any specific order&lt;/li&gt;&#xA;&lt;li&gt;No assumptions can be made about element positions&lt;/li&gt;&#xA;&lt;li&gt;Linear search is the primary technique used&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;linear-search&#34;&gt;Linear Search&lt;/h3&gt;&#xA;&lt;h4 id=&#34;concept&#34;&gt;Concept&lt;/h4&gt;&#xA;&lt;p&gt;Each element of the array is checked one by one until the target element is found or the array ends.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
