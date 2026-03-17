@@ -23,6 +23,13 @@
       <description>Learn about grouping and aggregating on tables</description>
     </item>
     <item>
+      <title>Indexes and Schema Design</title>
+      <link>http://localhost:1313/blogs/sql-part7/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part7/</guid>
+      <description>Learn about using and creating indexes on tabels to improve query performance</description>
+    </item>
+    <item>
       <title>Introduction to SQL and Databases</title>
       <link>http://localhost:1313/blogs/sql-part1/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
@@ -42,6 +49,13 @@
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blogs/sql-part5/</guid>
       <description>Learn about different types of joins</description>
+    </item>
+    <item>
+      <title>Modifying data &amp; Schema Changes</title>
+      <link>http://localhost:1313/blogs/sql-part6/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part6/</guid>
+      <description>Learn about making changes to the existing tables</description>
     </item>
   </channel>
 </rss>

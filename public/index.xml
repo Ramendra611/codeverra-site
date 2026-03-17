@@ -64,6 +64,13 @@
       <description>Learn about higher order functions like map, filter, reduce and decorators </description>
     </item>
     <item>
+      <title>Indexes and Schema Design</title>
+      <link>http://localhost:1313/blogs/sql-part7/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part7/</guid>
+      <description>Learn about using and creating indexes on tabels to improve query performance</description>
+    </item>
+    <item>
       <title>Introduction to SQL and Databases</title>
       <link>http://localhost:1313/blogs/sql-part1/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>

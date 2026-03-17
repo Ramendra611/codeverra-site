@@ -9,11 +9,25 @@
     <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Filtering and Aggregating data</title>
+      <title>Filtering and Querying data</title>
       <link>http://localhost:1313/blogs/sql-part2/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blogs/sql-part2/</guid>
       <description>Learn about WHERE, GROUPBY and other important commands</description>
+    </item>
+    <item>
+      <title>Group by and Aggregations</title>
+      <link>http://localhost:1313/blogs/sql-part3/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part3/</guid>
+      <description>Learn about grouping and aggregating on tables</description>
+    </item>
+    <item>
+      <title>Indexes and Schema Design</title>
+      <link>http://localhost:1313/blogs/sql-part7/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part7/</guid>
+      <description>Learn about using and creating indexes on tabels to improve query performance</description>
     </item>
     <item>
       <title>Introduction to SQL and Databases</title>
@@ -21,6 +35,27 @@
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blogs/sql-part1/</guid>
       <description>Introduction to PostgreSQl and writing queries using pgAdmin tool</description>
+    </item>
+    <item>
+      <title>Joins and Relationships</title>
+      <link>http://localhost:1313/blogs/sql-part4/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part4/</guid>
+      <description>Learn about different types of joins</description>
+    </item>
+    <item>
+      <title>Joins and Relationships</title>
+      <link>http://localhost:1313/blogs/sql-part5/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part5/</guid>
+      <description>Learn about different types of joins</description>
+    </item>
+    <item>
+      <title>Modifying data &amp; Schema Changes</title>
+      <link>http://localhost:1313/blogs/sql-part6/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/sql-part6/</guid>
+      <description>Learn about making changes to the existing tables</description>
     </item>
     <item>
       <title>Practice Pandas on IPL Dataset</title>
