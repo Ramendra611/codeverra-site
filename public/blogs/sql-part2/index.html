@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Filtering and Aggregating data | codeverra</title>
+<meta name="keywords" content="sql, data-analysis">
+<meta name="description" content="Learn about WHERE, GROUPBY and other important commands">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blogs/sql-part2/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blogs/sql-part2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blogs/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blogs/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Filtering and Aggregating data
+    </h1>
+    <div class="post-description">
+      Learn about WHERE, GROUPBY and other important commands
+    </div>
+    <div class="post-meta"><span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2494 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+    <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/blog-images/SQL%20-%202.png" alt="introduction to SQL">
+        <figcaption>introduction to SQL</figcaption>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#lesson-22---filtering--querying-data" aria-label="Lesson 2.2 - Filtering &amp; Querying Data">Lesson 2.2 - Filtering &amp; Querying Data</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#theory--practice--shopdb--indian-e-commerce-dataset" aria-label="Theory &#43; Practice | ShopDB — Indian E-commerce Dataset">Theory + Practice | ShopDB — Indian E-commerce Dataset</a></li></ul>
+                    
+                <li>
+                    <a href="#before-you-start" aria-label="Before You Start">Before You Start</a></li>
+                <li>
+                    <a href="#part-1--quick-refresh-the-shopdb-schema" aria-label="Part 1 — Quick Refresh: The ShopDB Schema">Part 1 — Quick Refresh: The ShopDB Schema</a></li>
+                <li>
+                    <a href="#part-2---distinct-remove-duplicates" aria-label="Part 2 - DISTINCT: Remove Duplicates">Part 2 - DISTINCT: Remove Duplicates</a></li>
+                <li>
+                    <a href="#part-3--in-and-not-in-match-a-list" aria-label="Part 3 — IN and NOT IN: Match a List">Part 3 — IN and NOT IN: Match a List</a></li>
+                <li>
+                    <a href="#part-4--between-filter-a-range" aria-label="Part 4 — BETWEEN: Filter a Range">Part 4 — BETWEEN: Filter a Range</a><ul>
+                        
+                <li>
+                    <a href="#-practice-set-1--distinct-in-between" aria-label="✏️ Practice Set 1 — DISTINCT, IN, BETWEEN">✏️ Practice Set 1 — DISTINCT, IN, BETWEEN</a></li></ul>
+                </li>
+                <li>
+                    <a href="#part-5--like-and-ilike-pattern-matching" aria-label="Part 5 — LIKE and ILIKE: Pattern Matching">Part 5 — LIKE and ILIKE: Pattern Matching</a><ul>
+                        
+                <li>
+                    <a href="#ilike--case-insensitive-like-postgresql-only" aria-label="ILIKE — Case-Insensitive LIKE (PostgreSQL only)">ILIKE — Case-Insensitive LIKE (PostgreSQL only)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#part-6--is-null-and-is-not-null" aria-label="Part 6 — IS NULL and IS NOT NULL">Part 6 — IS NULL and IS NOT NULL</a></li>
+                <li>
+                    <a href="#part-7--case-when-conditional-logic" aria-label="Part 7 — CASE WHEN: Conditional Logic">Part 7 — CASE WHEN: Conditional Logic</a><ul>
+                        
+                <li>
+                    <a href="#-practice-set-2--like-is-null-case-when" aria-label="✏️ Practice Set 2 — LIKE, IS NULL, CASE WHEN">✏️ Practice Set 2 — LIKE, IS NULL, CASE WHEN</a></li></ul>
+                </li>
+                <li>
+                    <a href="#part-8--date-functions" aria-label="Part 8 — Date Functions">Part 8 — Date Functions</a><ul>
+                        
+                <li>
+                    <a href="#extracting-parts-of-a-date" aria-label="Extracting Parts of a Date">Extracting Parts of a Date</a></li>
+                <li>
+                    <a href="#comparing-and-calculating-dates" aria-label="Comparing and Calculating Dates">Comparing and Calculating Dates</a></li></ul>
+                </li>
+                <li>
+                    <a href="#part-9--putting-it-all-together-multi-condition-queries" aria-label="Part 9 — Putting It All Together: Multi-Condition Queries">Part 9 — Putting It All Together: Multi-Condition Queries</a><ul>
+                        
+                <li>
+                    <a href="#-practice-set-3--date-functions--combined-queries" aria-label="✏️ Practice Set 3 — Date Functions &amp; Combined Queries">✏️ Practice Set 3 — Date Functions &amp; Combined Queries</a></li></ul>
+                </li>
+                <li>
+                    <a href="#part-10--practice-set-answers" aria-label="Part 10 — Practice Set Answers">Part 10 — Practice Set Answers</a><ul>
+                        
+                <li>
+                    <a href="#answers-practice-set-1" aria-label="Answers: Practice Set 1">Answers: Practice Set 1</a></li>
+                <li>
+                    <a href="#answers-practice-set-2" aria-label="Answers: Practice Set 2">Answers: Practice Set 2</a></li>
+                <li>
+                    <a href="#answers-practice-set-3" aria-label="Answers: Practice Set 3">Answers: Practice Set 3</a></li></ul>
+                </li>
+                <li>
+                    <a href="#whats-next" aria-label="What&rsquo;s Next">What&rsquo;s Next</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="lesson-22---filtering--querying-data">Lesson 2.2 - Filtering &amp; Querying Data<a hidden class="anchor" aria-hidden="true" href="#lesson-22---filtering--querying-data">#</a></h1>
+<h3 id="theory--practice--shopdb--indian-e-commerce-dataset">Theory + Practice | ShopDB — Indian E-commerce Dataset<a hidden class="anchor" aria-hidden="true" href="#theory--practice--shopdb--indian-e-commerce-dataset">#</a></h3>
+<hr>
+<h2 id="before-you-start">Before You Start<a hidden class="anchor" aria-hidden="true" href="#before-you-start">#</a></h2>
+<ol>
+<li>Run <code>setup.sql</code> in pgAdmin to create and populate ShopDB.</li>
+<li>Verify you see 5 tables with the correct row counts.</li>
+<li>Then work through this file top to bottom.</li>
+</ol>
+<p><strong>What you&rsquo;ll learn in this lesson:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>What it does</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DISTINCT</code></td>
+          <td>Remove duplicate values from results</td>
+      </tr>
+      <tr>
+          <td><code>IN</code> / <code>NOT IN</code></td>
+          <td>Match against a list of values</td>
+      </tr>
+      <tr>
+          <td><code>BETWEEN</code></td>
+          <td>Filter within a range</td>
+      </tr>
+      <tr>
+          <td><code>LIKE</code> / <code>ILIKE</code></td>
+          <td>Pattern matching on text</td>
+      </tr>
+      <tr>
+          <td><code>IS NULL</code> / <code>IS NOT NULL</code></td>
+          <td>Handle missing values</td>
+      </tr>
+      <tr>
+          <td><code>CASE WHEN</code></td>
+          <td>Conditional logic inside a query</td>
+      </tr>
+      <tr>
+          <td>Date functions</td>
+          <td>Filter and extract parts of dates</td>
+      </tr>
+      <tr>
+          <td><code>COALESCE</code></td>
+          <td>Replace NULL with a fallback value</td>
+      </tr>
+  </tbody>
+</table>
+<p>All queries in this lesson run on ShopDB. The dataset has:</p>
+<ul>
+<li>20 customers from 12+ Indian cities</li>
+<li>6 product categories and 25 products</li>
+<li>15 orders with 30 order line items</li>
+</ul>
+<hr>
+<h2 id="part-1--quick-refresh-the-shopdb-schema">Part 1 — Quick Refresh: The ShopDB Schema<a hidden class="anchor" aria-hidden="true" href="#part-1--quick-refresh-the-shopdb-schema">#</a></h2>
+<pre tabindex="0"><code>customers                          orders
+┌────┬───────┬───────┬───────┐    ┌────┬─────────────┬────────────┬──────────┐
+│ id │ name  │ city  │ state │    │ id │ customer_id │ order_date │ status   │
+└────┴───────┴───────┴───────┘    └────┴─────────────┴────────────┴──────────┘
+         │                                   │ │
+         └───────────── FK ──────────────────┘ │
+                                               │
+order_items                          products  │           categories
+┌────┬──────────┬────────────┬──────┐ ┌────┬──┴────┬───────────┐  ┌────┬──────────┐
+│ id │ order_id │ product_id │  qty │ │ id │ name  │ price_inr │  │ id │ name     │
+└────┴──────────┴────────────┴──────┘ └────┴───────┴───────────┘  └────┴──────────┘
+          │               │                        │ FK
+          └── FK ─────────┘                        └──────────────────────────────┘
+</code></pre><p>The flow of a customer purchase:
+<code>customer</code> places an <code>order</code> → order contains <code>order_items</code> → each item references a <code>product</code> → product belongs to a <code>category</code></p>
+<hr>
+<h2 id="part-2---distinct-remove-duplicates">Part 2 - DISTINCT: Remove Duplicates<a hidden class="anchor" aria-hidden="true" href="#part-2---distinct-remove-duplicates">#</a></h2>
+<p><code>DISTINCT</code> removes duplicate rows from results.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Which states do our customers come from?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- Without DISTINCT, a state like Maharashtra appears once per customer
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">state</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">state</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- With DISTINCT — each state appears only once
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> <span style="color:#66d9ef">state</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">state</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Which payment methods have been used? (across all orders)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> payment_method
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> payment_method;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- How many distinct states are our customers from?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- Combining COUNT with DISTINCT
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#66d9ef">DISTINCT</span> <span style="color:#66d9ef">state</span>) <span style="color:#66d9ef">AS</span> unique_states
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers;
+</span></span></code></pre></div><blockquote>
+<p><code>DISTINCT</code> applies to the <strong>entire row</strong> when multiple columns are listed.
+<code>SELECT DISTINCT city, state</code> returns distinct <em>combinations</em> of city + state.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Distinct city-state combinations
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> city, <span style="color:#66d9ef">state</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">state</span>, city;
+</span></span></code></pre></div><hr>
+<h2 id="part-3--in-and-not-in-match-a-list">Part 3 — IN and NOT IN: Match a List<a hidden class="anchor" aria-hidden="true" href="#part-3--in-and-not-in-match-a-list">#</a></h2>
+<p><code>IN</code> is a cleaner way to write multiple <code>OR</code> conditions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Customers from Maharashtra OR Gujarat OR Delhi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- The long way:
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, city, <span style="color:#66d9ef">state</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">state</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Maharashtra&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">state</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Gujarat&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">state</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Delhi&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- The clean way:
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, city, <span style="color:#66d9ef">state</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">state</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Maharashtra&#39;</span>, <span style="color:#e6db74">&#39;Gujarat&#39;</span>, <span style="color:#e6db74">&#39;Delhi&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">state</span>, name;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Orders that are NOT delivered and NOT cancelled
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id, customer_id, order_date, status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> status <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Delivered&#39;</span>, <span style="color:#e6db74">&#39;Cancelled&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products in the Electronics or Sports category
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- (category_id 1 = Electronics, 5 = Sports)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr, stock_quantity
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> category_id <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> category_id, price_inr <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><blockquote>
+<p>⚠️ <strong>NULL trap with NOT IN:</strong>
+If the list contains even one NULL, <code>NOT IN</code> returns no rows.
+Always make sure the values you compare against cannot be NULL.
+<code>WHERE column NOT IN (1, 2, NULL)</code> → always empty!</p>
+</blockquote>
+<hr>
+<h2 id="part-4--between-filter-a-range">Part 4 — BETWEEN: Filter a Range<a hidden class="anchor" aria-hidden="true" href="#part-4--between-filter-a-range">#</a></h2>
+<p><code>BETWEEN low AND high</code> is inclusive — both endpoints are included.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products priced between ₹500 and ₹3000
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> price_inr <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">500</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">3000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Orders placed in the first quarter of 2024 (Jan–Mar)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id, customer_id, order_date, status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> order_date <span style="color:#66d9ef">BETWEEN</span> <span style="color:#e6db74">&#39;2024-01-01&#39;</span> <span style="color:#66d9ef">AND</span> <span style="color:#e6db74">&#39;2024-03-31&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products NOT in the ₹500–₹3000 range (budget or premium)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> price_inr <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">500</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">3000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><blockquote>
+<p><code>BETWEEN</code> with dates includes the full day for both endpoints.
+<code>BETWEEN '2024-01-01' AND '2024-03-31'</code> includes all of March 31st.</p>
+</blockquote>
+<hr>
+<h3 id="-practice-set-1--distinct-in-between">✏️ Practice Set 1 — DISTINCT, IN, BETWEEN<a hidden class="anchor" aria-hidden="true" href="#-practice-set-1--distinct-in-between">#</a></h3>
+<p><strong>Q1.</strong> List all distinct roles (job roles) in the players table from CricketDB.
+<em>(Switch to cricketdb for this one: <code>\c cricketdb</code> or reconnect in pgAdmin)</em></p>
+<p>Actually — stay in ShopDB for all questions in this lesson.</p>
+<p><strong>Q1.</strong> List all distinct cities our customers come from, alphabetically.</p>
+<p><strong>Q2.</strong> Show all orders placed by customers with id IN (1, 3, 5, 7).
+Show order_id, customer_id, order_date, and status.</p>
+<p><strong>Q3.</strong> Find all products priced between ₹1000 and ₹10000.
+Show product name and price, ordered by price ascending.</p>
+<p><strong>Q4.</strong> Which customers joined the platform between 1st April 2023 and
+30th September 2023? Show name, city, and joined_on date.</p>
+<p><strong>Q5.</strong> Find all orders with status NOT IN (&lsquo;Delivered&rsquo;, &lsquo;Cancelled&rsquo;).
+How many are there? (Use COUNT)</p>
+<hr>
+<h2 id="part-5--like-and-ilike-pattern-matching">Part 5 — LIKE and ILIKE: Pattern Matching<a hidden class="anchor" aria-hidden="true" href="#part-5--like-and-ilike-pattern-matching">#</a></h2>
+<p><code>LIKE</code> matches text patterns using wildcards:</p>
+<ul>
+<li><code>%</code> matches <strong>any sequence</strong> of characters (including none)</li>
+<li><code>_</code> matches <strong>exactly one</strong> character</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products whose name starts with &#34;boAt&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;boAt%&#39;</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products with &#34;Cricket&#34; anywhere in the name
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%Cricket%&#39;</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Customers whose name ends in &#34;Sharma&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, email, city
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%Sharma&#39;</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Customers whose email is from gmail.com
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, email
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> email <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%@gmail.com&#39;</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products with exactly 5 characters before a space (pattern: _____ %)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- e.g. &#34;Nivia Football&#34; — 5 chars then space
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name <span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;_____ %&#39;</span>;
+</span></span></code></pre></div><h3 id="ilike--case-insensitive-like-postgresql-only">ILIKE — Case-Insensitive LIKE (PostgreSQL only)<a hidden class="anchor" aria-hidden="true" href="#ilike--case-insensitive-like-postgresql-only">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Find products with &#34;samsung&#34; in the name — regardless of capitalisation
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">ILIKE</span> <span style="color:#e6db74">&#39;%samsung%&#39;</span>;
+</span></span></code></pre></div><blockquote>
+<p><code>LIKE</code> is case-sensitive: <code>'Samsung'</code> ≠ <code>'samsung'</code>
+<code>ILIKE</code> is case-insensitive (PostgreSQL-specific)
+Standard SQL alternative: <code>LOWER(name) LIKE '%samsung%'</code></p>
+</blockquote>
+<hr>
+<h2 id="part-6--is-null-and-is-not-null">Part 6 — IS NULL and IS NOT NULL<a hidden class="anchor" aria-hidden="true" href="#part-6--is-null-and-is-not-null">#</a></h2>
+<p>Some columns allow NULL — <code>batting_style</code> in CricketDB, or optional fields.
+In ShopDB, <code>categories.description</code> can be NULL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Categories that have no description filled in
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> categories
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> description <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Categories that DO have a description
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, description
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> categories
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> description <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- COALESCE: show a fallback when a value is NULL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- Returns first non-NULL argument
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    COALESCE(description, <span style="color:#e6db74">&#39;No description provided&#39;</span>) <span style="color:#66d9ef">AS</span> description
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> categories;
+</span></span></code></pre></div><blockquote>
+<p><strong>Rule:</strong> Never write <code>WHERE column = NULL</code> — it always returns 0 rows.
+SQL uses three-value logic: TRUE, FALSE, and NULL (unknown).
+<code>NULL = NULL</code> evaluates to NULL, not TRUE.</p>
+</blockquote>
+<hr>
+<h2 id="part-7--case-when-conditional-logic">Part 7 — CASE WHEN: Conditional Logic<a hidden class="anchor" aria-hidden="true" href="#part-7--case-when-conditional-logic">#</a></h2>
+<p><code>CASE WHEN</code> is SQL&rsquo;s version of if/else. It creates a new column
+based on conditions evaluated row by row.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Label products as budget / mid-range / premium based on price
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    price_inr,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> price_inr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>           <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Budget&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> price_inr <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">1000</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">9999</span> <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Mid-range&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span>                                 <span style="color:#e6db74">&#39;Premium&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> price_segment
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Show order status with an emoji label
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    id,
+</span></span><span style="display:flex;"><span>    order_date,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span> status
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;Delivered&#39;</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;✅ Delivered&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;Shipped&#39;</span>    <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;🚚 On the Way&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;Pending&#39;</span>    <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;⏳ Pending&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;Cancelled&#39;</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;❌ Cancelled&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> status_label
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Count orders in each status using CASE + SUM (pivot pattern)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>)                                        <span style="color:#66d9ef">AS</span> total_orders,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Delivered&#39;</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> delivered,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Shipped&#39;</span>    <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> shipped,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Pending&#39;</span>    <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> pending,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cancelled&#39;</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> cancelled
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders;
+</span></span></code></pre></div><p>This last pattern is called a <strong>pivot</strong> — turning row values into columns.
+Very useful for dashboards and summary reports.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Flag whether each product is available or out of stock
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    price_inr,
+</span></span><span style="display:flex;"><span>    stock_quantity,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> is_available <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>   <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Out of Stock&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> stock_quantity <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>     <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Out of Stock&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> stock_quantity <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">20</span>    <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Low Stock&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span>                             <span style="color:#e6db74">&#39;In Stock&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> stock_status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> stock_quantity;
+</span></span></code></pre></div><hr>
+<h3 id="-practice-set-2--like-is-null-case-when">✏️ Practice Set 2 — LIKE, IS NULL, CASE WHEN<a hidden class="anchor" aria-hidden="true" href="#-practice-set-2--like-is-null-case-when">#</a></h3>
+<p><strong>Q6.</strong> Find all products whose name contains the word &ldquo;Maths&rdquo; or &ldquo;Cricket&rdquo;.
+Hint: use two LIKE conditions with OR.</p>
+<p><strong>Q7.</strong> How many customers have email addresses ending in &lsquo;@gmail.com&rsquo;?
+Use LIKE and COUNT.</p>
+<p><strong>Q8.</strong> Write a query that shows every product&rsquo;s name, price_inr,
+and a new column called <code>affordability</code> with these labels:</p>
+<ul>
+<li><code>'Under ₹500'</code> — price below 500</li>
+<li><code>'₹500–₹5000'</code> — price between 500 and 5000</li>
+<li><code>'Above ₹5000'</code> — price above 5000</li>
+</ul>
+<p><strong>Q9.</strong> List categories that have a description (IS NOT NULL).
+Show name and description.</p>
+<p><strong>Q10.</strong> Write a query that shows the total number of orders
+for each payment method using GROUP BY.
+Then rewrite it using the CASE + SUM pivot pattern
+to show all four payment methods in a single row.</p>
+<hr>
+<h2 id="part-8--date-functions">Part 8 — Date Functions<a hidden class="anchor" aria-hidden="true" href="#part-8--date-functions">#</a></h2>
+<p>PostgreSQL has rich built-in date functions.
+Our <code>orders</code> and <code>customers</code> tables both have date columns.</p>
+<h3 id="extracting-parts-of-a-date">Extracting Parts of a Date<a hidden class="anchor" aria-hidden="true" href="#extracting-parts-of-a-date">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Extract the month and year from order_date
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    id,
+</span></span><span style="display:flex;"><span>    order_date,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">YEAR</span>  <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">AS</span> order_year,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">AS</span> order_month,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">DAY</span>   <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">AS</span> order_day
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- How many orders were placed each month?
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">month</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> order_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">month</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">month</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Format the date for display
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    id,
+</span></span><span style="display:flex;"><span>    TO_CHAR(order_date, <span style="color:#e6db74">&#39;DD Mon YYYY&#39;</span>)  <span style="color:#66d9ef">AS</span> formatted_date,
+</span></span><span style="display:flex;"><span>    TO_CHAR(order_date, <span style="color:#e6db74">&#39;Month YYYY&#39;</span>)   <span style="color:#66d9ef">AS</span> month_year
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders;
+</span></span></code></pre></div><h3 id="comparing-and-calculating-dates">Comparing and Calculating Dates<a hidden class="anchor" aria-hidden="true" href="#comparing-and-calculating-dates">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Orders placed in the last 6 months from today
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- CURRENT_DATE = today&#39;s date in PostgreSQL
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id, customer_id, order_date, status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> order_date <span style="color:#f92672">&gt;=</span> <span style="color:#66d9ef">CURRENT_DATE</span> <span style="color:#f92672">-</span> INTERVAL <span style="color:#e6db74">&#39;6 months&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- How many days ago was each order placed?
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    id,
+</span></span><span style="display:flex;"><span>    order_date,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CURRENT_DATE</span> <span style="color:#f92672">-</span> order_date <span style="color:#66d9ef">AS</span> days_ago
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> days_ago;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Customers who joined in 2023 Q4 (October–December)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, city, joined_on
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> joined_on <span style="color:#66d9ef">BETWEEN</span> <span style="color:#e6db74">&#39;2023-10-01&#39;</span> <span style="color:#66d9ef">AND</span> <span style="color:#e6db74">&#39;2023-12-31&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> joined_on;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- The most recent and oldest orders
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">MIN</span>(order_date) <span style="color:#66d9ef">AS</span> first_order,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">MAX</span>(order_date) <span style="color:#66d9ef">AS</span> latest_order
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders;
+</span></span></code></pre></div><hr>
+<h2 id="part-9--putting-it-all-together-multi-condition-queries">Part 9 — Putting It All Together: Multi-Condition Queries<a hidden class="anchor" aria-hidden="true" href="#part-9--putting-it-all-together-multi-condition-queries">#</a></h2>
+<p>Real queries combine multiple clauses. Here are some realistic business queries on ShopDB.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- All active, in-stock products under ₹5000 in the Sports or Books category
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    p.name,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.name      <span style="color:#66d9ef">AS</span> category,
+</span></span><span style="display:flex;"><span>    p.price_inr,
+</span></span><span style="display:flex;"><span>    p.stock_quantity
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products   <span style="color:#66d9ef">AS</span> p
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> categories <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">c</span>  <span style="color:#66d9ef">ON</span> p.category_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> p.is_available  <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> p.stock_quantity <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> p.price_inr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">c</span>.name <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Sports&#39;</span>, <span style="color:#e6db74">&#39;Books&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> p.price_inr;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Customers from Maharashtra or Kerala who joined after June 2023
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    city,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">state</span>,
+</span></span><span style="display:flex;"><span>    joined_on
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">state</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Maharashtra&#39;</span>, <span style="color:#e6db74">&#39;Kerala&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> joined_on <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;2023-06-30&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">state</span>, joined_on;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Orders placed in 2024 that are still not delivered
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- (Pending or Shipped)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    o.id            <span style="color:#66d9ef">AS</span> order_id,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.name          <span style="color:#66d9ef">AS</span> customer,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.city,
+</span></span><span style="display:flex;"><span>    o.order_date,
+</span></span><span style="display:flex;"><span>    o.status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders     <span style="color:#66d9ef">AS</span> o
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> customers  <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">c</span>  <span style="color:#66d9ef">ON</span> o.customer_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">YEAR</span> <span style="color:#66d9ef">FROM</span> o.order_date) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2024</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> o.status <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Delivered&#39;</span>, <span style="color:#e6db74">&#39;Cancelled&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> o.order_date;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Products containing &#34;Maths&#34; or &#34;Cricket&#34; or priced above ₹50000
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    price_inr,
+</span></span><span style="display:flex;"><span>    stock_quantity
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">ILIKE</span> <span style="color:#e6db74">&#39;%maths%&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">OR</span> name <span style="color:#66d9ef">ILIKE</span> <span style="color:#e6db74">&#39;%cricket%&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">OR</span> price_inr <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">50000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><hr>
+<h3 id="-practice-set-3--date-functions--combined-queries">✏️ Practice Set 3 — Date Functions &amp; Combined Queries<a hidden class="anchor" aria-hidden="true" href="#-practice-set-3--date-functions--combined-queries">#</a></h3>
+<p><strong>Q11.</strong> How many orders were placed in each month of 2024?
+Show month number and order_count, sorted by month.</p>
+<p><strong>Q12.</strong> Write a query to find all customers who joined before
+1st July 2023. Show name, city, and joined_on date.</p>
+<p><strong>Q13.</strong> Find all Delivered orders that were placed using UPI.
+Show order_id, customer_id, order_date.</p>
+<p><strong>Q14.</strong> Write a query that labels each order with a quarter:</p>
+<ul>
+<li>&lsquo;Q1&rsquo; — January to March</li>
+<li>&lsquo;Q2&rsquo; — April to June</li>
+<li>&lsquo;Q3&rsquo; — July to September</li>
+<li>&lsquo;Q4&rsquo; — October to December
+Show order_id, order_date, and the quarter label.</li>
+</ul>
+<p><strong>Q15.</strong> Find products where the name starts with &lsquo;B&rsquo; AND the price
+is under ₹1000. Show name and price_inr.</p>
+<hr>
+<h2 id="part-10--practice-set-answers">Part 10 — Practice Set Answers<a hidden class="anchor" aria-hidden="true" href="#part-10--practice-set-answers">#</a></h2>
+<h3 id="answers-practice-set-1">Answers: Practice Set 1<a hidden class="anchor" aria-hidden="true" href="#answers-practice-set-1">#</a></h3>
+<p><strong>Q1.</strong> Distinct cities:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> city
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> city;
+</span></span></code></pre></div><p><strong>Q2.</strong> Orders by specific customers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id <span style="color:#66d9ef">AS</span> order_id, customer_id, order_date, status
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> customer_id <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><p><strong>Q3.</strong> Products between ₹1000 and ₹10000:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> price_inr <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">1000</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><p><strong>Q4.</strong> Customers who joined Apr–Sep 2023:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, city, joined_on
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> joined_on <span style="color:#66d9ef">BETWEEN</span> <span style="color:#e6db74">&#39;2023-04-01&#39;</span> <span style="color:#66d9ef">AND</span> <span style="color:#e6db74">&#39;2023-09-30&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> joined_on;
+</span></span></code></pre></div><p><strong>Q5.</strong> Non-delivered, non-cancelled orders:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">count</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> status <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;Delivered&#39;</span>, <span style="color:#e6db74">&#39;Cancelled&#39;</span>);
+</span></span></code></pre></div><hr>
+<h3 id="answers-practice-set-2">Answers: Practice Set 2<a hidden class="anchor" aria-hidden="true" href="#answers-practice-set-2">#</a></h3>
+<p><strong>Q6.</strong> Products with &ldquo;Maths&rdquo; or &ldquo;Cricket&rdquo; in the name:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%Maths%&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">OR</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%Cricket%&#39;</span>;
+</span></span></code></pre></div><p><strong>Q7.</strong> Gmail customers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> gmail_customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> email <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%@gmail.com&#39;</span>;
+</span></span></code></pre></div><p><strong>Q8.</strong> Affordability label:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    price_inr,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> price_inr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">500</span>                    <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Under ₹500&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> price_inr <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">500</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">5000</span>     <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;₹500–₹5000&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span>                                         <span style="color:#e6db74">&#39;Above ₹5000&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> affordability
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><p><strong>Q9.</strong> Categories with a description:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, description
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> categories
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> description <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><p><strong>Q10a.</strong> Payment method breakdown (GROUP BY):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> payment_method, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> order_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> payment_method
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_count <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p><strong>Q10b.</strong> Same result as a pivot (single row):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> payment_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UPI&#39;</span>        <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> upi,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> payment_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Card&#39;</span>       <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> card,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> payment_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;COD&#39;</span>        <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> cod,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> payment_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NetBanking&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">AS</span> netbanking
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders;
+</span></span></code></pre></div><hr>
+<h3 id="answers-practice-set-3">Answers: Practice Set 3<a hidden class="anchor" aria-hidden="true" href="#answers-practice-set-3">#</a></h3>
+<p><strong>Q11.</strong> Orders per month:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">month</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> order_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">YEAR</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2024</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">month</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">month</span>;
+</span></span></code></pre></div><p><strong>Q12.</strong> Customers who joined before July 2023:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, city, joined_on
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> joined_on <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;2023-07-01&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> joined_on;
+</span></span></code></pre></div><p><strong>Q13.</strong> Delivered + UPI orders:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id <span style="color:#66d9ef">AS</span> order_id, customer_id, order_date
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Delivered&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> payment_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UPI&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><p><strong>Q14.</strong> Quarter labels using CASE WHEN:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#66d9ef">AS</span> order_id,
+</span></span><span style="display:flex;"><span>    order_date,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">3</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Q1&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">4</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">6</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Q2&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">EXTRACT</span>(<span style="color:#66d9ef">MONTH</span> <span style="color:#66d9ef">FROM</span> order_date) <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">7</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">9</span>  <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Q3&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span>                                                       <span style="color:#e6db74">&#39;Q4&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> quarter
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> orders
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> order_date;
+</span></span></code></pre></div><p><strong>Q15.</strong> Products starting with &lsquo;B&rsquo; under ₹1000:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, price_inr
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> products
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;B%&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> price_inr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price_inr;
+</span></span></code></pre></div><hr>
+<h2 id="whats-next">What&rsquo;s Next<a hidden class="anchor" aria-hidden="true" href="#whats-next">#</a></h2>
+<p>You have covered:</p>
+<ul>
+<li>✅ <code>DISTINCT</code> — remove duplicate rows</li>
+<li>✅ <code>IN</code> / <code>NOT IN</code> — match against a list of values</li>
+<li>✅ <code>BETWEEN</code> — filter by range (inclusive)</li>
+<li>✅ <code>LIKE</code> / <code>ILIKE</code> — pattern matching with <code>%</code> and <code>_</code></li>
+<li>✅ <code>IS NULL</code> / <code>IS NOT NULL</code> — handle missing values</li>
+<li>✅ <code>COALESCE</code> — fallback value for NULLs</li>
+<li>✅ <code>CASE WHEN</code> — conditional logic and pivot pattern</li>
+<li>✅ Date functions — <code>EXTRACT</code>, <code>TO_CHAR</code>, <code>CURRENT_DATE</code>, <code>INTERVAL</code></li>
+<li>✅ Multi-condition queries combining all of the above</li>
+</ul>
+<p><strong>In Lesson 2.3</strong> we go deep on <strong>Aggregations &amp; Grouping</strong>:</p>
+<ul>
+<li>Multi-column <code>GROUP BY</code></li>
+<li><code>HAVING</code> with complex conditions</li>
+<li><code>ROLLUP</code> for subtotals</li>
+<li><code>FILTER</code> clause with aggregates</li>
+<li>A first look at <strong>window functions</strong> (<code>ROW_NUMBER</code>, <code>RANK</code>, <code>SUM OVER</code>)</li>
+<li>All on CricketDB + ShopDB together</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/sql/">Sql</a></li>
+      <li><a href="http://localhost:1313/tags/data-analysis/">Data-Analysis</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

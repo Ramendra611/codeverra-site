@@ -1,5 +1,5 @@
 ---
-title: "Iterators and Generators in Python"
+title: "Iterators and Generators in Python - Complete Guide"
 description: "Learn about iterables and iterators and generators in python"
 
 date: 2026-03-17
@@ -13,8 +13,8 @@ tags:
   - python
 
 cover:
-  image: "/images/blog-images/binary-search.jpg"
-  alt: "Binary search algorithm"
+  image: "/images/blog-images/iterators and generators in python.png"
+  alt: "iterators and generators in python"
   caption: "Data Analysis using Python"
   relative: true
   hidden: false
@@ -1247,4 +1247,4 @@ Use a GENERATOR EXPRESSION when:
 ---
 
 *End of Lesson — Iterables, Iterators & Generators*
-*Codeverra — learn.codeverra.com*
+*Codeverra — codeverra.com*

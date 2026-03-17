@@ -31,7 +31,7 @@ Students looking for focused practice and clarity on tricky topics
 Absolute beginners looking for a complete DSA curriculum from day one
 
 ## Enrollment
-<a href="https://learn.codeverra.com/courses/DSA-Live-Practice-Series-Python-6957903bb86dbe205ba79447"
+<a href="https://codeverra.com/courses/DSA-Live-Practice-Series-Python-6957903bb86dbe205ba79447"
 target="_blank"
    rel="noopener noreferrer"
    style="

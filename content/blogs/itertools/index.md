@@ -1,4 +1,27 @@
-# Python's `itertools` — The Missing Manual
+---
+title: "Itertools Module in Python - Complete Guide"
+description: "Learn about the very useful itertools library in python"
+
+date: 2026-03-17
+lastmod: 2026-03-17
+author: "codeverra"
+
+toc: true
+tocopen: true
+draft: false
+tags:
+  - python
+
+cover:
+  image: "/images/blog-images/itertools.png"
+  alt: "itertools module in python"
+  caption: "Data Analysis using Python"
+  relative: true
+  hidden: false
+---
+
+
+# Python's `itertools` - The Missing Manual
 ### A deep dive into one of Python's most underused standard library modules
 
 ---
@@ -17,7 +40,7 @@ This guide is a complete reference for `itertools` — written not as a dry API 
 
 ## What Exactly Is `itertools`?
 
-`itertools` is a module in Python's standard library — no installation needed, just `import itertools`. It provides a collection of **fast, memory-efficient tools for working with iterators**.
+`itertools` is a module in Python's standard library - no installation needed, just `import itertools`. It provides a collection of **fast, memory-efficient tools for working with iterators**.
 
 The name is a compound of two words: *iter* (as in iterators) and *tools* (as in building blocks). That framing is intentional. The module's author, Raymond Hettinger, designed it specifically to give you composable primitives — small, focused functions that you can chain together into powerful pipelines.
 
@@ -1376,4 +1399,4 @@ GOLDEN RULES
 ---
 
 *End of Guide — Python's `itertools`*
-*Codeverra — learn.codeverra.com*
+*Codeverra — codeverra.com*

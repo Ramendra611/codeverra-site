@@ -65,7 +65,7 @@ You can view the **detailed curriculum breakdown here**:
 👉 **Enrollment is currently open.**  
 Click the button below to join the course.
 
-<a href="https://learn.codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
+<a href="https://codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
 target="_blank"
    rel="noopener noreferrer"
    style="

@@ -82,7 +82,7 @@ Bookmark this page and check back regularly for updates!
 - Ask questions - No question is too basic
 - Build projects - Apply concepts to real-world scenarios
 
-<a href="https://learn.codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
+<a href="https://codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
 target="_blank"
    rel="noopener noreferrer"
    style="

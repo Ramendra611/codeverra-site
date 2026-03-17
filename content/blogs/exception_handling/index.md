@@ -1,5 +1,27 @@
+---
+title: "Exception Handling in Python - Complete Guide"
+description: "Learn about try-except-finally and custom exceptions in Python"
+
+date: 2026-03-17
+lastmod: 2026-03-17
+author: "codeverra"
+
+toc: true
+tocopen: true
+draft: false
+tags:
+  - python
+
+cover:
+  image: "/images/blog-images/exception handling in python.png"
+  alt: "Exception handling in python"
+  caption: "exception handling in python"
+  relative: true
+  hidden: false
+---
+
 # Python Exception Handling
-### A Complete Lesson Plan & Reference Guide
+### A Complete Reference Guide
 
 ---
 

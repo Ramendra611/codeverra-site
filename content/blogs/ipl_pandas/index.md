@@ -6,18 +6,20 @@ date: 2026-03-17
 lastmod: 2026-03-17
 author: "codeverra"
 
-toc: true
+showToc: false
+TocOpen: false
+toc: false
 tocopen: true
 draft: false
 tags:
-  - dsa
-  - binary-search
-  - searching
+  - python
+  - data-analysis
+  - pandas
 
 cover:
-  image: "/images/blog-images/binary-search.jpg"
-  alt: "Binary search algorithm"
-  caption: "Data Analysis using Python"
+  image: "/images/blog-images/pandas_ipl.png"
+  alt: "pandas practice on IPL dataset"
+  caption: "pandas practice"
   relative: true
   hidden: false
 ---

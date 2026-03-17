@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on codeverra</title>
     <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on codeverra</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.158.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Binary-Search</title>
-      <link>http://localhost:1313/tags/binary-search/</link>
-      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/binary-search/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Data-Analysis</title>
       <link>http://localhost:1313/tags/data-analysis/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/data-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Dsa</title>
-      <link>http://localhost:1313/tags/dsa/</link>
-      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/dsa/</guid>
       <description></description>
     </item>
     <item>
@@ -41,13 +27,6 @@
       <link>http://localhost:1313/tags/python/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Searching</title>
-      <link>http://localhost:1313/tags/searching/</link>
-      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/searching/</guid>
       <description></description>
     </item>
     <item>
@@ -72,10 +51,10 @@
       <description></description>
     </item>
     <item>
-      <title>Data-Structures</title>
-      <link>http://localhost:1313/tags/data-structures/</link>
+      <title>Binary-Search</title>
+      <link>http://localhost:1313/tags/binary-search/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/data-structures/</guid>
+      <guid>http://localhost:1313/tags/binary-search/</guid>
       <description></description>
     </item>
     <item>
@@ -83,6 +62,13 @@
       <link>http://localhost:1313/tags/dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/dfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dsa</title>
+      <link>http://localhost:1313/tags/dsa/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/dsa/</guid>
       <description></description>
     </item>
     <item>
@@ -107,17 +93,17 @@
       <description></description>
     </item>
     <item>
-      <title>Problem-Solving</title>
-      <link>http://localhost:1313/tags/problem-solving/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/problem-solving/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Recursion</title>
       <link>http://localhost:1313/tags/recursion/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/recursion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Searching</title>
+      <link>http://localhost:1313/tags/searching/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/searching/</guid>
       <description></description>
     </item>
     <item>

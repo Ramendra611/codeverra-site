@@ -13,15 +13,15 @@ tags:
   - python
 
 cover:
-  image: "/images/blog-images/binary-search.jpg"
-  alt: "Binary search algorithm"
+  image: "/images/blog-images/decorators in python.png"
+  alt: "higher order functions and decorators in python"
   caption: "Data Analysis using Python"
   relative: true
   hidden: false
 ---
 
 # Python Higher-Order Functions & Decorators
-### A Complete Lesson Plan & Reference Guide
+### A Complete Reference Guide
 
 ---
 
@@ -1563,4 +1563,4 @@ HOF vs DECORATOR
 ---
 
 *End of Lesson — Higher-Order Functions & Decorators in Python*
-*Codeverra — learn.codeverra.com*
+*Codeverra — codeverra.com*

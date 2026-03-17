@@ -6,17 +6,19 @@ date: 2026-03-17
 lastmod: 2026-03-17
 author: "codeverra"
 
-toc: true
-tocopen: true
+showToc: false
+TocOpen: false
+toc: false
+tocopen: false
 draft: false
 tags:
-  - dsa
-  - binary-search
-  - searching
+  - python
+  - pandas
+  - data-analysis
 
 cover:
-  image: "/images/blog-images/binary-search.jpg"
-  alt: "Binary search algorithm"
+  image: "/images/blog-images/pandas_zomato.png"
+  alt: "practice pandas on zomato dataset"
   caption: "Data Analysis using Python"
   relative: true
   hidden: false
@@ -1581,4 +1583,4 @@ ADVANCED
 ---
 
 *End of Practice Sheet — Zomato Bangalore Dataset*
-*Codeverra — learn.codeverra.com*
+*Codeverra — codeverra.com*

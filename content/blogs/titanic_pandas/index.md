@@ -6,7 +6,9 @@ date: 2026-03-17
 lastmod: 2026-03-17
 author: "codeverra"
 
-toc: true
+showToc: false
+TocOpen: false
+toc: false
 tocopen: true
 draft: false
 tags:
@@ -15,8 +17,8 @@ tags:
   - pandas
 
 cover:
-  image: "/images/blog-images/binary-search.jpg"
-  alt: "Binary search algorithm"
+  image: "/images/blog-images/pandas_titanic.png"
+  alt: "pandas practice on titanic dataset"
   caption: "Data Analysis using Python"
   relative: true
   hidden: false
@@ -50,7 +52,7 @@ import seaborn as sns
 df = sns.load_dataset("titanic")
 ```
 
-> We'll use the datasciencedojo version throughout this sheet. Always run `df.head()` and `df.info()` before answering any question — knowing your data is half the battle.
+> Always run `df.head()` and `df.info()` before answering any question — knowing your data is half the battle.
 
 ---
 
@@ -1293,103 +1295,5 @@ print(df.groupby("has_cabin")["Survived"].mean().round(3))
 
 ---
 
----
-
-# Beyond Titanic — What Dataset to Learn Next?
-
-You're right that Titanic is overused. It's small, it's clean-ish, and everyone's seen the analysis. Here are the best datasets for levelling up, grouped by what skill they sharpen.
-
----
-
-## For GroupBy, Aggregation & Time Series
-
-### 1. IPL (Indian Premier League) Dataset
-**Why it's perfect:** It's Indian-relevant, students care about cricket, and it has natural groupby dimensions — team, season, player, match, venue. You can do everything from simple survival-style survival-rate questions to window functions (running averages) to pivot tables (team vs team head-to-head).
-
-**Where to get it:** https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020
-
-**Sample questions it enables:**
-- Which team has the highest win rate at home vs away?
-- Which bowler has the best economy rate in death overs?
-- Use `transform()` to add "runs above team average" per match
-
----
-
-### 2. Zomato Restaurant Dataset
-**Why it's perfect:** Real Indian cities, messy real-world data (ratings as strings like "3.1/5", location names inconsistent), great for `groupby`, `pivot_table`, and string cleaning.
-
-**Where to get it:** https://www.kaggle.com/datasets/shrutimehta/zomato-restaurants-data
-
-**Sample questions it enables:**
-- Average rating and cost per city
-- `crosstab` of cuisine type vs city
-- Which city has the highest proportion of online-order-enabled restaurants?
-
----
-
-## For Multi-Join, Merge, and Relational Data
-
-### 3. Superstore Sales Dataset (Global)
-**Why it's perfect:** It has Orders, Returns, and People in separate sheets — forces you to learn `merge()` and `concat()`. It also has date columns for time series, regions for geographic groupby, and profit/sales for numeric aggregation.
-
-**Where to get it:** Built into Tableau's sample data. Also available at:
-https://www.kaggle.com/datasets/vivek468/superstore-dataset-final
-
-**Sample questions it enables:**
-- `merge()` orders with returns to flag returned orders
-- Monthly revenue trend using `resample()` or `groupby(pd.Grouper(freq='M'))`
-- Running total of sales per region using `transform(cumsum)`
-
----
-
-## For String Operations, `apply()`, and Messy Data
-
-### 4. Netflix Titles Dataset
-**Why it's perfect:** It has multi-valued columns ("Comedies, Dramas, Thrillers" in one cell), missing values scattered everywhere, and date strings that need parsing. Forces you to use `str.split()`, `explode()`, `apply()`, and `pd.to_datetime()`.
-
-**Where to get it:** https://www.kaggle.com/datasets/shivamb/netflix-shows
-
-**Sample questions it enables:**
-- `explode()` the genres column to count content per genre
-- `apply()` to classify movies vs TV shows by duration
-- `pd.to_datetime()` to analyze content added per year
-
----
-
-## For Advanced Aggregation and window-style Operations
-
-### 5. NYC Yellow Taxi Trips
-**Why it's perfect:** It's millions of rows — so you learn efficient pandas (chunked reading, vectorized ops vs apply). Rich time, location, and numerical data. Teaches `resample()`, `rolling()`, `cut()` for fare bins, and multi-level groupby at scale.
-
-**Where to get it:** https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page (free, official)
-
-**Sample questions it enables:**
-- Average tip percentage by hour of day
-- `rolling(7).mean()` of daily trips (weekly average trend)
-- `pd.cut()` fare bins and groupby
-
----
-
-## Recommended Learning Path
-
-```
-Start here:
-Titanic → IPL → Zomato
-   ↓           ↓           ↓
-Basic       GroupBy    Messy data
-filtering   mastery    + strings
-            + pivots
-
-Then:
-Superstore → Netflix → NYC Taxi
-     ↓            ↓          ↓
-  Merges       explode()   Scale +
-+ datetime     + apply()   rolling()
-```
-
-The sweet spot is **IPL after Titanic** — it's familiar, motivating for Indian students, and naturally exercises every pandas skill in a new context. The domain change forces you to *think* in pandas rather than just copy patterns.
-
----
-
 *End of Practice Sheet — Titanic Dataset with Pandas*
-*Codeverra — learn.codeverra.com*
+*Codeverra — codeverra.com*
