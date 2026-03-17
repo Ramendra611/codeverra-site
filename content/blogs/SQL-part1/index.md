@@ -16,7 +16,7 @@ tags:
   - data-analysis
 
 cover:
-  image: "/images/blog-images/SQL - 1.png"
+  image: "/images/blog-images/SQL-1.png"
   alt: "introduction to SQL"
   caption: "introduction to SQL"
   relative: true

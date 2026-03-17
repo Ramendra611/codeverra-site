@@ -1,5 +1,5 @@
 ---
-title: "Filtering and Aggregating data"
+title: "Filtering and Querying data"
 description: "Learn about WHERE, GROUPBY and other important commands"
 
 date: 2026-03-17
@@ -16,14 +16,14 @@ tags:
   - data-analysis
 
 cover:
-  image: "/images/blog-images/SQL - 2.png"
+  image: "/images/blog-images/SQL-2.png"
   alt: "introduction to SQL"
   caption: "introduction to SQL"
   relative: true
   hidden: false
 ---
 
-# Lesson 2.2 - Filtering & Querying Data
+# Lesson 2 - Filtering & Querying Data
 ### Theory + Practice | ShopDB — Indian E-commerce Dataset
 
 ---
