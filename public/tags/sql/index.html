@@ -82,60 +82,8 @@
 </script>
 </head>
 <body class="list" id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
-                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
-                        height="32">codeverra</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="Home">
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/courses/" title="Courses">
-                    <span>Courses</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/blogs/" title="Blogs">
-                    <span>Blogs</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
+    
+    <main class="main"> 
 
 
 <header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
@@ -151,10 +99,10 @@
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL%20-%202.png" alt="introduction to SQL">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL-2.png" alt="introduction to SQL">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Filtering and Aggregating data
+        <h2 class="entry-hint-parent">Filtering and Querying data
         </h2>
     </header>
     <div class="entry-tags">
@@ -162,7 +110,7 @@
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>Lesson 2.2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB — Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
+        <p>Lesson 2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB — Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
 Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN Match against a list of values BETWEEN Filter within a range LIKE / ILIKE Pattern matching on text IS NULL / IS NOT NULL Handle missing values CASE WHEN Conditional logic inside a query Date functions Filter and extract parts of dates COALESCE Replace NULL with a fallback value All queries in this lesson run on ShopDB. The dataset has:
 ...</p>
     </div>
@@ -174,14 +122,45 @@ Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN M
         <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2494 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Filtering and Aggregating data" href="http://localhost:1313/blogs/sql-part2/"></a>
+    <a class="entry-link" aria-label="post link to Filtering and Querying data" href="http://localhost:1313/blogs/sql-part2/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL%20-%201.png" alt="introduction to SQL">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL-3.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Group by and Aggregations
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 3 - Aggregations &amp; Grouping Theory &#43; Practice | CricketDB &#43; ShopDB Before You Start This lesson uses both databases you have already built:
+CricketDB — players, matches, performances (Lesson 2.1) ShopDB — customers, products, orders, order_items (Lesson 2.2) Run the setup_check.sql from this lesson folder to confirm both are ready. Each section tells you which database to connect to in pgAdmin.
+What you will learn in this lesson:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3134 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Group by and Aggregations" href="http://localhost:1313/blogs/sql-part3/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL-1.png" alt="introduction to SQL">
 </figure>
     <header class="entry-header">
         <h2 class="entry-hint-parent">Introduction to SQL and Databases
@@ -205,6 +184,69 @@ Table of Contents What is a Database? Types of Databases What is SQL? How SQL Co
         
     </footer>
     <a class="entry-link" aria-label="post link to Introduction to SQL and Databases" href="http://localhost:1313/blogs/sql-part1/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL-4.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Joins and Relationships
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 4 - JOINs &amp; Relationships Theory &#43; Practice | ShopDB Before You Start This lesson uses ShopDB exclusively. Connect to shopdb in pgAdmin before running any query.
+Run this to confirm your data is ready:
+SELECT &#39;customers&#39; AS t, COUNT(*) FROM customers UNION ALL SELECT &#39;products&#39;, COUNT(*) FROM products UNION ALL SELECT &#39;orders&#39;, COUNT(*) FROM orders UNION ALL SELECT &#39;order_items&#39;,COUNT(*) FROM order_items; -- Expected: 20, 25, 15, 30 What you will learn:
+Concept What it does INNER JOIN Only rows that match in both tables LEFT JOIN All left rows &#43; matches from right (NULL if no match) RIGHT JOIN All right rows &#43; matches from left (NULL if no match) FULL OUTER JOIN All rows from both tables Self-join A table joined to itself 4-table JOIN The full ShopDB chain Common mistakes Duplicate rows, wrong COUNT, missing ON clause JOIN vs subquery When to use which Part 1 — The Four JOIN Types, Side by Side The best way to understand JOINs is to see them compared on the same data.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>3562 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Joins and Relationships" href="http://localhost:1313/blogs/sql-part4/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/blog-images/SQL-5.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Joins and Relationships
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 5 - Subqueries &amp; CTEs Theory &#43; Practice | StreamDB — Indian Streaming Platform Before You Start This lesson introduces StreamDB — a Hotstar-style streaming platform.
+Run setup.sql to create and populate StreamDB Verify you see 6 tables with the correct row counts Connect to streamdb in pgAdmin before running any query The StreamDB schema:
+users shows genres ┌────┬───────┬──────┐ ┌────┬────────┬──────────┐ ┌────┬──────────┐ │ id │ name │ plan │ │ id │ title │is_premium│ │ id │ name │ └────┴───────┴──────┘ └────┴────────┴──────────┘ └────┴──────────┘ │ │ │ │ │ show_genres │ │ │ ┌──────────────┘ ┌────────────┘ │ │ show_id | genre_id │ │ └──────────────────────────┘ (many-to-many) │ subscriptions watch_history ┌────┬─────────┬──────────────┐ ┌────┬─────────┬─────────┬─────────┐ │ id │ user_id │ plan │ │ id │ user_id │ show_id │ minutes │ │ │ │ started_on │ │ │ │ watched │ watched │ │ │ │ expires_on │ └────┴─────────┴─────────┴─────────┘ └────┴─────────┴──────────────┘ What you will learn:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>3549 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Joins and Relationships" href="http://localhost:1313/blogs/sql-part5/"></a>
     
 </article>
 </div>

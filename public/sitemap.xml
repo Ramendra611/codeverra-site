@@ -20,7 +20,13 @@
     <loc>http://localhost:1313/blogs/exception_handling/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blogs/sql-part2/</loc>
+    <lastmod>2026-03-17T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/blogs/decorators/</loc>
+    <lastmod>2026-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blogs/sql-part1/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blogs/iterators_generators/</loc>
@@ -42,6 +48,9 @@
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2026-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sql/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
@@ -120,7 +129,7 @@
     <lastmod>2026-03-16T00:26:19+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blogs/</loc>
-    <lastmod>2026-03-17T17:27:17+05:30</lastmod>
+    <lastmod>2026-03-17T17:33:57+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
