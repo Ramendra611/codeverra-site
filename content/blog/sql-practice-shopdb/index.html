@@ -1,0 +1,973 @@
+---
+title: "SQL Practice on Shopping Dataset: SQL Questions with Solutions"
+description: "Pratice easy, medium and hard questions on cricket dataset."
+
+date: 2026-03-17
+lastmod: 2026-03-17
+author: "codeverra"
+
+showToc: true
+TocOpen: false
+toc: false
+tocopen: false
+draft: false
+tags:
+  - sql
+  - data-analysis
+
+cover:
+  image: "/images/SQL-Practice - shopdb.png"
+  alt: "introduction to SQL"
+  caption: "introduction to SQL"
+  relative: true
+  hidden: false
+---
+
+## Practice SQL questions on the shopping dataset. 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Practice: ShopDB — Codeverra</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0f1a;
+    --surface: #121628;
+    --surface2: #181d2e;
+    --border: #1e2438;
+    --accent: #f97316;
+    --accent2: #3b82f6;
+    --accent3: #10b981;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #080b14;
+    --easy: #10b981;
+    --easy-bg: rgba(16,185,129,0.1);
+    --medium: #f59e0b;
+    --medium-bg: rgba(245,158,11,0.1);
+    --hard: #ef4444;
+    --hard-bg: rgba(239,68,68,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    padding-bottom: 80px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 72px 40px 60px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    background: linear-gradient(135deg, #0c0f1a 0%, #111827 100%);
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '🛒';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 120px;
+    opacity: 0.07;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    border: 1px solid rgba(249,115,22,0.3);
+    padding: 4px 12px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #fff;
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* SCHEMA */
+  .schema-section {
+    max-width: 900px;
+    margin: 48px auto;
+    padding: 0 40px;
+  }
+  .schema-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .schema-table {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+  .schema-table-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #e06c75;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .schema-row {
+    display: flex;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    line-height: 2;
+  }
+  .schema-col { color: #98c379; }
+  .schema-type { color: #d19a66; }
+  .schema-note { color: #5c6370; font-style: italic; font-size: 10px; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  /* SETUP */
+  .setup-banner {
+    max-width: 900px;
+    margin: 0 auto 48px;
+    padding: 0 40px;
+  }
+  .setup-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 16px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .setup-box .icon { font-size: 20px; }
+  .setup-box p { font-size: 13.5px; color: var(--muted); }
+  .setup-box a { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 12px; text-decoration: underline; }
+
+  /* LEGEND */
+  .legend {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* DIFFICULTY HEADER */
+  .diff-header {
+    max-width: 900px;
+    margin: 0 auto 28px;
+    padding: 0 40px;
+  }
+  .diff-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    border: 1px solid;
+  }
+  .diff-strip.easy { border-color: var(--easy); background: var(--easy-bg); }
+  .diff-strip.medium { border-color: var(--medium); background: var(--medium-bg); }
+  .diff-strip.hard { border-color: var(--hard); background: var(--hard-bg); }
+  .diff-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .easy .diff-title { color: var(--easy); }
+  .medium .diff-title { color: var(--medium); }
+  .hard .diff-title { color: var(--hard); }
+  .diff-desc { font-size: 13px; color: var(--muted); }
+
+  /* QUESTION CARD */
+  .q-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    transition: border-color 0.2s;
+  }
+  .q-card:hover { border-color: #2d3548; }
+  .q-card.easy:hover { border-color: rgba(16,185,129,0.3); }
+  .q-card.medium:hover { border-color: rgba(245,158,11,0.3); }
+  .q-card.hard:hover { border-color: rgba(239,68,68,0.3); }
+
+  .q-top {
+    padding: 24px 28px 0;
+    display: flex;
+    gap: 18px;
+  }
+  .q-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--border);
+    min-width: 50px;
+    transition: color 0.2s;
+  }
+  .q-card.easy:hover .q-number { color: rgba(16,185,129,0.3); }
+  .q-card.medium:hover .q-number { color: rgba(245,158,11,0.3); }
+  .q-card.hard:hover .q-number { color: rgba(239,68,68,0.3); }
+
+  .q-info { flex: 1; }
+  .q-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    border: 1px solid;
+  }
+  .easy .q-pill { color: var(--easy); border-color: var(--easy); }
+  .medium .q-pill { color: var(--medium); border-color: var(--medium); }
+  .hard .q-pill { color: var(--hard); border-color: var(--hard); }
+
+  .q-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .q-tags {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  .q-body { padding: 18px 28px 28px; }
+
+  .scenario {
+    background: var(--surface2);
+    border-left: 2px solid var(--border);
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+  .scenario strong { color: var(--text); font-weight: 500; }
+
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  .label.approach { color: var(--accent3); }
+  .label.alt { color: var(--accent2); }
+  .label.explain { color: var(--muted); }
+
+  .approach-box {
+    background: rgba(16,185,129,0.08);
+    border-left: 2px solid var(--accent3);
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .approach-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: rgba(16,185,129,0.15);
+    color: var(--accent3);
+    padding: 1px 5px;
+  }
+
+  .alt-box {
+    background: rgba(59,130,246,0.08);
+    border-left: 2px solid var(--accent2);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .alt-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(59,130,246,0.15);
+    color: var(--accent2);
+    padding: 1px 5px;
+  }
+
+  pre.sql {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: #abb2bf;
+    margin-bottom: 8px;
+  }
+  .kw { color: #c678dd; }
+  .fn { color: #61afef; }
+  .str { color: #98c379; }
+  .num { color: #d19a66; }
+  .cm { color: #5c6370; font-style: italic; }
+  .tbl { color: #e06c75; }
+
+  .explain-box {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 14px;
+  }
+  .explain-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(255,255,255,0.05);
+    padding: 1px 5px;
+    color: #e2e8f0;
+  }
+  .explain-box strong { color: var(--text); font-weight: 500; }
+
+  .divider {
+    max-width: 900px;
+    margin: 16px auto 36px;
+    padding: 0 40px;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* FOOTER */
+  .footer-card {
+    max-width: 900px;
+    margin: 48px auto 0;
+    padding: 0 40px;
+  }
+  .footer-inner {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    padding: 36px;
+  }
+  .footer-inner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .concept-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .concept-item strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 640px) {
+    .hero, .schema-section, .setup-banner, .legend, .diff-header, .q-wrap, .footer-card { padding-left: 20px; padding-right: 20px; }
+    .hero::after { display: none; }
+    .q-number { font-size: 30px; min-width: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Codeverra · SQL Practice</div>
+  <h1>SQL Practice Set<br><span>ShopDB</span></h1>
+  <p>12 questions on an Indian e-commerce dataset — customers, products, orders, and line items. Easy to hard. Every question includes the business context, a one-line approach, a clean query, and alternatives where they exist.</p>
+</div>
+
+<!-- SCHEMA -->
+<div class="schema-section">
+  <div class="section-label">Dataset Schema · 5 tables</div>
+  <div class="schema-grid">
+    <div class="schema-table">
+      <div class="schema-table-name">customers <span style="color:#5c6370;font-size:11px">— 20 rows</span></div>
+      <div class="schema-row"><span class="schema-col">id, name, email</span></div>
+      <div class="schema-row"><span class="schema-col">city, state</span></div>
+      <div class="schema-row"><span class="schema-col">joined_on</span> <span class="schema-type">DATE</span></div>
+    </div>
+    <div class="schema-table">
+      <div class="schema-table-name">categories <span style="color:#5c6370;font-size:11px">— 6 rows</span></div>
+      <div class="schema-row"><span class="schema-col">id, name</span></div>
+      <div class="schema-row"><span class="schema-col">description</span> <span class="schema-note">nullable</span></div>
+    </div>
+    <div class="schema-table">
+      <div class="schema-table-name">products <span style="color:#5c6370;font-size:11px">— 25 rows</span></div>
+      <div class="schema-row"><span class="schema-col">id, name</span></div>
+      <div class="schema-row"><span class="schema-col">category_id</span> <span class="schema-type">→ categories</span></div>
+      <div class="schema-row"><span class="schema-col">price_inr, stock_quantity</span></div>
+      <div class="schema-row"><span class="schema-col">is_available</span> <span class="schema-type">BOOLEAN</span></div>
+    </div>
+    <div class="schema-table">
+      <div class="schema-table-name">orders <span style="color:#5c6370;font-size:11px">— 15 rows</span></div>
+      <div class="schema-row"><span class="schema-col">id, customer_id</span> <span class="schema-type">→ customers</span></div>
+      <div class="schema-row"><span class="schema-col">order_date</span> <span class="schema-type">DATE</span></div>
+      <div class="schema-row"><span class="schema-col">status</span> <span class="schema-note">Delivered/Shipped/Pending/Cancelled</span></div>
+      <div class="schema-row"><span class="schema-col">payment_method</span> <span class="schema-note">UPI/Card/COD/NetBanking</span></div>
+    </div>
+    <div class="schema-table">
+      <div class="schema-table-name">order_items <span style="color:#5c6370;font-size:11px">— 30 rows</span></div>
+      <div class="schema-row"><span class="schema-col">id, order_id</span> <span class="schema-type">→ orders</span></div>
+      <div class="schema-row"><span class="schema-col">product_id</span> <span class="schema-type">→ products</span></div>
+      <div class="schema-row"><span class="schema-col">quantity, unit_price</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP -->
+<div class="setup-banner">
+  <div class="setup-box">
+    <span class="icon">📄</span>
+    <p>Create ShopDB in PostgreSQL with one command — 20 customers, 25 products, 15 orders, 30 line items, all Indian-themed:
+      <br><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/shopDB-setup.sql" target="_blank" download="shopdb_setup.sql">→ shopdb_setup.sql ↓</a>
+      &nbsp;·&nbsp; Run it in pgAdmin or psql before starting.
+    </p>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--easy)"></div>Easy — single/two table</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--medium)"></div>Medium — multi-table JOINs, HAVING</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--hard)"></div>Hard — CTEs, window functions, subqueries</div>
+</div>
+
+<!-- ==================== EASY ==================== -->
+<div class="diff-header">
+  <div class="diff-strip easy">
+    <div class="diff-title">Easy</div>
+    <div class="diff-desc">Single or two tables · WHERE · basic aggregates · CASE WHEN</div>
+  </div>
+</div>
+
+<div class="q-wrap">
+
+  <!-- Q1 -->
+  <div class="q-card easy">
+    <div class="q-top">
+      <div class="q-number">01</div>
+      <div class="q-info">
+        <div class="q-pill">Easy</div>
+        <div class="q-title">How many products are in each category?</div>
+        <div class="q-tags">GROUP BY · COUNT · JOIN</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The product team wants a quick count of how many SKUs live in each category — Electronics, Books, Sports, etc. Show the category name, not the id.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">JOIN <code>products</code> to <code>categories</code> to get the name, then <code>GROUP BY</code> category and <code>COUNT(*)</code>. The JOIN is necessary because the name lives in a separate table — products only stores <code>category_id</code>.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    c.name          <span class="kw">AS</span> category,
+    <span class="fn">COUNT</span>(*)        <span class="kw">AS</span> product_count,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(p.price_inr), <span class="num">0</span>) <span class="kw">AS</span> avg_price_inr
+<span class="kw">FROM</span>   <span class="tbl">products</span>    <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl">categories</span>  <span class="kw">AS</span> c  <span class="kw">ON</span> c.id = p.category_id
+<span class="kw">GROUP BY</span> c.id, c.name
+<span class="kw">ORDER BY</span> product_count <span class="kw">DESC</span>;</pre>
+      <div class="explain-box">Always include the <strong>JOIN key</strong> (<code>c.id</code>) in GROUP BY alongside any display column — if two categories accidentally shared a name, <code>GROUP BY c.name</code> alone would merge them incorrectly.</div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card easy">
+    <div class="q-top">
+      <div class="q-number">02</div>
+      <div class="q-info">
+        <div class="q-pill">Easy</div>
+        <div class="q-title">Label every product as Budget, Mid-range, or Premium</div>
+        <div class="q-tags">CASE WHEN · SELECT</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Marketing needs to segment the product catalogue by price band for a promotional email — budget items for one campaign, premium for another.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Use <code>CASE WHEN</code> to create a computed column. Conditions are checked top to bottom — first match wins, so order matters. No JOIN needed — everything lives on <code>products</code>.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    name,
+    price_inr,
+    stock_quantity,
+    <span class="kw">CASE</span>
+        <span class="kw">WHEN</span> price_inr < <span class="num">1000</span>                      <span class="kw">THEN</span> <span class="str">'Budget'</span>
+        <span class="kw">WHEN</span> price_inr <span class="kw">BETWEEN</span> <span class="num">1000</span> <span class="kw">AND</span> <span class="num">9999</span>       <span class="kw">THEN</span> <span class="str">'Mid-range'</span>
+        <span class="kw">ELSE</span>                                             <span class="str">'Premium'</span>
+    <span class="kw">END</span>                                              <span class="kw">AS</span> price_segment
+<span class="kw">FROM</span>   <span class="tbl">products</span>
+<span class="kw">ORDER BY</span> price_inr;</pre>
+      <div class="label alt">Alternative — add a count summary</div>
+      <div class="alt-box">Wrap the above in a subquery (or CTE) and <code>GROUP BY price_segment</code> to get how many products fall into each band — useful as a dashboard metric.</div>
+      <div class="explain-box"><code>BETWEEN 1000 AND 9999</code> is inclusive on both ends. A product priced exactly ₹1000 matches the Mid-range condition. CASE WHEN conditions short-circuit — once a row matches, remaining conditions are skipped.</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card easy">
+    <div class="q-top">
+      <div class="q-number">03</div>
+      <div class="q-info">
+        <div class="q-pill">Easy</div>
+        <div class="q-title">Monthly order count for 2024 — how busy was each month?</div>
+        <div class="q-tags">EXTRACT · GROUP BY · ORDER BY</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Operations wants to know which months in 2024 saw the highest order volume — to plan staffing and logistics for the next year.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Use <code>EXTRACT(MONTH FROM order_date)</code> to pull the month number out of the date, then <code>GROUP BY</code> that. Filter the year with <code>WHERE EXTRACT(YEAR FROM order_date) = 2024</code>.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    <span class="fn">EXTRACT</span>(MONTH <span class="kw">FROM</span> order_date)  <span class="kw">AS</span> month,
+    <span class="fn">TO_CHAR</span>(order_date, <span class="str">'Month'</span>)    <span class="kw">AS</span> month_name,
+    <span class="fn">COUNT</span>(*)                         <span class="kw">AS</span> orders_placed
+<span class="kw">FROM</span>   <span class="tbl">orders</span>
+<span class="kw">WHERE</span>  <span class="fn">EXTRACT</span>(YEAR <span class="kw">FROM</span> order_date) = <span class="num">2024</span>
+<span class="kw">GROUP BY</span> month, month_name
+<span class="kw">ORDER BY</span> month;</pre>
+      <div class="explain-box"><code>TO_CHAR(order_date, 'Month')</code> gives a readable month name alongside the number. PostgreSQL's <code>EXTRACT</code> returns a number (1–12) — you need it in GROUP BY to aggregate correctly. <code>TO_CHAR</code> is just for display.</div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card easy">
+    <div class="q-top">
+      <div class="q-number">04</div>
+      <div class="q-info">
+        <div class="q-pill">Easy</div>
+        <div class="q-title">Order status breakdown — delivered, pending, shipped, cancelled</div>
+        <div class="q-tags">GROUP BY · COUNT · FILTER pivot</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The ops dashboard needs a single-row summary of all orders by status — how many delivered, how many still pending, how many cancelled.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Two ways: <code>GROUP BY status</code> gives one row per status (vertical), or use <code>COUNT(*) FILTER (WHERE status = '...')</code> to get all statuses in one horizontal row — the "pivot" pattern.</div>
+<pre class="sql"><span class="cm">-- Vertical: one row per status</span>
+<span class="kw">SELECT</span> status, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> count
+<span class="kw">FROM</span>   <span class="tbl">orders</span>
+<span class="kw">GROUP BY</span> status
+<span class="kw">ORDER BY</span> count <span class="kw">DESC</span>;
+
+<span class="cm">-- Horizontal pivot: everything in one row</span>
+<span class="kw">SELECT</span>
+    <span class="fn">COUNT</span>(*)                                            <span class="kw">AS</span> total,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'Delivered'</span>)      <span class="kw">AS</span> delivered,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'Pending'</span>)        <span class="kw">AS</span> pending,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'Shipped'</span>)        <span class="kw">AS</span> shipped,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'Cancelled'</span>)      <span class="kw">AS</span> cancelled
+<span class="kw">FROM</span>   <span class="tbl">orders</span>;</pre>
+      <div class="explain-box">The pivot form is useful when the result needs to feed a dashboard widget that expects one row. The GROUP BY form is more flexible — add a new status value and it appears automatically. FILTER is PostgreSQL-specific; use <code>SUM(CASE WHEN status = 'X' THEN 1 ELSE 0 END)</code> for portability.</div>
+    </div>
+  </div>
+
+</div><!-- /easy -->
+
+<hr class="divider">
+
+<!-- ==================== MEDIUM ==================== -->
+<div class="diff-header">
+  <div class="diff-strip medium">
+    <div class="diff-title">Medium</div>
+    <div class="diff-desc">Multi-table JOINs · revenue calculations · HAVING · anti-join</div>
+  </div>
+</div>
+
+<div class="q-wrap">
+
+  <!-- Q5 -->
+  <div class="q-card medium">
+    <div class="q-top">
+      <div class="q-number">05</div>
+      <div class="q-info">
+        <div class="q-pill">Medium</div>
+        <div class="q-title">Total revenue by category — excluding cancelled orders</div>
+        <div class="q-tags">4-table JOIN · SUM · GROUP BY · WHERE</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Finance needs a revenue breakdown by product category. Revenue = quantity × unit_price at the line item level. Cancelled orders must be excluded.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Chain four tables: <code>categories → products → order_items → orders</code>. Filter out cancelled orders in WHERE. Group and sum. Use <code>COUNT(DISTINCT o.id)</code> for order count — without DISTINCT, you'd count line items instead of orders.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    cat.name                           <span class="kw">AS</span> category,
+    <span class="fn">SUM</span>(oi.quantity * oi.unit_price)   <span class="kw">AS</span> revenue_inr,
+    <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id)               <span class="kw">AS</span> orders_count,
+    <span class="fn">SUM</span>(oi.quantity)                   <span class="kw">AS</span> units_sold
+<span class="kw">FROM</span>   <span class="tbl">categories</span>   <span class="kw">AS</span> cat
+<span class="kw">JOIN</span>   <span class="tbl">products</span>     <span class="kw">AS</span> p   <span class="kw">ON</span> p.category_id  = cat.id
+<span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.product_id  = p.id
+<span class="kw">JOIN</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o   <span class="kw">ON</span> oi.order_id    = o.id
+<span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+<span class="kw">GROUP BY</span> cat.id, cat.name
+<span class="kw">ORDER BY</span> revenue_inr <span class="kw">DESC</span>;</pre>
+      <div class="explain-box">Revenue is calculated at <strong>line item level</strong> (quantity × price per item), not order level. Electronics dominates because phones and laptops are high-value. <code>COUNT(DISTINCT o.id)</code> counts unique orders — without DISTINCT an order with 3 items would be counted 3 times.</div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card medium">
+    <div class="q-top">
+      <div class="q-number">06</div>
+      <div class="q-info">
+        <div class="q-pill">Medium</div>
+        <div class="q-title">Products that have never been ordered — dead stock alert</div>
+        <div class="q-tags">LEFT JOIN anti-join · IS NULL · NOT EXISTS · NOT IN</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The inventory team wants to flag products that have sat in the catalogue with zero orders — candidates for discounting or delisting.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Three valid patterns all produce the same result: <strong>(1)</strong> LEFT JOIN + WHERE IS NULL (anti-join), <strong>(2)</strong> NOT EXISTS subquery, <strong>(3)</strong> NOT IN subquery. The LEFT JOIN pattern is the most commonly seen in production.</div>
+<pre class="sql"><span class="cm">-- Method 1: LEFT JOIN anti-join (most common)</span>
+<span class="kw">SELECT</span> p.name, cat.name <span class="kw">AS</span> category, p.price_inr, p.stock_quantity
+<span class="kw">FROM</span>   <span class="tbl">products</span>    <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl">categories</span>  <span class="kw">AS</span> cat  <span class="kw">ON</span> cat.id = p.category_id
+<span class="kw">LEFT JOIN</span> <span class="tbl">order_items</span> <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.product_id = p.id
+<span class="kw">WHERE</span>  oi.id <span class="kw">IS NULL</span>
+<span class="kw">ORDER BY</span> cat.name, p.name;
+
+<span class="cm">-- Method 2: NOT EXISTS (safest with NULLs)</span>
+<span class="kw">SELECT</span> p.name, p.price_inr
+<span class="kw">FROM</span>   <span class="tbl">products</span> <span class="kw">AS</span> p
+<span class="kw">WHERE NOT EXISTS</span> (
+    <span class="kw">SELECT</span> <span class="num">1</span> <span class="kw">FROM</span> <span class="tbl">order_items</span> oi
+    <span class="kw">WHERE</span> oi.product_id = p.id
+);
+
+<span class="cm">-- Method 3: NOT IN (add NULL guard!)</span>
+<span class="kw">SELECT</span> name, price_inr
+<span class="kw">FROM</span>   <span class="tbl">products</span>
+<span class="kw">WHERE</span>  id <span class="kw">NOT IN</span> (
+    <span class="kw">SELECT</span> product_id <span class="kw">FROM</span> <span class="tbl">order_items</span>
+    <span class="kw">WHERE</span>  product_id <span class="kw">IS NOT NULL</span>  <span class="cm">-- critical</span>
+);</pre>
+      <div class="label alt">Why NOT IN needs the NULL guard</div>
+      <div class="alt-box">If <code>SELECT product_id FROM order_items</code> returns even one NULL, the entire NOT IN returns zero rows — a silent bug. <code>NOT EXISTS</code> handles NULLs correctly by design and is generally the safer choice.</div>
+      <div class="explain-box">The LEFT JOIN approach works because a product with no order_items gets NULL on the right side of the join. <code>WHERE oi.id IS NULL</code> keeps only those unmatched rows. It is called an <strong>anti-join</strong> — finding rows in A that don't exist in B.</div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card medium">
+    <div class="q-top">
+      <div class="q-number">07</div>
+      <div class="q-info">
+        <div class="q-pill">Medium</div>
+        <div class="q-title">Top 5 customers by total spend</div>
+        <div class="q-tags">JOIN · GROUP BY · SUM · LIMIT</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Marketing wants to identify the highest-value customers for a loyalty programme — top 5 by total spend on non-cancelled orders, with their city and state.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Join the full chain from customers through to order_items, filter out cancelled orders, group by customer, sum the revenue, and take the top 5 with ORDER BY + LIMIT.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    c.name                             <span class="kw">AS</span> customer,
+    c.city,
+    c.state,
+    <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id)               <span class="kw">AS</span> orders_placed,
+    <span class="fn">SUM</span>(oi.quantity * oi.unit_price)   <span class="kw">AS</span> total_spent_inr
+<span class="kw">FROM</span>   <span class="tbl">customers</span>    <span class="kw">AS</span> c
+<span class="kw">JOIN</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o   <span class="kw">ON</span> o.customer_id = c.id
+<span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.order_id   = o.id
+<span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+<span class="kw">GROUP BY</span> c.id, c.name, c.city, c.state
+<span class="kw">ORDER BY</span> total_spent_inr <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">5</span>;</pre>
+      <div class="explain-box">Customers with no orders don't appear — INNER JOIN excludes them. If you want all customers including those with zero spend, switch to LEFT JOINs and use COALESCE(SUM(...), 0). The top customer's spend should be well above ₹40,000 — likely a phone or laptop order.</div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card medium">
+    <div class="q-top">
+      <div class="q-number">08</div>
+      <div class="q-info">
+        <div class="q-pill">Medium</div>
+        <div class="q-title">Customers who placed more than one order — repeat buyers</div>
+        <div class="q-tags">GROUP BY · HAVING · COUNT DISTINCT</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The retention team wants to identify repeat buyers — customers who have placed at least 2 orders — as the foundation for a loyalty programme analysis.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Join customers → orders → order_items, group by customer, then use <code>HAVING COUNT(DISTINCT o.id) > 1</code>. The HAVING clause filters <em>after</em> grouping — you cannot use WHERE here because COUNT doesn't exist until after aggregation.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    c.name                             <span class="kw">AS</span> customer,
+    c.city,
+    <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id)               <span class="kw">AS</span> total_orders,
+    <span class="fn">SUM</span>(oi.quantity * oi.unit_price)   <span class="kw">AS</span> total_spent_inr
+<span class="kw">FROM</span>   <span class="tbl">customers</span>    <span class="kw">AS</span> c
+<span class="kw">JOIN</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o   <span class="kw">ON</span> o.customer_id = c.id
+<span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.order_id   = o.id
+<span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+<span class="kw">GROUP BY</span> c.id, c.name, c.city
+<span class="kw">HAVING</span>  <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id) > <span class="num">1</span>
+<span class="kw">ORDER BY</span> total_orders <span class="kw">DESC</span>, total_spent_inr <span class="kw">DESC</span>;</pre>
+      <div class="label alt">Common mistake</div>
+      <div class="alt-box">Using <code>COUNT(o.id)</code> instead of <code>COUNT(DISTINCT o.id)</code> counts order <em>items</em>, not orders. A single order with 3 items would count as 3 — incorrectly showing the customer as a repeat buyer.</div>
+      <div class="explain-box">WHERE runs before grouping, HAVING runs after. This is part of SQL's execution order: <strong>FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</strong>. Any condition on an aggregate must go in HAVING.</div>
+    </div>
+  </div>
+
+</div><!-- /medium -->
+
+<hr class="divider">
+
+<!-- ==================== HARD ==================== -->
+<div class="diff-header">
+  <div class="diff-strip hard">
+    <div class="diff-title">Hard</div>
+    <div class="diff-desc">CTEs · window functions · nested aggregation · full report queries</div>
+  </div>
+</div>
+
+<div class="q-wrap">
+
+  <!-- Q9 -->
+  <div class="q-card hard">
+    <div class="q-top">
+      <div class="q-number">09</div>
+      <div class="q-info">
+        <div class="q-pill">Hard</div>
+        <div class="q-title">Best-selling product in each category</div>
+        <div class="q-tags">CTE · RANK() OVER PARTITION BY · window function</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Merchandising wants the single best-selling product (by units sold) in each category — to feature it in a homepage banner. If two products tie, both should appear.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Two-step: first aggregate sales per product per category in a CTE, then apply <code>RANK() OVER (PARTITION BY category ORDER BY units_sold DESC)</code>. Filter <code>WHERE rnk = 1</code> in the outer query. RANK handles ties — ROW_NUMBER would arbitrarily pick one.</div>
+<pre class="sql"><span class="kw">WITH</span> product_sales <span class="kw">AS</span> (
+    <span class="kw">SELECT</span>
+        cat.id                             <span class="kw">AS</span> cat_id,
+        cat.name                           <span class="kw">AS</span> category,
+        p.name                             <span class="kw">AS</span> product,
+        <span class="fn">SUM</span>(oi.quantity)                   <span class="kw">AS</span> units_sold,
+        <span class="fn">SUM</span>(oi.quantity * oi.unit_price)   <span class="kw">AS</span> revenue_inr,
+        <span class="fn">RANK</span>() <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> cat.id
+            <span class="kw">ORDER BY</span> <span class="fn">SUM</span>(oi.quantity) <span class="kw">DESC</span>
+        )                                  <span class="kw">AS</span> rnk
+    <span class="kw">FROM</span>   <span class="tbl">categories</span>   <span class="kw">AS</span> cat
+    <span class="kw">JOIN</span>   <span class="tbl">products</span>     <span class="kw">AS</span> p   <span class="kw">ON</span> p.category_id = cat.id
+    <span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.product_id = p.id
+    <span class="kw">JOIN</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o   <span class="kw">ON</span> oi.order_id   = o.id
+    <span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+    <span class="kw">GROUP BY</span> cat.id, cat.name, p.id, p.name
+)
+<span class="kw">SELECT</span> category, product, units_sold, revenue_inr
+<span class="kw">FROM</span>   product_sales
+<span class="kw">WHERE</span>  rnk = <span class="num">1</span>
+<span class="kw">ORDER BY</span> category;</pre>
+      <div class="explain-box">You cannot filter on a window function in the same SELECT — <code>WHERE RANK() OVER (...) = 1</code> is invalid. The CTE (or subquery) materialises the ranked result first, then the outer query can filter on <code>rnk</code>. This two-step pattern appears constantly in analytics work.</div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card hard">
+    <div class="q-top">
+      <div class="q-number">10</div>
+      <div class="q-info">
+        <div class="q-pill">Hard</div>
+        <div class="q-title">Monthly revenue with running cumulative total</div>
+        <div class="q-tags">DATE_TRUNC · GROUP BY · SUM OVER · running total</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">Finance wants a month-by-month revenue table with a running cumulative total — so they can see at a glance when the business crossed key revenue milestones across the year.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Group by month to get monthly revenue, then apply <code>SUM(monthly_revenue) OVER (ORDER BY month)</code> for the running total. The tricky part: you cannot directly nest <code>SUM(SUM(...))</code> — use a CTE or <code>SUM(SUM()) OVER</code> which is valid in one pass.</div>
+<pre class="sql"><span class="kw">SELECT</span>
+    <span class="fn">EXTRACT</span>(MONTH <span class="kw">FROM</span> o.order_date)             <span class="kw">AS</span> month,
+    <span class="fn">TO_CHAR</span>(o.order_date, <span class="str">'Mon YYYY'</span>)            <span class="kw">AS</span> month_label,
+    <span class="fn">SUM</span>(oi.quantity * oi.unit_price)              <span class="kw">AS</span> monthly_revenue,
+    <span class="fn">SUM</span>(<span class="fn">SUM</span>(oi.quantity * oi.unit_price))
+        <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> <span class="fn">EXTRACT</span>(MONTH <span class="kw">FROM</span> o.order_date))
+                                                  <span class="kw">AS</span> running_total
+<span class="kw">FROM</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o
+<span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.order_id = o.id
+<span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+<span class="kw">GROUP BY</span> month, month_label
+<span class="kw">ORDER BY</span> month;</pre>
+      <div class="label alt">Why SUM(SUM(...)) OVER works</div>
+      <div class="alt-box">The inner <code>SUM(oi.quantity * oi.unit_price)</code> is evaluated per GROUP BY group first, producing one revenue number per month. The outer <code>SUM(...) OVER (ORDER BY month)</code> then accumulates those monthly totals in date order — a two-level aggregation in one query.</div>
+      <div class="explain-box">The final row's <code>running_total</code> equals the gross revenue across all non-cancelled orders. Verify it against <code>SELECT SUM(quantity * unit_price) FROM order_items JOIN orders... WHERE status != 'Cancelled'</code> — they should match exactly.</div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card hard">
+    <div class="q-top">
+      <div class="q-number">11</div>
+      <div class="q-info">
+        <div class="q-pill">Hard</div>
+        <div class="q-title">Average order value by payment method — using a CTE</div>
+        <div class="q-tags">CTE · nested aggregation · AVG · ROUND</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The payments team wants to know if customers who pay by card tend to spend more per order than UPI or COD customers — average order value broken down by payment method.</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">You cannot write <code>AVG(SUM(...))</code> directly — aggregate functions can't be nested. Use a CTE to compute each order's total first, then AVG those totals in the outer query. This is a very common two-step pattern.</div>
+<pre class="sql"><span class="kw">WITH</span> order_totals <span class="kw">AS</span> (
+    <span class="kw">SELECT</span>
+        o.id                               <span class="kw">AS</span> order_id,
+        o.payment_method,
+        <span class="fn">SUM</span>(oi.quantity * oi.unit_price)   <span class="kw">AS</span> order_total
+    <span class="kw">FROM</span>   <span class="tbl">orders</span>       <span class="kw">AS</span> o
+    <span class="kw">JOIN</span>   <span class="tbl">order_items</span>  <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.order_id = o.id
+    <span class="kw">WHERE</span>  o.status != <span class="str">'Cancelled'</span>
+    <span class="kw">GROUP BY</span> o.id, o.payment_method
+)
+<span class="kw">SELECT</span>
+    payment_method,
+    <span class="fn">COUNT</span>(*)                           <span class="kw">AS</span> order_count,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(order_total), <span class="num">2</span>)         <span class="kw">AS</span> avg_order_value_inr,
+    <span class="fn">ROUND</span>(<span class="fn">MIN</span>(order_total), <span class="num">2</span>)         <span class="kw">AS</span> min_order,
+    <span class="fn">ROUND</span>(<span class="fn">MAX</span>(order_total), <span class="num">2</span>)         <span class="kw">AS</span> max_order
+<span class="kw">FROM</span>   order_totals
+<span class="kw">GROUP BY</span> payment_method
+<span class="kw">ORDER BY</span> avg_order_value_inr <span class="kw">DESC</span>;</pre>
+      <div class="explain-box">The CTE <code>order_totals</code> runs as a named subquery — you can test it independently before adding the outer aggregation. This is the main reason CTEs exist: making complex two-step queries readable and debuggable one step at a time.</div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card hard">
+    <div class="q-top">
+      <div class="q-number">12</div>
+      <div class="q-info">
+        <div class="q-pill">Hard</div>
+        <div class="q-title">Full customer report — spend, tier, and order breakdown in one query</div>
+        <div class="q-tags">CTE · LEFT JOIN · FILTER · CASE WHEN · COALESCE · ROUND</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="scenario">The CEO wants one table: every customer, how many orders they placed, how many were delivered vs cancelled, their total spend, average order value, last order date, and a tier label (Platinum / Gold / Silver / No Orders).</div>
+      <div class="label approach">Approach</div>
+      <div class="approach-box">Use a CTE with LEFT JOINs (so all 20 customers appear, even those with no orders). Aggregate everything in the CTE, then apply CASE WHEN for tier in the outer SELECT. Separate the aggregation step from the classification step — it makes both readable.</div>
+<pre class="sql"><span class="kw">WITH</span> customer_stats <span class="kw">AS</span> (
+    <span class="kw">SELECT</span>
+        c.id, c.name, c.city, c.state,
+        <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id)                           <span class="kw">AS</span> total_orders,
+        <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> o.status = <span class="str">'Delivered'</span>)
+                                                        <span class="kw">AS</span> delivered,
+        <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> o.id) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> o.status = <span class="str">'Cancelled'</span>)
+                                                        <span class="kw">AS</span> cancelled,
+        <span class="fn">COALESCE</span>(
+            <span class="fn">SUM</span>(oi.quantity * oi.unit_price)
+                <span class="kw">FILTER</span> (<span class="kw">WHERE</span> o.status != <span class="str">'Cancelled'</span>),
+            <span class="num">0</span>
+        )                                               <span class="kw">AS</span> total_spent,
+        <span class="fn">MAX</span>(o.order_date)                               <span class="kw">AS</span> last_order_date
+    <span class="kw">FROM</span>   <span class="tbl">customers</span>    <span class="kw">AS</span> c
+    <span class="kw">LEFT JOIN</span> <span class="tbl">orders</span>     <span class="kw">AS</span> o   <span class="kw">ON</span> o.customer_id = c.id
+    <span class="kw">LEFT JOIN</span> <span class="tbl">order_items</span> <span class="kw">AS</span> oi  <span class="kw">ON</span> oi.order_id   = o.id
+    <span class="kw">GROUP BY</span> c.id, c.name, c.city, c.state
+)
+<span class="kw">SELECT</span>
+    name, city, state,
+    total_orders, delivered, cancelled,
+    total_spent                          <span class="kw">AS</span> total_spent_inr,
+    <span class="kw">CASE</span>
+        <span class="kw">WHEN</span> total_orders > <span class="num">0</span>
+        <span class="kw">THEN</span> <span class="fn">ROUND</span>(total_spent / total_orders, <span class="num">0</span>)
+        <span class="kw">ELSE</span> <span class="num">0</span>
+    <span class="kw">END</span>                                  <span class="kw">AS</span> avg_order_value,
+    last_order_date,
+    <span class="kw">CASE</span>
+        <span class="kw">WHEN</span> total_spent > <span class="num">50000</span>   <span class="kw">THEN</span> <span class="str">'💎 Platinum'</span>
+        <span class="kw">WHEN</span> total_spent >= <span class="num">10000</span>  <span class="kw">THEN</span> <span class="str">'🥇 Gold'</span>
+        <span class="kw">WHEN</span> total_spent > <span class="num">0</span>       <span class="kw">THEN</span> <span class="str">'🥈 Silver'</span>
+        <span class="kw">ELSE</span>                             <span class="str">'— No Orders'</span>
+    <span class="kw">END</span>                                  <span class="kw">AS</span> tier
+<span class="kw">FROM</span>   customer_stats
+<span class="kw">ORDER BY</span> total_spent <span class="kw">DESC</span>;</pre>
+      <div class="explain-box">All 20 customers appear because of LEFT JOINs. <code>COALESCE(..., 0)</code> converts NULL revenue (customers with no orders) to 0. The division-by-zero guard in CASE WHEN is essential — without it, customers with zero orders would cause a divide-by-zero error when calculating average order value.</div>
+    </div>
+  </div>
+
+</div><!-- /hard -->
+
+<!-- FOOTER -->
+<div class="footer-card">
+  <div class="footer-inner">
+    <h2>What this practice set covers</h2>
+    <div class="concept-grid">
+      <div class="concept-item"><strong>Easy</strong>GROUP BY, COUNT, EXTRACT, CASE WHEN, FILTER pivot, IS NULL, COALESCE</div>
+      <div class="concept-item"><strong>Medium</strong>4-table INNER JOIN, LEFT JOIN anti-join, HAVING, COUNT DISTINCT, revenue pattern</div>
+      <div class="concept-item"><strong>Hard</strong>CTEs, RANK() OVER PARTITION BY, SUM OVER running total, nested aggregation, full report query</div>
+      <div class="concept-item"><strong>Next step</strong>Try the same questions on a real Kaggle dataset — Zomato Bangalore or Indian Superstore Sales.</div>
+      <div class="concept-item"><strong>Download</strong><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/shopDB-setup.sql" target="_blank" download="shopdb_setup.sql" style="color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:11px;">shopdb_setup.sql ↓</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

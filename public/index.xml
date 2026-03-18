@@ -134,6 +134,20 @@
       <description>Master data analysis in Python using the pandas library using hands on practice on Zomato dataset</description>
     </item>
     <item>
+      <title>SQL Practice on Cricket Dataset: 12 Questions with Solutions</title>
+      <link>http://localhost:1313/blog/sql-practice-cricketdb/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-practice-cricketdb/</guid>
+      <description>Pratice easy, medium and hard questions on cricket dataset.</description>
+    </item>
+    <item>
+      <title>SQL Practice on Shopping Dataset: SQL Questions with Solutions</title>
+      <link>http://localhost:1313/blog/sql-practice-shopdb/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-practice-shopdb/</guid>
+      <description>Pratice easy, medium and hard questions on cricket dataset.</description>
+    </item>
+    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://localhost:1313/blog/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
