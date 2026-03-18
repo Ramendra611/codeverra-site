@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Python on codeverra</title>
-    <link>http://localhost:1313/blog/tags/python/</link>
+    <link>http://localhost:1313/tags/python/</link>
     <description>Recent content in Python on codeverra</description>
     <generator>Hugo -- 0.158.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exception Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/blogs/exception_handling/</link>
+      <link>http://localhost:1313/blogs/exception_handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/exception_handling/</guid>
+      <guid>http://localhost:1313/blogs/exception_handling/</guid>
       <description>Learn about try-except-finally and custom exceptions in Python</description>
     </item>
     <item>
       <title>Higher Order Functions and Decorators in Python</title>
-      <link>http://localhost:1313/blog/blogs/decorators/</link>
+      <link>http://localhost:1313/blogs/decorators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/decorators/</guid>
+      <guid>http://localhost:1313/blogs/decorators/</guid>
       <description>Learn about higher order functions like map, filter, reduce and decorators </description>
     </item>
     <item>
       <title>Iterators and Generators in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/blogs/iterators_generators/</link>
+      <link>http://localhost:1313/blogs/iterators_generators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/iterators_generators/</guid>
+      <guid>http://localhost:1313/blogs/iterators_generators/</guid>
       <description>Learn about iterables and iterators and generators in python</description>
     </item>
     <item>
       <title>Itertools Module in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/blogs/itertools/</link>
+      <link>http://localhost:1313/blogs/itertools/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/itertools/</guid>
+      <guid>http://localhost:1313/blogs/itertools/</guid>
       <description>Learn about the very useful itertools library in python</description>
     </item>
     <item>
       <title>Practice Pandas on IPL Dataset</title>
-      <link>http://localhost:1313/blog/blogs/ipl_pandas/</link>
+      <link>http://localhost:1313/blogs/ipl_pandas/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/ipl_pandas/</guid>
+      <guid>http://localhost:1313/blogs/ipl_pandas/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on IPL dataset</description>
     </item>
     <item>
       <title>Practice Pandas on Titanic Dataset</title>
-      <link>http://localhost:1313/blog/blogs/titanic_pandas/</link>
+      <link>http://localhost:1313/blogs/titanic_pandas/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/titanic_pandas/</guid>
+      <guid>http://localhost:1313/blogs/titanic_pandas/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on Titanic dataset</description>
     </item>
     <item>
       <title>Practice Pandas on Zomato Dataset</title>
-      <link>http://localhost:1313/blog/blogs/pandas_zomato/</link>
+      <link>http://localhost:1313/blogs/pandas_zomato/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/pandas_zomato/</guid>
+      <guid>http://localhost:1313/blogs/pandas_zomato/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on Zomato dataset</description>
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:1313/blog/blogs/python_syllabus/</link>
+      <link>http://localhost:1313/blogs/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/blogs/python_syllabus/</guid>
+      <guid>http://localhost:1313/blogs/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
   </channel>

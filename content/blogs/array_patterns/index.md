@@ -14,7 +14,7 @@ tags:
   - arrays
 
 cover:
-  image: "/images/blog-images/array-patterns.jpg"
+  image: "/images/array-patterns.jpg"
   alt: "Array problem-solving patterns"
   caption: "Common array patterns for efficient problem solving"
   relative: true
