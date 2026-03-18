@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Numpy Masterclass - Beginner to Advanced | codeverra</title>
+<meta name="keywords" content="python, numpy, data-analysis">
+<meta name="description" content="Get a comprehensive introduction to Numpy library in python">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blog/numpy-fundamentals/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/numpy-fundamentals/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://codeverra.com/" title="Home">
+                    <span>Home</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://codeverra.com/s/store" title="Courses">
+                    <span>Courses</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs">
+    <a href="https://codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Numpy Masterclass - Beginner to Advanced
+    </h1>
+    <div class="post-description">
+      Get a comprehensive introduction to Numpy library in python
+    </div>
+    <div class="post-meta"><span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>19 min</span>&nbsp;·&nbsp;<span>3867 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    <a class="tag" href="http://localhost:1313/tags/numpy/">numpy</a>
+    <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/numpy-fundamentals.png" alt="learn about numpy library">
+        <figcaption>learn about numpy library</figcaption>
+</figure>
+  <div class="post-content"><h1 id="numpy-masterclass---from-basics-to-advanced">NumPy Masterclass - From Basics to Advanced<a hidden class="anchor" aria-hidden="true" href="#numpy-masterclass---from-basics-to-advanced">#</a></h1>
+<blockquote>
+<p><strong>Prerequisites:</strong> Python basics, lists, loops, functions<br>
+<strong>Install:</strong> <code>pip install numpy</code><br>
+<strong>Import convention:</strong> <code>import numpy as np</code></p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ol>
+<li><a href="#1-what-is-numpy-and-why-use-it">What is NumPy and Why Use It?</a></li>
+<li><a href="#2-creating-arrays">Creating Arrays</a></li>
+<li><a href="#3-array-properties">Array Properties</a></li>
+<li><a href="#4-indexing-and-slicing">Indexing and Slicing</a></li>
+<li><a href="#5-modifying-arrays">Modifying Arrays</a></li>
+<li><a href="#6-reshaping-and-stacking">Reshaping and Stacking</a></li>
+<li><a href="#7-math-operations-and-broadcasting">Math Operations and Broadcasting</a></li>
+<li><a href="#8-universal-functions-ufuncs">Universal Functions (ufuncs)</a></li>
+<li><a href="#9-aggregations-and-statistics">Aggregations and Statistics</a></li>
+<li><a href="#10-sorting-and-searching">Sorting and Searching</a></li>
+<li><a href="#11-boolean-operations-and-masking">Boolean Operations and Masking</a></li>
+<li><a href="#12-random-number-generation">Random Number Generation</a></li>
+<li><a href="#13-linear-algebra">Linear Algebra</a></li>
+<li><a href="#14-working-with-files">Working with Files</a></li>
+<li><a href="#15-performance-tips-and-best-practices">Performance Tips and Best Practices</a></li>
+</ol>
+<hr>
+<h2 id="1-what-is-numpy-and-why-use-it">1. What is NumPy and Why Use It?<a hidden class="anchor" aria-hidden="true" href="#1-what-is-numpy-and-why-use-it">#</a></h2>
+<p>NumPy (Numerical Python) is the foundation of the entire Python data science stack. Pandas, Matplotlib, Scikit-learn, and TensorFlow all build on top of it.</p>
+<h3 id="why-not-just-use-python-lists">Why not just use Python lists?<a hidden class="anchor" aria-hidden="true" href="#why-not-just-use-python-lists">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Python list — slow loop-based</span>
+</span></span><span style="display:flex;"><span>python_list <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">1_000_000</span>))
+</span></span><span style="display:flex;"><span>start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> [x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> python_list]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;List: </span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NumPy array — vectorized C operations</span>
+</span></span><span style="display:flex;"><span>np_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1_000_000</span>)
+</span></span><span style="display:flex;"><span>start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> np_array <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NumPy: </span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NumPy is typically 10–100x faster for numerical operations</span>
+</span></span></code></pre></div><h3 id="key-differences-from-python-lists">Key differences from Python lists<a hidden class="anchor" aria-hidden="true" href="#key-differences-from-python-lists">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Python List</th>
+          <th>NumPy Array</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data types</td>
+          <td>Mixed (int, str, etc.)</td>
+          <td>All same type</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Slow (Python loop)</td>
+          <td>Fast (C under the hood)</td>
+      </tr>
+      <tr>
+          <td>Memory</td>
+          <td>More overhead</td>
+          <td>Compact</td>
+      </tr>
+      <tr>
+          <td>Operations</td>
+          <td>Need explicit loops</td>
+          <td>Vectorized (no loops)</td>
+      </tr>
+      <tr>
+          <td>Dimensions</td>
+          <td>Only 1D natively</td>
+          <td>Any number of dimensions</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-creating-arrays">2. Creating Arrays<a hidden class="anchor" aria-hidden="true" href="#2-creating-arrays">#</a></h2>
+<h3 id="from-python-sequences">From Python sequences<a hidden class="anchor" aria-hidden="true" href="#from-python-sequences">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># From a list — 1D array</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>print(a)           <span style="color:#75715e"># [1 2 3 4 5]</span>
+</span></span><span style="display:flex;"><span>print(type(a))     <span style="color:#75715e"># &lt;class &#39;numpy.ndarray&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># From a list of lists — 2D array (matrix)</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])
+</span></span><span style="display:flex;"><span>print(m)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[1 2 3]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [4 5 6]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># From a tuple</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array((<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>print(b)           <span style="color:#75715e"># [10 20 30]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Specify data type explicitly</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>float)
+</span></span><span style="display:flex;"><span>print(c)           <span style="color:#75715e"># [1. 2. 3.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.7</span>, <span style="color:#ae81ff">2.9</span>, <span style="color:#ae81ff">3.1</span>], dtype<span style="color:#f92672">=</span>int)
+</span></span><span style="display:flex;"><span>print(d)           <span style="color:#75715e"># [1 2 3]  (truncated, not rounded!)</span>
+</span></span></code></pre></div><h3 id="built-in-array-creation-functions">Built-in array creation functions<a hidden class="anchor" aria-hidden="true" href="#built-in-array-creation-functions">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Zeros — all elements are 0.0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)              <span style="color:#75715e"># [0. 0. 0. 0. 0.]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>))         <span style="color:#75715e"># 3 rows, 4 cols of zeros</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ones — all elements are 1.0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">4</span>)               <span style="color:#75715e"># [1. 1. 1. 1.]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>ones((<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))          <span style="color:#75715e"># 2×3 matrix of ones</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Full — fill with a specific value</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>full(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>)            <span style="color:#75715e"># [7 7 7 7 7]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>full((<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">3.14</span>)    <span style="color:#75715e"># [[3.14 3.14]</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#75715e">#  [3.14 3.14]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Identity matrix (n×n, 1s on diagonal)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>eye(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[1. 0. 0.]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [0. 1. 0.]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [0. 0. 1.]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Uninitialized — fast but contains garbage values (use carefully)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>empty((<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Like another array (same shape)</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>zeros_like(a)    <span style="color:#75715e"># [[0 0] [0 0]]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>ones_like(a)     <span style="color:#75715e"># [[1 1] [1 1]]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>full_like(a, <span style="color:#ae81ff">9</span>)  <span style="color:#75715e"># [[9 9] [9 9]]</span>
+</span></span></code></pre></div><h3 id="range-based-arrays">Range-based arrays<a hidden class="anchor" aria-hidden="true" href="#range-based-arrays">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># np.arange(start, stop, step) — like Python range()</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">5</span>)           <span style="color:#75715e"># [0 1 2 3 4]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)       <span style="color:#75715e"># [1 2 3 4 5 6 7 8 9]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.2</span>)   <span style="color:#75715e"># [0.  0.2 0.4 0.6 0.8]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)   <span style="color:#75715e"># [10  8  6  4  2]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># np.linspace(start, stop, num) — exactly num evenly spaced points</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NOTE: stop IS included (unlike arange)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)     <span style="color:#75715e"># [0.   0.25 0.5  0.75 1.  ]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>)   <span style="color:#75715e"># [0. 1. 2. 3. 4. 5. 6. 7. 8. 9. 10.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Logarithmically spaced</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)   <span style="color:#75715e"># [   1.   10.  100. 1000.]  (10^0 to 10^3)</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>When to use arange vs linspace:</strong><br>
+Use <code>arange</code> when you need a specific <strong>step size</strong>.<br>
+Use <code>linspace</code> when you need a specific <strong>number of points</strong> (great for plotting x-axes).</p>
+</blockquote>
+<hr>
+<h2 id="3-array-properties">3. Array Properties<a hidden class="anchor" aria-hidden="true" href="#3-array-properties">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">12</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Shape — (rows, cols) for 2D</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>shape)      <span style="color:#75715e"># (3, 4)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Number of dimensions</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>ndim)       <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Total number of elements</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>size)       <span style="color:#75715e"># 12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Data type of elements</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>dtype)      <span style="color:#75715e"># int64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Memory size of each element in bytes</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>itemsize)   <span style="color:#75715e"># 8  (int64 = 8 bytes)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Total memory in bytes</span>
+</span></span><span style="display:flex;"><span>print(a<span style="color:#f92672">.</span>nbytes)     <span style="color:#75715e"># 96  (12 elements × 8 bytes)</span>
+</span></span></code></pre></div><h3 id="common-dtypes">Common dtypes<a hidden class="anchor" aria-hidden="true" href="#common-dtypes">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int8)      <span style="color:#75715e"># -128 to 127</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int32)     <span style="color:#75715e"># ±2 billion</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int64)     <span style="color:#75715e"># default int on most systems</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.0</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float32)       <span style="color:#75715e"># single precision</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.0</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float64)       <span style="color:#75715e"># double precision (default)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">False</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>bool_) <span style="color:#75715e"># boolean</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>str_)     <span style="color:#75715e"># unicode string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert dtype</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>astype(float)        <span style="color:#75715e"># [1. 2. 3.]</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float32)
+</span></span></code></pre></div><hr>
+<h2 id="4-indexing-and-slicing">4. Indexing and Slicing<a hidden class="anchor" aria-hidden="true" href="#4-indexing-and-slicing">#</a></h2>
+<h3 id="1d-indexing">1D indexing<a hidden class="anchor" aria-hidden="true" href="#1d-indexing">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Single element (0-based)</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">0</span>]      <span style="color:#75715e"># 10</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">4</span>]      <span style="color:#75715e"># 50</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]     <span style="color:#75715e"># 50  (last element)</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]     <span style="color:#75715e"># 40  (second to last)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Slicing [start:stop:step]  — stop is EXCLUSIVE</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]    <span style="color:#75715e"># [20 30 40]</span>
+</span></span><span style="display:flex;"><span>a[:<span style="color:#ae81ff">3</span>]     <span style="color:#75715e"># [10 20 30]  (from beginning)</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">2</span>:]     <span style="color:#75715e"># [30 40 50]  (to end)</span>
+</span></span><span style="display:flex;"><span>a[:]      <span style="color:#75715e"># [10 20 30 40 50]  (all)</span>
+</span></span><span style="display:flex;"><span>a[::<span style="color:#ae81ff">2</span>]    <span style="color:#75715e"># [10 30 50]  (every 2nd)</span>
+</span></span><span style="display:flex;"><span>a[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]   <span style="color:#75715e"># [50 40 30 20 10]  (reversed!)</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">1</span>::<span style="color:#ae81ff">2</span>]   <span style="color:#75715e"># [20 40]  (start at 1, every 2nd)</span>
+</span></span></code></pre></div><h3 id="2d-indexing">2D indexing<a hidden class="anchor" aria-hidden="true" href="#2d-indexing">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>,  <span style="color:#ae81ff">2</span>,  <span style="color:#ae81ff">3</span>,  <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">5</span>,  <span style="color:#ae81ff">6</span>,  <span style="color:#ae81ff">7</span>,  <span style="color:#ae81ff">8</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">12</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Single element [row, col]</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]     <span style="color:#75715e"># 1  (top-left)</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]     <span style="color:#75715e"># 12 (bottom-right)</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]     <span style="color:#75715e"># 7</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]   <span style="color:#75715e"># 12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Entire row</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">0</span>]        <span style="color:#75715e"># [1 2 3 4]</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">1</span>, :]     <span style="color:#75715e"># [5 6 7 8]</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, :]    <span style="color:#75715e"># [9 10 11 12]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Entire column</span>
+</span></span><span style="display:flex;"><span>m[:, <span style="color:#ae81ff">0</span>]     <span style="color:#75715e"># [1 5 9]</span>
+</span></span><span style="display:flex;"><span>m[:, <span style="color:#ae81ff">2</span>]     <span style="color:#75715e"># [3 7 11]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Submatrix [row_slice, col_slice]</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>]   <span style="color:#75715e"># [[2 3] [6 7]]</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">1</span>:, <span style="color:#ae81ff">2</span>:]     <span style="color:#75715e"># [[7 8] [11 12]]</span>
+</span></span><span style="display:flex;"><span>m[:<span style="color:#ae81ff">2</span>, :<span style="color:#ae81ff">2</span>]     <span style="color:#75715e"># [[1 2] [5 6]]</span>
+</span></span></code></pre></div><h3 id="fancy-indexing-index-with-an-array">Fancy indexing (index with an array)<a hidden class="anchor" aria-hidden="true" href="#fancy-indexing-index-with-an-array">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Index with a list of positions — returns a COPY (not a view)</span>
+</span></span><span style="display:flex;"><span>idx <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>a[idx]          <span style="color:#75715e"># [10 30 50]</span>
+</span></span><span style="display:flex;"><span>a[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>]]       <span style="color:#75715e"># [20 40]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2D fancy indexing</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">12</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>rows <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>cols <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>m[rows, cols]   <span style="color:#75715e"># [m[0,1], m[2,3]] = [1, 11]</span>
+</span></span></code></pre></div><h3 id="views-vs-copies--important">Views vs Copies — important!<a hidden class="anchor" aria-hidden="true" href="#views-vs-copies--important">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Slices return VIEWS — modifying changes the original!</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>b[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">99</span>
+</span></span><span style="display:flex;"><span>print(a)   <span style="color:#75715e"># [1 99 3 4 5]  ← original changed!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use .copy() to avoid this</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>c[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>print(a)   <span style="color:#75715e"># unchanged</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if an array is a view</span>
+</span></span><span style="display:flex;"><span>b<span style="color:#f92672">.</span>base <span style="color:#f92672">is</span> a    <span style="color:#75715e"># True  (b is a view of a)</span>
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>base <span style="color:#f92672">is</span> a    <span style="color:#75715e"># False (c is independent)</span>
+</span></span></code></pre></div><hr>
+<h2 id="5-modifying-arrays">5. Modifying Arrays<a hidden class="anchor" aria-hidden="true" href="#5-modifying-arrays">#</a></h2>
+<h3 id="setting-values">Setting values<a hidden class="anchor" aria-hidden="true" href="#setting-values">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set single element</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">99</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set a slice</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set multiple positions with fancy indexing</span>
+</span></span><span style="display:flex;"><span>a[[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>]] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2D assignment</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">0</span>, :] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]    <span style="color:#75715e"># set first row</span>
+</span></span><span style="display:flex;"><span>m[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>            <span style="color:#75715e"># set second column to all 9s</span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>], [<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]]  <span style="color:#75715e"># set submatrix</span>
+</span></span></code></pre></div><h3 id="adding-and-removing-elements">Adding and removing elements<a hidden class="anchor" aria-hidden="true" href="#adding-and-removing-elements">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Append — returns a NEW array (doesn&#39;t modify in place)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>append(a, <span style="color:#ae81ff">4</span>)          <span style="color:#75715e"># [1 2 3 4]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>append(a, [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>])  <span style="color:#75715e"># [1 2 3 4 5 6]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Insert at position</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>insert(a, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">99</span>)      <span style="color:#75715e"># [1 99 2 3]  (insert 99 at index 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Delete by index</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>delete(a, <span style="color:#ae81ff">0</span>)          <span style="color:#75715e"># [2 3]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>delete(a, [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>])     <span style="color:#75715e"># [2]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Note: all of these return NEW arrays</span>
+</span></span></code></pre></div><hr>
+<h2 id="6-reshaping-and-stacking">6. Reshaping and Stacking<a hidden class="anchor" aria-hidden="true" href="#6-reshaping-and-stacking">#</a></h2>
+<h3 id="reshaping">Reshaping<a hidden class="anchor" aria-hidden="true" href="#reshaping">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">12</span>)   <span style="color:#75715e"># [0 1 2 3 4 5 6 7 8 9 10 11]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># reshape(rows, cols) — total elements must match</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[ 0  1  2  3]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [ 4  5  6  7]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [ 8  9 10 11]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>)     <span style="color:#75715e"># 2 rows × 6 cols</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>)     <span style="color:#75715e"># 4 rows × 3 cols</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># 3D: 2 blocks × 2 rows × 3 cols</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use -1 to let NumPy infer one dimension</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">4</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)    <span style="color:#75715e"># 4 rows, NumPy figures out 3 cols</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)    <span style="color:#75715e"># NumPy figures out 4 rows, 3 cols</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)       <span style="color:#75715e"># flatten to 1D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># np.reshape is the same</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>reshape(a, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>))
+</span></span></code></pre></div><h3 id="flattening">Flattening<a hidden class="anchor" aria-hidden="true" href="#flattening">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">.</span>flatten()   <span style="color:#75715e"># [1 2 3 4 5 6]  — returns a COPY</span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">.</span>ravel()     <span style="color:#75715e"># [1 2 3 4 5 6]  — returns a VIEW (faster)</span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># same as ravel</span>
+</span></span></code></pre></div><h3 id="adding-dimensions">Adding dimensions<a hidden class="anchor" aria-hidden="true" href="#adding-dimensions">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])   <span style="color:#75715e"># shape (3,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add dimension to make it a row vector</span>
+</span></span><span style="display:flex;"><span>a[np<span style="color:#f92672">.</span>newaxis, :]       <span style="color:#75715e"># shape (1, 3)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)       <span style="color:#75715e"># same</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add dimension to make it a column vector</span>
+</span></span><span style="display:flex;"><span>a[:, np<span style="color:#f92672">.</span>newaxis]       <span style="color:#75715e"># shape (3, 1)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)       <span style="color:#75715e"># same</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># np.expand_dims</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>expand_dims(a, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># (1, 3)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>expand_dims(a, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># (3, 1)</span>
+</span></span></code></pre></div><h3 id="transpose">Transpose<a hidden class="anchor" aria-hidden="true" href="#transpose">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])   <span style="color:#75715e"># shape (2, 3)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">.</span>T             <span style="color:#75715e"># shape (3, 2) — rows become cols</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>transpose(m) <span style="color:#75715e"># same</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For higher dimensions — specify axis order</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">24</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>shape       <span style="color:#75715e"># (4, 3, 2)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>transpose(a, axes<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>))  <span style="color:#75715e"># custom axis order</span>
+</span></span></code></pre></div><h3 id="stacking-and-splitting">Stacking and splitting<a hidden class="anchor" aria-hidden="true" href="#stacking-and-splitting">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stack vertically (add rows)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>vstack([a, b])          <span style="color:#75715e"># [[1 2 3] [4 5 6]]  shape (2, 3)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stack horizontally (extend columns / join end-to-end for 1D)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>hstack([a, b])          <span style="color:#75715e"># [1 2 3 4 5 6]       shape (6,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stack along new axis</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>stack([a, b], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># [[1 2 3] [4 5 6]]  axis=0 → new first axis</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>stack([a, b], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># [[1 4] [2 5] [3 6]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># column_stack — makes each 1D array a column</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>column_stack([a, b])    <span style="color:#75715e"># [[1 4] [2 5] [3 6]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># General concatenate</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>concatenate([a, b])              <span style="color:#75715e"># 1D: [1 2 3 4 5 6]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>concatenate([m1, m2], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)    <span style="color:#75715e"># stack rows</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>concatenate([m1, m2], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)    <span style="color:#75715e"># stack cols</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Splitting</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>split(a, <span style="color:#ae81ff">3</span>)          <span style="color:#75715e"># 3 equal arrays of 4</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>split(a, [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7</span>])     <span style="color:#75715e"># split at positions 3 and 7</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">12</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>vsplit(m, <span style="color:#ae81ff">3</span>)          <span style="color:#75715e"># split into 3 row-blocks</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>hsplit(m, <span style="color:#ae81ff">2</span>)          <span style="color:#75715e"># split into 2 col-blocks</span>
+</span></span></code></pre></div><hr>
+<h2 id="7-math-operations-and-broadcasting">7. Math Operations and Broadcasting<a hidden class="anchor" aria-hidden="true" href="#7-math-operations-and-broadcasting">#</a></h2>
+<h3 id="element-wise-operations">Element-wise operations<a hidden class="anchor" aria-hidden="true" href="#element-wise-operations">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Arithmetic (all element-wise)</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">+</span> b      <span style="color:#75715e"># [11 22 33 44]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">-</span> b      <span style="color:#75715e"># [-9 -18 -27 -36]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">*</span> b      <span style="color:#75715e"># [10 40 90 160]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">/</span> b      <span style="color:#75715e"># [0.1 0.1 0.1 0.1]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">//</span> b     <span style="color:#75715e"># [0 0 0 0]  integer division</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">%</span> b      <span style="color:#75715e"># [1 2 3 4]  remainder</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>     <span style="color:#75715e"># [1 4 9 16] exponentiation</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Comparison (returns boolean array)</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>      <span style="color:#75715e"># [False False True True]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>     <span style="color:#75715e"># [False True False False]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>     <span style="color:#75715e"># [True True False True]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span>     <span style="color:#75715e"># [False False True True]</span>
+</span></span></code></pre></div><h3 id="scalar-broadcasting">Scalar broadcasting<a hidden class="anchor" aria-hidden="true" href="#scalar-broadcasting">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Scalar stretches to match the array</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>      <span style="color:#75715e"># [11 12 13 14]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>       <span style="color:#75715e"># [2 4 6 8]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>     <span style="color:#75715e"># [0.5 1.0 1.5 2.0]</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>      <span style="color:#75715e"># [1 4 9 16]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> a      <span style="color:#75715e"># [9 8 7 6]</span>
+</span></span></code></pre></div><h3 id="broadcasting-with-arrays-of-different-shapes">Broadcasting with arrays of different shapes<a hidden class="anchor" aria-hidden="true" href="#broadcasting-with-arrays-of-different-shapes">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Rule: dimensions are compared trailing → leading</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sizes must match OR one of them must be 1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])        <span style="color:#75715e"># shape (2, 3)</span>
+</span></span><span style="display:flex;"><span>row <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>])    <span style="color:#75715e"># shape (3,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># row broadcasts to (2, 3) — added to every row</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">+</span> row
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[11 22 33]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [14 25 36]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>col <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">100</span>],
+</span></span><span style="display:flex;"><span>                [<span style="color:#ae81ff">200</span>]])          <span style="color:#75715e"># shape (2, 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># col broadcasts to (2, 3) — added to every column</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">+</span> col
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[101 102 103]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [204 205 206]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Both broadcast simultaneously</span>
+</span></span><span style="display:flex;"><span>row <span style="color:#f92672">+</span> col
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[110 120 130]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [210 220 230]]</span>
+</span></span></code></pre></div><hr>
+<h2 id="8-universal-functions-ufuncs">8. Universal Functions (ufuncs)<a hidden class="anchor" aria-hidden="true" href="#8-universal-functions-ufuncs">#</a></h2>
+<p>Universal functions operate element-wise and are very fast (C-implemented).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">25</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Math</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sqrt(a)        <span style="color:#75715e"># [1. 2. 3. 4. 5.]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>square(a)      <span style="color:#75715e"># [1 16 81 256 625]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>abs([<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])  <span style="color:#75715e"># [1 2 3]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>log(a)         <span style="color:#75715e"># natural log</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>log2(a)        <span style="color:#75715e"># base-2 log</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>log10(a)       <span style="color:#75715e"># base-10 log</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>exp(a)         <span style="color:#75715e"># e^x</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>exp2(a)        <span style="color:#75715e"># 2^x</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Trig (angles in RADIANS)</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>, np<span style="color:#f92672">.</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>, np<span style="color:#f92672">.</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">4</span>, np<span style="color:#f92672">.</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, np<span style="color:#f92672">.</span>pi])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sin(x)         <span style="color:#75715e"># [0. 0.5 0.707 1. 0.]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cos(x)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>tan(x)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arcsin([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]) <span style="color:#75715e"># inverse sin → [0. 1.5707...]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>degrees(x)     <span style="color:#75715e"># convert radians to degrees</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>radians([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">180</span>])  <span style="color:#75715e"># degrees to radians</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rounding</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3.7</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.5</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>round(a)       <span style="color:#75715e"># [1. 2. 4. -2.]  (banker&#39;s rounding)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>floor(a)       <span style="color:#75715e"># [1. 2. 3. -2.]  (round down)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>ceil(a)        <span style="color:#75715e"># [2. 3. 4. -1.]  (round up)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>trunc(a)       <span style="color:#75715e"># [1. 2. 3. -1.]  (truncate toward zero)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>clip(a, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># [1.2 2.5 3.0 0.0]  (clamp to range)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Min / max between two arrays</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>maximum(a, b)  <span style="color:#75715e"># [4 5 6]  (element-wise max)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>minimum(a, b)  <span style="color:#75715e"># [1 2 3]  (element-wise min)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sign and modulo</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sign([<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>])   <span style="color:#75715e"># [-1 0 1]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>mod(a, <span style="color:#ae81ff">2</span>)          <span style="color:#75715e"># remainder after dividing by 2</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>divmod(a, <span style="color:#ae81ff">2</span>)       <span style="color:#75715e"># quotient and remainder together</span>
+</span></span></code></pre></div><hr>
+<h2 id="9-aggregations-and-statistics">9. Aggregations and Statistics<a hidden class="anchor" aria-hidden="true" href="#9-aggregations-and-statistics">#</a></h2>
+<h3 id="basic-aggregations">Basic aggregations<a hidden class="anchor" aria-hidden="true" href="#basic-aggregations">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Aggregate entire array</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sum()       <span style="color:#75715e"># 21</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>min()       <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>max()       <span style="color:#75715e"># 6</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>mean()      <span style="color:#75715e"># 3.5</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>std()       <span style="color:#75715e"># standard deviation ≈ 1.708</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>var()       <span style="color:#75715e"># variance = std²</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>prod()      <span style="color:#75715e"># product of all elements = 720</span>
+</span></span></code></pre></div><h3 id="the-axis-parameter--critical-concept">The <code>axis</code> parameter — critical concept<a hidden class="anchor" aria-hidden="true" href="#the-axis-parameter--critical-concept">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># axis=0 → collapse ROWS → result is per COLUMN (↓ vertical)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sum(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)    <span style="color:#75715e"># [5 7 9]   (1+4, 2+5, 3+6)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>min(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)    <span style="color:#75715e"># [1 2 3]</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>max(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)    <span style="color:#75715e"># [4 5 6]</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># [2.5 3.5 4.5]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># axis=1 → collapse COLS → result is per ROW (→ horizontal)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sum(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)    <span style="color:#75715e"># [6 15]   (1+2+3, 4+5+6)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>min(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)    <span style="color:#75715e"># [1 4]</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>max(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)    <span style="color:#75715e"># [3 6]</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># [2. 5.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># keepdims — preserve dimensions for broadcasting</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sum(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, keepdims<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)   <span style="color:#75715e"># [[6], [15]]  shape (2,1)</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Memory trick:</strong> axis=0 collapses rows (goes <strong>down</strong> ↓), axis=1 collapses cols (goes <strong>across</strong> →).</p>
+</blockquote>
+<h3 id="index-of-minmax">Index of min/max<a hidden class="anchor" aria-hidden="true" href="#index-of-minmax">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argmin(a)   <span style="color:#75715e"># 1  (index of minimum value 1)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argmax(a)   <span style="color:#75715e"># 5  (index of maximum value 9)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For 2D — flattened index by default</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>]])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argmax(m)          <span style="color:#75715e"># 2  (flat index)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argmax(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># [1 0]  (index per column)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argmax(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># [0 0]  (index per row)</span>
+</span></span></code></pre></div><h3 id="cumulative-operations">Cumulative operations<a hidden class="anchor" aria-hidden="true" href="#cumulative-operations">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cumsum(a)    <span style="color:#75715e"># [1 3 6 10 15]  running total</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cumprod(a)   <span style="color:#75715e"># [1 2 6 24 120] running product</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2D cumulative</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cumsum(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># cumulative down each column</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cumsum(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># cumulative across each row</span>
+</span></span></code></pre></div><h3 id="statistical-functions">Statistical functions<a hidden class="anchor" aria-hidden="true" href="#statistical-functions">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>mean(a)       <span style="color:#75715e"># 5.0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>median(a)     <span style="color:#75715e"># 4.5</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>std(a)        <span style="color:#75715e"># 2.0  (population std)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>var(a)        <span style="color:#75715e"># 4.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Percentile / quantile</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>percentile(a, <span style="color:#ae81ff">25</span>)    <span style="color:#75715e"># Q1 = 4.0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>percentile(a, <span style="color:#ae81ff">50</span>)    <span style="color:#75715e"># median = 4.5</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>percentile(a, <span style="color:#ae81ff">75</span>)    <span style="color:#75715e"># Q3 = 5.5</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>percentile(a, [<span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">75</span>])  <span style="color:#75715e"># all at once</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>quantile(a, <span style="color:#ae81ff">0.25</span>)    <span style="color:#75715e"># same as percentile 25</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Correlation and covariance</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>corrcoef(x, y)        <span style="color:#75715e"># correlation matrix</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cov(x, y)             <span style="color:#75715e"># covariance matrix</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Histogram</span>
+</span></span><span style="display:flex;"><span>counts, bin_edges <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>histogram(a, bins<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span></code></pre></div><hr>
+<h2 id="10-sorting-and-searching">10. Sorting and Searching<a hidden class="anchor" aria-hidden="true" href="#10-sorting-and-searching">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort — returns a NEW sorted array</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sort(a)         <span style="color:#75715e"># [1 1 2 3 4 5 6 9]</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sort(a)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]   <span style="color:#75715e"># descending: [9 6 5 4 3 2 1 1]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort IN PLACE (modifies original)</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sort()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># argsort — returns indices that would sort the array</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argsort(a)       <span style="color:#75715e"># [1 3 6 0 2 4 7 5]</span>
+</span></span><span style="display:flex;"><span>a[np<span style="color:#f92672">.</span>argsort(a)]    <span style="color:#75715e"># same as np.sort(a)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2D sorting</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sort(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># sort each column</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sort(m, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># sort each row</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Partial sort — find the k smallest</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>partition(a, <span style="color:#ae81ff">3</span>)   <span style="color:#75715e"># first 3 positions are the 3 smallest (unordered)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>argpartition(a, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># indices version</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Searching</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>searchsorted([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>], <span style="color:#ae81ff">4</span>)   <span style="color:#75715e"># 2  (insert 4 before index 2)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>where(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>)                    <span style="color:#75715e"># indices where condition is True</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>nonzero(a)                      <span style="color:#75715e"># indices of non-zero elements</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Count occurrences</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>count_nonzero(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>)   <span style="color:#75715e"># how many elements are &gt; 3</span>
+</span></span></code></pre></div><hr>
+<h2 id="11-boolean-operations-and-masking">11. Boolean Operations and Masking<a hidden class="anchor" aria-hidden="true" href="#11-boolean-operations-and-masking">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Conditions produce boolean arrays</span>
+</span></span><span style="display:flex;"><span>mask <span style="color:#f92672">=</span> a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>          <span style="color:#75715e"># [False True False True False True False True]</span>
+</span></span><span style="display:flex;"><span>print(mask)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use mask to select elements</span>
+</span></span><span style="display:flex;"><span>a[mask]               <span style="color:#75715e"># [5 8 9 7]</span>
+</span></span><span style="display:flex;"><span>a[a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>]              <span style="color:#75715e"># same shorthand</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Modify elements based on condition</span>
+</span></span><span style="display:flex;"><span>a[a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>          <span style="color:#75715e"># set all &gt;4 to zero</span>
+</span></span><span style="display:flex;"><span>a[a <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>         <span style="color:#75715e"># set all &lt;3 to -1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># np.where(condition, if_true, if_false) — vectorized if/else</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>where(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>, a, <span style="color:#ae81ff">0</span>)      <span style="color:#75715e"># keep value if &gt;4, else 0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>where(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, a, <span style="color:#f92672">-</span>a)     <span style="color:#75715e"># absolute value!</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>where(a <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;even&#39;</span>, <span style="color:#e6db74">&#39;odd&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Combining conditions (use &amp;, |, ~ NOT and/or/not)</span>
+</span></span><span style="display:flex;"><span>a[(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">&amp;</span> (a <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8</span>)]       <span style="color:#75715e"># between 2 and 8</span>
+</span></span><span style="display:flex;"><span>a[(a <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">|</span> (a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">7</span>)]       <span style="color:#75715e"># less than 2 or greater than 7</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#f92672">~</span>(a <span style="color:#f92672">==</span> <span style="color:#ae81ff">5</span>)]               <span style="color:#75715e"># everything EXCEPT 5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Logical functions</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>logical_and(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>, a <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>logical_or(a <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>, a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>logical_not(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Any / all</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>any(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)     <span style="color:#75715e"># True if at least one element satisfies</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>all(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)     <span style="color:#75715e"># True if ALL elements satisfy</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>any(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   <span style="color:#75715e"># per column for 2D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Finding unique values</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>unique(a)                    <span style="color:#75715e"># sorted unique values</span>
+</span></span><span style="display:flex;"><span>vals, counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(a, return_counts<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)   <span style="color:#75715e"># with counts</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isin(a, [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>])          <span style="color:#75715e"># True where element is in list</span>
+</span></span></code></pre></div><hr>
+<h2 id="12-random-number-generation">12. Random Number Generation<a hidden class="anchor" aria-hidden="true" href="#12-random-number-generation">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Modern API — always use default_rng with a seed for reproducibility</span>
+</span></span><span style="display:flex;"><span>rng <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>default_rng(seed<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Uniform floats [0, 1)</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>random()            <span style="color:#75715e"># single float</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">5</span>)           <span style="color:#75715e"># 1D array of 5 floats</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>random((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>))      <span style="color:#75715e"># 3×4 matrix</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Uniform floats in a range [low, high)</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Random integers [low, high)</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>integers(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">10</span>)       <span style="color:#75715e"># 10 dice rolls (1-6)</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>integers(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)) <span style="color:#75715e"># 3×3 matrix of ints</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Normal (Gaussian) distribution</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>normal(loc<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, size<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>)       <span style="color:#75715e"># μ=0, σ=1</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>normal(loc<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>, size<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>)     <span style="color:#75715e"># IQ-like scores</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Other distributions</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>binomial(n<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, p<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)   <span style="color:#75715e"># binomial</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>poisson(lam<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)          <span style="color:#75715e"># Poisson</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>exponential(scale<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>, size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>) <span style="color:#75715e"># exponential</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>choice([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>], size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>) <span style="color:#75715e"># sample from array</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>choice([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], size<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, replace<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)  <span style="color:#75715e"># without replacement</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Shuffle</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>shuffle(a)         <span style="color:#75715e"># in-place shuffle</span>
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>permutation(<span style="color:#ae81ff">10</span>)    <span style="color:#75715e"># returns new shuffled array</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Seed for reproducibility — same seed = same numbers</span>
+</span></span><span style="display:flex;"><span>rng1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>default_rng(<span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>rng2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>default_rng(<span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>print(rng1<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">3</span>) <span style="color:#f92672">==</span> rng2<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">3</span>))  <span style="color:#75715e"># [True True True]</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Always set a seed</strong> when writing code others will run, or when you need reproducible results for testing.</p>
+</blockquote>
+<hr>
+<h2 id="13-linear-algebra">13. Linear Algebra<a hidden class="anchor" aria-hidden="true" href="#13-linear-algebra">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]])
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>],
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Matrix multiplication — use @ operator or np.dot</span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">@</span> B
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[19 22]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [43 50]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>dot(A, B)      <span style="color:#75715e"># same result</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># WARNING: * is element-wise, NOT matrix multiply!</span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">*</span> B             <span style="color:#75715e"># [[5 12] [21 32]]  ← wrong for matrix math</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Matrix-vector multiplication</span>
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">@</span> v             <span style="color:#75715e"># [5 11]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Determinant</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>det(A)           <span style="color:#75715e"># -2.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Matrix inverse (A must be square and non-singular)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(A)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[-2.   1. ]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [ 1.5 -0.5]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify: A @ inv(A) should give identity</span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">@</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(A)   <span style="color:#75715e"># [[1. 0.] [0. 1.]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Solving linear systems: Ax = b</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">11</span>])
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A, b)     <span style="color:#75715e"># [1. 2.]</span>
+</span></span><span style="display:flex;"><span>print(A <span style="color:#f92672">@</span> x)                   <span style="color:#75715e"># [5. 11.]  ← verify</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Eigenvalues and eigenvectors</span>
+</span></span><span style="display:flex;"><span>eigenvalues, eigenvectors <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eig(A)
+</span></span><span style="display:flex;"><span>print(eigenvalues)    <span style="color:#75715e"># [-0.372 5.372]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Norm (magnitude)</span>
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(v)         <span style="color:#75715e"># 5.0  (Euclidean = sqrt(3²+4²))</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(A)         <span style="color:#75715e"># Frobenius norm (default for matrices)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(v, ord<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># L1 norm = 7.0</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(v, ord<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>inf)  <span style="color:#75715e"># max norm = 4.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rank</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>matrix_rank(A)  <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Trace (sum of diagonal)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>trace(A)           <span style="color:#75715e"># 5  (1 + 4)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Singular Value Decomposition</span>
+</span></span><span style="display:flex;"><span>U, s, Vt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(A)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cross product and dot product</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cross(a, b)   <span style="color:#75715e"># [0 0 1]  (z-axis)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>dot(a, b)     <span style="color:#75715e"># 0  (orthogonal vectors)</span>
+</span></span></code></pre></div><hr>
+<h2 id="14-working-with-files">14. Working with Files<a hidden class="anchor" aria-hidden="true" href="#14-working-with-files">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Save a single array (binary .npy format)</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;my_array.npy&#39;</span>, a)
+</span></span><span style="display:flex;"><span>loaded <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;my_array.npy&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save multiple arrays (binary .npz format)</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>savez(<span style="color:#e6db74">&#39;my_data.npz&#39;</span>, x<span style="color:#f92672">=</span>x, y<span style="color:#f92672">=</span>y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;my_data.npz&#39;</span>)
+</span></span><span style="display:flex;"><span>data[<span style="color:#e6db74">&#39;x&#39;</span>]   <span style="color:#75715e"># retrieve x</span>
+</span></span><span style="display:flex;"><span>data[<span style="color:#e6db74">&#39;y&#39;</span>]   <span style="color:#75715e"># retrieve y</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compressed version</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>savez_compressed(<span style="color:#e6db74">&#39;my_data.npz&#39;</span>, x<span style="color:#f92672">=</span>x, y<span style="color:#f92672">=</span>y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save to text / CSV</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]])
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>savetxt(<span style="color:#e6db74">&#39;matrix.csv&#39;</span>, m, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, fmt<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>savetxt(<span style="color:#e6db74">&#39;matrix.txt&#39;</span>, m, header<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;col1 col2 col3&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load from text / CSV</span>
+</span></span><span style="display:flex;"><span>loaded <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>loadtxt(<span style="color:#e6db74">&#39;matrix.csv&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>loaded <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>genfromtxt(<span style="color:#e6db74">&#39;data.csv&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>,
+</span></span><span style="display:flex;"><span>                        skip_header<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,    <span style="color:#75715e"># skip header row</span>
+</span></span><span style="display:flex;"><span>                        filling_values<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#75715e"># fill NaNs with 0</span>
+</span></span></code></pre></div><hr>
+<h2 id="15-performance-tips-and-best-practices">15. Performance Tips and Best Practices<a hidden class="anchor" aria-hidden="true" href="#15-performance-tips-and-best-practices">#</a></h2>
+<h3 id="vectorize--avoid-python-loops">Vectorize — avoid Python loops<a hidden class="anchor" aria-hidden="true" href="#vectorize--avoid-python-loops">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># SLOW — Python loop</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1_000_000</span>)
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> a:
+</span></span><span style="display:flex;"><span>    result<span style="color:#f92672">.</span>append(x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FAST — vectorized</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h3 id="use-views-over-copies-when-possible">Use views over copies when possible<a hidden class="anchor" aria-hidden="true" href="#use-views-over-copies-when-possible">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1_000_000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Returns a VIEW (fast, no memory copy)</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a[::<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span>ravel()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Returns a COPY (slower, allocates memory)</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> a[::<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span>flatten()
+</span></span></code></pre></div><h3 id="pre-allocate-arrays">Pre-allocate arrays<a hidden class="anchor" aria-hidden="true" href="#pre-allocate-arrays">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># SLOW — growing array in a loop</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(result, i<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># new array every iteration!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FAST — pre-allocate</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    result[i] <span style="color:#f92672">=</span> i<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># BEST — vectorize entirely</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1000</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h3 id="choose-the-right-dtype">Choose the right dtype<a hidden class="anchor" aria-hidden="true" href="#choose-the-right-dtype">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Use smaller dtypes when you don&#39;t need full precision</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">100</span>, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int8)    <span style="color:#75715e"># 100 bytes</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">100</span>, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int64)   <span style="color:#75715e"># 800 bytes  — 8x larger!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>), dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float32)  <span style="color:#75715e"># 4 MB</span>
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>), dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float64)  <span style="color:#75715e"># 8 MB</span>
+</span></span></code></pre></div><h3 id="useful-utility-functions">Useful utility functions<a hidden class="anchor" aria-hidden="true" href="#useful-utility-functions">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Check if two arrays are equal (including floats)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array_equal(a, b)        <span style="color:#75715e"># exact equality</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>allclose(a, b)           <span style="color:#75715e"># approximate equality (for floats)</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>allclose(a, b, atol<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-6</span>, rtol<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>copy()            <span style="color:#75715e"># explicit copy</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>copy(a)          <span style="color:#75715e"># same</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check for NaN and inf</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isnan(a)         <span style="color:#75715e"># boolean mask where NaN</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isinf(a)         <span style="color:#75715e"># boolean mask where ±inf</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isfinite(a)      <span style="color:#75715e"># boolean mask where finite</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>nan_to_num(a)    <span style="color:#75715e"># replace NaN with 0, inf with large number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Type checking</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isscalar(<span style="color:#ae81ff">5</span>)      <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>isreal(a)        <span style="color:#75715e"># True for all-real arrays</span>
+</span></span></code></pre></div><hr>
+<h2 id="quick-reference-card">Quick Reference Card<a hidden class="anchor" aria-hidden="true" href="#quick-reference-card">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># ── CREATION ─────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>])           <span style="color:#75715e"># from list</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>zeros((r,c))             <span style="color:#75715e"># zeros</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>ones((r,c))              <span style="color:#75715e"># ones</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>eye(n)                   <span style="color:#75715e"># identity</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(start,stop,step)  <span style="color:#75715e"># range</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linspace(start,stop,n)   <span style="color:#75715e"># n evenly spaced</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── PROPERTIES ───────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>shape     a<span style="color:#f92672">.</span>ndim     a<span style="color:#f92672">.</span>size     a<span style="color:#f92672">.</span>dtype    a<span style="color:#f92672">.</span>itemsize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── INDEXING ─────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a[i]        a[i:j]     a[::step]  a[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>m[r,c]      m[r,:]     m[:,c]     m[r1:r2, c1:c2]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── RESHAPING ────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>reshape(r,c)   a<span style="color:#f92672">.</span>T   a<span style="color:#f92672">.</span>flatten()   a<span style="color:#f92672">.</span>ravel()
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>vstack([a,b])  np<span style="color:#f92672">.</span>hstack([a,b])  np<span style="color:#f92672">.</span>concatenate([a,b])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── MATH ─────────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">+</span> b  a <span style="color:#f92672">*</span> b  a <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>  a <span style="color:#f92672">/</span> b         <span style="color:#75715e"># element-wise</span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">@</span> B  np<span style="color:#f92672">.</span>dot(A,B)                  <span style="color:#75715e"># matrix multiply</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>sqrt(a)  np<span style="color:#f92672">.</span>abs(a)  np<span style="color:#f92672">.</span>exp(a)    <span style="color:#75715e"># ufuncs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── AGGREGATIONS ─────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>sum(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   a<span style="color:#f92672">.</span>mean()   a<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>min()  a<span style="color:#f92672">.</span>max()  a<span style="color:#f92672">.</span>argmin()  a<span style="color:#f92672">.</span>argmax()
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>cumsum(a)  np<span style="color:#f92672">.</span>percentile(a, <span style="color:#ae81ff">75</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── BOOLEAN / MASKING ────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>a[a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>]                      <span style="color:#75715e"># filter</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>where(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>, a, <span style="color:#ae81ff">0</span>)         <span style="color:#75715e"># conditional</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>any(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)  np<span style="color:#f92672">.</span>all(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── RANDOM ───────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>rng <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>default_rng(<span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>rng<span style="color:#f92672">.</span>random(n)  rng<span style="color:#f92672">.</span>integers(lo,hi,n)  rng<span style="color:#f92672">.</span>normal(μ,σ,n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ── LINEAR ALGEBRA ───────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(A)   np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>det(A)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A,b)  np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eig(A)
+</span></span></code></pre></div><hr>
+<p><em>End of NumPy Masterclass</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+      <li><a href="http://localhost:1313/tags/numpy/">Numpy</a></li>
+      <li><a href="http://localhost:1313/tags/data-analysis/">Data-Analysis</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
