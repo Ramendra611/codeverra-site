@@ -6,8 +6,50 @@
     <description>Recent content in Python on codeverra</description>
     <generator>Hugo -- 0.158.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Complete Guide to Numpy Library in Python</title>
+      <link>http://localhost:1313/blog/numpy-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/numpy-practice/</guid>
+      <description>Complete practice session on Numpy in python</description>
+    </item>
+    <item>
+      <title>Complete Guide to Pandas in Python</title>
+      <link>http://localhost:1313/blog/pandas-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/pandas-practice/</guid>
+      <description>Complete practice session on Pandas in python</description>
+    </item>
+    <item>
+      <title>Master Collections in Python</title>
+      <link>http://localhost:1313/blog/collections-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/collections-practice/</guid>
+      <description>Complete practice session on colletions in python</description>
+    </item>
+    <item>
+      <title>Master Loops in Python</title>
+      <link>http://localhost:1313/blog/python-loops-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-loops-practice/</guid>
+      <description>Complete practice session on Loops in python</description>
+    </item>
+    <item>
+      <title>Numpy Masterclass - Beginner to Advanced</title>
+      <link>http://localhost:1313/blog/numpy-masterclass/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/numpy-masterclass/</guid>
+      <description>Get a comprehensive introduction to Numpy library in python</description>
+    </item>
+    <item>
+      <title>Pandas Masterclass - Beginner to Advanced</title>
+      <link>http://localhost:1313/blog/pandas-masterclass/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/pandas-masterclass/</guid>
+      <description>Get a comprehensive introduction to pandas library in python</description>
+    </item>
     <item>
       <title>Exception Handling in Python - Complete Guide</title>
       <link>http://localhost:1313/blog/exception_handling/</link>

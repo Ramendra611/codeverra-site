@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Master Loops in Python | codeverra</title>
+<meta name="keywords" content="python">
+<meta name="description" content="Complete practice session on Loops in python">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blog/python-loops-practice/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/python-loops-practice/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://codeverra.com/" title="Home">
+                    <span>Home</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://codeverra.com/s/store" title="Courses">
+                    <span>Courses</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs">
+    <a href="https://codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Master Loops in Python
+    </h1>
+    <div class="post-description">
+      Complete practice session on Loops in python
+    </div>
+    <div class="post-meta"><span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3085 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/loops-practice.png" alt="Python programming">
+        <figcaption>Python syllabus</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#python-loops---practice-questions-and-solutions" aria-label="Python Loops - Practice Questions and Solutions">Python Loops - Practice Questions and Solutions</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#20-questions-from-easy-to-hard" aria-label="20 Questions from Easy to Hard">20 Questions from Easy to Hard</a></li></ul>
+                    
+                <li>
+                    <a href="#table-of-contents" aria-label="Table of Contents">Table of Contents</a></li>
+                <li>
+                    <a href="#easy-questions-1-7" aria-label="Easy Questions (1-7)">Easy Questions (1-7)</a><ul>
+                        
+                <li>
+                    <a href="#q1--basic-for-loop-with-range" aria-label="Q1 &ndash; Basic for Loop with range()">Q1 &ndash; Basic for Loop with range()</a></li>
+                <li>
+                    <a href="#q2--string-loop" aria-label="Q2 &ndash; String Loop">Q2 &ndash; String Loop</a></li>
+                <li>
+                    <a href="#q3--list-loop-with-condition" aria-label="Q3 &ndash; List Loop with Condition">Q3 &ndash; List Loop with Condition</a></li>
+                <li>
+                    <a href="#q4--while-loop-with-division" aria-label="Q4 &ndash; while Loop with Division">Q4 &ndash; while Loop with Division</a></li>
+                <li>
+                    <a href="#q5--dictionary-loop" aria-label="Q5 &ndash; Dictionary Loop">Q5 &ndash; Dictionary Loop</a></li>
+                <li>
+                    <a href="#q6--countdown-with-while" aria-label="Q6 &ndash; Countdown with while">Q6 &ndash; Countdown with while</a></li>
+                <li>
+                    <a href="#q7--sum-with-for-and-range" aria-label="Q7 &ndash; Sum with for and range()">Q7 &ndash; Sum with for and range()</a></li></ul>
+                </li>
+                <li>
+                    <a href="#medium-questions-8-14" aria-label="Medium Questions (8-14)">Medium Questions (8-14)</a><ul>
+                        
+                <li>
+                    <a href="#q8--enumerate-with-logic" aria-label="Q8 &ndash; enumerate() with Logic">Q8 &ndash; enumerate() with Logic</a></li>
+                <li>
+                    <a href="#q9--zip-and-comparison" aria-label="Q9 &ndash; zip() and Comparison">Q9 &ndash; zip() and Comparison</a></li>
+                <li>
+                    <a href="#q10--break-and-continue-together" aria-label="Q10 &ndash; break and continue Together">Q10 &ndash; break and continue Together</a></li>
+                <li>
+                    <a href="#q11--nested-loop-pattern" aria-label="Q11 &ndash; Nested Loop Pattern">Q11 &ndash; Nested Loop Pattern</a></li>
+                <li>
+                    <a href="#q12--list-comprehension-with-multiple-conditions" aria-label="Q12 &ndash; List Comprehension with Multiple Conditions">Q12 &ndash; List Comprehension with Multiple Conditions</a></li>
+                <li>
+                    <a href="#q13--dictionary-comprehension-with-grade-logic" aria-label="Q13 &ndash; Dictionary Comprehension with Grade Logic">Q13 &ndash; Dictionary Comprehension with Grade Logic</a></li>
+                <li>
+                    <a href="#q14--else-with-a-loop-prime-checker" aria-label="Q14 &ndash; else with a Loop (Prime Checker)">Q14 &ndash; else with a Loop (Prime Checker)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#hard-questions-15-20" aria-label="Hard Questions (15-20)">Hard Questions (15-20)</a><ul>
+                        
+                <li>
+                    <a href="#q15--loop-with-data-grouping" aria-label="Q15 &ndash; Loop with Data Grouping">Q15 &ndash; Loop with Data Grouping</a></li>
+                <li>
+                    <a href="#q16--while-loop-with-validation-logic" aria-label="Q16 &ndash; while Loop with Validation Logic">Q16 &ndash; while Loop with Validation Logic</a></li>
+                <li>
+                    <a href="#q17--nested-loop-with-diamond-pattern" aria-label="Q17 &ndash; Nested Loop with Diamond Pattern">Q17 &ndash; Nested Loop with Diamond Pattern</a></li>
+                <li>
+                    <a href="#q18--flatten-and-deduplicate" aria-label="Q18 &ndash; Flatten and Deduplicate">Q18 &ndash; Flatten and Deduplicate</a></li>
+                <li>
+                    <a href="#q19--word-frequency-counter" aria-label="Q19 &ndash; Word Frequency Counter">Q19 &ndash; Word Frequency Counter</a></li>
+                <li>
+                    <a href="#q20--full-student-report-pipeline" aria-label="Q20 &ndash; Full Student Report Pipeline">Q20 &ndash; Full Student Report Pipeline</a></li></ul>
+                </li>
+                <li>
+                    <a href="#quick-reference" aria-label="Quick Reference">Quick Reference</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="python-loops---practice-questions-and-solutions">Python Loops - Practice Questions and Solutions<a hidden class="anchor" aria-hidden="true" href="#python-loops---practice-questions-and-solutions">#</a></h1>
+<h3 id="20-questions-from-easy-to-hard">20 Questions from Easy to Hard<a hidden class="anchor" aria-hidden="true" href="#20-questions-from-easy-to-hard">#</a></h3>
+<hr>
+<blockquote>
+<p>All 20 questions are based on the Loops Masterclass.
+Try each question on your own before reading the solution.
+The questions are ordered by difficulty: Easy (1-7), Medium (8-14), Hard (15-20).</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#easy-questions-1-7">Easy Questions (1-7)</a></li>
+<li><a href="#medium-questions-8-14">Medium Questions (8-14)</a></li>
+<li><a href="#hard-questions-15-20">Hard Questions (15-20)</a></li>
+</ul>
+<hr>
+<h2 id="easy-questions-1-7">Easy Questions (1-7)<a hidden class="anchor" aria-hidden="true" href="#easy-questions-1-7">#</a></h2>
+<hr>
+<h3 id="q1--basic-for-loop-with-range">Q1 &ndash; Basic for Loop with range()<a hidden class="anchor" aria-hidden="true" href="#q1--basic-for-loop-with-range">#</a></h3>
+<p>Print all numbers from 1 to 30 that are divisible by both 3 and 5.</p>
+<p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>15
+30
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">31</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        print(i)
+</span></span></code></pre></div><p><strong>What this tests:</strong> range(), for loop, compound condition with <code>and</code>.</p>
+<hr>
+<h3 id="q2--string-loop">Q2 &ndash; String Loop<a hidden class="anchor" aria-hidden="true" href="#q2--string-loop">#</a></h3>
+<p>Write a loop that counts the number of uppercase letters in the string below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Welcome To India, The Land Of DiversiTy&#34;</span>
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Uppercase letters: 6
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Welcome To India, The Land Of DiversiTy&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> text:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> char<span style="color:#f92672">.</span>isupper():
+</span></span><span style="display:flex;"><span>        count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Uppercase letters: </span><span style="color:#e6db74">{</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Iterating over a string character by character, <code>.isupper()</code> method, accumulator pattern.</p>
+<hr>
+<h3 id="q3--list-loop-with-condition">Q3 &ndash; List Loop with Condition<a hidden class="anchor" aria-hidden="true" href="#q3--list-loop-with-condition">#</a></h3>
+<p>Print only the names from the list below that have more than 4 characters.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Ali&#34;</span>, <span style="color:#e6db74">&#34;Priya&#34;</span>, <span style="color:#e6db74">&#34;Raj&#34;</span>, <span style="color:#e6db74">&#34;Sneha&#34;</span>, <span style="color:#e6db74">&#34;Om&#34;</span>, <span style="color:#e6db74">&#34;Vikram&#34;</span>, <span style="color:#e6db74">&#34;Ria&#34;</span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Priya
+Sneha
+Vikram
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Ali&#34;</span>, <span style="color:#e6db74">&#34;Priya&#34;</span>, <span style="color:#e6db74">&#34;Raj&#34;</span>, <span style="color:#e6db74">&#34;Sneha&#34;</span>, <span style="color:#e6db74">&#34;Om&#34;</span>, <span style="color:#e6db74">&#34;Vikram&#34;</span>, <span style="color:#e6db74">&#34;Ria&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> names:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(name) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>:
+</span></span><span style="display:flex;"><span>        print(name)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Looping over a list, <code>len()</code> inside a condition.</p>
+<hr>
+<h3 id="q4--while-loop-with-division">Q4 &ndash; while Loop with Division<a hidden class="anchor" aria-hidden="true" href="#q4--while-loop-with-division">#</a></h3>
+<p>Write a while loop that keeps dividing a number by 2 until it goes below 1. Print the value at each step.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>number <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>64
+32.0
+16.0
+8.0
+4.0
+2.0
+1.0
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>number <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> number <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>    print(number)
+</span></span><span style="display:flex;"><span>    number <span style="color:#f92672">=</span> number <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p><strong>What this tests:</strong> while loop, updating the loop variable each iteration, float division.</p>
+<hr>
+<h3 id="q5--dictionary-loop">Q5 &ndash; Dictionary Loop<a hidden class="anchor" aria-hidden="true" href="#q5--dictionary-loop">#</a></h3>
+<p>Print each item name and its price after a 15% discount. Round to 2 decimal places.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>menu <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Masala Chai&#34;</span>:   <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Vada Pav&#34;</span>:      <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Samosa&#34;</span>:        <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Filter Coffee&#34;</span>: <span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Idli&#34;</span>:          <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Masala Chai   : Rs.17.0
+Vada Pav      : Rs.12.75
+Samosa        : Rs.8.5
+Filter Coffee : Rs.21.25
+Idli          : Rs.25.5
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>menu <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Masala Chai&#34;</span>:   <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Vada Pav&#34;</span>:      <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Samosa&#34;</span>:        <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Filter Coffee&#34;</span>: <span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Idli&#34;</span>:          <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item, price <span style="color:#f92672">in</span> menu<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>    discounted <span style="color:#f92672">=</span> round(price <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.85</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>item<span style="color:#e6db74">}</span><span style="color:#e6db74"> : Rs.</span><span style="color:#e6db74">{</span>discounted<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> <code>.items()</code> to loop over a dictionary, arithmetic inside a loop, f-strings.</p>
+<hr>
+<h3 id="q6--countdown-with-while">Q6 &ndash; Countdown with while<a hidden class="anchor" aria-hidden="true" href="#q6--countdown-with-while">#</a></h3>
+<p>Write a countdown timer from 10 to 1, then print &ldquo;Happy New Year!&rdquo; at the end.</p>
+<p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Happy New Year!
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>    print(count)
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Happy New Year!&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> while loop with decrement, code outside the loop runs once.</p>
+<hr>
+<h3 id="q7--sum-with-for-and-range">Q7 &ndash; Sum with for and range()<a hidden class="anchor" aria-hidden="true" href="#q7--sum-with-for-and-range">#</a></h3>
+<p>Calculate the sum of all integers from 1 to 100 using a for loop. Do not use the <code>sum()</code> function.</p>
+<p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Sum from 1 to 100: 5050
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">101</span>):
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">+=</span> i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sum from 1 to 100: </span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Accumulator pattern, range() with both start and stop.</p>
+<hr>
+<h2 id="medium-questions-8-14">Medium Questions (8-14)<a hidden class="anchor" aria-hidden="true" href="#medium-questions-8-14">#</a></h2>
+<hr>
+<h3 id="q8--enumerate-with-logic">Q8 &ndash; enumerate() with Logic<a hidden class="anchor" aria-hidden="true" href="#q8--enumerate-with-logic">#</a></h3>
+<p>Given a list of cricket scores for each ball, use <code>enumerate()</code> to:</p>
+<ul>
+<li>Print each ball number (starting from 1) with its score</li>
+<li>Print the ball number on which the highest score was hit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ball_scores <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Ball 1: 1 run
+Ball 2: 0 runs
+Ball 3: 4 runs
+Ball 4: 6 runs
+Ball 5: 1 run
+Ball 6: 2 runs
+Ball 7: 6 runs
+Ball 8: 0 runs
+Ball 9: 4 runs
+Ball 10: 3 runs
+
+Highest score of 6 was first hit on Ball 4
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ball_scores <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ball_num, score <span style="color:#f92672">in</span> enumerate(ball_scores, start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;run&#34;</span> <span style="color:#66d9ef">if</span> score <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;runs&#34;</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Ball </span><span style="color:#e6db74">{</span>ball_num<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>score<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>label<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>max_score <span style="color:#f92672">=</span> max(ball_scores)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ball_num, score <span style="color:#f92672">in</span> enumerate(ball_scores, start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> score <span style="color:#f92672">==</span> max_score:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Highest score of </span><span style="color:#e6db74">{</span>max_score<span style="color:#e6db74">}</span><span style="color:#e6db74"> was first hit on Ball </span><span style="color:#e6db74">{</span>ball_num<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span></code></pre></div><p><strong>What this tests:</strong> enumerate() with custom start, finding max + its position, break to stop after first match.</p>
+<hr>
+<h3 id="q9--zip-and-comparison">Q9 &ndash; zip() and Comparison<a hidden class="anchor" aria-hidden="true" href="#q9--zip-and-comparison">#</a></h3>
+<p>You have two lists: last year&rsquo;s sales and this year&rsquo;s sales for 6 cities. Use <code>zip()</code> to print, for each city, whether sales went up, went down, or stayed the same.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cities    <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;Chennai&#34;</span>, <span style="color:#e6db74">&#34;Hyderabad&#34;</span>, <span style="color:#e6db74">&#34;Pune&#34;</span>]
+</span></span><span style="display:flex;"><span>last_year <span style="color:#f92672">=</span> [<span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">145</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">85</span>, <span style="color:#ae81ff">76</span>]
+</span></span><span style="display:flex;"><span>this_year <span style="color:#f92672">=</span> [<span style="color:#ae81ff">135</span>, <span style="color:#ae81ff">140</span>, <span style="color:#ae81ff">115</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">92</span>, <span style="color:#ae81ff">88</span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Delhi     : Up (120 -&gt; 135)
+Mumbai    : Down (145 -&gt; 140)
+Bangalore : Up (98 -&gt; 115)
+Chennai   : Same (110 -&gt; 110)
+Hyderabad : Up (85 -&gt; 92)
+Pune      : Up (76 -&gt; 88)
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cities    <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;Chennai&#34;</span>, <span style="color:#e6db74">&#34;Hyderabad&#34;</span>, <span style="color:#e6db74">&#34;Pune&#34;</span>]
+</span></span><span style="display:flex;"><span>last_year <span style="color:#f92672">=</span> [<span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">145</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">85</span>, <span style="color:#ae81ff">76</span>]
+</span></span><span style="display:flex;"><span>this_year <span style="color:#f92672">=</span> [<span style="color:#ae81ff">135</span>, <span style="color:#ae81ff">140</span>, <span style="color:#ae81ff">115</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">92</span>, <span style="color:#ae81ff">88</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> city, prev, curr <span style="color:#f92672">in</span> zip(cities, last_year, this_year):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> curr <span style="color:#f92672">&gt;</span> prev:
+</span></span><span style="display:flex;"><span>        trend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Up&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> curr <span style="color:#f92672">&lt;</span> prev:
+</span></span><span style="display:flex;"><span>        trend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Down&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        trend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Same&#34;</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>city<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>trend<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>prev<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>curr<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> zip() over three lists at once, comparison logic, string formatting with alignment.</p>
+<hr>
+<h3 id="q10--break-and-continue-together">Q10 &ndash; break and continue Together<a hidden class="anchor" aria-hidden="true" href="#q10--break-and-continue-together">#</a></h3>
+<p>Given a list of transactions, skip any with <code>status = &quot;pending&quot;</code>, and stop all processing the moment a <code>status = &quot;fraud&quot;</code> is encountered. Print all transactions that were actually processed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">5000</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1200</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;pending&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">8800</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3200</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;fraud&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">4400</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Processed transaction #1 : Rs.5000
+Skipping pending transaction #2
+Processed transaction #3 : Rs.8800
+Fraud detected on transaction #4. Halting all processing.
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">5000</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1200</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;pending&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">8800</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3200</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;fraud&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">4400</span>,  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> transactions:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t[<span style="color:#e6db74">&#34;status&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;pending&#34;</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Skipping pending transaction #</span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;id&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t[<span style="color:#e6db74">&#34;status&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;fraud&#34;</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Fraud detected on transaction #</span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;id&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">. Halting all processing.&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processed transaction #</span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;id&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> : Rs.</span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;amount&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> break and continue in the same loop, accessing dict keys inside a loop, order of conditions matters.</p>
+<hr>
+<h3 id="q11--nested-loop-pattern">Q11 &ndash; Nested Loop Pattern<a hidden class="anchor" aria-hidden="true" href="#q11--nested-loop-pattern">#</a></h3>
+<p>Print the following number pattern using nested loops:</p>
+<pre tabindex="0"><code>1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i):
+</span></span><span style="display:flex;"><span>        print(i, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+</span></span><span style="display:flex;"><span>    print()
+</span></span></code></pre></div><p><strong>What this tests:</strong> Nested loops, <code>end=&quot; &quot;</code> to print on same line, outer loop controls rows, inner loop controls columns.</p>
+<hr>
+<h3 id="q12--list-comprehension-with-multiple-conditions">Q12 &ndash; List Comprehension with Multiple Conditions<a hidden class="anchor" aria-hidden="true" href="#q12--list-comprehension-with-multiple-conditions">#</a></h3>
+<p>Using a single list comprehension, extract all words from the sentence below that:</p>
+<ul>
+<li>Are longer than 3 characters</li>
+<li>Start with a vowel</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sentence <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;An elephant ate orange apples in an orchard outside the city&#34;</span>
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>[&#39;elephant&#39;, &#39;ate&#39;, &#39;orange&#39;, &#39;apples&#39;, &#39;orchard&#39;, &#39;outside&#39;]
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sentence <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;An elephant ate orange apples in an orchard outside the city&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> sentence<span style="color:#f92672">.</span>split()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(word) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">and</span> word[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>lower() <span style="color:#f92672">in</span> <span style="color:#e6db74">&#34;aeiou&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(result)
+</span></span></code></pre></div><p><strong>What this tests:</strong> List comprehension with two conditions using <code>and</code>, <code>.split()</code> to tokenize, checking first character.</p>
+<hr>
+<h3 id="q13--dictionary-comprehension-with-grade-logic">Q13 &ndash; Dictionary Comprehension with Grade Logic<a hidden class="anchor" aria-hidden="true" href="#q13--dictionary-comprehension-with-grade-logic">#</a></h3>
+<p>Given the two lists below, create a dictionary where each student&rsquo;s name maps to their grade using the rules: &ldquo;A&rdquo; if marks &gt;= 80, &ldquo;B&rdquo; if 60-79, &ldquo;C&rdquo; otherwise.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Aarav&#34;</span>, <span style="color:#e6db74">&#34;Priya&#34;</span>, <span style="color:#e6db74">&#34;Rohan&#34;</span>, <span style="color:#e6db74">&#34;Sneha&#34;</span>, <span style="color:#e6db74">&#34;Karan&#34;</span>, <span style="color:#e6db74">&#34;Meera&#34;</span>]
+</span></span><span style="display:flex;"><span>marks    <span style="color:#f92672">=</span> [<span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">73</span>, <span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">62</span>, <span style="color:#ae81ff">47</span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>{&#39;Aarav&#39;: &#39;A&#39;, &#39;Priya&#39;: &#39;C&#39;, &#39;Rohan&#39;: &#39;B&#39;, &#39;Sneha&#39;: &#39;A&#39;, &#39;Karan&#39;: &#39;B&#39;, &#39;Meera&#39;: &#39;C&#39;}
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Aarav&#34;</span>, <span style="color:#e6db74">&#34;Priya&#34;</span>, <span style="color:#e6db74">&#34;Rohan&#34;</span>, <span style="color:#e6db74">&#34;Sneha&#34;</span>, <span style="color:#e6db74">&#34;Karan&#34;</span>, <span style="color:#e6db74">&#34;Meera&#34;</span>]
+</span></span><span style="display:flex;"><span>marks    <span style="color:#f92672">=</span> [<span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">73</span>, <span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">62</span>, <span style="color:#ae81ff">47</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grades <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    name: (<span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#66d9ef">if</span> m <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;B&#34;</span> <span style="color:#66d9ef">if</span> m <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;C&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> name, m <span style="color:#f92672">in</span> zip(students, marks)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(grades)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Dictionary comprehension, nested ternary in a comprehension, zip() to pair two lists.</p>
+<hr>
+<h3 id="q14--else-with-a-loop-prime-checker">Q14 &ndash; else with a Loop (Prime Checker)<a hidden class="anchor" aria-hidden="true" href="#q14--else-with-a-loop-prime-checker">#</a></h3>
+<p>Write a function <code>is_prime(n)</code> that uses a for loop with an <code>else</code> block to check whether a number is prime. Test it on a list of numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">41</span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>2  is prime
+7  is prime
+10 is not prime
+13 is prime
+25 is not prime
+29 is prime
+36 is not prime
+41 is prime
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, n):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">41</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> numbers:
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;is prime&#34;</span> <span style="color:#66d9ef">if</span> is_prime(num) <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;is not prime&#34;</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>num<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;2</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>status<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>Note:</strong> The <code>else</code> block on a for loop is an alternative way to write this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime_with_else</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, n):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74"> is not prime (divisible by </span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># This else runs only if the loop finished without hitting break</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74"> is prime&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>is_prime_with_else(<span style="color:#ae81ff">13</span>)
+</span></span><span style="display:flex;"><span>is_prime_with_else(<span style="color:#ae81ff">15</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> for-else, returning from a function inside a loop, looping over a list and calling a function.</p>
+<hr>
+<h2 id="hard-questions-15-20">Hard Questions (15-20)<a hidden class="anchor" aria-hidden="true" href="#hard-questions-15-20">#</a></h2>
+<hr>
+<h3 id="q15--loop-with-data-grouping">Q15 &ndash; Loop with Data Grouping<a hidden class="anchor" aria-hidden="true" href="#q15--loop-with-data-grouping">#</a></h3>
+<p>Given the list of orders below, write a loop to build a summary dictionary that tracks total revenue and number of orders per city. Then print each city&rsquo;s summary.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>orders <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1500</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3200</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">800</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">4500</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1100</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">2200</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3800</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">900</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>Mumbai    | Orders: 3 | Revenue: Rs.4500
+Delhi     | Orders: 3 | Revenue: Rs.5200
+Bangalore | Orders: 2 | Revenue: Rs.8300
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>orders <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1500</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3200</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">800</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">4500</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1100</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Mumbai&#34;</span>,    <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">2200</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">3800</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Delhi&#34;</span>,     <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">900</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>summary <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> order <span style="color:#f92672">in</span> orders:
+</span></span><span style="display:flex;"><span>    city <span style="color:#f92672">=</span> order[<span style="color:#e6db74">&#34;city&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> city <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> summary:
+</span></span><span style="display:flex;"><span>        summary[city] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;orders&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;revenue&#34;</span>: <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>    summary[city][<span style="color:#e6db74">&#34;orders&#34;</span>] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    summary[city][<span style="color:#e6db74">&#34;revenue&#34;</span>] <span style="color:#f92672">+=</span> order[<span style="color:#e6db74">&#34;amount&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> city, data <span style="color:#f92672">in</span> summary<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>city<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74">| Orders: </span><span style="color:#e6db74">{</span>data[<span style="color:#e6db74">&#39;orders&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> | Revenue: Rs.</span><span style="color:#e6db74">{</span>data[<span style="color:#e6db74">&#39;revenue&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Building a nested dictionary inside a loop, the &ldquo;key not in dict&rdquo; initialization pattern, formatting output from a nested dict.</p>
+<hr>
+<h3 id="q16--while-loop-with-validation-logic">Q16 &ndash; while Loop with Validation Logic<a hidden class="anchor" aria-hidden="true" href="#q16--while-loop-with-validation-logic">#</a></h3>
+<p>Write a number guessing game. The secret number is 33. The player gets 6 attempts. After each wrong guess, tell the player if the answer is higher or lower. If all attempts are exhausted without a correct guess, reveal the number.</p>
+<p><strong>Expected interaction:</strong></p>
+<pre tabindex="0"><code>Guess a number between 1 and 50: 25
+Too low! 5 attempts left.
+Guess a number between 1 and 50: 40
+Too high! 4 attempts left.
+Guess a number between 1 and 50: 33
+Correct! You got it in 3 attempt(s).
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>secret <span style="color:#f92672">=</span> <span style="color:#ae81ff">33</span>
+</span></span><span style="display:flex;"><span>attempts_allowed <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>attempts_used <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> attempts_used <span style="color:#f92672">&lt;</span> attempts_allowed:
+</span></span><span style="display:flex;"><span>    guess <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Guess a number between 1 and 50: &#34;</span>))
+</span></span><span style="display:flex;"><span>    attempts_used <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    remaining <span style="color:#f92672">=</span> attempts_allowed <span style="color:#f92672">-</span> attempts_used
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> guess <span style="color:#f92672">==</span> secret:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Correct! You got it in </span><span style="color:#e6db74">{</span>attempts_used<span style="color:#e6db74">}</span><span style="color:#e6db74"> attempt(s).&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> guess <span style="color:#f92672">&lt;</span> secret:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Too low! </span><span style="color:#e6db74">{</span>remaining<span style="color:#e6db74">}</span><span style="color:#e6db74"> attempt(s) left.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Too high! </span><span style="color:#e6db74">{</span>remaining<span style="color:#e6db74">}</span><span style="color:#e6db74"> attempt(s) left.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># while-else: runs only if the while condition became False (never broke out)</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Out of attempts! The number was </span><span style="color:#e6db74">{</span>secret<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> while-else, tracking attempts with a counter, break inside while, multi-branch elif.</p>
+<hr>
+<h3 id="q17--nested-loop-with-diamond-pattern">Q17 &ndash; Nested Loop with Diamond Pattern<a hidden class="anchor" aria-hidden="true" href="#q17--nested-loop-with-diamond-pattern">#</a></h3>
+<p>Print a diamond shape of stars for a given <code>n</code>. For <code>n = 4</code>, the output should be:</p>
+<pre tabindex="0"><code>   *
+  * *
+ * * *
+* * * *
+* * * *
+ * * *
+  * *
+   *
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Top half (rows 1 to n)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    spaces <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> i
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">*</span> spaces <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;* &#34;</span> <span style="color:#f92672">*</span> i)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bottom half (rows n-1 down to 1)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    spaces <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> i
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">*</span> spaces <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;* &#34;</span> <span style="color:#f92672">*</span> i)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Two separate loops for top and bottom halves, calculating spaces as a function of row number, range() going downward, string multiplication.</p>
+<hr>
+<h3 id="q18--flatten-and-deduplicate">Q18 &ndash; Flatten and Deduplicate<a hidden class="anchor" aria-hidden="true" href="#q18--flatten-and-deduplicate">#</a></h3>
+<p>Given the nested list of city lists from different survey sources below, write a loop to:</p>
+<ul>
+<li>Flatten it into a single list</li>
+<li>Remove duplicates while preserving the first-seen order</li>
+<li>Print the final clean list</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survey_data <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Pune&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Hyderabad&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Chennai&#34;</span>, <span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Kochi&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Pune&#34;</span>, <span style="color:#e6db74">&#34;Kochi&#34;</span>, <span style="color:#e6db74">&#34;Surat&#34;</span>],
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>[&#39;Delhi&#39;, &#39;Mumbai&#39;, &#39;Pune&#39;, &#39;Bangalore&#39;, &#39;Hyderabad&#39;, &#39;Chennai&#39;, &#39;Kochi&#39;, &#39;Surat&#39;]
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survey_data <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Pune&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Bangalore&#34;</span>, <span style="color:#e6db74">&#34;Mumbai&#34;</span>, <span style="color:#e6db74">&#34;Hyderabad&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Chennai&#34;</span>, <span style="color:#e6db74">&#34;Delhi&#34;</span>, <span style="color:#e6db74">&#34;Kochi&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Pune&#34;</span>, <span style="color:#e6db74">&#34;Kochi&#34;</span>, <span style="color:#e6db74">&#34;Surat&#34;</span>],
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>seen <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sublist <span style="color:#f92672">in</span> survey_data:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> city <span style="color:#f92672">in</span> sublist:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> city <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> seen:
+</span></span><span style="display:flex;"><span>            seen<span style="color:#f92672">.</span>append(city)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(seen)
+</span></span></code></pre></div><p><strong>Alternative using a set to track seen items (faster for large data):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>seen_set <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>result   <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sublist <span style="color:#f92672">in</span> survey_data:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> city <span style="color:#f92672">in</span> sublist:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> city <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> seen_set:
+</span></span><span style="display:flex;"><span>            result<span style="color:#f92672">.</span>append(city)
+</span></span><span style="display:flex;"><span>            seen_set<span style="color:#f92672">.</span>add(city)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(result)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Nested loops over a list of lists, deduplication while preserving order, two approaches (list vs set for membership check).</p>
+<hr>
+<h3 id="q19--word-frequency-counter">Q19 &ndash; Word Frequency Counter<a hidden class="anchor" aria-hidden="true" href="#q19--word-frequency-counter">#</a></h3>
+<p>Write a program that counts how many times each word appears in the paragraph below. Ignore case and punctuation. Print the results sorted from most frequent to least frequent. Show only words that appear more than once.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>paragraph <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cricket is the most popular sport in India. India has produced many great cricket
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">players. The cricket World Cup is watched by millions in India and around the world.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Players from India have won the World Cup twice for India.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p><strong>Expected Output (order may vary for equal counts):</strong></p>
+<pre tabindex="0"><code>india    : 6
+cricket  : 4
+the      : 4
+world    : 3
+cup      : 2
+players  : 2
+has      : 1  &lt;- only shown if you choose to include count &gt;= 1
+</code></pre><p><em>(Show only words with count &gt; 1 in the final output.)</em></p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>paragraph <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cricket is the most popular sport in India. India has produced many great cricket
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">players. The cricket World Cup is watched by millions in India and around the world.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Players from India have won the World Cup twice for India.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Clean and split</span>
+</span></span><span style="display:flex;"><span>cleaned <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> paragraph<span style="color:#f92672">.</span>lower():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> char<span style="color:#f92672">.</span>isalpha() <span style="color:#f92672">or</span> char <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34; &#34;</span>:
+</span></span><span style="display:flex;"><span>        cleaned <span style="color:#f92672">+=</span> char
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>words <span style="color:#f92672">=</span> cleaned<span style="color:#f92672">.</span>split()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Count frequencies</span>
+</span></span><span style="display:flex;"><span>freq <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> words:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> word <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> freq:
+</span></span><span style="display:flex;"><span>        freq[word] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    freq[word] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort by count descending</span>
+</span></span><span style="display:flex;"><span>sorted_words <span style="color:#f92672">=</span> sorted(freq<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print words that appear more than once</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> word, count <span style="color:#f92672">in</span> sorted_words:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>word<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Nested loops, building a frequency dictionary, sorting a list of tuples by value, string cleaning with a loop, lambda as a sort key.</p>
+<hr>
+<h3 id="q20--full-student-report-pipeline">Q20 &ndash; Full Student Report Pipeline<a hidden class="anchor" aria-hidden="true" href="#q20--full-student-report-pipeline">#</a></h3>
+<p>You are given student records. Write a complete program that:</p>
+<ol>
+<li>Calculates each student&rsquo;s total marks and percentage (out of 500)</li>
+<li>Assigns a grade: &ldquo;Distinction&rdquo; (&gt;= 85%), &ldquo;First Class&rdquo; (&gt;= 60%), &ldquo;Pass&rdquo; (&gt;= 40%), &ldquo;Fail&rdquo; (&lt; 40%)</li>
+<li>Counts how many students got each grade</li>
+<li>Finds the topper (highest percentage)</li>
+<li>Prints the full formatted report</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Aarav&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">88</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">92</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">85</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">78</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">95</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Priya&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">55</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">48</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">62</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">50</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">58</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Rohan&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">72</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">68</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">75</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">70</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">65</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Sneha&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">95</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">98</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">92</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">88</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">97</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Karan&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">35</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">40</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">38</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">42</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">30</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Meera&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">78</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">82</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">80</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">75</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">84</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Arjun&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">45</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">55</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">50</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">48</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">52</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><strong>Expected Output:</strong></p>
+<pre tabindex="0"><code>===== STUDENT REPORT =====
+Aarav  | Total: 438/500 | 87.6% | Distinction
+Priya  | Total: 273/500 | 54.6% | Pass
+Rohan  | Total: 350/500 | 70.0% | First Class
+Sneha  | Total: 470/500 | 94.0% | Distinction
+Karan  | Total: 185/500 | 37.0% | Fail
+Meera  | Total: 399/500 | 79.8% | First Class
+Arjun  | Total: 250/500 | 50.0% | Pass
+
+===== GRADE SUMMARY =====
+Distinction : 2
+First Class : 2
+Pass        : 2
+Fail        : 1
+
+===== TOPPER =====
+Sneha with 94.0%
+</code></pre><p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Aarav&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">88</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">92</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">85</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">78</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">95</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Priya&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">55</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">48</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">62</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">50</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">58</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Rohan&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">72</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">68</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">75</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">70</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">65</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Sneha&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">95</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">98</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">92</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">88</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">97</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Karan&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">35</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">40</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">38</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">42</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">30</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Meera&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">78</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">82</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">80</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">75</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">84</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Arjun&#34;</span>,  <span style="color:#e6db74">&#34;maths&#34;</span>: <span style="color:#ae81ff">45</span>, <span style="color:#e6db74">&#34;science&#34;</span>: <span style="color:#ae81ff">55</span>, <span style="color:#e6db74">&#34;english&#34;</span>: <span style="color:#ae81ff">50</span>, <span style="color:#e6db74">&#34;history&#34;</span>: <span style="color:#ae81ff">48</span>, <span style="color:#e6db74">&#34;cs&#34;</span>: <span style="color:#ae81ff">52</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>subjects    <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;maths&#34;</span>, <span style="color:#e6db74">&#34;science&#34;</span>, <span style="color:#e6db74">&#34;english&#34;</span>, <span style="color:#e6db74">&#34;history&#34;</span>, <span style="color:#e6db74">&#34;cs&#34;</span>]
+</span></span><span style="display:flex;"><span>max_marks   <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>grade_count <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Distinction&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;First Class&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;Pass&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;Fail&#34;</span>: <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>topper_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>topper_pct  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;===== STUDENT REPORT =====&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> student <span style="color:#f92672">in</span> students:
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> sum(student[sub] <span style="color:#66d9ef">for</span> sub <span style="color:#f92672">in</span> subjects)
+</span></span><span style="display:flex;"><span>    pct   <span style="color:#f92672">=</span> round((total <span style="color:#f92672">/</span> max_marks) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> pct <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">85</span>:
+</span></span><span style="display:flex;"><span>        grade <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Distinction&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> pct <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span>:
+</span></span><span style="display:flex;"><span>        grade <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;First Class&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> pct <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">40</span>:
+</span></span><span style="display:flex;"><span>        grade <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Pass&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        grade <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Fail&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    grade_count[grade] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> pct <span style="color:#f92672">&gt;</span> topper_pct:
+</span></span><span style="display:flex;"><span>        topper_pct  <span style="color:#f92672">=</span> pct
+</span></span><span style="display:flex;"><span>        topper_name <span style="color:#f92672">=</span> student[<span style="color:#e6db74">&#34;name&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>student[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;6</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> | Total: </span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>max_marks<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>pct<span style="color:#e6db74">}</span><span style="color:#e6db74">% | </span><span style="color:#e6db74">{</span>grade<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">===== GRADE SUMMARY =====&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> grade, count <span style="color:#f92672">in</span> grade_count<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>grade<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;12</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">===== TOPPER =====&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>topper_name<span style="color:#e6db74">}</span><span style="color:#e6db74"> with </span><span style="color:#e6db74">{</span>topper_pct<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span></code></pre></div><p><strong>What this tests:</strong> Everything. Loop over list of dicts, inner loop to sum subject scores, grade assignment with if-elif-else, accumulator for grade counts, tracking max value and its label across iterations, formatted multi-section output.</p>
+<hr>
+<h2 id="quick-reference">Quick Reference<a hidden class="anchor" aria-hidden="true" href="#quick-reference">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>One-liner reminder</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>for loop</td>
+          <td><code>for item in collection:</code></td>
+      </tr>
+      <tr>
+          <td>while loop</td>
+          <td><code>while condition:</code></td>
+      </tr>
+      <tr>
+          <td>range</td>
+          <td><code>range(start, stop, step)</code></td>
+      </tr>
+      <tr>
+          <td>break</td>
+          <td>Exit the loop immediately</td>
+      </tr>
+      <tr>
+          <td>continue</td>
+          <td>Skip this iteration, keep going</td>
+      </tr>
+      <tr>
+          <td>pass</td>
+          <td>Do nothing, placeholder</td>
+      </tr>
+      <tr>
+          <td>else on loop</td>
+          <td>Runs only if break was never hit</td>
+      </tr>
+      <tr>
+          <td>enumerate</td>
+          <td><code>for i, val in enumerate(lst, start=1):</code></td>
+      </tr>
+      <tr>
+          <td>zip</td>
+          <td><code>for a, b in zip(list1, list2):</code></td>
+      </tr>
+      <tr>
+          <td>list comprehension</td>
+          <td><code>[expr for x in lst if condition]</code></td>
+      </tr>
+      <tr>
+          <td>dict comprehension</td>
+          <td><code>{k: v for k, v in zip(keys, vals)}</code></td>
+      </tr>
+      <tr>
+          <td>dict loop</td>
+          <td><code>for key, val in d.items():</code></td>
+      </tr>
+      <tr>
+          <td>nested loop</td>
+          <td>Inner loop runs fully for each outer iteration</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><em>Made with care for Codeverra learners | codeverra.com</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

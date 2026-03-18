@@ -36,6 +36,34 @@
       <description>Daily live problem-solving sessions to build consistency in DSA.</description>
     </item>
     <item>
+      <title>Master Collections in Python</title>
+      <link>http://localhost:1313/blog/collections-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/collections-practice/</guid>
+      <description>Complete practice session on colletions in python</description>
+    </item>
+    <item>
+      <title>Master Loops in Python</title>
+      <link>http://localhost:1313/blog/python-loops-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-loops-practice/</guid>
+      <description>Complete practice session on Loops in python</description>
+    </item>
+    <item>
+      <title>Numpy Masterclass - Beginner to Advanced</title>
+      <link>http://localhost:1313/blog/numpy-masterclass/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/numpy-masterclass/</guid>
+      <description>Get a comprehensive introduction to Numpy library in python</description>
+    </item>
+    <item>
+      <title>Pandas Masterclass - Beginner to Advanced</title>
+      <link>http://localhost:1313/blog/pandas-masterclass/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/pandas-masterclass/</guid>
+      <description>Get a comprehensive introduction to pandas library in python</description>
+    </item>
+    <item>
       <title>Exception Handling in Python - Complete Guide</title>
       <link>http://localhost:1313/blog/exception_handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
@@ -209,6 +237,13 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/numpy-practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/numpy-practice/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
