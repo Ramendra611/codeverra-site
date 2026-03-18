@@ -29,6 +29,13 @@
       <description>Complete practice session on Numpy in python</description>
     </item>
     <item>
+      <title>Complete Guide to Pandas in Python</title>
+      <link>http://localhost:1313/blog/pandas-practice/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/pandas-practice/</guid>
+      <description>Complete practice session on Pandas in python</description>
+    </item>
+    <item>
       <title>Master Collections in Python</title>
       <link>http://localhost:1313/blog/collections-practice/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
@@ -64,11 +71,25 @@
       <description>Learn about try-except-finally and custom exceptions in Python</description>
     </item>
     <item>
+      <title>File Handling in Python - Complete Guide</title>
+      <link>http://localhost:1313/blog/file-handling-in-python/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/file-handling-in-python/</guid>
+      <description>Learn about  working with files in Python</description>
+    </item>
+    <item>
       <title>Filtering and Querying data</title>
       <link>http://localhost:1313/blog/sql-part2/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/sql-part2/</guid>
       <description>Learn about WHERE, GROUPBY and other important commands</description>
+    </item>
+    <item>
+      <title>Functions in Python - Complete Guide</title>
+      <link>http://localhost:1313/blog/functions-in-python/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/functions-in-python/</guid>
+      <description>Learn everything about writing fcuntions in Python</description>
     </item>
     <item>
       <title>Group by and Aggregations</title>
@@ -230,13 +251,6 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/blog/pandas-practice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/pandas-practice/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
