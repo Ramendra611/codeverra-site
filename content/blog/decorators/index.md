@@ -13,7 +13,7 @@ tags:
   - python
 
 cover:
-  image: "/images//decorators in python.png"
+  image: "/images/decorators in python.png"
   alt: "higher order functions and decorators in python"
   caption: "Data Analysis using Python"
   relative: true
