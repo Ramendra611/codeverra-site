@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Practice Pandas on Titanic Dataset | codeverra</title>
+<meta name="keywords" content="python, data-analysis, pandas">
+<meta name="description" content="Master data analysis in Python using the pandas library using hands on practice on Titanic dataset">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blog/titanic_pandas/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/titanic_pandas/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Practice Pandas on Titanic Dataset
+    </h1>
+    <div class="post-description">
+      Master data analysis in Python using the pandas library using hands on practice on Titanic dataset
+    </div>
+    <div class="post-meta"><span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5165 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/pandas_titanic.png" alt="pandas practice on titanic dataset">
+        <figcaption>Data Analysis using Python</figcaption>
+</figure>
+  <div class="post-content"><h1 id="pandas-practice-sheet--titanic-dataset">Pandas Practice Sheet — Titanic Dataset<a hidden class="anchor" aria-hidden="true" href="#pandas-practice-sheet--titanic-dataset">#</a></h1>
+<h3 id="20-questions-from-zero-to-advanced-with-full-solutions">20 Questions from Zero to Advanced, with Full Solutions<a hidden class="anchor" aria-hidden="true" href="#20-questions-from-zero-to-advanced-with-full-solutions">#</a></h3>
+<hr>
+<h2 id="getting-the-dataset">Getting the Dataset<a hidden class="anchor" aria-hidden="true" href="#getting-the-dataset">#</a></h2>
+<p>The Titanic dataset is hosted publicly and can be loaded directly into pandas — no download needed.</p>
+<p><strong>Direct CSV URL (no login required):</strong></p>
+<pre tabindex="0"><code>https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv
+</code></pre><p><strong>Load it in one line:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&#34;</span>)
+</span></span></code></pre></div><p><strong>Or load via seaborn (also free, slightly different column names):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;titanic&#34;</span>)
+</span></span></code></pre></div><blockquote>
+<p>Always run <code>df.head()</code> and <code>df.info()</code> before answering any question — knowing your data is half the battle.</p>
+</blockquote>
+<hr>
+<h2 id="column-dictionary">Column Dictionary<a hidden class="anchor" aria-hidden="true" href="#column-dictionary">#</a></h2>
+<p>Before writing a single line of pandas, understand what every column means.</p>
+<pre tabindex="0"><code>┌─────────────────┬──────────┬──────────────────────────────────────────────────────┐
+│ Column          │ Type     │ Meaning                                              │
+├─────────────────┼──────────┼──────────────────────────────────────────────────────┤
+│ PassengerId     │ int      │ Unique ID for each passenger (1–891)                 │
+│ Survived        │ int      │ 0 = Did not survive, 1 = Survived                   │
+│ Pclass          │ int      │ Ticket class: 1 = First, 2 = Second, 3 = Third      │
+│ Name            │ string   │ Full name including title (Mr., Mrs., Miss., etc.)   │
+│ Sex             │ string   │ &#34;male&#34; or &#34;female&#34;                                   │
+│ Age             │ float    │ Age in years. ~177 values are missing (NaN)          │
+│ SibSp           │ int      │ # of siblings + spouses aboard                      │
+│ Parch           │ int      │ # of parents + children aboard                      │
+│ Ticket          │ string   │ Ticket number (mostly irrelevant for analysis)       │
+│ Fare            │ float    │ Ticket price in British pounds                       │
+│ Cabin           │ string   │ Cabin number. ~687 values are missing                │
+│ Embarked        │ string   │ Port of embarkation: S=Southampton, C=Cherbourg,    │
+│                 │          │ Q=Queenstown. 2 values missing.                      │
+└─────────────────┴──────────┴──────────────────────────────────────────────────────┘
+</code></pre><p><strong>Key facts to keep in your head:</strong></p>
+<ul>
+<li>891 rows total (training set — not all passengers)</li>
+<li><code>Survived</code> is the target column (1 = survived)</li>
+<li><code>Age</code> and <code>Cabin</code> have significant missing values</li>
+<li><code>Pclass</code> is stored as an integer but is a categorical variable</li>
+</ul>
+<hr>
+<h2 id="setup-block">Setup Block<a hidden class="anchor" aria-hidden="true" href="#setup-block">#</a></h2>
+<p>Run this at the top of every notebook. We will reference <code>df</code> throughout.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Quick sanity check</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>shape)       <span style="color:#75715e"># (891, 12)</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>dtypes)
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())
+</span></span></code></pre></div><hr>
+<hr>
+<h1 id="level-1--basics-questions-15">LEVEL 1 — Basics (Questions 1–5)<a hidden class="anchor" aria-hidden="true" href="#level-1--basics-questions-15">#</a></h1>
+<h3 id="core-selection-filtering-and-summary-statistics">Core selection, filtering, and summary statistics<a hidden class="anchor" aria-hidden="true" href="#core-selection-filtering-and-summary-statistics">#</a></h3>
+<hr>
+<h2 id="question-1">Question 1<a hidden class="anchor" aria-hidden="true" href="#question-1">#</a></h2>
+<h3 id="how-many-passengers-are-in-the-dataset-and-what-does-the-data-look-like">How many passengers are in the dataset, and what does the data look like?<a hidden class="anchor" aria-hidden="true" href="#how-many-passengers-are-in-the-dataset-and-what-does-the-data-look-like">#</a></h3>
+<p><strong>Concepts:</strong> <code>shape</code>, <code>head()</code>, <code>tail()</code>, <code>info()</code>, <code>describe()</code></p>
+<p>This is always Question 0 in any real data project. Never skip it.</p>
+<hr>
+<h3 id="answer">Answer<a hidden class="anchor" aria-hidden="true" href="#answer">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># --- Shape: rows and columns ---</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (891, 12)  → 891 passengers, 12 columns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- First 5 rows ---</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Last 5 rows ---</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>tail())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Data types and non-null counts ---</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>info()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Tells you: dtype per column, how many non-null values exist</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Key insight: Age has 714/891 non-null → 177 missing</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#              Cabin has only 204/891 non-null → 687 missing!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Statistical summary for numeric columns ---</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>describe())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># count, mean, std, min, 25%, 50%, 75%, max for each numeric column</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Include all columns (including object/string types) ---</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>describe(include<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;all&#34;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Adds: unique, top (most frequent), freq (frequency of top) for string columns</span>
+</span></span></code></pre></div><p><strong>What to read from <code>describe()</code>:</strong></p>
+<ul>
+<li><code>Age</code> mean ≈ 29.7 but median (50%) ≈ 28 → slight right skew</li>
+<li><code>Fare</code> max is 512 but 75th percentile is only 31 → massive outliers</li>
+<li><code>Survived</code> mean ≈ 0.38 → only 38% of passengers survived</li>
+</ul>
+<hr>
+<h2 id="question-2">Question 2<a hidden class="anchor" aria-hidden="true" href="#question-2">#</a></h2>
+<h3 id="how-many-passengers-survived-and-what-is-the-overall-survival-rate">How many passengers survived, and what is the overall survival rate?<a hidden class="anchor" aria-hidden="true" href="#how-many-passengers-survived-and-what-is-the-overall-survival-rate">#</a></h3>
+<p><strong>Concepts:</strong> <code>value_counts()</code>, <code>value_counts(normalize=True)</code>, boolean filtering, <code>mean()</code></p>
+<hr>
+<h3 id="answer-1">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-1">#</a></h3>
+<p><strong>Method 1 — <code>value_counts()</code> for raw counts</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>value_counts())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0    549   (did not survive)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    342   (survived)</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>value_counts(normalize=True)</code> for proportions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0    0.616</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    0.384</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Interpretation: 38.4% survived, 61.6% did not</span>
+</span></span></code></pre></div><p><strong>Method 3 — <code>mean()</code> on a binary column (cleanest for survival rate)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survival_rate <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Survival rate: </span><span style="color:#e6db74">{</span>survival_rate<span style="color:#e6db74">:</span><span style="color:#e6db74">.1%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survival rate: 38.4%</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Why does <code>mean()</code> work here?</strong> Because <code>Survived</code> is 0 or 1. The average of a binary column is identical to the proportion of 1s. This trick is idiomatic pandas and much cleaner than dividing counts manually.</p>
+</blockquote>
+<p><strong>Method 4 — Boolean filter to count survivors directly</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survivors     <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#34;Survived&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>non_survivors <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#34;Survived&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Survived:     </span><span style="color:#e6db74">{</span>len(survivors)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)     <span style="color:#75715e"># 342</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Did not:      </span><span style="color:#e6db74">{</span>len(non_survivors)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># 549</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total:        </span><span style="color:#e6db74">{</span>len(df)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)             <span style="color:#75715e"># 891</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Tradeoff:</strong> <code>value_counts()</code> is great for a quick count of each category. <code>mean()</code> is the one-liner for a rate. For larger workflows, <code>groupby</code> (coming later) scales better.</p>
+</blockquote>
+<hr>
+<h2 id="question-3">Question 3<a hidden class="anchor" aria-hidden="true" href="#question-3">#</a></h2>
+<h3 id="what-are-the-minimum-maximum-and-average-age-of-passengers-how-many-passengers-have-a-missing-age">What are the minimum, maximum, and average age of passengers? How many passengers have a missing age?<a hidden class="anchor" aria-hidden="true" href="#what-are-the-minimum-maximum-and-average-age-of-passengers-how-many-passengers-have-a-missing-age">#</a></h3>
+<p><strong>Concepts:</strong> <code>min()</code>, <code>max()</code>, <code>mean()</code>, <code>median()</code>, <code>isnull()</code>, <code>sum()</code>, <code>dropna()</code></p>
+<hr>
+<h3 id="answer-2">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-2">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Basic statistics on Age</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Min age:    </span><span style="color:#e6db74">{</span>df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>min()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)          <span style="color:#75715e"># 0.42  (infant)</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Max age:    </span><span style="color:#e6db74">{</span>df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>max()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)          <span style="color:#75715e"># 80.0</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Mean age:   </span><span style="color:#e6db74">{</span>df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)     <span style="color:#75715e"># 29.70</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Median age: </span><span style="color:#e6db74">{</span>df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>median()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)   <span style="color:#75715e"># 28.00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Missing age count</span>
+</span></span><span style="display:flex;"><span>missing_age <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>total       <span style="color:#f92672">=</span> len(df)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Missing age: </span><span style="color:#e6db74">{</span>missing_age<span style="color:#e6db74">}</span><span style="color:#e6db74"> out of </span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>missing_age<span style="color:#f92672">/</span>total<span style="color:#e6db74">:</span><span style="color:#e6db74">.1%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Missing age: 177 out of 891 (19.9%)</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>describe()</code> gives everything at once</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>describe())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># count    714.000000   ← non-null count</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># mean      29.699118</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># std       14.526497</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># min        0.420000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 25%       20.125000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 50%       28.000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 75%       38.000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># max       80.000000</span>
+</span></span></code></pre></div><p><strong>Method 3 — <code>agg()</code> for custom summary in one call</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>agg([<span style="color:#e6db74">&#34;min&#34;</span>, <span style="color:#e6db74">&#34;max&#34;</span>, <span style="color:#e6db74">&#34;mean&#34;</span>, <span style="color:#e6db74">&#34;median&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>]))
+</span></span></code></pre></div><blockquote>
+<p><strong>Mean vs Median for Age:</strong> Mean is 29.7, median is 28.0. They&rsquo;re close, meaning the age distribution is fairly symmetric. But when a column has outliers (like <code>Fare</code>), mean can be misleading — always check both.</p>
+</blockquote>
+<blockquote>
+<p><strong>Tradeoff on missing values:</strong> <code>min()</code>, <code>max()</code>, <code>mean()</code> all skip NaN by default (<code>skipna=True</code>). This is convenient but means your statistics are computed on only 714 of 891 passengers. Always note this when reporting results.</p>
+</blockquote>
+<hr>
+<h2 id="question-4">Question 4<a hidden class="anchor" aria-hidden="true" href="#question-4">#</a></h2>
+<h3 id="select-only-the-name-sex-age-and-survived-columns-for-passengers-who-are-female">Select only the <code>Name</code>, <code>Sex</code>, <code>Age</code>, and <code>Survived</code> columns for passengers who are female.<a hidden class="anchor" aria-hidden="true" href="#select-only-the-name-sex-age-and-survived-columns-for-passengers-who-are-female">#</a></h3>
+<p><strong>Concepts:</strong> Column selection, boolean filtering, <code>loc[]</code>, <code>iloc[]</code></p>
+<hr>
+<h3 id="answer-3">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-3">#</a></h3>
+<p><strong>Method 1 — Boolean filter then column selection (most readable)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>female_passengers <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#34;Sex&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;female&#34;</span>][[<span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Age&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]]
+</span></span><span style="display:flex;"><span>print(female_passengers<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>))
+</span></span></code></pre></div><p><strong>Method 2 — <code>loc[]</code> in one step (preferred — reads naturally as &ldquo;rows, columns&rdquo;)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>female_passengers <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#34;Sex&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;female&#34;</span>,          <span style="color:#75715e"># row condition</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Age&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]   <span style="color:#75715e"># columns to select</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>print(female_passengers<span style="color:#f92672">.</span>shape)   <span style="color:#75715e"># (314, 4)</span>
+</span></span></code></pre></div><p><strong>Method 3 — <code>query()</code> for a SQL-like feel</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>female_passengers <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#39;Sex == &#34;female&#34;&#39;</span>)[[<span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Age&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]]
+</span></span></code></pre></div><blockquote>
+<p><strong><code>loc</code> vs <code>iloc</code>:</strong></p>
+<ul>
+<li><code>loc[row_label, col_label]</code> — selects by <strong>label</strong> (column name, index value)</li>
+<li><code>iloc[row_integer, col_integer]</code> — selects by <strong>position</strong> (0-based integers)</li>
+</ul>
+<p>Always prefer <code>loc</code> when filtering by condition. Use <code>iloc</code> when you need a specific row by position (e.g., <code>df.iloc[0]</code> for the first row).</p>
+</blockquote>
+<blockquote>
+<p><strong>Tradeoff — chained indexing pitfall:</strong>
+<code>df[df[&quot;Sex&quot;] == &quot;female&quot;][&quot;Survived&quot;] = 1</code> → This can silently fail with a <code>SettingWithCopyWarning</code>!
+Always use <code>loc</code> when <strong>modifying</strong> values:
+<code>df.loc[df[&quot;Sex&quot;] == &quot;female&quot;, &quot;Survived&quot;] = 1</code> → This is safe.</p>
+</blockquote>
+<hr>
+<h2 id="question-5">Question 5<a hidden class="anchor" aria-hidden="true" href="#question-5">#</a></h2>
+<h3 id="how-many-passengers-are-in-each-passenger-class-1st-2nd-3rd">How many passengers are in each passenger class (1st, 2nd, 3rd)?<a hidden class="anchor" aria-hidden="true" href="#how-many-passengers-are-in-each-passenger-class-1st-2nd-3rd">#</a></h3>
+<p><strong>Concepts:</strong> <code>value_counts()</code>, <code>groupby().size()</code>, <code>groupby().count()</code></p>
+<hr>
+<h3 id="answer-4">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-4">#</a></h3>
+<p><strong>Method 1 — <code>value_counts()</code> (fastest for a single column)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Pclass&#34;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>sort_index())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    216</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    184</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    491</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>groupby().size()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)<span style="color:#f92672">.</span>size())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    216</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    184</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    491</span>
+</span></span></code></pre></div><p><strong>Method 3 — <code>groupby().count()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># .count() counts non-null values per column, not rows</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Different from .size() when columns have missing values!</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;PassengerId&#34;</span>]<span style="color:#f92672">.</span>count())
+</span></span></code></pre></div><blockquote>
+<p><strong><code>size()</code> vs <code>count()</code> — the critical difference:</strong></p>
+<ul>
+<li><code>size()</code> → counts ALL rows in the group, including those with NaN</li>
+<li><code>count()</code> → counts only NON-NULL values per column</li>
+</ul>
+<p>For counting rows in a group, always use <code>size()</code>. If you use <code>count()</code> on <code>Age</code>, you&rsquo;ll get 714 not 891 because of missing ages. Use <code>count()</code> only when you want &ldquo;how many valid values exist in this column for this group.&rdquo;</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Proof of the difference</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)<span style="color:#f92672">.</span>size())          <span style="color:#75715e"># always 216, 184, 491</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>count())  <span style="color:#75715e"># only non-null ages per class</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    186</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    173</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    355</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h1 id="level-2--filtering--grouping-questions-610">LEVEL 2 — Filtering &amp; Grouping (Questions 6–10)<a hidden class="anchor" aria-hidden="true" href="#level-2--filtering--grouping-questions-610">#</a></h1>
+<h3 id="multi-condition-filters-groupby-aggregations-multiple-aggregations">Multi-condition filters, groupby aggregations, multiple aggregations<a hidden class="anchor" aria-hidden="true" href="#multi-condition-filters-groupby-aggregations-multiple-aggregations">#</a></h3>
+<hr>
+<h2 id="question-6">Question 6<a hidden class="anchor" aria-hidden="true" href="#question-6">#</a></h2>
+<h3 id="what-is-the-survival-rate-for-male-vs-female-passengers">What is the survival rate for male vs female passengers?<a hidden class="anchor" aria-hidden="true" href="#what-is-the-survival-rate-for-male-vs-female-passengers">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby()</code>, <code>agg()</code>, <code>mean()</code>, multiple columns in groupby</p>
+<hr>
+<h3 id="answer-5">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-5">#</a></h3>
+<p><strong>Method 1 — <code>groupby().mean()</code> on the Survived column</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survival_by_sex <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Sex&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>print(survival_by_sex)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sex</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># female    0.742038</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># male      0.188908</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>groupby().agg()</code> to get both count and rate together</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>survival_by_sex <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Sex&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    total_passengers<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;count&#34;</span>,
+</span></span><span style="display:flex;"><span>    survivors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sum&#34;</span>,
+</span></span><span style="display:flex;"><span>    survival_rate<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mean&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(survival_by_sex<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         total_passengers  survivors  survival_rate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># female               314        233          0.742</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># male                 577        109          0.189</span>
+</span></span></code></pre></div><p><strong>Method 3 — <code>value_counts()</code> crosstab style</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>])<span style="color:#f92672">.</span>size()<span style="color:#f92672">.</span>unstack())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survived    0    1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sex</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># female     81  233</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># male      468  109</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Insight:</strong> Female passengers had a 74.2% survival rate vs only 18.9% for males — a massive difference reflecting the &ldquo;women and children first&rdquo; evacuation policy.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note on <code>agg()</code> syntax:</strong> The <code>agg(new_col_name=&quot;original_agg_func&quot;)</code> named aggregation syntax was introduced in pandas 0.25. It&rsquo;s the cleanest way to rename columns during aggregation. Before that, people used <code>.rename()</code> after the fact.</p>
+</blockquote>
+<hr>
+<h2 id="question-7">Question 7<a hidden class="anchor" aria-hidden="true" href="#question-7">#</a></h2>
+<h3 id="what-is-the-average-fare-paid-by-passengers-in-each-class">What is the average fare paid by passengers in each class?<a hidden class="anchor" aria-hidden="true" href="#what-is-the-average-fare-paid-by-passengers-in-each-class">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby()</code>, <code>agg()</code> with multiple functions, <code>round()</code>, sorting</p>
+<hr>
+<h3 id="answer-6">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-6">#</a></h3>
+<p><strong>Method 1 — Simple <code>groupby().mean()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>avg_fare <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>print(avg_fare)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    84.15</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    20.66</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    13.68</span>
+</span></span></code></pre></div><p><strong>Method 2 — Multiple aggregations using <code>agg()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fare_stats <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    avg_fare<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mean&#34;</span>,
+</span></span><span style="display:flex;"><span>    median_fare<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median&#34;</span>,
+</span></span><span style="display:flex;"><span>    min_fare<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;min&#34;</span>,
+</span></span><span style="display:flex;"><span>    max_fare<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max&#34;</span>,
+</span></span><span style="display:flex;"><span>    passengers<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;count&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(fare_stats)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         avg_fare  median_fare  min_fare   max_fare  passengers</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1          84.15        60.29      0.00    512.33         216</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2          20.66        14.25      0.00     73.50         184</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3          13.68         8.05      0.00     69.55         491</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Mean vs Median for Fare:</strong> In Class 1, the mean is 84.15 but the median is only 60.29. That gap tells you there are some very expensive tickets pulling the mean up (max = 512!). The median is more representative here. Always compare both when dealing with potentially skewed distributions like prices or incomes.</p>
+</blockquote>
+<p><strong>Method 3 — <code>agg()</code> with a list of functions (older but still common)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fare_stats <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>agg([<span style="color:#e6db74">&#34;mean&#34;</span>, <span style="color:#e6db74">&#34;median&#34;</span>, <span style="color:#e6db74">&#34;min&#34;</span>, <span style="color:#e6db74">&#34;max&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Column names will be &#39;mean&#39;, &#39;median&#39;, &#39;min&#39;, &#39;max&#39; — use rename() to relabel</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Tradeoff — named agg vs list agg:</strong></p>
+<ul>
+<li>Named: <code>agg(avg=&quot;mean&quot;)</code> → clean column names immediately, self-documenting</li>
+<li>List: <code>agg([&quot;mean&quot;, &quot;median&quot;])</code> → simpler syntax but ugly default column names
+Prefer named aggregations in any code you&rsquo;ll share or read later.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="question-8">Question 8<a hidden class="anchor" aria-hidden="true" href="#question-8">#</a></h2>
+<h3 id="how-many-passengers-survived-and-did-not-survive-broken-down-by-both-sex-and-pclass">How many passengers survived AND did not survive, broken down by both Sex and Pclass?<a hidden class="anchor" aria-hidden="true" href="#how-many-passengers-survived-and-did-not-survive-broken-down-by-both-sex-and-pclass">#</a></h3>
+<p><strong>Concepts:</strong> Multi-column <code>groupby()</code>, <code>unstack()</code>, <code>crosstab()</code></p>
+<hr>
+<h3 id="answer-7">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-7">#</a></h3>
+<p><strong>Method 1 — <code>groupby()</code> on two columns + <code>size()</code> + <code>unstack()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>counts <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>])<span style="color:#f92672">.</span>size()<span style="color:#f92672">.</span>unstack(fill_value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>print(counts)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survived         0    1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass Sex</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1      female    3   91</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male     77   45</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2      female    6   70</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male     91   17</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3      female   72   72</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male    300   47</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>pd.crosstab()</code> — the cleanest for cross-tabulations</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ct <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>crosstab(
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span>[df[<span style="color:#e6db74">&#34;Pclass&#34;</span>], df[<span style="color:#e6db74">&#34;Sex&#34;</span>]],
+</span></span><span style="display:flex;"><span>    columns<span style="color:#f92672">=</span>df[<span style="color:#e6db74">&#34;Survived&#34;</span>],
+</span></span><span style="display:flex;"><span>    margins<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,          <span style="color:#75715e"># adds row/column totals</span>
+</span></span><span style="display:flex;"><span>    margins_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Total&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>ct<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Did Not Survive&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>, <span style="color:#e6db74">&#34;Total&#34;</span>]
+</span></span><span style="display:flex;"><span>print(ct)
+</span></span></code></pre></div><p><strong>Method 3 — <code>pd.crosstab()</code> with <code>normalize</code> for proportions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Row-wise proportions (survival rate per Pclass-Sex group)</span>
+</span></span><span style="display:flex;"><span>ct_pct <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>crosstab(
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span>[df[<span style="color:#e6db74">&#34;Pclass&#34;</span>], df[<span style="color:#e6db74">&#34;Sex&#34;</span>]],
+</span></span><span style="display:flex;"><span>    columns<span style="color:#f92672">=</span>df[<span style="color:#e6db74">&#34;Survived&#34;</span>],
+</span></span><span style="display:flex;"><span>    normalize<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>      <span style="color:#75715e"># normalize across rows (sum of each row = 1)</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>ct_pct<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;survival_rate_0&#34;</span>, <span style="color:#e6db74">&#34;survival_rate_1&#34;</span>]
+</span></span><span style="display:flex;"><span>print(ct_pct)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#                survival_rate_0  survival_rate_1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass Sex</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1      female            0.032            0.968  ← 96.8% of 1st class women survived!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male              0.631            0.369</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2      female            0.079            0.921</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male               0.843            0.157</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3      female            0.500            0.500</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        male               0.864            0.136</span>
+</span></span></code></pre></div><blockquote>
+<p><strong><code>groupby</code> vs <code>crosstab</code>:</strong></p>
+<ul>
+<li><code>groupby</code> is more flexible and works naturally in data pipelines</li>
+<li><code>crosstab</code> is more ergonomic for 2D frequency tables with labels</li>
+<li><code>crosstab</code> supports <code>normalize</code> directly — cleaner than doing <code>groupby().size() / groupby().size().sum()</code> manually</li>
+</ul>
+<p>For exploratory analysis, reach for <code>crosstab</code>. For production pipelines and chaining, use <code>groupby</code>.</p>
+</blockquote>
+<hr>
+<h2 id="question-9">Question 9<a hidden class="anchor" aria-hidden="true" href="#question-9">#</a></h2>
+<h3 id="find-all-passengers-who-were-over-60-years-old-or-paid-a-fare-over-100-how-many-are-there-and-how-many-survived">Find all passengers who were over 60 years old OR paid a fare over £100. How many are there, and how many survived?<a hidden class="anchor" aria-hidden="true" href="#find-all-passengers-who-were-over-60-years-old-or-paid-a-fare-over-100-how-many-are-there-and-how-many-survived">#</a></h3>
+<p><strong>Concepts:</strong> Multiple boolean conditions with <code>|</code> and <code>&amp;</code>, <code>query()</code>, <code>sum()</code>, <code>mean()</code></p>
+<hr>
+<h3 id="answer-8">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-8">#</a></h3>
+<p><strong>Method 1 — Boolean operators <code>|</code> (OR) and <code>&amp;</code> (AND)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># IMPORTANT: Each condition must be wrapped in parentheses!</span>
+</span></span><span style="display:flex;"><span>mask <span style="color:#f92672">=</span> (df[<span style="color:#e6db74">&#34;Age&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">60</span>) <span style="color:#f92672">|</span> (df[<span style="color:#e6db74">&#34;Fare&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>subset <span style="color:#f92672">=</span> df[mask]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Passengers matching criteria: </span><span style="color:#e6db74">{</span>len(subset)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Survivors among them:         </span><span style="color:#e6db74">{</span>subset[<span style="color:#e6db74">&#39;Survived&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Survival rate:                </span><span style="color:#e6db74">{</span>subset[<span style="color:#e6db74">&#39;Survived&#39;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#e6db74">:</span><span style="color:#e6db74">.1%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>Method 2 — <code>query()</code> — more readable for complex conditions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>subset <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;Age &gt; 60 or Fare &gt; 100&#34;</span>)
+</span></span><span style="display:flex;"><span>print(len(subset))
+</span></span></code></pre></div><blockquote>
+<p><strong>Query handles NaN differently:</strong> <code>query(&quot;Age &gt; 60&quot;)</code> silently drops rows where Age is NaN from the result — the same as boolean indexing. But the string syntax is cleaner for complex multi-condition filters.</p>
+</blockquote>
+<p><strong>Adding an AND condition for comparison:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Passengers who are BOTH old AND paid high fare</span>
+</span></span><span style="display:flex;"><span>high_value <span style="color:#f92672">=</span> df[(df[<span style="color:#e6db74">&#34;Age&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">60</span>) <span style="color:#f92672">&amp;</span> (df[<span style="color:#e6db74">&#34;Fare&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>)]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Old AND expensive passengers: </span><span style="color:#e6db74">{</span>len(high_value)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Very common mistake — using Python&#39;s `and`/`or` instead of `&amp;`/`|`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># df[(df[&#34;Age&#34;] &gt; 60) and (df[&#34;Fare&#34;] &gt; 100)]  ← ValueError: ambiguous truth value!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Always use &amp; and | for element-wise comparison on Series</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Tradeoff — <code>|</code>/<code>&amp;</code> vs <code>query()</code>:</strong></p>
+<ul>
+<li><code>|</code>/<code>&amp;</code> is faster on very large DataFrames and supports variables directly</li>
+<li><code>query()</code> is cleaner to read and write, especially for 3+ conditions</li>
+<li><code>query()</code> has limitations with column names containing spaces (use backticks: <code>df.query(&quot;column name &gt; 5&quot;)</code> → <code>df.query(&quot;`column name` &gt; 5&quot;)</code>)</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="question-10">Question 10<a hidden class="anchor" aria-hidden="true" href="#question-10">#</a></h2>
+<h3 id="what-is-the-survival-rate-for-each-combination-of-pclass-and-sex-present-it-as-a-clean-pivot-table">What is the survival rate for each combination of Pclass and Sex? Present it as a clean pivot table.<a hidden class="anchor" aria-hidden="true" href="#what-is-the-survival-rate-for-each-combination-of-pclass-and-sex-present-it-as-a-clean-pivot-table">#</a></h3>
+<p><strong>Concepts:</strong> <code>pivot_table()</code>, <code>aggfunc</code>, <code>margins</code></p>
+<hr>
+<h3 id="answer-9">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-9">#</a></h3>
+<p><strong>Method 1 — <code>pd.pivot_table()</code> — the purpose-built tool</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pivot <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>pivot_table(
+</span></span><span style="display:flex;"><span>    df,
+</span></span><span style="display:flex;"><span>    values<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Survived&#34;</span>,      <span style="color:#75715e"># the column to aggregate</span>
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pclass&#34;</span>,         <span style="color:#75715e"># rows</span>
+</span></span><span style="display:flex;"><span>    columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sex&#34;</span>,          <span style="color:#75715e"># columns</span>
+</span></span><span style="display:flex;"><span>    aggfunc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mean&#34;</span>,         <span style="color:#75715e"># how to aggregate</span>
+</span></span><span style="display:flex;"><span>    margins<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,           <span style="color:#75715e"># add row/column totals</span>
+</span></span><span style="display:flex;"><span>    margins_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Overall&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(pivot)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sex     female   male  Overall</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1        0.968  0.369    0.630</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2        0.921  0.157    0.473</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3        0.500  0.136    0.242</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Overall  0.742  0.189    0.384</span>
+</span></span></code></pre></div><p><strong>Method 2 — <code>groupby().unstack()</code> gives the same result</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pivot2 <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Sex&#34;</span>])[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>unstack()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>print(pivot2)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sex     female   male</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1        0.968  0.369</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2        0.921  0.157</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3        0.500  0.136</span>
+</span></span></code></pre></div><p><strong>Method 3 — Multiple aggregation functions in <code>pivot_table()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pivot_multi <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>pivot_table(
+</span></span><span style="display:flex;"><span>    df,
+</span></span><span style="display:flex;"><span>    values<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Survived&#34;</span>,
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pclass&#34;</span>,
+</span></span><span style="display:flex;"><span>    columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sex&#34;</span>,
+</span></span><span style="display:flex;"><span>    aggfunc<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;mean&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>]   <span style="color:#75715e"># survival rate AND passenger count</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>print(pivot_multi)
+</span></span></code></pre></div><blockquote>
+<p><strong><code>pivot_table</code> vs <code>groupby().unstack()</code>:</strong></p>
+<ul>
+<li><code>pivot_table</code> is more explicit, supports <code>margins</code>, <code>fill_value</code>, and multiple <code>aggfunc</code> directly</li>
+<li><code>groupby().unstack()</code> is more composable — easier to chain with other operations</li>
+<li>If you&rsquo;re building a display table, use <code>pivot_table</code>. If you&rsquo;re continuing a transformation pipeline, use <code>groupby().unstack()</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>What the pivot table reveals:</strong> Class 1 females had a 96.8% survival rate. Class 3 males had only a 13.6% survival rate. The &ldquo;Pclass&rdquo; effect is dramatic and exists independently within both sexes.</p>
+</blockquote>
+<hr>
+<hr>
+<h1 id="level-3--aggregation-depth-questions-1115">LEVEL 3 — Aggregation Depth (Questions 11–15)<a hidden class="anchor" aria-hidden="true" href="#level-3--aggregation-depth-questions-1115">#</a></h1>
+<h3 id="multiple-aggregations-transforms-and-derived-columns">Multiple aggregations, transforms, and derived columns<a hidden class="anchor" aria-hidden="true" href="#multiple-aggregations-transforms-and-derived-columns">#</a></h3>
+<hr>
+<h2 id="question-11">Question 11<a hidden class="anchor" aria-hidden="true" href="#question-11">#</a></h2>
+<h3 id="for-each-passenger-class-compute-total-passengers-number-of-survivors-survival-rate-average-age-and-average-fare--all-in-one-query">For each passenger class, compute: total passengers, number of survivors, survival rate, average age, and average fare — all in one query.<a hidden class="anchor" aria-hidden="true" href="#for-each-passenger-class-compute-total-passengers-number-of-survivors-survival-rate-average-age-and-average-fare--all-in-one-query">#</a></h3>
+<p><strong>Concepts:</strong> Named multi-column <code>agg()</code>, <code>groupby()</code> on multiple metrics</p>
+<hr>
+<h3 id="answer-10">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-10">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>class_summary <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    total_passengers  <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;PassengerId&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>),
+</span></span><span style="display:flex;"><span>    survivors         <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Survived&#34;</span>,    <span style="color:#e6db74">&#34;sum&#34;</span>),
+</span></span><span style="display:flex;"><span>    survival_rate     <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Survived&#34;</span>,    <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>    avg_age           <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Age&#34;</span>,         <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>    avg_fare          <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Fare&#34;</span>,        <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>    median_fare       <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Fare&#34;</span>,        <span style="color:#e6db74">&#34;median&#34;</span>),
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(class_summary)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         total_passengers  survivors  survival_rate  avg_age  avg_fare  median_fare</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1                    216        136           0.63    38.23     84.15        60.29</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2                    184         87           0.47    29.88     20.66        14.25</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3                    491        119           0.24    25.14     13.68         8.05</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Named aggregation syntax — the right way:</strong>
+<code>new_column_name = (&quot;source_column&quot;, &quot;aggregation_function&quot;)</code></p>
+<p>This was introduced in pandas 0.25.0 and is now the recommended approach. It produces clean column names without needing <code>.rename()</code> afterwards.</p>
+</blockquote>
+<p><strong>Bonus — adding a percentage column after the fact:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>class_summary[<span style="color:#e6db74">&#34;pct_of_total&#34;</span>] <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    class_summary[<span style="color:#e6db74">&#34;total_passengers&#34;</span>] <span style="color:#f92672">/</span> class_summary[<span style="color:#e6db74">&#34;total_passengers&#34;</span>]<span style="color:#f92672">.</span>sum() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>print(class_summary[<span style="color:#e6db74">&#34;pct_of_total&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    24.2%</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    20.6%</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    55.1%</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Insight:</strong> Class 3 passengers made up 55% of all passengers but had only a 24% survival rate. Class 1 had 24% of passengers and a 63% survival rate. This directly reflects which decks lifeboats were accessible from.</p>
+</blockquote>
+<hr>
+<h2 id="question-12">Question 12<a hidden class="anchor" aria-hidden="true" href="#question-12">#</a></h2>
+<h3 id="create-a-new-column-called-familysize-total-family-members-aboard-including-the-passenger-then-show-the-survival-rate-for-each-family-size">Create a new column called <code>FamilySize</code> (total family members aboard including the passenger). Then show the survival rate for each family size.<a hidden class="anchor" aria-hidden="true" href="#create-a-new-column-called-familysize-total-family-members-aboard-including-the-passenger-then-show-the-survival-rate-for-each-family-size">#</a></h3>
+<p><strong>Concepts:</strong> Column creation, arithmetic on columns, <code>groupby()</code> on derived column</p>
+<hr>
+<h3 id="answer-11">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-11">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># FamilySize = SibSp (siblings/spouses) + Parch (parents/children) + 1 (self)</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;FamilySize&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;SibSp&#34;</span>] <span style="color:#f92672">+</span> df[<span style="color:#e6db74">&#34;Parch&#34;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survival rate by family size</span>
+</span></span><span style="display:flex;"><span>family_survival <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;FamilySize&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    passengers    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;count&#34;</span>,
+</span></span><span style="display:flex;"><span>    survival_rate <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mean&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(family_survival)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             passengers  survival_rate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FamilySize</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1                  537          0.304   ← traveling alone: 30.4% survival</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2                  161          0.553</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3                  102          0.578</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4                   29          0.724   ← family of 4: best survival rate!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5                   15          0.200</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 6                   22          0.136</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 7                    12          0.333</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 8                    6          0.000   ← all large families died</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 11                   7          0.000</span>
+</span></span></code></pre></div><p><strong>Bonus — create a categorical <code>IsAlone</code> column:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;IsAlone&#34;</span>] <span style="color:#f92672">=</span> (df[<span style="color:#e6db74">&#34;FamilySize&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>astype(int)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;IsAlone&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># IsAlone</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0    0.506   (traveling with family: 50.6% survival)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    0.304   (traveling alone: 30.4% survival)</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Column creation is fundamental pandas.</strong> New columns from arithmetic operations are vectorized — they operate on the entire column at once, not row by row. Never use a <code>for</code> loop to create a new column. Use <code>df[&quot;new&quot;] = df[&quot;a&quot;] + df[&quot;b&quot;]</code> instead.</p>
+</blockquote>
+<blockquote>
+<p><strong>Insight:</strong> Traveling alone was actually the worst scenario. Small families (2–4) had the best survival rates. Very large families (7+) had 0% survival — possibly because they couldn&rsquo;t all get on the same lifeboat.</p>
+</blockquote>
+<hr>
+<h2 id="question-13">Question 13<a hidden class="anchor" aria-hidden="true" href="#question-13">#</a></h2>
+<h3 id="add-a-column-ageband-that-bins-passengers-into-age-groups-child-012-teen-1317-adult-1860-senior-60-what-is-the-survival-rate-per-age-band">Add a column <code>AgeBand</code> that bins passengers into age groups: Child (0–12), Teen (13–17), Adult (18–60), Senior (60+). What is the survival rate per age band?<a hidden class="anchor" aria-hidden="true" href="#add-a-column-ageband-that-bins-passengers-into-age-groups-child-012-teen-1317-adult-1860-senior-60-what-is-the-survival-rate-per-age-band">#</a></h3>
+<p><strong>Concepts:</strong> <code>pd.cut()</code>, custom bins and labels, handling NaN, <code>groupby()</code> on categorical</p>
+<hr>
+<h3 id="answer-12">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-12">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Method 1 — pd.cut() with explicit bins and labels</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;AgeBand&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#34;Age&#34;</span>],
+</span></span><span style="display:flex;"><span>    bins   <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">100</span>],
+</span></span><span style="display:flex;"><span>    labels <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Child&#34;</span>, <span style="color:#e6db74">&#34;Teen&#34;</span>, <span style="color:#e6db74">&#34;Adult&#34;</span>, <span style="color:#e6db74">&#34;Senior&#34;</span>],
+</span></span><span style="display:flex;"><span>    right  <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>    <span style="color:#75715e"># intervals are (left, right] — i.e., right-inclusive</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survival rate per age band</span>
+</span></span><span style="display:flex;"><span>age_survival <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;AgeBand&#34;</span>, observed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    passengers    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;count&#34;</span>,
+</span></span><span style="display:flex;"><span>    survivors     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sum&#34;</span>,
+</span></span><span style="display:flex;"><span>    survival_rate <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mean&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(age_survival)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#          passengers  survivors  survival_rate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># AgeBand</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Child            69         40          0.580   ← children evacuated first</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Teen             55         27          0.491</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Adult           566        215          0.380</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Senior           24         11          0.458</span>
+</span></span></code></pre></div><blockquote>
+<p><strong><code>pd.cut()</code> vs <code>pd.qcut()</code>:</strong></p>
+<ul>
+<li><code>pd.cut()</code> → you define the bin <strong>boundaries</strong> (e.g., 0–12, 13–17&hellip;)</li>
+<li><code>pd.qcut()</code> → you define the number of <strong>quantiles</strong> (e.g., 4 equal-sized groups)</li>
+</ul>
+<p>Use <code>cut</code> when the boundaries are meaningful (age groups, score bands).
+Use <code>qcut</code> when you want equal-sized groups (quartiles, deciles).</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Method 2 — pd.qcut() for equal-frequency bins</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;AgeBand_q&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>qcut(df[<span style="color:#e6db74">&#34;Age&#34;</span>], q<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, labels<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Q1&#34;</span>, <span style="color:#e6db74">&#34;Q2&#34;</span>, <span style="color:#e6db74">&#34;Q3&#34;</span>, <span style="color:#e6db74">&#34;Q4&#34;</span>])
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;AgeBand_q&#34;</span>, observed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span></code></pre></div><blockquote>
+<p><strong>Watch out for <code>observed=True</code>:</strong> In newer pandas (2.0+), groupby on Categorical columns produces a FutureWarning if <code>observed</code> is not specified. Pass <code>observed=True</code> to only show categories that actually appear in the data.</p>
+</blockquote>
+<p><strong>Handling passengers with missing Age:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># NaN Age → NaN AgeBand (they won&#39;t appear in groupby — they&#39;re silently excluded)</span>
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;AgeBand&#34;</span>]<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())   <span style="color:#75715e"># 177 — same count as missing Age</span>
+</span></span></code></pre></div><hr>
+<h2 id="question-14">Question 14<a hidden class="anchor" aria-hidden="true" href="#question-14">#</a></h2>
+<h3 id="add-a-column-showing-each-passengers-fare-relative-to-the-average-fare-in-their-class--ie-how-much-more-or-less-they-paid-vs-their-class-average">Add a column showing each passenger&rsquo;s fare relative to the average fare in their class — i.e., how much more or less they paid vs their class average.<a hidden class="anchor" aria-hidden="true" href="#add-a-column-showing-each-passengers-fare-relative-to-the-average-fare-in-their-class--ie-how-much-more-or-less-they-paid-vs-their-class-average">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby().transform()</code> — the key concept that separates intermediate from advanced pandas users</p>
+<hr>
+<h3 id="answer-13">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-13">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># transform() broadcasts the group aggregate back to the original DataFrame index</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The result has the SAME shape as the original DataFrame — that&#39;s what makes it special</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: compute class-level average fare using transform</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;ClassAvgFare&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(<span style="color:#e6db74">&#34;mean&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: compute how far each passenger&#39;s fare is from their class average</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;FareDiff&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Fare&#34;</span>] <span style="color:#f92672">-</span> df[<span style="color:#e6db74">&#34;ClassAvgFare&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: verify it worked</span>
+</span></span><span style="display:flex;"><span>print(df[[<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>, <span style="color:#e6db74">&#34;ClassAvgFare&#34;</span>, <span style="color:#e6db74">&#34;FareDiff&#34;</span>]]<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    Pclass   Fare  ClassAvgFare  FareDiff</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0       3   7.25         13.68     -6.43   ← paid 6.43 less than Class 3 avg</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1       1  71.28         84.15    -12.87</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2       3   7.93         13.68     -5.75</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3       1  53.10         84.15    -31.05</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><p><strong>The transform() pattern explained:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Without transform — result has one row per group (can&#39;t assign back to df)</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    84.15   ← only 3 rows</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    20.66</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    13.68</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># With transform — result has the same shape as the original (891 rows)</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(<span style="color:#e6db74">&#34;mean&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0    13.68   ← row 0 is Pclass 3 → gets 13.68</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    84.15   ← row 1 is Pclass 1 → gets 84.15</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    13.68</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    84.15</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ... (891 rows total)</span>
+</span></span></code></pre></div><p><strong>Real-world use cases for <code>transform()</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Normalize scores within groups (z-score)</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;FareZScore&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">lambda</span> x: (x <span style="color:#f92672">-</span> x<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> x<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fill NaN age with the median age of that passenger&#39;s class</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;AgeFilled&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>fillna(
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>transform(<span style="color:#e6db74">&#34;median&#34;</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cumulative count within a group</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;RankInClass&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(<span style="color:#e6db74">&#34;rank&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><blockquote>
+<p><strong><code>transform()</code> vs <code>apply()</code> vs <code>agg()</code>:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Operation</th>
+          <th>Output shape</th>
+          <th>Use when&hellip;</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>agg()</code></td>
+          <td>One row per group</td>
+          <td>You want a summary table</td>
+      </tr>
+      <tr>
+          <td><code>transform()</code></td>
+          <td>Same shape as input</td>
+          <td>You want to add a column back to the original df</td>
+      </tr>
+      <tr>
+          <td><code>apply()</code></td>
+          <td>Flexible</td>
+          <td>Complex per-group logic that doesn&rsquo;t fit agg/transform</td>
+      </tr>
+  </tbody>
+</table>
+<p><code>transform()</code> is the right tool for creating new columns that depend on group-level statistics.</p>
+</blockquote>
+<hr>
+<h2 id="question-15">Question 15<a hidden class="anchor" aria-hidden="true" href="#question-15">#</a></h2>
+<h3 id="extract-the-passengers-title-mr-mrs-miss-etc-from-the-name-column-and-find-the-survival-rate-per-title">Extract the passenger&rsquo;s title (Mr., Mrs., Miss., etc.) from the Name column and find the survival rate per title.<a hidden class="anchor" aria-hidden="true" href="#extract-the-passengers-title-mr-mrs-miss-etc-from-the-name-column-and-find-the-survival-rate-per-title">#</a></h3>
+<p><strong>Concepts:</strong> <code>str.extract()</code>, regex, string operations on Series, <code>groupby()</code> on extracted column</p>
+<hr>
+<h3 id="answer-14">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-14">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Every name follows the pattern: &#34;Last, Title. First Middle&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We want to extract the title using regex</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Extract title</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Title&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Name&#34;</span>]<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>extract(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;,\s*([A-Za-z]+)\.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Regex: comma, optional spaces, then capture word characters, then a period</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;Title&#34;</span>]<span style="color:#f92672">.</span>value_counts())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mr        517</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Miss      182</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mrs       125</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Master     40</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Dr          7</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rev         6</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mlle        2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ... (rare titles)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Consolidate rare titles</span>
+</span></span><span style="display:flex;"><span>title_mapping <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Mlle&#34;</span>:     <span style="color:#e6db74">&#34;Miss&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Ms&#34;</span>:       <span style="color:#e6db74">&#34;Miss&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Mme&#34;</span>:      <span style="color:#e6db74">&#34;Mrs&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Capt&#34;</span>:     <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Col&#34;</span>:      <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Major&#34;</span>:    <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Jonkheer&#34;</span>: <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Don&#34;</span>:      <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sir&#34;</span>:      <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Countess&#34;</span>: <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Lady&#34;</span>:     <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Dr&#34;</span>:       <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Rev&#34;</span>:      <span style="color:#e6db74">&#34;Rare&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Title&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Title&#34;</span>]<span style="color:#f92672">.</span>replace(title_mapping)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: Survival rate per title</span>
+</span></span><span style="display:flex;"><span>title_survival <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Title&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>    count         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;count&#34;</span>,
+</span></span><span style="display:flex;"><span>    survival_rate <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mean&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;survival_rate&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(title_survival)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         count  survival_rate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mrs       125          0.792</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Miss      184          0.702</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Master     40          0.575</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rare       23          0.347</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mr        517          0.157</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Why extract titles?</strong> This is a classic feature engineering technique. The raw <code>Name</code> column looks useless, but the title inside it encodes gender, social class, and marital status simultaneously — all correlated with survival. <code>str.extract()</code> with a regex pattern is how you unlock that information.</p>
+</blockquote>
+<blockquote>
+<p><strong><code>str.extract()</code> vs <code>str.split()</code> vs <code>str.findall()</code>:</strong></p>
+<ul>
+<li><code>str.extract(pattern)</code> → returns the first captured group as a new Series/DataFrame</li>
+<li><code>str.findall(pattern)</code> → returns a list of all matches</li>
+<li><code>str.split(pat)</code> → splits on a delimiter; good for simple cases</li>
+</ul>
+<p>Use <code>str.extract()</code> when the pattern is structured (like a title surrounded by specific characters).</p>
+</blockquote>
+<hr>
+<hr>
+<h1 id="level-4--advanced-questions-1620">LEVEL 4 — Advanced (Questions 16–20)<a hidden class="anchor" aria-hidden="true" href="#level-4--advanced-questions-1620">#</a></h1>
+<h3 id="window-functions-complex-transforms-multi-level-operations-real-world-workflows">Window functions, complex transforms, multi-level operations, real-world workflows<a hidden class="anchor" aria-hidden="true" href="#window-functions-complex-transforms-multi-level-operations-real-world-workflows">#</a></h3>
+<hr>
+<h2 id="question-16">Question 16<a hidden class="anchor" aria-hidden="true" href="#question-16">#</a></h2>
+<h3 id="rank-passengers-within-each-class-by-fare-paid-highest-fare--rank-1-show-the-top-3-fare-payers-in-each-class">Rank passengers within each class by fare paid (highest fare = rank 1). Show the top 3 fare-payers in each class.<a hidden class="anchor" aria-hidden="true" href="#rank-passengers-within-each-class-by-fare-paid-highest-fare--rank-1-show-the-top-3-fare-payers-in-each-class">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby().rank()</code>, <code>groupby().apply()</code>, <code>nlargest()</code></p>
+<hr>
+<h3 id="answer-15">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-15">#</a></h3>
+<p><strong>Method 1 — <code>groupby().rank()</code> + filter</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># rank() within each Pclass group</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;FareRankInClass&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>rank(
+</span></span><span style="display:flex;"><span>    method    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dense&#34;</span>,       <span style="color:#75715e"># ties get the same rank (no gaps)</span>
+</span></span><span style="display:flex;"><span>    ascending <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>          <span style="color:#75715e"># highest fare = rank 1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Top 3 fare-payers per class</span>
+</span></span><span style="display:flex;"><span>top3 <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#34;FareRankInClass&#34;</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">3</span>]<span style="color:#f92672">.</span>sort_values([<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;FareRankInClass&#34;</span>])
+</span></span><span style="display:flex;"><span>print(top3[[<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>, <span style="color:#e6db74">&#34;FareRankInClass&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]]<span style="color:#f92672">.</span>to_string())
+</span></span></code></pre></div><p><strong>Method 2 — <code>groupby().apply()</code> with <code>nlargest()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>top3_v2 <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[[<span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> g: g<span style="color:#f92672">.</span>nlargest(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>reset_index(drop<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(top3_v2)
+</span></span></code></pre></div><p><strong>Method 3 — <code>sort_values</code> + <code>groupby().head()</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>top3_v3 <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;Fare&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>head(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>      [[<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>, <span style="color:#e6db74">&#34;Survived&#34;</span>]]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>sort_values([<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>], ascending<span style="color:#f92672">=</span>[<span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">False</span>])
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(top3_v3)
+</span></span></code></pre></div><blockquote>
+<p><strong><code>rank()</code> method options:</strong></p>
+<ul>
+<li><code>'average'</code> (default) → tied items share the average of their ranks</li>
+<li><code>'min'</code> → tied items all get the lowest rank</li>
+<li><code>'max'</code> → tied items all get the highest rank</li>
+<li><code>'dense'</code> → like <code>'min'</code> but no gaps in rank numbers (1, 2, 2, 3 not 1, 2, 2, 4)</li>
+<li><code>'first'</code> → ranked in order of appearance (no ties)</li>
+</ul>
+<p>For leaderboards and &ldquo;top N&rdquo; queries, <code>'dense'</code> is usually what you want.</p>
+</blockquote>
+<hr>
+<h2 id="question-17">Question 17<a hidden class="anchor" aria-hidden="true" href="#question-17">#</a></h2>
+<h3 id="what-percentage-of-passengers-in-each-class-survived-additionally-what-percentage-of-all-survivors-came-from-each-class">What percentage of passengers in each class survived? Additionally, what percentage of ALL survivors came from each class?<a hidden class="anchor" aria-hidden="true" href="#what-percentage-of-passengers-in-each-class-survived-additionally-what-percentage-of-all-survivors-came-from-each-class">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby()</code>, percentage within groups vs percentage of total, <code>crosstab(normalize=...)</code></p>
+<p>These are two different questions that look similar but produce completely different numbers.</p>
+<hr>
+<h3 id="answer-16">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-16">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># --- Question A: Survival RATE by class (what % of each class survived?) ---</span>
+</span></span><span style="display:flex;"><span>survival_rate_by_class <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Survival rate by class:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(survival_rate_by_class)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    0.630   ← 63% of Class 1 passengers survived</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    0.473</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    0.242</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Question B: Composition of survivors (what % of survivors were from each class?) ---</span>
+</span></span><span style="display:flex;"><span>survivor_composition <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df[df[<span style="color:#e6db74">&#34;Survived&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>size()
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">/</span> df[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Of all survivors, </span><span style="color:#e6db74">% f</span><span style="color:#e6db74">rom each class:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(survivor_composition)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    39.8   ← 39.8% of survivors were Class 1 (even though Class 1 = 24% of passengers)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2    25.4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3    34.8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Both together using crosstab with normalize ---</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">--- Rate within class (normalize=&#39;index&#39;) ---&#34;</span>)
+</span></span><span style="display:flex;"><span>print(pd<span style="color:#f92672">.</span>crosstab(df[<span style="color:#e6db74">&#34;Pclass&#34;</span>], df[<span style="color:#e6db74">&#34;Survived&#34;</span>], normalize<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           0      1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1     0.370  0.630</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2     0.527  0.473</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3     0.758  0.242</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">--- Share of total (normalize=&#39;columns&#39;) ---&#34;</span>)
+</span></span><span style="display:flex;"><span>print(pd<span style="color:#f92672">.</span>crosstab(df[<span style="color:#e6db74">&#34;Pclass&#34;</span>], df[<span style="color:#e6db74">&#34;Survived&#34;</span>], normalize<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;columns&#34;</span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           0      1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1     0.140  0.398</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2     0.166  0.254</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3     0.694  0.348</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>This is a critical conceptual distinction in data analysis:</strong></p>
+<ul>
+<li>&ldquo;Survival rate by class&rdquo; → <code>normalize='index'</code> → conditioned on class (row-wise)</li>
+<li>&ldquo;Share of survivors from each class&rdquo; → <code>normalize='columns'</code> → conditioned on survival outcome (column-wise)</li>
+<li><code>normalize=True</code> → as % of the entire dataset</li>
+</ul>
+<p>Confusing these two is one of the most common analytical errors in practice.</p>
+</blockquote>
+<hr>
+<h2 id="question-18">Question 18<a hidden class="anchor" aria-hidden="true" href="#question-18">#</a></h2>
+<h3 id="find-passengers-who-paid-more-than-the-median-fare-for-their-class-add-a-column-paidabovemedian-truefalse">Find passengers who paid MORE than the median fare for their class. Add a column <code>PaidAboveMedian</code> (True/False).<a hidden class="anchor" aria-hidden="true" href="#find-passengers-who-paid-more-than-the-median-fare-for-their-class-add-a-column-paidabovemedian-truefalse">#</a></h3>
+<p><strong>Concepts:</strong> <code>groupby().transform()</code> with a custom lambda, boolean column creation</p>
+<hr>
+<h3 id="answer-17">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-17">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Use transform to broadcast the class-level median fare to each row</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;ClassMedianFare&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(<span style="color:#e6db74">&#34;median&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Compare each passenger&#39;s fare to their class median</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;PaidAboveMedian&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Fare&#34;</span>] <span style="color:#f92672">&gt;</span> df[<span style="color:#e6db74">&#34;ClassMedianFare&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify</span>
+</span></span><span style="display:flex;"><span>print(df[[<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;Fare&#34;</span>, <span style="color:#e6db74">&#34;ClassMedianFare&#34;</span>, <span style="color:#e6db74">&#34;PaidAboveMedian&#34;</span>]]<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Breakdown: how many passengers paid above median in each class?</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;PaidAboveMedian&#34;</span>])<span style="color:#f92672">.</span>size())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Does paying above the class median correlate with better survival?</span>
+</span></span><span style="display:flex;"><span>print(
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;PaidAboveMedian&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PaidAboveMedian</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># False    0.340</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># True     0.437   ← paid more → slightly better survival</span>
+</span></span></code></pre></div><p><strong>Method 2 — one-liner using transform with lambda</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;PaidAboveMedian&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Fare&#34;</span>] <span style="color:#f92672">&gt;</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;Pclass&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]<span style="color:#f92672">.</span>transform(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>median()
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><blockquote>
+<p><strong>Why not just use the global median?</strong> The global median fare is ~£14.45. But a £20 fare is below average for Class 1 (median ~£60) while being way above average for Class 3 (median ~£8). Context-relative comparison is only possible with <code>transform()</code>.</p>
+</blockquote>
+<hr>
+<h2 id="question-19">Question 19<a hidden class="anchor" aria-hidden="true" href="#question-19">#</a></h2>
+<h3 id="build-a-complete-passenger-profile-summary-for-each-combination-of-sex-pclass-and-ageband-show-passenger-count-survival-rate-average-fare-and-average-age">Build a complete passenger profile summary: for each combination of Sex, Pclass, and AgeBand, show passenger count, survival rate, average fare, and average age.<a hidden class="anchor" aria-hidden="true" href="#build-a-complete-passenger-profile-summary-for-each-combination-of-sex-pclass-and-ageband-show-passenger-count-survival-rate-average-fare-and-average-age">#</a></h3>
+<p><strong>Concepts:</strong> Multi-level <code>groupby()</code>, <code>agg()</code>, handling NaN categories, <code>reset_index()</code>, <code>sort_values()</code></p>
+<hr>
+<h3 id="answer-18">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-18">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Make sure AgeBand exists (created in Q13)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;AgeBand&#34;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns:
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#34;AgeBand&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(
+</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#34;Age&#34;</span>],
+</span></span><span style="display:flex;"><span>        bins<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">100</span>],
+</span></span><span style="display:flex;"><span>        labels<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Child&#34;</span>, <span style="color:#e6db74">&#34;Teen&#34;</span>, <span style="color:#e6db74">&#34;Adult&#34;</span>, <span style="color:#e6db74">&#34;Senior&#34;</span>]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Multi-level groupby with multiple aggregations</span>
+</span></span><span style="display:flex;"><span>profile <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;AgeBand&#34;</span>], observed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>        passengers    <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;PassengerId&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>),
+</span></span><span style="display:flex;"><span>        survival_rate <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Survived&#34;</span>,    <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>        avg_fare      <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Fare&#34;</span>,        <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>        avg_age       <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Age&#34;</span>,         <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>reset_index()               <span style="color:#75715e"># bring group keys back as columns</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>sort_values(
+</span></span><span style="display:flex;"><span>        [<span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;AgeBand&#34;</span>],
+</span></span><span style="display:flex;"><span>        ascending<span style="color:#f92672">=</span>[<span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">True</span>]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(profile<span style="color:#f92672">.</span>to_string())
+</span></span></code></pre></div><p><strong>Accessing specific slices of a multi-index result:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># If you keep the multi-index (don&#39;t reset_index), you can slice with .loc</span>
+</span></span><span style="display:flex;"><span>profile_mi <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#34;Sex&#34;</span>, <span style="color:#e6db74">&#34;Pclass&#34;</span>, <span style="color:#e6db74">&#34;AgeBand&#34;</span>], observed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get all Class 1 female results</span>
+</span></span><span style="display:flex;"><span>print(profile_mi<span style="color:#f92672">.</span>loc[<span style="color:#e6db74">&#34;female&#34;</span>, <span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get Class 1 female children specifically</span>
+</span></span><span style="display:flex;"><span>print(profile_mi<span style="color:#f92672">.</span>loc[(<span style="color:#e6db74">&#34;female&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Child&#34;</span>)])
+</span></span></code></pre></div><blockquote>
+<p><strong><code>reset_index()</code> after <code>groupby()</code>:</strong> By default, <code>groupby()</code> puts the group keys as the DataFrame index. This is useful for label-based slicing but awkward for most downstream operations. Call <code>.reset_index()</code> to bring them back as regular columns — almost always the right move before saving results or further filtering.</p>
+</blockquote>
+<blockquote>
+<p><strong><code>observed=True</code> in multi-level groupby with Categoricals:</strong> Without it, pandas generates a row for every <em>possible</em> combination of categories (including combinations that don&rsquo;t exist in the data, like Senior Class 3 females). With <code>observed=True</code>, only combinations that actually appear are shown.</p>
+</blockquote>
+<hr>
+<h2 id="question-20">Question 20<a hidden class="anchor" aria-hidden="true" href="#question-20">#</a></h2>
+<h3 id="identify-the-5-most-expensive-cabins-by-average-fare-of-passengers-in-that-cabin-prefix-then-for-those-cabin-prefixes-show-the-full-survival-breakdown">Identify the 5 most expensive cabins (by average fare of passengers in that cabin prefix). Then for those cabin prefixes, show the full survival breakdown.<a hidden class="anchor" aria-hidden="true" href="#identify-the-5-most-expensive-cabins-by-average-fare-of-passengers-in-that-cabin-prefix-then-for-those-cabin-prefixes-show-the-full-survival-breakdown">#</a></h3>
+<p><strong>Concepts:</strong> <code>str[0]</code> string indexing, <code>groupby()</code> on derived column, chaining, <code>isin()</code>, complex multi-step analysis</p>
+<p>This is the kind of multi-step question you&rsquo;d encounter in a real data analysis interview.</p>
+<hr>
+<h3 id="answer-19">Answer<a hidden class="anchor" aria-hidden="true" href="#answer-19">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Extract cabin prefix (first letter of cabin, e.g., &#39;C85&#39; → &#39;C&#39;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># About 77% of Cabin is missing — those become NaN</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Cabin&#34;</span>]<span style="color:#f92672">.</span>str[<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># str[0] gives first character</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>]<span style="color:#f92672">.</span>value_counts())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># C    59</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># B    47</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># D    33</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># E    32</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A    15</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># F    13</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># G     4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># T     1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NaN (missing) = 687</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Average fare per cabin prefix</span>
+</span></span><span style="display:flex;"><span>cabin_fare <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>dropna(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>])    <span style="color:#75715e"># work only with known cabins</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>)[<span style="color:#e6db74">&#34;Fare&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Average fare by cabin prefix:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(cabin_fare)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># CabinPrefix</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># T    35.50  (only 1 passenger — unreliable)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># B    93.68</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># C   107.25  ← most expensive on average</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># D    57.24</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># E    46.03</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A    39.62</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># F    11.13</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># G     9.45</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: Top 5 prefixes by average fare</span>
+</span></span><span style="display:flex;"><span>top5_prefixes <span style="color:#f92672">=</span> cabin_fare<span style="color:#f92672">.</span>nlargest(<span style="color:#ae81ff">5</span>)<span style="color:#f92672">.</span>index<span style="color:#f92672">.</span>tolist()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Top 5 cabin prefixes by average fare: </span><span style="color:#e6db74">{</span>top5_prefixes<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 4: Survival breakdown for those prefixes</span>
+</span></span><span style="display:flex;"><span>top5_analysis <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    df[df[<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>]<span style="color:#f92672">.</span>isin(top5_prefixes)]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>agg(
+</span></span><span style="display:flex;"><span>        passengers    <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;PassengerId&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>),
+</span></span><span style="display:flex;"><span>        survivors     <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Survived&#34;</span>,    <span style="color:#e6db74">&#34;sum&#34;</span>),
+</span></span><span style="display:flex;"><span>        survival_rate <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Survived&#34;</span>,    <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>        avg_fare      <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Fare&#34;</span>,        <span style="color:#e6db74">&#34;mean&#34;</span>),
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;avg_fare&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Survival breakdown — top 5 cabin prefixes by fare:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(top5_analysis)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 5: Compare with passengers who had NO cabin recorded</span>
+</span></span><span style="display:flex;"><span>no_cabin <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#34;CabinPrefix&#34;</span>]<span style="color:#f92672">.</span>isna()][<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Survival rate — no cabin recorded: </span><span style="color:#e6db74">{</span>no_cabin<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Result: ~0.30 — much lower than most cabin groups</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Inference: having a recorded cabin (associated with Pclass 1/2) → better survival</span>
+</span></span></code></pre></div><blockquote>
+<p><strong><code>nlargest(n)</code> vs <code>sort_values().head(n)</code>:</strong></p>
+<ul>
+<li><code>nlargest(n)</code> is more efficient — it doesn&rsquo;t fully sort the Series</li>
+<li><code>sort_values().head(n)</code> is more readable and also returns the full sorted order if needed</li>
+<li>For production code with large data, use <code>nlargest/nsmallest</code>. For exploration, either is fine.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>The missing cabin problem:</strong> 77% of passengers have no cabin recorded. This is almost certainly not random — third-class passengers generally had no assigned cabin. The missing value itself is informative. Techniques for handling this: (1) treat NaN as its own category <code>&quot;Unknown&quot;</code>, (2) use it as a binary feature <code>has_cabin = Cabin.notna()</code>, (3) impute based on class. Each choice has analysis tradeoffs.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Bonus: create has_cabin feature and check its correlation with survival</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;has_cabin&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;Cabin&#34;</span>]<span style="color:#f92672">.</span>notna()<span style="color:#f92672">.</span>astype(int)
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#34;has_cabin&#34;</span>)[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># has_cabin</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0    0.300   (no cabin recorded)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1    0.667   (cabin recorded)</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h1 id="concepts-coverage-checklist">Concepts Coverage Checklist<a hidden class="anchor" aria-hidden="true" href="#concepts-coverage-checklist">#</a></h1>
+<pre tabindex="0"><code>✅ df.shape, head(), tail(), info(), describe()
+✅ value_counts(), value_counts(normalize=True)
+✅ Boolean filtering with single condition
+✅ Boolean filtering with multiple conditions (&amp; and |)
+✅ loc[] and iloc[]
+✅ query()
+✅ Column selection (list of columns)
+✅ New column creation (arithmetic)
+✅ pd.cut() and pd.qcut()
+✅ groupby().size()
+✅ groupby().count() — and why it differs from size()
+✅ groupby().mean(), .sum(), .min(), .max()
+✅ groupby() single column aggregation
+✅ groupby() multi-column aggregation with named agg()
+✅ groupby() on multiple keys
+✅ agg() with a list of functions
+✅ Named aggregation syntax: agg(new_name=(&#34;col&#34;, &#34;func&#34;))
+✅ unstack() to reshape groupby results
+✅ pd.crosstab() — counts and proportions
+✅ pd.crosstab(normalize=&#39;index&#39;/&#39;columns&#39;/True)
+✅ pd.pivot_table() with aggfunc, margins
+✅ groupby().transform() — core concept, broadcasting back
+✅ transform() with lambda functions
+✅ str.extract() with regex
+✅ str[0] string indexing
+✅ replace() for value mapping
+✅ rank() within groups
+✅ groupby().apply() with nlargest()
+✅ nlargest() / nsmallest()
+✅ isin() for membership filtering
+✅ dropna(subset=[...])
+✅ fillna() with transform()-derived values
+✅ reset_index() after groupby
+✅ sort_values() with multiple columns
+✅ Multi-level groupby with observed=True
+✅ Multi-index slicing with .loc[]
+</code></pre><hr>
+<p><em>End of Practice Sheet — Titanic Dataset with Pandas</em>
+<em>Codeverra — codeverra.com</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+      <li><a href="http://localhost:1313/tags/data-analysis/">Data-Analysis</a></li>
+      <li><a href="http://localhost:1313/tags/pandas/">Pandas</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

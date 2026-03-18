@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blogs/dsa_roadmap/</loc>
+    <loc>http://localhost:1313/blog/dsa_roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/courses/dsa-python-zero-to-hero/</loc>
-    <lastmod>2026-03-17T13:58:25+05:30</lastmod>
+    <lastmod>2026-03-18T15:01:31+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/dsa-with-python-curriculum/</loc>
+    <loc>http://localhost:1313/blog/dsa-with-python-curriculum/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/courses/dsa-live-practice/</loc>
@@ -17,49 +17,49 @@
     <loc>http://localhost:1313/tags/data-analysis/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/exception_handling/</loc>
+    <loc>http://localhost:1313/blog/exception_handling/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part2/</loc>
+    <loc>http://localhost:1313/blog/sql-part2/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part3/</loc>
+    <loc>http://localhost:1313/blog/sql-part3/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/decorators/</loc>
+    <loc>http://localhost:1313/blog/decorators/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part7/</loc>
+    <loc>http://localhost:1313/blog/sql-part7/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part1/</loc>
+    <loc>http://localhost:1313/blog/sql-part1/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/iterators_generators/</loc>
+    <loc>http://localhost:1313/blog/iterators_generators/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/itertools/</loc>
+    <loc>http://localhost:1313/blog/itertools/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part4/</loc>
+    <loc>http://localhost:1313/blog/sql-part4/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part5/</loc>
+    <loc>http://localhost:1313/blog/sql-part5/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sql-part6/</loc>
+    <loc>http://localhost:1313/blog/sql-part6/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/pandas/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/ipl_pandas/</loc>
+    <loc>http://localhost:1313/blog/ipl_pandas/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/titanic_pandas/</loc>
+    <loc>http://localhost:1313/blog/titanic_pandas/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/pandas_zomato/</loc>
+    <loc>http://localhost:1313/blog/pandas_zomato/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/python/</loc>
@@ -74,10 +74,10 @@
     <loc>http://localhost:1313/tags/algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/time_complexity/</loc>
+    <loc>http://localhost:1313/blog/time_complexity/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/array_patterns/</loc>
+    <loc>http://localhost:1313/blog/array_patterns/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/arrays/</loc>
@@ -86,25 +86,25 @@
     <loc>http://localhost:1313/tags/bfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/bfs_dfs/</loc>
+    <loc>http://localhost:1313/blog/bfs_dfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/binary_search/</loc>
+    <loc>http://localhost:1313/blog/binary_search/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/binary-search/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/python_syllabus/</loc>
+    <loc>http://localhost:1313/blog/python_syllabus/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/dynamic_programming/</loc>
+    <loc>http://localhost:1313/blog/dynamic_programming/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/dfs/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/sorting_algo/</loc>
+    <loc>http://localhost:1313/blog/sorting_algo/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/dsa/</loc>
@@ -122,13 +122,13 @@
     <loc>http://localhost:1313/tags/recursion/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/recursion/</loc>
+    <loc>http://localhost:1313/blog/recursion/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/searching/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/searching_in_arrays/</loc>
+    <loc>http://localhost:1313/blog/searching_in_arrays/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/sorting/</loc>
@@ -143,7 +143,7 @@
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2026-03-16T00:26:19+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/</loc>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2026-03-17T17:33:57+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>

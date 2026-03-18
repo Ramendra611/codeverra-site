@@ -10,16 +10,16 @@
     <atom:link href="http://localhost:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BFS vs DFS Explained Clearly</title>
-      <link>http://localhost:1313/blogs/bfs_dfs/</link>
+      <link>http://localhost:1313/blog/bfs_dfs/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/bfs_dfs/</guid>
+      <guid>http://localhost:1313/blog/bfs_dfs/</guid>
       <description>A detailed and conceptual explanation of Breadth-First Search (BFS) and Depth-First Search (DFS), covering their working principles, differences, complexities, and real-world applications.</description>
     </item>
     <item>
       <title>Searching in Arrays (Sorted and Unsorted)</title>
-      <link>http://localhost:1313/blogs/searching_in_arrays/</link>
+      <link>http://localhost:1313/blog/searching_in_arrays/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/searching_in_arrays/</guid>
+      <guid>http://localhost:1313/blog/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
     </item>
   </channel>

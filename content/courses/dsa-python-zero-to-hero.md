@@ -25,7 +25,7 @@ If you’ve ever felt lost while learning DSA, this course is built specifically
 - Building confidence through consistent practice  
 
 You can view the **detailed curriculum breakdown here**:  
-<a href="/blogs/dsa-with-python-curriculum/"
+<a href="/blog/dsa-with-python-curriculum/"
    target="_blank"
    rel="noopener noreferrer">
   📖 Complete DSA with Python Curriculum →
