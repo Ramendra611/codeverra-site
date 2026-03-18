@@ -1,4 +1,4 @@
-baseURL = "https://codeverra.com/blog/"
+baseURL = "https://learn.codeverra.com/"
 relativeURLs = true
 canonifyURLs = true
 languageCode = "en-us"
@@ -20,6 +20,7 @@ enableRobotsTXT = true
   ShowBreadCrumbs = true
   ShowPostMeta = true
   ShowLastMod = true
+
   [params.label]
     text = "codeverra"
     icon = "images/CODEVERRA.jpg"
