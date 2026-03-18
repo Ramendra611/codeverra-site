@@ -50,8 +50,8 @@ enableGitInfo = false
   weight = 3
 
 [[menu.main]]
-  name = "Blogs"
-  url = "/blogs/"
+  name = "Blog"
+  url = "/blog/"
   weight = 4
 
 [markup]

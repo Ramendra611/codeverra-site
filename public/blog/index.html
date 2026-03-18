@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Blogs | codeverra</title>
+<meta name="keywords" content="">
+<meta name="description" content="Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.
+This section will grow over time with structured posts and practical insights.">
+<meta name="author" content="Ram">
+<link rel="canonical" href="http://localhost:1313/blog/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/blog/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span class="active">Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a></div>
+    <h1>
+        Blogs
+    </h1>
+</header>
+<div class="post-content"><p>Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.</p>
+<p>This section will grow over time with structured posts and practical insights.</p>
+
+
+</div>
+
+
+
+<div class="post-grid">
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+            <img loading="lazy" src="http://localhost:1313/images/dsa-roadmap-cover.png" alt="DSA learning roadmap">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">A Practical DSA Learning Roadmap
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+    </div>
+    <div class="entry-content">
+        <p>Data Structures and Algorithms (DSA) are often treated as a necessary evil, something you grind through only to clear technical interviews. This narrow framing has done more harm than good. It leads to shallow learning, memorized solutions, and frustration when problems slightly change.
+The truth is simple: DSA is not just about interviews. It is about learning how to think clearly, reason about efficiency, and design solutions that scale.
+This blog lays out:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>886 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to A Practical DSA Learning Roadmap" href="http://localhost:1313/blog/dsa_roadmap/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/DSA-with-python-live-course.png" alt="DSA learning roadmap">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">DSA With Python - Zero to Hero (Curriculum)
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+    </div>
+    <div class="entry-content">
+        <p>About This Guide Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! This guide serves as the complete reference material for our live course, organizing all topics, concepts, and learning outcomes in a structured, progressive manner.
+For Course Students If you’re enrolled in the live course, this blog is your companion resource that:
+Mirrors the course structure - Every module taught in class is documented here Serves as a reference - Quickly look up concepts, syntax, and examples Tracks your progress - Follow along and check off completed modules Provides continuity - Never miss a beat even if you miss a session For Self-Learners Even if you’re not enrolled in the course, this roadmap is designed to be:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>2324 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to DSA With Python - Zero to Hero (Curriculum)" href="http://localhost:1313/blog/dsa-with-python-curriculum/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/exception%20handling%20in%20python.png" alt="Exception handling in python">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Exception Handling in Python - Complete Guide
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Python Exception Handling A Complete Reference Guide Table of Contents The Big Picture What Are Exceptions? The Exception Hierarchy try / except — The Foundation else and finally Clauses Raising Exceptions Custom Exceptions Exception Chaining Context Managers and Exceptions Logging Exceptions Common Mistakes to Avoid Real-Life Patterns Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture ┌─────────────────────────────────────────────────────────────────┐ │ EXCEPTION HANDLING FLOW │ │ │ │ try: │ │ ── risky code runs here ──────────────────────────────┐ │ │ │ │ │ except SomeError: ◄── exception caught here │ │ │ ── handle it ── │ │ │ ▼ │ │ except (TypeError, ValueError): ◄── multiple types │ │ ── handle them ── │ │ │ │ except Exception as e: ◄── catch with reference │ │ ── inspect e ── │ │ │ │ else: ◄── runs ONLY if NO exception │ │ ── success path ── │ │ │ │ finally: ◄── ALWAYS runs, no matter what │ │ ── cleanup ── │ └─────────────────────────────────────────────────────────────────┘ Core Philosophy: Exceptions are not bugs — they are Python’s way of saying “something unexpected happened here, and I’m passing control to whoever knows how to handle it.”
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4145 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Exception Handling in Python - Complete Guide" href="http://localhost:1313/blog/exception_handling/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/SQL-2.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Filtering and Querying data
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB — Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
+Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN Match against a list of values BETWEEN Filter within a range LIKE / ILIKE Pattern matching on text IS NULL / IS NOT NULL Handle missing values CASE WHEN Conditional logic inside a query Date functions Filter and extract parts of dates COALESCE Replace NULL with a fallback value All queries in this lesson run on ShopDB. The dataset has:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2494 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Filtering and Querying data" href="http://localhost:1313/blog/sql-part2/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/SQL-3.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Group by and Aggregations
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 3 - Aggregations &amp; Grouping Theory &#43; Practice | CricketDB &#43; ShopDB Before You Start This lesson uses both databases you have already built:
+CricketDB — players, matches, performances (Lesson 2.1) ShopDB — customers, products, orders, order_items (Lesson 2.2) Run the setup_check.sql from this lesson folder to confirm both are ready. Each section tells you which database to connect to in pgAdmin.
+What you will learn in this lesson:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3134 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Group by and Aggregations" href="http://localhost:1313/blog/sql-part3/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/decorators%20in%20python.png" alt="higher order functions and decorators in python">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Higher Order Functions and Decorators in Python
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Python Higher-Order Functions &amp; Decorators A Complete Reference Guide Table of Contents The Big Picture Functions as First-Class Objects Higher-Order Functions Closures — The Foundation of Decorators Decorators — Core Concept The @ Syntax Preserving Metadata with functools.wraps Decorators with Arguments Class-Based Decorators Stacking Multiple Decorators Built-in Decorators Practical Decorator Patterns Common Mistakes to Avoid Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture ┌─────────────────────────────────────────────────────────────────────┐ │ THE DECORATOR MENTAL MODEL │ │ │ │ A decorator is a function that WRAPS another function │ │ to add behaviour before, after, or around it. │ │ │ │ Original Function │ │ ┌────────────────┐ │ │ │ do_thing() │ │ │ └────────────────┘ │ │ │ decorator applied │ │ ▼ │ │ ┌────────────────────────────────────┐ │ │ │ wrapper() │ │ │ │ ┌──────────────────────────────┐ │ │ │ │ │ before logic (logging etc) │ │ │ │ │ ├──────────────────────────────┤ │ │ │ │ │ do_thing() ← called │ │ │ │ │ ├──────────────────────────────┤ │ │ │ │ │ after logic (timing etc) │ │ │ │ │ └──────────────────────────────┘ │ │ │ └────────────────────────────────────┘ │ │ │ │ @decorator is sugar for: func = decorator(func) │ └─────────────────────────────────────────────────────────────────────┘ Core Idea: A decorator is just a callable that takes a function and returns a new callable. Everything else — the @ syntax, functools.wraps, parameterised decorators — builds on top of this single idea.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4597 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Higher Order Functions and Decorators in Python" href="http://localhost:1313/blog/decorators/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/SQL-7.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Indexes and Schema Design
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>Lesson 2.7 — Indexes, Constraints &amp; Schema Design Theory &#43; Practice | All Three Databases Before You Start This lesson uses all three databases. Each section tells you which one to connect to.
+Quick check — run this in each database before starting:
+-- In cricketdb: SELECT COUNT(*) FROM performances; -- expect 30 -- In shopdb: SELECT COUNT(*) FROM order_items; -- expect 30&#43; -- In streamdb: SELECT COUNT(*) FROM watch_history; -- expect 50 What you will learn:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4563 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Indexes and Schema Design" href="http://localhost:1313/blog/sql-part7/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/SQL-1.png" alt="introduction to SQL">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Introduction to SQL and Databases
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
+        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+    </div>
+    <div class="entry-content">
+        <p>SQL Lecture 01 - Introduction to SQL &amp; Databases PostgreSQL | Beginner Reference Sheet | Use this during class 🐘
+Table of Contents What is a Database? Types of Databases What is SQL? How SQL Commands Are Grouped Creating a Table — Full Breakdown Data Types in PostgreSQL Constraints — Rules for Your Data Primary Key &amp; Foreign Key Common SQL Commands with Examples What Happens When You Violate a Constraint? Practice Table &amp; 10 Beginner Questions 1. What is a Database? A database is an organised collection of data stored so it can be easily accessed, managed, and updated.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3192 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Introduction to SQL and Databases" href="http://localhost:1313/blog/sql-part1/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/iterators%20and%20generators%20in%20python.png" alt="iterators and generators in python">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Iterators and Generators in Python - Complete Guide
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Python Iterables, Iterators &amp; Generators A Complete Lesson Plan &amp; Reference Guide Table of Contents The Big Picture Iterables Iterators The Iterator Protocol Building Custom Iterators Generators Generator Expressions Advanced Generator Features Common Pitfalls &amp; Things to Keep in Mind Real-Life Applications Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture Before diving in, here’s the conceptual map you need to hold in your head:
+┌──────────────────────────────────────────────────┐ │ ITERABLE │ │ Any object you can loop over with a for loop │ │ Examples: list, tuple, str, dict, set, file │ │ │ │ Has __iter__() → returns an Iterator │ └──────────────────────┬───────────────────────────┘ │ __iter__() called ▼ ┌──────────────────────────────────────────────────┐ │ ITERATOR │ │ An object that knows where it is in a sequence │ │ and can produce the next value on demand │ │ │ │ Has __iter__() → returns self │ │ Has __next__() → returns next value or raises │ │ StopIteration │ └──────────────────────┬───────────────────────────┘ │ special case of ▼ ┌──────────────────────────────────────────────────┐ │ GENERATOR │ │ A convenient way to create iterators using │ │ the `yield` keyword — Python auto-builds the │ │ iterator protocol for you │ └──────────────────────────────────────────────────┘ Key Insight: Every iterator is an iterable, but not every iterable is an iterator. A list is an iterable but NOT an iterator. iter(list) gives you an iterator.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4112 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Iterators and Generators in Python - Complete Guide" href="http://localhost:1313/blog/iterators_generators/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/itertools.png" alt="itertools module in python">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Itertools Module in Python - Complete Guide
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Python’s itertools - The Missing Manual A deep dive into one of Python’s most underused standard library modules Wait, Why Should I Care About Another Module? You’ve written Python for a while. You know how to use for loops, list comprehensions, zip, and enumerate. Things work. So when someone says “hey, you should learn itertools”, it’s easy to nod politely and move on.
+Here’s what changes your mind. Imagine you’re asked to generate all possible batting orders for 4 players chosen from a squad of 11. Or you need to group a massive log file by date without loading it all into memory. Or you want to pair up every possible combination of feature columns for a machine learning experiment.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>29 min</span>&nbsp;·&nbsp;<span>6049 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Itertools Module in Python - Complete Guide" href="http://localhost:1313/blog/itertools/"></a>
+    
+</article>
+</div>
+<footer class="page-footer">
+    <nav class="pagination">
+        <a class="next" href="http://localhost:1313/blog/page/2/">Next&nbsp;&nbsp;»
+        </a>
+    </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

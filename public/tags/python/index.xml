@@ -10,58 +10,58 @@
     <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exception Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blogs/exception_handling/</link>
+      <link>http://localhost:1313/blog/exception_handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/exception_handling/</guid>
+      <guid>http://localhost:1313/blog/exception_handling/</guid>
       <description>Learn about try-except-finally and custom exceptions in Python</description>
     </item>
     <item>
       <title>Higher Order Functions and Decorators in Python</title>
-      <link>http://localhost:1313/blogs/decorators/</link>
+      <link>http://localhost:1313/blog/decorators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/decorators/</guid>
+      <guid>http://localhost:1313/blog/decorators/</guid>
       <description>Learn about higher order functions like map, filter, reduce and decorators </description>
     </item>
     <item>
       <title>Iterators and Generators in Python - Complete Guide</title>
-      <link>http://localhost:1313/blogs/iterators_generators/</link>
+      <link>http://localhost:1313/blog/iterators_generators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/iterators_generators/</guid>
+      <guid>http://localhost:1313/blog/iterators_generators/</guid>
       <description>Learn about iterables and iterators and generators in python</description>
     </item>
     <item>
       <title>Itertools Module in Python - Complete Guide</title>
-      <link>http://localhost:1313/blogs/itertools/</link>
+      <link>http://localhost:1313/blog/itertools/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/itertools/</guid>
+      <guid>http://localhost:1313/blog/itertools/</guid>
       <description>Learn about the very useful itertools library in python</description>
     </item>
     <item>
       <title>Practice Pandas on IPL Dataset</title>
-      <link>http://localhost:1313/blogs/ipl_pandas/</link>
+      <link>http://localhost:1313/blog/ipl_pandas/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/ipl_pandas/</guid>
+      <guid>http://localhost:1313/blog/ipl_pandas/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on IPL dataset</description>
     </item>
     <item>
       <title>Practice Pandas on Titanic Dataset</title>
-      <link>http://localhost:1313/blogs/titanic_pandas/</link>
+      <link>http://localhost:1313/blog/titanic_pandas/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/titanic_pandas/</guid>
+      <guid>http://localhost:1313/blog/titanic_pandas/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on Titanic dataset</description>
     </item>
     <item>
       <title>Practice Pandas on Zomato Dataset</title>
-      <link>http://localhost:1313/blogs/pandas_zomato/</link>
+      <link>http://localhost:1313/blog/pandas_zomato/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/pandas_zomato/</guid>
+      <guid>http://localhost:1313/blog/pandas_zomato/</guid>
       <description>Master data analysis in Python using the pandas library using hands on practice on Zomato dataset</description>
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:1313/blogs/python_syllabus/</link>
+      <link>http://localhost:1313/blog/python_syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/python_syllabus/</guid>
+      <guid>http://localhost:1313/blog/python_syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
   </channel>

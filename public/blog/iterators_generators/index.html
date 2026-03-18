@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Iterators and Generators in Python - Complete Guide | codeverra</title>
+<meta name="keywords" content="python">
+<meta name="description" content="Learn about iterables and iterators and generators in python">
+<meta name="author" content="codeverra">
+<link rel="canonical" href="http://localhost:1313/blog/iterators_generators/">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/iterators_generators/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="codeverra (Alt + H)">
+                    <img src="http://localhost:1313/images/CODEVERRA.jpg" alt="" aria-label="logo"
+                        height="32">codeverra</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Courses">
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Iterators and Generators in Python - Complete Guide
+    </h1>
+    <div class="post-description">
+      Learn about iterables and iterators and generators in python
+    </div>
+    <div class="post-meta"><span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4112 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+
+</div>
+  </header>
+  <div class="entry-tags post-tags-top">
+    <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+  </div> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/images/iterators%20and%20generators%20in%20python.png" alt="iterators and generators in python">
+        <figcaption>Data Analysis using Python</figcaption>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#python-iterables-iterators--generators" aria-label="Python Iterables, Iterators &amp; Generators">Python Iterables, Iterators &amp; Generators</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#a-complete-lesson-plan--reference-guide" aria-label="A Complete Lesson Plan &amp; Reference Guide">A Complete Lesson Plan &amp; Reference Guide</a></li></ul>
+                    
+                <li>
+                    <a href="#table-of-contents" aria-label="Table of Contents">Table of Contents</a></li>
+                <li>
+                    <a href="#the-big-picture" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#iterables" aria-label="Iterables">Iterables</a><ul>
+                        
+                <li>
+                    <a href="#what-is-an-iterable" aria-label="What is an Iterable?">What is an Iterable?</a></li>
+                <li>
+                    <a href="#how-does-python-know-something-is-iterable" aria-label="How Does Python Know Something is Iterable?">How Does Python Know Something is Iterable?</a></li>
+                <li>
+                    <a href="#what-happens-under-the-hood-of-a-for-loop" aria-label="What Happens Under the Hood of a for Loop?">What Happens Under the Hood of a for Loop?</a></li></ul>
+                </li>
+                <li>
+                    <a href="#iterators" aria-label="Iterators">Iterators</a><ul>
+                        
+                <li>
+                    <a href="#what-is-an-iterator" aria-label="What is an Iterator?">What is an Iterator?</a></li>
+                <li>
+                    <a href="#iterators-are-stateful-and-one-way" aria-label="Iterators are Stateful and One-Way">Iterators are Stateful and One-Way</a></li>
+                <li>
+                    <a href="#key-difference-iterable-vs-iterator" aria-label="Key Difference: Iterable vs Iterator">Key Difference: Iterable vs Iterator</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-iterator-protocol" aria-label="The Iterator Protocol">The Iterator Protocol</a></li>
+                <li>
+                    <a href="#building-custom-iterators" aria-label="Building Custom Iterators">Building Custom Iterators</a><ul>
+                        
+                <li>
+                    <a href="#example-1--a-simple-counter" aria-label="Example 1 — A Simple Counter">Example 1 — A Simple Counter</a></li>
+                <li>
+                    <a href="#example-2--infinite-iterator-fibonacci" aria-label="Example 2 — Infinite Iterator (Fibonacci)">Example 2 — Infinite Iterator (Fibonacci)</a></li>
+                <li>
+                    <a href="#example-3--separating-iterable-from-iterator" aria-label="Example 3 — Separating Iterable from Iterator">Example 3 — Separating Iterable from Iterator</a></li></ul>
+                </li>
+                <li>
+                    <a href="#generators" aria-label="Generators">Generators</a><ul>
+                        
+                <li>
+                    <a href="#what-is-a-generator" aria-label="What is a Generator?">What is a Generator?</a></li>
+                <li>
+                    <a href="#generator-vs-regular-function" aria-label="Generator vs Regular Function">Generator vs Regular Function</a></li>
+                <li>
+                    <a href="#rewriting-the-custom-iterator-as-a-generator" aria-label="Rewriting the Custom Iterator as a Generator">Rewriting the Custom Iterator as a Generator</a></li>
+                <li>
+                    <a href="#yield-from--delegating-to-sub-generators" aria-label="yield from — Delegating to Sub-Generators">yield from — Delegating to Sub-Generators</a></li></ul>
+                </li>
+                <li>
+                    <a href="#generator-expressions" aria-label="Generator Expressions">Generator Expressions</a></li>
+                <li>
+                    <a href="#advanced-generator-features" aria-label="Advanced Generator Features">Advanced Generator Features</a><ul>
+                        
+                <li>
+                    <a href="#send--two-way-communication" aria-label="send() — Two-Way Communication">send() — Two-Way Communication</a></li>
+                <li>
+                    <a href="#throw--injecting-exceptions" aria-label="throw() — Injecting Exceptions">throw() — Injecting Exceptions</a></li>
+                <li>
+                    <a href="#close--shutting-down-a-generator" aria-label="close() — Shutting Down a Generator">close() — Shutting Down a Generator</a></li>
+                <li>
+                    <a href="#generator-return-value" aria-label="Generator return Value">Generator return Value</a></li></ul>
+                </li>
+                <li>
+                    <a href="#common-pitfalls--things-to-keep-in-mind" aria-label="Common Pitfalls &amp; Things to Keep in Mind">Common Pitfalls &amp; Things to Keep in Mind</a><ul>
+                        
+                <li>
+                    <a href="#-1-iterators-are-single-use" aria-label="⚠️ 1. Iterators are Single-Use">⚠️ 1. Iterators are Single-Use</a></li>
+                <li>
+                    <a href="#-2-generators-are-single-use-too" aria-label="⚠️ 2. Generators are Single-Use Too">⚠️ 2. Generators are Single-Use Too</a></li>
+                <li>
+                    <a href="#-3-dont-mix-next-and-for-on-the-same-iterator" aria-label="⚠️ 3. Don&rsquo;t Mix next() and for on the Same Iterator">⚠️ 3. Don&rsquo;t Mix next() and for on the Same Iterator</a></li>
+                <li>
+                    <a href="#-4-the-generator-must-be-started-with-next-before-send" aria-label="⚠️ 4. The Generator Must Be Started with next() Before send()">⚠️ 4. The Generator Must Be Started with next() Before send()</a></li>
+                <li>
+                    <a href="#-5-return-inside-a-generator-raises-stopiteration-not-returns-a-value" aria-label="⚠️ 5. return Inside a Generator Raises StopIteration, Not Returns a Value">⚠️ 5. return Inside a Generator Raises StopIteration, Not Returns a Value</a></li>
+                <li>
+                    <a href="#-6-lazy-evaluation-can-surprise-you" aria-label="⚠️ 6. Lazy Evaluation Can Surprise You">⚠️ 6. Lazy Evaluation Can Surprise You</a></li>
+                <li>
+                    <a href="#-7-infinite-generators-need-a-break-condition" aria-label="⚠️ 7. Infinite Generators Need a Break Condition">⚠️ 7. Infinite Generators Need a Break Condition</a></li>
+                <li>
+                    <a href="#-8-exception-handling-inside-generators" aria-label="⚠️ 8. Exception Handling Inside Generators">⚠️ 8. Exception Handling Inside Generators</a></li></ul>
+                </li>
+                <li>
+                    <a href="#real-life-applications" aria-label="Real-Life Applications">Real-Life Applications</a><ul>
+                        
+                <li>
+                    <a href="#application-1--reading-large-files-line-by-line" aria-label="Application 1 — Reading Large Files Line by Line">Application 1 — Reading Large Files Line by Line</a></li>
+                <li>
+                    <a href="#application-2--database-query-streaming" aria-label="Application 2 — Database Query Streaming">Application 2 — Database Query Streaming</a></li>
+                <li>
+                    <a href="#application-3--infinite-data-pipelines" aria-label="Application 3 — Infinite Data Pipelines">Application 3 — Infinite Data Pipelines</a></li>
+                <li>
+                    <a href="#application-4--pagination--api-scrolling" aria-label="Application 4 — Pagination / API Scrolling">Application 4 — Pagination / API Scrolling</a></li>
+                <li>
+                    <a href="#application-5--treegraph-traversal" aria-label="Application 5 — Tree/Graph Traversal">Application 5 — Tree/Graph Traversal</a></li>
+                <li>
+                    <a href="#application-6--data-transformation-pipelines-etl" aria-label="Application 6 — Data Transformation Pipelines (ETL)">Application 6 — Data Transformation Pipelines (ETL)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#practice-questions--answers" aria-label="Practice Questions &amp; Answers">Practice Questions &amp; Answers</a><ul>
+                        
+                <li>
+                    <a href="#-question-1--basics" aria-label="✅ Question 1 — Basics">✅ Question 1 — Basics</a></li>
+                <li>
+                    <a href="#-question-2--custom-iterator" aria-label="✅ Question 2 — Custom Iterator">✅ Question 2 — Custom Iterator</a></li>
+                <li>
+                    <a href="#-question-3--generator-function" aria-label="✅ Question 3 — Generator Function">✅ Question 3 — Generator Function</a></li>
+                <li>
+                    <a href="#-question-4--infinite-generator--itertoolsislice" aria-label="✅ Question 4 — Infinite Generator &#43; itertools.islice">✅ Question 4 — Infinite Generator + itertools.islice</a></li>
+                <li>
+                    <a href="#-question-5--yield-from" aria-label="✅ Question 5 — yield from">✅ Question 5 — yield from</a></li>
+                <li>
+                    <a href="#-question-6--memory-efficiency" aria-label="✅ Question 6 — Memory Efficiency">✅ Question 6 — Memory Efficiency</a></li>
+                <li>
+                    <a href="#-question-7--tricky-exhaustion" aria-label="✅ Question 7 — Tricky Exhaustion">✅ Question 7 — Tricky Exhaustion</a></li>
+                <li>
+                    <a href="#-question-8--pipeline-design" aria-label="✅ Question 8 — Pipeline Design">✅ Question 8 — Pipeline Design</a></li>
+                <li>
+                    <a href="#-question-9--send-coroutine" aria-label="✅ Question 9 — send() Coroutine">✅ Question 9 — send() Coroutine</a></li>
+                <li>
+                    <a href="#-question-10--real-world-chunked-file-processing" aria-label="✅ Question 10 — Real World: Chunked File Processing">✅ Question 10 — Real World: Chunked File Processing</a></li></ul>
+                </li>
+                <li>
+                    <a href="#quick-reference-cheat-sheet" aria-label="Quick Reference Cheat Sheet">Quick Reference Cheat Sheet</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="python-iterables-iterators--generators">Python Iterables, Iterators &amp; Generators<a hidden class="anchor" aria-hidden="true" href="#python-iterables-iterators--generators">#</a></h1>
+<h3 id="a-complete-lesson-plan--reference-guide">A Complete Lesson Plan &amp; Reference Guide<a hidden class="anchor" aria-hidden="true" href="#a-complete-lesson-plan--reference-guide">#</a></h3>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ol>
+<li><a href="#the-big-picture">The Big Picture</a></li>
+<li><a href="#iterables">Iterables</a></li>
+<li><a href="#iterators">Iterators</a></li>
+<li><a href="#the-iterator-protocol">The Iterator Protocol</a></li>
+<li><a href="#building-custom-iterators">Building Custom Iterators</a></li>
+<li><a href="#generators">Generators</a></li>
+<li><a href="#generator-expressions">Generator Expressions</a></li>
+<li><a href="#advanced-generator-features">Advanced Generator Features</a></li>
+<li><a href="#common-pitfalls--things-to-keep-in-mind">Common Pitfalls &amp; Things to Keep in Mind</a></li>
+<li><a href="#real-life-applications">Real-Life Applications</a></li>
+<li><a href="#practice-questions--answers">Practice Questions &amp; Answers</a></li>
+<li><a href="#quick-reference-cheat-sheet">Quick Reference Cheat Sheet</a></li>
+</ol>
+<hr>
+<h2 id="the-big-picture">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture">#</a></h2>
+<p>Before diving in, here&rsquo;s the conceptual map you need to hold in your head:</p>
+<pre tabindex="0"><code>┌──────────────────────────────────────────────────┐
+│                    ITERABLE                      │
+│  Any object you can loop over with a for loop    │
+│  Examples: list, tuple, str, dict, set, file     │
+│                                                  │
+│   Has __iter__() → returns an Iterator           │
+└──────────────────────┬───────────────────────────┘
+                       │ __iter__() called
+                       ▼
+┌──────────────────────────────────────────────────┐
+│                    ITERATOR                      │
+│  An object that knows where it is in a sequence │
+│  and can produce the next value on demand        │
+│                                                  │
+│   Has __iter__() → returns self                  │
+│   Has __next__() → returns next value or raises  │
+│                     StopIteration                │
+└──────────────────────┬───────────────────────────┘
+                       │ special case of
+                       ▼
+┌──────────────────────────────────────────────────┐
+│                   GENERATOR                      │
+│  A convenient way to create iterators using      │
+│  the `yield` keyword — Python auto-builds the   │
+│  iterator protocol for you                       │
+└──────────────────────────────────────────────────┘
+</code></pre><blockquote>
+<p><strong>Key Insight:</strong> Every iterator is an iterable, but not every iterable is an iterator.
+A list is an iterable but NOT an iterator. <code>iter(list)</code> gives you an iterator.</p>
+</blockquote>
+<hr>
+<h2 id="iterables">Iterables<a hidden class="anchor" aria-hidden="true" href="#iterables">#</a></h2>
+<h3 id="what-is-an-iterable">What is an Iterable?<a hidden class="anchor" aria-hidden="true" href="#what-is-an-iterable">#</a></h3>
+<p>An <strong>iterable</strong> is any Python object that can return an <strong>iterator</strong> when <code>iter()</code> is called on it. In practical terms: if you can use it in a <code>for</code> loop, it&rsquo;s an iterable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># All of these are iterables</span>
+</span></span><span style="display:flex;"><span>my_list   <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>my_tuple  <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>my_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>
+</span></span><span style="display:flex;"><span>my_dict   <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;b&#34;</span>: <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>my_set    <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>}
+</span></span><span style="display:flex;"><span>my_range  <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> my_list:   print(item)   <span style="color:#75715e"># works</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> my_string: print(char)   <span style="color:#75715e"># works</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key  <span style="color:#f92672">in</span> my_dict:   print(key)    <span style="color:#75715e"># works</span>
+</span></span></code></pre></div><h3 id="how-does-python-know-something-is-iterable">How Does Python Know Something is Iterable?<a hidden class="anchor" aria-hidden="true" href="#how-does-python-know-something-is-iterable">#</a></h3>
+<p>Python looks for the <code>__iter__</code> dunder method. If an object has it, Python calls it to get an iterator.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Checking for iterability</span>
+</span></span><span style="display:flex;"><span>print(hasattr([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#39;__iter__&#39;</span>))   <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(hasattr(<span style="color:#ae81ff">42</span>, <span style="color:#e6db74">&#39;__iter__&#39;</span>))          <span style="color:#75715e"># False</span>
+</span></span><span style="display:flex;"><span>print(hasattr(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#39;__iter__&#39;</span>))     <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Using isinstance with collections.abc</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections.abc <span style="color:#f92672">import</span> Iterable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(isinstance([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], Iterable))  <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(isinstance(<span style="color:#ae81ff">42</span>, Iterable))         <span style="color:#75715e"># False</span>
+</span></span></code></pre></div><h3 id="what-happens-under-the-hood-of-a-for-loop">What Happens Under the Hood of a <code>for</code> Loop?<a hidden class="anchor" aria-hidden="true" href="#what-happens-under-the-hood-of-a-for-loop">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> numbers:
+</span></span><span style="display:flex;"><span>    print(num)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Python internally does EXACTLY this:</span>
+</span></span><span style="display:flex;"><span>_iterator <span style="color:#f92672">=</span> iter(numbers)       <span style="color:#75715e"># calls numbers.__iter__()</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        num <span style="color:#f92672">=</span> next(_iterator)   <span style="color:#75715e"># calls _iterator.__next__()</span>
+</span></span><span style="display:flex;"><span>        print(num)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">StopIteration</span>:       <span style="color:#75715e"># iterator is exhausted</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span></code></pre></div><p>This is the magic behind every <code>for</code> loop in Python.</p>
+<hr>
+<h2 id="iterators">Iterators<a hidden class="anchor" aria-hidden="true" href="#iterators">#</a></h2>
+<h3 id="what-is-an-iterator">What is an Iterator?<a hidden class="anchor" aria-hidden="true" href="#what-is-an-iterator">#</a></h3>
+<p>An <strong>iterator</strong> is an object that:</p>
+<ol>
+<li>Has a <code>__iter__()</code> method that returns <code>self</code></li>
+<li>Has a <code>__next__()</code> method that returns the next value, or raises <code>StopIteration</code> when done</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>my_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get an iterator from the list</span>
+</span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> iter(my_list)
+</span></span><span style="display:flex;"><span>print(type(it))   <span style="color:#75715e"># &lt;class &#39;list_iterator&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Call next() manually</span>
+</span></span><span style="display:flex;"><span>print(next(it))   <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(it))   <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>print(next(it))   <span style="color:#75715e"># 3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># One more call raises StopIteration</span>
+</span></span><span style="display:flex;"><span>next(it)          <span style="color:#75715e"># StopIteration ← the iterator is exhausted</span>
+</span></span></code></pre></div><h3 id="iterators-are-stateful-and-one-way">Iterators are Stateful and One-Way<a hidden class="anchor" aria-hidden="true" href="#iterators-are-stateful-and-one-way">#</a></h3>
+<p>Unlike a list, an iterator <strong>remembers its position</strong>. It can only move forward, never backward.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>my_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> iter(my_list)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(next(it))   <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(it))   <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># You cannot go back to 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># You cannot reset (unless you call iter() again on the original list)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The iterator and the list are SEPARATE objects:</span>
+</span></span><span style="display:flex;"><span>print(id(my_list) <span style="color:#f92672">==</span> id(it))    <span style="color:#75715e"># False — different objects</span>
+</span></span></code></pre></div><h3 id="key-difference-iterable-vs-iterator">Key Difference: Iterable vs Iterator<a hidden class="anchor" aria-hidden="true" href="#key-difference-iterable-vs-iterator">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>my_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>it      <span style="color:#f92672">=</span> iter(my_list)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A list is NOT an iterator — it has no __next__</span>
+</span></span><span style="display:flex;"><span>print(hasattr(my_list, <span style="color:#e6db74">&#39;__next__&#39;</span>))  <span style="color:#75715e"># False</span>
+</span></span><span style="display:flex;"><span>print(hasattr(it,      <span style="color:#e6db74">&#39;__next__&#39;</span>))  <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># An iterator IS an iterable — iter(it) returns itself</span>
+</span></span><span style="display:flex;"><span>print(iter(it) <span style="color:#f92672">is</span> it)               <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(iter(my_list) <span style="color:#f92672">is</span> my_list)     <span style="color:#75715e"># False — a new iterator is created</span>
+</span></span></code></pre></div><hr>
+<h2 id="the-iterator-protocol">The Iterator Protocol<a hidden class="anchor" aria-hidden="true" href="#the-iterator-protocol">#</a></h2>
+<p>The <strong>iterator protocol</strong> is the contract every iterator must follow:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Purpose</th>
+          <th>Must Do</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>__iter__()</code></td>
+          <td>Make the object usable in a <code>for</code> loop</td>
+          <td>Return <code>self</code></td>
+      </tr>
+      <tr>
+          <td><code>__next__()</code></td>
+          <td>Get the next value</td>
+          <td>Return next item OR raise <code>StopIteration</code></td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Verifying any object follows the protocol</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections.abc <span style="color:#f92672">import</span> Iterator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(isinstance(iter([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]), Iterator))  <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(isinstance([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],       Iterator))  <span style="color:#75715e"># False</span>
+</span></span><span style="display:flex;"><span>print(isinstance(iter(<span style="color:#e6db74">&#34;hello&#34;</span>),   Iterator))  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><hr>
+<h2 id="building-custom-iterators">Building Custom Iterators<a hidden class="anchor" aria-hidden="true" href="#building-custom-iterators">#</a></h2>
+<h3 id="example-1--a-simple-counter">Example 1 — A Simple Counter<a hidden class="anchor" aria-hidden="true" href="#example-1--a-simple-counter">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Counter</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;An iterator that counts from `start` up to (but not including) `stop`.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, start, stop):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>stop    <span style="color:#f92672">=</span> stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Return self — this object IS the iterator.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__next__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Return the next value, or raise StopIteration.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>current <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>stop:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">StopIteration</span>
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>current
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counter <span style="color:#f92672">=</span> Counter(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> counter:
+</span></span><span style="display:flex;"><span>    print(num)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: 1  2  3  4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Because Counter is an iterator, it&#39;s also an iterable:</span>
+</span></span><span style="display:flex;"><span>print(list(Counter(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">14</span>)))    <span style="color:#75715e"># [10, 11, 12, 13]</span>
+</span></span></code></pre></div><h3 id="example-2--infinite-iterator-fibonacci">Example 2 — Infinite Iterator (Fibonacci)<a hidden class="anchor" aria-hidden="true" href="#example-2--infinite-iterator-fibonacci">#</a></h3>
+<p>Iterators don&rsquo;t have to end! This is one of their most powerful features.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FibonacciIterator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Generates Fibonacci numbers indefinitely.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__next__</span>(self):
+</span></span><span style="display:flex;"><span>        value    <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>a
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>a, self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>b, self<span style="color:#f92672">.</span>a <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>b
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fib <span style="color:#f92672">=</span> FibonacciIterator()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Take the first 10 Fibonacci numbers safely</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> itertools
+</span></span><span style="display:flex;"><span>first_10 <span style="color:#f92672">=</span> list(itertools<span style="color:#f92672">.</span>islice(fib, <span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>print(first_10)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span>
+</span></span></code></pre></div><h3 id="example-3--separating-iterable-from-iterator">Example 3 — Separating Iterable from Iterator<a hidden class="anchor" aria-hidden="true" href="#example-3--separating-iterable-from-iterator">#</a></h3>
+<p>The best practice for containers (like lists) is to keep the <strong>iterable</strong> (the data holder) separate from the <strong>iterator</strong> (the traversal state):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRange</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;An iterable that creates a fresh iterator each time.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, start, stop):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>start <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>stop  <span style="color:#f92672">=</span> stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Return a NEW iterator object each time</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NumberRangeIterator(self<span style="color:#f92672">.</span>start, self<span style="color:#f92672">.</span>stop)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRangeIterator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;The actual iterator — holds traversal state.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, start, stop):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>stop    <span style="color:#f92672">=</span> stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__next__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>current <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>stop:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">StopIteration</span>
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>current
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> NumberRange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Because __iter__ returns a NEW iterator, you can loop multiple times!</span>
+</span></span><span style="display:flex;"><span>print(list(r))   <span style="color:#75715e"># [1, 2, 3]</span>
+</span></span><span style="display:flex;"><span>print(list(r))   <span style="color:#75715e"># [1, 2, 3]  ← still works!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compare with an iterator (single-use):</span>
+</span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> iter(r)
+</span></span><span style="display:flex;"><span>print(list(it))  <span style="color:#75715e"># [1, 2, 3]</span>
+</span></span><span style="display:flex;"><span>print(list(it))  <span style="color:#75715e"># []  ← exhausted!</span>
+</span></span></code></pre></div><hr>
+<h2 id="generators">Generators<a hidden class="anchor" aria-hidden="true" href="#generators">#</a></h2>
+<h3 id="what-is-a-generator">What is a Generator?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-generator">#</a></h3>
+<p>A <strong>generator</strong> is a special kind of function that uses the <code>yield</code> keyword to produce values one at a time, <strong>pausing execution</strong> between each yield. Python automatically creates an iterator object for you — you get all the benefits of writing an iterator without the boilerplate.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simple_generator</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Step 1&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Step 2&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Step 3&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> simple_generator()
+</span></span><span style="display:flex;"><span>print(type(gen))   <span style="color:#75715e"># &lt;class &#39;generator&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># prints &#34;Step 1&#34;, then returns 10</span>
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># prints &#34;Step 2&#34;, then returns 20</span>
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># prints &#34;Step 3&#34;, then returns 30</span>
+</span></span><span style="display:flex;"><span>next(gen)          <span style="color:#75715e"># prints &#34;Done!&#34;, then raises StopIteration</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>The magic of <code>yield</code>:</strong> When <code>yield</code> is hit, the function&rsquo;s entire state (local variables, position in code) is <strong>frozen</strong>. On the next <code>next()</code> call, execution resumes from exactly where it left off.</p>
+</blockquote>
+<h3 id="generator-vs-regular-function">Generator vs Regular Function<a hidden class="anchor" aria-hidden="true" href="#generator-vs-regular-function">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Regular function — computes everything, returns all at once</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_squares_list</span>(n):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>        result<span style="color:#f92672">.</span>append(i <span style="color:#f92672">*</span> i)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result           <span style="color:#75715e"># Returns a list of ALL values</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator function — produces one value at a time, on demand</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_squares_gen</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> i <span style="color:#f92672">*</span> i         <span style="color:#75715e"># Yields one value, then pauses</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Both can be iterated:</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> val <span style="color:#f92672">in</span> get_squares_list(<span style="color:#ae81ff">5</span>): print(val)  <span style="color:#75715e"># works</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> val <span style="color:#f92672">in</span> get_squares_gen(<span style="color:#ae81ff">5</span>):  print(val)  <span style="color:#75715e"># works</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># But memory usage is very different:</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>big_list <span style="color:#f92672">=</span> get_squares_list(<span style="color:#ae81ff">1_000_000</span>)
+</span></span><span style="display:flex;"><span>big_gen  <span style="color:#f92672">=</span> get_squares_gen(<span style="color:#ae81ff">1_000_000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>getsizeof(big_list))  <span style="color:#75715e"># ~8,000,056 bytes (~8 MB)</span>
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>getsizeof(big_gen))   <span style="color:#75715e"># ~104 bytes  ← negligible!</span>
+</span></span></code></pre></div><h3 id="rewriting-the-custom-iterator-as-a-generator">Rewriting the Custom Iterator as a Generator<a hidden class="anchor" aria-hidden="true" href="#rewriting-the-custom-iterator-as-a-generator">#</a></h3>
+<p>Compare the verbosity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># ----- Iterator approach: ~15 lines -----</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterIterator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, start, stop):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>stop    <span style="color:#f92672">=</span> stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__next__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>current <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>stop:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">StopIteration</span>
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>current
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ----- Generator approach: 3 lines -----</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">counter_gen</span>(start, stop):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> start <span style="color:#f92672">&lt;</span> stop:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> start
+</span></span><span style="display:flex;"><span>        start <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Both do the same thing:</span>
+</span></span><span style="display:flex;"><span>print(list(CounterIterator(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)))  <span style="color:#75715e"># [1, 2, 3, 4]</span>
+</span></span><span style="display:flex;"><span>print(list(counter_gen(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)))      <span style="color:#75715e"># [1, 2, 3, 4]</span>
+</span></span></code></pre></div><h3 id="yield-from--delegating-to-sub-generators"><code>yield from</code> — Delegating to Sub-Generators<a hidden class="anchor" aria-hidden="true" href="#yield-from--delegating-to-sub-generators">#</a></h3>
+<p><code>yield from</code> lets a generator delegate to another iterable or generator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">outer</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> inner()    <span style="color:#75715e"># delegates to inner()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(list(outer()))   <span style="color:#75715e"># [0, 1, 2, 3, 4]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Useful for flattening nested structures</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flatten</span>(nested):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> nested:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> isinstance(item, list):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield from</span> flatten(item)   <span style="color:#75715e"># recursive delegation</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> item
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, [<span style="color:#ae81ff">2</span>, [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], <span style="color:#ae81ff">5</span>], [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>]]
+</span></span><span style="display:flex;"><span>print(list(flatten(data)))   <span style="color:#75715e"># [1, 2, 3, 4, 5, 6, 7]</span>
+</span></span></code></pre></div><hr>
+<h2 id="generator-expressions">Generator Expressions<a hidden class="anchor" aria-hidden="true" href="#generator-expressions">#</a></h2>
+<p>Just like list comprehensions, Python has <strong>generator expressions</strong> — a compact syntax for simple generators.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># List comprehension — creates the full list in memory</span>
+</span></span><span style="display:flex;"><span>squares_list <span style="color:#f92672">=</span> [x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator expression — lazy, no memory allocated upfront</span>
+</span></span><span style="display:flex;"><span>squares_gen <span style="color:#f92672">=</span> (x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(type(squares_list))   <span style="color:#75715e"># &lt;class &#39;list&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>print(type(squares_gen))    <span style="color:#75715e"># &lt;class &#39;generator&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># They produce the same values:</span>
+</span></span><span style="display:flex;"><span>print(list(squares_gen))    <span style="color:#75715e"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator expressions are great inside function calls:</span>
+</span></span><span style="display:flex;"><span>total <span style="color:#f92672">=</span> sum(x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>))      <span style="color:#75715e"># No extra list created</span>
+</span></span><span style="display:flex;"><span>first_even <span style="color:#f92672">=</span> next(x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">if</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># 0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chaining with conditions</span>
+</span></span><span style="display:flex;"><span>big_even_squares <span style="color:#f92672">=</span> (x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">if</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>print(list(big_even_squares))   <span style="color:#75715e"># [144, 196, 256, ..., 9604]</span>
+</span></span></code></pre></div><hr>
+<h2 id="advanced-generator-features">Advanced Generator Features<a hidden class="anchor" aria-hidden="true" href="#advanced-generator-features">#</a></h2>
+<h3 id="send--two-way-communication"><code>send()</code> — Two-Way Communication<a hidden class="anchor" aria-hidden="true" href="#send--two-way-communication">#</a></h3>
+<p>Generators can <strong>receive values</strong> back from the caller using <code>send()</code>. This transforms them from simple producers into coroutines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">accumulator</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Receives numbers and yields the running total.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> total    <span style="color:#75715e"># yield sends total OUT, receives value IN</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">+=</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> accumulator()
+</span></span><span style="display:flex;"><span>next(gen)         <span style="color:#75715e"># Must call next() once to start the generator (advances to first yield)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>))   <span style="color:#75715e"># 10</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">20</span>))   <span style="color:#75715e"># 30</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">5</span>))    <span style="color:#75715e"># 35</span>
+</span></span></code></pre></div><h3 id="throw--injecting-exceptions"><code>throw()</code> — Injecting Exceptions<a hidden class="anchor" aria-hidden="true" href="#throw--injecting-exceptions">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_generator</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;running&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;caught error: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;recovered&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> safe_generator()
+</span></span><span style="display:flex;"><span>print(next(gen))                        <span style="color:#75715e"># &#39;running&#39;</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>throw(<span style="color:#a6e22e">ValueError</span>, <span style="color:#e6db74">&#34;oops!&#34;</span>))  <span style="color:#75715e"># &#39;caught error: oops!&#39;</span>
+</span></span><span style="display:flex;"><span>print(next(gen))                        <span style="color:#75715e"># &#39;recovered&#39;</span>
+</span></span></code></pre></div><h3 id="close--shutting-down-a-generator"><code>close()</code> — Shutting Down a Generator<a hidden class="anchor" aria-hidden="true" href="#close--shutting-down-a-generator">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">countdown</span>():
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> n
+</span></span><span style="display:flex;"><span>            n <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">GeneratorExit</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Generator shutting down cleanly.&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>    <span style="color:#75715e"># MUST return or re-raise GeneratorExit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> countdown()
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># 10</span>
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># 9</span>
+</span></span><span style="display:flex;"><span>gen<span style="color:#f92672">.</span>close()        <span style="color:#75715e"># &#34;Generator shutting down cleanly.&#34;</span>
+</span></span></code></pre></div><h3 id="generator-return-value">Generator <code>return</code> Value<a hidden class="anchor" aria-hidden="true" href="#generator-return-value">#</a></h3>
+<p>A generator can <code>return</code> a value. It&rsquo;s captured via <code>StopIteration</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_with_return</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;finished&#34;</span>   <span style="color:#75715e"># This becomes StopIteration.value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> gen_with_return()
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(gen))   <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    next(gen)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">StopIteration</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>    print(e<span style="color:#f92672">.</span>value)     <span style="color:#75715e"># &#34;finished&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or, using yield from:</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapper</span>():
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield from</span> gen_with_return()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sub-generator returned: </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="common-pitfalls--things-to-keep-in-mind">Common Pitfalls &amp; Things to Keep in Mind<a hidden class="anchor" aria-hidden="true" href="#common-pitfalls--things-to-keep-in-mind">#</a></h2>
+<h3 id="-1-iterators-are-single-use">⚠️ 1. Iterators are Single-Use<a hidden class="anchor" aria-hidden="true" href="#-1-iterators-are-single-use">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>nums <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>it   <span style="color:#f92672">=</span> iter(nums)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(list(it))   <span style="color:#75715e"># [1, 2, 3]</span>
+</span></span><span style="display:flex;"><span>print(list(it))   <span style="color:#75715e"># []  ← exhausted! No error, just empty.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fix: Call iter() again, or use the original iterable</span>
+</span></span><span style="display:flex;"><span>print(list(iter(nums)))   <span style="color:#75715e"># [1, 2, 3]  ✓</span>
+</span></span></code></pre></div><h3 id="-2-generators-are-single-use-too">⚠️ 2. Generators are Single-Use Too<a hidden class="anchor" aria-hidden="true" href="#-2-generators-are-single-use-too">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> gen()
+</span></span><span style="display:flex;"><span>print(list(g))   <span style="color:#75715e"># [1, 2]</span>
+</span></span><span style="display:flex;"><span>print(list(g))   <span style="color:#75715e"># []  ← exhausted!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fix: Call the generator function again to get a fresh generator</span>
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> gen()
+</span></span><span style="display:flex;"><span>print(list(g))   <span style="color:#75715e"># [1, 2]  ✓</span>
+</span></span></code></pre></div><h3 id="-3-dont-mix-next-and-for-on-the-same-iterator">⚠️ 3. Don&rsquo;t Mix <code>next()</code> and <code>for</code> on the Same Iterator<a hidden class="anchor" aria-hidden="true" href="#-3-dont-mix-next-and-for-on-the-same-iterator">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>it <span style="color:#f92672">=</span> iter([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(next(it))      <span style="color:#75715e"># 1  ← consumed manually</span>
+</span></span><span style="display:flex;"><span>print(next(it))      <span style="color:#75715e"># 2  ← consumed manually</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> val <span style="color:#f92672">in</span> it:       <span style="color:#75715e"># continues from 3, not 1!</span>
+</span></span><span style="display:flex;"><span>    print(val)       <span style="color:#75715e"># 3, 4, 5</span>
+</span></span></code></pre></div><h3 id="-4-the-generator-must-be-started-with-next-before-send">⚠️ 4. The Generator Must Be Started with <code>next()</code> Before <code>send()</code><a hidden class="anchor" aria-hidden="true" href="#-4-the-generator-must-be-started-with-next-before-send">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_gen</span>():
+</span></span><span style="display:flex;"><span>    val <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> my_gen()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># gen.send(10)  ← TypeError! Can&#39;t send non-None to just-started generator</span>
+</span></span><span style="display:flex;"><span>next(gen)       <span style="color:#75715e"># Advance to first yield first</span>
+</span></span><span style="display:flex;"><span>gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>)    <span style="color:#75715e"># Now this works</span>
+</span></span></code></pre></div><h3 id="-5-return-inside-a-generator-raises-stopiteration-not-returns-a-value">⚠️ 5. <code>return</code> Inside a Generator Raises <code>StopIteration</code>, Not Returns a Value<a hidden class="anchor" aria-hidden="true" href="#-5-return-inside-a-generator-raises-stopiteration-not-returns-a-value">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>       <span style="color:#75715e"># This raises StopIteration, NOT a normal return!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">2</span>      <span style="color:#75715e"># Unreachable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> gen()
+</span></span><span style="display:flex;"><span>print(next(g))   <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>next(g)          <span style="color:#75715e"># StopIteration — the return triggered it</span>
+</span></span></code></pre></div><h3 id="-6-lazy-evaluation-can-surprise-you">⚠️ 6. Lazy Evaluation Can Surprise You<a hidden class="anchor" aria-hidden="true" href="#-6-lazy-evaluation-can-surprise-you">#</a></h3>
+<p>Generator expressions capture variables by reference, not by value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># BUG: All generators share the same variable `i`</span>
+</span></span><span style="display:flex;"><span>funcs <span style="color:#f92672">=</span> [<span style="color:#66d9ef">lambda</span>: i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>)]     <span style="color:#75715e"># list comprehension</span>
+</span></span><span style="display:flex;"><span>gens  <span style="color:#f92672">=</span> [(<span style="color:#66d9ef">lambda</span>: i)() <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>)] <span style="color:#75715e"># captured correctly in list comp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># With generators, be careful with closures:</span>
+</span></span><span style="display:flex;"><span>multipliers <span style="color:#f92672">=</span> [<span style="color:#66d9ef">lambda</span> x, n<span style="color:#f92672">=</span>n: x <span style="color:#f92672">*</span> n <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>)]
+</span></span><span style="display:flex;"><span>print(multipliers[<span style="color:#ae81ff">3</span>](<span style="color:#ae81ff">10</span>))   <span style="color:#75715e"># 30 — n=3 captured correctly with default arg</span>
+</span></span></code></pre></div><h3 id="-7-infinite-generators-need-a-break-condition">⚠️ 7. Infinite Generators Need a Break Condition<a hidden class="anchor" aria-hidden="true" href="#-7-infinite-generators-need-a-break-condition">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">infinite_counter</span>():
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> n
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NEVER do this — it will run forever:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for x in infinite_counter(): print(x)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Always pair infinite generators with a limit:</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> itertools
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> itertools<span style="color:#f92672">.</span>islice(infinite_counter(), <span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    print(x)   <span style="color:#75715e"># 0 through 9, then stops</span>
+</span></span></code></pre></div><h3 id="-8-exception-handling-inside-generators">⚠️ 8. Exception Handling Inside Generators<a hidden class="anchor" aria-hidden="true" href="#-8-exception-handling-inside-generators">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_divide_gen</span>(numbers, divisor):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> numbers:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> n <span style="color:#f92672">/</span> divisor
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ZeroDivisionError</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> float(<span style="color:#e6db74">&#39;inf&#39;</span>)    <span style="color:#75715e"># yield a sentinel instead of crashing</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> list(safe_divide_gen([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">30</span>], <span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span>print(results)   <span style="color:#75715e"># [inf, inf, inf, inf]</span>
+</span></span></code></pre></div><hr>
+<h2 id="real-life-applications">Real-Life Applications<a hidden class="anchor" aria-hidden="true" href="#real-life-applications">#</a></h2>
+<h3 id="application-1--reading-large-files-line-by-line">Application 1 — Reading Large Files Line by Line<a hidden class="anchor" aria-hidden="true" href="#application-1--reading-large-files-line-by-line">#</a></h3>
+<p>When processing log files or CSVs that are gigabytes large, loading the entire file into memory is not feasible.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_large_file</span>(filepath):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Memory-efficient file reader using a generator.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filepath, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> f:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_error_lines</span>(filepath):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Count lines containing &#39;ERROR&#39; without loading the whole file.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sum(<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> read_large_file(filepath) <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;ERROR&#39;</span> <span style="color:#f92672">in</span> line)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pipeline: read → filter → process</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_csv_generator</span>(filepath):
+</span></span><span style="display:flex;"><span>    reader <span style="color:#f92672">=</span> read_large_file(filepath)
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> next(reader)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> reader:
+</span></span><span style="display:flex;"><span>        values <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> dict(zip(headers, values))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for row in parse_csv_generator(&#39;huge_data.csv&#39;):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     process(row)    # only ONE row in memory at a time</span>
+</span></span></code></pre></div><h3 id="application-2--database-query-streaming">Application 2 — Database Query Streaming<a hidden class="anchor" aria-hidden="true" href="#application-2--database-query-streaming">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlite3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">stream_query_results</span>(db_path, query, params<span style="color:#f92672">=</span>()):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Execute a SQL query and yield rows one at a time.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Great for large result sets that don&#39;t fit in RAM.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(db_path)
+</span></span><span style="display:flex;"><span>    cursor <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>cursor()
+</span></span><span style="display:flex;"><span>    cursor<span style="color:#f92672">.</span>execute(query, params)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> cursor:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> row
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>        cursor<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>        conn<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage — stream 1 million rows without loading them all into memory</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for player_row in stream_query_results(&#39;cricket.db&#39;, &#39;SELECT * FROM matches&#39;):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     analyze(player_row)</span>
+</span></span></code></pre></div><h3 id="application-3--infinite-data-pipelines">Application 3 — Infinite Data Pipelines<a hidden class="anchor" aria-hidden="true" href="#application-3--infinite-data-pipelines">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sensor_data_stream</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Simulates an IoT sensor producing readings indefinitely.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;timestamp&#34;</span>: time<span style="color:#f92672">.</span>time(),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;temperature&#34;</span>: <span style="color:#ae81ff">20</span> <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>uniform(<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;humidity&#34;</span>: <span style="color:#ae81ff">60</span> <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>uniform(<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>),
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter_anomalies</span>(stream, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">22.0</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Filter only anomalous readings from a stream.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> reading <span style="color:#f92672">in</span> stream:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> reading[<span style="color:#e6db74">&#34;temperature&#34;</span>] <span style="color:#f92672">&gt;</span> threshold:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> reading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enrich_readings</span>(stream):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Add a human-readable timestamp to each reading.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> reading <span style="color:#f92672">in</span> stream:
+</span></span><span style="display:flex;"><span>        reading[<span style="color:#e6db74">&#34;time_str&#34;</span>] <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%H:%M:%S&#39;</span>,
+</span></span><span style="display:flex;"><span>                              time<span style="color:#f92672">.</span>localtime(reading[<span style="color:#e6db74">&#34;timestamp&#34;</span>]))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> reading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build a pipeline by chaining generators</span>
+</span></span><span style="display:flex;"><span>raw_stream     <span style="color:#f92672">=</span> sensor_data_stream()
+</span></span><span style="display:flex;"><span>anomaly_stream <span style="color:#f92672">=</span> filter_anomalies(raw_stream, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">21.5</span>)
+</span></span><span style="display:flex;"><span>enriched       <span style="color:#f92672">=</span> enrich_readings(anomaly_stream)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read from the pipeline — processing is LAZY, only happens when pulled</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> itertools
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> reading <span style="color:#f92672">in</span> itertools<span style="color:#f92672">.</span>islice(enriched, <span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    print(reading)
+</span></span></code></pre></div><h3 id="application-4--pagination--api-scrolling">Application 4 — Pagination / API Scrolling<a hidden class="anchor" aria-hidden="true" href="#application-4--pagination--api-scrolling">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">paginate_api</span>(fetch_page_func, start_page<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Generic generator for paginated APIs.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    `fetch_page_func(page_num)` should return (data_list, has_more_bool).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    page <span style="color:#f92672">=</span> start_page
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        data, has_more <span style="color:#f92672">=</span> fetch_page_func(page)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield from</span> data           <span style="color:#75715e"># yield each item in the page</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> has_more:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        page <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)           <span style="color:#75715e"># polite rate limiting</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Simulated API</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fake_api</span>(page):
+</span></span><span style="display:flex;"><span>    all_data <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">26</span>))   <span style="color:#75715e"># 25 items total</span>
+</span></span><span style="display:flex;"><span>    page_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> (page <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> page_size
+</span></span><span style="display:flex;"><span>    end   <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> page_size
+</span></span><span style="display:flex;"><span>    chunk <span style="color:#f92672">=</span> all_data[start:end]
+</span></span><span style="display:flex;"><span>    has_more <span style="color:#f92672">=</span> end <span style="color:#f92672">&lt;</span> len(all_data)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> chunk, has_more
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> paginate_api(fake_api):
+</span></span><span style="display:flex;"><span>    print(item, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1 2 3 4 5 6 7 8 9 10 ... 25</span>
+</span></span></code></pre></div><h3 id="application-5--treegraph-traversal">Application 5 — Tree/Graph Traversal<a hidden class="anchor" aria-hidden="true" href="#application-5--treegraph-traversal">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeNode</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, val, left<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, right<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>val   <span style="color:#f92672">=</span> val
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>left  <span style="color:#f92672">=</span> left
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right <span style="color:#f92672">=</span> right
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inorder_traversal</span>(node):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;In-order traversal of a BST as a generator.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> inorder_traversal(node<span style="color:#f92672">.</span>left)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> node<span style="color:#f92672">.</span>val
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> inorder_traversal(node<span style="color:#f92672">.</span>right)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bfs_traversal</span>(root):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Breadth-first traversal using a generator.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>    queue <span style="color:#f92672">=</span> deque([root])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> queue:
+</span></span><span style="display:flex;"><span>        node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> node:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> node<span style="color:#f92672">.</span>val
+</span></span><span style="display:flex;"><span>            queue<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>left)
+</span></span><span style="display:flex;"><span>            queue<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>right)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build a small tree:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       / \</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#      2   6</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     / \ / \</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    1  3 5  7</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root <span style="color:#f92672">=</span> TreeNode(<span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>    TreeNode(<span style="color:#ae81ff">2</span>, TreeNode(<span style="color:#ae81ff">1</span>), TreeNode(<span style="color:#ae81ff">3</span>)),
+</span></span><span style="display:flex;"><span>    TreeNode(<span style="color:#ae81ff">6</span>, TreeNode(<span style="color:#ae81ff">5</span>), TreeNode(<span style="color:#ae81ff">7</span>))
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(list(inorder_traversal(root)))   <span style="color:#75715e"># [1, 2, 3, 4, 5, 6, 7]</span>
+</span></span><span style="display:flex;"><span>print(list(bfs_traversal(root)))       <span style="color:#75715e"># [4, 2, 6, 1, 3, 5, 7]</span>
+</span></span></code></pre></div><h3 id="application-6--data-transformation-pipelines-etl">Application 6 — Data Transformation Pipelines (ETL)<a hidden class="anchor" aria-hidden="true" href="#application-6--data-transformation-pipelines-etl">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract</span>(raw_records):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Yield raw records from a source.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> record <span style="color:#f92672">in</span> raw_records:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> record
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transform</span>(records):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Clean and transform each record.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> record <span style="color:#f92672">in</span> records:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> record<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;salary&#39;</span>) <span style="color:#f92672">and</span> record<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;name&#39;</span>:       record[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>title(),
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;salary&#39;</span>:     float(record[<span style="color:#e6db74">&#39;salary&#39;</span>]),
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;department&#39;</span>: record<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;dept&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)<span style="color:#f92672">.</span>upper(),
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter_high_earners</span>(records, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">50000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Keep only high earners.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> record <span style="color:#f92672">in</span> records:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> record[<span style="color:#e6db74">&#39;salary&#39;</span>] <span style="color:#f92672">&gt;=</span> threshold:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> record
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load</span>(records, output_file):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Write records to output.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(output_file, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> record <span style="color:#f92672">in</span> records:
+</span></span><span style="display:flex;"><span>            f<span style="color:#f92672">.</span>write(json<span style="color:#f92672">.</span>dumps(record) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ETL pipeline — each stage is a generator, completely lazy</span>
+</span></span><span style="display:flex;"><span>raw_data <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;  ravi kumar &#39;</span>, <span style="color:#e6db74">&#39;salary&#39;</span>: <span style="color:#e6db74">&#39;75000&#39;</span>, <span style="color:#e6db74">&#39;dept&#39;</span>: <span style="color:#e6db74">&#39;engineering&#39;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;Priya Sharma&#39;</span>, <span style="color:#e6db74">&#39;salary&#39;</span>: <span style="color:#e6db74">&#39;45000&#39;</span>, <span style="color:#e6db74">&#39;dept&#39;</span>: <span style="color:#e6db74">&#39;marketing&#39;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;Arjun Patel &#39;</span>, <span style="color:#e6db74">&#39;salary&#39;</span>: <span style="color:#e6db74">&#39;92000&#39;</span>, <span style="color:#e6db74">&#39;dept&#39;</span>: <span style="color:#e6db74">&#39;data science&#39;</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipeline <span style="color:#f92672">=</span> filter_high_earners(transform(extract(raw_data)), threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">60000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> result <span style="color:#f92672">in</span> pipeline:
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># {&#39;name&#39;: &#39;Ravi Kumar&#39;, &#39;salary&#39;: 75000.0, &#39;department&#39;: &#39;ENGINEERING&#39;}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># {&#39;name&#39;: &#39;Arjun Patel&#39;, &#39;salary&#39;: 92000.0, &#39;department&#39;: &#39;DATA SCIENCE&#39;}</span>
+</span></span></code></pre></div><hr>
+<h2 id="practice-questions--answers">Practice Questions &amp; Answers<a hidden class="anchor" aria-hidden="true" href="#practice-questions--answers">#</a></h2>
+<hr>
+<h3 id="-question-1--basics">✅ Question 1 — Basics<a hidden class="anchor" aria-hidden="true" href="#-question-1--basics">#</a></h3>
+<p><strong>Q:</strong> What is the difference between an iterable and an iterator? Give two examples of each.</p>
+<p><strong>A:</strong></p>
+<p>An <strong>iterable</strong> is any object you can loop over — it has a <code>__iter__()</code> method that returns an iterator when called. Examples: <code>list</code>, <code>str</code>, <code>dict</code>, <code>tuple</code>, <code>set</code>, <code>range</code>.</p>
+<p>An <strong>iterator</strong> is an object that maintains traversal state — it has both <code>__iter__()</code> (returns <code>self</code>) and <code>__next__()</code> (returns the next value or raises <code>StopIteration</code>). Examples: the object returned by <code>iter([1, 2, 3])</code>, or a generator object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>lst <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]           <span style="color:#75715e"># iterable, NOT an iterator</span>
+</span></span><span style="display:flex;"><span>it  <span style="color:#f92672">=</span> iter(lst)           <span style="color:#75715e"># iterator</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(hasattr(lst, <span style="color:#e6db74">&#39;__next__&#39;</span>))   <span style="color:#75715e"># False</span>
+</span></span><span style="display:flex;"><span>print(hasattr(it,  <span style="color:#e6db74">&#39;__next__&#39;</span>))   <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(iter(it) <span style="color:#f92672">is</span> it)             <span style="color:#75715e"># True — iterator is its own iterable</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-2--custom-iterator">✅ Question 2 — Custom Iterator<a hidden class="anchor" aria-hidden="true" href="#-question-2--custom-iterator">#</a></h3>
+<p><strong>Q:</strong> Implement a class <code>Squares</code> that works as an iterator, yielding the squares of integers from 1 up to <code>n</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Expected:</span>
+</span></span><span style="display:flex;"><span>sq <span style="color:#f92672">=</span> Squares(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>print(list(sq))   <span style="color:#75715e"># [1, 4, 9, 16, 25]</span>
+</span></span></code></pre></div><p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Squares</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, n):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>n       <span style="color:#f92672">=</span> n
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__iter__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__next__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>current <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>n:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">StopIteration</span>
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>current <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sq <span style="color:#f92672">=</span> Squares(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>print(list(sq))   <span style="color:#75715e"># [1, 4, 9, 16, 25]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Also works in a for loop:</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> val <span style="color:#f92672">in</span> Squares(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>    print(val)    <span style="color:#75715e"># 1, 4, 9, 16</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-3--generator-function">✅ Question 3 — Generator Function<a hidden class="anchor" aria-hidden="true" href="#-question-3--generator-function">#</a></h3>
+<p><strong>Q:</strong> Write a generator function <code>even_numbers(limit)</code> that yields all even numbers from 0 up to <code>limit</code> (inclusive).</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">even_numbers</span>(limit):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, limit <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(list(even_numbers(<span style="color:#ae81ff">10</span>)))   <span style="color:#75715e"># [0, 2, 4, 6, 8, 10]</span>
+</span></span><span style="display:flex;"><span>print(list(even_numbers(<span style="color:#ae81ff">7</span>)))    <span style="color:#75715e"># [0, 2, 4, 6]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Can also be written as a generator expression:</span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> (x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>print(list(gen))   <span style="color:#75715e"># [0, 2, 4, 6, 8, 10]</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-4--infinite-generator--itertoolsislice">✅ Question 4 — Infinite Generator + <code>itertools.islice</code><a hidden class="anchor" aria-hidden="true" href="#-question-4--infinite-generator--itertoolsislice">#</a></h3>
+<p><strong>Q:</strong> Write a generator <code>powers_of_two()</code> that yields <code>1, 2, 4, 8, 16, ...</code> indefinitely. Then use <code>itertools.islice</code> to print the first 8 values.</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> itertools
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">powers_of_two</span>():
+</span></span><span style="display:flex;"><span>    value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> value
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> list(itertools<span style="color:#f92672">.</span>islice(powers_of_two(), <span style="color:#ae81ff">8</span>))
+</span></span><span style="display:flex;"><span>print(result)   <span style="color:#75715e"># [1, 2, 4, 8, 16, 32, 64, 128]</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-5--yield-from">✅ Question 5 — <code>yield from</code><a hidden class="anchor" aria-hidden="true" href="#-question-5--yield-from">#</a></h3>
+<p><strong>Q:</strong> Write a generator <code>chain_iterables(*iterables)</code> that yields all items from multiple iterables one after another (similar to <code>itertools.chain</code>).</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">chain_iterables</span>(<span style="color:#f92672">*</span>iterables):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> it <span style="color:#f92672">in</span> iterables:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield from</span> it
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> list(chain_iterables([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>), <span style="color:#e6db74">&#34;56&#34;</span>))
+</span></span><span style="display:flex;"><span>print(result)   <span style="color:#75715e"># [1, 2, 3, 4, &#39;5&#39;, &#39;6&#39;]</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-6--memory-efficiency">✅ Question 6 — Memory Efficiency<a hidden class="anchor" aria-hidden="true" href="#-question-6--memory-efficiency">#</a></h3>
+<p><strong>Q:</strong> You have a list of 10 million numbers. Using a generator, compute the sum of squares of all even numbers. Explain why this is more memory efficient.</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10_000_000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List approach — creates 3 large lists in memory</span>
+</span></span><span style="display:flex;"><span>even_list   <span style="color:#f92672">=</span> [x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(n) <span style="color:#66d9ef">if</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>squares_list <span style="color:#f92672">=</span> [x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> even_list]
+</span></span><span style="display:flex;"><span>result_list  <span style="color:#f92672">=</span> sum(squares_list)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator approach — processes one number at a time</span>
+</span></span><span style="display:flex;"><span>result_gen <span style="color:#f92672">=</span> sum(x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(n) <span style="color:#66d9ef">if</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Both give the same result:</span>
+</span></span><span style="display:flex;"><span>print(result_list <span style="color:#f92672">==</span> result_gen)   <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Memory comparison:</span>
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>getsizeof(even_list))    <span style="color:#75715e"># ~40 MB</span>
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>getsizeof(
+</span></span><span style="display:flex;"><span>    (x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(n) <span style="color:#66d9ef">if</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>))                                 <span style="color:#75715e"># ~104 bytes (generator object only)</span>
+</span></span></code></pre></div><p>The generator is more memory efficient because it <strong>never stores the intermediate lists</strong>. It computes each value on demand and immediately passes it to <code>sum()</code>. The generator object itself is a tiny state machine (~104 bytes), regardless of how large <code>n</code> is.</p>
+<hr>
+<h3 id="-question-7--tricky-exhaustion">✅ Question 7 — Tricky Exhaustion<a hidden class="anchor" aria-hidden="true" href="#-question-7--tricky-exhaustion">#</a></h3>
+<p><strong>Q:</strong> What is the output of the following code? Explain why.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> (x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>))
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> list(gen)
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> list(gen)
+</span></span><span style="display:flex;"><span>print(a, b)
+</span></span></code></pre></div><p><strong>A:</strong></p>
+<pre tabindex="0"><code>[0, 1, 2, 3, 4] []
+</code></pre><p><code>list(gen)</code> the first time exhausts the generator completely. Calling <code>list(gen)</code> a second time returns an empty list because the generator is already at <code>StopIteration</code> and there is no way to reset it. To get two copies, you need to call the generator function twice or convert to a list once and reuse it.</p>
+<hr>
+<h3 id="-question-8--pipeline-design">✅ Question 8 — Pipeline Design<a hidden class="anchor" aria-hidden="true" href="#-question-8--pipeline-design">#</a></h3>
+<p><strong>Q:</strong> Write a generator pipeline to:</p>
+<ol>
+<li>Take a list of strings</li>
+<li>Strip whitespace</li>
+<li>Convert to uppercase</li>
+<li>Keep only strings longer than 3 characters</li>
+<li>Collect results</li>
+</ol>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">strip_strings</span>(strings):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> strings:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> s<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_uppercase</span>(strings):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> strings:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> s<span style="color:#f92672">.</span>upper()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter_by_length</span>(strings, min_len):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> strings:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(s) <span style="color:#f92672">&gt;</span> min_len:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>raw <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;  hello &#34;</span>, <span style="color:#e6db74">&#34; hi &#34;</span>, <span style="color:#e6db74">&#34; python &#34;</span>, <span style="color:#e6db74">&#34;  ok  &#34;</span>, <span style="color:#e6db74">&#34; world  &#34;</span>, <span style="color:#e6db74">&#34; go  &#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipeline <span style="color:#f92672">=</span> filter_by_length(
+</span></span><span style="display:flex;"><span>               to_uppercase(
+</span></span><span style="display:flex;"><span>                   strip_strings(raw)
+</span></span><span style="display:flex;"><span>               ),
+</span></span><span style="display:flex;"><span>               min_len<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>           )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> list(pipeline)
+</span></span><span style="display:flex;"><span>print(result)   <span style="color:#75715e"># [&#39;HELLO&#39;, &#39;PYTHON&#39;, &#39;WORLD&#39;]</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-9--send-coroutine">✅ Question 9 — <code>send()</code> Coroutine<a hidden class="anchor" aria-hidden="true" href="#-question-9--send-coroutine">#</a></h3>
+<p><strong>Q:</strong> Write a generator function <code>running_average()</code> that receives numbers via <code>send()</code> and yields the current running average after each number.</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">running_average</span>():
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    avg   <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> avg
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">+=</span> value
+</span></span><span style="display:flex;"><span>        count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        avg <span style="color:#f92672">=</span> total <span style="color:#f92672">/</span> count
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gen <span style="color:#f92672">=</span> running_average()
+</span></span><span style="display:flex;"><span>next(gen)   <span style="color:#75715e"># prime the generator</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>))    <span style="color:#75715e"># 10.0</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">20</span>))    <span style="color:#75715e"># 15.0</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">30</span>))    <span style="color:#75715e"># 20.0</span>
+</span></span><span style="display:flex;"><span>print(gen<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">40</span>))    <span style="color:#75715e"># 25.0</span>
+</span></span></code></pre></div><hr>
+<h3 id="-question-10--real-world-chunked-file-processing">✅ Question 10 — Real World: Chunked File Processing<a hidden class="anchor" aria-hidden="true" href="#-question-10--real-world-chunked-file-processing">#</a></h3>
+<p><strong>Q:</strong> Write a generator that reads a file and yields it in chunks of <code>n</code> lines (useful for batch-processing large files).</p>
+<p><strong>A:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_in_chunks</span>(filepath, chunk_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Yield lists of `chunk_size` lines from a large file.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    chunk <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filepath, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> f:
+</span></span><span style="display:flex;"><span>            chunk<span style="color:#f92672">.</span>append(line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(chunk) <span style="color:#f92672">==</span> chunk_size:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield</span> chunk
+</span></span><span style="display:flex;"><span>                chunk <span style="color:#f92672">=</span> []          <span style="color:#75715e"># reset for next chunk</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> chunk:                        <span style="color:#75715e"># yield remaining lines</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> chunk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for batch in read_in_chunks(&#39;server_logs.txt&#39;, chunk_size=500):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     process_batch(batch)           # handle 500 lines at a time</span>
+</span></span></code></pre></div><hr>
+<h2 id="quick-reference-cheat-sheet">Quick Reference Cheat Sheet<a hidden class="anchor" aria-hidden="true" href="#quick-reference-cheat-sheet">#</a></h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────────────┐
+│                     QUICK REFERENCE                                 │
+├──────────────────────┬──────────────────────────────────────────────┤
+│ CONCEPT              │ SUMMARY                                      │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ Iterable             │ Has __iter__() → returns iterator            │
+│                      │ Examples: list, str, dict, set, range        │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ Iterator             │ Has __iter__() + __next__()                  │
+│                      │ Stateful, single-pass, raises StopIteration  │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ Generator Function   │ def f(): yield x  → returns generator object │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ Generator Expression │ (x for x in iterable if condition)          │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ yield                │ Pauses function, returns value, resumes next │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ yield from           │ Delegates to a sub-iterator/generator        │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ send(val)            │ Sends value INTO a generator (coroutine)     │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ close()              │ Throws GeneratorExit into generator          │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ throw(exc)           │ Injects an exception into the generator      │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ iter(obj)            │ Calls obj.__iter__()                         │
+├──────────────────────┼──────────────────────────────────────────────┤
+│ next(it)             │ Calls it.__next__(), returns next value      │
+└──────────────────────┴──────────────────────────────────────────────┘
+
+WHEN TO USE WHAT
+─────────────────
+Use a LIST when:
+  • You need to access elements by index
+  • You need to iterate multiple times
+  • The dataset fits comfortably in memory
+
+Use an ITERATOR when:
+  • You need custom traversal logic
+  • You want to model a stateful sequence as a class
+
+Use a GENERATOR when:
+  • Processing large/infinite data streams
+  • Building lazy pipelines
+  • Memory efficiency matters
+  • Implementing coroutines with send()
+
+Use a GENERATOR EXPRESSION when:
+  • Feeding data into sum(), max(), min(), list(), etc.
+  • Simple filtering/mapping inline
+</code></pre><hr>
+<p><em>End of Lesson — Iterables, Iterators &amp; Generators</em>
+<em>Codeverra — codeverra.com</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">codeverra</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
