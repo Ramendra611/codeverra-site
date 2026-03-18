@@ -17,7 +17,7 @@ tags:
   - pandas
 
 cover:
-  image: "/images//pandas_ipl.png"
+  image: "/images/pandas_ipl.png"
   alt: "pandas practice on IPL dataset"
   caption: "pandas practice"
   relative: true

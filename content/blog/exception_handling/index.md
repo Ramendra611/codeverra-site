@@ -13,7 +13,7 @@ tags:
   - python
 
 cover:
-  image: "/images//exception handling in python.png"
+  image: "/images/exception handling in python.png"
   alt: "Exception handling in python"
   caption: "exception handling in python"
   relative: true
