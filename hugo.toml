@@ -1,4 +1,4 @@
-baseURL = "https://codeverra.com/"
+baseURL = "https://codeverra.com/blog/"
 relativeURLs = true
 canonifyURLs = true
 languageCode = "en-us"
