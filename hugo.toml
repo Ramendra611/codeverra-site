@@ -1,4 +1,4 @@
-baseURL = "https://codeverra.com/"
+baseURL = "https://codeverra.com/blog/"
 relativeURLs = true
 canonifyURLs = true
 languageCode = "en-us"
@@ -36,12 +36,12 @@ enableGitInfo = false
 
 [[menu.main]]
   name = "Home"
-  url = "/"
+  url = "https://codeverra.com/"
   weight = 1
 
 [[menu.main]]
   name = "Courses"
-  url = "/courses/"
+  url = "https://codeverra.com/s/store"
   weight = 2
 
 [[menu.main]]
