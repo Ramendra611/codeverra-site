@@ -1,6 +1,6 @@
 ---
 title: "Master Collections in Python"
-description: "Complete practice session on colletions in python"
+description: "Complete practice session on collections in python"
 
 date: 2026-03-18
 lastmod: 2026-03-18
@@ -27,7 +27,7 @@ cover:
 
 ---
 
-> This practice set covers all four major Python collections.
+> This practice set covers strings and all four major Python collections.
 > Questions are grouped by collection type, then by difficulty within each section.
 > The final section has mixed questions that combine multiple collections, loops, and conditionals.
 > Try each question before reading the solution.
@@ -37,10 +37,11 @@ cover:
 ## Table of Contents
 
 - [Part 1 -- Lists](#part-1--lists)
-- [Part 2 -- Tuples](#part-2--tuples)
-- [Part 3 -- Dictionaries](#part-3--dictionaries)
-- [Part 4 -- Sets](#part-4--sets)
-- [Part 5 -- Mixed Questions](#part-5--mixed-questions)
+- [Part 2 -- Strings](#part-2--strings)
+- [Part 3 -- Tuples](#part-3--tuples)
+- [Part 4 -- Dictionaries](#part-4--dictionaries)
+- [Part 5 -- Sets](#part-5--sets)
+- [Part 6 -- Mixed Questions](#part-6--mixed-questions)
 - [Quick Reference](#quick-reference)
 
 ---
@@ -282,7 +283,175 @@ print(chunk(data, 4))
 
 ---
 
-## Part 2 -- Tuples
+## Part 2 -- Strings
+
+A string is an **ordered, immutable** sequence of characters. Like a tuple, you can index and slice it, but you cannot change individual characters in place. Python has a rich set of built-in string methods for searching, formatting, and transforming text.
+
+---
+
+### ST1 -- Basic Indexing and Slicing
+
+Given the string below, write code to:
+- Print the first character
+- Print the last character
+- Print characters from index 8 to 13
+- Print the string in reverse
+- Print the length of the string
+
+```python
+message = "Welcome to Python"
+```
+
+**Expected Output:**
+```
+First    : W
+Last     : n
+Slice    : to Py
+Reversed : nohtyP ot emocleW
+Length   : 17
+```
+
+**Solution:**
+
+```python
+message = "Welcome to Python"
+
+print("First    :", message[0])
+print("Last     :", message[-1])
+print("Slice    :", message[8:13])
+print("Reversed :", message[::-1])
+print("Length   :", len(message))
+```
+
+---
+
+### ST2 -- String Methods
+
+Start with the string below and apply the following operations. Print the result after each step.
+- Convert to uppercase
+- Convert to lowercase
+- Strip the extra whitespace from both ends
+- Replace "Python" with "Coding"
+- Split the sentence into a list of words
+
+```python
+text = "   Learning Python is Fun   "
+```
+
+**Solution:**
+
+```python
+text = "   Learning Python is Fun   "
+
+print(text.upper())
+print(text.lower())
+print(text.strip())
+print(text.strip().replace("Python", "Coding"))
+print(text.strip().split())
+```
+
+---
+
+### ST3 -- String Checking Methods
+
+Given the strings below, use appropriate string methods to answer each question.
+
+```python
+word1    = "Python3"
+word2    = "codeverra"
+word3    = "  "
+sentence = "Learning Python is fun"
+```
+
+- Is `word1` made of only alphabets?
+- Is `word1` alphanumeric?
+- Does `word2` start with `"code"`?
+- Does `sentence` end with `"fun"`?
+- Is `"Python"` present in `sentence`?
+- Is `word3` blank (only whitespace)?
+
+**Solution:**
+
+```python
+word1    = "Python3"
+word2    = "codeverra"
+word3    = "  "
+sentence = "Learning Python is fun"
+
+print(word1.isalpha())            # False -- contains a digit
+print(word1.isalnum())            # True
+print(word2.startswith("code"))   # True
+print(sentence.endswith("fun"))   # True
+print("Python" in sentence)       # True
+print(word3.strip() == "")        # True
+```
+
+---
+
+### ST4 -- Palindrome Checker
+
+Write a function `is_palindrome(text)` that returns `True` if the text reads the same forwards and backwards. Ignore spaces and case.
+
+```python
+is_palindrome("racecar")                        # True
+is_palindrome("A man a plan a canal Panama")    # True
+is_palindrome("hello")                          # False
+is_palindrome("Madam")                          # True
+```
+
+**Solution:**
+
+```python
+def is_palindrome(text):
+    cleaned = text.replace(" ", "").lower()
+    return cleaned == cleaned[::-1]
+
+print(is_palindrome("racecar"))                      # True
+print(is_palindrome("A man a plan a canal Panama"))  # True
+print(is_palindrome("hello"))                        # False
+print(is_palindrome("Madam"))                        # True
+```
+
+---
+
+### ST5 -- Count Vowels and Consonants
+
+Write a function `count_letters(text)` that counts vowels and consonants in a string. Ignore spaces, digits, and punctuation.
+
+```python
+text = "Learning Python at Codeverra is Amazing"
+```
+
+**Expected Output:**
+```
+Vowels     : 13
+Consonants : 21
+```
+
+**Solution:**
+
+```python
+def count_letters(text):
+    vowels  = "aeiouAEIOU"
+    v_count = 0
+    c_count = 0
+    for char in text:
+        if char.isalpha():
+            if char in vowels:
+                v_count += 1
+            else:
+                c_count += 1
+    return v_count, c_count
+
+text = "Learning Python at Codeverra is Amazing"
+vowels, consonants = count_letters(text)
+print(f"Vowels     : {vowels}")
+print(f"Consonants : {consonants}")
+```
+
+---
+
+## Part 3 -- Tuples
 
 A tuple is an **ordered, immutable** collection. Once created, its values cannot be changed. Tuples are used for fixed data, function return values, and dictionary keys.
 
@@ -462,7 +631,7 @@ print(swapped)
 
 ---
 
-## Part 3 -- Dictionaries
+## Part 4 -- Dictionaries
 
 A dictionary is an **ordered (Python 3.7+), mutable** collection of key-value pairs. Keys must be unique and immutable. Dictionaries are optimised for fast lookup by key.
 
@@ -711,7 +880,7 @@ for word, count in sorted_freq[:3]:
 
 ---
 
-## Part 4 -- Sets
+## Part 5 -- Sets
 
 A set is an **unordered, mutable** collection of **unique** elements. It has no duplicates and no index. Sets shine when you need fast membership checks or mathematical set operations.
 
@@ -876,7 +1045,7 @@ print(course_levels[search])    # Python 101
 
 ---
 
-## Part 5 -- Mixed Questions
+## Part 6 -- Mixed Questions
 
 These questions combine multiple collections with loops, conditionals, and comprehensions.
 
@@ -897,7 +1066,6 @@ scores = [88, 45, 72, 95, 60, 55, 83, 91, 38, 74, 66, 49, 87, 100, 52]
 Distinction (>=85) : 4
 First Class (>=60) : 5
 Pass        (>=40) : 4
-Fail        (<40)  : 1
 Fail        (<40)  : 1
 ```
 
@@ -1362,6 +1530,28 @@ print("=" * 65)
 
 ## Quick Reference
 
+### String
+```python
+s = "hello"
+s[0]                    # index
+s[1:4]                  # slice
+s[::-1]                 # reverse
+len(s)                  # length
+s.upper()               # uppercase
+s.lower()               # lowercase
+s.strip()               # remove leading/trailing whitespace
+s.replace("l", "r")     # replace occurrences
+s.split(" ")            # split into list
+" ".join(["a", "b"])    # join list into string
+s.startswith("he")      # check prefix
+s.endswith("lo")        # check suffix
+s.count("l")            # count occurrences
+"l" in s                # membership check
+s.isalpha()             # all letters?
+s.isdigit()             # all digits?
+s.isalnum()             # all letters or digits?
+```
+
 ### List
 ```python
 lst = [1, 2, 3]
@@ -1425,6 +1615,7 @@ frozenset(s)            # immutable version
 
 | Collection | Use when |
 |---|---|
+| String | Text data, characters, immutable sequences |
 | List | Order matters, duplicates allowed, items change |
 | Tuple | Fixed data, function return values, dict keys |
 | Dictionary | Fast lookup by key, key-value relationships |
