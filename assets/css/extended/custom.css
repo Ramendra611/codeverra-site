@@ -882,6 +882,8 @@ About Page
   align-self: flex-start;
   padding-right: 2rem;
   border-right: 2px solid var(--border);
+  max-height: calc(100vh - var(--header-height) - 3rem);
+  overflow-y: auto;
 }
 
 .blog-main-content {
