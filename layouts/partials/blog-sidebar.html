@@ -39,4 +39,17 @@
   </div>
   {{- end }}
 
+  {{/* SQL posts */}}
+  {{- $sql := where site.RegularPages "Params.tags" "intersect" (slice "sql") | first 5 }}
+  {{- with $sql }}
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">SQL</h3>
+    <ul class="sidebar-links">
+      {{- range . }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
 </aside>
