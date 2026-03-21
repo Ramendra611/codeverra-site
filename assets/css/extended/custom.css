@@ -803,3 +803,251 @@ About Page
 .toc details summary {
   cursor: pointer;
 }
+
+/* =========================================================
+   BLOG TOPIC FILTER (blog list + tag pages)
+   ========================================================= */
+
+.blog-topic-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.topic-pill {
+  font-size: 0.85rem;
+  padding: 5px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--secondary);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.topic-pill:hover,
+.topic-pill--active {
+  background: var(--color-accent-primary);
+  color: #fff;
+  border-color: var(--color-accent-primary);
+}
+
+/* =========================================================
+   COLLAPSIBLE SECTIONS (blog posts)
+   ========================================================= */
+
+.section-collapse-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+#section-collapse-btn {
+  font-size: 0.78rem;
+  padding: 3px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+#section-collapse-btn:hover {
+  background: var(--tertiary);
+  color: var(--primary);
+}
+
+/* =========================================================
+   NAV INLINE SEARCH
+   ========================================================= */
+
+/* Trigger button inside #menu */
+.nav-search-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-search-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  color: var(--primary);
+  font-size: 16px;
+  opacity: 0.85;
+  line-height: 1;
+}
+
+.nav-search-toggle:hover {
+  opacity: 1;
+}
+
+/* Search bar — sits inside .nav but outside #menu to avoid overflow clipping */
+.nav-search-bar {
+  position: relative;
+  display: none;
+  align-items: center;
+  margin: auto var(--gap) auto 0;
+}
+
+.nav-search-bar.open {
+  display: flex;
+}
+
+#nav-search-inp {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--entry);
+  color: var(--primary);
+  padding: 5px 12px;
+  font-size: 0.875rem;
+  outline: none;
+  width: 220px;
+}
+
+#nav-search-inp:focus {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
+}
+
+/* ── Dropdown panel ───────────────────────────────────── */
+
+#nav-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 360px;
+  max-height: 72vh;
+  overflow-y: auto;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  padding: 0.5rem;
+  line-height: normal;
+}
+
+.nsd-section {
+  padding: 0.4rem 0.25rem 0.5rem;
+}
+
+.nsd-section + .nsd-section {
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+  padding-top: 0.65rem;
+}
+
+.nsd-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  padding: 0 0.3rem;
+}
+
+/* Tags */
+.nsd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 0.3rem;
+}
+
+.nsd-tag {
+  font-size: 0.78rem;
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.nsd-tag:hover {
+  background: var(--color-accent-primary);
+  color: #fff;
+  border-color: var(--color-accent-primary);
+}
+
+/* Post results */
+.nsd-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nsd-post {
+  display: block;
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.1s;
+}
+
+.nsd-post:hover,
+.nsd-post--active {
+  background: color-mix(in srgb, var(--color-accent-primary) 12%, transparent);
+}
+
+.nsd-post-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.35;
+}
+
+.nsd-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.nsd-post-tags span {
+  font-size: 0.68rem;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+
+.nsd-empty,
+.nsd-loading {
+  padding: 1.1rem 0.75rem;
+  color: var(--secondary);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* =========================================================
+   Per-section toggle arrow on H2 headings */
+.post-content h2 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-toggle-arrow {
+  font-size: 0.9em;
+  opacity: 0.5;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  transition: opacity 0.15s;
+  user-select: none;
+  cursor: pointer;
+}
+
+.post-content h2:hover .section-toggle-arrow {
+  opacity: 1;
+}

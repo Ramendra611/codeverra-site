@@ -213,6 +213,9 @@
 
 {{- partial "extend_head.html" . -}}
 
+{{- /* Nav inline search */}}
+<script defer src="/js/nav-search.js"></script>
+
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{- partial "google_analytics.html" . }}
