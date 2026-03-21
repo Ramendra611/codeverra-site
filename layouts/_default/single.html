@@ -45,11 +45,77 @@
   {{- end }}
 
   {{- if .Content }}
+  <div class="section-collapse-bar">
+    <button id="section-collapse-btn" onclick="toggleSections()">Collapse All</button>
+  </div>
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
   </div>
+  <script>
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.post-content');
+      var bar = document.querySelector('.section-collapse-bar');
+      if (!content || !bar) return;
+
+      var h2s = Array.from(content.querySelectorAll('h2'));
+      if (h2s.length === 0) { bar.style.display = 'none'; return; }
+
+      // Wrap content between each h2 in a collapsible div and add toggle arrow
+      h2s.forEach(function (h2) {
+        // Add arrow indicator
+        var arrow = document.createElement('span');
+        arrow.className = 'section-toggle-arrow';
+        arrow.textContent = '▾';
+        arrow.setAttribute('aria-label', 'Toggle section');
+        h2.appendChild(arrow);
+
+        var wrapper = document.createElement('div');
+        wrapper.className = 'collapsible-body';
+        var node = h2.nextSibling;
+        while (node) {
+          if (node.nodeType === 1 && node.tagName === 'H2') break;
+          var next = node.nextSibling;
+          wrapper.appendChild(node);
+          node = next;
+        }
+        h2.insertAdjacentElement('afterend', wrapper);
+
+        // Per-section toggle on arrow click
+        arrow.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isHidden = wrapper.hidden;
+          wrapper.hidden = !isHidden;
+          arrow.textContent = wrapper.hidden ? '▸' : '▾';
+          // Update "Collapse All" button state if all are now same
+          syncCollapseBtn();
+        });
+      });
+    });
+
+    function syncCollapseBtn() {
+      var bodies = document.querySelectorAll('.collapsible-body');
+      var btn = document.getElementById('section-collapse-btn');
+      if (!btn || bodies.length === 0) return;
+      var allHidden = Array.from(bodies).every(function (b) { return b.hidden; });
+      collapsed = allHidden;
+      btn.textContent = allHidden ? 'Expand All' : 'Collapse All';
+    }
+
+    var collapsed = false;
+    window.toggleSections = function () {
+      var bodies = document.querySelectorAll('.collapsible-body');
+      var arrows = document.querySelectorAll('.section-toggle-arrow');
+      var btn = document.getElementById('section-collapse-btn');
+      collapsed = !collapsed;
+      bodies.forEach(function (b) { b.hidden = collapsed; });
+      arrows.forEach(function (a) { a.textContent = collapsed ? '▸' : '▾'; });
+      btn.textContent = collapsed ? 'Expand All' : 'Collapse All';
+    };
+  })();
+  </script>
   {{- end }}
 
   <footer class="post-footer">

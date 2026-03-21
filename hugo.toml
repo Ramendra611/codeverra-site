@@ -7,6 +7,12 @@ theme = "PaperMod"
 
 enableRobotsTXT = true
 
+[pagination]
+  pagerSize = 9
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
   author = "Ram"
   description = "Learn about learning Python, DSA, Machine Learning, and AI with clarity."
@@ -53,6 +59,7 @@ enableGitInfo = false
   name = "Blog"
   url = "/blog/"
   weight = 4
+
 
 [markup]
   [markup.goldmark]

@@ -46,6 +46,27 @@
 </div>
 {{- end }}
 
+{{- /* Topic filter — shown on blog section and tag pages, not home */}}
+{{- if not .IsHome }}
+{{- $minPosts := 2 }}
+{{- $hasEnoughTags := false }}
+{{- range site.Taxonomies.tags.ByCount }}{{- if ge (len .Pages) $minPosts }}{{- $hasEnoughTags = true }}{{- end }}{{- end }}
+{{- if $hasEnoughTags }}
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="{{ "/blog/" | relURL }}"
+     class="topic-pill{{- if not .Data.Term }} topic-pill--active{{- end }}">All</a>
+  {{- range site.Taxonomies.tags.ByCount }}
+  {{- if ge (len .Pages) $minPosts }}
+  <a href="{{ .Page.RelPermalink }}"
+     class="topic-pill{{- if eq $.Data.Term .Name }} topic-pill--active{{- end }}">
+    {{- .Name | title -}}
+  </a>
+  {{- end }}
+  {{- end }}
+</nav>
+{{- end }}
+{{- end }}
+
 {{- $pages := union .RegularPages .Sections }}
 
 {{- if .IsHome }}
