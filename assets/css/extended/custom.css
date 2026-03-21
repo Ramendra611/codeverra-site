@@ -60,6 +60,11 @@ h4 {
   max-width: 1200px;
 }
 
+/* Blog list page gets more breathing room for sidebar + 3-col grid */
+body.list .main {
+  max-width: 1440px;
+}
+
 /* =========================================================
    3. BLOG LIST PAGE (GRID)
    ========================================================= */
@@ -860,6 +865,108 @@ About Page
 }
 
 /* =========================================================
+   BLOG SIDEBAR
+   ========================================================= */
+
+.blog-with-sidebar {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.blog-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+  align-self: flex-start;
+  padding-right: 2rem;
+  border-right: 2px solid var(--border);
+}
+
+.blog-main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 1.75rem;
+}
+
+.sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0 0 0.6rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-links a {
+  font-size: 0.82rem;
+  color: var(--primary);
+  text-decoration: none;
+  opacity: 0.65;
+  line-height: 1.4;
+  display: block;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.sidebar-links a:hover {
+  opacity: 1;
+  color: var(--color-accent-primary);
+}
+
+@media (max-width: 600px) {
+  #nav-search-inp {
+    width: 140px;
+  }
+
+  #nav-search-dropdown {
+    position: fixed;
+    top: auto;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .blog-with-sidebar {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    width: 100%;
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .sidebar-section {
+    flex: 1;
+    min-width: 160px;
+    margin-bottom: 0;
+  }
+}
+
+/* =========================================================
    NAV INLINE SEARCH
    ========================================================= */
 
@@ -887,12 +994,22 @@ About Page
   opacity: 1;
 }
 
-/* Search bar — sits inside .nav but outside #menu to avoid overflow clipping */
-.nav-search-bar {
+/* Search bar — absolutely positioned so it overlays the nav without causing layout shift */
+.nav {
   position: relative;
+}
+
+.nav-search-bar {
+  position: absolute;
+  right: var(--gap);
+  top: 50%;
+  transform: translateY(-50%);
   display: none;
   align-items: center;
-  margin: auto var(--gap) auto 0;
+  line-height: normal;
+  background: var(--theme);
+  padding-left: 1rem;
+  z-index: 100;
 }
 
 .nav-search-bar.open {
@@ -904,10 +1021,13 @@ About Page
   border-radius: 6px;
   background: var(--entry);
   color: var(--primary);
-  padding: 5px 12px;
+  padding: 0 10px;
   font-size: 0.875rem;
   outline: none;
-  width: 220px;
+  width: 200px;
+  height: 34px;
+  line-height: normal;
+  box-sizing: border-box;
 }
 
 #nav-search-inp:focus {
