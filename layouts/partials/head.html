@@ -46,7 +46,6 @@
 
 
 
-
 {{- /* Styles */}}
 
 {{- /* includes */}}
@@ -74,9 +73,12 @@
 {{- $core := (slice $theme_vars $reset $common $chroma_styles $chroma_mod $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
 {{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
 
+{{- /* GitHub-like markdown styling (matches GitHub's .markdown-body look) */}}
+{{- $github_markdown := (resources.Get "css/github-markdown.css") | resources.Minify }}
+
 {{- /* bundle all required css */}}
 {{- /* Add extended css after theme style */ -}}
-{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css"  }}
+{{- $stylesheet := (slice $license_css $core $extended $github_markdown) | resources.Concat "assets/css/stylesheet.css"  }}
 
 {{- if not site.Params.assets.disableFingerprinting }}
 {{- $stylesheet := $stylesheet | fingerprint }}
@@ -84,6 +86,10 @@
 {{- else }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
+
+{{- /* Load GitHub markdown styling after the theme bundle so it wins */ -}}
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/github-markdown-post-content.css">
 
 {{- /* Search */}}
 {{- if (eq .Layout `search`) -}}
