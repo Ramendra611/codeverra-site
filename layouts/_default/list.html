@@ -67,6 +67,13 @@
 {{- end }}
 {{- end }}
 
+{{- $isBlogSection := and (eq .Kind "section") (eq .Section "blog") }}
+{{- if $isBlogSection }}
+<div class="blog-with-sidebar">
+{{ partial "blog-sidebar.html" . }}
+<div class="blog-main-content">
+{{- end }}
+
 {{- $pages := union .RegularPages .Sections }}
 
 {{- if .IsHome }}
@@ -192,6 +199,11 @@
         {{- end }}
     </nav>
 </footer>
+{{- end }}
+
+{{- if $isBlogSection }}
+</div>{{/* end .blog-main-content */}}
+</div>{{/* end .blog-with-sidebar */}}
 {{- end }}
 
 {{- end }}{{/* end profileMode */}}

@@ -1,0 +1,42 @@
+<aside class="blog-sidebar">
+
+  {{/* Recent posts */}}
+  {{- $recent := where site.RegularPages "Section" "blog" | first 6 }}
+  {{- with $recent }}
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Recent</h3>
+    <ul class="sidebar-links">
+      {{- range . }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+  {{/* Python posts */}}
+  {{- $python := where site.RegularPages "Params.tags" "intersect" (slice "python") | first 5 }}
+  {{- with $python }}
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Python</h3>
+    <ul class="sidebar-links">
+      {{- range . }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+  {{/* DSA posts */}}
+  {{- $dsa := where site.RegularPages "Params.tags" "intersect" (slice "dsa") | first 5 }}
+  {{- with $dsa }}
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">DSA</h3>
+    <ul class="sidebar-links">
+      {{- range . }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+</aside>
