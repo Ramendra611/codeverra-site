@@ -16,9 +16,28 @@
   --color-border-subtle: rgba(255, 255, 255, 0.06);
 }
 
-/* Map to theme */
-:root {
-  --entry: var(--color-bg-card);
+/* GitHub Light */
+:root[data-theme="light"] {
+  --color-bg-card: #f6f8fa;
+  --color-text-primary: #24292f;
+  --color-text-secondary: #57606a;
+  --color-border-subtle: #d0d7de;
+}
+
+/* GitHub Dark */
+:root[data-theme="dark"] {
+  --theme: #0d1117;
+  --entry: #161b22;
+  --primary: #c9d1d9;
+  --secondary: #8b949e;
+  --border: #30363d;
+  --code-block-bg: #161b22;
+  --code-bg: #161b22;
+
+  --color-bg-card: #161b22;
+  --color-text-primary: #c9d1d9;
+  --color-text-secondary: #8b949e;
+  --color-border-subtle: #30363d;
 }
 
 /* =========================================================
@@ -82,7 +101,7 @@ body.list .first-entry {
 
 .post-content a {
   border-bottom: none !important;
-  box-shadow: 0 0px;
+  /* box-shadow restored so PaperMod's underline indicator shows */
 }
 
 /* .page-about .post-content a {
@@ -113,8 +132,9 @@ body.list .first-entry {
 }
 
 .entry-tags a:hover {
-  background: var(--tertiary);
-  color: var(--primary);
+  background: var(--color-accent-primary);
+  color: #fff;
+  border-color: var(--color-accent-primary);
 }
 
 /* =========================================================
@@ -305,7 +325,11 @@ header,
 }
 
 .nav a {
-  opacity: 0.75;
+  opacity: 0.85;
+}
+
+.nav a:hover {
+  opacity: 1;
 }
 
 
@@ -755,4 +779,27 @@ About Page
   margin-top: 0.75rem;
   font-weight: 600;
   color: var(--color-accent-success);
+}
+
+/* =========================================================
+   READABILITY IMPROVEMENTS
+   ========================================================= */
+
+/* Inline code — bump from 0.78em to 0.875em (~14px) for comfort */
+.post-content code {
+  font-size: 0.875em;
+}
+
+/* Body line-height — 1.65 is more comfortable for long-form reading */
+.post-content {
+  line-height: 1.65;
+}
+
+/* TOC — remove pointless opacity fade and use pointer cursor */
+.toc .inner {
+  opacity: 1;
+}
+
+.toc details summary {
+  cursor: pointer;
 }
