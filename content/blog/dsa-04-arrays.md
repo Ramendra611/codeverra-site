@@ -1,13 +1,13 @@
 ---
-title: "Arrays in Python — Complete Guide"
-description: "Everything you need to know about arrays and lists in Python for DSA — operations, patterns, and common problems."
+title: "Arrays in Python - Complete Guide"
+description: "Everything you need to know about arrays and lists in Python for DSA - operations, patterns, and common problems."
 date: 2026-03-21
 author: "codeverra"
 toc: true
 tocopen: false
 draft: false
 tags:
-  - dsa
+ - dsa
 ---
 
 # Arrays
@@ -20,18 +20,18 @@ tags:
 - [How Data is Stored in Computer Memory](#how-data-is-stored-in-computer-memory)
 - [What is an Array](#what-is-an-array)
 - [Arrays in Python](#arrays-in-python)
-  - [Python Lists](#python-lists)
-  - [The array Module](#the-array-module)
-  - [NumPy Arrays](#numpy-arrays)
-  - [Comparison of the Three](#comparison-of-the-three)
+ - [Python Lists](#python-lists)
+ - [The array Module](#the-array-module)
+ - [NumPy Arrays](#numpy-arrays)
+ - [Comparison of the Three](#comparison-of-the-three)
 - [Referential Arrays vs Value Arrays](#referential-arrays-vs-value-arrays)
-- [Dynamic Arrays -- How Python Lists Grow](#dynamic-arrays----how-python-lists-grow)
+- [Dynamic Arrays - How Python Lists Grow](#dynamic-arrays----how-python-lists-grow)
 - [Time and Space Complexity of Array Operations](#time-and-space-complexity-of-array-operations)
 - [Two-Dimensional Arrays](#two-dimensional-arrays)
 - [Patterns and Techniques](#patterns-and-techniques)
-  - [Pattern 1 -- Two Pointers](#pattern-1----two-pointers)
-  - [Pattern 2 -- Sliding Window](#pattern-2----sliding-window)
-  - [Pattern 3 -- Prefix Sum](#pattern-3----prefix-sum)
+ - [Pattern 1 - Two Pointers](#pattern-1----two-pointers)
+ - [Pattern 2 - Sliding Window](#pattern-2----sliding-window)
+ - [Pattern 3 - Prefix Sum](#pattern-3----prefix-sum)
 - [Summary](#summary)
 - [Key Takeaways](#key-takeaways)
 - [Practice Problems](#practice-problems)
@@ -43,7 +43,7 @@ tags:
 
 - How data is stored in computer memory and why it matters
 - What an array is and how it uses contiguous memory
-- How Python represents arrays -- lists, the array module, and NumPy
+- How Python represents arrays - lists, the array module, and NumPy
 - The difference between referential arrays and value arrays
 - How dynamic arrays work and how Python lists resize themselves
 - Time and space complexity of every common array operation
@@ -55,16 +55,16 @@ tags:
 
 ## How Data is Stored in Computer Memory
 
-Before we talk about arrays, we need to understand the environment arrays live in -- computer memory.
+Before we talk about arrays, we need to understand the environment arrays live in - computer memory.
 
 When your program runs, it gets access to RAM (Random Access Memory). You can think of RAM as a very long row of small storage boxes. Each box:
 
 - Holds exactly one byte (8 bits) of data
-- Has a unique address -- a number that identifies its position
+- Has a unique address - a number that identifies its position
 
 ![Computer memory address diagram](https://media.geeksforgeeks.org/wp-content/uploads/20230921180741/Byte-Addressable-Memory.png)
 
-When you store a value, the computer places it at some address in memory. When you want to read it back, the computer goes directly to that address. This direct access by address is extremely fast -- it is O(1) regardless of how large the memory is or where in memory the value lives.
+When you store a value, the computer places it at some address in memory. When you want to read it back, the computer goes directly to that address. This direct access by address is extremely fast - it is O(1) regardless of how large the memory is or where in memory the value lives.
 
 Here is the key insight: **if you know the starting address and the size of each element, you can calculate the address of any element instantly using simple arithmetic.**
 
@@ -72,7 +72,7 @@ Here is the key insight: **if you know the starting address and the size of each
 address of element at index i = starting_address + (i * size_of_each_element)
 ```
 
-This formula is why arrays are so powerful. And it only works because of one critical requirement: the elements must be stored in a **contiguous block of memory** -- one right after the other, with no gaps.
+This formula is why arrays are so powerful. And it only works because of one critical requirement: the elements must be stored in a **contiguous block of memory** - one right after the other, with no gaps.
 
 ---
 
@@ -98,7 +98,7 @@ To access `arr[3]`, the computer calculates:
 ```
 address = 1000 + (3 * 4) = 1012
 ```
-It goes directly to address 1012 and reads the value. This is one arithmetic operation and one memory read -- **O(1) regardless of array size.** It does not scan from the beginning. It jumps straight there.
+It goes directly to address 1012 and reads the value. This is one arithmetic operation and one memory read - **O(1) regardless of array size.** It does not scan from the beginning. It jumps straight there.
 
 This is the fundamental reason array access by index is O(1), and it is one of the most important ideas in all of computer science.
 
@@ -110,32 +110,32 @@ Python gives you three ways to work with arrays, and they are quite different fr
 
 ### Python Lists
 
-Python's built-in list is what you will use for almost everything in this guide. It is a dynamic array -- it can grow and shrink as needed.
+Python's built-in list is what you will use for almost everything in this guide. It is a dynamic array - it can grow and shrink as needed.
 
 ```python
 # Creating a list
 nums = [10, 20, 30, 40, 50]
 
-# Accessing by index -- O(1)
-print(nums[0])   # 10
-print(nums[2])   # 30
-print(nums[-1])  # 50  (negative index counts from the end)
+# Accessing by index - O(1)
+print(nums[0]) # 10
+print(nums[2]) # 30
+print(nums[-1]) # 50 (negative index counts from the end)
 
-# Modifying an element -- O(1)
+# Modifying an element - O(1)
 nums[1] = 99
-print(nums)  # [10, 99, 30, 40, 50]
+print(nums) # [10, 99, 30, 40, 50]
 
-# Length -- O(1)
-print(len(nums))  # 5
+# Length - O(1)
+print(len(nums)) # 5
 ```
 
-Python lists are incredibly flexible but they come with an important caveat that we will cover shortly -- they do not store values directly. They store references to objects.
+Python lists are incredibly flexible but they come with an important caveat that we will cover shortly - they do not store values directly. They store references to objects.
 
 ---
 
 ### The array Module
 
-Python's built-in `array` module gives you a true value array -- it stores actual values of a fixed type, not references. This uses less memory than a list when you have large amounts of numeric data.
+Python's built-in `array` module gives you a true value array - it stores actual values of a fixed type, not references. This uses less memory than a list when you have large amounts of numeric data.
 
 ```python
 import array
@@ -143,17 +143,17 @@ import array
 # Create an array of signed integers ('i' is the type code for int)
 nums = array.array('i', [10, 20, 30, 40, 50])
 
-print(nums[0])   # 10
-print(nums[2])   # 30
+print(nums[0]) # 10
+print(nums[2]) # 30
 
 # Common type codes
-# 'i' -- signed int (4 bytes)
-# 'f' -- float (4 bytes)
-# 'd' -- double / float64 (8 bytes)
-# 'b' -- signed char / int8 (1 byte)
+# 'i' - signed int (4 bytes)
+# 'f' - float (4 bytes)
+# 'd' - double / float64 (8 bytes)
+# 'b' - signed char / int8 (1 byte)
 ```
 
-In DSA problems you will almost never need the `array` module -- Python lists are used universally. But it is worth knowing it exists and why it is different.
+In DSA problems you will almost never need the `array` module - Python lists are used universally. But it is worth knowing it exists and why it is different.
 
 ---
 
@@ -167,18 +167,18 @@ import numpy as np
 # Create a NumPy array
 nums = np.array([10, 20, 30, 40, 50])
 
-print(nums[0])    # 10
-print(nums.dtype) # int64  -- all elements are the same type
+print(nums[0]) # 10
+print(nums.dtype) # int64 - all elements are the same type
 
-# Vectorised operations -- applied to every element at once
-print(nums * 2)   # [20 40 60 80 100]
-print(nums + 10)  # [20 30 40 50 60]
+# Vectorised operations - applied to every element at once
+print(nums * 2) # [20 40 60 80 100]
+print(nums + 10) # [20 30 40 50 60]
 
 # 2D arrays (matrices)
 matrix = np.array([[1, 2, 3],
-                   [4, 5, 6],
-                   [7, 8, 9]])
-print(matrix[1][2])  # 6  -- row 1, column 2
+ [4, 5, 6],
+ [7, 8, 9]])
+print(matrix[1][2]) # 6 - row 1, column 2
 ```
 
 For DSA problems, NumPy is rarely needed. It matters more in data science and machine learning. We mention it here for completeness.
@@ -221,24 +221,24 @@ This has several consequences:
 
 ```python
 mixed = [42, "hello", 3.14, True, [1, 2, 3]]
-# All valid -- each element is just a pointer to a different type of object
+# All valid - each element is just a pointer to a different type of object
 ```
 
 **2. Assignment copies the reference, not the value**
 
 ```python
 a = [1, 2, 3]
-b = a           # b points to the SAME list as a, not a copy
+b = a # b points to the SAME list as a, not a copy
 
 b[0] = 99
-print(a)        # [99, 2, 3]  -- a is also changed!
-print(b)        # [99, 2, 3]
+print(a) # [99, 2, 3] - a is also changed!
+print(b) # [99, 2, 3]
 
 # To make a true copy, use slicing or list()
-c = a[:]        # or list(a) or a.copy()
+c = a[:] # or list(a) or a.copy()
 c[0] = 0
-print(a)        # [99, 2, 3]  -- a is unchanged
-print(c)        # [0, 2, 3]
+print(a) # [99, 2, 3] - a is unchanged
+print(c) # [0, 2, 3]
 ```
 
 **3. Equality vs identity**
@@ -248,18 +248,18 @@ a = [1, 2, 3]
 b = [1, 2, 3]
 c = a
 
-print(a == b)   # True  -- same values
-print(a is b)   # False -- different objects in memory
-print(a is c)   # True  -- same object in memory
+print(a == b) # True - same values
+print(a is b) # False - different objects in memory
+print(a is c) # True - same object in memory
 ```
 
 Understanding this distinction prevents many subtle bugs, especially when you pass lists to functions or try to make copies.
 
 ---
 
-## Dynamic Arrays -- How Python Lists Grow
+## Dynamic Arrays - How Python Lists Grow
 
-A regular array has a fixed size -- you declare it with a certain capacity and it cannot grow. Python lists, however, can grow dynamically. How does this work?
+A regular array has a fixed size - you declare it with a certain capacity and it cannot grow. Python lists, however, can grow dynamically. How does this work?
 
 Under the hood, Python allocates more memory than the list currently needs. When the list fills up, Python allocates a new, larger block of memory, copies everything over, and releases the old block.
 
@@ -271,7 +271,7 @@ Let us trace through what happens as you append elements:
 
 | Append call | List size | Allocated capacity | Action |
 |-------------|-----------|-------------------|--------|
-| Start | 0 | 0 | -- |
+| Start | 0 | 0 | - |
 | append(1) | 1 | 4 | Allocate space for 4 |
 | append(2) | 2 | 4 | No resize needed |
 | append(3) | 3 | 4 | No resize needed |
@@ -292,16 +292,16 @@ import sys
 # You can see Python allocating extra capacity
 nums = []
 for i in range(10):
-    nums.append(i)
-    # sys.getsizeof gives the memory size of the list object in bytes
-    print(f"Length: {len(nums)}, Memory: {sys.getsizeof(nums)} bytes")
+ nums.append(i)
+ # sys.getsizeof gives the memory size of the list object in bytes
+ print(f"Length: {len(nums)}, Memory: {sys.getsizeof(nums)} bytes")
 
 # Output (approximate, varies by Python version):
 # Length: 1, Memory: 88 bytes
 # Length: 2, Memory: 88 bytes
 # Length: 3, Memory: 88 bytes
 # Length: 4, Memory: 88 bytes
-# Length: 5, Memory: 120 bytes  <-- resize happened
+# Length: 5, Memory: 120 bytes < - resize happened
 # Length: 6, Memory: 120 bytes
 # ...
 ```
@@ -339,50 +339,50 @@ A 2D array is an array of arrays. It is used to represent grids, matrices, and b
 ```python
 # Creating a 2D list (3 rows, 4 columns)
 matrix = [
-    [1,  2,  3,  4],
-    [5,  6,  7,  8],
-    [9, 10, 11, 12]
+ [1, 2, 3, 4],
+ [5, 6, 7, 8],
+ [9, 10, 11, 12]
 ]
 
-# Accessing an element -- O(1)
-print(matrix[1][2])   # 7  -- row 1, column 2
-print(matrix[0][0])   # 1  -- top left
-print(matrix[2][3])   # 12 -- bottom right
+# Accessing an element - O(1)
+print(matrix[1][2]) # 7 - row 1, column 2
+print(matrix[0][0]) # 1 - top left
+print(matrix[2][3]) # 12 - bottom right
 
 # Iterating over a 2D array
 for row in matrix:
-    for val in row:
-        print(val, end=" ")
-    print()
+ for val in row:
+ print(val, end=" ")
+ print()
 
 # Creating an n x m grid filled with zeros
 n, m = 3, 4
 grid = [[0] * m for _ in range(n)]
 print(grid)
 # [[0, 0, 0, 0],
-#  [0, 0, 0, 0],
-#  [0, 0, 0, 0]]
+# [0, 0, 0, 0],
+# [0, 0, 0, 0]]
 
-# WARNING -- do NOT do this
+# WARNING - do NOT do this
 bad_grid = [[0] * m] * n
 # This creates n references to the SAME row
 # Modifying one row modifies all of them
 bad_grid[0][0] = 99
 print(bad_grid)
 # [[99, 0, 0, 0],
-#  [99, 0, 0, 0],   <-- all rows changed!
-#  [99, 0, 0, 0]]
+# [99, 0, 0, 0], < - all rows changed!
+# [99, 0, 0, 0]]
 ```
 
 ---
 
 ## Patterns and Techniques
 
-Now we get to the techniques that make arrays so powerful in problem solving. Each of these patterns comes directly from the properties of arrays -- indexed access, contiguity, and ordering.
+Now we get to the techniques that make arrays so powerful in problem solving. Each of these patterns comes directly from the properties of arrays - indexed access, contiguity, and ordering.
 
 ---
 
-### Pattern 1 -- Two Pointers
+### Pattern 1 - Two Pointers
 
 **The core idea:** Use two index variables that move through the array, usually from opposite ends toward the middle or in the same direction at different speeds. This turns many O(n^2) problems into O(n).
 
@@ -399,31 +399,31 @@ Now we get to the techniques that make arrays so powerful in problem solving. Ea
 left, right = 0, len(nums) - 1
 
 while left < right:
-    # use nums[left] and nums[right]
-    # move left forward, right backward, or both
-    # based on the condition of the problem
-    if some_condition:
-        left += 1
-    elif some_other_condition:
-        right -= 1
-    else:
-        left += 1
-        right -= 1
+ # use nums[left] and nums[right]
+ # move left forward, right backward, or both
+ # based on the condition of the problem
+ if some_condition:
+ left += 1
+ elif some_other_condition:
+ right -= 1
+ else:
+ left += 1
+ right -= 1
 ```
 
 ---
 
-#### Solved Problem -- Valid Palindrome
+#### Solved Problem - Valid Palindrome
 
-[LeetCode 125 -- Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+[LeetCode 125 - Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
 
 **Problem:** A phrase is a palindrome if, after converting all uppercase letters to lowercase and removing all non-alphanumeric characters, it reads the same forward and backward. Given a string `s`, return `True` if it is a palindrome, otherwise return `False`.
 
 ```
-Input:  s = "A man, a plan, a canal: Panama"
+Input: s = "A man, a plan, a canal: Panama"
 Output: True
 
-Input:  s = "race a car"
+Input: s = "race a car"
 Output: False
 ```
 
@@ -431,108 +431,108 @@ Output: False
 
 A brute force approach would be to clean the string first, then check if it equals its reverse. That works in O(n) time and O(n) space (for the cleaned string).
 
-But we can do better on space. Instead of building a new string, use two pointers -- one at the start, one at the end. Skip non-alphanumeric characters and compare characters as you go. If they ever differ, it is not a palindrome.
+But we can do better on space. Instead of building a new string, use two pointers - one at the start, one at the end. Skip non-alphanumeric characters and compare characters as you go. If they ever differ, it is not a palindrome.
 
 ```python
 def is_palindrome(s: str) -> bool:
-    """
-    Uses two pointers starting from both ends, moving inward.
-    Skip any character that is not alphanumeric.
-    Compare the characters at both pointers -- if they ever differ, return False.
+ """
+ Uses two pointers starting from both ends, moving inward.
+ Skip any character that is not alphanumeric.
+ Compare the characters at both pointers - if they ever differ, return False.
 
-    Time complexity:  O(n) -- each character is visited at most once
-    Space complexity: O(1) -- no extra data structures, just two index variables
-    """
-    left, right = 0, len(s) - 1
+ Time complexity: O(n) - each character is visited at most once
+ Space complexity: O(1) - no extra data structures, just two index variables
+ """
+ left, right = 0, len(s) - 1
 
-    while left < right:
+ while left < right:
 
-        # Move left pointer forward past non-alphanumeric characters
-        while left < right and not s[left].isalnum():
-            left += 1
+ # Move left pointer forward past non-alphanumeric characters
+ while left < right and not s[left].isalnum():
+ left += 1
 
-        # Move right pointer backward past non-alphanumeric characters
-        while left < right and not s[right].isalnum():
-            right -= 1
+ # Move right pointer backward past non-alphanumeric characters
+ while left < right and not s[right].isalnum():
+ right -= 1
 
-        # Compare characters (case insensitive)
-        if s[left].lower() != s[right].lower():
-            return False  # mismatch -- not a palindrome
+ # Compare characters (case insensitive)
+ if s[left].lower() != s[right].lower():
+ return False # mismatch - not a palindrome
 
-        # Both matched, move both pointers inward
-        left += 1
-        right -= 1
+ # Both matched, move both pointers inward
+ left += 1
+ right -= 1
 
-    return True  # all characters matched
+ return True # all characters matched
 
 # Test cases
-print(is_palindrome("A man, a plan, a canal: Panama"))  # True
-print(is_palindrome("race a car"))                       # False
-print(is_palindrome(" "))                                # True (empty after cleaning)
+print(is_palindrome("A man, a plan, a canal: Panama")) # True
+print(is_palindrome("race a car")) # False
+print(is_palindrome(" ")) # True (empty after cleaning)
 ```
 
 ---
 
-#### Solved Problem -- Container With Most Water
+#### Solved Problem - Container With Most Water
 
-[LeetCode 11 -- Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+[LeetCode 11 - Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
 **Problem:** You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `i`th line are `(i, 0)` and `(i, height[i])`. Find two lines that together with the x-axis form a container that holds the most water. Return the maximum amount of water a container can store.
 
 ```
-Input:  height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+Input: height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 Output: 49
 ```
 
 **Thinking through it:**
 
-The brute force is to check every pair of lines -- O(n^2). Can we do better?
+The brute force is to check every pair of lines - O(n^2). Can we do better?
 
 The water between lines at index `left` and `right` is:
 ```
 water = min(height[left], height[right]) * (right - left)
 ```
 
-Start with the widest possible container (left = 0, right = n-1). To try to find more water, we need to increase the height. Moving the pointer at the taller side inward cannot help -- the height is still limited by the shorter side and the width decreases. So we always move the pointer at the **shorter side** inward, hoping to find a taller line.
+Start with the widest possible container (left = 0, right = n-1). To try to find more water, we need to increase the height. Moving the pointer at the taller side inward cannot help - the height is still limited by the shorter side and the width decreases. So we always move the pointer at the **shorter side** inward, hoping to find a taller line.
 
 ```python
 def max_area(height: list) -> int:
-    """
-    Start with the widest container. At each step, move the pointer
-    at the shorter side inward -- this is the only move that could
-    possibly find more water.
+ """
+ Start with the widest container. At each step, move the pointer
+ at the shorter side inward - this is the only move that could
+ possibly find more water.
 
-    Time complexity:  O(n) -- each element is visited at most once
-    Space complexity: O(1) -- only two pointers and a max variable
-    """
-    left, right = 0, len(height) - 1
-    max_water = 0
+ Time complexity: O(n) - each element is visited at most once
+ Space complexity: O(1) - only two pointers and a max variable
+ """
+ left, right = 0, len(height) - 1
+ max_water = 0
 
-    while left < right:
-        # Calculate water in current container
-        width = right - left
-        h = min(height[left], height[right])
-        current_water = width * h
+ while left < right:
+ # Calculate water in current container
+ width = right - left
+ h = min(height[left], height[right])
+ current_water = width * h
 
-        # Update maximum
-        max_water = max(max_water, current_water)
+ # Update maximum
+ max_water = max(max_water, current_water)
 
-        # Move the pointer at the shorter side inward
-        if height[left] < height[right]:
-            left += 1
-        else:
-            right -= 1
+ # Move the pointer at the shorter side inward
+ if height[left] < height[right]:
+ left += 1
+ else:
+ right -= 1
 
-    return max_water
+ return max_water
 
 # Test
-print(max_area([1, 8, 6, 2, 5, 4, 8, 3, 7]))  # 49
-print(max_area([1, 1]))                          # 1
+print(max_area([1, 8, 6, 2, 5, 4, 8, 3, 7])) # 49
+print(max_area([1, 1])) # 1
 ```
 
 ---
 
-### Pattern 2 -- Sliding Window
+### Pattern 2 - Sliding Window
 
 **The core idea:** Maintain a window (a contiguous subarray) that slides across the array. Instead of recomputing the result from scratch for each window position, you add the new element entering the window and remove the element leaving it. This turns many O(n^2) subarray problems into O(n).
 
@@ -545,104 +545,104 @@ print(max_area([1, 1]))                          # 1
 
 **Two types of sliding window:**
 
-**Fixed size window** -- the window size k is given:
+**Fixed size window** - the window size k is given:
 ```python
 # Template: fixed window of size k
 def fixed_window(nums, k):
-    # Build the first window
-    window_sum = sum(nums[:k])
-    result = window_sum
+ # Build the first window
+ window_sum = sum(nums[:k])
+ result = window_sum
 
-    # Slide the window: add right element, remove left element
-    for i in range(k, len(nums)):
-        window_sum += nums[i]        # add element entering window
-        window_sum -= nums[i - k]    # remove element leaving window
-        result = max(result, window_sum)
+ # Slide the window: add right element, remove left element
+ for i in range(k, len(nums)):
+ window_sum += nums[i] # add element entering window
+ window_sum -= nums[i - k] # remove element leaving window
+ result = max(result, window_sum)
 
-    return result
+ return result
 ```
 
-**Variable size window** -- find the longest/shortest window satisfying a condition:
+**Variable size window** - find the longest/shortest window satisfying a condition:
 ```python
 # Template: variable window
 def variable_window(nums):
-    left = 0
-    result = 0
+ left = 0
+ result = 0
 
-    for right in range(len(nums)):
-        # Expand: include nums[right] in the window
+ for right in range(len(nums)):
+ # Expand: include nums[right] in the window
 
-        while # window condition is violated:
-            # Shrink: remove nums[left] from the window
-            left += 1
+ while # window condition is violated:
+ # Shrink: remove nums[left] from the window
+ left += 1
 
-        # Window is now valid -- update result
-        result = max(result, right - left + 1)
+ # Window is now valid - update result
+ result = max(result, right - left + 1)
 
-    return result
+ return result
 ```
 
 ---
 
-#### Solved Problem -- Best Time to Buy and Sell Stock
+#### Solved Problem - Best Time to Buy and Sell Stock
 
-[LeetCode 121 -- Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+[LeetCode 121 - Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 **Problem:** You are given an array `prices` where `prices[i]` is the price of a stock on day `i`. You want to buy on one day and sell on a later day to maximise profit. Return the maximum profit. If no profit is possible, return 0.
 
 ```
-Input:  prices = [7, 1, 5, 3, 6, 4]
-Output: 5  (buy on day 1 at price 1, sell on day 4 at price 6)
+Input: prices = [7, 1, 5, 3, 6, 4]
+Output: 5 (buy on day 1 at price 1, sell on day 4 at price 6)
 
-Input:  prices = [7, 6, 4, 3, 1]
-Output: 0  (prices only go down, no profit possible)
+Input: prices = [7, 6, 4, 3, 1]
+Output: 0 (prices only go down, no profit possible)
 ```
 
 **Thinking through it:**
 
-The brute force checks every pair of days -- O(n^2). The key observation is: the best profit on any given day is `price[today] - minimum_price_seen_so_far`. So we only need one pass, tracking the minimum price seen so far and the maximum profit seen so far.
+The brute force checks every pair of days - O(n^2). The key observation is: the best profit on any given day is `price[today] - minimum_price_seen_so_far`. So we only need one pass, tracking the minimum price seen so far and the maximum profit seen so far.
 
-This is a sliding window in spirit -- the window is from the minimum price day to the current day.
+This is a sliding window in spirit - the window is from the minimum price day to the current day.
 
 ```python
 def max_profit(prices: list) -> int:
-    """
-    Track the minimum price seen so far.
-    At each day, compute the profit if we sold today.
-    Update the maximum profit if this is better.
+ """
+ Track the minimum price seen so far.
+ At each day, compute the profit if we sold today.
+ Update the maximum profit if this is better.
 
-    Time complexity:  O(n) -- single pass through prices
-    Space complexity: O(1) -- only two variables
-    """
-    min_price = float('inf')  # smallest price seen so far
-    max_profit = 0            # best profit seen so far
+ Time complexity: O(n) - single pass through prices
+ Space complexity: O(1) - only two variables
+ """
+ min_price = float('inf') # smallest price seen so far
+ max_profit = 0 # best profit seen so far
 
-    for price in prices:
-        if price < min_price:
-            min_price = price            # found a better day to buy
-        else:
-            profit = price - min_price   # profit if we sell today
-            max_profit = max(max_profit, profit)
+ for price in prices:
+ if price < min_price:
+ min_price = price # found a better day to buy
+ else:
+ profit = price - min_price # profit if we sell today
+ max_profit = max(max_profit, profit)
 
-    return max_profit
+ return max_profit
 
 # Test
-print(max_profit([7, 1, 5, 3, 6, 4]))  # 5
-print(max_profit([7, 6, 4, 3, 1]))      # 0
-print(max_profit([2, 4, 1]))            # 2
+print(max_profit([7, 1, 5, 3, 6, 4])) # 5
+print(max_profit([7, 6, 4, 3, 1])) # 0
+print(max_profit([2, 4, 1])) # 2
 ```
 
 ---
 
-#### Solved Problem -- Maximum Average Subarray I
+#### Solved Problem - Maximum Average Subarray I
 
-[LeetCode 643 -- Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)
+[LeetCode 643 - Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)
 
 **Problem:** You are given an integer array `nums` consisting of `n` elements, and an integer `k`. Find a contiguous subarray of length exactly `k` that has the maximum average value and return this value.
 
 ```
-Input:  nums = [1, 12, -5, -6, 50, 3], k = 4
-Output: 12.75  (subarray [12, -5, -6, 50], average = 51/4 = 12.75)
+Input: nums = [1, 12, -5, -6, 50, 3], k = 4
+Output: 12.75 (subarray [12, -5, -6, 50], average = 51/4 = 12.75)
 ```
 
 **Thinking through it:**
@@ -651,34 +651,34 @@ This is a fixed-size sliding window. Build the first window of size k, then slid
 
 ```python
 def find_max_average(nums: list, k: int) -> float:
-    """
-    Fixed sliding window of size k.
-    Compute the sum of the first window, then slide it across
-    by adding the incoming element and removing the outgoing one.
+ """
+ Fixed sliding window of size k.
+ Compute the sum of the first window, then slide it across
+ by adding the incoming element and removing the outgoing one.
 
-    Time complexity:  O(n) -- one pass after the initial window
-    Space complexity: O(1) -- only store the current and max sum
-    """
-    # Build the first window
-    window_sum = sum(nums[:k])    # O(k) but k <= n so overall still O(n)
-    max_sum = window_sum
+ Time complexity: O(n) - one pass after the initial window
+ Space complexity: O(1) - only store the current and max sum
+ """
+ # Build the first window
+ window_sum = sum(nums[:k]) # O(k) but k <= n so overall still O(n)
+ max_sum = window_sum
 
-    # Slide the window from position k to end
-    for i in range(k, len(nums)):
-        window_sum += nums[i]       # element entering the window
-        window_sum -= nums[i - k]   # element leaving the window
-        max_sum = max(max_sum, window_sum)
+ # Slide the window from position k to end
+ for i in range(k, len(nums)):
+ window_sum += nums[i] # element entering the window
+ window_sum -= nums[i - k] # element leaving the window
+ max_sum = max(max_sum, window_sum)
 
-    return max_sum / k
+ return max_sum / k
 
 # Test
-print(find_max_average([1, 12, -5, -6, 50, 3], 4))  # 12.75
-print(find_max_average([5], 1))                       # 5.0
+print(find_max_average([1, 12, -5, -6, 50, 3], 4)) # 12.75
+print(find_max_average([5], 1)) # 5.0
 ```
 
 ---
 
-### Pattern 3 -- Prefix Sum
+### Pattern 3 - Prefix Sum
 
 **The core idea:** Precompute a running total of the array so that the sum of any subarray `nums[i:j]` can be computed in O(1) instead of O(n).
 
@@ -701,30 +701,30 @@ sum of nums[left..right] = prefix[right + 1] - prefix[left]
 
 ```python
 def build_prefix(nums):
-    n = len(nums)
-    prefix = [0] * (n + 1)   # prefix[0] = 0 by convention
-    for i in range(n):
-        prefix[i + 1] = prefix[i] + nums[i]
-    return prefix
+ n = len(nums)
+ prefix = [0] * (n + 1) # prefix[0] = 0 by convention
+ for i in range(n):
+ prefix[i + 1] = prefix[i] + nums[i]
+ return prefix
 
 # Query: sum of nums[left..right] inclusive
 def range_sum(prefix, left, right):
-    return prefix[right + 1] - prefix[left]
+ return prefix[right + 1] - prefix[left]
 ```
 
 ---
 
-#### Solved Problem -- Range Sum Query - Immutable
+#### Solved Problem - Range Sum Query - Immutable
 
-[LeetCode 303 -- Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
+[LeetCode 303 - Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
 
 **Problem:** Given an integer array `nums`, handle multiple queries of the form: calculate the sum of elements between indices `left` and `right` inclusive.
 
 ```
-Input:  nums = [-2, 0, 3, -5, 2, -1]
-        sumRange(0, 2) --> 1   (-2 + 0 + 3)
-        sumRange(2, 5) --> -1  (3 + -5 + 2 + -1)
-        sumRange(0, 5) --> -3  (-2 + 0 + 3 + -5 + 2 + -1)
+Input: nums = [-2, 0, 3, -5, 2, -1]
+ sumRange(0, 2) - > 1 (-2 + 0 + 3)
+ sumRange(2, 5) - > -1 (3 + -5 + 2 + -1)
+ sumRange(0, 5) - > -3 (-2 + 0 + 3 + -5 + 2 + -1)
 ```
 
 **Thinking through it:**
@@ -733,52 +733,52 @@ If we compute the sum naively for each query, each query costs O(n) and with q q
 
 ```python
 class NumArray:
-    """
-    Precompute prefix sums once at initialisation.
-    Answer each range query in O(1).
+ """
+ Precompute prefix sums once at initialisation.
+ Answer each range query in O(1).
 
-    Time complexity:
-        __init__: O(n) -- build the prefix sum array
-        sumRange:  O(1) -- subtract two prefix values
+ Time complexity:
+ __init__: O(n) - build the prefix sum array
+ sumRange: O(1) - subtract two prefix values
 
-    Space complexity: O(n) -- the prefix sum array
-    """
+ Space complexity: O(n) - the prefix sum array
+ """
 
-    def __init__(self, nums: list):
-        n = len(nums)
-        # prefix[i] = sum of nums[0..i-1]
-        # prefix[0] = 0  (sum of empty prefix)
-        self.prefix = [0] * (n + 1)
+ def __init__(self, nums: list):
+ n = len(nums)
+ # prefix[i] = sum of nums[0..i-1]
+ # prefix[0] = 0 (sum of empty prefix)
+ self.prefix = [0] * (n + 1)
 
-        for i in range(n):
-            self.prefix[i + 1] = self.prefix[i] + nums[i]
+ for i in range(n):
+ self.prefix[i + 1] = self.prefix[i] + nums[i]
 
-    def sumRange(self, left: int, right: int) -> int:
-        # sum of nums[left..right]
-        # = (sum of nums[0..right]) - (sum of nums[0..left-1])
-        # = prefix[right + 1] - prefix[left]
-        return self.prefix[right + 1] - self.prefix[left]
+ def sumRange(self, left: int, right: int) -> int:
+ # sum of nums[left..right]
+ # = (sum of nums[0..right]) - (sum of nums[0..left-1])
+ # = prefix[right + 1] - prefix[left]
+ return self.prefix[right + 1] - self.prefix[left]
 
 # Test
 obj = NumArray([-2, 0, 3, -5, 2, -1])
-print(obj.sumRange(0, 2))  # 1
-print(obj.sumRange(2, 5))  # -1
-print(obj.sumRange(0, 5))  # -3
+print(obj.sumRange(0, 2)) # 1
+print(obj.sumRange(2, 5)) # -1
+print(obj.sumRange(0, 5)) # -3
 ```
 
 ---
 
-#### Solved Problem -- Subarray Sum Equals K
+#### Solved Problem - Subarray Sum Equals K
 
-[LeetCode 560 -- Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
+[LeetCode 560 - Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 
 **Problem:** Given an array of integers `nums` and an integer `k`, return the total number of subarrays whose sum equals `k`.
 
 ```
-Input:  nums = [1, 1, 1], k = 2
+Input: nums = [1, 1, 1], k = 2
 Output: 2
 
-Input:  nums = [1, 2, 3], k = 3
+Input: nums = [1, 2, 3], k = 3
 Output: 2
 ```
 
@@ -792,35 +792,35 @@ So as we compute the prefix sum, we check: have we seen a prefix sum equal to `c
 
 ```python
 def subarray_sum(nums: list, k: int) -> int:
-    """
-    As we build the prefix sum, we ask at each position j:
-    how many previous prefix sums equal (current_prefix - k)?
-    Each such prefix sum corresponds to a valid subarray ending at j.
+ """
+ As we build the prefix sum, we ask at each position j:
+ how many previous prefix sums equal (current_prefix - k)?
+ Each such prefix sum corresponds to a valid subarray ending at j.
 
-    Time complexity:  O(n) -- single pass
-    Space complexity: O(n) -- hash map stores up to n prefix sums
-    """
-    count = 0
-    prefix_sum = 0
-    # Maps prefix_sum value to how many times we have seen it
-    seen = {0: 1}   # prefix sum of 0 exists once before we start
+ Time complexity: O(n) - single pass
+ Space complexity: O(n) - hash map stores up to n prefix sums
+ """
+ count = 0
+ prefix_sum = 0
+ # Maps prefix_sum value to how many times we have seen it
+ seen = {0: 1} # prefix sum of 0 exists once before we start
 
-    for num in nums:
-        prefix_sum += num                       # update running prefix sum
+ for num in nums:
+ prefix_sum += num # update running prefix sum
 
-        # How many previous positions had prefix sum = prefix_sum - k?
-        # Each one gives a subarray ending here that sums to k
-        complement = prefix_sum - k
-        count += seen.get(complement, 0)        # O(1) lookup
+ # How many previous positions had prefix sum = prefix_sum - k?
+ # Each one gives a subarray ending here that sums to k
+ complement = prefix_sum - k
+ count += seen.get(complement, 0) # O(1) lookup
 
-        # Record this prefix sum
-        seen[prefix_sum] = seen.get(prefix_sum, 0) + 1
+ # Record this prefix sum
+ seen[prefix_sum] = seen.get(prefix_sum, 0) + 1
 
-    return count
+ return count
 
 # Test
-print(subarray_sum([1, 1, 1], 2))  # 2
-print(subarray_sum([1, 2, 3], 3))  # 2
+print(subarray_sum([1, 1, 1], 2)) # 2
+print(subarray_sum([1, 2, 3], 3)) # 2
 print(subarray_sum([1, -1, 1], 0)) # 3
 ```
 
@@ -896,5 +896,5 @@ Work through these on your own. For each problem, think about which pattern appl
 
 ## Next Steps
 
-- **Next blog:** [Strings] -- strings are closely related to arrays and share several of the same patterns
+- **Next blog:** [Strings] - strings are closely related to arrays and share several of the same patterns
 - **Reference:** [Codeverra DSA Sheet](https://docs.google.com/spreadsheets/d/18eX4xoNcSj-lmGJorwgXO7Tb0_eRiDv7rzXnp9iP1MA/edit?gid=1098063012#gid=1098063012)

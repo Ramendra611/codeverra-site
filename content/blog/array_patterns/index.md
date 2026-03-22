@@ -10,15 +10,15 @@ toc: true
 tocopen: true
 draft: false
 tags:
-  - dsa
-  - arrays
+ - dsa
+ - arrays
 
 cover:
-  image: "/images/array-patterns.jpg"
-  alt: "Array problem-solving patterns"
-  caption: "Common array patterns for efficient problem solving"
-  relative: true
-  hidden: false
+ image: "/images/array-patterns.jpg"
+ alt: "Array problem-solving patterns"
+ caption: "Common array patterns for efficient problem solving"
+ relative: true
+ hidden: false
 ---
 
 Array patterns are recurring problem-solving techniques used to solve a wide variety of array problems efficiently.
@@ -37,10 +37,10 @@ The traversal pattern involves visiting each element of the array once or in a f
 
 ### When to Use
 
-- Finding maximum or minimum elements  
-- Printing all elements  
-- Counting frequency  
-- Simple condition checks  
+- Finding maximum or minimum elements 
+- Printing all elements 
+- Counting frequency 
+- Simple condition checks 
 
 ---
 
@@ -66,9 +66,9 @@ The sliding window pattern processes a fixed-size or variable-size window that s
 
 ### When to Use
 
-- Subarray sum problems  
-- Maximum or minimum in a window  
-- Longest or shortest subarray problems  
+- Subarray sum problems 
+- Maximum or minimum in a window 
+- Longest or shortest subarray problems 
 
 ---
 
@@ -94,10 +94,10 @@ The two pointer pattern uses two pointers that move through the array, either fr
 
 ### When to Use
 
-- Sorted arrays  
-- Pair sum problems  
-- Removing duplicates  
-- Reversing arrays  
+- Sorted arrays 
+- Pair sum problems 
+- Removing duplicates 
+- Reversing arrays 
 
 ---
 
@@ -123,9 +123,9 @@ The prefix sum pattern precomputes cumulative sums so that range queries can be 
 
 ### When to Use
 
-- Range sum queries  
-- Subarray sum problems  
-- Performance optimization scenarios  
+- Range sum queries 
+- Subarray sum problems 
+- Performance optimization scenarios 
 
 ---
 
@@ -137,7 +137,7 @@ Store cumulative sums in an auxiliary array where each index represents the sum 
 
 ### Time Complexity
 
-Preprocessing: O(n)  
+Preprocessing: O(n) 
 Query: O(1)
 
 ---
@@ -152,8 +152,8 @@ Kadane’s algorithm is a Dynamic Programming technique used to find the maximum
 
 ### When to Use
 
-- Maximum sum subarray problems  
-- Problems involving contiguous segments  
+- Maximum sum subarray problems 
+- Problems involving contiguous segments 
 
 ---
 
@@ -179,9 +179,9 @@ This pattern uses extra space, such as an array or hashmap, to count the frequen
 
 ### When to Use
 
-- Detecting duplicates  
-- Anagram checking  
-- Majority element problems  
+- Detecting duplicates 
+- Anagram checking 
+- Majority element problems 
 
 ---
 
@@ -207,9 +207,9 @@ Sorting the array first can simplify the logic of many problems.
 
 ### When to Use
 
-- Pair or triplet problems  
-- Merging intervals  
-- Duplicate handling  
+- Pair or triplet problems 
+- Merging intervals 
+- Duplicate handling 
 
 ---
 
@@ -235,9 +235,9 @@ Binary search repeatedly divides the search space into half to efficiently locat
 
 ### When to Use
 
-- Sorted arrays  
-- Search problems  
-- Optimization problems such as binary search on answer  
+- Sorted arrays 
+- Search problems 
+- Optimization problems such as binary search on answer 
 
 ---
 
@@ -263,9 +263,9 @@ This pattern deals with problems involving continuous segments of an array.
 
 ### When to Use
 
-- Subarray sum problems  
-- Longest or shortest subarray problems  
-- Zero-sum subarray problems  
+- Subarray sum problems 
+- Longest or shortest subarray problems 
+- Zero-sum subarray problems 
 
 ---
 
@@ -285,9 +285,9 @@ The in-place modification pattern updates the array without using extra space.
 
 ### When to Use
 
-- Removing elements  
-- Rearranging arrays  
-- Memory-constrained problems  
+- Removing elements 
+- Rearranging arrays 
+- Memory-constrained problems 
 
 ---
 
@@ -299,52 +299,52 @@ Use an index to overwrite unwanted elements while traversing the array.
 
 ### Time and Space Complexity
 
-Time complexity: O(n)  
+Time complexity: O(n) 
 Space complexity: O(1)
 
 ---
 
 ## Summary of Array Patterns
 
-Traversal Pattern  
-Use case: Basic operations  
+Traversal Pattern 
+Use case: Basic operations 
 
-Sliding Window Pattern  
-Use case: Subarrays  
+Sliding Window Pattern 
+Use case: Subarrays 
 
-Two Pointer Pattern  
-Use case: Sorted arrays  
+Two Pointer Pattern 
+Use case: Sorted arrays 
 
-Prefix Sum Pattern  
-Use case: Range queries  
+Prefix Sum Pattern 
+Use case: Range queries 
 
-Kadane’s Algorithm  
-Use case: Maximum subarray  
+Kadane’s Algorithm 
+Use case: Maximum subarray 
 
-Frequency Count Pattern  
-Use case: Duplicates and counting  
+Frequency Count Pattern 
+Use case: Duplicates and counting 
 
-Sorting-Based Pattern  
-Use case: Simplifying logic  
+Sorting-Based Pattern 
+Use case: Simplifying logic 
 
-Binary Search Pattern  
-Use case: Fast searching  
+Binary Search Pattern 
+Use case: Fast searching 
 
-Subarray Pattern  
-Use case: Contiguous segments  
+Subarray Pattern 
+Use case: Contiguous segments 
 
-In-Place Modification Pattern  
-Use case: Space optimization  
+In-Place Modification Pattern 
+Use case: Space optimization 
 
 ---
 
 ## Key Learning Advice
 
-- Identify array constraints  
-- Check whether the array is sorted  
-- Look for subarray or pair conditions  
-- Try to reduce nested loops  
-- Think in terms of patterns, not individual problems  
+- Identify array constraints 
+- Check whether the array is sorted 
+- Look for subarray or pair conditions 
+- Try to reduce nested loops 
+- Think in terms of patterns, not individual problems 
 
 ---
 

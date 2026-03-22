@@ -12,27 +12,27 @@ toc: false
 tocopen: true
 draft: false
 tags:
-  - python
-  - data-analysis
-  - pandas
+ - python
+ - data-analysis
+ - pandas
 
 cover:
-  image: "/images//pandas_titanic.png"
-  alt: "pandas practice on titanic dataset"
-  caption: "Data Analysis using Python"
-  relative: true
-  hidden: false
+ image: "/images//pandas_titanic.png"
+ alt: "pandas practice on titanic dataset"
+ caption: "Data Analysis using Python"
+ relative: true
+ hidden: false
 ---
 
 
-# Pandas Practice Sheet — Titanic Dataset
+# Pandas Practice Sheet - Titanic Dataset
 ### 20 Questions from Zero to Advanced, with Full Solutions
 
 ---
 
 ## Getting the Dataset
 
-The Titanic dataset is hosted publicly and can be loaded directly into pandas — no download needed.
+The Titanic dataset is hosted publicly and can be loaded directly into pandas - no download needed.
 
 **Direct CSV URL (no login required):**
 ```
@@ -52,7 +52,7 @@ import seaborn as sns
 df = sns.load_dataset("titanic")
 ```
 
-> Always run `df.head()` and `df.info()` before answering any question — knowing your data is half the battle.
+> Always run `df.head()` and `df.info()` before answering any question - knowing your data is half the battle.
 
 ---
 
@@ -62,26 +62,26 @@ Before writing a single line of pandas, understand what every column means.
 
 ```
 ┌─────────────────┬──────────┬──────────────────────────────────────────────────────┐
-│ Column          │ Type     │ Meaning                                              │
+│ Column │ Type │ Meaning │
 ├─────────────────┼──────────┼──────────────────────────────────────────────────────┤
-│ PassengerId     │ int      │ Unique ID for each passenger (1–891)                 │
-│ Survived        │ int      │ 0 = Did not survive, 1 = Survived                   │
-│ Pclass          │ int      │ Ticket class: 1 = First, 2 = Second, 3 = Third      │
-│ Name            │ string   │ Full name including title (Mr., Mrs., Miss., etc.)   │
-│ Sex             │ string   │ "male" or "female"                                   │
-│ Age             │ float    │ Age in years. ~177 values are missing (NaN)          │
-│ SibSp           │ int      │ # of siblings + spouses aboard                      │
-│ Parch           │ int      │ # of parents + children aboard                      │
-│ Ticket          │ string   │ Ticket number (mostly irrelevant for analysis)       │
-│ Fare            │ float    │ Ticket price in British pounds                       │
-│ Cabin           │ string   │ Cabin number. ~687 values are missing                │
-│ Embarked        │ string   │ Port of embarkation: S=Southampton, C=Cherbourg,    │
-│                 │          │ Q=Queenstown. 2 values missing.                      │
+│ PassengerId │ int │ Unique ID for each passenger (1–891) │
+│ Survived │ int │ 0 = Did not survive, 1 = Survived │
+│ Pclass │ int │ Ticket class: 1 = First, 2 = Second, 3 = Third │
+│ Name │ string │ Full name including title (Mr., Mrs., Miss., etc.) │
+│ Sex │ string │ "male" or "female" │
+│ Age │ float │ Age in years. ~177 values are missing (NaN) │
+│ SibSp │ int │ # of siblings + spouses aboard │
+│ Parch │ int │ # of parents + children aboard │
+│ Ticket │ string │ Ticket number (mostly irrelevant for analysis) │
+│ Fare │ float │ Ticket price in British pounds │
+│ Cabin │ string │ Cabin number. ~687 values are missing │
+│ Embarked │ string │ Port of embarkation: S=Southampton, C=Cherbourg, │
+│ │ │ Q=Queenstown. 2 values missing. │
 └─────────────────┴──────────┴──────────────────────────────────────────────────────┘
 ```
 
 **Key facts to keep in your head:**
-- 891 rows total (training set — not all passengers)
+- 891 rows total (training set - not all passengers)
 - `Survived` is the target column (1 = survived)
 - `Age` and `Cabin` have significant missing values
 - `Pclass` is stored as an integer but is a categorical variable
@@ -97,11 +97,11 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv(
-    "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+ "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
 )
 
 # Quick sanity check
-print(df.shape)       # (891, 12)
+print(df.shape) # (891, 12)
 print(df.dtypes)
 print(df.isnull().sum())
 ```
@@ -110,7 +110,7 @@ print(df.isnull().sum())
 
 ---
 
-# LEVEL 1 — Basics (Questions 1–5)
+# LEVEL 1 - Basics (Questions 1–5)
 ### Core selection, filtering, and summary statistics
 
 ---
@@ -129,7 +129,7 @@ This is always Question 0 in any real data project. Never skip it.
 ```python
 # --- Shape: rows and columns ---
 print(df.shape)
-# (891, 12)  → 891 passengers, 12 columns
+# (891, 12) → 891 passengers, 12 columns
 
 # --- First 5 rows ---
 print(df.head())
@@ -141,7 +141,7 @@ print(df.tail())
 df.info()
 # Tells you: dtype per column, how many non-null values exist
 # Key insight: Age has 714/891 non-null → 177 missing
-#              Cabin has only 204/891 non-null → 687 missing!
+# Cabin has only 204/891 non-null → 687 missing!
 
 # --- Statistical summary for numeric columns ---
 print(df.describe())
@@ -168,22 +168,22 @@ print(df.describe(include="all"))
 
 ### Answer
 
-**Method 1 — `value_counts()` for raw counts**
+**Method 1 - `value_counts()` for raw counts**
 ```python
 print(df["Survived"].value_counts())
-# 0    549   (did not survive)
-# 1    342   (survived)
+# 0 549 (did not survive)
+# 1 342 (survived)
 ```
 
-**Method 2 — `value_counts(normalize=True)` for proportions**
+**Method 2 - `value_counts(normalize=True)` for proportions**
 ```python
 print(df["Survived"].value_counts(normalize=True).round(3))
-# 0    0.616
-# 1    0.384
+# 0 0.616
+# 1 0.384
 # Interpretation: 38.4% survived, 61.6% did not
 ```
 
-**Method 3 — `mean()` on a binary column (cleanest for survival rate)**
+**Method 3 - `mean()` on a binary column (cleanest for survival rate)**
 ```python
 survival_rate = df["Survived"].mean()
 print(f"Survival rate: {survival_rate:.1%}")
@@ -192,14 +192,14 @@ print(f"Survival rate: {survival_rate:.1%}")
 
 > **Why does `mean()` work here?** Because `Survived` is 0 or 1. The average of a binary column is identical to the proportion of 1s. This trick is idiomatic pandas and much cleaner than dividing counts manually.
 
-**Method 4 — Boolean filter to count survivors directly**
+**Method 4 - Boolean filter to count survivors directly**
 ```python
-survivors     = df[df["Survived"] == 1]
+survivors = df[df["Survived"] == 1]
 non_survivors = df[df["Survived"] == 0]
 
-print(f"Survived:     {len(survivors)}")     # 342
-print(f"Did not:      {len(non_survivors)}")  # 549
-print(f"Total:        {len(df)}")             # 891
+print(f"Survived: {len(survivors)}") # 342
+print(f"Did not: {len(non_survivors)}") # 549
+print(f"Total: {len(df)}") # 891
 ```
 
 > **Tradeoff:** `value_counts()` is great for a quick count of each category. `mean()` is the one-liner for a rate. For larger workflows, `groupby` (coming later) scales better.
@@ -217,37 +217,37 @@ print(f"Total:        {len(df)}")             # 891
 
 ```python
 # Basic statistics on Age
-print(f"Min age:    {df['Age'].min()}")          # 0.42  (infant)
-print(f"Max age:    {df['Age'].max()}")          # 80.0
-print(f"Mean age:   {df['Age'].mean():.2f}")     # 29.70
-print(f"Median age: {df['Age'].median():.2f}")   # 28.00
+print(f"Min age: {df['Age'].min()}") # 0.42 (infant)
+print(f"Max age: {df['Age'].max()}") # 80.0
+print(f"Mean age: {df['Age'].mean():.2f}") # 29.70
+print(f"Median age: {df['Age'].median():.2f}") # 28.00
 
 # Missing age count
 missing_age = df["Age"].isnull().sum()
-total       = len(df)
+total = len(df)
 print(f"Missing age: {missing_age} out of {total} ({missing_age/total:.1%})")
 # Missing age: 177 out of 891 (19.9%)
 ```
 
-**Method 2 — `describe()` gives everything at once**
+**Method 2 - `describe()` gives everything at once**
 ```python
 print(df["Age"].describe())
-# count    714.000000   ← non-null count
-# mean      29.699118
-# std       14.526497
-# min        0.420000
-# 25%       20.125000
-# 50%       28.000000
-# 75%       38.000000
-# max       80.000000
+# count 714.000000 ← non-null count
+# mean 29.699118
+# std 14.526497
+# min 0.420000
+# 25% 20.125000
+# 50% 28.000000
+# 75% 38.000000
+# max 80.000000
 ```
 
-**Method 3 — `agg()` for custom summary in one call**
+**Method 3 - `agg()` for custom summary in one call**
 ```python
 print(df["Age"].agg(["min", "max", "mean", "median", "count"]))
 ```
 
-> **Mean vs Median for Age:** Mean is 29.7, median is 28.0. They're close, meaning the age distribution is fairly symmetric. But when a column has outliers (like `Fare`), mean can be misleading — always check both.
+> **Mean vs Median for Age:** Mean is 29.7, median is 28.0. They're close, meaning the age distribution is fairly symmetric. But when a column has outliers (like `Fare`), mean can be misleading - always check both.
 
 > **Tradeoff on missing values:** `min()`, `max()`, `mean()` all skip NaN by default (`skipna=True`). This is convenient but means your statistics are computed on only 714 of 891 passengers. Always note this when reporting results.
 
@@ -262,33 +262,33 @@ print(df["Age"].agg(["min", "max", "mean", "median", "count"]))
 
 ### Answer
 
-**Method 1 — Boolean filter then column selection (most readable)**
+**Method 1 - Boolean filter then column selection (most readable)**
 ```python
 female_passengers = df[df["Sex"] == "female"][["Name", "Sex", "Age", "Survived"]]
 print(female_passengers.head(10))
 ```
 
-**Method 2 — `loc[]` in one step (preferred — reads naturally as "rows, columns")**
+**Method 2 - `loc[]` in one step (preferred - reads naturally as "rows, columns")**
 ```python
 female_passengers = df.loc[
-    df["Sex"] == "female",          # row condition
-    ["Name", "Sex", "Age", "Survived"]   # columns to select
+ df["Sex"] == "female", # row condition
+ ["Name", "Sex", "Age", "Survived"] # columns to select
 ]
-print(female_passengers.shape)   # (314, 4)
+print(female_passengers.shape) # (314, 4)
 ```
 
-**Method 3 — `query()` for a SQL-like feel**
+**Method 3 - `query()` for a SQL-like feel**
 ```python
 female_passengers = df.query('Sex == "female"')[["Name", "Sex", "Age", "Survived"]]
 ```
 
 > **`loc` vs `iloc`:**
-> - `loc[row_label, col_label]` — selects by **label** (column name, index value)
-> - `iloc[row_integer, col_integer]` — selects by **position** (0-based integers)
+> - `loc[row_label, col_label]` - selects by **label** (column name, index value)
+> - `iloc[row_integer, col_integer]` - selects by **position** (0-based integers)
 >
 > Always prefer `loc` when filtering by condition. Use `iloc` when you need a specific row by position (e.g., `df.iloc[0]` for the first row).
 
-> **Tradeoff — chained indexing pitfall:**
+> **Tradeoff - chained indexing pitfall:**
 > `df[df["Sex"] == "female"]["Survived"] = 1` → This can silently fail with a `SettingWithCopyWarning`!
 > Always use `loc` when **modifying** values:
 > `df.loc[df["Sex"] == "female", "Survived"] = 1` → This is safe.
@@ -304,31 +304,31 @@ female_passengers = df.query('Sex == "female"')[["Name", "Sex", "Age", "Survived
 
 ### Answer
 
-**Method 1 — `value_counts()` (fastest for a single column)**
+**Method 1 - `value_counts()` (fastest for a single column)**
 ```python
 print(df["Pclass"].value_counts().sort_index())
-# 1    216
-# 2    184
-# 3    491
+# 1 216
+# 2 184
+# 3 491
 ```
 
-**Method 2 — `groupby().size()`**
+**Method 2 - `groupby().size()`**
 ```python
 print(df.groupby("Pclass").size())
 # Pclass
-# 1    216
-# 2    184
-# 3    491
+# 1 216
+# 2 184
+# 3 491
 ```
 
-**Method 3 — `groupby().count()`**
+**Method 3 - `groupby().count()`**
 ```python
 # .count() counts non-null values per column, not rows
 # Different from .size() when columns have missing values!
 print(df.groupby("Pclass")["PassengerId"].count())
 ```
 
-> **`size()` vs `count()` — the critical difference:**
+> **`size()` vs `count()` - the critical difference:**
 > - `size()` → counts ALL rows in the group, including those with NaN
 > - `count()` → counts only NON-NULL values per column
 >
@@ -336,19 +336,19 @@ print(df.groupby("Pclass")["PassengerId"].count())
 
 ```python
 # Proof of the difference
-print(df.groupby("Pclass").size())          # always 216, 184, 491
-print(df.groupby("Pclass")["Age"].count())  # only non-null ages per class
+print(df.groupby("Pclass").size()) # always 216, 184, 491
+print(df.groupby("Pclass")["Age"].count()) # only non-null ages per class
 # Pclass
-# 1    186
-# 2    173
-# 3    355
+# 1 186
+# 2 173
+# 3 355
 ```
 
 ---
 
 ---
 
-# LEVEL 2 — Filtering & Grouping (Questions 6–10)
+# LEVEL 2 - Filtering & Grouping (Questions 6–10)
 ### Multi-condition filters, groupby aggregations, multiple aggregations
 
 ---
@@ -362,38 +362,38 @@ print(df.groupby("Pclass")["Age"].count())  # only non-null ages per class
 
 ### Answer
 
-**Method 1 — `groupby().mean()` on the Survived column**
+**Method 1 - `groupby().mean()` on the Survived column**
 ```python
 survival_by_sex = df.groupby("Sex")["Survived"].mean()
 print(survival_by_sex)
 # Sex
-# female    0.742038
-# male      0.188908
+# female 0.742038
+# male 0.188908
 ```
 
-**Method 2 — `groupby().agg()` to get both count and rate together**
+**Method 2 - `groupby().agg()` to get both count and rate together**
 ```python
 survival_by_sex = df.groupby("Sex")["Survived"].agg(
-    total_passengers="count",
-    survivors="sum",
-    survival_rate="mean"
+ total_passengers="count",
+ survivors="sum",
+ survival_rate="mean"
 )
 print(survival_by_sex.round(3))
-#         total_passengers  survivors  survival_rate
-# female               314        233          0.742
-# male                 577        109          0.189
+# total_passengers survivors survival_rate
+# female 314 233 0.742
+# male 577 109 0.189
 ```
 
-**Method 3 — `value_counts()` crosstab style**
+**Method 3 - `value_counts()` crosstab style**
 ```python
 print(df.groupby(["Sex", "Survived"]).size().unstack())
-# Survived    0    1
+# Survived 0 1
 # Sex
-# female     81  233
-# male      468  109
+# female 81 233
+# male 468 109
 ```
 
-> **Insight:** Female passengers had a 74.2% survival rate vs only 18.9% for males — a massive difference reflecting the "women and children first" evacuation policy.
+> **Insight:** Female passengers had a 74.2% survival rate vs only 18.9% for males - a massive difference reflecting the "women and children first" evacuation policy.
 
 > **Note on `agg()` syntax:** The `agg(new_col_name="original_agg_func")` named aggregation syntax was introduced in pandas 0.25. It's the cleanest way to rename columns during aggregation. Before that, people used `.rename()` after the fact.
 
@@ -408,43 +408,43 @@ print(df.groupby(["Sex", "Survived"]).size().unstack())
 
 ### Answer
 
-**Method 1 — Simple `groupby().mean()`**
+**Method 1 - Simple `groupby().mean()`**
 ```python
 avg_fare = df.groupby("Pclass")["Fare"].mean().round(2)
 print(avg_fare)
 # Pclass
-# 1    84.15
-# 2    20.66
-# 3    13.68
+# 1 84.15
+# 2 20.66
+# 3 13.68
 ```
 
-**Method 2 — Multiple aggregations using `agg()`**
+**Method 2 - Multiple aggregations using `agg()`**
 ```python
 fare_stats = df.groupby("Pclass")["Fare"].agg(
-    avg_fare="mean",
-    median_fare="median",
-    min_fare="min",
-    max_fare="max",
-    passengers="count"
+ avg_fare="mean",
+ median_fare="median",
+ min_fare="min",
+ max_fare="max",
+ passengers="count"
 ).round(2)
 
 print(fare_stats)
-#         avg_fare  median_fare  min_fare   max_fare  passengers
+# avg_fare median_fare min_fare max_fare passengers
 # Pclass
-# 1          84.15        60.29      0.00    512.33         216
-# 2          20.66        14.25      0.00     73.50         184
-# 3          13.68         8.05      0.00     69.55         491
+# 1 84.15 60.29 0.00 512.33 216
+# 2 20.66 14.25 0.00 73.50 184
+# 3 13.68 8.05 0.00 69.55 491
 ```
 
 > **Mean vs Median for Fare:** In Class 1, the mean is 84.15 but the median is only 60.29. That gap tells you there are some very expensive tickets pulling the mean up (max = 512!). The median is more representative here. Always compare both when dealing with potentially skewed distributions like prices or incomes.
 
-**Method 3 — `agg()` with a list of functions (older but still common)**
+**Method 3 - `agg()` with a list of functions (older but still common)**
 ```python
 fare_stats = df.groupby("Pclass")["Fare"].agg(["mean", "median", "min", "max"])
-# Column names will be 'mean', 'median', 'min', 'max' — use rename() to relabel
+# Column names will be 'mean', 'median', 'min', 'max' - use rename() to relabel
 ```
 
-> **Tradeoff — named agg vs list agg:**
+> **Tradeoff - named agg vs list agg:**
 > - Named: `agg(avg="mean")` → clean column names immediately, self-documenting
 > - List: `agg(["mean", "median"])` → simpler syntax but ugly default column names
 > Prefer named aggregations in any code you'll share or read later.
@@ -460,56 +460,56 @@ fare_stats = df.groupby("Pclass")["Fare"].agg(["mean", "median", "min", "max"])
 
 ### Answer
 
-**Method 1 — `groupby()` on two columns + `size()` + `unstack()`**
+**Method 1 - `groupby()` on two columns + `size()` + `unstack()`**
 ```python
 counts = df.groupby(["Pclass", "Sex", "Survived"]).size().unstack(fill_value=0)
 print(counts)
-# Survived         0    1
+# Survived 0 1
 # Pclass Sex
-# 1      female    3   91
-#        male     77   45
-# 2      female    6   70
-#        male     91   17
-# 3      female   72   72
-#        male    300   47
+# 1 female 3 91
+# male 77 45
+# 2 female 6 70
+# male 91 17
+# 3 female 72 72
+# male 300 47
 ```
 
-**Method 2 — `pd.crosstab()` — the cleanest for cross-tabulations**
+**Method 2 - `pd.crosstab()` - the cleanest for cross-tabulations**
 ```python
 ct = pd.crosstab(
-    index=[df["Pclass"], df["Sex"]],
-    columns=df["Survived"],
-    margins=True,          # adds row/column totals
-    margins_name="Total"
+ index=[df["Pclass"], df["Sex"]],
+ columns=df["Survived"],
+ margins=True, # adds row/column totals
+ margins_name="Total"
 )
 ct.columns = ["Did Not Survive", "Survived", "Total"]
 print(ct)
 ```
 
-**Method 3 — `pd.crosstab()` with `normalize` for proportions**
+**Method 3 - `pd.crosstab()` with `normalize` for proportions**
 ```python
 # Row-wise proportions (survival rate per Pclass-Sex group)
 ct_pct = pd.crosstab(
-    index=[df["Pclass"], df["Sex"]],
-    columns=df["Survived"],
-    normalize="index"      # normalize across rows (sum of each row = 1)
+ index=[df["Pclass"], df["Sex"]],
+ columns=df["Survived"],
+ normalize="index" # normalize across rows (sum of each row = 1)
 ).round(3)
 ct_pct.columns = ["survival_rate_0", "survival_rate_1"]
 print(ct_pct)
-#                survival_rate_0  survival_rate_1
+# survival_rate_0 survival_rate_1
 # Pclass Sex
-# 1      female            0.032            0.968  ← 96.8% of 1st class women survived!
-#        male              0.631            0.369
-# 2      female            0.079            0.921
-#        male               0.843            0.157
-# 3      female            0.500            0.500
-#        male               0.864            0.136
+# 1 female 0.032 0.968 ← 96.8% of 1st class women survived!
+# male 0.631 0.369
+# 2 female 0.079 0.921
+# male 0.843 0.157
+# 3 female 0.500 0.500
+# male 0.864 0.136
 ```
 
 > **`groupby` vs `crosstab`:**
 > - `groupby` is more flexible and works naturally in data pipelines
 > - `crosstab` is more ergonomic for 2D frequency tables with labels
-> - `crosstab` supports `normalize` directly — cleaner than doing `groupby().size() / groupby().size().sum()` manually
+> - `crosstab` supports `normalize` directly - cleaner than doing `groupby().size() / groupby().size().sum()` manually
 >
 > For exploratory analysis, reach for `crosstab`. For production pipelines and chaining, use `groupby`.
 
@@ -524,24 +524,24 @@ print(ct_pct)
 
 ### Answer
 
-**Method 1 — Boolean operators `|` (OR) and `&` (AND)**
+**Method 1 - Boolean operators `|` (OR) and `&` (AND)**
 ```python
 # IMPORTANT: Each condition must be wrapped in parentheses!
 mask = (df["Age"] > 60) | (df["Fare"] > 100)
 subset = df[mask]
 
 print(f"Passengers matching criteria: {len(subset)}")
-print(f"Survivors among them:         {subset['Survived'].sum()}")
-print(f"Survival rate:                {subset['Survived'].mean():.1%}")
+print(f"Survivors among them: {subset['Survived'].sum()}")
+print(f"Survival rate: {subset['Survived'].mean():.1%}")
 ```
 
-**Method 2 — `query()` — more readable for complex conditions**
+**Method 2 - `query()` - more readable for complex conditions**
 ```python
 subset = df.query("Age > 60 or Fare > 100")
 print(len(subset))
 ```
 
-> **Query handles NaN differently:** `query("Age > 60")` silently drops rows where Age is NaN from the result — the same as boolean indexing. But the string syntax is cleaner for complex multi-condition filters.
+> **Query handles NaN differently:** `query("Age > 60")` silently drops rows where Age is NaN from the result - the same as boolean indexing. But the string syntax is cleaner for complex multi-condition filters.
 
 **Adding an AND condition for comparison:**
 ```python
@@ -549,12 +549,12 @@ print(len(subset))
 high_value = df[(df["Age"] > 60) & (df["Fare"] > 100)]
 print(f"Old AND expensive passengers: {len(high_value)}")
 
-# Very common mistake — using Python's `and`/`or` instead of `&`/`|`
-# df[(df["Age"] > 60) and (df["Fare"] > 100)]  ← ValueError: ambiguous truth value!
+# Very common mistake - using Python's `and`/`or` instead of `&`/`|`
+# df[(df["Age"] > 60) and (df["Fare"] > 100)] ← ValueError: ambiguous truth value!
 # Always use & and | for element-wise comparison on Series
 ```
 
-> **Tradeoff — `|`/`&` vs `query()`:**
+> **Tradeoff - `|`/`&` vs `query()`:**
 > - `|`/`&` is faster on very large DataFrames and supports variables directly
 > - `query()` is cleaner to read and write, especially for 3+ conditions
 > - `query()` has limitations with column names containing spaces (use backticks: `df.query("column name > 5")` → `` df.query("`column name` > 5") ``)
@@ -570,53 +570,53 @@ print(f"Old AND expensive passengers: {len(high_value)}")
 
 ### Answer
 
-**Method 1 — `pd.pivot_table()` — the purpose-built tool**
+**Method 1 - `pd.pivot_table()` - the purpose-built tool**
 ```python
 pivot = pd.pivot_table(
-    df,
-    values="Survived",      # the column to aggregate
-    index="Pclass",         # rows
-    columns="Sex",          # columns
-    aggfunc="mean",         # how to aggregate
-    margins=True,           # add row/column totals
-    margins_name="Overall"
+ df,
+ values="Survived", # the column to aggregate
+ index="Pclass", # rows
+ columns="Sex", # columns
+ aggfunc="mean", # how to aggregate
+ margins=True, # add row/column totals
+ margins_name="Overall"
 ).round(3)
 
 print(pivot)
-# Sex     female   male  Overall
+# Sex female male Overall
 # Pclass
-# 1        0.968  0.369    0.630
-# 2        0.921  0.157    0.473
-# 3        0.500  0.136    0.242
-# Overall  0.742  0.189    0.384
+# 1 0.968 0.369 0.630
+# 2 0.921 0.157 0.473
+# 3 0.500 0.136 0.242
+# Overall 0.742 0.189 0.384
 ```
 
-**Method 2 — `groupby().unstack()` gives the same result**
+**Method 2 - `groupby().unstack()` gives the same result**
 ```python
 pivot2 = df.groupby(["Pclass", "Sex"])["Survived"].mean().unstack().round(3)
 print(pivot2)
-# Sex     female   male
+# Sex female male
 # Pclass
-# 1        0.968  0.369
-# 2        0.921  0.157
-# 3        0.500  0.136
+# 1 0.968 0.369
+# 2 0.921 0.157
+# 3 0.500 0.136
 ```
 
-**Method 3 — Multiple aggregation functions in `pivot_table()`**
+**Method 3 - Multiple aggregation functions in `pivot_table()`**
 ```python
 pivot_multi = pd.pivot_table(
-    df,
-    values="Survived",
-    index="Pclass",
-    columns="Sex",
-    aggfunc=["mean", "count"]   # survival rate AND passenger count
+ df,
+ values="Survived",
+ index="Pclass",
+ columns="Sex",
+ aggfunc=["mean", "count"] # survival rate AND passenger count
 ).round(3)
 print(pivot_multi)
 ```
 
 > **`pivot_table` vs `groupby().unstack()`:**
 > - `pivot_table` is more explicit, supports `margins`, `fill_value`, and multiple `aggfunc` directly
-> - `groupby().unstack()` is more composable — easier to chain with other operations
+> - `groupby().unstack()` is more composable - easier to chain with other operations
 > - If you're building a display table, use `pivot_table`. If you're continuing a transformation pipeline, use `groupby().unstack()`
 
 > **What the pivot table reveals:** Class 1 females had a 96.8% survival rate. Class 3 males had only a 13.6% survival rate. The "Pclass" effect is dramatic and exists independently within both sexes.
@@ -625,13 +625,13 @@ print(pivot_multi)
 
 ---
 
-# LEVEL 3 — Aggregation Depth (Questions 11–15)
+# LEVEL 3 - Aggregation Depth (Questions 11–15)
 ### Multiple aggregations, transforms, and derived columns
 
 ---
 
 ## Question 11
-### For each passenger class, compute: total passengers, number of survivors, survival rate, average age, and average fare — all in one query.
+### For each passenger class, compute: total passengers, number of survivors, survival rate, average age, and average fare - all in one query.
 
 **Concepts:** Named multi-column `agg()`, `groupby()` on multiple metrics
 
@@ -641,37 +641,37 @@ print(pivot_multi)
 
 ```python
 class_summary = df.groupby("Pclass").agg(
-    total_passengers  = ("PassengerId", "count"),
-    survivors         = ("Survived",    "sum"),
-    survival_rate     = ("Survived",    "mean"),
-    avg_age           = ("Age",         "mean"),
-    avg_fare          = ("Fare",        "mean"),
-    median_fare       = ("Fare",        "median"),
+ total_passengers = ("PassengerId", "count"),
+ survivors = ("Survived", "sum"),
+ survival_rate = ("Survived", "mean"),
+ avg_age = ("Age", "mean"),
+ avg_fare = ("Fare", "mean"),
+ median_fare = ("Fare", "median"),
 ).round(2)
 
 print(class_summary)
-#         total_passengers  survivors  survival_rate  avg_age  avg_fare  median_fare
+# total_passengers survivors survival_rate avg_age avg_fare median_fare
 # Pclass
-# 1                    216        136           0.63    38.23     84.15        60.29
-# 2                    184         87           0.47    29.88     20.66        14.25
-# 3                    491        119           0.24    25.14     13.68         8.05
+# 1 216 136 0.63 38.23 84.15 60.29
+# 2 184 87 0.47 29.88 20.66 14.25
+# 3 491 119 0.24 25.14 13.68 8.05
 ```
 
-> **Named aggregation syntax — the right way:**
+> **Named aggregation syntax - the right way:**
 > `new_column_name = ("source_column", "aggregation_function")`
 >
 > This was introduced in pandas 0.25.0 and is now the recommended approach. It produces clean column names without needing `.rename()` afterwards.
 
-**Bonus — adding a percentage column after the fact:**
+**Bonus - adding a percentage column after the fact:**
 ```python
 class_summary["pct_of_total"] = (
-    class_summary["total_passengers"] / class_summary["total_passengers"].sum() * 100
+ class_summary["total_passengers"] / class_summary["total_passengers"].sum() * 100
 ).round(1)
 print(class_summary["pct_of_total"])
 # Pclass
-# 1    24.2%
-# 2    20.6%
-# 3    55.1%
+# 1 24.2%
+# 2 20.6%
+# 3 55.1%
 ```
 
 > **Insight:** Class 3 passengers made up 55% of all passengers but had only a 24% survival rate. Class 1 had 24% of passengers and a 63% survival rate. This directly reflects which decks lifeboats were accessible from.
@@ -693,37 +693,37 @@ df["FamilySize"] = df["SibSp"] + df["Parch"] + 1
 
 # Survival rate by family size
 family_survival = df.groupby("FamilySize")["Survived"].agg(
-    passengers    = "count",
-    survival_rate = "mean"
+ passengers = "count",
+ survival_rate = "mean"
 ).round(3)
 
 print(family_survival)
-#             passengers  survival_rate
+# passengers survival_rate
 # FamilySize
-# 1                  537          0.304   ← traveling alone: 30.4% survival
-# 2                  161          0.553
-# 3                  102          0.578
-# 4                   29          0.724   ← family of 4: best survival rate!
-# 5                   15          0.200
-# 6                   22          0.136
-# 7                    12          0.333
-# 8                    6          0.000   ← all large families died
-# 11                   7          0.000
+# 1 537 0.304 ← traveling alone: 30.4% survival
+# 2 161 0.553
+# 3 102 0.578
+# 4 29 0.724 ← family of 4: best survival rate!
+# 5 15 0.200
+# 6 22 0.136
+# 7 12 0.333
+# 8 6 0.000 ← all large families died
+# 11 7 0.000
 ```
 
-**Bonus — create a categorical `IsAlone` column:**
+**Bonus - create a categorical `IsAlone` column:**
 ```python
 df["IsAlone"] = (df["FamilySize"] == 1).astype(int)
 
 print(df.groupby("IsAlone")["Survived"].mean().round(3))
 # IsAlone
-# 0    0.506   (traveling with family: 50.6% survival)
-# 1    0.304   (traveling alone: 30.4% survival)
+# 0 0.506 (traveling with family: 50.6% survival)
+# 1 0.304 (traveling alone: 30.4% survival)
 ```
 
-> **Column creation is fundamental pandas.** New columns from arithmetic operations are vectorized — they operate on the entire column at once, not row by row. Never use a `for` loop to create a new column. Use `df["new"] = df["a"] + df["b"]` instead.
+> **Column creation is fundamental pandas.** New columns from arithmetic operations are vectorized - they operate on the entire column at once, not row by row. Never use a `for` loop to create a new column. Use `df["new"] = df["a"] + df["b"]` instead.
 
-> **Insight:** Traveling alone was actually the worst scenario. Small families (2–4) had the best survival rates. Very large families (7+) had 0% survival — possibly because they couldn't all get on the same lifeboat.
+> **Insight:** Traveling alone was actually the worst scenario. Small families (2–4) had the best survival rates. Very large families (7+) had 0% survival - possibly because they couldn't all get on the same lifeboat.
 
 ---
 
@@ -737,28 +737,28 @@ print(df.groupby("IsAlone")["Survived"].mean().round(3))
 ### Answer
 
 ```python
-# Method 1 — pd.cut() with explicit bins and labels
+# Method 1 - pd.cut() with explicit bins and labels
 df["AgeBand"] = pd.cut(
-    df["Age"],
-    bins   = [0, 12, 17, 60, 100],
-    labels = ["Child", "Teen", "Adult", "Senior"],
-    right  = True    # intervals are (left, right] — i.e., right-inclusive
+ df["Age"],
+ bins = [0, 12, 17, 60, 100],
+ labels = ["Child", "Teen", "Adult", "Senior"],
+ right = True # intervals are (left, right] - i.e., right-inclusive
 )
 
 # Survival rate per age band
 age_survival = df.groupby("AgeBand", observed=True)["Survived"].agg(
-    passengers    = "count",
-    survivors     = "sum",
-    survival_rate = "mean"
+ passengers = "count",
+ survivors = "sum",
+ survival_rate = "mean"
 ).round(3)
 
 print(age_survival)
-#          passengers  survivors  survival_rate
+# passengers survivors survival_rate
 # AgeBand
-# Child            69         40          0.580   ← children evacuated first
-# Teen             55         27          0.491
-# Adult           566        215          0.380
-# Senior           24         11          0.458
+# Child 69 40 0.580 ← children evacuated first
+# Teen 55 27 0.491
+# Adult 566 215 0.380
+# Senior 24 11 0.458
 ```
 
 > **`pd.cut()` vs `pd.qcut()`:**
@@ -769,7 +769,7 @@ print(age_survival)
 > Use `qcut` when you want equal-sized groups (quartiles, deciles).
 
 ```python
-# Method 2 — pd.qcut() for equal-frequency bins
+# Method 2 - pd.qcut() for equal-frequency bins
 df["AgeBand_q"] = pd.qcut(df["Age"], q=4, labels=["Q1", "Q2", "Q3", "Q4"])
 print(df.groupby("AgeBand_q", observed=True)["Survived"].mean().round(3))
 ```
@@ -778,16 +778,16 @@ print(df.groupby("AgeBand_q", observed=True)["Survived"].mean().round(3))
 
 **Handling passengers with missing Age:**
 ```python
-# NaN Age → NaN AgeBand (they won't appear in groupby — they're silently excluded)
-print(df["AgeBand"].isnull().sum())   # 177 — same count as missing Age
+# NaN Age → NaN AgeBand (they won't appear in groupby - they're silently excluded)
+print(df["AgeBand"].isnull().sum()) # 177 - same count as missing Age
 ```
 
 ---
 
 ## Question 14
-### Add a column showing each passenger's fare relative to the average fare in their class — i.e., how much more or less they paid vs their class average.
+### Add a column showing each passenger's fare relative to the average fare in their class - i.e., how much more or less they paid vs their class average.
 
-**Concepts:** `groupby().transform()` — the key concept that separates intermediate from advanced pandas users
+**Concepts:** `groupby().transform()` - the key concept that separates intermediate from advanced pandas users
 
 ---
 
@@ -795,7 +795,7 @@ print(df["AgeBand"].isnull().sum())   # 177 — same count as missing Age
 
 ```python
 # transform() broadcasts the group aggregate back to the original DataFrame index
-# The result has the SAME shape as the original DataFrame — that's what makes it special
+# The result has the SAME shape as the original DataFrame - that's what makes it special
 
 # Step 1: compute class-level average fare using transform
 df["ClassAvgFare"] = df.groupby("Pclass")["Fare"].transform("mean")
@@ -805,29 +805,29 @@ df["FareDiff"] = df["Fare"] - df["ClassAvgFare"]
 
 # Step 3: verify it worked
 print(df[["Pclass", "Fare", "ClassAvgFare", "FareDiff"]].head(10).round(2))
-#    Pclass   Fare  ClassAvgFare  FareDiff
-# 0       3   7.25         13.68     -6.43   ← paid 6.43 less than Class 3 avg
-# 1       1  71.28         84.15    -12.87
-# 2       3   7.93         13.68     -5.75
-# 3       1  53.10         84.15    -31.05
+# Pclass Fare ClassAvgFare FareDiff
+# 0 3 7.25 13.68 -6.43 ← paid 6.43 less than Class 3 avg
+# 1 1 71.28 84.15 -12.87
+# 2 3 7.93 13.68 -5.75
+# 3 1 53.10 84.15 -31.05
 # ...
 ```
 
 **The transform() pattern explained:**
 ```python
-# Without transform — result has one row per group (can't assign back to df)
+# Without transform - result has one row per group (can't assign back to df)
 df.groupby("Pclass")["Fare"].mean()
 # Pclass
-# 1    84.15   ← only 3 rows
-# 2    20.66
-# 3    13.68
+# 1 84.15 ← only 3 rows
+# 2 20.66
+# 3 13.68
 
-# With transform — result has the same shape as the original (891 rows)
+# With transform - result has the same shape as the original (891 rows)
 df.groupby("Pclass")["Fare"].transform("mean")
-# 0    13.68   ← row 0 is Pclass 3 → gets 13.68
-# 1    84.15   ← row 1 is Pclass 1 → gets 84.15
-# 2    13.68
-# 3    84.15
+# 0 13.68 ← row 0 is Pclass 3 → gets 13.68
+# 1 84.15 ← row 1 is Pclass 1 → gets 84.15
+# 2 13.68
+# 3 84.15
 # ... (891 rows total)
 ```
 
@@ -835,12 +835,12 @@ df.groupby("Pclass")["Fare"].transform("mean")
 ```python
 # Normalize scores within groups (z-score)
 df["FareZScore"] = df.groupby("Pclass")["Fare"].transform(
-    lambda x: (x - x.mean()) / x.std()
+ lambda x: (x - x.mean()) / x.std()
 )
 
 # Fill NaN age with the median age of that passenger's class
 df["AgeFilled"] = df["Age"].fillna(
-    df.groupby("Pclass")["Age"].transform("median")
+ df.groupby("Pclass")["Age"].transform("median")
 )
 
 # Cumulative count within a group
@@ -876,49 +876,49 @@ df["Title"] = df["Name"].str.extract(r",\s*([A-Za-z]+)\.")
 # Regex: comma, optional spaces, then capture word characters, then a period
 
 print(df["Title"].value_counts())
-# Mr        517
-# Miss      182
-# Mrs       125
-# Master     40
-# Dr          7
-# Rev         6
-# Mlle        2
+# Mr 517
+# Miss 182
+# Mrs 125
+# Master 40
+# Dr 7
+# Rev 6
+# Mlle 2
 # ... (rare titles)
 
 # Step 2: Consolidate rare titles
 title_mapping = {
-    "Mlle":     "Miss",
-    "Ms":       "Miss",
-    "Mme":      "Mrs",
-    "Capt":     "Rare",
-    "Col":      "Rare",
-    "Major":    "Rare",
-    "Jonkheer": "Rare",
-    "Don":      "Rare",
-    "Sir":      "Rare",
-    "Countess": "Rare",
-    "Lady":     "Rare",
-    "Dr":       "Rare",
-    "Rev":      "Rare",
+ "Mlle": "Miss",
+ "Ms": "Miss",
+ "Mme": "Mrs",
+ "Capt": "Rare",
+ "Col": "Rare",
+ "Major": "Rare",
+ "Jonkheer": "Rare",
+ "Don": "Rare",
+ "Sir": "Rare",
+ "Countess": "Rare",
+ "Lady": "Rare",
+ "Dr": "Rare",
+ "Rev": "Rare",
 }
 df["Title"] = df["Title"].replace(title_mapping)
 
 # Step 3: Survival rate per title
 title_survival = df.groupby("Title")["Survived"].agg(
-    count         = "count",
-    survival_rate = "mean"
+ count = "count",
+ survival_rate = "mean"
 ).round(3).sort_values("survival_rate", ascending=False)
 
 print(title_survival)
-#         count  survival_rate
-# Mrs       125          0.792
-# Miss      184          0.702
-# Master     40          0.575
-# Rare       23          0.347
-# Mr        517          0.157
+# count survival_rate
+# Mrs 125 0.792
+# Miss 184 0.702
+# Master 40 0.575
+# Rare 23 0.347
+# Mr 517 0.157
 ```
 
-> **Why extract titles?** This is a classic feature engineering technique. The raw `Name` column looks useless, but the title inside it encodes gender, social class, and marital status simultaneously — all correlated with survival. `str.extract()` with a regex pattern is how you unlock that information.
+> **Why extract titles?** This is a classic feature engineering technique. The raw `Name` column looks useless, but the title inside it encodes gender, social class, and marital status simultaneously - all correlated with survival. `str.extract()` with a regex pattern is how you unlock that information.
 
 > **`str.extract()` vs `str.split()` vs `str.findall()`:**
 > - `str.extract(pattern)` → returns the first captured group as a new Series/DataFrame
@@ -931,7 +931,7 @@ print(title_survival)
 
 ---
 
-# LEVEL 4 — Advanced (Questions 16–20)
+# LEVEL 4 - Advanced (Questions 16–20)
 ### Window functions, complex transforms, multi-level operations, real-world workflows
 
 ---
@@ -945,12 +945,12 @@ print(title_survival)
 
 ### Answer
 
-**Method 1 — `groupby().rank()` + filter**
+**Method 1 - `groupby().rank()` + filter**
 ```python
 # rank() within each Pclass group
 df["FareRankInClass"] = df.groupby("Pclass")["Fare"].rank(
-    method    = "dense",       # ties get the same rank (no gaps)
-    ascending = False          # highest fare = rank 1
+ method = "dense", # ties get the same rank (no gaps)
+ ascending = False # highest fare = rank 1
 )
 
 # Top 3 fare-payers per class
@@ -958,24 +958,24 @@ top3 = df[df["FareRankInClass"] <= 3].sort_values(["Pclass", "FareRankInClass"])
 print(top3[["Pclass", "Name", "Fare", "FareRankInClass", "Survived"]].to_string())
 ```
 
-**Method 2 — `groupby().apply()` with `nlargest()`**
+**Method 2 - `groupby().apply()` with `nlargest()`**
 ```python
 top3_v2 = (
-    df.groupby("Pclass")[["Name", "Fare", "Survived"]]
-    .apply(lambda g: g.nlargest(3, "Fare"))
-    .reset_index(drop=True)
+ df.groupby("Pclass")[["Name", "Fare", "Survived"]]
+ .apply(lambda g: g.nlargest(3, "Fare"))
+ .reset_index(drop=True)
 )
 print(top3_v2)
 ```
 
-**Method 3 — `sort_values` + `groupby().head()`**
+**Method 3 - `sort_values` + `groupby().head()`**
 ```python
 top3_v3 = (
-    df.sort_values("Fare", ascending=False)
-      .groupby("Pclass")
-      .head(3)
-      [["Pclass", "Name", "Fare", "Survived"]]
-      .sort_values(["Pclass", "Fare"], ascending=[True, False])
+ df.sort_values("Fare", ascending=False)
+ .groupby("Pclass")
+ .head(3)
+ [["Pclass", "Name", "Fare", "Survived"]]
+ .sort_values(["Pclass", "Fare"], ascending=[True, False])
 )
 print(top3_v3)
 ```
@@ -1008,44 +1008,44 @@ survival_rate_by_class = df.groupby("Pclass")["Survived"].mean().round(3)
 print("Survival rate by class:")
 print(survival_rate_by_class)
 # Pclass
-# 1    0.630   ← 63% of Class 1 passengers survived
-# 2    0.473
-# 3    0.242
+# 1 0.630 ← 63% of Class 1 passengers survived
+# 2 0.473
+# 3 0.242
 
 
 # --- Question B: Composition of survivors (what % of survivors were from each class?) ---
 survivor_composition = (
-    df[df["Survived"] == 1]
-    .groupby("Pclass")
-    .size()
-    / df["Survived"].sum()
-    * 100
+ df[df["Survived"] == 1]
+ .groupby("Pclass")
+ .size()
+ / df["Survived"].sum()
+ * 100
 ).round(1)
 
 print("\nOf all survivors, % from each class:")
 print(survivor_composition)
 # Pclass
-# 1    39.8   ← 39.8% of survivors were Class 1 (even though Class 1 = 24% of passengers)
-# 2    25.4
-# 3    34.8
+# 1 39.8 ← 39.8% of survivors were Class 1 (even though Class 1 = 24% of passengers)
+# 2 25.4
+# 3 34.8
 
 
 # --- Both together using crosstab with normalize ---
 print("\n--- Rate within class (normalize='index') ---")
 print(pd.crosstab(df["Pclass"], df["Survived"], normalize="index").round(3))
-#           0      1
+# 0 1
 # Pclass
-# 1     0.370  0.630
-# 2     0.527  0.473
-# 3     0.758  0.242
+# 1 0.370 0.630
+# 2 0.527 0.473
+# 3 0.758 0.242
 
 print("\n--- Share of total (normalize='columns') ---")
 print(pd.crosstab(df["Pclass"], df["Survived"], normalize="columns").round(3))
-#           0      1
+# 0 1
 # Pclass
-# 1     0.140  0.398
-# 2     0.166  0.254
-# 3     0.694  0.348
+# 1 0.140 0.398
+# 2 0.166 0.254
+# 3 0.694 0.348
 ```
 
 > **This is a critical conceptual distinction in data analysis:**
@@ -1081,17 +1081,17 @@ print(df.groupby(["Pclass", "PaidAboveMedian"]).size())
 
 # Does paying above the class median correlate with better survival?
 print(
-    df.groupby("PaidAboveMedian")["Survived"].mean().round(3)
+ df.groupby("PaidAboveMedian")["Survived"].mean().round(3)
 )
 # PaidAboveMedian
-# False    0.340
-# True     0.437   ← paid more → slightly better survival
+# False 0.340
+# True 0.437 ← paid more → slightly better survival
 ```
 
-**Method 2 — one-liner using transform with lambda**
+**Method 2 - one-liner using transform with lambda**
 ```python
 df["PaidAboveMedian"] = df["Fare"] > df.groupby("Pclass")["Fare"].transform(
-    lambda x: x.median()
+ lambda x: x.median()
 )
 ```
 
@@ -1111,27 +1111,27 @@ df["PaidAboveMedian"] = df["Fare"] > df.groupby("Pclass")["Fare"].transform(
 ```python
 # Make sure AgeBand exists (created in Q13)
 if "AgeBand" not in df.columns:
-    df["AgeBand"] = pd.cut(
-        df["Age"],
-        bins=[0, 12, 17, 60, 100],
-        labels=["Child", "Teen", "Adult", "Senior"]
-    )
+ df["AgeBand"] = pd.cut(
+ df["Age"],
+ bins=[0, 12, 17, 60, 100],
+ labels=["Child", "Teen", "Adult", "Senior"]
+ )
 
 # Multi-level groupby with multiple aggregations
 profile = (
-    df.groupby(["Sex", "Pclass", "AgeBand"], observed=True)
-    .agg(
-        passengers    = ("PassengerId", "count"),
-        survival_rate = ("Survived",    "mean"),
-        avg_fare      = ("Fare",        "mean"),
-        avg_age       = ("Age",         "mean"),
-    )
-    .round(2)
-    .reset_index()               # bring group keys back as columns
-    .sort_values(
-        ["Sex", "Pclass", "AgeBand"],
-        ascending=[True, True, True]
-    )
+ df.groupby(["Sex", "Pclass", "AgeBand"], observed=True)
+ .agg(
+ passengers = ("PassengerId", "count"),
+ survival_rate = ("Survived", "mean"),
+ avg_fare = ("Fare", "mean"),
+ avg_age = ("Age", "mean"),
+ )
+ .round(2)
+ .reset_index() # bring group keys back as columns
+ .sort_values(
+ ["Sex", "Pclass", "AgeBand"],
+ ascending=[True, True, True]
+ )
 )
 
 print(profile.to_string())
@@ -1141,8 +1141,8 @@ print(profile.to_string())
 ```python
 # If you keep the multi-index (don't reset_index), you can slice with .loc
 profile_mi = (
-    df.groupby(["Sex", "Pclass", "AgeBand"], observed=True)
-    ["Survived"].mean().round(3)
+ df.groupby(["Sex", "Pclass", "AgeBand"], observed=True)
+ ["Survived"].mean().round(3)
 )
 
 # Get all Class 1 female results
@@ -1152,7 +1152,7 @@ print(profile_mi.loc["female", 1])
 print(profile_mi.loc[("female", 1, "Child")])
 ```
 
-> **`reset_index()` after `groupby()`:** By default, `groupby()` puts the group keys as the DataFrame index. This is useful for label-based slicing but awkward for most downstream operations. Call `.reset_index()` to bring them back as regular columns — almost always the right move before saving results or further filtering.
+> **`reset_index()` after `groupby()`:** By default, `groupby()` puts the group keys as the DataFrame index. This is useful for label-based slicing but awkward for most downstream operations. Call `.reset_index()` to bring them back as regular columns - almost always the right move before saving results or further filtering.
 
 > **`observed=True` in multi-level groupby with Categoricals:** Without it, pandas generates a row for every *possible* combination of categories (including combinations that don't exist in the data, like Senior Class 3 females). With `observed=True`, only combinations that actually appear are shown.
 
@@ -1171,39 +1171,39 @@ This is the kind of multi-step question you'd encounter in a real data analysis 
 
 ```python
 # Step 1: Extract cabin prefix (first letter of cabin, e.g., 'C85' → 'C')
-# About 77% of Cabin is missing — those become NaN
-df["CabinPrefix"] = df["Cabin"].str[0]   # str[0] gives first character
+# About 77% of Cabin is missing - those become NaN
+df["CabinPrefix"] = df["Cabin"].str[0] # str[0] gives first character
 
 print(df["CabinPrefix"].value_counts())
-# C    59
-# B    47
-# D    33
-# E    32
-# A    15
-# F    13
-# G     4
-# T     1
+# C 59
+# B 47
+# D 33
+# E 32
+# A 15
+# F 13
+# G 4
+# T 1
 # NaN (missing) = 687
 
 # Step 2: Average fare per cabin prefix
 cabin_fare = (
-    df.dropna(subset=["CabinPrefix"])    # work only with known cabins
-    .groupby("CabinPrefix")["Fare"]
-    .mean()
-    .round(2)
-    .sort_values(ascending=False)
+ df.dropna(subset=["CabinPrefix"]) # work only with known cabins
+ .groupby("CabinPrefix")["Fare"]
+ .mean()
+ .round(2)
+ .sort_values(ascending=False)
 )
 print("\nAverage fare by cabin prefix:")
 print(cabin_fare)
 # CabinPrefix
-# T    35.50  (only 1 passenger — unreliable)
-# B    93.68
-# C   107.25  ← most expensive on average
-# D    57.24
-# E    46.03
-# A    39.62
-# F    11.13
-# G     9.45
+# T 35.50 (only 1 passenger - unreliable)
+# B 93.68
+# C 107.25 ← most expensive on average
+# D 57.24
+# E 46.03
+# A 39.62
+# F 11.13
+# G 9.45
 
 # Step 3: Top 5 prefixes by average fare
 top5_prefixes = cabin_fare.nlargest(5).index.tolist()
@@ -1211,41 +1211,41 @@ print(f"\nTop 5 cabin prefixes by average fare: {top5_prefixes}")
 
 # Step 4: Survival breakdown for those prefixes
 top5_analysis = (
-    df[df["CabinPrefix"].isin(top5_prefixes)]
-    .groupby("CabinPrefix")
-    .agg(
-        passengers    = ("PassengerId", "count"),
-        survivors     = ("Survived",    "sum"),
-        survival_rate = ("Survived",    "mean"),
-        avg_fare      = ("Fare",        "mean"),
-    )
-    .round(3)
-    .sort_values("avg_fare", ascending=False)
+ df[df["CabinPrefix"].isin(top5_prefixes)]
+ .groupby("CabinPrefix")
+ .agg(
+ passengers = ("PassengerId", "count"),
+ survivors = ("Survived", "sum"),
+ survival_rate = ("Survived", "mean"),
+ avg_fare = ("Fare", "mean"),
+ )
+ .round(3)
+ .sort_values("avg_fare", ascending=False)
 )
-print("\nSurvival breakdown — top 5 cabin prefixes by fare:")
+print("\nSurvival breakdown - top 5 cabin prefixes by fare:")
 print(top5_analysis)
 
 # Step 5: Compare with passengers who had NO cabin recorded
 no_cabin = df[df["CabinPrefix"].isna()]["Survived"].mean()
-print(f"\nSurvival rate — no cabin recorded: {no_cabin:.3f}")
-# Result: ~0.30 — much lower than most cabin groups
+print(f"\nSurvival rate - no cabin recorded: {no_cabin:.3f}")
+# Result: ~0.30 - much lower than most cabin groups
 # Inference: having a recorded cabin (associated with Pclass 1/2) → better survival
 ```
 
 > **`nlargest(n)` vs `sort_values().head(n)`:**
-> - `nlargest(n)` is more efficient — it doesn't fully sort the Series
+> - `nlargest(n)` is more efficient - it doesn't fully sort the Series
 > - `sort_values().head(n)` is more readable and also returns the full sorted order if needed
 > - For production code with large data, use `nlargest/nsmallest`. For exploration, either is fine.
 
-> **The missing cabin problem:** 77% of passengers have no cabin recorded. This is almost certainly not random — third-class passengers generally had no assigned cabin. The missing value itself is informative. Techniques for handling this: (1) treat NaN as its own category `"Unknown"`, (2) use it as a binary feature `has_cabin = Cabin.notna()`, (3) impute based on class. Each choice has analysis tradeoffs.
+> **The missing cabin problem:** 77% of passengers have no cabin recorded. This is almost certainly not random - third-class passengers generally had no assigned cabin. The missing value itself is informative. Techniques for handling this: (1) treat NaN as its own category `"Unknown"`, (2) use it as a binary feature `has_cabin = Cabin.notna()`, (3) impute based on class. Each choice has analysis tradeoffs.
 
 ```python
 # Bonus: create has_cabin feature and check its correlation with survival
 df["has_cabin"] = df["Cabin"].notna().astype(int)
 print(df.groupby("has_cabin")["Survived"].mean().round(3))
 # has_cabin
-# 0    0.300   (no cabin recorded)
-# 1    0.667   (cabin recorded)
+# 0 0.300 (no cabin recorded)
+# 1 0.667 (cabin recorded)
 ```
 
 ---
@@ -1265,7 +1265,7 @@ print(df.groupby("has_cabin")["Survived"].mean().round(3))
 ✅ New column creation (arithmetic)
 ✅ pd.cut() and pd.qcut()
 ✅ groupby().size()
-✅ groupby().count() — and why it differs from size()
+✅ groupby().count() - and why it differs from size()
 ✅ groupby().mean(), .sum(), .min(), .max()
 ✅ groupby() single column aggregation
 ✅ groupby() multi-column aggregation with named agg()
@@ -1273,10 +1273,10 @@ print(df.groupby("has_cabin")["Survived"].mean().round(3))
 ✅ agg() with a list of functions
 ✅ Named aggregation syntax: agg(new_name=("col", "func"))
 ✅ unstack() to reshape groupby results
-✅ pd.crosstab() — counts and proportions
+✅ pd.crosstab() - counts and proportions
 ✅ pd.crosstab(normalize='index'/'columns'/True)
 ✅ pd.pivot_table() with aggfunc, margins
-✅ groupby().transform() — core concept, broadcasting back
+✅ groupby().transform() - core concept, broadcasting back
 ✅ transform() with lambda functions
 ✅ str.extract() with regex
 ✅ str[0] string indexing
@@ -1295,5 +1295,5 @@ print(df.groupby("has_cabin")["Survived"].mean().round(3))
 
 ---
 
-*End of Practice Sheet — Titanic Dataset with Pandas*
-*Codeverra — codeverra.com*
+*End of Practice Sheet - Titanic Dataset with Pandas*
+*Codeverra - codeverra.com*

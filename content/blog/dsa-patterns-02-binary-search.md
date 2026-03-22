@@ -1,14 +1,14 @@
 ---
-title: "Binary Search Pattern — Complete Guide"
-description: "Understand binary search as a pattern beyond sorted arrays — templates, variations, and common problems."
+title: "Binary Search Pattern - Complete Guide"
+description: "Understand binary search as a pattern beyond sorted arrays - templates, variations, and common problems."
 date: 2026-03-21
 author: "codeverra"
 toc: true
 tocopen: false
 draft: false
 tags:
-  - dsa
-  - dsa-patterns
+ - dsa
+ - dsa-patterns
 ---
 
 # 🔰 Pattern 2: Binary Search
@@ -16,22 +16,22 @@ tags:
 ## Table of Contents
 
 1. [What is Binary Search?](#what-is-binary-search)
-2. [The Core Idea — Why Halving Works](#the-core-idea--why-halving-works)
+2. [The Core Idea - Why Halving Works](#the-core-idea - why-halving-works)
 3. [The Three Binary Search Templates](#the-three-binary-search-templates)
-4. [Binary Search on Answer — The Hidden Pattern](#binary-search-on-answer--the-hidden-pattern)
+4. [Binary Search on Answer - The Hidden Pattern](#binary-search-on-answer - the-hidden-pattern)
 5. [Common Pitfalls](#common-pitfalls)
 6. [Problem Set](#problem-set)
-   - [Problem 1: Binary Search](#problem-1-binary-search)
-   - [Problem 2: Search Insert Position](#problem-2-search-insert-position)
-   - [Problem 3: Find First and Last Position of Element in Sorted Array](#problem-3-find-first-and-last-position-of-element-in-sorted-array)
-   - [Problem 4: Search a 2D Matrix](#problem-4-search-a-2d-matrix)
-   - [Problem 5: Search in Rotated Sorted Array](#problem-5-search-in-rotated-sorted-array)
-   - [Problem 6: Find Minimum in Rotated Sorted Array](#problem-6-find-minimum-in-rotated-sorted-array)
-   - [Problem 7: Koko Eating Bananas](#problem-7-koko-eating-bananas)
-   - [Problem 8: Capacity to Ship Packages Within D Days](#problem-8-capacity-to-ship-packages-within-d-days)
-   - [Problem 9: Split Array Largest Sum](#problem-9-split-array-largest-sum)
-   - [Problem 10: Median of Two Sorted Arrays](#problem-10-median-of-two-sorted-arrays)
-7. [Key Takeaways & Summary](#key-takeaways--summary)
+ - [Problem 1: Binary Search](#problem-1-binary-search)
+ - [Problem 2: Search Insert Position](#problem-2-search-insert-position)
+ - [Problem 3: Find First and Last Position of Element in Sorted Array](#problem-3-find-first-and-last-position-of-element-in-sorted-array)
+ - [Problem 4: Search a 2D Matrix](#problem-4-search-a-2d-matrix)
+ - [Problem 5: Search in Rotated Sorted Array](#problem-5-search-in-rotated-sorted-array)
+ - [Problem 6: Find Minimum in Rotated Sorted Array](#problem-6-find-minimum-in-rotated-sorted-array)
+ - [Problem 7: Koko Eating Bananas](#problem-7-koko-eating-bananas)
+ - [Problem 8: Capacity to Ship Packages Within D Days](#problem-8-capacity-to-ship-packages-within-d-days)
+ - [Problem 9: Split Array Largest Sum](#problem-9-split-array-largest-sum)
+ - [Problem 10: Median of Two Sorted Arrays](#problem-10-median-of-two-sorted-arrays)
+7. [Key Takeaways & Summary](#key-takeaways - summary)
 
 ---
 
@@ -47,14 +47,14 @@ Let's see the difference with a concrete example.
 
 **Binary search (halving):**
 ```
-Step 1:  Check middle of 1,000,000 elements → eliminate 500,000
-Step 2:  Check middle of 500,000 elements   → eliminate 250,000
-Step 3:  Check middle of 250,000 elements   → eliminate 125,000
+Step 1: Check middle of 1,000,000 elements → eliminate 500,000
+Step 2: Check middle of 500,000 elements → eliminate 250,000
+Step 3: Check middle of 250,000 elements → eliminate 125,000
 ...
-Step 20: Check middle of 1 element          → found (or not)
+Step 20: Check middle of 1 element → found (or not)
 ```
 
-**20 steps to search 1 million elements.** That's the power of halving — each step eliminates half the remaining possibilities.
+**20 steps to search 1 million elements.** That's the power of halving - each step eliminates half the remaining possibilities.
 
 > **Binary Search** is a technique where you repeatedly divide the search space in half, using a condition to decide which half to keep, until you find your target or narrow down to a single candidate.
 
@@ -71,15 +71,15 @@ Binary search uses two pointers (`low` and `high`) that converge, just like oppo
 
 ---
 
-## The Core Idea — Why Halving Works
+## The Core Idea - Why Halving Works
 
-Binary search works whenever you have a **monotonic condition** — a property that is `False` for one portion of the search space and `True` for the rest (or vice versa), with a clean boundary between them.
+Binary search works whenever you have a **monotonic condition** - a property that is `False` for one portion of the search space and `True` for the rest (or vice versa), with a clean boundary between them.
 
 ```
-Index:     0   1   2   3   4   5   6   7   8   9
-Condition: F   F   F   F   T   T   T   T   T   T
-                         ^
-                    boundary (first True)
+Index: 0 1 2 3 4 5 6 7 8 9
+Condition: F F F F T T T T T T
+ ^
+ boundary (first True)
 ```
 
 At any point, if we check the middle and find:
@@ -104,99 +104,99 @@ Different problems need slightly different templates. The variations come down t
 
 ```python
 def binary_search_exact(arr, target):
-    """
-    Find the index of 'target' in a sorted array.
-    Returns -1 if not found.
-    
-    Loop invariant: if target exists, it's in arr[low..high].
-    We stop when low > high (search space is empty → not found).
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(arr) - 1
-    
-    while low <= high:
-        mid = low + (high - low) // 2   # Avoids integer overflow
-        
-        if arr[mid] == target:
-            return mid           # Found it
-        elif arr[mid] < target:
-            low = mid + 1        # Target is in the right half
-        else:
-            high = mid - 1       # Target is in the left half
-    
-    return -1  # Not found
+ """
+ Find the index of 'target' in a sorted array.
+ Returns -1 if not found.
+ 
+ Loop invariant: if target exists, it's in arr[low..high].
+ We stop when low > high (search space is empty → not found).
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(arr) - 1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2 # Avoids integer overflow
+ 
+ if arr[mid] == target:
+ return mid # Found it
+ elif arr[mid] < target:
+ low = mid + 1 # Target is in the right half
+ else:
+ high = mid - 1 # Target is in the left half
+ 
+ return -1 # Not found
 ```
 
 **When to use:** You need the exact position of a specific value.
 
-**Key detail:** `low <= high` (inclusive) — the loop runs while the search space has at least one element.
+**Key detail:** `low <= high` (inclusive) - the loop runs while the search space has at least one element.
 
 ### Template 2: Find First/Left Boundary
 
 ```python
 def binary_search_left(arr, target):
-    """
-    Find the FIRST (leftmost) position where arr[pos] >= target.
-    Also known as: lower_bound, insertion point.
-    
-    This is the most versatile template. It finds the boundary where
-    the condition arr[mid] >= target flips from False to True.
-    
-    Returns: index of the first element >= target.
-    If all elements < target, returns len(arr).
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(arr)   # Note: high = len(arr), not len(arr) - 1
-    
-    while low < high:          # Note: strict <, not <=
-        mid = low + (high - low) // 2
-        
-        if arr[mid] < target:
-            low = mid + 1      # mid is too small, search right
-        else:
-            high = mid         # mid could be the answer, search left (including mid)
-    
-    return low   # low == high == first position where arr[pos] >= target
+ """
+ Find the FIRST (leftmost) position where arr[pos] >= target.
+ Also known as: lower_bound, insertion point.
+ 
+ This is the most versatile template. It finds the boundary where
+ the condition arr[mid] >= target flips from False to True.
+ 
+ Returns: index of the first element >= target.
+ If all elements < target, returns len(arr).
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(arr) # Note: high = len(arr), not len(arr) - 1
+ 
+ while low < high: # Note: strict <, not <=
+ mid = low + (high - low) // 2
+ 
+ if arr[mid] < target:
+ low = mid + 1 # mid is too small, search right
+ else:
+ high = mid # mid could be the answer, search left (including mid)
+ 
+ return low # low == high == first position where arr[pos] >= target
 ```
 
 **When to use:** Find the first occurrence, insertion point, or leftmost boundary.
 
 **Key details:**
-- `high = len(arr)` — allows returning past-the-end when all elements are smaller.
-- `low < high` (strict) — loop ends when `low == high`, which is our answer.
-- `high = mid` (not `mid - 1`) — because `mid` itself might be the answer.
+- `high = len(arr)` - allows returning past-the-end when all elements are smaller.
+- `low < high` (strict) - loop ends when `low == high`, which is our answer.
+- `high = mid` (not `mid - 1`) - because `mid` itself might be the answer.
 
 ### Template 3: Find Last/Right Boundary
 
 ```python
 def binary_search_right(arr, target):
-    """
-    Find the LAST (rightmost) position where arr[pos] <= target.
-    Also known as: upper_bound - 1.
-    
-    Returns: index of the last element <= target.
-    If all elements > target, returns -1.
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(arr) - 1
-    result = -1
-    
-    while low <= high:
-        mid = low + (high - low) // 2
-        
-        if arr[mid] <= target:
-            result = mid       # mid is a valid candidate, but there might be a later one
-            low = mid + 1      # Search right for a later occurrence
-        else:
-            high = mid - 1     # mid is too large, search left
-    
-    return result
+ """
+ Find the LAST (rightmost) position where arr[pos] <= target.
+ Also known as: upper_bound - 1.
+ 
+ Returns: index of the last element <= target.
+ If all elements > target, returns -1.
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(arr) - 1
+ result = -1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ if arr[mid] <= target:
+ result = mid # mid is a valid candidate, but there might be a later one
+ low = mid + 1 # Search right for a later occurrence
+ else:
+ high = mid - 1 # mid is too large, search left
+ 
+ return result
 ```
 
 **When to use:** Find the last occurrence, rightmost boundary, or "latest valid" position.
@@ -206,11 +206,11 @@ def binary_search_right(arr, target):
 ```
 What are you looking for?
 
-"Find target"                → Template 1 (exact match)
-"First position where..."   → Template 2 (left boundary)
-"Last position where..."    → Template 3 (right boundary)
-"Where would target go?"    → Template 2 (insertion point)
-"First and last position"   → Template 2 + Template 3 combined
+"Find target" → Template 1 (exact match)
+"First position where..." → Template 2 (left boundary)
+"Last position where..." → Template 3 (right boundary)
+"Where would target go?" → Template 2 (insertion point)
+"First and last position" → Template 2 + Template 3 combined
 ```
 
 ### A Visual Comparison
@@ -218,15 +218,15 @@ What are you looking for?
 ```
 arr = [1, 3, 3, 3, 5, 7, 9]
 
-Template 1: find 3         → returns index 2 (any of the 3s — typically middle)
+Template 1: find 3 → returns index 2 (any of the 3s - typically middle)
 Template 2: find first ≥ 3 → returns index 1 (leftmost 3)
-Template 3: find last ≤ 3  → returns index 3 (rightmost 3)
+Template 3: find last ≤ 3 → returns index 3 (rightmost 3)
 Template 2: find first ≥ 4 → returns index 4 (first element after all 3s → insertion point for 4)
 ```
 
 ---
 
-## Binary Search on Answer — The Hidden Pattern
+## Binary Search on Answer - The Hidden Pattern
 
 This is where binary search gets really interesting. Instead of searching for a value *in an array*, you search for the **answer itself** across a range of possible values.
 
@@ -238,26 +238,26 @@ This is where binary search gets really interesting. Instead of searching for a 
 **The structure:**
 ```python
 def binary_search_on_answer(problem_input):
-    """
-    Search for the minimum valid answer in the range [lo, hi].
-    """
-    lo, hi = minimum_possible_answer, maximum_possible_answer
-    
-    while lo < hi:
-        mid = lo + (hi - lo) // 2
-        
-        if is_feasible(mid):
-            hi = mid          # mid works, but maybe something smaller also works
-        else:
-            lo = mid + 1      # mid doesn't work, need something bigger
-    
-    return lo  # Smallest value that satisfies is_feasible
+ """
+ Search for the minimum valid answer in the range [lo, hi].
+ """
+ lo, hi = minimum_possible_answer, maximum_possible_answer
+ 
+ while lo < hi:
+ mid = lo + (hi - lo) // 2
+ 
+ if is_feasible(mid):
+ hi = mid # mid works, but maybe something smaller also works
+ else:
+ lo = mid + 1 # mid doesn't work, need something bigger
+ 
+ return lo # Smallest value that satisfies is_feasible
 ```
 
 **Example:** "Koko has piles of bananas. She can eat at speed `k` bananas/hour. What's the minimum `k` to finish all bananas in `h` hours?"
 
 - **Search space:** `k` can range from 1 to max(piles).
-- **Condition:** At speed `k`, can she finish in ≤ `h` hours? (Monotonic — if speed 5 works, speed 6 definitely works.)
+- **Condition:** At speed `k`, can she finish in ≤ `h` hours? (Monotonic - if speed 5 works, speed 6 definitely works.)
 - **Binary search on answer:** Find the smallest `k` where the condition is True.
 
 This pattern shows up in a huge number of problems disguised as optimization questions. The trick is recognizing that the answer has a monotonic feasibility condition.
@@ -288,8 +288,8 @@ If `low = mid` (without `+ 1`) when `low == mid`, the loop never progresses. Thi
 
 In languages with fixed-size integers (C++, Java), `(low + high)` can overflow. Always use:
 ```python
-mid = low + (high - low) // 2    # Safe
-# NOT: mid = (low + high) // 2   # Can overflow in some languages
+mid = low + (high - low) // 2 # Safe
+# NOT: mid = (low + high) // 2 # Can overflow in some languages
 ```
 Python handles big integers natively, so this isn't an issue in Python, but it's good practice.
 
@@ -345,42 +345,42 @@ Output: 4
 
 **Approach 1: Linear Scan**
 - Walk through the array one by one.
-- **Time:** O(n) ❌ — doesn't use the sorted property.
+- **Time:** O(n) ❌ - doesn't use the sorted property.
 
 **Approach 2: Binary Search (Optimal) ✅**
 - Classic Template 1: check the middle, go left or right.
 - **Time:** O(log n), **Space:** O(1)
 
-This is the simplest binary search problem — the one to get the fundamentals right.
+This is the simplest binary search problem - the one to get the fundamentals right.
 
 #### Code (Optimal Solution)
 
 ```python
 def search(nums: list[int], target: int) -> int:
-    """
-    Classic binary search for an exact target in a sorted array.
-    
-    At each step:
-    - If nums[mid] == target → found it
-    - If nums[mid] < target → target must be in the right half → low = mid + 1
-    - If nums[mid] > target → target must be in the left half → high = mid - 1
-    
-    Time Complexity: O(log n) - halving the search space each step
-    Space Complexity: O(1) - only three variables
-    """
-    low, high = 0, len(nums) - 1
-    
-    while low <= high:
-        mid = low + (high - low) // 2
-        
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    
-    return -1
+ """
+ Classic binary search for an exact target in a sorted array.
+ 
+ At each step:
+ - If nums[mid] == target → found it
+ - If nums[mid] < target → target must be in the right half → low = mid + 1
+ - If nums[mid] > target → target must be in the left half → high = mid - 1
+ 
+ Time Complexity: O(log n) - halving the search space each step
+ Space Complexity: O(1) - only three variables
+ """
+ low, high = 0, len(nums) - 1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] == target:
+ return mid
+ elif nums[mid] < target:
+ low = mid + 1
+ else:
+ high = mid - 1
+ 
+ return -1
 ```
 
 #### Edge Cases
@@ -397,10 +397,10 @@ def search(nums: list[int], target: int) -> int:
 Input: nums = [-1, 0, 3, 5, 9, 12], target = 9
 
 Step 1: low=0, high=5, mid=2
-        nums[2]=3 < 9 → low = 3
+ nums[2]=3 < 9 → low = 3
 
 Step 2: low=3, high=5, mid=4
-        nums[4]=9 == 9 → return 4 ✅
+ nums[4]=9 == 9 → return 4 ✅
 
 Output: 4
 ```
@@ -434,7 +434,7 @@ Input: nums = [1, 3, 5, 6], target = 7 → Output: 4 (insert at end)
 - Walk until you find `target` or a value greater.
 - **Time:** O(n)
 
-**Approach 2: Binary Search — Left Boundary (Optimal) ✅**
+**Approach 2: Binary Search - Left Boundary (Optimal) ✅**
 - This is exactly Template 2: find the first index where `nums[mid] >= target`.
 - If `target` exists, that's its index. If not, that's where it would be inserted.
 - **Time:** O(log n), **Space:** O(1)
@@ -443,28 +443,28 @@ Input: nums = [1, 3, 5, 6], target = 7 → Output: 4 (insert at end)
 
 ```python
 def searchInsert(nums: list[int], target: int) -> int:
-    """
-    Find the insertion point for target in a sorted array.
-    This is the index of the first element >= target.
-    
-    Uses Template 2 (left boundary):
-    - If nums[mid] < target: mid is too small, search right
-    - If nums[mid] >= target: mid could be the answer, search left (including mid)
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(nums)  # high = len(nums) for "insert at end" case
-    
-    while low < high:
-        mid = low + (high - low) // 2
-        
-        if nums[mid] < target:
-            low = mid + 1     # Too small, search right
-        else:
-            high = mid        # Could be the answer, search left
-    
-    return low  # First index where nums[low] >= target
+ """
+ Find the insertion point for target in a sorted array.
+ This is the index of the first element >= target.
+ 
+ Uses Template 2 (left boundary):
+ - If nums[mid] < target: mid is too small, search right
+ - If nums[mid] >= target: mid could be the answer, search left (including mid)
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(nums) # high = len(nums) for "insert at end" case
+ 
+ while low < high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] < target:
+ low = mid + 1 # Too small, search right
+ else:
+ high = mid # Could be the answer, search left
+ 
+ return low # First index where nums[low] >= target
 ```
 
 #### Edge Cases
@@ -480,13 +480,13 @@ def searchInsert(nums: list[int], target: int) -> int:
 Input: nums = [1, 3, 5, 6], target = 2
 
 Step 1: low=0, high=4, mid=2
-        nums[2]=5 >= 2 → high = 2
+ nums[2]=5 >= 2 → high = 2
 
 Step 2: low=0, high=2, mid=1
-        nums[1]=3 >= 2 → high = 1
+ nums[1]=3 >= 2 → high = 1
 
 Step 3: low=0, high=1, mid=0
-        nums[0]=1 < 2 → low = 1
+ nums[0]=1 < 2 → low = 1
 
 low == high == 1 → return 1 ✅
 (2 would be inserted between 1 and 3)
@@ -511,7 +511,7 @@ Output: [3, 4]
 #### Clarifying Questions & Constraints
 
 - Array is sorted in non-decreasing order (duplicates allowed).
-- Must be O(log n) — can't scan linearly after finding one occurrence.
+- Must be O(log n) - can't scan linearly after finding one occurrence.
 - Return `[-1, -1]` if target doesn't exist.
 
 #### Approach Discussion
@@ -522,8 +522,8 @@ Output: [3, 4]
 
 **Approach 2: Two Binary Searches (Optimal) ✅**
 - Run binary search twice:
-  1. Find the **first** (leftmost) occurrence of target.
-  2. Find the **last** (rightmost) occurrence of target.
+ 1. Find the **first** (leftmost) occurrence of target.
+ 2. Find the **last** (rightmost) occurrence of target.
 - **Time:** O(log n), **Space:** O(1)
 
 This combines Templates 2 and 3.
@@ -532,59 +532,59 @@ This combines Templates 2 and 3.
 
 ```python
 def searchRange(nums: list[int], target: int) -> list[int]:
-    """
-    Find the first and last positions of target using two binary searches.
-    
-    Search 1: Find the leftmost index where nums[i] == target.
-    Search 2: Find the rightmost index where nums[i] == target.
-    
-    Time Complexity: O(log n) - two binary searches, each O(log n)
-    Space Complexity: O(1)
-    """
-    def find_first(nums, target):
-        """Find the leftmost index of target (Template 2 style)."""
-        low, high = 0, len(nums) - 1
-        result = -1
-        
-        while low <= high:
-            mid = low + (high - low) // 2
-            
-            if nums[mid] == target:
-                result = mid      # Found, but there might be an earlier one
-                high = mid - 1    # Keep searching LEFT
-            elif nums[mid] < target:
-                low = mid + 1
-            else:
-                high = mid - 1
-        
-        return result
-    
-    def find_last(nums, target):
-        """Find the rightmost index of target (Template 3 style)."""
-        low, high = 0, len(nums) - 1
-        result = -1
-        
-        while low <= high:
-            mid = low + (high - low) // 2
-            
-            if nums[mid] == target:
-                result = mid      # Found, but there might be a later one
-                low = mid + 1     # Keep searching RIGHT
-            elif nums[mid] < target:
-                low = mid + 1
-            else:
-                high = mid - 1
-        
-        return result
-    
-    first = find_first(nums, target)
-    
-    # If target doesn't exist at all, no need to search for last
-    if first == -1:
-        return [-1, -1]
-    
-    last = find_last(nums, target)
-    return [first, last]
+ """
+ Find the first and last positions of target using two binary searches.
+ 
+ Search 1: Find the leftmost index where nums[i] == target.
+ Search 2: Find the rightmost index where nums[i] == target.
+ 
+ Time Complexity: O(log n) - two binary searches, each O(log n)
+ Space Complexity: O(1)
+ """
+ def find_first(nums, target):
+ """Find the leftmost index of target (Template 2 style)."""
+ low, high = 0, len(nums) - 1
+ result = -1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] == target:
+ result = mid # Found, but there might be an earlier one
+ high = mid - 1 # Keep searching LEFT
+ elif nums[mid] < target:
+ low = mid + 1
+ else:
+ high = mid - 1
+ 
+ return result
+ 
+ def find_last(nums, target):
+ """Find the rightmost index of target (Template 3 style)."""
+ low, high = 0, len(nums) - 1
+ result = -1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] == target:
+ result = mid # Found, but there might be a later one
+ low = mid + 1 # Keep searching RIGHT
+ elif nums[mid] < target:
+ low = mid + 1
+ else:
+ high = mid - 1
+ 
+ return result
+ 
+ first = find_first(nums, target)
+ 
+ # If target doesn't exist at all, no need to search for last
+ if first == -1:
+ return [-1, -1]
+ 
+ last = find_last(nums, target)
+ return [first, last]
 ```
 
 #### Edge Cases
@@ -600,16 +600,16 @@ def searchRange(nums: list[int], target: int) -> list[int]:
 Input: nums = [5, 7, 7, 8, 8, 10], target = 8
 
 find_first(target=8):
-  low=0, high=5, mid=2: nums[2]=7 < 8 → low=3
-  low=3, high=5, mid=4: nums[4]=8 == 8 → result=4, high=3
-  low=3, high=3, mid=3: nums[3]=8 == 8 → result=3, high=2
-  low=3 > high=2 → return 3
+ low=0, high=5, mid=2: nums[2]=7 < 8 → low=3
+ low=3, high=5, mid=4: nums[4]=8 == 8 → result=4, high=3
+ low=3, high=3, mid=3: nums[3]=8 == 8 → result=3, high=2
+ low=3 > high=2 → return 3
 
 find_last(target=8):
-  low=0, high=5, mid=2: nums[2]=7 < 8 → low=3
-  low=3, high=5, mid=4: nums[4]=8 == 8 → result=4, low=5
-  low=5, high=5, mid=5: nums[5]=10 > 8 → high=4
-  low=5 > high=4 → return 4
+ low=0, high=5, mid=2: nums[2]=7 < 8 → low=3
+ low=3, high=5, mid=4: nums[4]=8 == 8 → result=4, low=5
+ low=5, high=5, mid=5: nums[5]=10 > 8 → high=4
+ low=5 > high=4 → return 4
 
 Output: [3, 4] ✅
 ```
@@ -629,7 +629,7 @@ Write an efficient algorithm to search for a value in an `m × n` matrix with th
 **Example:**
 ```
 Matrix:
-[1,  3,  5,  7]
+[1, 3, 5, 7]
 [10, 11, 16, 20]
 [23, 30, 34, 60]
 
@@ -659,83 +659,83 @@ Both approaches have the same time complexity, but Approach 2 is cleaner.
 
 ```python
 # ============================================================
-# APPROACH 1: Two Binary Searches — O(log m + log n)
+# APPROACH 1: Two Binary Searches - O(log m + log n)
 # ============================================================
 def searchMatrix_two(matrix: list[list[int]], target: int) -> bool:
-    """
-    First find the row, then search within it.
-    
-    Time Complexity: O(log m + log n)
-    Space Complexity: O(1)
-    """
-    m, n = len(matrix), len(matrix[0])
-    
-    # Binary search for the correct row
-    # The target row is the last row where matrix[row][0] <= target
-    top, bottom = 0, m - 1
-    while top <= bottom:
-        mid = top + (bottom - top) // 2
-        if matrix[mid][0] <= target <= matrix[mid][n - 1]:
-            # Target could be in this row
-            break
-        elif matrix[mid][0] > target:
-            bottom = mid - 1
-        else:
-            top = mid + 1
-    
-    if top > bottom:
-        return False  # No valid row found
-    
-    row = top + (bottom - top) // 2
-    
-    # Binary search within the row
-    low, high = 0, n - 1
-    while low <= high:
-        mid = low + (high - low) // 2
-        if matrix[row][mid] == target:
-            return True
-        elif matrix[row][mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    
-    return False
+ """
+ First find the row, then search within it.
+ 
+ Time Complexity: O(log m + log n)
+ Space Complexity: O(1)
+ """
+ m, n = len(matrix), len(matrix[0])
+ 
+ # Binary search for the correct row
+ # The target row is the last row where matrix[row][0] <= target
+ top, bottom = 0, m - 1
+ while top <= bottom:
+ mid = top + (bottom - top) // 2
+ if matrix[mid][0] <= target <= matrix[mid][n - 1]:
+ # Target could be in this row
+ break
+ elif matrix[mid][0] > target:
+ bottom = mid - 1
+ else:
+ top = mid + 1
+ 
+ if top > bottom:
+ return False # No valid row found
+ 
+ row = top + (bottom - top) // 2
+ 
+ # Binary search within the row
+ low, high = 0, n - 1
+ while low <= high:
+ mid = low + (high - low) // 2
+ if matrix[row][mid] == target:
+ return True
+ elif matrix[row][mid] < target:
+ low = mid + 1
+ else:
+ high = mid - 1
+ 
+ return False
 
 
 # ============================================================
-# APPROACH 2: Flat 1D Binary Search — O(log(m × n)) ✅
+# APPROACH 2: Flat 1D Binary Search - O(log(m × n)) ✅
 # ============================================================
 def searchMatrix(matrix: list[list[int]], target: int) -> bool:
-    """
-    Treat the 2D matrix as a flat 1D sorted array.
-    
-    The matrix read row by row is a sorted sequence.
-    A 1D index maps to 2D as:
-        row = index // num_columns
-        col = index % num_columns
-    
-    Time Complexity: O(log(m × n))
-    Space Complexity: O(1)
-    """
-    m, n = len(matrix), len(matrix[0])
-    low, high = 0, m * n - 1
-    
-    while low <= high:
-        mid = low + (high - low) // 2
-        
-        # Convert 1D index to 2D coordinates
-        row = mid // n
-        col = mid % n
-        value = matrix[row][col]
-        
-        if value == target:
-            return True
-        elif value < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    
-    return False
+ """
+ Treat the 2D matrix as a flat 1D sorted array.
+ 
+ The matrix read row by row is a sorted sequence.
+ A 1D index maps to 2D as:
+ row = index // num_columns
+ col = index % num_columns
+ 
+ Time Complexity: O(log(m × n))
+ Space Complexity: O(1)
+ """
+ m, n = len(matrix), len(matrix[0])
+ low, high = 0, m * n - 1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ # Convert 1D index to 2D coordinates
+ row = mid // n
+ col = mid % n
+ value = matrix[row][col]
+ 
+ if value == target:
+ return True
+ elif value < target:
+ low = mid + 1
+ else:
+ high = mid - 1
+ 
+ return False
 ```
 
 #### Edge Cases
@@ -748,28 +748,28 @@ def searchMatrix(matrix: list[list[int]], target: int) -> bool:
 #### Dry Run
 
 ```
-Matrix:                        target = 3
-[1,  3,  5,  7]
+Matrix: target = 3
+[1, 3, 5, 7]
 [10, 11, 16, 20]
 [23, 30, 34, 60]
 
 m=3, n=4, flat size = 12
 
 Step 1: low=0, high=11, mid=5
-        row=5//4=1, col=5%4=1 → matrix[1][1]=11
-        11 > 3 → high=4
+ row=5//4=1, col=5%4=1 → matrix[1][1]=11
+ 11 > 3 → high=4
 
 Step 2: low=0, high=4, mid=2
-        row=2//4=0, col=2%4=2 → matrix[0][2]=5
-        5 > 3 → high=1
+ row=2//4=0, col=2%4=2 → matrix[0][2]=5
+ 5 > 3 → high=1
 
 Step 3: low=0, high=1, mid=0
-        row=0//4=0, col=0%4=0 → matrix[0][0]=1
-        1 < 3 → low=1
+ row=0//4=0, col=0%4=0 → matrix[0][0]=1
+ 1 < 3 → low=1
 
 Step 4: low=1, high=1, mid=1
-        row=1//4=0, col=1%4=1 → matrix[0][1]=3
-        3 == 3 → return True ✅
+ row=1//4=0, col=1%4=1 → matrix[0][1]=3
+ 3 == 3 → return True ✅
 ```
 
 ---
@@ -792,7 +792,7 @@ Output: 4
 
 - All elements are unique.
 - Must be O(log n).
-- The array was sorted, then rotated — so one half is always sorted.
+- The array was sorted, then rotated - so one half is always sorted.
 
 #### Approach Discussion
 
@@ -806,25 +806,25 @@ The key insight: when you split a rotated sorted array at any point, **at least 
 
 ```
 [4, 5, 6, 7, 0, 1, 2]
-         ^
-        mid=3 (value=7)
-Left:  [4, 5, 6, 7]  ← sorted ✅
-Right: [0, 1, 2]     ← sorted ✅ (both can be sorted)
+ ^
+ mid=3 (value=7)
+Left: [4, 5, 6, 7] ← sorted ✅
+Right: [0, 1, 2] ← sorted ✅ (both can be sorted)
 
 [6, 7, 0, 1, 2, 4, 5]
-         ^
-        mid=3 (value=1)
-Left:  [6, 7, 0, 1]  ← NOT sorted (rotation point is here)
-Right: [2, 4, 5]     ← sorted ✅
+ ^
+ mid=3 (value=1)
+Left: [6, 7, 0, 1] ← NOT sorted (rotation point is here)
+Right: [2, 4, 5] ← sorted ✅
 ```
 
 **Decision logic:**
 1. If the left half is sorted (`nums[low] <= nums[mid]`):
-   - Is the target in this sorted range? (`nums[low] <= target < nums[mid]`)
-   - If yes → search left. If no → search right.
+ - Is the target in this sorted range? (`nums[low] <= target < nums[mid]`)
+ - If yes → search left. If no → search right.
 2. If the right half is sorted:
-   - Is the target in this sorted range? (`nums[mid] < target <= nums[high]`)
-   - If yes → search right. If no → search left.
+ - Is the target in this sorted range? (`nums[mid] < target <= nums[high]`)
+ - If yes → search right. If no → search left.
 
 - **Time:** O(log n), **Space:** O(1)
 
@@ -832,42 +832,42 @@ Right: [2, 4, 5]     ← sorted ✅
 
 ```python
 def search(nums: list[int], target: int) -> int:
-    """
-    Binary search in a rotated sorted array.
-    
-    Key insight: At any mid point, at least one half (left or right) is sorted.
-    We identify the sorted half, check if the target falls in it, and decide.
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(nums) - 1
-    
-    while low <= high:
-        mid = low + (high - low) // 2
-        
-        if nums[mid] == target:
-            return mid
-        
-        # Determine which half is sorted
-        if nums[low] <= nums[mid]:
-            # LEFT half [low..mid] is sorted
-            if nums[low] <= target < nums[mid]:
-                # Target is in the sorted left half
-                high = mid - 1
-            else:
-                # Target is in the right half
-                low = mid + 1
-        else:
-            # RIGHT half [mid..high] is sorted
-            if nums[mid] < target <= nums[high]:
-                # Target is in the sorted right half
-                low = mid + 1
-            else:
-                # Target is in the left half
-                high = mid - 1
-    
-    return -1
+ """
+ Binary search in a rotated sorted array.
+ 
+ Key insight: At any mid point, at least one half (left or right) is sorted.
+ We identify the sorted half, check if the target falls in it, and decide.
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(nums) - 1
+ 
+ while low <= high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] == target:
+ return mid
+ 
+ # Determine which half is sorted
+ if nums[low] <= nums[mid]:
+ # LEFT half [low..mid] is sorted
+ if nums[low] <= target < nums[mid]:
+ # Target is in the sorted left half
+ high = mid - 1
+ else:
+ # Target is in the right half
+ low = mid + 1
+ else:
+ # RIGHT half [mid..high] is sorted
+ if nums[mid] < target <= nums[high]:
+ # Target is in the sorted right half
+ low = mid + 1
+ else:
+ # Target is in the left half
+ high = mid - 1
+ 
+ return -1
 ```
 
 #### Edge Cases
@@ -883,17 +883,17 @@ def search(nums: list[int], target: int) -> int:
 Input: nums = [4, 5, 6, 7, 0, 1, 2], target = 0
 
 Step 1: low=0, high=6, mid=3
-        nums[3]=7, not target
-        nums[0]=4 <= nums[3]=7 → LEFT half [4,5,6,7] is sorted
-        Is 4 <= 0 < 7? NO → search right: low=4
+ nums[3]=7, not target
+ nums[0]=4 <= nums[3]=7 → LEFT half [4,5,6,7] is sorted
+ Is 4 <= 0 < 7? NO → search right: low=4
 
 Step 2: low=4, high=6, mid=5
-        nums[5]=1, not target
-        nums[4]=0 <= nums[5]=1 → LEFT half [0,1] is sorted
-        Is 0 <= 0 < 1? YES → search left: high=4
+ nums[5]=1, not target
+ nums[4]=0 <= nums[5]=1 → LEFT half [0,1] is sorted
+ Is 0 <= 0 < 1? YES → search left: high=4
 
 Step 3: low=4, high=4, mid=4
-        nums[4]=0 == 0 → return 4 ✅
+ nums[4]=0 == 0 → return 4 ✅
 ```
 
 ---
@@ -916,7 +916,7 @@ Output: 1
 
 - All elements are unique.
 - Must be O(log n).
-- The minimum is the rotation point — the place where the sorted order "breaks."
+- The minimum is the rotation point - the place where the sorted order "breaks."
 
 #### Approach Discussion
 
@@ -940,34 +940,34 @@ This is Template 2 (left boundary) applied to a rotated array.
 
 ```python
 def findMin(nums: list[int]) -> int:
-    """
-    Find the minimum in a rotated sorted array.
-    
-    The minimum is at the rotation point where the array "drops."
-    We binary search for this boundary using nums[mid] vs nums[high].
-    
-    Why compare with nums[high] and not nums[low]?
-    Comparing with nums[low] fails when the array isn't rotated at all
-    (e.g., [1,2,3,4,5]). Comparing with nums[high] works universally.
-    
-    Time Complexity: O(log n)
-    Space Complexity: O(1)
-    """
-    low, high = 0, len(nums) - 1
-    
-    while low < high:
-        mid = low + (high - low) // 2
-        
-        if nums[mid] > nums[high]:
-            # The drop (minimum) is somewhere in (mid, high]
-            # mid itself can't be the minimum since it's bigger than something to its right
-            low = mid + 1
-        else:
-            # nums[mid] <= nums[high]: the right side is sorted
-            # mid COULD be the minimum, so don't exclude it
-            high = mid
-    
-    return nums[low]  # low == high, pointing to the minimum
+ """
+ Find the minimum in a rotated sorted array.
+ 
+ The minimum is at the rotation point where the array "drops."
+ We binary search for this boundary using nums[mid] vs nums[high].
+ 
+ Why compare with nums[high] and not nums[low]?
+ Comparing with nums[low] fails when the array isn't rotated at all
+ (e.g., [1,2,3,4,5]). Comparing with nums[high] works universally.
+ 
+ Time Complexity: O(log n)
+ Space Complexity: O(1)
+ """
+ low, high = 0, len(nums) - 1
+ 
+ while low < high:
+ mid = low + (high - low) // 2
+ 
+ if nums[mid] > nums[high]:
+ # The drop (minimum) is somewhere in (mid, high]
+ # mid itself can't be the minimum since it's bigger than something to its right
+ low = mid + 1
+ else:
+ # nums[mid] <= nums[high]: the right side is sorted
+ # mid COULD be the minimum, so don't exclude it
+ high = mid
+ 
+ return nums[low] # low == high, pointing to the minimum
 ```
 
 #### Edge Cases
@@ -983,12 +983,12 @@ def findMin(nums: list[int]) -> int:
 Input: nums = [3, 4, 5, 1, 2]
 
 Step 1: low=0, high=4, mid=2
-        nums[2]=5 > nums[4]=2 → minimum is in right half
-        low = 3
+ nums[2]=5 > nums[4]=2 → minimum is in right half
+ low = 3
 
 Step 2: low=3, high=4, mid=3
-        nums[3]=1 <= nums[4]=2 → minimum could be at mid or left
-        high = 3
+ nums[3]=1 <= nums[4]=2 → minimum could be at mid or left
+ high = 3
 
 low == high == 3 → return nums[3] = 1 ✅
 ```
@@ -1006,7 +1006,7 @@ Koko has `n` piles of bananas. She can eat at most `k` bananas per hour. Each ho
 **Example:**
 ```
 Input: piles = [3, 6, 7, 11], h = 8
-Output: 4  (at speed 4: ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8 ≤ 8)
+Output: 4 (at speed 4: ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8 ≤ 8)
 ```
 
 #### Clarifying Questions & Constraints
@@ -1039,40 +1039,40 @@ This is a classic "binary search on answer" problem.
 import math
 
 def minEatingSpeed(piles: list[int], h: int) -> int:
-    """
-    Find the minimum eating speed to finish all bananas in h hours.
-    
-    Binary search on the answer (speed k):
-    - Search space: [1, max(piles)]
-    - Feasibility: at speed k, can Koko finish in ≤ h hours?
-    - Monotonic: higher speed → fewer hours (always feasible if lower speed was)
-    
-    Time Complexity: O(n × log(max(piles)))
-        - Binary search: O(log(max(piles))) iterations
-        - Each feasibility check: O(n) to sum over all piles
-    Space Complexity: O(1)
-    """
-    def hours_needed(speed):
-        """Calculate total hours to eat all piles at the given speed."""
-        total = 0
-        for pile in piles:
-            total += math.ceil(pile / speed)  # or: (pile + speed - 1) // speed
-        return total
-    
-    # Binary search for the minimum feasible speed
-    low, high = 1, max(piles)
-    
-    while low < high:
-        mid = low + (high - low) // 2
-        
-        if hours_needed(mid) <= h:
-            # This speed works! But maybe a slower speed also works.
-            high = mid
-        else:
-            # Too slow — need to eat faster.
-            low = mid + 1
-    
-    return low
+ """
+ Find the minimum eating speed to finish all bananas in h hours.
+ 
+ Binary search on the answer (speed k):
+ - Search space: [1, max(piles)]
+ - Feasibility: at speed k, can Koko finish in ≤ h hours?
+ - Monotonic: higher speed → fewer hours (always feasible if lower speed was)
+ 
+ Time Complexity: O(n × log(max(piles)))
+ - Binary search: O(log(max(piles))) iterations
+ - Each feasibility check: O(n) to sum over all piles
+ Space Complexity: O(1)
+ """
+ def hours_needed(speed):
+ """Calculate total hours to eat all piles at the given speed."""
+ total = 0
+ for pile in piles:
+ total += math.ceil(pile / speed) # or: (pile + speed - 1) // speed
+ return total
+ 
+ # Binary search for the minimum feasible speed
+ low, high = 1, max(piles)
+ 
+ while low < high:
+ mid = low + (high - low) // 2
+ 
+ if hours_needed(mid) <= h:
+ # This speed works! But maybe a slower speed also works.
+ high = mid
+ else:
+ # Too slow - need to eat faster.
+ low = mid + 1
+ 
+ return low
 ```
 
 #### Edge Cases
@@ -1090,20 +1090,20 @@ Input: piles = [3, 6, 7, 11], h = 8
 Search space: low=1, high=11
 
 Step 1: mid=6
-        hours = ceil(3/6)+ceil(6/6)+ceil(7/6)+ceil(11/6) = 1+1+2+2 = 6
-        6 ≤ 8 → works! high=6
+ hours = ceil(3/6)+ceil(6/6)+ceil(7/6)+ceil(11/6) = 1+1+2+2 = 6
+ 6 ≤ 8 → works! high=6
 
 Step 2: mid=3
-        hours = ceil(3/3)+ceil(6/3)+ceil(7/3)+ceil(11/3) = 1+2+3+4 = 10
-        10 > 8 → too slow. low=4
+ hours = ceil(3/3)+ceil(6/3)+ceil(7/3)+ceil(11/3) = 1+2+3+4 = 10
+ 10 > 8 → too slow. low=4
 
 Step 3: mid=5
-        hours = ceil(3/5)+ceil(6/5)+ceil(7/5)+ceil(11/5) = 1+2+2+3 = 8
-        8 ≤ 8 → works! high=5
+ hours = ceil(3/5)+ceil(6/5)+ceil(7/5)+ceil(11/5) = 1+2+2+3 = 8
+ 8 ≤ 8 → works! high=5
 
 Step 4: mid=4
-        hours = ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8
-        8 ≤ 8 → works! high=4
+ hours = ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8
+ 8 ≤ 8 → works! high=4
 
 low == high == 4 → return 4 ✅
 ```
@@ -1146,47 +1146,47 @@ This is another "binary search on answer" problem, almost identical in structure
 
 ```python
 def shipWithinDays(weights: list[int], days: int) -> int:
-    """
-    Find the minimum ship capacity to deliver all packages within 'days' days.
-    
-    Binary search on the answer (capacity):
-    - Search space: [max(weights), sum(weights)]
-    - Feasibility: can we ship everything in ≤ days using this capacity?
-    - Monotonic: bigger ship → fewer days needed
-    
-    Time Complexity: O(n × log(sum(weights) - max(weights)))
-        - Binary search: O(log(range)) iterations
-        - Each feasibility check: O(n) to simulate loading
-    Space Complexity: O(1)
-    """
-    def days_needed(capacity):
-        """Simulate shipping: how many days to ship all packages at this capacity?"""
-        current_load = 0
-        num_days = 1  # Start with day 1
-        
-        for w in weights:
-            if current_load + w > capacity:
-                # This package doesn't fit today — start a new day
-                num_days += 1
-                current_load = w
-            else:
-                current_load += w
-        
-        return num_days
-    
-    # Binary search for the minimum feasible capacity
-    low = max(weights)     # Must fit the heaviest package
-    high = sum(weights)    # Ship everything in one day
-    
-    while low < high:
-        mid = low + (high - low) // 2
-        
-        if days_needed(mid) <= days:
-            high = mid          # This capacity works, try smaller
-        else:
-            low = mid + 1       # Not enough capacity, need bigger
-    
-    return low
+ """
+ Find the minimum ship capacity to deliver all packages within 'days' days.
+ 
+ Binary search on the answer (capacity):
+ - Search space: [max(weights), sum(weights)]
+ - Feasibility: can we ship everything in ≤ days using this capacity?
+ - Monotonic: bigger ship → fewer days needed
+ 
+ Time Complexity: O(n × log(sum(weights) - max(weights)))
+ - Binary search: O(log(range)) iterations
+ - Each feasibility check: O(n) to simulate loading
+ Space Complexity: O(1)
+ """
+ def days_needed(capacity):
+ """Simulate shipping: how many days to ship all packages at this capacity?"""
+ current_load = 0
+ num_days = 1 # Start with day 1
+ 
+ for w in weights:
+ if current_load + w > capacity:
+ # This package doesn't fit today - start a new day
+ num_days += 1
+ current_load = w
+ else:
+ current_load += w
+ 
+ return num_days
+ 
+ # Binary search for the minimum feasible capacity
+ low = max(weights) # Must fit the heaviest package
+ high = sum(weights) # Ship everything in one day
+ 
+ while low < high:
+ mid = low + (high - low) // 2
+ 
+ if days_needed(mid) <= days:
+ high = mid # This capacity works, try smaller
+ else:
+ low = mid + 1 # Not enough capacity, need bigger
+ 
+ return low
 ```
 
 #### Edge Cases
@@ -1203,22 +1203,22 @@ Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
 low = max = 10, high = sum = 55
 
 mid=32: days_needed = simulate → 2 days (1+2+...+8=36>32, so day1=[1..7]=28, day2=[8,9,10]=27) 
-        Actually let me be precise:
-        day1: 1+2+3+4+5+6+7=28≤32, +8=36>32 → new day
-        day2: 8+9=17≤32, +10=27≤32 → fits
-        days=2, 2≤5 → high=32
+ Actually let me be precise:
+ day1: 1+2+3+4+5+6+7=28≤32, +8=36>32 → new day
+ day2: 8+9=17≤32, +10=27≤32 → fits
+ days=2, 2≤5 → high=32
 
 mid=21: 1+2+3+4+5+6=21≤21, +7>21 → day2: 7+8=15≤21, +9=24>21 → day3: 9+10=19≤21
-        days=3, 3≤5 → high=21
+ days=3, 3≤5 → high=21
 
 mid=15: 1+2+3+4+5=15≤15, +6>15 → day2: 6+7=13≤15, +8>15 → day3: 8≤15, +9>15 → day4: 9≤15, +10>15 → day5: 10
-        days=5, 5≤5 → high=15
+ days=5, 5≤5 → high=15
 
 mid=12: 1+2+3+4=10≤12, +5=15>12 → day2: 5+6=11≤12, +7>12 → day3: 7≤12, +8>12 → day4: 8≤12, +9>12 → day5: 9≤12, +10>12 → day6: 10
-        days=6, 6>5 → low=13
+ days=6, 6>5 → low=13
 
 mid=14: 1+2+3+4=10≤14, +5=15>14 → day2: 5+6+7=18>14... 5+6=11≤14, +7=18>14 → day3: 7≤14, +8=15>14 → day4: 8≤14, +9>14 → day5: 9≤14, +10>14 → day6: 10
-        days=6, 6>5 → low=15
+ days=6, 6>5 → low=15
 
 low == high == 15 → return 15 ✅
 ```
@@ -1238,7 +1238,7 @@ Given an integer array `nums` and an integer `k`, split `nums` into `k` non-empt
 Input: nums = [7, 2, 5, 10, 8], k = 2
 Output: 18
 Explanation: Split as [7,2,5] and [10,8]. Largest sum = max(14, 18) = 18.
-             This is the minimum possible largest sum for any 2-way split.
+ This is the minimum possible largest sum for any 2-way split.
 ```
 
 #### Clarifying Questions & Constraints
@@ -1271,46 +1271,46 @@ This is the same structure as the previous two problems.
 
 ```python
 def splitArray(nums: list[int], k: int) -> int:
-    """
-    Minimize the largest subarray sum when splitting into k parts.
-    
-    Binary search on the answer (maximum allowed sum per subarray):
-    - Search space: [max(nums), sum(nums)]
-    - Feasibility: with this max allowed sum, can we split into ≤ k parts?
-    - Monotonic: larger allowed sum → fewer parts needed
-    
-    The feasibility check is identical to the "ship packages" problem:
-    greedily fill each part up to the limit, count parts.
-    
-    Time Complexity: O(n × log(sum(nums) - max(nums)))
-    Space Complexity: O(1)
-    """
-    def parts_needed(max_sum):
-        """How many parts are needed if each part's sum is at most max_sum?"""
-        current_sum = 0
-        parts = 1
-        
-        for num in nums:
-            if current_sum + num > max_sum:
-                parts += 1
-                current_sum = num
-            else:
-                current_sum += num
-        
-        return parts
-    
-    low = max(nums)       # At minimum, must handle the largest element
-    high = sum(nums)      # At maximum, put everything in one part
-    
-    while low < high:
-        mid = low + (high - low) // 2
-        
-        if parts_needed(mid) <= k:
-            high = mid        # This limit works, try smaller
-        else:
-            low = mid + 1     # Need a larger limit
-    
-    return low
+ """
+ Minimize the largest subarray sum when splitting into k parts.
+ 
+ Binary search on the answer (maximum allowed sum per subarray):
+ - Search space: [max(nums), sum(nums)]
+ - Feasibility: with this max allowed sum, can we split into ≤ k parts?
+ - Monotonic: larger allowed sum → fewer parts needed
+ 
+ The feasibility check is identical to the "ship packages" problem:
+ greedily fill each part up to the limit, count parts.
+ 
+ Time Complexity: O(n × log(sum(nums) - max(nums)))
+ Space Complexity: O(1)
+ """
+ def parts_needed(max_sum):
+ """How many parts are needed if each part's sum is at most max_sum?"""
+ current_sum = 0
+ parts = 1
+ 
+ for num in nums:
+ if current_sum + num > max_sum:
+ parts += 1
+ current_sum = num
+ else:
+ current_sum += num
+ 
+ return parts
+ 
+ low = max(nums) # At minimum, must handle the largest element
+ high = sum(nums) # At maximum, put everything in one part
+ 
+ while low < high:
+ mid = low + (high - low) // 2
+ 
+ if parts_needed(mid) <= k:
+ high = mid # This limit works, try smaller
+ else:
+ low = mid + 1 # Need a larger limit
+ 
+ return low
 ```
 
 #### Edge Cases
@@ -1327,16 +1327,16 @@ Input: nums = [7, 2, 5, 10, 8], k = 2
 low = 10 (max), high = 32 (sum)
 
 mid=21: parts? 7+2+5+10=24>21 → 7+2+5=14≤21, new part: 10+8=18≤21 → 2 parts
-        2 ≤ 2 → high=21
+ 2 ≤ 2 → high=21
 
 mid=15: 7+2+5=14≤15, +10=24>15 → new part: 10+8=18>15 → new part: 8 → 3 parts
-        3 > 2 → low=16
+ 3 > 2 → low=16
 
 mid=18: 7+2+5=14≤18, +10=24>18 → new part: 10+8=18≤18 → 2 parts
-        2 ≤ 2 → high=18
+ 2 ≤ 2 → high=18
 
 mid=17: 7+2+5=14≤17, +10=24>17 → new part: 10+8=18>17 → new part: 8 → 3 parts
-        3 > 2 → low=18
+ 3 > 2 → low=18
 
 low == high == 18 → return 18 ✅
 ```
@@ -1354,15 +1354,15 @@ Given two sorted arrays `nums1` and `nums2`, return the median of the two sorted
 **Example:**
 ```
 Input: nums1 = [1, 3], nums2 = [2]
-Output: 2.0  (merged: [1, 2, 3], median = 2)
+Output: 2.0 (merged: [1, 2, 3], median = 2)
 
 Input: nums1 = [1, 2], nums2 = [3, 4]
-Output: 2.5  (merged: [1, 2, 3, 4], median = (2+3)/2 = 2.5)
+Output: 2.5 (merged: [1, 2, 3, 4], median = (2+3)/2 = 2.5)
 ```
 
 #### Clarifying Questions & Constraints
 
-- Must be O(log(m+n)) — cannot merge and sort (that's O(m+n)).
+- Must be O(log(m+n)) - cannot merge and sort (that's O(m+n)).
 - Arrays can have different lengths.
 - If total length is even, median = average of the two middle elements.
 
@@ -1370,7 +1370,7 @@ Output: 2.5  (merged: [1, 2, 3, 4], median = (2+3)/2 = 2.5)
 
 **Approach 1: Merge and Find Middle**
 - Merge both arrays, find the middle.
-- **Time:** O(m+n) ❌ — violates the O(log) requirement.
+- **Time:** O(m+n) ❌ - violates the O(log) requirement.
 
 **Approach 2: Binary Search on Partition (Optimal) ✅**
 
@@ -1387,7 +1387,7 @@ We binary search on the partition position in the **smaller** array (to minimize
 nums1: [... left1 ...] | [... right1 ...]
 nums2: [... left2 ...] | [... right2 ...]
 
-Combined left side: left1 + left2    (size = half of total)
+Combined left side: left1 + left2 (size = half of total)
 Combined right side: right1 + right2
 
 Valid partition: max(left1, left2) <= min(right1, right2)
@@ -1399,63 +1399,63 @@ Valid partition: max(left1, left2) <= min(right1, right2)
 
 ```python
 def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:
-    """
-    Find the median of two sorted arrays using binary search on partition.
-    
-    Concept:
-    We want to partition both arrays into left and right halves such that:
-    1. len(left_total) == len(right_total) (or differ by 1)
-    2. max(left_total) <= min(right_total)
-    
-    Binary search on the partition index of the SMALLER array.
-    The partition of the larger array is derived: partition2 = half - partition1.
-    
-    We check if the partition is valid (condition 2). If not, adjust.
-    
-    Time Complexity: O(log(min(m, n))) - binary search on the smaller array
-    Space Complexity: O(1)
-    """
-    # Always binary search on the smaller array
-    if len(nums1) > len(nums2):
-        return findMedianSortedArrays(nums2, nums1)
-    
-    m, n = len(nums1), len(nums2)
-    half = (m + n + 1) // 2  # Size of the left half (ceiling for odd total)
-    
-    low, high = 0, m  # We can take 0 to m elements from nums1
-    
-    while low <= high:
-        # partition1: how many elements we take from nums1 for the left half
-        partition1 = low + (high - low) // 2
-        # partition2: how many elements we take from nums2 for the left half
-        partition2 = half - partition1
-        
-        # Edge values (use -inf and +inf for boundaries)
-        # left1 = largest element on the left side from nums1
-        # right1 = smallest element on the right side from nums1
-        left1 = nums1[partition1 - 1] if partition1 > 0 else float('-inf')
-        right1 = nums1[partition1] if partition1 < m else float('inf')
-        left2 = nums2[partition2 - 1] if partition2 > 0 else float('-inf')
-        right2 = nums2[partition2] if partition2 < n else float('inf')
-        
-        # Check if the partition is valid
-        if left1 <= right2 and left2 <= right1:
-            # Valid partition! Calculate the median.
-            if (m + n) % 2 == 1:
-                # Odd total: median is the max of the left half
-                return max(left1, left2)
-            else:
-                # Even total: median is the average of max(left) and min(right)
-                return (max(left1, left2) + min(right1, right2)) / 2
-        
-        elif left1 > right2:
-            # Too many elements from nums1 on the left → move partition1 left
-            high = partition1 - 1
-        else:
-            # Too few elements from nums1 on the left → move partition1 right
-            low = partition1 + 1
-    
-    return 0.0  # Should never reach here with valid input
+ """
+ Find the median of two sorted arrays using binary search on partition.
+ 
+ Concept:
+ We want to partition both arrays into left and right halves such that:
+ 1. len(left_total) == len(right_total) (or differ by 1)
+ 2. max(left_total) <= min(right_total)
+ 
+ Binary search on the partition index of the SMALLER array.
+ The partition of the larger array is derived: partition2 = half - partition1.
+ 
+ We check if the partition is valid (condition 2). If not, adjust.
+ 
+ Time Complexity: O(log(min(m, n))) - binary search on the smaller array
+ Space Complexity: O(1)
+ """
+ # Always binary search on the smaller array
+ if len(nums1) > len(nums2):
+ return findMedianSortedArrays(nums2, nums1)
+ 
+ m, n = len(nums1), len(nums2)
+ half = (m + n + 1) // 2 # Size of the left half (ceiling for odd total)
+ 
+ low, high = 0, m # We can take 0 to m elements from nums1
+ 
+ while low <= high:
+ # partition1: how many elements we take from nums1 for the left half
+ partition1 = low + (high - low) // 2
+ # partition2: how many elements we take from nums2 for the left half
+ partition2 = half - partition1
+ 
+ # Edge values (use -inf and +inf for boundaries)
+ # left1 = largest element on the left side from nums1
+ # right1 = smallest element on the right side from nums1
+ left1 = nums1[partition1 - 1] if partition1 > 0 else float('-inf')
+ right1 = nums1[partition1] if partition1 < m else float('inf')
+ left2 = nums2[partition2 - 1] if partition2 > 0 else float('-inf')
+ right2 = nums2[partition2] if partition2 < n else float('inf')
+ 
+ # Check if the partition is valid
+ if left1 <= right2 and left2 <= right1:
+ # Valid partition! Calculate the median.
+ if (m + n) % 2 == 1:
+ # Odd total: median is the max of the left half
+ return max(left1, left2)
+ else:
+ # Even total: median is the average of max(left) and min(right)
+ return (max(left1, left2) + min(right1, right2)) / 2
+ 
+ elif left1 > right2:
+ # Too many elements from nums1 on the left → move partition1 left
+ high = partition1 - 1
+ else:
+ # Too few elements from nums1 on the left → move partition1 right
+ low = partition1 + 1
+ 
+ return 0.0 # Should never reach here with valid input
 ```
 
 #### Edge Cases
@@ -1478,22 +1478,22 @@ half = (5+6+1)//2 = 6 (left half has 6 elements)
 low=0, high=5
 
 Step 1: partition1=2, partition2=6-2=4
-  left1=nums1[1]=3,  right1=nums1[2]=8
-  left2=nums2[3]=19, right2=nums2[4]=21
-  
-  left1=3 ≤ right2=21 ✅
-  left2=19 ≤ right1=8? ❌ (19 > 8)
-  → Too few from nums1 on left. low = 3
+ left1=nums1[1]=3, right1=nums1[2]=8
+ left2=nums2[3]=19, right2=nums2[4]=21
+ 
+ left1=3 ≤ right2=21 ✅
+ left2=19 ≤ right1=8? ❌ (19 > 8)
+ → Too few from nums1 on left. low = 3
 
 Step 2: partition1=4, partition2=6-4=2
-  left1=nums1[3]=9,  right1=nums1[4]=15
-  left2=nums2[1]=11, right2=nums2[2]=18
-  
-  left1=9 ≤ right2=18 ✅
-  left2=11 ≤ right1=15 ✅
-  → Valid partition!
-  
-  Total = 11 (odd), so median = max(left1, left2) = max(9, 11) = 11
+ left1=nums1[3]=9, right1=nums1[4]=15
+ left2=nums2[1]=11, right2=nums2[2]=18
+ 
+ left1=9 ≤ right2=18 ✅
+ left2=11 ≤ right1=15 ✅
+ → Valid partition!
+ 
+ Total = 11 (odd), so median = max(left1, left2) = max(9, 11) = 11
 
 Output: 11 ✅
 
@@ -1515,8 +1515,8 @@ Verify: merged = [1,3,7,8,9,11,15,18,19,21,25], median at index 5 = 11 ✅
 | Rotated Sorted Array | Modified match | O(log n) | O(1) | One half is always sorted |
 | Find Min in Rotated | Boundary | O(log n) | O(1) | Compare `mid` with `high` |
 | Koko Eating Bananas | BS on answer | O(n log M) | O(1) | Minimize speed, check feasibility |
-| Ship Packages | BS on answer | O(n log S) | O(1) | Same as Koko — minimize capacity |
-| Split Array Largest Sum | BS on answer | O(n log S) | O(1) | Same structure — minimize max sum |
+| Ship Packages | BS on answer | O(n log S) | O(1) | Same as Koko - minimize capacity |
+| Split Array Largest Sum | BS on answer | O(n log S) | O(1) | Same structure - minimize max sum |
 | Median of Two Arrays | BS on partition | O(log min(m,n)) | O(1) | Partition both arrays, validate |
 
 ### Decision Framework
@@ -1525,20 +1525,20 @@ Verify: merged = [1,3,7,8,9,11,15,18,19,21,25], median at index 5 = 11 ✅
 Is the search space SORTED or does it have a MONOTONIC property?
 │
 ├── Searching for an EXACT VALUE in a sorted array?
-│   └── Template 1 (exact match)
+│ └── Template 1 (exact match)
 │
 ├── Searching for a BOUNDARY (first/last occurrence, insertion point)?
-│   ├── First occurrence / insertion point → Template 2 (left boundary)
-│   └── Last occurrence → Template 3 (right boundary)
+│ ├── First occurrence / insertion point → Template 2 (left boundary)
+│ └── Last occurrence → Template 3 (right boundary)
 │
 ├── Sorted array with a TWIST (rotated, 2D)?
-│   └── Modified binary search (identify which part is "normal")
+│ └── Modified binary search (identify which part is "normal")
 │
-└── Optimization problem — "minimum X such that condition holds"?
-    └── Binary Search on Answer
-        1. Define the search space: [minimum possible, maximum possible]
-        2. Write is_feasible(x) — can check in O(n) or similar
-        3. Binary search for the boundary where feasibility changes
+└── Optimization problem - "minimum X such that condition holds"?
+ └── Binary Search on Answer
+ 1. Define the search space: [minimum possible, maximum possible]
+ 2. Write is_feasible(x) - can check in O(n) or similar
+ 3. Binary search for the boundary where feasibility changes
 ```
 
 ### The Binary Search on Answer Checklist
@@ -1555,18 +1555,18 @@ If all three are yes, the solution structure is always the same:
 ```python
 low, high = min_answer, max_answer
 while low < high:
-    mid = low + (high - low) // 2
-    if is_feasible(mid):
-        high = mid       # (or low = mid + 1 if looking for max)
-    else:
-        low = mid + 1    # (or high = mid - 1)
+ mid = low + (high - low) // 2
+ if is_feasible(mid):
+ high = mid # (or low = mid + 1 if looking for max)
+ else:
+ low = mid + 1 # (or high = mid - 1)
 return low
 ```
 
 ### What's Next?
 
-Binary search and two pointers form the foundation of "searching" in arrays. We've now covered five patterns: Two Pointers, Binary Search, Sliding Window, Prefix Sum, and HashMap. Next up is **Pattern 6: Kadane's Algorithm** — the classic technique for maximum subarray problems. Stay tuned!
+Binary search and two pointers form the foundation of "searching" in arrays. We've now covered five patterns: Two Pointers, Binary Search, Sliding Window, Prefix Sum, and HashMap. Next up is **Pattern 6: Kadane's Algorithm** - the classic technique for maximum subarray problems. Stay tuned!
 
 ---
 
-> 💡 **Practice Tip:** The three "binary search on answer" problems (7, 8, 9) are almost identical in structure. Once you solve one, the others become straightforward. The real skill is *recognizing* that a problem fits this pattern — look for optimization with a monotonic feasibility condition.
+> 💡 **Practice Tip:** The three "binary search on answer" problems (7, 8, 9) are almost identical in structure. Once you solve one, the others become straightforward. The real skill is *recognizing* that a problem fits this pattern - look for optimization with a monotonic feasibility condition.

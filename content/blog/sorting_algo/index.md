@@ -10,15 +10,15 @@ toc: true
 tocopen: true
 draft: false
 tags:
-  - dsa
-  - sorting
+ - dsa
+ - sorting
 
 cover:
-  image: "images/sorting-algorithms-cover.png"
-  alt: "Sorting algorithms"
-  caption: "Understanding different sorting techniques"
-  relative: true
-  hidden: false
+ image: "images/sorting-algorithms-cover.png"
+ alt: "Sorting algorithms"
+ caption: "Understanding different sorting techniques"
+ relative: true
+ hidden: false
 ---
 
 Sorting is the process of arranging elements in a specific order, usually ascending or descending, to make data easier to search, analyze, and process.
@@ -37,17 +37,17 @@ Bubble Sort repeatedly compares adjacent elements and swaps them if they are in 
 
 ### Working Idea
 
-- Compare adjacent elements  
-- Swap them if they are in the wrong order  
-- Repeat the process for all elements  
+- Compare adjacent elements 
+- Swap them if they are in the wrong order 
+- Repeat the process for all elements 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n)  
-- Average case: O(n²)  
-- Worst case: O(n²)  
+- Best case: O(n) 
+- Average case: O(n²) 
+- Worst case: O(n²) 
 
 ---
 
@@ -59,8 +59,8 @@ O(1)
 
 ### Key Points
 
-- Very simple to understand  
-- Highly inefficient for large datasets  
+- Very simple to understand 
+- Highly inefficient for large datasets 
 
 ---
 
@@ -74,17 +74,17 @@ Selection Sort repeatedly selects the smallest element from the unsorted portion
 
 ### Working Idea
 
-- Find the minimum element  
-- Swap it with the first unsorted element  
-- Repeat for the remaining elements  
+- Find the minimum element 
+- Swap it with the first unsorted element 
+- Repeat for the remaining elements 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n²)  
-- Average case: O(n²)  
-- Worst case: O(n²)  
+- Best case: O(n²) 
+- Average case: O(n²) 
+- Worst case: O(n²) 
 
 ---
 
@@ -96,8 +96,8 @@ O(1)
 
 ### Key Points
 
-- Requires fewer swaps than Bubble Sort  
-- Still slow for large inputs  
+- Requires fewer swaps than Bubble Sort 
+- Still slow for large inputs 
 
 ---
 
@@ -111,16 +111,16 @@ Insertion Sort builds the sorted array one element at a time by inserting each e
 
 ### Working Idea
 
-- Take one element at a time  
-- Insert it into the correct position in the sorted portion  
+- Take one element at a time 
+- Insert it into the correct position in the sorted portion 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n)  
-- Average case: O(n²)  
-- Worst case: O(n²)  
+- Best case: O(n) 
+- Average case: O(n²) 
+- Worst case: O(n²) 
 
 ---
 
@@ -132,8 +132,8 @@ O(1)
 
 ### Key Points
 
-- Efficient for small or nearly sorted datasets  
-- Used in real-world hybrid sorting algorithms  
+- Efficient for small or nearly sorted datasets 
+- Used in real-world hybrid sorting algorithms 
 
 ---
 
@@ -147,17 +147,17 @@ Merge Sort follows the divide-and-conquer approach by dividing the array into ha
 
 ### Working Idea
 
-- Divide the array into two halves  
-- Recursively sort both halves  
-- Merge the sorted halves  
+- Divide the array into two halves 
+- Recursively sort both halves 
+- Merge the sorted halves 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n log n)  
-- Average case: O(n log n)  
-- Worst case: O(n log n)  
+- Best case: O(n log n) 
+- Average case: O(n log n) 
+- Worst case: O(n log n) 
 
 ---
 
@@ -169,8 +169,8 @@ O(n)
 
 ### Key Points
 
-- Stable sorting algorithm  
-- Very efficient for large datasets  
+- Stable sorting algorithm 
+- Very efficient for large datasets 
 
 ---
 
@@ -184,17 +184,17 @@ Quick Sort selects a pivot element and arranges elements smaller than the pivot 
 
 ### Working Idea
 
-- Choose a pivot element  
-- Partition the array around the pivot  
-- Recursively sort the subarrays  
+- Choose a pivot element 
+- Partition the array around the pivot 
+- Recursively sort the subarrays 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n log n)  
-- Average case: O(n log n)  
-- Worst case: O(n²)  
+- Best case: O(n log n) 
+- Average case: O(n log n) 
+- Worst case: O(n²) 
 
 ---
 
@@ -206,8 +206,8 @@ O(log n) due to recursion stack
 
 ### Key Points
 
-- Very fast in practice  
-- Not stable by default  
+- Very fast in practice 
+- Not stable by default 
 
 ---
 
@@ -221,18 +221,18 @@ Heap Sort uses a heap data structure to repeatedly extract the maximum element a
 
 ### Working Idea
 
-- Build a max heap  
-- Remove the largest element  
-- Place it at the end  
-- Repeat the process  
+- Build a max heap 
+- Remove the largest element 
+- Place it at the end 
+- Repeat the process 
 
 ---
 
 ### Time Complexity
 
-- Best case: O(n log n)  
-- Average case: O(n log n)  
-- Worst case: O(n log n)  
+- Best case: O(n log n) 
+- Average case: O(n log n) 
+- Worst case: O(n log n) 
 
 ---
 
@@ -244,8 +244,8 @@ O(1)
 
 ### Key Points
 
-- In-place sorting algorithm  
-- Not stable  
+- In-place sorting algorithm 
+- Not stable 
 
 ---
 
@@ -259,9 +259,9 @@ Counting Sort counts the occurrences of each element and uses this information t
 
 ### Working Idea
 
-- Count the frequency of each element  
-- Compute cumulative counts  
-- Place elements in sorted order  
+- Count the frequency of each element 
+- Compute cumulative counts 
+- Place elements in sorted order 
 
 ---
 
@@ -279,8 +279,8 @@ O(n + k)
 
 ### Key Points
 
-- Extremely fast for small range data  
-- Not a comparison-based sorting algorithm  
+- Extremely fast for small range data 
+- Not a comparison-based sorting algorithm 
 
 ---
 
@@ -294,8 +294,8 @@ Radix Sort sorts numbers digit by digit, starting from the least significant dig
 
 ### Working Idea
 
-- Sort numbers by each digit  
-- Use a stable sorting method at each step  
+- Sort numbers by each digit 
+- Use a stable sorting method at each step 
 
 ---
 
@@ -313,8 +313,8 @@ O(n)
 
 ### Key Points
 
-- Works well for integers  
-- Not comparison-based  
+- Works well for integers 
+- Not comparison-based 
 
 ---
 
@@ -328,17 +328,17 @@ Bucket Sort distributes elements into different buckets, sorts each bucket indiv
 
 ### Working Idea
 
-- Create buckets  
-- Distribute elements into buckets  
-- Sort each bucket  
-- Combine the results  
+- Create buckets 
+- Distribute elements into buckets 
+- Sort each bucket 
+- Combine the results 
 
 ---
 
 ### Time Complexity
 
-- Average case: O(n + k)  
-- Worst case: O(n²)  
+- Average case: O(n + k) 
+- Worst case: O(n²) 
 
 ---
 
@@ -350,69 +350,69 @@ O(n)
 
 ### Key Points
 
-- Efficient for uniformly distributed data  
+- Efficient for uniformly distributed data 
 
 ---
 
 ## Comparison of Sorting Algorithms
 
-Bubble Sort  
-Best: O(n)  
-Average: O(n²)  
-Worst: O(n²)  
-Stable: Yes  
+Bubble Sort 
+Best: O(n) 
+Average: O(n²) 
+Worst: O(n²) 
+Stable: Yes 
 
-Selection Sort  
-Best: O(n²)  
-Average: O(n²)  
-Worst: O(n²)  
-Stable: No  
+Selection Sort 
+Best: O(n²) 
+Average: O(n²) 
+Worst: O(n²) 
+Stable: No 
 
-Insertion Sort  
-Best: O(n)  
-Average: O(n²)  
-Worst: O(n²)  
-Stable: Yes  
+Insertion Sort 
+Best: O(n) 
+Average: O(n²) 
+Worst: O(n²) 
+Stable: Yes 
 
-Merge Sort  
-Best: O(n log n)  
-Average: O(n log n)  
-Worst: O(n log n)  
-Stable: Yes  
+Merge Sort 
+Best: O(n log n) 
+Average: O(n log n) 
+Worst: O(n log n) 
+Stable: Yes 
 
-Quick Sort  
-Best: O(n log n)  
-Average: O(n log n)  
-Worst: O(n²)  
-Stable: No  
+Quick Sort 
+Best: O(n log n) 
+Average: O(n log n) 
+Worst: O(n²) 
+Stable: No 
 
-Heap Sort  
-Best: O(n log n)  
-Average: O(n log n)  
-Worst: O(n log n)  
-Stable: No  
+Heap Sort 
+Best: O(n log n) 
+Average: O(n log n) 
+Worst: O(n log n) 
+Stable: No 
 
-Counting Sort  
-Best: O(n + k)  
-Average: O(n + k)  
-Worst: O(n + k)  
-Stable: Yes  
+Counting Sort 
+Best: O(n + k) 
+Average: O(n + k) 
+Worst: O(n + k) 
+Stable: Yes 
 
-Radix Sort  
-Best: O(n × d)  
-Average: O(n × d)  
-Worst: O(n × d)  
-Stable: Yes  
+Radix Sort 
+Best: O(n × d) 
+Average: O(n × d) 
+Worst: O(n × d) 
+Stable: Yes 
 
 ---
 
 ## Choosing the Right Sorting Algorithm
 
-- Small dataset → Insertion Sort  
-- Large dataset → Merge Sort or Quick Sort  
-- Memory constraints → Heap Sort  
-- Known range of values → Counting Sort  
-- Real-world systems → Hybrid algorithms  
+- Small dataset → Insertion Sort 
+- Large dataset → Merge Sort or Quick Sort 
+- Memory constraints → Heap Sort 
+- Known range of values → Counting Sort 
+- Real-world systems → Hybrid algorithms 
 
 ---
 

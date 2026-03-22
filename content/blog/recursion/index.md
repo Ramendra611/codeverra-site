@@ -10,14 +10,14 @@ toc: true
 tocopen: true
 draft: false
 tags:
-  - dsa
-  - recursion
+ - dsa
+ - recursion
 cover:
-  image: "images/recursion-cover.png"
-  alt: "Recursion concept"
-  caption: "Understanding recursion step by step"
-  relative: true
-  hidden: false
+ image: "images/recursion-cover.png"
+ alt: "Recursion concept"
+ caption: "Understanding recursion step by step"
+ relative: true
+ hidden: false
 ---
 
 Recursion is a programming technique in which a function calls itself to solve a problem by breaking it down into smaller and simpler subproblems.
@@ -60,10 +60,10 @@ Each recursive call must move closer to the base case by reducing the input size
 
 When a recursive function is called:
 
-- The function call is placed on the call stack  
-- Each recursive call gets its own stack frame  
-- Local variables are stored separately for each call  
-- Once the base case is reached, functions start returning values in reverse order  
+- The function call is placed on the call stack 
+- Each recursive call gets its own stack frame 
+- Local variables are stored separately for each call 
+- Once the base case is reached, functions start returning values in reverse order 
 
 This process is known as stack unwinding.
 
@@ -75,10 +75,10 @@ The factorial of a number is calculated by multiplying the number with the facto
 
 Execution for factorial of 3:
 
-- factorial(3) becomes 3 multiplied by factorial(2)  
-- factorial(2) becomes 2 multiplied by factorial(1)  
-- factorial(1) becomes 1 multiplied by factorial(0)  
-- factorial(0) returns 1  
+- factorial(3) becomes 3 multiplied by factorial(2) 
+- factorial(2) becomes 2 multiplied by factorial(1) 
+- factorial(1) becomes 1 multiplied by factorial(0) 
+- factorial(0) returns 1 
 
 Once the base case is reached, the values return back step by step.
 
@@ -126,18 +126,18 @@ Most common recursive problems fall into this category.
 
 ## Advantages of Recursion
 
-- Simplifies complex problems  
-- Produces cleaner and more readable code for divide-and-conquer problems  
-- Very useful for tree and graph traversal  
-- Matches the natural structure of many problems  
+- Simplifies complex problems 
+- Produces cleaner and more readable code for divide-and-conquer problems 
+- Very useful for tree and graph traversal 
+- Matches the natural structure of many problems 
 
 ---
 
 ## Disadvantages of Recursion
 
-- Uses extra memory due to the call stack  
-- Can cause stack overflow if the base case is missing or incorrect  
-- Sometimes slower than iterative solutions  
+- Uses extra memory due to the call stack 
+- Can cause stack overflow if the base case is missing or incorrect 
+- Sometimes slower than iterative solutions 
 
 ---
 
@@ -145,9 +145,9 @@ Most common recursive problems fall into this category.
 
 Recursion should be used when:
 
-- The problem can be divided into similar subproblems  
-- Tree, graph, or divide-and-conquer problems are involved  
-- Code clarity is more important than performance  
+- The problem can be divided into similar subproblems 
+- Tree, graph, or divide-and-conquer problems are involved 
+- Code clarity is more important than performance 
 
 ---
 

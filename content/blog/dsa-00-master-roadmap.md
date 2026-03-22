@@ -1,5 +1,5 @@
 ---
-title: "The Complete DSA with Python — Master Roadmap"
+title: "The Complete DSA with Python - Master Roadmap"
 description: "A structured roadmap to mastering Data Structures and Algorithms using Python, from basics to advanced topics."
 date: 2026-03-21
 author: "codeverra"
@@ -7,11 +7,11 @@ toc: true
 tocopen: false
 draft: false
 tags:
-  - dsa
-  - learning-roadmap
+ - dsa
+ - learning-roadmap
 ---
 
-# The Complete DSA with Python -- Master Roadmap
+# The Complete DSA with Python - Master Roadmap
 
 ---
 
@@ -38,30 +38,30 @@ Every topic covers:
 
 ---
 
-### Part 1 -- Foundation
+### Part 1 - Foundation
 
 | Blog | What You Will Learn |
 |------|---------------------|
 | What is DSA and why do we learn it | What data structures and algorithms are, why they matter, how this guide is structured |
 | How to use this guide and how to practice | Learning philosophy, how to approach problems, how to use LeetCode effectively |
-| Python refresher for DSA | Lists, dicts, sets, tuples, list comprehensions, functions -- the Python tools you will use constantly |
+| Python refresher for DSA | Lists, dicts, sets, tuples, list comprehensions, functions - the Python tools you will use constantly |
 
 ---
 
-### Part 2 -- Complexity Analysis
+### Part 2 - Complexity Analysis
 
 Before touching any data structure, you need this vocabulary. Every single blog after this uses it.
 
 | Blog | What You Will Learn |
 |------|---------------------|
 | Time complexity | What it is, why it matters, intuition before formulas |
-| Big O notation | O(1), O(log n), O(n), O(n log n), O(n^2) and beyond -- with examples and intuition |
+| Big O notation | O(1), O(log n), O(n), O(n log n), O(n^2) and beyond - with examples and intuition |
 | Space complexity | Memory usage, in-place vs auxiliary space, how to analyse it |
 | Analysing code | Step-by-step complexity analysis of real code snippets |
 
 ---
 
-### Part 3 -- Data Structures
+### Part 3 - Data Structures
 
 Each blog covers the concept, all operations with complexity, patterns that come from the structure, and LeetCode problems.
 
@@ -79,7 +79,7 @@ Each blog covers the concept, all operations with complexity, patterns that come
 
 ---
 
-### Part 4 -- Algorithms
+### Part 4 - Algorithms
 
 | Algorithm | Concepts Covered | Key Problems |
 |-----------|-----------------|--------------|
@@ -93,7 +93,7 @@ Each blog covers the concept, all operations with complexity, patterns that come
 
 ---
 
-### Part 5 -- Advanced Data Structures
+### Part 5 - Advanced Data Structures
 
 | Data Structure | Concepts Covered | Key Problems |
 |----------------|-----------------|--------------|
@@ -104,7 +104,7 @@ Each blog covers the concept, all operations with complexity, patterns that come
 
 ---
 
-### Part 6 -- Pattern Playbook (Reference)
+### Part 6 - Pattern Playbook (Reference)
 
 This is a consolidated reference of every pattern covered across the guide. You learn each pattern inside its topic. This section is for review, revision, and recognising patterns when you encounter new problems.
 
