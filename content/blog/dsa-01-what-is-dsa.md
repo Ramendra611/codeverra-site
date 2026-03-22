@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-1.png"
+  alt: "What is DSA"
+  caption: "What is DSA"
+  relative: true
+  hidden: false
 ---
 
 # What is DSA and Why Do We Learn It

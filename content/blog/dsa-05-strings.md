@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - python
+cover:
+  image: "/images/dsa-5.png"
+  alt: "Strings in DSA"
+  caption: "Strings in DSA"
+  relative: true
+  hidden: false
 ---
 
 # Strings

@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-7.png"
+  alt: "Stacks in DSA"
+  caption: "Stacks in DSA"
+  relative: true
+  hidden: false
 ---
 
 # Stacks

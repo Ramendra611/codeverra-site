@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - learning-roadmap
+cover:
+  image: "/images/dsa-0.png"
+  alt: "The Complete DSA with Python Master Roadmap"
+  caption: "The Complete DSA with Python Master Roadmap"
+  relative: true
+  hidden: false
 ---
 
 # The Complete DSA with Python -- Master Roadmap

@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - python
+cover:
+  image: "/images/dsa-2.png"
+  alt: "Python Refresher for DSA"
+  caption: "Python Refresher for DSA"
+  relative: true
+  hidden: false
 ---
 
 # Python Refresher for DSA

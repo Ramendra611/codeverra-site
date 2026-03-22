@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-4.png"
+  alt: "Arrays in DSA"
+  caption: "Arrays in DSA"
+  relative: true
+  hidden: false
 ---
 
 # Arrays

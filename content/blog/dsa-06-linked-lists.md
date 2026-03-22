@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-6.png"
+  alt: "Linked Lists in DSA"
+  caption: "Linked Lists in DSA"
+  relative: true
+  hidden: false
 ---
 
 # Linked Lists

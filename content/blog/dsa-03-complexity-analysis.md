@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-3.png"
+  alt: "Complexity Analysis"
+  caption: "Complexity Analysis"
+  relative: true
+  hidden: false
 ---
 
 # Complexity Analysis -- Time and Space
