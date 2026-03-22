@@ -30,7 +30,7 @@ cover:
 1. [The Big Picture](#the-big-picture)
 2. [What Are Exceptions?](#what-are-exceptions)
 3. [The Exception Hierarchy](#the-exception-hierarchy)
-4. [try / except — The Foundation](#try--except--the-foundation)
+4. [try / except  -  The Foundation](#try--except--the-foundation)
 5. [else and finally Clauses](#else-and-finally-clauses)
 6. [Raising Exceptions](#raising-exceptions)
 7. [Custom Exceptions](#custom-exceptions)
@@ -70,7 +70,7 @@ cover:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-> **Core Philosophy:** Exceptions are not bugs — they are Python's way of saying "something unexpected happened here, and I'm passing control to whoever knows how to handle it."
+> **Core Philosophy:** Exceptions are not bugs  -  they are Python's way of saying "something unexpected happened here, and I'm passing control to whoever knows how to handle it."
 
 ---
 
@@ -79,12 +79,12 @@ cover:
 An **exception** is a signal that something went wrong during program execution. When Python encounters an error it can't resolve, it **raises** (throws) an exception object and starts looking for a handler.
 
 ```python
-# Without exception handling — program crashes
+# Without exception handling  -  program crashes
 result = 10 / 0
 print("This never prints")
 # ZeroDivisionError: division by zero
 
-# With exception handling — program recovers
+# With exception handling  -  program recovers
 try:
     result = 10 / 0
 except ZeroDivisionError:
@@ -96,7 +96,7 @@ print(f"Result: {result}")   # Result: inf
 
 ### Errors vs Exceptions
 
-In Python, **everything is an exception** — even errors. There's one key distinction:
+In Python, **everything is an exception**  -  even errors. There's one key distinction:
 
 | Type | Description | Example |
 |------|-------------|---------|
@@ -104,10 +104,10 @@ In Python, **everything is an exception** — even errors. There's one key disti
 | `Exception` | Raised at runtime, can be caught | `1 / 0`, `int("abc")` |
 
 ```python
-# SyntaxError — Python won't even run the file
+# SyntaxError  -  Python won't even run the file
 # if x ==:   ← this fails before execution, cannot be caught by try/except
 
-# RuntimeError — happens during execution, CAN be caught
+# RuntimeError  -  happens during execution, CAN be caught
 try:
     x = int("not a number")
 except ValueError as e:
@@ -170,7 +170,7 @@ except LookupError as e:
 
 ---
 
-## try / except — The Foundation
+## try / except  -  The Foundation
 
 ### Basic Syntax
 
@@ -234,7 +234,7 @@ print(safe_convert("abc"))    # Conversion failed: ... → 0
 print(safe_convert(None))     # Conversion failed: ... → 0
 ```
 
-### Using `as e` — Inspecting the Exception
+### Using `as e`  -  Inspecting the Exception
 
 ```python
 # Every exception object has useful attributes
@@ -263,7 +263,7 @@ def run_job(job_func):
 
 ## else and finally Clauses
 
-### The `else` Clause — Runs Only on Success
+### The `else` Clause  -  Runs Only on Success
 
 ```python
 def read_config(filepath):
@@ -273,7 +273,7 @@ def read_config(filepath):
         print(f"Config file not found: {filepath}")
         return {}
     else:
-        # Only runs if open() succeeded — no exception was raised
+        # Only runs if open() succeeded  -  no exception was raised
         config = f.read()
         f.close()
         print("Config loaded successfully.")
@@ -284,7 +284,7 @@ def read_config(filepath):
 # If parsing raises an error, it won't be silently swallowed by the except above.
 ```
 
-### The `finally` Clause — Always Runs
+### The `finally` Clause  -  Always Runs
 
 ```python
 def connect_to_db(host):
@@ -341,14 +341,14 @@ def tricky():
         return "from finally"   # This OVERRIDES the try's return!
 
 print(tricky())   # "from finally"
-# Warning: avoid putting return in finally — it suppresses exceptions too
+# Warning: avoid putting return in finally  -  it suppresses exceptions too
 ```
 
 ---
 
 ## Raising Exceptions
 
-### `raise` — Raising a New Exception
+### `raise`  -  Raising a New Exception
 
 ```python
 def set_age(age):
@@ -363,7 +363,7 @@ set_age(-5)       # ValueError: Age must be between 0 and 150, got -5
 set_age("old")    # TypeError: Age must be an int, got str
 ```
 
-### `raise` Without Arguments — Re-raising
+### `raise` Without Arguments  -  Re-raising
 
 Inside an except block, bare `raise` re-raises the current exception unchanged, preserving the original traceback.
 
@@ -389,7 +389,7 @@ step_one()
 # Step one caught: Something broke in step 3
 ```
 
-### `raise ... from ...` — Exception Chaining
+### `raise ... from ...`  -  Exception Chaining
 
 ```python
 def load_config(path):
@@ -544,7 +544,7 @@ except ValueError:
 # The ValueError is stored as RuntimeError.__context__
 ```
 
-### Explicit Chaining (`__cause__`) — `raise ... from`
+### Explicit Chaining (`__cause__`)  -  `raise ... from`
 
 ```python
 class ConfigError(Exception):
@@ -568,7 +568,7 @@ except ConfigError as e:
         print(f"Caused by: {type(e.__cause__).__name__}: {e.__cause__}")
 ```
 
-### Suppressing the Chain — `raise ... from None`
+### Suppressing the Chain  -  `raise ... from None`
 
 ```python
 def get_value(d, key):
@@ -576,7 +576,7 @@ def get_value(d, key):
         return d[key]
     except KeyError:
         raise ValueError(f"Key '{key}' is not valid") from None
-        # Hides the KeyError from the traceback — cleaner user-facing error
+        # Hides the KeyError from the traceback  -  cleaner user-facing error
 
 try:
     get_value({"a": 1}, "z")
@@ -588,7 +588,7 @@ except ValueError as e:
 
 ## Context Managers and Exceptions
 
-### `with` Statement — The Right Way to Handle Resources
+### `with` Statement  -  The Right Way to Handle Resources
 
 ```python
 # Without context manager
@@ -600,7 +600,7 @@ finally:
     if f:
         f.close()
 
-# With context manager — identical behavior, much cleaner
+# With context manager  -  identical behavior, much cleaner
 with open("data.txt", "r") as f:
     content = f.read()
 # f.close() is called automatically, even on exception
@@ -623,7 +623,7 @@ class ManagedTransaction:
         if exc_type is None:
             print("COMMIT")
         else:
-            print(f"ROLLBACK — caused by {exc_type.__name__}: {exc_val}")
+            print(f"ROLLBACK  -  caused by {exc_type.__name__}: {exc_val}")
         return False   # False = do NOT suppress the exception
         # Return True to suppress it silently
 
@@ -644,7 +644,7 @@ try:
         raise ValueError("Something went wrong!")
 except ValueError:
     pass
-# Output: BEGIN TRANSACTION → Doing work... → ROLLBACK — caused by ValueError
+# Output: BEGIN TRANSACTION → Doing work... → ROLLBACK  -  caused by ValueError
 ```
 
 ### Context Manager with `contextlib`
@@ -667,7 +667,7 @@ with timer("Data processing"):
     total = sum(range(10_000_000))
 
 
-# contextlib.suppress — silently ignore specific exceptions
+# contextlib.suppress  -  silently ignore specific exceptions
 with suppress(FileNotFoundError):
     import os
     os.remove("maybe_exists.txt")   # No error if file doesn't exist
@@ -721,32 +721,32 @@ except ValueError:
 
 ## Common Mistakes to Avoid
 
-### Mistake 1 — Bare `except` (Catches Everything Including KeyboardInterrupt)
+### Mistake 1  -  Bare `except` (Catches Everything Including KeyboardInterrupt)
 
 ```python
-# BAD — catches Ctrl+C, SystemExit, and all runtime errors silently
+# BAD  -  catches Ctrl+C, SystemExit, and all runtime errors silently
 try:
     do_something()
 except:
     pass   # BUG: you have silenced KeyboardInterrupt and SystemExit!
 
-# GOOD — catch only what you expect
+# GOOD  -  catch only what you expect
 try:
     do_something()
 except ValueError:
     pass
 ```
 
-### Mistake 2 — Swallowing Exceptions Silently
+### Mistake 2  -  Swallowing Exceptions Silently
 
 ```python
-# BAD — errors disappear, debugging becomes a nightmare
+# BAD  -  errors disappear, debugging becomes a nightmare
 try:
     result = complex_calculation()
 except Exception:
     pass   # What went wrong? Nobody will ever know.
 
-# GOOD — at minimum, log it
+# GOOD  -  at minimum, log it
 try:
     result = complex_calculation()
 except Exception as e:
@@ -754,17 +754,17 @@ except Exception as e:
     result = default_value
 ```
 
-### Mistake 3 — Using Exceptions for Normal Flow Control
+### Mistake 3  -  Using Exceptions for Normal Flow Control
 
 ```python
-# UNNECESSARY — using exceptions as a substitute for if/else
+# UNNECESSARY  -  using exceptions as a substitute for if/else
 def get_discount(user):
     try:
         return user["discount"]
     except KeyError:
         return 0
 
-# BETTER — use dict.get() when the key might legitimately be absent
+# BETTER  -  use dict.get() when the key might legitimately be absent
 def get_discount(user):
     return user.get("discount", 0)
 
@@ -772,10 +772,10 @@ def get_discount(user):
 # you expect the key to usually exist. Use judgment based on frequency.
 ```
 
-### Mistake 4 — Catching a Broad Exception Instead of the Specific One
+### Mistake 4  -  Catching a Broad Exception Instead of the Specific One
 
 ```python
-# BAD — catching Exception when you only expect ValueError
+# BAD  -  catching Exception when you only expect ValueError
 def parse_age(text):
     try:
         return int(text)
@@ -790,10 +790,10 @@ def parse_age(text):
         return -1
 ```
 
-### Mistake 5 — Too Much Code in a Single try Block
+### Mistake 5  -  Too Much Code in a Single try Block
 
 ```python
-# BAD — which line raised the ValueError?
+# BAD  -  which line raised the ValueError?
 try:
     age   = int(data["age"])
     score = float(data["score"])
@@ -802,7 +802,7 @@ try:
 except ValueError:
     print("Something failed...")    # impossible to tell where
 
-# GOOD — narrow try blocks, specific messages
+# GOOD  -  narrow try blocks, specific messages
 def safe_parse(data):
     try:
         age = int(data["age"])
@@ -817,18 +817,18 @@ def safe_parse(data):
     return age, score
 ```
 
-### Mistake 6 — Wrong Exception Order (General Before Specific)
+### Mistake 6  -  Wrong Exception Order (General Before Specific)
 
 ```python
-# BAD — ValueError is never reached
+# BAD  -  ValueError is never reached
 try:
     int("abc")
 except Exception as e:
     print("General handler")   # always runs
-except ValueError as e:        # DEAD CODE — never reached
+except ValueError as e:        # DEAD CODE  -  never reached
     print("ValueError handler")
 
-# GOOD — most specific first, most general last
+# GOOD  -  most specific first, most general last
 try:
     int("abc")
 except ValueError as e:
@@ -839,7 +839,7 @@ except Exception as e:
     print(f"Unexpected: {e}")
 ```
 
-### Mistake 7 — Raising an Exception Inside `finally`
+### Mistake 7  -  Raising an Exception Inside `finally`
 
 ```python
 # TRICKY: An exception in finally silently replaces the original exception
@@ -852,9 +852,9 @@ def buggy():
 try:
     buggy()
 except RuntimeError as e:
-    print(e)   # "cleanup error" — the ValueError is completely lost!
+    print(e)   # "cleanup error"  -  the ValueError is completely lost!
 
-# GOOD — keep finally clean; wrap risky cleanup in its own try
+# GOOD  -  keep finally clean; wrap risky cleanup in its own try
 def safe():
     try:
         raise ValueError("original error")
@@ -866,15 +866,15 @@ def safe():
         # Original ValueError still propagates normally
 ```
 
-### Mistake 8 — Raising the Base `Exception` Class
+### Mistake 8  -  Raising the Base `Exception` Class
 
 ```python
-# BAD — generic, unhelpful, hard to catch specifically
+# BAD  -  generic, unhelpful, hard to catch specifically
 def set_username(name):
     if not name:
         raise Exception("Bad input")   # How should callers catch this?
 
-# GOOD — use the most specific built-in or a custom exception
+# GOOD  -  use the most specific built-in or a custom exception
 def set_username(name):
     if not isinstance(name, str):
         raise TypeError(f"Username must be str, not {type(name).__name__}")
@@ -886,7 +886,7 @@ def set_username(name):
 
 ## Real-Life Patterns
 
-### Pattern 1 — Retry Logic with Exponential Backoff
+### Pattern 1  -  Retry Logic with Exponential Backoff
 
 ```python
 import time
@@ -921,7 +921,7 @@ result = with_retry(flaky_api_call, max_attempts=5, exceptions=(ConnectionError,
 print(result)   # {'data': 'success'} on the 3rd attempt
 ```
 
-### Pattern 2 — Result Object (No Exception Propagation Across Layers)
+### Pattern 2  -  Result Object (No Exception Propagation Across Layers)
 
 ```python
 from dataclasses import dataclass
@@ -958,7 +958,7 @@ if not r.success:
     print(f"Failed: {r.error}")   # Failed: division by zero
 ```
 
-### Pattern 3 — Validation with Accumulated Errors
+### Pattern 3  -  Validation with Accumulated Errors
 
 ```python
 class MultiValidationError(Exception):
@@ -999,7 +999,7 @@ except MultiValidationError as e:
 # - Age must be an integer between 0 and 120
 ```
 
-### Pattern 4 — Safe Resource Cleanup with contextlib
+### Pattern 4  -  Safe Resource Cleanup with contextlib
 
 ```python
 from contextlib import contextmanager
@@ -1030,7 +1030,7 @@ with managed_resource("database_connection") as db:
 
 ---
 
-### Question 1 — Predict the Output
+### Question 1  -  Predict the Output
 
 **Q:** What is the output of the following code?
 
@@ -1059,7 +1059,7 @@ E
 
 ---
 
-### Question 2 — Fix the Bug
+### Question 2  -  Fix the Bug
 
 **Q:** What is wrong with this code? Fix it.
 
@@ -1074,7 +1074,7 @@ except ValueError:
 
 **A:**
 
-The `except Exception` appears before `except ValueError`. Since `ValueError` is a subclass of `Exception`, it will always be caught by the first handler — the `ValueError` branch is dead code and will never execute.
+The `except Exception` appears before `except ValueError`. Since `ValueError` is a subclass of `Exception`, it will always be caught by the first handler  -  the `ValueError` branch is dead code and will never execute.
 
 ```python
 # Fixed: most specific first
@@ -1088,7 +1088,7 @@ except Exception as e:
 
 ---
 
-### Question 3 — Custom Exception
+### Question 3  -  Custom Exception
 
 **Q:** Create a `TemperatureError` exception. Write `set_temperature(temp)` that raises it if `temp` is below -273.15 (absolute zero). The exception should include the invalid value in its message.
 
@@ -1119,7 +1119,7 @@ except TemperatureError as e:
 
 ---
 
-### Question 4 — `finally` Guarantee
+### Question 4  -  `finally` Guarantee
 
 **Q:** Write `safe_open(filepath)` that opens a file, reads its content, and **always** closes the handle regardless of what goes wrong.
 
@@ -1154,7 +1154,7 @@ def safe_open_v2(filepath):
 
 ---
 
-### Question 5 — Exception Chaining
+### Question 5  -  Exception Chaining
 
 **Q:** Write `load_user_age(data, key)` that looks up a key in a dict and converts it to int. Raise a clear `ValueError` if it fails, and chain the original exception.
 
@@ -1183,7 +1183,7 @@ except ValueError as e:
 
 ---
 
-### Question 6 — Context Manager
+### Question 6  -  Context Manager
 
 **Q:** Write a context manager class `SuppressAndLog` that suppresses given exception types and prints a log line instead of crashing.
 
@@ -1212,7 +1212,7 @@ print("Program continues normally.")
 
 ---
 
-### Question 7 — Accumulate Multiple Errors
+### Question 7  -  Accumulate Multiple Errors
 
 **Q:** Write `extract_fields(record, *fields)` that extracts multiple keys from a dict. Collect all missing fields into a single `KeyError` instead of failing on the first one.
 
@@ -1241,7 +1241,7 @@ except KeyError as e:
 
 ---
 
-### Question 8 — Tricky: Predict the Output
+### Question 8  -  Tricky: Predict the Output
 
 **Q:** What does this print?
 
@@ -1278,7 +1278,7 @@ In `bar()`: `ValueError` is caught, `return 3` is queued. `finally` runs first a
 
 ---
 
-### Question 9 — Retry Decorator
+### Question 9  -  Retry Decorator
 
 **Q:** Write a `@retry(times=3)` decorator that retries a function up to `times` attempts before letting the exception propagate.
 
@@ -1333,7 +1333,7 @@ print(unstable_function())
 │ except ExcType        │ Only if ExcType (or subclass) was raised     │
 │ except (A, B) as e    │ If A or B was raised; e = exception object   │
 │ else                  │ Only if NO exception was raised in try       │
-│ finally               │ ALWAYS — even after return or exception      │
+│ finally               │ ALWAYS  -  even after return or exception      │
 ├───────────────────────┼──────────────────────────────────────────────┤
 │ KEYWORD               │ PURPOSE                                      │
 ├───────────────────────┼──────────────────────────────────────────────┤
@@ -1371,5 +1371,5 @@ USEFUL STDLIB TOOLS
 
 ---
 
-*End of Lesson — Exception Handling in Python*
-*Codeverra — codeverra.com*
+*End of Lesson  -  Exception Handling in Python*
+*Codeverra  -  codeverra.com*

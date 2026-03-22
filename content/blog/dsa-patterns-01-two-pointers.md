@@ -1,5 +1,5 @@
 ---
-title: "Two Pointers Pattern — Complete Guide"
+title: "Two Pointers Pattern  -  Complete Guide"
 description: "Master the two pointers technique with clear explanations, Python implementations, and practice problems."
 date: 2026-03-21
 author: "codeverra"
@@ -37,13 +37,13 @@ tags:
 
 ## What is the Two Pointer Technique?
 
-> **Two Pointers** is a technique where you use two index variables that move through an array or string — either toward each other from opposite ends, or in the same direction at different speeds — to solve a problem efficiently.
+> **Two Pointers** is a technique where you use two index variables that move through an array or string  -  either toward each other from opposite ends, or in the same direction at different speeds  -  to solve a problem efficiently.
 
 Let's understand why this is useful with a concrete problem.
 
 **Problem:** Given a sorted array `[1, 3, 5, 7, 9, 11]`, find two numbers that add up to 12.
 
-**Brute force approach:** Check every pair — `(1,3), (1,5), (1,7)...` — that's O(n²) comparisons.
+**Brute force approach:** Check every pair  -  `(1,3), (1,5), (1,7)...`  -  that's O(n²) comparisons.
 
 **Two pointer approach:** Place one pointer at the start and one at the end:
 
@@ -68,7 +68,7 @@ Step 2: 1 + 9  = 10 > 8   → move right ←
 Step 3: 1 + 7  = 8        → ✅ Found!
 ```
 
-Because the array is sorted, we know exactly which pointer to move: if the sum is too large, moving `right` leftward gives us a smaller value; if too small, moving `left` rightward gives us a larger value. This gives us an O(n) solution — each pointer moves at most n times.
+Because the array is sorted, we know exactly which pointer to move: if the sum is too large, moving `right` leftward gives us a smaller value; if too small, moving `left` rightward gives us a larger value. This gives us an O(n) solution  -  each pointer moves at most n times.
 
 ### Why is it useful?
 
@@ -183,8 +183,8 @@ def two_pointer_opposite(arr):
     Template for converging (opposite direction) two pointers.
     Useful for: pair finding, palindrome checks, container problems.
     
-    Time Complexity: O(n) — each pointer moves at most n times
-    Space Complexity: O(1) — only two variables
+    Time Complexity: O(n)  -  each pointer moves at most n times
+    Space Complexity: O(1)  -  only two variables
     """
     left = 0
     right = len(arr) - 1
@@ -211,8 +211,8 @@ def two_pointer_same_direction(arr):
     Template for same-direction (slow/fast) two pointers.
     Useful for: removing duplicates, partitioning, rearranging.
     
-    Time Complexity: O(n) — fast pointer traverses the array once
-    Space Complexity: O(1) — in-place modification
+    Time Complexity: O(n)  -  fast pointer traverses the array once
+    Space Complexity: O(1)  -  in-place modification
     """
     slow = 0  # Tracks the position for next valid element
     
@@ -271,14 +271,14 @@ Output: [1, 2]  (because numbers[0] + numbers[1] = 2 + 7 = 9)
 **Approach 1: Brute Force**
 - Try every pair `(i, j)` where `i < j`.
 - Check if `numbers[i] + numbers[j] == target`.
-- **Time Complexity:** O(n²) — two nested loops
+- **Time Complexity:** O(n²)  -  two nested loops
 - **Space Complexity:** O(1)
 - ❌ Too slow for large inputs. Doesn't use the "sorted" property at all.
 
 **Approach 2: HashMap**
 - For each number, check if `target - number` exists in a hashmap.
 - **Time Complexity:** O(n)
-- **Space Complexity:** O(n) — need extra space for the hashmap
+- **Space Complexity:** O(n)  -  need extra space for the hashmap
 - ❌ Works, but the problem says "constant extra space". Doesn't use the "sorted" property.
 
 **Approach 3: Two Pointers (Optimal) ✅**
@@ -286,8 +286,8 @@ Output: [1, 2]  (because numbers[0] + numbers[1] = 2 + 7 = 9)
 - If `sum < target`, move `left` right (we need a bigger number).
 - If `sum > target`, move `right` left (we need a smaller number).
 - If `sum == target`, we found our answer!
-- **Time Complexity:** O(n) — each pointer moves at most n steps
-- **Space Complexity:** O(1) — only two variables
+- **Time Complexity:** O(n)  -  each pointer moves at most n steps
+- **Space Complexity:** O(1)  -  only two variables
 
 **Why does this work?**
 Because the array is sorted! When the sum is too small, moving `left` forward guarantees a larger value. When the sum is too large, moving `right` backward guarantees a smaller value. We never skip a valid pair.
@@ -386,7 +386,7 @@ Output: True  (after cleanup: "amanaplanacanalpanama" is a palindrome)
 - Remove all non-alphanumeric characters, convert to lowercase.
 - Check if the cleaned string equals its reverse.
 - **Time Complexity:** O(n)
-- **Space Complexity:** O(n) — creating the cleaned string
+- **Space Complexity:** O(n)  -  creating the cleaned string
 - ✅ Simple but uses extra space.
 
 **Approach 2: Two Pointers (Optimal) ✅**
@@ -394,7 +394,7 @@ Output: True  (after cleanup: "amanaplanacanalpanama" is a palindrome)
 - Skip non-alphanumeric characters.
 - Compare characters (case-insensitive) at each step.
 - **Time Complexity:** O(n)
-- **Space Complexity:** O(1) — no extra string created
+- **Space Complexity:** O(1)  -  no extra string created
 
 #### Code (Both Solutions)
 
@@ -420,7 +420,7 @@ def isPalindrome_clean(s: str) -> bool:
 
 
 # ============================================================
-# APPROACH 2: Two Pointers (Optimal — O(1) space)
+# APPROACH 2: Two Pointers (Optimal  -  O(1) space)
 # ============================================================
 def isPalindrome(s: str) -> bool:
     """
@@ -515,7 +515,7 @@ Output: 2  (nums becomes [1, 2, _])
 - Insert all elements into a set, copy back.
 - **Time:** O(n), **Space:** O(n) ❌ Violates O(1) space constraint.
 
-**Approach 2: Two Pointers — Slow & Fast (Optimal) ✅**
+**Approach 2: Two Pointers  -  Slow & Fast (Optimal) ✅**
 - `slow` marks where the next unique element should go.
 - `fast` scans through the array looking for new unique values.
 - Whenever `nums[fast] != nums[slow]`, we found a new unique element → copy it to `slow + 1`.
@@ -540,7 +540,7 @@ def removeDuplicates(nums: list[int]) -> int:
     if not nums:
         return 0
     
-    # 'slow' starts at index 0 — the first element is always unique
+    # 'slow' starts at index 0  -  the first element is always unique
     slow = 0
     
     # 'fast' starts at index 1 and scans the rest of the array
@@ -609,7 +609,7 @@ Output: 49  (between index 1 and index 8: min(8,7) * (8-1) = 49)
 
 **Approach 1: Brute Force**
 - Try every pair `(i, j)` and compute the area.
-- **Time Complexity:** O(n²) — two nested loops
+- **Time Complexity:** O(n²)  -  two nested loops
 - **Space Complexity:** O(1)
 - ❌ Too slow for large inputs.
 
@@ -626,7 +626,7 @@ Output: 49  (between index 1 and index 8: min(8,7) * (8-1) = 49)
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n²)
+# APPROACH 1: Brute Force  -  O(n²)
 # ============================================================
 def maxArea_brute(height: list[int]) -> int:
     """
@@ -648,7 +648,7 @@ def maxArea_brute(height: list[int]) -> int:
 
 
 # ============================================================
-# APPROACH 2: Two Pointers — O(n) ✅
+# APPROACH 2: Two Pointers  -  O(n) ✅
 # ============================================================
 def maxArea(height: list[int]) -> int:
     """
@@ -681,7 +681,7 @@ def maxArea(height: list[int]) -> int:
         max_water = max(max_water, current_water)
         
         # Move the pointer with the shorter line inward
-        # (If equal, moving either is fine — both are equally limiting)
+        # (If equal, moving either is fine  -  both are equally limiting)
         if height[left] < height[right]:
             left += 1
         else:
@@ -773,7 +773,7 @@ Output: [[-1, -1, 2], [-1, 0, 1]]
 - **Sort** the array first.
 - Fix one element (`nums[i]`) and use Two Pointers to find two elements in the remaining part that sum to `-nums[i]`.
 - Skip duplicates at each level to avoid duplicate triplets.
-- **Time Complexity:** O(n²) — O(n log n) for sort + O(n) × O(n) for nested two-pointer
+- **Time Complexity:** O(n²)  -  O(n log n) for sort + O(n) × O(n) for nested two-pointer
 - **Space Complexity:** O(1) extra (ignoring the output and sort space)
 
 **Why sort?**
@@ -920,7 +920,7 @@ Output: 6
 
 **Approach 2: Prefix/Suffix Arrays**
 - Pre-compute `left_max[i]` and `right_max[i]` arrays.
-- **Time:** O(n), **Space:** O(n) — two extra arrays
+- **Time:** O(n), **Space:** O(n)  -  two extra arrays
 
 **Approach 3: Two Pointers (Optimal) ✅**
 - Use `left` and `right` pointers from both ends.
@@ -1062,7 +1062,7 @@ Output: [0, 0, 1, 1, 2, 2]
 - **Time:** O(n), **Space:** O(1)
 - ✅ Works but requires **two passes** (one to count, one to write).
 
-**Approach 2: Dutch National Flag — Three Pointers (Optimal) ✅**
+**Approach 2: Dutch National Flag  -  Three Pointers (Optimal) ✅**
 - Use three pointers: `low`, `mid`, `high`.
 - `low` = boundary for 0s (everything before `low` is 0)
 - `mid` = current element being examined
@@ -1073,7 +1073,7 @@ Output: [0, 0, 1, 1, 2, 2]
 
 ```python
 # ============================================================
-# APPROACH 1: Counting Sort — Two passes
+# APPROACH 1: Counting Sort  -  Two passes
 # ============================================================
 def sortColors_count(nums: list[int]) -> None:
     """
@@ -1097,7 +1097,7 @@ def sortColors_count(nums: list[int]) -> None:
 
 
 # ============================================================
-# APPROACH 2: Dutch National Flag — Single pass ✅
+# APPROACH 2: Dutch National Flag  -  Single pass ✅
 # ============================================================
 def sortColors(nums: list[int]) -> None:
     """
@@ -1118,7 +1118,7 @@ def sortColors(nums: list[int]) -> None:
     - If nums[mid] == 2: swap with high, move high back (DON'T move mid!)
     
     Why don't we move mid when swapping with high?
-    Because the element swapped FROM high is unexamined — it could be 0, 1, or 2.
+    Because the element swapped FROM high is unexamined  -  it could be 0, 1, or 2.
     
     Time Complexity: O(n) - single pass, mid moves from 0 to high
     Space Complexity: O(1) - only three pointers
@@ -1135,7 +1135,7 @@ def sortColors(nums: list[int]) -> None:
             mid += 1   # Safe to move forward (swapped element is 0 or 1)
         
         elif nums[mid] == 1:
-            # 1 is already in the middle section — just skip it
+            # 1 is already in the middle section  -  just skip it
             mid += 1
         
         else:  # nums[mid] == 2
@@ -1205,7 +1205,7 @@ Output: [1, 3, 12, 0, 0]
 - Collect all non-zero elements, then append zeros.
 - **Time:** O(n), **Space:** O(n) ❌ Not in-place.
 
-**Approach 2: Two Pointers — Slow & Fast (Optimal) ✅**
+**Approach 2: Two Pointers  -  Slow & Fast (Optimal) ✅**
 - `slow` tracks where the next non-zero element should go.
 - `fast` scans through the array.
 - When `fast` finds a non-zero, swap it with `slow` position.
@@ -1287,7 +1287,7 @@ Output: [0, 1, 9, 16, 100]
 
 - Array is sorted (can have negative numbers).
 - Need to return a **new** sorted array of squares.
-- Must be O(n) — can't just square and sort (that's O(n log n)).
+- Must be O(n)  -  can't just square and sort (that's O(n log n)).
 
 #### Approach Discussion
 
@@ -1299,13 +1299,13 @@ Output: [0, 1, 9, 16, 100]
 **Approach 2: Two Pointers from Both Ends (Optimal) ✅**
 - **Key insight:** The largest squares are at the **ends** of the array (since negatives with large absolute value and large positives both produce large squares).
 - Use two pointers from both ends, compare absolute values, and fill the result array from **right to left** (largest to smallest).
-- **Time:** O(n), **Space:** O(n) (for the result array — required)
+- **Time:** O(n), **Space:** O(n) (for the result array  -  required)
 
 #### Code (Both Solutions)
 
 ```python
 # ============================================================
-# APPROACH 1: Square + Sort — O(n log n)
+# APPROACH 1: Square + Sort  -  O(n log n)
 # ============================================================
 def sortedSquares_sort(nums: list[int]) -> list[int]:
     """
@@ -1318,7 +1318,7 @@ def sortedSquares_sort(nums: list[int]) -> list[int]:
 
 
 # ============================================================
-# APPROACH 2: Two Pointers — O(n) ✅
+# APPROACH 2: Two Pointers  -  O(n) ✅
 # ============================================================
 def sortedSquares(nums: list[int]) -> list[int]:
     """
@@ -1429,7 +1429,7 @@ Output: [1, 2, 2, 3, 5, 6]
 
 **Approach 2: Two Pointers from Front (with extra space)**
 - Standard merge like in merge sort.
-- **Time:** O(m+n), **Space:** O(m) — need temp array
+- **Time:** O(m+n), **Space:** O(m)  -  need temp array
 - ❌ Uses extra space.
 
 **Approach 3: Two Pointers from Back (Optimal) ✅**
@@ -1555,7 +1555,7 @@ Is the array sorted (or should you sort it)?
 
 ### Top 5 Things to Remember
 
-1. **Sorted array = Think two pointers first.** The sorted property is what makes moving pointers inward safe — you know which direction gives you a larger or smaller value.
+1. **Sorted array = Think two pointers first.** The sorted property is what makes moving pointers inward safe  -  you know which direction gives you a larger or smaller value.
 
 2. **Opposite direction** for pair/comparison problems (shrink the search space), **same direction** for in-place modification problems (slow writes, fast reads).
 
@@ -1567,8 +1567,8 @@ Is the array sorted (or should you sort it)?
 
 ### What's Next?
 
-Now that you've mastered Two Pointers, the natural next pattern is **Sliding Window** — it builds on the same-direction pointer concept but adds a "window" of elements between the two pointers. Stay tuned for Pattern 2!
+Now that you've mastered Two Pointers, the natural next pattern is **Sliding Window**  -  it builds on the same-direction pointer concept but adds a "window" of elements between the two pointers. Stay tuned for Pattern 2!
 
 ---
 
-> 💡 **Practice Tip:** Don't just read the solutions — try solving each problem yourself first for 15-20 minutes. If you're stuck, read only the approach section (not the code) and try again. The struggle is where the learning happens!
+> 💡 **Practice Tip:** Don't just read the solutions  -  try solving each problem yourself first for 15-20 minutes. If you're stuck, read only the approach section (not the code) and try again. The struggle is where the learning happens!

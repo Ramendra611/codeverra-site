@@ -1,6 +1,6 @@
 ---
 title: "Python Learning Roadmap"
-description: "A structured roadmap to learning Python from scratch to advanced — what to learn, in what order, and why."
+description: "A structured roadmap to learning Python from scratch to advanced  -  what to learn, in what order, and why."
 date: 2026-03-21
 author: "codeverra"
 toc: true

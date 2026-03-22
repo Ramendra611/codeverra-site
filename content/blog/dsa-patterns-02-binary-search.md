@@ -1,6 +1,6 @@
 ---
-title: "Binary Search Pattern — Complete Guide"
-description: "Understand binary search as a pattern beyond sorted arrays — templates, variations, and common problems."
+title: "Binary Search Pattern  -  Complete Guide"
+description: "Understand binary search as a pattern beyond sorted arrays  -  templates, variations, and common problems."
 date: 2026-03-21
 author: "codeverra"
 toc: true
@@ -16,9 +16,9 @@ tags:
 ## Table of Contents
 
 1. [What is Binary Search?](#what-is-binary-search)
-2. [The Core Idea — Why Halving Works](#the-core-idea--why-halving-works)
+2. [The Core Idea  -  Why Halving Works](#the-core-idea--why-halving-works)
 3. [The Three Binary Search Templates](#the-three-binary-search-templates)
-4. [Binary Search on Answer — The Hidden Pattern](#binary-search-on-answer--the-hidden-pattern)
+4. [Binary Search on Answer  -  The Hidden Pattern](#binary-search-on-answer--the-hidden-pattern)
 5. [Common Pitfalls](#common-pitfalls)
 6. [Problem Set](#problem-set)
    - [Problem 1: Binary Search](#problem-1-binary-search)
@@ -54,7 +54,7 @@ Step 3:  Check middle of 250,000 elements   → eliminate 125,000
 Step 20: Check middle of 1 element          → found (or not)
 ```
 
-**20 steps to search 1 million elements.** That's the power of halving — each step eliminates half the remaining possibilities.
+**20 steps to search 1 million elements.** That's the power of halving  -  each step eliminates half the remaining possibilities.
 
 > **Binary Search** is a technique where you repeatedly divide the search space in half, using a condition to decide which half to keep, until you find your target or narrow down to a single candidate.
 
@@ -71,9 +71,9 @@ Binary search uses two pointers (`low` and `high`) that converge, just like oppo
 
 ---
 
-## The Core Idea — Why Halving Works
+## The Core Idea  -  Why Halving Works
 
-Binary search works whenever you have a **monotonic condition** — a property that is `False` for one portion of the search space and `True` for the rest (or vice versa), with a clean boundary between them.
+Binary search works whenever you have a **monotonic condition**  -  a property that is `False` for one portion of the search space and `True` for the rest (or vice versa), with a clean boundary between them.
 
 ```
 Index:     0   1   2   3   4   5   6   7   8   9
@@ -131,7 +131,7 @@ def binary_search_exact(arr, target):
 
 **When to use:** You need the exact position of a specific value.
 
-**Key detail:** `low <= high` (inclusive) — the loop runs while the search space has at least one element.
+**Key detail:** `low <= high` (inclusive)  -  the loop runs while the search space has at least one element.
 
 ### Template 2: Find First/Left Boundary
 
@@ -166,9 +166,9 @@ def binary_search_left(arr, target):
 **When to use:** Find the first occurrence, insertion point, or leftmost boundary.
 
 **Key details:**
-- `high = len(arr)` — allows returning past-the-end when all elements are smaller.
-- `low < high` (strict) — loop ends when `low == high`, which is our answer.
-- `high = mid` (not `mid - 1`) — because `mid` itself might be the answer.
+- `high = len(arr)`  -  allows returning past-the-end when all elements are smaller.
+- `low < high` (strict)  -  loop ends when `low == high`, which is our answer.
+- `high = mid` (not `mid - 1`)  -  because `mid` itself might be the answer.
 
 ### Template 3: Find Last/Right Boundary
 
@@ -218,7 +218,7 @@ What are you looking for?
 ```
 arr = [1, 3, 3, 3, 5, 7, 9]
 
-Template 1: find 3         → returns index 2 (any of the 3s — typically middle)
+Template 1: find 3         → returns index 2 (any of the 3s  -  typically middle)
 Template 2: find first ≥ 3 → returns index 1 (leftmost 3)
 Template 3: find last ≤ 3  → returns index 3 (rightmost 3)
 Template 2: find first ≥ 4 → returns index 4 (first element after all 3s → insertion point for 4)
@@ -226,7 +226,7 @@ Template 2: find first ≥ 4 → returns index 4 (first element after all 3s →
 
 ---
 
-## Binary Search on Answer — The Hidden Pattern
+## Binary Search on Answer  -  The Hidden Pattern
 
 This is where binary search gets really interesting. Instead of searching for a value *in an array*, you search for the **answer itself** across a range of possible values.
 
@@ -257,7 +257,7 @@ def binary_search_on_answer(problem_input):
 **Example:** "Koko has piles of bananas. She can eat at speed `k` bananas/hour. What's the minimum `k` to finish all bananas in `h` hours?"
 
 - **Search space:** `k` can range from 1 to max(piles).
-- **Condition:** At speed `k`, can she finish in ≤ `h` hours? (Monotonic — if speed 5 works, speed 6 definitely works.)
+- **Condition:** At speed `k`, can she finish in ≤ `h` hours? (Monotonic  -  if speed 5 works, speed 6 definitely works.)
 - **Binary search on answer:** Find the smallest `k` where the condition is True.
 
 This pattern shows up in a huge number of problems disguised as optimization questions. The trick is recognizing that the answer has a monotonic feasibility condition.
@@ -345,13 +345,13 @@ Output: 4
 
 **Approach 1: Linear Scan**
 - Walk through the array one by one.
-- **Time:** O(n) ❌ — doesn't use the sorted property.
+- **Time:** O(n) ❌  -  doesn't use the sorted property.
 
 **Approach 2: Binary Search (Optimal) ✅**
 - Classic Template 1: check the middle, go left or right.
 - **Time:** O(log n), **Space:** O(1)
 
-This is the simplest binary search problem — the one to get the fundamentals right.
+This is the simplest binary search problem  -  the one to get the fundamentals right.
 
 #### Code (Optimal Solution)
 
@@ -434,7 +434,7 @@ Input: nums = [1, 3, 5, 6], target = 7 → Output: 4 (insert at end)
 - Walk until you find `target` or a value greater.
 - **Time:** O(n)
 
-**Approach 2: Binary Search — Left Boundary (Optimal) ✅**
+**Approach 2: Binary Search  -  Left Boundary (Optimal) ✅**
 - This is exactly Template 2: find the first index where `nums[mid] >= target`.
 - If `target` exists, that's its index. If not, that's where it would be inserted.
 - **Time:** O(log n), **Space:** O(1)
@@ -511,7 +511,7 @@ Output: [3, 4]
 #### Clarifying Questions & Constraints
 
 - Array is sorted in non-decreasing order (duplicates allowed).
-- Must be O(log n) — can't scan linearly after finding one occurrence.
+- Must be O(log n)  -  can't scan linearly after finding one occurrence.
 - Return `[-1, -1]` if target doesn't exist.
 
 #### Approach Discussion
@@ -659,7 +659,7 @@ Both approaches have the same time complexity, but Approach 2 is cleaner.
 
 ```python
 # ============================================================
-# APPROACH 1: Two Binary Searches — O(log m + log n)
+# APPROACH 1: Two Binary Searches  -  O(log m + log n)
 # ============================================================
 def searchMatrix_two(matrix: list[list[int]], target: int) -> bool:
     """
@@ -703,7 +703,7 @@ def searchMatrix_two(matrix: list[list[int]], target: int) -> bool:
 
 
 # ============================================================
-# APPROACH 2: Flat 1D Binary Search — O(log(m × n)) ✅
+# APPROACH 2: Flat 1D Binary Search  -  O(log(m × n)) ✅
 # ============================================================
 def searchMatrix(matrix: list[list[int]], target: int) -> bool:
     """
@@ -792,7 +792,7 @@ Output: 4
 
 - All elements are unique.
 - Must be O(log n).
-- The array was sorted, then rotated — so one half is always sorted.
+- The array was sorted, then rotated  -  so one half is always sorted.
 
 #### Approach Discussion
 
@@ -916,7 +916,7 @@ Output: 1
 
 - All elements are unique.
 - Must be O(log n).
-- The minimum is the rotation point — the place where the sorted order "breaks."
+- The minimum is the rotation point  -  the place where the sorted order "breaks."
 
 #### Approach Discussion
 
@@ -1069,7 +1069,7 @@ def minEatingSpeed(piles: list[int], h: int) -> int:
             # This speed works! But maybe a slower speed also works.
             high = mid
         else:
-            # Too slow — need to eat faster.
+            # Too slow  -  need to eat faster.
             low = mid + 1
     
     return low
@@ -1166,7 +1166,7 @@ def shipWithinDays(weights: list[int], days: int) -> int:
         
         for w in weights:
             if current_load + w > capacity:
-                # This package doesn't fit today — start a new day
+                # This package doesn't fit today  -  start a new day
                 num_days += 1
                 current_load = w
             else:
@@ -1362,7 +1362,7 @@ Output: 2.5  (merged: [1, 2, 3, 4], median = (2+3)/2 = 2.5)
 
 #### Clarifying Questions & Constraints
 
-- Must be O(log(m+n)) — cannot merge and sort (that's O(m+n)).
+- Must be O(log(m+n))  -  cannot merge and sort (that's O(m+n)).
 - Arrays can have different lengths.
 - If total length is even, median = average of the two middle elements.
 
@@ -1370,7 +1370,7 @@ Output: 2.5  (merged: [1, 2, 3, 4], median = (2+3)/2 = 2.5)
 
 **Approach 1: Merge and Find Middle**
 - Merge both arrays, find the middle.
-- **Time:** O(m+n) ❌ — violates the O(log) requirement.
+- **Time:** O(m+n) ❌  -  violates the O(log) requirement.
 
 **Approach 2: Binary Search on Partition (Optimal) ✅**
 
@@ -1515,8 +1515,8 @@ Verify: merged = [1,3,7,8,9,11,15,18,19,21,25], median at index 5 = 11 ✅
 | Rotated Sorted Array | Modified match | O(log n) | O(1) | One half is always sorted |
 | Find Min in Rotated | Boundary | O(log n) | O(1) | Compare `mid` with `high` |
 | Koko Eating Bananas | BS on answer | O(n log M) | O(1) | Minimize speed, check feasibility |
-| Ship Packages | BS on answer | O(n log S) | O(1) | Same as Koko — minimize capacity |
-| Split Array Largest Sum | BS on answer | O(n log S) | O(1) | Same structure — minimize max sum |
+| Ship Packages | BS on answer | O(n log S) | O(1) | Same as Koko  -  minimize capacity |
+| Split Array Largest Sum | BS on answer | O(n log S) | O(1) | Same structure  -  minimize max sum |
 | Median of Two Arrays | BS on partition | O(log min(m,n)) | O(1) | Partition both arrays, validate |
 
 ### Decision Framework
@@ -1534,10 +1534,10 @@ Is the search space SORTED or does it have a MONOTONIC property?
 ├── Sorted array with a TWIST (rotated, 2D)?
 │   └── Modified binary search (identify which part is "normal")
 │
-└── Optimization problem — "minimum X such that condition holds"?
+└── Optimization problem  -  "minimum X such that condition holds"?
     └── Binary Search on Answer
         1. Define the search space: [minimum possible, maximum possible]
-        2. Write is_feasible(x) — can check in O(n) or similar
+        2. Write is_feasible(x)  -  can check in O(n) or similar
         3. Binary search for the boundary where feasibility changes
 ```
 
@@ -1565,8 +1565,8 @@ return low
 
 ### What's Next?
 
-Binary search and two pointers form the foundation of "searching" in arrays. We've now covered five patterns: Two Pointers, Binary Search, Sliding Window, Prefix Sum, and HashMap. Next up is **Pattern 6: Kadane's Algorithm** — the classic technique for maximum subarray problems. Stay tuned!
+Binary search and two pointers form the foundation of "searching" in arrays. We've now covered five patterns: Two Pointers, Binary Search, Sliding Window, Prefix Sum, and HashMap. Next up is **Pattern 6: Kadane's Algorithm**  -  the classic technique for maximum subarray problems. Stay tuned!
 
 ---
 
-> 💡 **Practice Tip:** The three "binary search on answer" problems (7, 8, 9) are almost identical in structure. Once you solve one, the others become straightforward. The real skill is *recognizing* that a problem fits this pattern — look for optimization with a monotonic feasibility condition.
+> 💡 **Practice Tip:** The three "binary search on answer" problems (7, 8, 9) are almost identical in structure. Once you solve one, the others become straightforward. The real skill is *recognizing* that a problem fits this pattern  -  look for optimization with a monotonic feasibility condition.

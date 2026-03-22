@@ -1,6 +1,6 @@
 ---
 title: "Python Basics Masterclass"
-description: "A complete beginner-friendly guide to Python basics — syntax, data types, variables, and core concepts."
+description: "A complete beginner-friendly guide to Python basics  -  syntax, data types, variables, and core concepts."
 date: 2026-03-21
 author: "codeverra"
 toc: true

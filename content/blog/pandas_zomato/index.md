@@ -26,14 +26,14 @@ cover:
 
 
 
-# Pandas Practice Sheet — Zomato Bangalore Dataset
+# Pandas Practice Sheet  -  Zomato Bangalore Dataset
 ### A complete guided exploration: from raw messy data to real business insights
 
 ---
 
 ## Why This Dataset?
 
-The Titanic dataset is clean, small, and predictable. The Zomato Bangalore dataset is the opposite — it is **genuinely messy in the way real-world data is messy**. Ratings stored as strings like `"3.8/5"`. Costs formatted as `"450"` with comma-separators (`"1,200"`). The `cuisines` column has multiple cuisines packed into one cell separated by commas. Several columns have inconsistent values, duplicates, and missing data scattered across them.
+The Titanic dataset is clean, small, and predictable. The Zomato Bangalore dataset is the opposite  -  it is **genuinely messy in the way real-world data is messy**. Ratings stored as strings like `"3.8/5"`. Costs formatted as `"450"` with comma-separators (`"1,200"`). The `cuisines` column has multiple cuisines packed into one cell separated by commas. Several columns have inconsistent values, duplicates, and missing data scattered across them.
 
 This is not a bug in the practice sheet. It is the point. Working through this dataset will teach you the pandas skills that actually matter when you sit down with a real business dataset:
 - How to **clean** before you analyse
@@ -53,7 +53,7 @@ https://www.kaggle.com/datasets/himanshupoddar/zomato-bangalore-restaurants
 ```
 
 **Direct download (after Kaggle login):**
-The dataset is `zomato.csv` — approximately 51,700 rows and 17 columns.
+The dataset is `zomato.csv`  -  approximately 51,700 rows and 17 columns.
 
 **Alternative: load a hosted mirror directly in Python (no login):**
 ```python
@@ -82,16 +82,16 @@ Before writing a single line of code, understand every column in the raw dataset
 │ url                        │ string   │ Zomato URL of the restaurant. Not useful for analysis.      │
 │ address                    │ string   │ Full address. Too detailed; location is more useful.        │
 │ name                       │ string   │ Restaurant name.                                            │
-│ online_order               │ string   │ "Yes" or "No" — does the restaurant accept online orders?  │
-│ book_table                 │ string   │ "Yes" or "No" — does the restaurant allow table booking?   │
-│ rate                       │ string   │ Rating as "4.1/5" or "NEW" or "-". MESSY — needs cleaning. │
+│ online_order               │ string   │ "Yes" or "No"  -  does the restaurant accept online orders?  │
+│ book_table                 │ string   │ "Yes" or "No"  -  does the restaurant allow table booking?   │
+│ rate                       │ string   │ Rating as "4.1/5" or "NEW" or "-". MESSY  -  needs cleaning. │
 │ votes                      │ int      │ Number of votes the restaurant has received.               │
 │ phone                      │ string   │ Phone number. Not useful for analysis.                     │
 │ location                   │ string   │ Neighbourhood/area in Bangalore (e.g., "Koramangala 5th"). │
 │ rest_type                  │ string   │ Type of restaurant (e.g., "Casual Dining", "Quick Bites"). │
 │ dish_liked                 │ string   │ Comma-separated list of popular dishes. Very messy.        │
 │ cuisines                   │ string   │ Comma-separated list of cuisines (e.g., "North Indian,     │
-│                            │          │ Chinese, Mughlai"). MULTI-VALUED — needs explode().        │
+│                            │          │ Chinese, Mughlai"). MULTI-VALUED  -  needs explode().        │
 │ approx_cost(for two people)│ string   │ Approximate cost for two, stored as string ("300", "1,200")│
 │                            │          │ Has commas in numbers. Needs cleaning → numeric.           │
 │ reviews_list               │ string   │ Raw list of reviews. Not structured for analysis.          │
@@ -103,14 +103,14 @@ Before writing a single line of code, understand every column in the raw dataset
 
 **Dataset at a glance:**
 - ~51,700 rows (restaurants in Bangalore listed on Zomato)
-- Several columns are **object (string) type even though they should be numeric** — this is the core challenge
+- Several columns are **object (string) type even though they should be numeric**  -  this is the core challenge
 - `rate` has three types of non-numeric values: `"NEW"`, `"-"`, and `NaN`
 - `approx_cost(for two people)` has commas in numbers (Indian formatting)
-- `cuisines` is multi-valued — each restaurant may serve 1 to 8+ cuisines in one cell
+- `cuisines` is multi-valued  -  each restaurant may serve 1 to 8+ cuisines in one cell
 
 ---
 
-## Setup Block — Run This First
+## Setup Block  -  Run This First
 
 ```python
 import pandas as pd
@@ -135,7 +135,7 @@ print(df.head(3))
 
 ---
 
-# SECTION 1 — First Look (Questions 1–3)
+# SECTION 1  -  First Look (Questions 1–3)
 ### Understand the shape, structure, and quality of the data before touching anything
 
 ---
@@ -164,8 +164,8 @@ missing_report = pd.DataFrame({
 }).sort_values("missing_pct", ascending=False)
 
 print(missing_report[missing_report["missing_count"] > 0])
-# dish_liked            ~26%  ← very high — mostly useless
-# rate                  ~4%   ← small but critical — needs cleaning
+# dish_liked            ~26%  ← very high  -  mostly useless
+# rate                  ~4%   ← small but critical  -  needs cleaning
 # approx_cost...        ~1%   ← small
 # cuisines              ~1%
 # rest_type             ~1%
@@ -176,7 +176,7 @@ df.info()
 # Key findings:
 # rate → object (should become float after cleaning)
 # approx_cost(for two people) → object (should become int after cleaning)
-# votes → already int — the one clean numeric column
+# votes → already int  -  the one clean numeric column
 ```
 
 > **Why do this first?** Missing value percentages tell you what to clean, what to drop, and what to be careful about in analysis. A column that is 26% missing (`dish_liked`) is nearly useless. A column that is 4% missing (`rate`) is critical and must be cleaned before any rating analysis. Never skip this step.
@@ -259,13 +259,13 @@ valid_rates = df[~df["rate"].isin(["NEW", "-"]) & df["rate"].notna()]
 print(valid_rates["rate"].unique()[:10])   # e.g., ["4.1/5", "3.8/5", ...]
 ```
 
-> **This is the recon step.** Before you can use `rate` for any analysis, you need to understand exactly what "dirty" means in this column. `"NEW"` means the restaurant is newly listed with no ratings yet. `"-"` means ratings were suppressed (too few votes or a policy reason). Both should become `NaN` after cleaning, not `0` — treating them as `0` would devastate your average rating calculations.
+> **This is the recon step.** Before you can use `rate` for any analysis, you need to understand exactly what "dirty" means in this column. `"NEW"` means the restaurant is newly listed with no ratings yet. `"-"` means ratings were suppressed (too few votes or a policy reason). Both should become `NaN` after cleaning, not `0`  -  treating them as `0` would devastate your average rating calculations.
 
 ---
 
 ---
 
-# SECTION 2 — Data Cleaning (Questions 4–6)
+# SECTION 2  -  Data Cleaning (Questions 4–6)
 ### This section is not optional. The rest of the practice sheet depends on it.
 
 ---
@@ -280,7 +280,7 @@ print(valid_rates["rate"].unique()[:10])   # e.g., ["4.1/5", "3.8/5", ...]
 ### Answer
 
 ```python
-# Method 1 — Step by step (most readable for learners)
+# Method 1  -  Step by step (most readable for learners)
 
 # Step 1: Replace "NEW" and "-" with NaN
 df["rate"] = df["rate"].replace({"NEW": np.nan, "-": np.nan})
@@ -289,7 +289,7 @@ df["rate"] = df["rate"].replace({"NEW": np.nan, "-": np.nan})
 # e.g., "4.1/5" → "4.1"
 df["rate"] = df["rate"].str.replace("/5", "", regex=False)
 
-# Step 3: Convert to numeric — any remaining non-numeric becomes NaN automatically
+# Step 3: Convert to numeric  -  any remaining non-numeric becomes NaN automatically
 df["rating"] = pd.to_numeric(df["rate"], errors="coerce")
 
 # Verify
@@ -304,7 +304,7 @@ print(df["rating"].isnull().sum())   # includes original NaN + NEW + "-"
 
 
 # -------------------------------------------------------
-# Method 2 — One-liner using a regex extract
+# Method 2  -  One-liner using a regex extract
 # -------------------------------------------------------
 df["rating"] = pd.to_numeric(
     df["rate"].str.extract(r"(\d+\.\d+)")[0],
@@ -343,13 +343,13 @@ print(df["approx_cost(for two people)"].unique()[:15])
 # ['300', '600', '800', '1,200', '1,500', '450', ...]
 # Numbers over 999 use a comma: "1,200" instead of "1200"
 
-# Method 1 — str.replace then pd.to_numeric
+# Method 1  -  str.replace then pd.to_numeric
 df["cost_for_two"] = pd.to_numeric(
     df["approx_cost(for two people)"].str.replace(",", "", regex=False),
     errors="coerce"
 )
 
-# Method 2 — same result, slightly different style
+# Method 2  -  same result, slightly different style
 df["cost_for_two"] = (
     df["approx_cost(for two people)"]
     .str.replace(",", "", regex=False)
@@ -364,12 +364,12 @@ print(df["cost_for_two"].describe())
 # mean     ~547
 # median   ~400
 
-# Safe cast to Int64 (nullable integer — pandas 1.0+)
+# Safe cast to Int64 (nullable integer  -  pandas 1.0+)
 df["cost_for_two"] = df["cost_for_two"].astype("Int64")
 ```
 
 > **Why `Int64` (capital I) instead of `int64`?**
-> Standard `int64` cannot hold `NaN` — numpy integers don't support null values. If you call `.astype(int)` on a column with `NaN`, it raises a `ValueError`. Pandas nullable integer type `"Int64"` handles `NaN` correctly. Use it whenever your integer column has missing values.
+> Standard `int64` cannot hold `NaN`  -  numpy integers don't support null values. If you call `.astype(int)` on a column with `NaN`, it raises a `ValueError`. Pandas nullable integer type `"Int64"` handles `NaN` correctly. Use it whenever your integer column has missing values.
 
 ---
 
@@ -405,13 +405,13 @@ print(df.columns.tolist())
 print(f"Clean shape: {df.shape}")
 ```
 
-> **Rename before analyse.** Column names like `"approx_cost(for two people)"` and `"listed_in(type)"` are painful to type repeatedly and prone to typos. Renaming upfront pays dividends across the entire notebook. The `rename(columns={...})` dict syntax is the cleanest approach — far safer than reassigning `df.columns = [...]` (which requires getting the exact position right).
+> **Rename before analyse.** Column names like `"approx_cost(for two people)"` and `"listed_in(type)"` are painful to type repeatedly and prone to typos. Renaming upfront pays dividends across the entire notebook. The `rename(columns={...})` dict syntax is the cleanest approach  -  far safer than reassigning `df.columns = [...]` (which requires getting the exact position right).
 
 ---
 
 ---
 
-# SECTION 3 — Exploration & Aggregation (Questions 7–13)
+# SECTION 3  -  Exploration & Aggregation (Questions 7–13)
 ### Now that data is clean, start answering business questions
 
 ---
@@ -426,7 +426,7 @@ print(f"Clean shape: {df.shape}")
 ### Answer
 
 ```python
-# Method 1 — value_counts with percentage column
+# Method 1  -  value_counts with percentage column
 location_counts = df["location"].value_counts().reset_index()
 location_counts.columns = ["location", "restaurant_count"]
 location_counts["pct_of_total"] = (
@@ -441,7 +441,7 @@ print(location_counts.head(10))
 # Indiranagar                   ~850         ~1.6
 # ...
 
-# Method 2 — groupby approach (more flexible for adding extra metrics later)
+# Method 2  -  groupby approach (more flexible for adding extra metrics later)
 location_summary = (
     df.groupby("location")
     .agg(restaurant_count=("name", "count"))
@@ -456,7 +456,7 @@ location_summary["pct_of_total"] = (
 print(location_summary)
 ```
 
-> **Insight:** BTM, Koramangala, HSR, and Indiranagar dominate. These are all IT-heavy neighbourhoods in South Bangalore — where tech workers who rely on food delivery are concentrated. This is not a coincidence.
+> **Insight:** BTM, Koramangala, HSR, and Indiranagar dominate. These are all IT-heavy neighbourhoods in South Bangalore  -  where tech workers who rely on food delivery are concentrated. This is not a coincidence.
 
 > **When to use `value_counts()` vs `groupby().count()`:**
 > - `value_counts()` → fastest one-liner for "how many of each category"
@@ -495,7 +495,7 @@ result = filtered.sort_values("avg_rating", ascending=False)
 print(result.to_string(index=False))
 ```
 
-> **Why filter AFTER the groupby?** Because you want to calculate aggregates across ALL restaurants of each type, then filter down to types with meaningful sample sizes. If you filtered the raw `df` first (removing small types), you'd still get the same aggregate results — but filtering post-groupby is the correct mental model.
+> **Why filter AFTER the groupby?** Because you want to calculate aggregates across ALL restaurants of each type, then filter down to types with meaningful sample sizes. If you filtered the raw `df` first (removing small types), you'd still get the same aggregate results  -  but filtering post-groupby is the correct mental model.
 
 > **Named aggregation reminder:**
 > `new_col_name = ("source_col", "agg_function")`
@@ -516,7 +516,7 @@ print(result.to_string(index=False))
 # Step 1: Convert Yes/No to 1/0 for easy mean calculation
 df["online_order_flag"] = (df["online_order"] == "Yes").astype(int)
 
-# Step 2: Groupby location — mean gives adoption rate
+# Step 2: Groupby location  -  mean gives adoption rate
 location_online = (
     df.groupby("location")
     .agg(
@@ -530,12 +530,12 @@ location_online = (
 # Filter to locations with at least 50 restaurants (avoid noise from tiny areas)
 location_online = location_online[location_online["total_restaurants"] >= 50]
 
-# Top 10 — highest online order adoption
+# Top 10  -  highest online order adoption
 print("Top 10 locations by online order rate:")
 print(location_online.nlargest(10, "online_order_rate")
       [["location", "total_restaurants", "online_order_rate"]])
 
-# Bottom 10 — lowest online order adoption
+# Bottom 10  -  lowest online order adoption
 print("\nBottom 10 locations by online order rate:")
 print(location_online.nsmallest(10, "online_order_rate")
       [["location", "total_restaurants", "online_order_rate"]])
@@ -544,8 +544,8 @@ print(location_online.nsmallest(10, "online_order_rate")
 > **The Yes/No → binary conversion pattern** (`== "Yes").astype(int)`) is one of the most reusable pandas patterns. Once you have a 0/1 column, `mean()` gives you the rate, `sum()` gives you the count, and it plays nicely with all groupby operations. Apply this pattern to any binary string column.
 
 > **`nlargest(n, col)` vs `sort_values().head(n)`:**
-> - `nlargest()` is O(n log k) — significantly faster when n is large
-> - `sort_values().head()` is O(n log n) — full sort
+> - `nlargest()` is O(n log k)  -  significantly faster when n is large
+> - `sort_values().head()` is O(n log n)  -  full sort
 > For datasets under ~1M rows the difference is negligible, but `nlargest` also reads more clearly.
 
 ---
@@ -654,8 +654,8 @@ print(location_cost.nlargest(5, "cost_skew")
       [["location", "median_cost", "mean_cost", "cost_skew"]])
 ```
 
-> **Mean vs Median — always think about this for price data.**
-> A location might have 200 budget restaurants and 5 luxury fine-dining restaurants. The 5 luxury ones can pull the mean cost to Rs.1200 even if the typical restaurant costs Rs.400. The median gives you the "typical" restaurant cost for that area — which is what you actually want when answering "how expensive is Koramangala?"
+> **Mean vs Median  -  always think about this for price data.**
+> A location might have 200 budget restaurants and 5 luxury fine-dining restaurants. The 5 luxury ones can pull the mean cost to Rs.1200 even if the typical restaurant costs Rs.400. The median gives you the "typical" restaurant cost for that area  -  which is what you actually want when answering "how expensive is Koramangala?"
 >
 > The gap between mean and median is itself informative: a large gap means a location has high-end outliers. A small gap means costs are more homogeneous.
 
@@ -705,7 +705,7 @@ print(rating_band_analysis[["rating_band", "restaurant_count", "pct"]])
 > **`pd.cut()` recap:**
 > - Bins are `[0, 3.5, 4.0, 4.5, 5.0]` → creates 4 intervals: (0,3.5], (3.5,4.0], (4.0,4.5], (4.5,5.0]
 > - `right=True` means the right boundary IS included in the bin (the default)
-> - Values outside the bin range become `NaN` — which is why we start from 0, not 1
+> - Values outside the bin range become `NaN`  -  which is why we start from 0, not 1
 >
 > **Insight to draw:** The bulk of restaurants cluster in the 3.5–4.0 range. Very few are below 3.5 (Zomato may suppress bad listings) or above 4.5 (genuine excellence is rare). This "compressed toward the top" distribution is common in online review systems.
 
@@ -721,7 +721,7 @@ print(rating_band_analysis[["rating_band", "restaurant_count", "pct"]])
 ### Answer
 
 ```python
-# Method 1 — sort_values (returns all rows, then head)
+# Method 1  -  sort_values (returns all rows, then head)
 top10_votes = (
     df.sort_values("votes", ascending=False)
     .head(10)
@@ -731,7 +731,7 @@ top10_votes = (
 )
 print(top10_votes.to_string(index=False))
 
-# Method 2 — nlargest (more efficient, direct)
+# Method 2  -  nlargest (more efficient, direct)
 top10_votes_v2 = df.nlargest(10, "votes")[
     ["name", "location", "rest_type", "rating", "cost_for_two", "votes"]
 ]
@@ -742,16 +742,16 @@ print(top10_votes_v2)
 correlation = df[["votes", "rating"]].corr()
 print(f"\nCorrelation between votes and rating: {correlation.loc['votes', 'rating']:.3f}")
 # Expect a mild positive correlation (~0.2-0.4)
-# High votes ≠ high rating — some famous restaurants are famous for being debated
+# High votes ≠ high rating  -  some famous restaurants are famous for being debated
 ```
 
-> **`votes` vs `rating` — an important distinction.** A restaurant with 5000 votes and rating 3.8 is very well-known but not universally loved. A restaurant with 50 votes and rating 4.8 might be a hidden gem or a new place. Both have value — they answer different questions ("most popular" vs "highest quality").
+> **`votes` vs `rating`  -  an important distinction.** A restaurant with 5000 votes and rating 3.8 is very well-known but not universally loved. A restaurant with 50 votes and rating 4.8 might be a hidden gem or a new place. Both have value  -  they answer different questions ("most popular" vs "highest quality").
 
 ---
 
 ---
 
-# SECTION 4 — String Operations & Multi-valued Columns (Questions 14–17)
+# SECTION 4  -  String Operations & Multi-valued Columns (Questions 14–17)
 ### The most distinctly Zomato-specific skills in this sheet
 
 ---
@@ -759,7 +759,7 @@ print(f"\nCorrelation between votes and rating: {correlation.loc['votes', 'ratin
 ## Question 14
 ### The `cuisines` column contains multiple cuisines per restaurant separated by commas (e.g., `"North Indian, Chinese, Mughlai"`). What are the top 20 most popular individual cuisines across all restaurants?
 
-**Concepts:** `str.split()`, `explode()`, `value_counts()`, working with multi-valued string columns — the single most important pattern for this dataset
+**Concepts:** `str.split()`, `explode()`, `value_counts()`, working with multi-valued string columns  -  the single most important pattern for this dataset
 
 ---
 
@@ -856,7 +856,7 @@ print(cuisine_count_analysis)
 ```
 
 > **`str.split().str.len()` is a compound string operation.**
-> Chaining `.str` accessors works because `str.split()` returns a Series of lists, and `str.len()` on a Series of lists returns the length of each list. This pattern — `str.split() → str.len()` — is how you extract length from any delimited string column.
+> Chaining `.str` accessors works because `str.split()` returns a Series of lists, and `str.len()` on a Series of lists returns the length of each list. This pattern  -  `str.split() → str.len()`  -  is how you extract length from any delimited string column.
 
 ---
 
@@ -872,8 +872,8 @@ print(cuisine_count_analysis)
 ```python
 # The key challenge: after explode, one restaurant appears multiple times
 # (once per cuisine). This is correct for cuisine-level analysis.
-# Don't add up "sum of votes" on exploded data — it will be wrong.
-# Do use "mean of rating" — that's fine (same value repeated is still the same mean).
+# Don't add up "sum of votes" on exploded data  -  it will be wrong.
+# Do use "mean of rating"  -  that's fine (same value repeated is still the same mean).
 
 # Step 1: Create an exploded copy (never explode the main df in-place!)
 df_exploded = df.copy()
@@ -963,13 +963,13 @@ print(
 )
 ```
 
-> **`str[0]` on a Series of lists** works because the `.str` accessor supports integer indexing — `str[0]` means "first element of each list". This is the same as `str.get(0)` with `NaN` safety. Use `str[0]`, `str[1]`, `str[-1]` to extract specific positions from a split.
+> **`str[0]` on a Series of lists** works because the `.str` accessor supports integer indexing  -  `str[0]` means "first element of each list". This is the same as `str.get(0)` with `NaN` safety. Use `str[0]`, `str[1]`, `str[-1]` to extract specific positions from a split.
 
 ---
 
 ---
 
-# SECTION 5 — Groupby Transforms & Derived Insights (Questions 18–22)
+# SECTION 5  -  Groupby Transforms & Derived Insights (Questions 18–22)
 ### Adding context back to individual rows using transform() and other advanced patterns
 
 ---
@@ -977,7 +977,7 @@ print(
 ## Question 18
 ### Add a column `rating_vs_location_avg` that shows how much each restaurant's rating differs from the average rating of all restaurants in the same location.
 
-**Concepts:** `groupby().transform()` — the core advanced concept
+**Concepts:** `groupby().transform()`  -  the core advanced concept
 
 ---
 
@@ -1020,12 +1020,12 @@ print(underperformers.to_string(index=False))
 
 > **Why `transform()` matters here:** You want to add "context" to each restaurant row. The context is the average rating of all restaurants around it. `groupby().agg()` gives you one number per location. `groupby().transform()` broadcasts that number back to every row in that location, giving you the same shape as the original DataFrame so you can subtract directly.
 >
-> This is the classic "deviation from group mean" pattern — used in almost every real EDA.
+> This is the classic "deviation from group mean" pattern  -  used in almost every real EDA.
 
 ---
 
 ## Question 19
-### Add a column `cost_percentile_in_type` showing where each restaurant's cost falls within its restaurant type (as a percentile). Use this to find "value for money" restaurants — those in the top 25% of their type by rating but bottom 25% by cost.
+### Add a column `cost_percentile_in_type` showing where each restaurant's cost falls within its restaurant type (as a percentile). Use this to find "value for money" restaurants  -  those in the top 25% of their type by rating but bottom 25% by cost.
 
 **Concepts:** `groupby().transform()` with a `rank`-based lambda, percentile calculation, multi-condition filtering
 
@@ -1082,7 +1082,7 @@ print(result.to_string(index=False))
 ### Answer
 
 ```python
-# Method 1 — idxmax() returns the INDEX of the max-rated row per group
+# Method 1  -  idxmax() returns the INDEX of the max-rated row per group
 idx_of_best = df.groupby("location")["rating"].idxmax()
 # idx_of_best is a Series: index=location, values=row index in df
 
@@ -1093,7 +1093,7 @@ best_per_location = df.loc[idx_of_best.values][
 print(best_per_location.head(20).to_string(index=False))
 
 
-# Method 2 — sort + groupby().first() (alternative approach)
+# Method 2  -  sort + groupby().first() (alternative approach)
 best_per_location_v2 = (
     df.sort_values("rating", ascending=False)
     .groupby("location")
@@ -1105,7 +1105,7 @@ best_per_location_v2 = (
 print(best_per_location_v2.head(10))
 
 
-# Method 3 — groupby().apply() with nlargest (top 3 instead of top 1)
+# Method 3  -  groupby().apply() with nlargest (top 3 instead of top 1)
 top3_per_location = (
     df.dropna(subset=["rating"])
     .groupby("location")[["name", "rating", "cost_for_two"]]
@@ -1116,7 +1116,7 @@ print(top3_per_location.head(15))
 ```
 
 > **`idxmax()` vs `sort + first()`:**
-> - `idxmax()` is O(n) per group — faster
+> - `idxmax()` is O(n) per group  -  faster
 > - `sort + first()` is O(n log n) but more readable and generalises to "top k" easily
 > - For "top 1", use `idxmax()`. For "top k", use `nlargest()` inside `apply()`.
 >
@@ -1229,7 +1229,7 @@ print(f"\nAll entries for '{example_name}':")
 print(example_rows)
 ```
 
-> **"Duplicate" in this dataset has a specific meaning.** A restaurant like "Truffles" appears as "Delivery" AND "Dine-out" as two separate rows — because it is listed under two categories on Zomato. These are NOT errors to drop. They represent different Zomato pages for the same physical restaurant. If you want one row per restaurant, you need to decide: take the row with the most votes? Average the ratings? The right answer depends on the question you're asking.
+> **"Duplicate" in this dataset has a specific meaning.** A restaurant like "Truffles" appears as "Delivery" AND "Dine-out" as two separate rows  -  because it is listed under two categories on Zomato. These are NOT errors to drop. They represent different Zomato pages for the same physical restaurant. If you want one row per restaurant, you need to decide: take the row with the most votes? Average the ratings? The right answer depends on the question you're asking.
 >
 > **`duplicated(subset=[...], keep=False)`:** The `keep=False` flag marks ALL occurrences of duplicates (not just the second+). This lets you see and inspect every duplicated row. `keep='first'` keeps the first and marks the rest; `keep='last'` keeps the last.
 
@@ -1237,7 +1237,7 @@ print(example_rows)
 
 ---
 
-# SECTION 6 — Advanced Multi-Step Analysis (Questions 23–27)
+# SECTION 6  -  Advanced Multi-Step Analysis (Questions 23–27)
 ### Questions that combine multiple pandas techniques in a single analytical pipeline
 
 ---
@@ -1289,7 +1289,7 @@ print(location_report.head(15).to_string(index=False))
 
 > **`mode()` inside `agg()` with a lambda.** The mode (most common value) is not a built-in aggregation function in pandas groupby. You have to pass a lambda. The `.mode()` method returns a Series (there can be multiple modes), so we take `.iloc[0]` to get the first one. The `if not x.mode().empty else "Unknown"` guard handles groups where all values are NaN.
 
-> **`lambda` inside `agg()` — tradeoffs:**
+> **`lambda` inside `agg()`  -  tradeoffs:**
 > - More flexible than built-in aggregation strings
 > - Slower on large datasets (not vectorised)
 > - For datasets under ~500k rows (like this one), performance is fine
@@ -1314,7 +1314,7 @@ print("Top 5 locations:", top5_locations)
 # Step 2: Filter df to only those locations
 df_top5 = df[df["location"].isin(top5_locations)]
 
-# Step 3: Crosstab — location vs listing_type, normalised by row
+# Step 3: Crosstab  -  location vs listing_type, normalised by row
 ct = pd.crosstab(
     index     = df_top5["location"],
     columns   = df_top5["listing_type"],
@@ -1334,7 +1334,7 @@ print("\nRaw counts:")
 print(ct_raw)
 ```
 
-> **Why normalise by row here?** Locations have very different numbers of restaurants (BTM might have 1100, another location 200). Raw counts would make BTM look dominant in every category simply because it is larger. Row normalisation lets you compare the *profile* of each area — "what proportion of BTM restaurants are Delivery vs Dine-out?" — on equal footing.
+> **Why normalise by row here?** Locations have very different numbers of restaurants (BTM might have 1100, another location 200). Raw counts would make BTM look dominant in every category simply because it is larger. Row normalisation lets you compare the *profile* of each area  -  "what proportion of BTM restaurants are Delivery vs Dine-out?"  -  on equal footing.
 
 ---
 
@@ -1418,7 +1418,7 @@ outliers = df[df["votes_zscore_loc"].abs() > 2].copy()
 
 print(f"Outlier restaurants (|z-score| > 2): {len(outliers)}")
 
-# Positive outliers — far more popular than their neighbourhood average
+# Positive outliers  -  far more popular than their neighbourhood average
 popular_outliers = (
     outliers[outliers["votes_zscore_loc"] > 2]
     .sort_values("votes_zscore_loc", ascending=False)
@@ -1434,7 +1434,7 @@ print("A restaurant with 500 votes in BTM (avg: 200 votes) is more exceptional")
 print("than the same 500 votes in Koramangala (avg: 450 votes)")
 ```
 
-> **Z-score normalisation is the "correct" way to compare within-group standing** when groups have different scales. Using raw votes to compare restaurants across locations is misleading — an area with more restaurants naturally accumulates more votes on average. The z-score removes this location-level bias and tells you how exceptional a restaurant is *relative to its own neighbourhood*.
+> **Z-score normalisation is the "correct" way to compare within-group standing** when groups have different scales. Using raw votes to compare restaurants across locations is misleading  -  an area with more restaurants naturally accumulates more votes on average. The z-score removes this location-level bias and tells you how exceptional a restaurant is *relative to its own neighbourhood*.
 
 ---
 
@@ -1482,7 +1482,7 @@ filtered["score_online"] = minmax(filtered["online_rate"])
 # So invert the scale: lower count → higher score
 filtered["score_competition"] = 1 - minmax(filtered["restaurant_count"])
 
-# Step 4: Composite score (equal weights — adjustable)
+# Step 4: Composite score (equal weights  -  adjustable)
 filtered["composite_score"] = (
     filtered["score_rating"]      * 0.40 +  # rating quality: 40% weight
     filtered["score_online"]      * 0.35 +  # digital readiness: 35% weight
@@ -1508,7 +1508,7 @@ print(top5_investment.to_string())
 > 3. Apply weights based on business priorities
 > 4. Sum to a single score
 >
-> The weights (40%, 35%, 25%) are a business decision, not a statistical one. A good analyst would document these weights, explain why they were chosen, and run a sensitivity analysis — what if we gave rating 50% weight? Does the ranking change dramatically?
+> The weights (40%, 35%, 25%) are a business decision, not a statistical one. A good analyst would document these weights, explain why they were chosen, and run a sensitivity analysis  -  what if we gave rating 50% weight? Does the ranking change dramatically?
 
 ---
 
@@ -1519,35 +1519,35 @@ print(top5_investment.to_string())
 ```
 BASICS
 ✅ shape, dtypes, info(), describe()
-✅ isnull().sum() — missing value audit with percentages
+✅ isnull().sum()  -  missing value audit with percentages
 ✅ unique(), nunique(), value_counts(), value_counts(normalize=True)
 
 CLEANING
-✅ str.replace() — removing unwanted substrings
-✅ replace({...}) — mapping specific values to NaN
-✅ pd.to_numeric(errors='coerce') — safe string-to-number conversion
-✅ astype("Int64") — nullable integer type for columns with NaN
-✅ rename(columns={...}) — clean column renaming
-✅ drop(columns=[...], errors='ignore') — safe column dropping
+✅ str.replace()  -  removing unwanted substrings
+✅ replace({...})  -  mapping specific values to NaN
+✅ pd.to_numeric(errors='coerce')  -  safe string-to-number conversion
+✅ astype("Int64")  -  nullable integer type for columns with NaN
+✅ rename(columns={...})  -  clean column renaming
+✅ drop(columns=[...], errors='ignore')  -  safe column dropping
 
 SELECTION & FILTERING
 ✅ Boolean filtering with single conditions
 ✅ Boolean filtering with & (AND) and | (OR)
-✅ .between() — range filtering
-✅ isin([...]) — membership filtering
-✅ .loc[] — label-based selection
+✅ .between()  -  range filtering
+✅ isin([...])  -  membership filtering
+✅ .loc[]  -  label-based selection
 ✅ nlargest() / nsmallest()
 
 STRING OPERATIONS
-✅ str.split() — splitting delimited strings
-✅ str.strip() — removing whitespace
-✅ str.len() — length of each string
-✅ str[0] — indexing into a list Series
-✅ str.extract(regex) — extracting patterns
+✅ str.split()  -  splitting delimited strings
+✅ str.strip()  -  removing whitespace
+✅ str.len()  -  length of each string
+✅ str[0]  -  indexing into a list Series
+✅ str.extract(regex)  -  extracting patterns
 
 MULTI-VALUED COLUMNS (CORE ZOMATO SKILL)
-✅ str.split() + explode() — expanding multi-valued cells
-✅ str.strip() after explode() — removing phantom duplicates
+✅ str.split() + explode()  -  expanding multi-valued cells
+✅ str.strip() after explode()  -  removing phantom duplicates
 ✅ Working on exploded copy vs original DataFrame
 
 AGGREGATION
@@ -1555,32 +1555,32 @@ AGGREGATION
 ✅ groupby().mean(), .sum(), .median(), .min(), .max()
 ✅ Named aggregations: agg(col_name=("source", "func"))
 ✅ Multiple aggregations in one agg() call
-✅ Lambda inside agg() — e.g., mode()
+✅ Lambda inside agg()  -  e.g., mode()
 ✅ idxmax() / idxmin() to find the row with max/min value
 
 GROUPBY TRANSFORMS
-✅ groupby().transform("mean") — broadcast group mean to rows
-✅ groupby().transform(lambda x: ...) — custom group-level computation
-✅ rank(pct=True) inside transform — within-group percentiles
+✅ groupby().transform("mean")  -  broadcast group mean to rows
+✅ groupby().transform(lambda x: ...)  -  custom group-level computation
+✅ rank(pct=True) inside transform  -  within-group percentiles
 ✅ Z-score normalisation via transform()
 
 RESHAPING
-✅ unstack() — multi-level index to columns
-✅ pd.crosstab() — frequency tables
-✅ pd.crosstab(normalize='index'/'columns'/True) — row/col/total normalisation
-✅ pd.pivot_table() — flexible pivot with aggfunc and margins
-✅ reset_index() — after groupby, bringing group keys back to columns
+✅ unstack()  -  multi-level index to columns
+✅ pd.crosstab()  -  frequency tables
+✅ pd.crosstab(normalize='index'/'columns'/True)  -  row/col/total normalisation
+✅ pd.pivot_table()  -  flexible pivot with aggfunc and margins
+✅ reset_index()  -  after groupby, bringing group keys back to columns
 
 ADVANCED
-✅ pd.cut() — custom bin ranges
-✅ pd.qcut() — quantile-based bins
+✅ pd.cut()  -  custom bin ranges
+✅ pd.qcut()  -  quantile-based bins
 ✅ duplicated(subset=[...], keep=False)
-✅ combinations() from itertools — pair analysis
+✅ combinations() from itertools  -  pair analysis
 ✅ Composite scoring with min-max normalisation
 ✅ Multi-step investor analysis pipeline
 ```
 
 ---
 
-*End of Practice Sheet — Zomato Bangalore Dataset*
-*Codeverra — codeverra.com*
+*End of Practice Sheet  -  Zomato Bangalore Dataset*
+*Codeverra  -  codeverra.com*

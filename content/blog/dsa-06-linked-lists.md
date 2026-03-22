@@ -1,6 +1,6 @@
 ---
-title: "Linked Lists in Python — Complete Guide"
-description: "Understand linked lists from scratch — nodes, pointers, singly and doubly linked lists with Python implementations."
+title: "Linked Lists in Python  -  Complete Guide"
+description: "Understand linked lists from scratch  -  nodes, pointers, singly and doubly linked lists with Python implementations."
 date: 2026-03-21
 author: "codeverra"
 toc: true

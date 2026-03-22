@@ -61,13 +61,13 @@ NumPy (Numerical Python) is the foundation of the entire Python data science sta
 import numpy as np
 import time
 
-# Python list — slow loop-based
+# Python list  -  slow loop-based
 python_list = list(range(1_000_000))
 start = time.time()
 result = [x * 2 for x in python_list]
 print(f"List: {time.time() - start:.4f}s")
 
-# NumPy array — vectorized C operations
+# NumPy array  -  vectorized C operations
 np_array = np.arange(1_000_000)
 start = time.time()
 result = np_array * 2
@@ -95,12 +95,12 @@ print(f"NumPy: {time.time() - start:.4f}s")
 ```python
 import numpy as np
 
-# From a list — 1D array
+# From a list  -  1D array
 a = np.array([1, 2, 3, 4, 5])
 print(a)           # [1 2 3 4 5]
 print(type(a))     # <class 'numpy.ndarray'>
 
-# From a list of lists — 2D array (matrix)
+# From a list of lists  -  2D array (matrix)
 m = np.array([[1, 2, 3],
               [4, 5, 6]])
 print(m)
@@ -122,15 +122,15 @@ print(d)           # [1 2 3]  (truncated, not rounded!)
 ### Built-in array creation functions
 
 ```python
-# Zeros — all elements are 0.0
+# Zeros  -  all elements are 0.0
 np.zeros(5)              # [0. 0. 0. 0. 0.]
 np.zeros((3, 4))         # 3 rows, 4 cols of zeros
 
-# Ones — all elements are 1.0
+# Ones  -  all elements are 1.0
 np.ones(4)               # [1. 1. 1. 1.]
 np.ones((2, 3))          # 2×3 matrix of ones
 
-# Full — fill with a specific value
+# Full  -  fill with a specific value
 np.full(5, 7)            # [7 7 7 7 7]
 np.full((2, 2), 3.14)    # [[3.14 3.14]
                          #  [3.14 3.14]]
@@ -141,7 +141,7 @@ np.eye(3)
 #  [0. 1. 0.]
 #  [0. 0. 1.]]
 
-# Uninitialized — fast but contains garbage values (use carefully)
+# Uninitialized  -  fast but contains garbage values (use carefully)
 np.empty((2, 3))
 
 # Like another array (same shape)
@@ -154,13 +154,13 @@ np.full_like(a, 9)  # [[9 9] [9 9]]
 ### Range-based arrays
 
 ```python
-# np.arange(start, stop, step) — like Python range()
+# np.arange(start, stop, step)  -  like Python range()
 np.arange(5)           # [0 1 2 3 4]
 np.arange(1, 10)       # [1 2 3 4 5 6 7 8 9]
 np.arange(0, 1, 0.2)   # [0.  0.2 0.4 0.6 0.8]
 np.arange(10, 0, -2)   # [10  8  6  4  2]
 
-# np.linspace(start, stop, num) — exactly num evenly spaced points
+# np.linspace(start, stop, num)  -  exactly num evenly spaced points
 # NOTE: stop IS included (unlike arange)
 np.linspace(0, 1, 5)     # [0.   0.25 0.5  0.75 1.  ]
 np.linspace(0, 10, 11)   # [0. 1. 2. 3. 4. 5. 6. 7. 8. 9. 10.]
@@ -182,7 +182,7 @@ a = np.array([[1, 2, 3, 4],
               [5, 6, 7, 8],
               [9,10,11,12]])
 
-# Shape — (rows, cols) for 2D
+# Shape  -  (rows, cols) for 2D
 print(a.shape)      # (3, 4)
 
 # Number of dimensions
@@ -233,7 +233,7 @@ a[4]      # 50
 a[-1]     # 50  (last element)
 a[-2]     # 40  (second to last)
 
-# Slicing [start:stop:step]  — stop is EXCLUSIVE
+# Slicing [start:stop:step]   -  stop is EXCLUSIVE
 a[1:4]    # [20 30 40]
 a[:3]     # [10 20 30]  (from beginning)
 a[2:]     # [30 40 50]  (to end)
@@ -276,7 +276,7 @@ m[:2, :2]     # [[1 2] [5 6]]
 ```python
 a = np.array([10, 20, 30, 40, 50])
 
-# Index with a list of positions — returns a COPY (not a view)
+# Index with a list of positions  -  returns a COPY (not a view)
 idx = [0, 2, 4]
 a[idx]          # [10 30 50]
 a[[1, 3]]       # [20 40]
@@ -288,12 +288,12 @@ cols = [1, 3]
 m[rows, cols]   # [m[0,1], m[2,3]] = [1, 11]
 ```
 
-### Views vs Copies — important!
+### Views vs Copies  -  important!
 
 ```python
 a = np.array([1, 2, 3, 4, 5])
 
-# Slices return VIEWS — modifying changes the original!
+# Slices return VIEWS  -  modifying changes the original!
 b = a[1:4]
 b[0] = 99
 print(a)   # [1 99 3 4 5]  ← original changed!
@@ -338,7 +338,7 @@ m[1:3, 1:3] = [[5, 6], [7, 8]]  # set submatrix
 ```python
 a = np.array([1, 2, 3])
 
-# Append — returns a NEW array (doesn't modify in place)
+# Append  -  returns a NEW array (doesn't modify in place)
 np.append(a, 4)          # [1 2 3 4]
 np.append(a, [4, 5, 6])  # [1 2 3 4 5 6]
 
@@ -361,7 +361,7 @@ np.delete(a, [0, 2])     # [2]
 ```python
 a = np.arange(12)   # [0 1 2 3 4 5 6 7 8 9 10 11]
 
-# reshape(rows, cols) — total elements must match
+# reshape(rows, cols)  -  total elements must match
 m = a.reshape(3, 4)
 # [[ 0  1  2  3]
 #  [ 4  5  6  7]
@@ -385,8 +385,8 @@ np.reshape(a, (3, 4))
 ```python
 m = np.array([[1, 2, 3], [4, 5, 6]])
 
-m.flatten()   # [1 2 3 4 5 6]  — returns a COPY
-m.ravel()     # [1 2 3 4 5 6]  — returns a VIEW (faster)
+m.flatten()   # [1 2 3 4 5 6]   -  returns a COPY
+m.ravel()     # [1 2 3 4 5 6]   -  returns a VIEW (faster)
 m.reshape(-1) # same as ravel
 ```
 
@@ -414,10 +414,10 @@ np.expand_dims(a, axis=1)   # (3, 1)
 m = np.array([[1, 2, 3],
               [4, 5, 6]])   # shape (2, 3)
 
-m.T             # shape (3, 2) — rows become cols
+m.T             # shape (3, 2)  -  rows become cols
 np.transpose(m) # same
 
-# For higher dimensions — specify axis order
+# For higher dimensions  -  specify axis order
 a = np.arange(24).reshape(2, 3, 4)
 a.T.shape       # (4, 3, 2)
 np.transpose(a, axes=(0, 2, 1))  # custom axis order
@@ -439,7 +439,7 @@ np.hstack([a, b])          # [1 2 3 4 5 6]       shape (6,)
 np.stack([a, b], axis=0)   # [[1 2 3] [4 5 6]]  axis=0 → new first axis
 np.stack([a, b], axis=1)   # [[1 4] [2 5] [3 6]]
 
-# column_stack — makes each 1D array a column
+# column_stack  -  makes each 1D array a column
 np.column_stack([a, b])    # [[1 4] [2 5] [3 6]]
 
 # General concatenate
@@ -506,7 +506,7 @@ m = np.array([[1, 2, 3],
               [4, 5, 6]])        # shape (2, 3)
 row = np.array([10, 20, 30])    # shape (3,)
 
-# row broadcasts to (2, 3) — added to every row
+# row broadcasts to (2, 3)  -  added to every row
 m + row
 # [[11 22 33]
 #  [14 25 36]]
@@ -514,7 +514,7 @@ m + row
 col = np.array([[100],
                 [200]])          # shape (2, 1)
 
-# col broadcasts to (2, 3) — added to every column
+# col broadcasts to (2, 3)  -  added to every column
 m + col
 # [[101 102 103]
 #  [204 205 206]]
@@ -593,7 +593,7 @@ a.var()       # variance = std²
 a.prod()      # product of all elements = 720
 ```
 
-### The `axis` parameter — critical concept
+### The `axis` parameter  -  critical concept
 
 ```python
 a = np.array([[1, 2, 3],
@@ -611,7 +611,7 @@ a.min(axis=1)    # [1 4]
 a.max(axis=1)    # [3 6]
 a.mean(axis=1)   # [2. 5.]
 
-# keepdims — preserve dimensions for broadcasting
+# keepdims  -  preserve dimensions for broadcasting
 a.sum(axis=1, keepdims=True)   # [[6], [15]]  shape (2,1)
 ```
 
@@ -625,7 +625,7 @@ a = np.array([3, 1, 4, 1, 5, 9, 2, 6])
 np.argmin(a)   # 1  (index of minimum value 1)
 np.argmax(a)   # 5  (index of maximum value 9)
 
-# For 2D — flattened index by default
+# For 2D  -  flattened index by default
 m = np.array([[3, 1], [4, 1]])
 np.argmax(m)          # 2  (flat index)
 np.argmax(m, axis=0)  # [1 0]  (index per column)
@@ -681,14 +681,14 @@ counts, bin_edges = np.histogram(a, bins=5)
 ```python
 a = np.array([3, 1, 4, 1, 5, 9, 2, 6])
 
-# Sort — returns a NEW sorted array
+# Sort  -  returns a NEW sorted array
 np.sort(a)         # [1 1 2 3 4 5 6 9]
 np.sort(a)[::-1]   # descending: [9 6 5 4 3 2 1 1]
 
 # Sort IN PLACE (modifies original)
 a.sort()
 
-# argsort — returns indices that would sort the array
+# argsort  -  returns indices that would sort the array
 np.argsort(a)       # [1 3 6 0 2 4 7 5]
 a[np.argsort(a)]    # same as np.sort(a)
 
@@ -697,7 +697,7 @@ m = np.array([[3, 1, 2], [6, 4, 5]])
 np.sort(m, axis=0)   # sort each column
 np.sort(m, axis=1)   # sort each row
 
-# Partial sort — find the k smallest
+# Partial sort  -  find the k smallest
 np.partition(a, 3)   # first 3 positions are the 3 smallest (unordered)
 np.argpartition(a, 3)  # indices version
 
@@ -729,7 +729,7 @@ a[a > 4]              # same shorthand
 a[a > 4] = 0          # set all >4 to zero
 a[a < 3] = -1         # set all <3 to -1
 
-# np.where(condition, if_true, if_false) — vectorized if/else
+# np.where(condition, if_true, if_false)  -  vectorized if/else
 np.where(a > 4, a, 0)      # keep value if >4, else 0
 np.where(a > 0, a, -a)     # absolute value!
 np.where(a % 2 == 0, 'even', 'odd')
@@ -760,7 +760,7 @@ np.isin(a, [2, 4, 6])          # True where element is in list
 ## 12. Random Number Generation
 
 ```python
-# Modern API — always use default_rng with a seed for reproducibility
+# Modern API  -  always use default_rng with a seed for reproducibility
 rng = np.random.default_rng(seed=42)
 
 # Uniform floats [0, 1)
@@ -791,7 +791,7 @@ a = np.arange(10)
 rng.shuffle(a)         # in-place shuffle
 rng.permutation(10)    # returns new shuffled array
 
-# Seed for reproducibility — same seed = same numbers
+# Seed for reproducibility  -  same seed = same numbers
 rng1 = np.random.default_rng(42)
 rng2 = np.random.default_rng(42)
 print(rng1.random(3) == rng2.random(3))  # [True True True]
@@ -809,7 +809,7 @@ A = np.array([[1, 2],
 B = np.array([[5, 6],
               [7, 8]])
 
-# Matrix multiplication — use @ operator or np.dot
+# Matrix multiplication  -  use @ operator or np.dot
 A @ B
 # [[19 22]
 #  [43 50]]
@@ -904,16 +904,16 @@ loaded = np.genfromtxt('data.csv', delimiter=',',
 
 ## 15. Performance Tips and Best Practices
 
-### Vectorize — avoid Python loops
+### Vectorize  -  avoid Python loops
 
 ```python
-# SLOW — Python loop
+# SLOW  -  Python loop
 a = np.arange(1_000_000)
 result = []
 for x in a:
     result.append(x * 2 + 1)
 
-# FAST — vectorized
+# FAST  -  vectorized
 result = a * 2 + 1
 ```
 
@@ -934,17 +934,17 @@ c = a.flatten()
 ### Pre-allocate arrays
 
 ```python
-# SLOW — growing array in a loop
+# SLOW  -  growing array in a loop
 result = np.array([])
 for i in range(1000):
     result = np.append(result, i**2)  # new array every iteration!
 
-# FAST — pre-allocate
+# FAST  -  pre-allocate
 result = np.empty(1000)
 for i in range(1000):
     result[i] = i**2
 
-# BEST — vectorize entirely
+# BEST  -  vectorize entirely
 result = np.arange(1000) ** 2
 ```
 
@@ -953,7 +953,7 @@ result = np.arange(1000) ** 2
 ```python
 # Use smaller dtypes when you don't need full precision
 a = np.arange(100, dtype=np.int8)    # 100 bytes
-b = np.arange(100, dtype=np.int64)   # 800 bytes  — 8x larger!
+b = np.arange(100, dtype=np.int64)   # 800 bytes   -  8x larger!
 
 c = np.zeros((1000, 1000), dtype=np.float32)  # 4 MB
 d = np.zeros((1000, 1000), dtype=np.float64)  # 8 MB

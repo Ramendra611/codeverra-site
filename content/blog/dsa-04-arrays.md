@@ -1,6 +1,6 @@
 ---
-title: "Arrays in Python — Complete Guide"
-description: "Everything you need to know about arrays and lists in Python for DSA — operations, patterns, and common problems."
+title: "Arrays in Python  -  Complete Guide"
+description: "Everything you need to know about arrays and lists in Python for DSA  -  operations, patterns, and common problems."
 date: 2026-03-21
 author: "codeverra"
 toc: true

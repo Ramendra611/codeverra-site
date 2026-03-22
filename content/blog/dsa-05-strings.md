@@ -1,5 +1,5 @@
 ---
-title: "Strings in Python — Complete Guide"
+title: "Strings in Python  -  Complete Guide"
 description: "A practical guide to string operations and manipulation in Python for DSA problem solving."
 date: 2026-03-21
 author: "codeverra"

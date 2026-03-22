@@ -36,7 +36,7 @@ Connect to `shopdb` in pgAdmin before running any query.
 
 **Important:** This lesson modifies real data. Some queries will permanently
 change your database. The section on transactions shows you how to do this
-safely — read Part 7 before running anything you are unsure about.
+safely  -  read Part 7 before running anything you are unsure about.
 
 Quick data check:
 ```sql
@@ -63,7 +63,7 @@ UNION ALL SELECT 'order_items', COUNT(*) FROM order_items;
 
 ---
 
-## Part 1 — INSERT: Adding New Rows
+## Part 1  -  INSERT: Adding New Rows
 
 You have already used basic INSERT. Here are the variations that matter.
 
@@ -84,7 +84,7 @@ VALUES ('Fatima Khan', 'fatima.khan@gmail.com', 'Hyderabad', 'Telangana');
 ### Multi-row INSERT
 
 ```sql
--- Insert multiple rows in one statement — much faster than separate INSERTs
+-- Insert multiple rows in one statement  -  much faster than separate INSERTs
 INSERT INTO products (name, category_id, price_inr, stock_quantity) VALUES
 ('Sony WH-1000XM5',        1, 29999.00, 20),
 ('JBL Flip 6',             1,  9999.00, 40),
@@ -103,7 +103,7 @@ RETURNING id, name;
 ```
 
 `RETURNING` is PostgreSQL-specific. It returns the inserted row (or any columns
-you specify) — handy when you need the new `id` to insert into a child table next.
+you specify)  -  handy when you need the new `id` to insert into a child table next.
 
 ### INSERT from SELECT
 
@@ -120,12 +120,12 @@ FROM customers
 WHERE joined_on < '2023-03-01';
 ```
 
-`INSERT INTO ... SELECT ...` — the SELECT result becomes the data to insert.
+`INSERT INTO ... SELECT ...`  -  the SELECT result becomes the data to insert.
 No VALUES keyword. The column count and types must match.
 
 ---
 
-### ✏️ Practice Set 1 — INSERT
+### ✏️ Practice Set 1  -  INSERT
 
 **Q1.** Insert a new category called `'Grocery'` with the description
 `'Daily essentials, packaged foods, beverages'`.
@@ -133,8 +133,8 @@ Use `RETURNING id, name` to see the new category's id.
 
 **Q2.** Insert two new products in the Grocery category
 (use the id returned from Q1):
-- `'Tata Salt 1kg'` — ₹25.00 — 500 units in stock
-- `'Aashirvaad Atta 5kg'` — ₹265.00 — 200 units in stock
+- `'Tata Salt 1kg'`  -  ₹25.00  -  500 units in stock
+- `'Aashirvaad Atta 5kg'`  -  ₹265.00  -  200 units in stock
 
 **Q3.** A new customer signs up today. Insert them using DEFAULT for `joined_on`:
 - Name: `Kiran Bhat`, Email: `kiran.bhat@gmail.com`
@@ -146,7 +146,7 @@ using INSERT from SELECT.
 
 ---
 
-## Part 2 — UPDATE: Changing Existing Data
+## Part 2  -  UPDATE: Changing Existing Data
 
 `UPDATE` modifies values in existing rows. Always use `WHERE` unless you
 deliberately want to update every row.
@@ -199,7 +199,7 @@ WHERE category_id = (
 
 ```sql
 -- Mark all orders from customers in Delhi as high priority
--- (We don't have a priority column yet — we'll add one in Part 5)
+-- (We don't have a priority column yet  -  we'll add one in Part 5)
 -- For now: update status to 'Shipped' for all Pending Delhi orders
 UPDATE orders
 SET status = 'Shipped'
@@ -228,7 +228,7 @@ WHERE  o.customer_id = c.id
 `UPDATE ... FROM` is PostgreSQL's way of updating based on data from another table.
 It is cleaner than a subquery when the condition involves multiple columns.
 
-### Safe UPDATE pattern — always preview first
+### Safe UPDATE pattern  -  always preview first
 
 ```sql
 -- STEP 1: Run as SELECT first to see which rows would be affected
@@ -248,7 +248,7 @@ WHERE category_id = 1;
 
 ---
 
-### ✏️ Practice Set 2 — UPDATE
+### ✏️ Practice Set 2  -  UPDATE
 
 **Q5.** The iPhone 15's price has dropped to ₹74,999.
 Update it in the products table.
@@ -267,7 +267,7 @@ Preview with a SELECT first, then run the UPDATE.
 
 ---
 
-## Part 3 — DELETE: Removing Rows
+## Part 3  -  DELETE: Removing Rows
 
 `DELETE` removes rows permanently. Like `UPDATE`, always use `WHERE`
 unless you mean to delete everything.
@@ -295,7 +295,7 @@ WHERE status = 'Cancelled';
 > **Foreign key order matters:**
 > You cannot delete a parent row if child rows still reference it.
 > Delete children first, then parents.
-> (Unless the FK is set up with `ON DELETE CASCADE` — then the DB handles it.)
+> (Unless the FK is set up with `ON DELETE CASCADE`  -  then the DB handles it.)
 
 ### DELETE with a subquery
 
@@ -333,16 +333,16 @@ WHERE email = 'preethi.menon@gmail.com'
 RETURNING id, name, email;
 ```
 
-`RETURNING` works with DELETE too — useful for logging or confirming
+`RETURNING` works with DELETE too  -  useful for logging or confirming
 exactly which rows were removed.
 
 ---
 
-## Part 4 — TRUNCATE: Fast Full-Table Wipe
+## Part 4  -  TRUNCATE: Fast Full-Table Wipe
 
 `TRUNCATE` removes **all rows** from a table instantly.
 It is much faster than `DELETE FROM table` (no WHERE) for large tables
-because it does not scan rows — it just drops and recreates the data pages.
+because it does not scan rows  -  it just drops and recreates the data pages.
 
 ```sql
 -- Remove all rows from the archive table we created
@@ -372,7 +372,7 @@ Without it, the next inserted row picks up from where the old counter left off.
 
 ---
 
-### ✏️ Practice Set 3 — DELETE and TRUNCATE
+### ✏️ Practice Set 3  -  DELETE and TRUNCATE
 
 **Q9.** Delete the two Grocery products you inserted in Practice Set 1
 (Tata Salt and Aashirvaad Atta). Use a subquery to find the Grocery
@@ -390,9 +390,9 @@ using RETURNING to confirm which row was removed.
 
 ---
 
-## Part 5 — ALTER TABLE: Changing the Schema
+## Part 5  -  ALTER TABLE: Changing the Schema
 
-`ALTER TABLE` changes the *structure* of a table — adding or removing columns,
+`ALTER TABLE` changes the *structure* of a table  -  adding or removing columns,
 changing types, renaming things. It does not touch the data (unless the type
 change requires conversion).
 
@@ -444,13 +444,13 @@ RENAME TO customers_backup;
 ### Change a column's data type
 
 ```sql
--- Change stock_quantity from INT to BIGINT (safe — no data loss)
+-- Change stock_quantity from INT to BIGINT (safe  -  no data loss)
 ALTER TABLE products
 ALTER COLUMN stock_quantity TYPE BIGINT;
 ```
 
 ```sql
--- Change a VARCHAR to TEXT (also safe — TEXT is just unlimited VARCHAR)
+-- Change a VARCHAR to TEXT (also safe  -  TEXT is just unlimited VARCHAR)
 ALTER TABLE categories
 ALTER COLUMN description TYPE TEXT;
 ```
@@ -484,7 +484,7 @@ DROP CONSTRAINT customers_phone_unique;
 
 ---
 
-### ✏️ Practice Set 4 — ALTER TABLE
+### ✏️ Practice Set 4  -  ALTER TABLE
 
 **Q13.** Add a `loyalty_points` column to the `customers` table.
 It should be an integer, NOT NULL, with a default of 0.
@@ -501,10 +501,10 @@ to set `priority_order = TRUE`.
 
 ---
 
-## Part 6 — DROP TABLE: Removing a Table
+## Part 6  -  DROP TABLE: Removing a Table
 
 `DROP TABLE` removes the table and all its data permanently.
-Drop in reverse dependency order — children before parents.
+Drop in reverse dependency order  -  children before parents.
 
 ```sql
 -- Drop the archive/backup table (no foreign key dependencies)
@@ -537,10 +537,10 @@ DROP TABLE categories CASCADE;
 
 ---
 
-## Part 7 — Transactions: BEGIN, COMMIT, ROLLBACK
+## Part 7  -  Transactions: BEGIN, COMMIT, ROLLBACK
 
 A **transaction** groups multiple SQL statements into one atomic unit.
-Either all succeed together, or all fail together — there is no partial state.
+Either all succeed together, or all fail together  -  there is no partial state.
 
 ```
 BEGIN       ← start the transaction
@@ -621,18 +621,18 @@ without undoing everything from `BEGIN`.
 ```sql
 BEGIN;
 
--- Safe operation — add a new product
+-- Safe operation  -  add a new product
 INSERT INTO products (name, category_id, price_inr, stock_quantity)
 VALUES ('Test Product A', 1, 999.00, 10);
 
 SAVEPOINT after_insert;   -- mark this point
 
--- Risky operation — update with a mistake
+-- Risky operation  -  update with a mistake
 UPDATE products SET price_inr = 0 WHERE category_id = 1;
 
 -- Check the damage
 SELECT name, price_inr FROM products WHERE category_id = 1;
--- All Electronics are ₹0 — not what we wanted
+-- All Electronics are ₹0  -  not what we wanted
 
 -- Roll back only to the savepoint (INSERT is preserved)
 ROLLBACK TO SAVEPOINT after_insert;
@@ -669,7 +669,7 @@ ROLLBACK;
 
 ---
 
-### ✏️ Practice Set 5 — Transactions
+### ✏️ Practice Set 5  -  Transactions
 
 **Q17.** Using a transaction, do the following as one atomic unit:
 - Insert a new order for customer id 5 (Kabir Singh), dated today, status Pending, payment UPI
@@ -691,7 +691,7 @@ Confirm the data is unchanged with a SELECT after the ROLLBACK.
 
 ---
 
-## Part 8 — Putting It All Together
+## Part 8  -  Putting It All Together
 
 A realistic sequence of DML operations for a "new product launch" scenario:
 
@@ -706,7 +706,7 @@ BEGIN;
 INSERT INTO categories (name, description)
 VALUES ('Wearables', 'Smartwatches, fitness bands, earbuds')
 ON CONFLICT (name) DO NOTHING;   -- skip if category already exists
--- ON CONFLICT is PostgreSQL's UPSERT — covered more in advanced SQL
+-- ON CONFLICT is PostgreSQL's UPSERT  -  covered more in advanced SQL
 
 -- 2. Add new products in that category
 INSERT INTO products (name, category_id, price_inr, stock_quantity)
@@ -743,7 +743,7 @@ COMMIT;
 
 ---
 
-## Part 9 — Practice Set Answers
+## Part 9  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -897,7 +897,7 @@ BEGIN;
 
 INSERT INTO orders (customer_id, order_date, status, payment_method)
 VALUES (5, CURRENT_DATE, 'Pending', 'UPI');
--- Note the id returned — assume it is 16
+-- Note the id returned  -  assume it is 16
 
 INSERT INTO order_items (order_id, product_id, quantity, unit_price)
 VALUES (16, 19, 1, 3499.00);
@@ -949,21 +949,21 @@ COMMIT;
 ## What's Next
 
 You have covered:
-- ✅ `INSERT` — single row, multi-row, RETURNING, INSERT from SELECT
-- ✅ `UPDATE` — basic, expressions, subquery, UPDATE FROM
-- ✅ Safe preview pattern — SELECT before UPDATE/DELETE
-- ✅ `DELETE` — with WHERE, with subquery, RETURNING
-- ✅ `TRUNCATE` — fast wipe, RESTART IDENTITY
-- ✅ `ALTER TABLE` — add/drop/rename columns, change types, add constraints
-- ✅ `DROP TABLE` — IF EXISTS, CASCADE
-- ✅ `BEGIN / COMMIT / ROLLBACK` — atomic transactions
-- ✅ `SAVEPOINT` — partial rollback within a transaction
+- ✅ `INSERT`  -  single row, multi-row, RETURNING, INSERT from SELECT
+- ✅ `UPDATE`  -  basic, expressions, subquery, UPDATE FROM
+- ✅ Safe preview pattern  -  SELECT before UPDATE/DELETE
+- ✅ `DELETE`  -  with WHERE, with subquery, RETURNING
+- ✅ `TRUNCATE`  -  fast wipe, RESTART IDENTITY
+- ✅ `ALTER TABLE`  -  add/drop/rename columns, change types, add constraints
+- ✅ `DROP TABLE`  -  IF EXISTS, CASCADE
+- ✅ `BEGIN / COMMIT / ROLLBACK`  -  atomic transactions
+- ✅ `SAVEPOINT`  -  partial rollback within a transaction
 
 **In Lesson 2.7** we cover **Indexes, Constraints & Schema Design**:
 - How PostgreSQL finds rows (sequential scan vs index scan)
-- `CREATE INDEX` — when and what to index
+- `CREATE INDEX`  -  when and what to index
 - Partial and composite indexes
-- Foreign key behaviour — CASCADE, SET NULL, RESTRICT
-- Normalization — 1NF, 2NF, 3NF with real examples
+- Foreign key behaviour  -  CASCADE, SET NULL, RESTRICT
+- Normalization  -  1NF, 2NF, 3NF with real examples
 - Common schema mistakes and how to fix them
-- `EXPLAIN` — reading a query execution plan
+- `EXPLAIN`  -  reading a query execution plan

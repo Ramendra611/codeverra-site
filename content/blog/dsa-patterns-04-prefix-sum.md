@@ -1,5 +1,5 @@
 ---
-title: "Prefix Sum Pattern — Complete Guide"
+title: "Prefix Sum Pattern  -  Complete Guide"
 description: "Master the prefix sum technique for range query problems with Python examples and practice problems."
 date: 2026-03-21
 author: "codeverra"
@@ -17,7 +17,7 @@ tags:
 
 1. [What is Prefix Sum?](#what-is-prefix-sum)
 2. [Building the Intuition Step by Step](#building-the-intuition-step-by-step)
-3. [The Range Sum Formula — Why It Works](#the-range-sum-formula--why-it-works)
+3. [The Range Sum Formula  -  Why It Works](#the-range-sum-formula--why-it-works)
 4. [Common Variations](#common-variations)
 5. [Template Code](#template-code)
 6. [Problem Set](#problem-set)
@@ -37,11 +37,11 @@ tags:
 
 ## What is Prefix Sum?
 
-Consider this scenario: you have an array of numbers and someone keeps asking you "what's the sum of elements from index `i` to index `j`?" — not once, but hundreds of times with different `i` and `j` values.
+Consider this scenario: you have an array of numbers and someone keeps asking you "what's the sum of elements from index `i` to index `j`?"  -  not once, but hundreds of times with different `i` and `j` values.
 
 Each time, you could loop from `i` to `j` and add everything up. That's O(n) per query. If someone asks 1000 questions on an array of size 10,000, that's 10 million operations.
 
-But what if you could answer **every** such query in O(1) — constant time — after just one pass of preprocessing?
+But what if you could answer **every** such query in O(1)  -  constant time  -  after just one pass of preprocessing?
 
 That's what prefix sum does.
 
@@ -51,7 +51,7 @@ That's what prefix sum does.
 
 ## Building the Intuition Step by Step
 
-Let's build the idea from scratch. No shortcuts — just following the logic.
+Let's build the idea from scratch. No shortcuts  -  just following the logic.
 
 ### Step 1: What does a prefix sum array look like?
 
@@ -121,7 +121,7 @@ This works because:
 - `prefix[left - 1]` = sum from index 0 to `left - 1`
 - Subtracting removes the part we don't want, leaving the sum from `left` to `right`
 
-**But wait — what if `left = 0`?** Then `left - 1 = -1`, which is out of bounds.
+**But wait  -  what if `left = 0`?** Then `left - 1 = -1`, which is out of bounds.
 
 Two ways to handle this:
 
@@ -156,7 +156,7 @@ index:    0   1   2   3   4    5    6
 ```
 
 Now `prefix` has length `n + 1`, and:
-- `prefix[0] = 0` (dummy — sum of zero elements)
+- `prefix[0] = 0` (dummy  -  sum of zero elements)
 - `prefix[i] = sum of nums[0..i-1]`
 
 **Range sum from index `left` to `right`:**
@@ -198,21 +198,21 @@ To get sum(2..4):
 
 You're essentially reading two points on a cumulative curve and taking the difference.
 
-### Step 5: The power — answering queries in O(1)
+### Step 5: The power  -  answering queries in O(1)
 
-**Without prefix sum:** Every range sum query takes O(n) — loop and add.
+**Without prefix sum:** Every range sum query takes O(n)  -  loop and add.
 
-**With prefix sum:** One O(n) preprocessing step, then every query is O(1) — one subtraction.
+**With prefix sum:** One O(n) preprocessing step, then every query is O(1)  -  one subtraction.
 
 | Scenario | Without Prefix Sum | With Prefix Sum |
 |----------|-------------------|-----------------|
-| Build time | None | O(n) — one pass |
-| Per query | O(n) — loop i to j | O(1) — one subtraction |
+| Build time | None | O(n)  -  one pass |
+| Per query | O(n)  -  loop i to j | O(1)  -  one subtraction |
 | 1,000 queries on array of 10,000 | 10,000,000 ops | 10,000 + 1,000 = 11,000 ops |
 
 ---
 
-## The Range Sum Formula — Why It Works
+## The Range Sum Formula  -  Why It Works
 
 Let's prove this clearly so there's no doubt.
 
@@ -282,8 +282,8 @@ def build_prefix_sum(nums):
     
     Range sum of nums[left..right] = prefix[right+1] - prefix[left]
     
-    Time Complexity: O(n) — single pass
-    Space Complexity: O(n) — storing the prefix array
+    Time Complexity: O(n)  -  single pass
+    Space Complexity: O(n)  -  storing the prefix array
     """
     n = len(nums)
     prefix = [0] * (n + 1)
@@ -310,8 +310,8 @@ def count_subarrays_with_sum(nums, target):
     "Is there a previous prefix value such that current_prefix - previous_prefix = target?"
     That means: "Is (current_prefix - target) in our hashmap of seen prefix values?"
     
-    Time Complexity: O(n) — single pass
-    Space Complexity: O(n) — hashmap stores prefix sums
+    Time Complexity: O(n)  -  single pass
+    Space Complexity: O(n)  -  hashmap stores prefix sums
     """
     prefix_count = {0: 1}  # prefix sum 0 has been seen once (before the array starts)
     current_sum = 0
@@ -332,7 +332,7 @@ def count_subarrays_with_sum(nums, target):
     return count
 ```
 
-### Understanding the HashMap Template — A Detailed Example
+### Understanding the HashMap Template  -  A Detailed Example
 
 This is worth spending time on, because it's the foundation for many problems.
 
@@ -342,7 +342,7 @@ nums = [1, 2, 3, -3, 1, 2], target = 3
 Let's trace through:
 
 Step 0 (before starting): prefix_count = {0: 1}, current_sum = 0
-  "We've seen prefix sum 0 once — this represents the empty prefix."
+  "We've seen prefix sum 0 once  -  this represents the empty prefix."
 
 Step 1: num = 1
   current_sum = 1
@@ -373,7 +373,7 @@ Step 4: num = -3
   
   Subarray: [1, 2, 3, -3] (prefix went from 0 to 3, difference is 3)
   
-  Note: prefix_count[3] is now 2 — we've seen prefix sum 3 twice.
+  Note: prefix_count[3] is now 2  -  we've seen prefix sum 3 twice.
 
 Step 5: num = 1
   current_sum = 4
@@ -396,7 +396,7 @@ Final count: 6
 
 **Why do we initialize `{0: 1}`?**
 
-The 0 represents the prefix sum before the array starts. Without it, we'd miss subarrays that start at index 0. In Step 2 above, we found that `current_sum = 3` and `needed = 0`. The prefix sum 0 exists because of this initialization — it means "the subarray starting from the very beginning sums to 3."
+The 0 represents the prefix sum before the array starts. Without it, we'd miss subarrays that start at index 0. In Step 2 above, we found that `current_sum = 3` and `needed = 0`. The prefix sum 0 exists because of this initialization  -  it means "the subarray starting from the very beginning sums to 3."
 
 If we forgot to put `{0: 1}`, we'd miss the subarray `[1, 2]`. Try it yourself and see.
 
@@ -428,8 +428,8 @@ If we forgot to put `{0: 1}`, we'd miss the subarray `[1, 2]`. Try it yourself a
 #### Problem Statement
 
 Implement the `NumArray` class:
-- `NumArray(nums)` — initializes with the array.
-- `sumRange(left, right)` — returns the sum of `nums[left..right]` inclusive.
+- `NumArray(nums)`  -  initializes with the array.
+- `sumRange(left, right)`  -  returns the sum of `nums[left..right]` inclusive.
 
 `sumRange` will be called many times.
 
@@ -444,12 +444,12 @@ sumRange(0, 5) → -2 + 0 + 3 + (-5) + 2 + (-1) = -3
 #### Clarifying Questions & Constraints
 
 - The array does **not** change after initialization (immutable).
-- `sumRange` will be called up to 10⁴ times — it needs to be fast.
+- `sumRange` will be called up to 10⁴ times  -  it needs to be fast.
 - `0 <= left <= right < nums.length`
 
 #### Approach Discussion
 
-**Approach 1: Brute Force — Sum on every query**
+**Approach 1: Brute Force  -  Sum on every query**
 - Loop from `left` to `right` and add elements each time.
 - **Time:** O(n) per query, **Space:** O(1)
 - ❌ With many queries, this is too slow.
@@ -459,13 +459,13 @@ sumRange(0, 5) → -2 + 0 + 3 + (-5) + 2 + (-1) = -3
 - Answer each query in O(1) using the formula.
 - **Time:** O(n) initialization + O(1) per query, **Space:** O(n)
 
-This is the textbook use case for prefix sum — exactly the scenario we described in the intuition section.
+This is the textbook use case for prefix sum  -  exactly the scenario we described in the intuition section.
 
 #### Code (Both Solutions)
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n) per query
+# APPROACH 1: Brute Force  -  O(n) per query
 # ============================================================
 class NumArray_Brute:
     """
@@ -487,7 +487,7 @@ class NumArray_Brute:
 
 
 # ============================================================
-# APPROACH 2: Prefix Sum — O(1) per query ✅
+# APPROACH 2: Prefix Sum  -  O(1) per query ✅
 # ============================================================
 class NumArray:
     """
@@ -500,9 +500,9 @@ class NumArray:
     Then: sumRange(left, right) = prefix[right + 1] - prefix[left]
     
     Time Complexity:
-        __init__: O(n) — one pass to build prefix array
-        sumRange: O(1) — single subtraction
-    Space Complexity: O(n) — storing the prefix array
+        __init__: O(n)  -  one pass to build prefix array
+        sumRange: O(1)  -  single subtraction
+    Space Complexity: O(n)  -  storing the prefix array
     """
     def __init__(self, nums: list[int]):
         n = len(nums)
@@ -521,7 +521,7 @@ class NumArray:
 
 - **Single element range:** `sumRange(2, 2)` → just `nums[2]`.
 - **Entire array:** `sumRange(0, n-1)` → `prefix[n] - prefix[0] = total sum`.
-- **Negative numbers:** Works fine — subtraction handles negatives correctly.
+- **Negative numbers:** Works fine  -  subtraction handles negatives correctly.
 
 #### Dry Run
 
@@ -579,7 +579,7 @@ Output: [1, 3, 6, 10]
 
 ```python
 # ============================================================
-# APPROACH 1: New array — O(n) time, O(n) space
+# APPROACH 1: New array  -  O(n) time, O(n) space
 # ============================================================
 def runningSum_new(nums: list[int]) -> list[int]:
     """
@@ -598,7 +598,7 @@ def runningSum_new(nums: list[int]) -> list[int]:
 
 
 # ============================================================
-# APPROACH 2: In-place — O(n) time, O(1) space ✅
+# APPROACH 2: In-place  -  O(n) time, O(1) space ✅
 # ============================================================
 def runningSum(nums: list[int]) -> list[int]:
     """
@@ -662,7 +662,7 @@ Output: 3  (left sum = 1+7+3 = 11, right sum = 5+6 = 11)
 - For each index, compute left sum and right sum separately.
 - **Time:** O(n²), **Space:** O(1)
 
-**Approach 2: Total Sum — Prefix Sum Logic (Optimal) ✅**
+**Approach 2: Total Sum  -  Prefix Sum Logic (Optimal) ✅**
 - Compute the total sum.
 - As we scan left to right, maintain a running `left_sum`.
 - At each index `i`: `right_sum = total_sum - left_sum - nums[i]`.
@@ -765,7 +765,7 @@ Sliding window works for "min/max length subarray with sum ≥ target" **only wh
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n²)
+# APPROACH 1: Brute Force  -  O(n²)
 # ============================================================
 def subarraySum_brute(nums: list[int], k: int) -> int:
     """
@@ -788,7 +788,7 @@ def subarraySum_brute(nums: list[int], k: int) -> int:
 
 
 # ============================================================
-# APPROACH 2: Prefix Sum + HashMap — O(n) ✅
+# APPROACH 2: Prefix Sum + HashMap  -  O(n) ✅
 # ============================================================
 def subarraySum(nums: list[int], k: int) -> int:
     """
@@ -804,7 +804,7 @@ def subarraySum(nums: list[int], k: int) -> int:
     Why we initialize {0: 1}:
     This accounts for subarrays starting at index 0.
     If current_sum == k at some point, then current_sum - k = 0,
-    and we need to find that prefix_sum 0 exists (it does — before the array starts).
+    and we need to find that prefix_sum 0 exists (it does  -  before the array starts).
     
     Time Complexity: O(n) - single pass
     Space Complexity: O(n) - hashmap of prefix sums
@@ -938,7 +938,7 @@ def findMaxLength(nums: list[int]) -> int:
             length = i - first_seen[current_sum]
             max_length = max(max_length, length)
         else:
-            # First time seeing this prefix sum — record the index
+            # First time seeing this prefix sum  -  record the index
             first_seen[current_sum] = i
     
     return max_length
@@ -1033,7 +1033,7 @@ This is the prefix sum idea applied to multiplication: instead of cumulative sum
 
 ```python
 # ============================================================
-# APPROACH 2: Prefix and Suffix Arrays — O(n) time, O(n) space
+# APPROACH 2: Prefix and Suffix Arrays  -  O(n) time, O(n) space
 # ============================================================
 def productExceptSelf_arrays(nums: list[int]) -> list[int]:
     """
@@ -1064,7 +1064,7 @@ def productExceptSelf_arrays(nums: list[int]) -> list[int]:
 
 
 # ============================================================
-# APPROACH 3: Two-Pass O(1) Extra Space — ✅
+# APPROACH 3: Two-Pass O(1) Extra Space  -  ✅
 # ============================================================
 def productExceptSelf(nums: list[int]) -> list[int]:
     """
@@ -1175,7 +1175,7 @@ In Python, `-1 % 5 = 4` (Python handles this correctly). In some languages, you 
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n²)
+# APPROACH 1: Brute Force  -  O(n²)
 # ============================================================
 def subarraysDivByK_brute(nums: list[int], k: int) -> int:
     """
@@ -1198,7 +1198,7 @@ def subarraysDivByK_brute(nums: list[int], k: int) -> int:
 
 
 # ============================================================
-# APPROACH 2: Prefix Sum + Modular Arithmetic — O(n) ✅
+# APPROACH 2: Prefix Sum + Modular Arithmetic  -  O(n) ✅
 # ============================================================
 def subarraysDivByK(nums: list[int], k: int) -> int:
     """
@@ -1437,7 +1437,7 @@ Total: 3 + 2 + 3 = 8 ✅
 
 #### Problem Statement
 
-Given an integer array `nums` and an integer `k`, return `True` if `nums` has a **good subarray** — a subarray of length **at least 2** whose sum is a multiple of `k`.
+Given an integer array `nums` and an integer `k`, return `True` if `nums` has a **good subarray**  -  a subarray of length **at least 2** whose sum is a multiple of `k`.
 
 **Example:**
 ```
@@ -1499,10 +1499,10 @@ def checkSubarraySum(nums: list[int], k: int) -> bool:
         remainder = current_sum % k
         
         if remainder in remainder_first:
-            # Same remainder seen before — check if the subarray is long enough
+            # Same remainder seen before  -  check if the subarray is long enough
             if i - remainder_first[remainder] >= 2:
                 return True
-            # Don't update the index — we want to keep the FIRST occurrence
+            # Don't update the index  -  we want to keep the FIRST occurrence
         else:
             remainder_first[remainder] = i
     
@@ -1544,7 +1544,7 @@ The subarray is nums[1..2] = [2, 4], sum = 6, which is 6×1. ✅
 
 #### Problem Statement
 
-Given an array of integers `nums` and an integer `k`, return the number of **nice subarrays** — subarrays that contain exactly `k` odd numbers.
+Given an array of integers `nums` and an integer `k`, return the number of **nice subarrays**  -  subarrays that contain exactly `k` odd numbers.
 
 **Example:**
 ```
@@ -1583,7 +1583,7 @@ def numberOfSubarrays(nums: list[int], k: int) -> int:
     Now the problem is: count subarrays with sum exactly k.
     This is identical to the "Subarray Sum Equals K" pattern.
     
-    We don't even need to physically transform the array — we just
+    We don't even need to physically transform the array  -  we just
     add (num % 2) to the running sum instead of the number itself.
     
     Time Complexity: O(n) - single pass
@@ -1673,22 +1673,22 @@ Output: 2 ✅
 ```
 What are you asked to find?
 
-1. RANGE SUM QUERIES — "What's the sum from index i to j?"
+1. RANGE SUM QUERIES  -  "What's the sum from index i to j?"
    └─ Build prefix array, answer in O(1)
       Formula: sum(i..j) = prefix[j+1] - prefix[i]
 
-2. COUNT/FIND SUBARRAYS — "How many subarrays have sum = k / divisible by k?"
+2. COUNT/FIND SUBARRAYS  -  "How many subarrays have sum = k / divisible by k?"
    └─ Prefix Sum + HashMap
       - For "sum = k": store count of each prefix sum, look for (current - k)
       - For "divisible by k": store count of each prefix sum % k (same remainder trick)
       - For "longest": store first index of each prefix sum (not count)
       - Initialize {0: 1} (or {0: -1} for longest)
 
-3. PREFIX/SUFFIX PRODUCTS — "Product of everything except self"
+3. PREFIX/SUFFIX PRODUCTS  -  "Product of everything except self"
    └─ Two-pass: prefix products left-to-right, then suffix products right-to-left
 ```
 
-### The HashMap Initialization — A Summary
+### The HashMap Initialization  -  A Summary
 
 This trips up many people, so here's a clear rule:
 
@@ -1716,7 +1716,7 @@ The transformation step is often the hardest part. If a problem asks about count
 
 ### What's Next?
 
-With Prefix Sum covered, we've now completed three core patterns: Two Pointers, Sliding Window, and Prefix Sum. These three together handle a huge portion of array problems. Next up is **Pattern 4: HashMap / Frequency Counting** — a pattern that often works alongside prefix sums and shows up in almost every category of problems. Stay tuned!
+With Prefix Sum covered, we've now completed three core patterns: Two Pointers, Sliding Window, and Prefix Sum. These three together handle a huge portion of array problems. Next up is **Pattern 4: HashMap / Frequency Counting**  -  a pattern that often works alongside prefix sums and shows up in almost every category of problems. Stay tuned!
 
 ---
 
