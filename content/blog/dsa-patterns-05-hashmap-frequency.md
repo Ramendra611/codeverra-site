@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-05.png"
+  alt: "Hashmap Frequency Pattern"
+  caption: "Hashmap Frequency Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 4: HashMap / Frequency Counting

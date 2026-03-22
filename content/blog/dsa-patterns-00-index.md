@@ -9,6 +9,13 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+
+cover:
+  image: "/images/array-patterns.png"
+  alt: "Two Pointers Pattern"
+  caption: "Two Pointers Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🗺️ Array Patterns  -  The Complete Study Guide
@@ -225,7 +232,7 @@ Every pattern document is organized the same way so you always know what to expe
 
 ## Getting Started
 
-Open [`01_Two_Pointers.md`](./01_Two_Pointers.md) and begin. Good luck, and remember  -  the struggle is where the learning happens. Don't rush to the solutions.
+Open Two Pointer Guide and begin. Good luck, and remember that the struggle is where the learning happens. Don't rush to the solutions.
 
 ---
 

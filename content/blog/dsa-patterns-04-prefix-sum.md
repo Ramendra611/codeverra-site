@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-04.png"
+  alt: "Prefix Sum Pattern"
+  caption: "Prefix Sum Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 3: Prefix Sum

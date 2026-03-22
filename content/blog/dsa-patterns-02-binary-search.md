@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-02.png"
+  alt: "Binary Search Pattern"
+  caption: "Binary Search Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 2: Binary Search

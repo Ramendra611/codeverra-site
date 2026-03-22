@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-03.png"
+  alt: "Sliding Window Pattern"
+  caption: "Sliding Window Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 2: Sliding Window

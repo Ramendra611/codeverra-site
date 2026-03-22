@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-01.png"
+  alt: "Two Pointers Pattern"
+  caption: "Two Pointers Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 1: Two Pointers
