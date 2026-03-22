@@ -11,15 +11,15 @@ toc: true
 tocopen: true
 draft: false
 tags:
- - dsa
- - learning-roadmap
+  - dsa
+  - learning-roadmap
 
 cover:
- image: "/images/DSA-with-python-live-course.png"
- alt: "DSA learning roadmap"
- caption: "Learning DSA for beginners"
- relative: true
- hidden: false
+  image: "/images/DSA-with-python-live-course.png"
+  alt: "DSA learning roadmap"
+  caption: "Learning DSA for beginners"
+  relative: true
+  hidden: false
 ---
 # About This Guide
 ---
@@ -28,18 +28,18 @@ Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! Thi
 ### For Course Students
 If you're enrolled in the live course, this blog is your companion resource that:
 
-- **Mirrors the course structure** - Every module taught in class is documented here
-- **Serves as a reference** - Quickly look up concepts, syntax, and examples
-- **Tracks your progress** - Follow along and check off completed modules
-- **Provides continuity** - Never miss a beat even if you miss a session
+-   **Mirrors the course structure** - Every module taught in class is documented here
+-   **Serves as a reference** - Quickly look up concepts, syntax, and examples
+-   **Tracks your progress** - Follow along and check off completed modules
+-   **Provides continuity** - Never miss a beat even if you miss a session
 
 ### For Self-Learners
 Even if you're not enrolled in the course, this roadmap is designed to be:
 
-- **Completely self-contained** - Learn at your own pace with clear learning outcomes
-- **Beginner-friendly** - No prior programming experience required
-- **Comprehensive** - Covers everything from Python basics to advanced algorithms
-- **Practical** - Focus on real-world applications and problem-solving
+-   **Completely self-contained** - Learn at your own pace with clear learning outcomes
+-   **Beginner-friendly** - No prior programming experience required
+-   **Comprehensive** - Covers everything from Python basics to advanced algorithms
+-   **Practical** - Focus on real-world applications and problem-solving
 
 ## What This Blog Includes
 This is a living document that will be continuously updated with:
@@ -56,11 +56,11 @@ This is a living document that will be continuously updated with:
 
 ## How to Use This Guide
 
-- Linear Learning: Start from Module 1 and progress sequentially - each module builds on previous knowledge
-- Topic Review: Use the table of contents to jump to specific topics you want to revisit
-- Practice First: Try practice problems before looking at solutions
-- Active Learning: Code along with examples rather than just reading
-- Track Progress: Check off modules as you complete them
+-   Linear Learning: Start from Module 1 and progress sequentially - each module builds on previous knowledge
+-   Topic Review: Use the table of contents to jump to specific topics you want to revisit
+-   Practice First: Try practice problems before looking at solutions
+-   Active Learning: Code along with examples rather than just reading
+-   Track Progress: Check off modules as you complete them
 
 ## Stay Updated
 This blog is regularly updated with:
@@ -84,19 +84,19 @@ Bookmark this page and check back regularly for updates!
 
 <a href="https://codeverra.com/courses/Python-with-DSA---Zero-to-Hero-69686cdef36a156fd8abb933"
 target="_blank"
- rel="noopener noreferrer"
- style="
- display: inline-block;
- margin-top: 1.5rem;
- padding: 0.85rem 1.75rem;
- border-radius: 10px;
- background: #4F46E5;
- color: #ffffff;
- text-decoration: none;
- font-weight: 600;
- font-size: 1rem;
- ">
- Enroll Now
+   rel="noopener noreferrer"
+   style="
+     display: inline-block;
+     margin-top: 1.5rem;
+     padding: 0.85rem 1.75rem;
+     border-radius: 10px;
+     background: #4F46E5;
+     color: #ffffff;
+     text-decoration: none;
+     font-weight: 600;
+     font-size: 1rem;
+   ">
+  Enroll Now
 </a>
 
 ---

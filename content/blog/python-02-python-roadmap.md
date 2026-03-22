@@ -1,18 +1,18 @@
 ---
 title: "Python Learning Roadmap"
-description: "A structured roadmap to learning Python from scratch to advanced - what to learn, in what order, and why."
+description: "A structured roadmap to learning Python from scratch to advanced — what to learn, in what order, and why."
 date: 2026-03-21
 author: "codeverra"
 toc: true
 tocopen: false
 draft: false
 tags:
- - python
- - learning-roadmap
+  - python
+  - learning-roadmap
 ---
 
 # Python Learning Roadmap
-### The Complete Codeverra Curriculum - Your Navigation Hub
+### The Complete Codeverra Curriculum -- Your Navigation Hub
 
 ---
 
@@ -32,7 +32,7 @@ The curriculum is divided into four phases. Each phase builds on the previous on
 
 ---
 
-## Phase 1 - Python Foundations
+## Phase 1 -- Python Foundations
 ### Estimated time: 4 to 6 weeks
 
 This is where everything starts. Master these before touching any library or framework.
@@ -51,16 +51,16 @@ Everything else in Python is built on these primitives. You cannot understand a 
 | Resource | Description |
 |---|---|
 | 01_python_basics.md | Full masterclass covering all concepts with Indian-context examples |
-| Practice questions | 18 questions - Easy to Hard - with full solutions in the same file |
+| Practice questions | 18 questions -- Easy to Hard -- with full solutions in the same file |
 
 **Key concepts checklist:**
 - Variables and dynamic typing
 - int, float, complex and the math module
-- Strings - creation, indexing, slicing, all methods
+- Strings -- creation, indexing, slicing, all methods
 - Booleans and truthiness
 - None and its correct usage
 - All operator types and precedence
-- Type conversion - implicit and explicit
+- Type conversion -- implicit and explicit
 - print() and input() in depth
 - f-strings and number formatting
 
@@ -97,7 +97,7 @@ Loops are how you process collections of data. Everything in data science involv
 
 | Resource | Description |
 |---|---|
-| 03_loops.md | Full masterclass - 18 sections |
+| 03_loops.md | Full masterclass -- 18 sections |
 | loops_practice_solutions.md | 20 practice questions with full solutions |
 
 **Key concepts checklist:**
@@ -114,7 +114,7 @@ Loops are how you process collections of data. Everything in data science involv
 ### 1.4 Python Collections
 
 **What you will learn:**
-List, Tuple, Dictionary, Set - all methods, operations, and patterns. When to use each one.
+List, Tuple, Dictionary, Set -- all methods, operations, and patterns. When to use each one.
 
 **Why it matters:**
 Collections are how you store and organise data in Python. Pandas DataFrames are built on top of these. SQL results come back as lists of dictionaries. APIs return JSON which becomes nested dicts and lists.
@@ -129,12 +129,12 @@ Collections are how you store and organise data in Python. Pandas DataFrames are
 - Tuple: immutability, unpacking, namedtuple, as dict keys
 - Dictionary: all methods, nested dicts, dict comprehensions, merging
 - Set: operations (union, intersection, difference, symmetric difference), frozenset
-- String: (covered in 1.1) - fits here too as a sequence type
+- String: (covered in 1.1) -- fits here too as a sequence type
 - When to use which collection
 
 ---
 
-## Phase 2 - Core Python
+## Phase 2 -- Core Python
 ### Estimated time: 4 to 6 weeks
 
 With foundations in place, you now learn the tools that professional Python developers use every day.
@@ -151,7 +151,7 @@ Functions are how you organise code. Decorators are used in every web framework.
 
 | Resource | Description |
 |---|---|
-| 05_functions.md | Full masterclass - 23 sections covering all concepts |
+| 05_functions.md | Full masterclass -- 23 sections covering all concepts |
 | functions_practice_solutions.md | 20 practice questions with full solutions |
 
 **Key concepts checklist:**
@@ -266,7 +266,7 @@ Every Python library you use (Pandas, Scikit-learn, Django, FastAPI) is built wi
 
 ---
 
-## Phase 3 - Data Tools
+## Phase 3 -- Data Tools
 ### Estimated time: 6 to 10 weeks
 
 This is where Python connects to real-world data work. These are the libraries used by data analysts, data scientists, and ML engineers every day.
@@ -283,14 +283,14 @@ NumPy is the foundation of every numerical computing library in Python. Pandas, 
 
 | Resource | Description |
 |---|---|
-| numpy_masterclass.md | Full masterclass - 19 sections with 15 practice questions |
+| numpy_masterclass.md | Full masterclass -- 19 sections with 15 practice questions |
 | numpy_masterclass.md (Section 20) | Full solutions to all 15 questions |
 
 **Key concepts checklist:**
 - ndarray creation and data types
 - Indexing, slicing, fancy indexing
 - Boolean masking and np.where
-- Array math - element-wise and axis-based
+- Array math -- element-wise and axis-based
 - Universal functions (ufuncs)
 - Aggregation: sum, mean, std, min, max along axes
 - Reshaping, transpose, stacking, splitting
@@ -312,23 +312,23 @@ Pandas is the primary tool for data manipulation in Python. Every data analyst a
 
 | Resource | Description |
 |---|---|
-| pandas_masterclass.md | Full masterclass - 22 sections with 13 practice questions |
+| pandas_masterclass.md | Full masterclass -- 22 sections with 13 practice questions |
 | pandas_masterclass.md (Section 23) | Full solutions to all 13 questions |
 
 **Key concepts checklist:**
-- Series and DataFrame - creation and structure
+- Series and DataFrame -- creation and structure
 - read_csv, read_excel, read_json, read_sql
 - head, tail, info, describe, value_counts
-- loc and iloc - label vs position indexing
+- loc and iloc -- label vs position indexing
 - Boolean filtering, isin, between, query
 - Adding, renaming, dropping columns
 - Sorting values and index
-- Handling missing data - dropna, fillna, interpolate
+- Handling missing data -- dropna, fillna, interpolate
 - String operations with .str accessor
 - Datetime operations with .dt accessor
 - apply(), map(), DataFrame.map()
-- GroupBy - agg, transform, filter
-- merge() - all four join types
+- GroupBy -- agg, transform, filter
+- merge() -- all four join types
 - concat() for stacking
 - pivot_table and crosstab
 - melt() and stack/unstack
@@ -339,21 +339,21 @@ Pandas is the primary tool for data manipulation in Python. Every data analyst a
 ### 3.3 Matplotlib
 
 **What you will learn:**
-The full Matplotlib API - every major chart type (line, bar, scatter, histogram, pie, box, heatmap, area), all customisations (colours, typography, axes, grid, spines, legend, annotations), subplots and gridspec, saving figures, and a complete dataset analysis project.
+The full Matplotlib API -- every major chart type (line, bar, scatter, histogram, pie, box, heatmap, area), all customisations (colours, typography, axes, grid, spines, legend, annotations), subplots and gridspec, saving figures, and a complete dataset analysis project.
 
 **Why it matters:**
-Every chart you will ever present - in a report, a notebook, a dashboard - will be built on Matplotlib, even if you use Seaborn or Pandas .plot() on top of it.
+Every chart you will ever present -- in a report, a notebook, a dashboard -- will be built on Matplotlib, even if you use Seaborn or Pandas .plot() on top of it.
 
 | Resource | Description |
 |---|---|
-| matplotlib_masterclass.md | Full masterclass - 19 sections with 15 practice questions and solutions |
+| matplotlib_masterclass.md | Full masterclass -- 19 sections with 15 practice questions and solutions |
 
 **Key concepts checklist:**
-- Figure and Axes - the two-object model
+- Figure and Axes -- the two-object model
 - pyplot vs object-oriented interface
 - Line, bar, horizontal bar, scatter, histogram, pie, box, heatmap, area charts
 - Subplots with nrows/ncols and gridspec
-- All customisation options - colour, font, ticks, grid, spines, legend
+- All customisation options -- colour, font, ticks, grid, spines, legend
 - Annotations and reference lines
 - Colour maps
 - Saving at print quality
@@ -366,20 +366,20 @@ Every chart you will ever present - in a report, a notebook, a dashboard - will 
 All Seaborn plot types (lineplot, barplot, countplot, histplot, kdeplot, ecdfplot, boxplot, violinplot, stripplot, swarmplot, boxenplot, pointplot, scatterplot, regplot, heatmap, pairplot, FacetGrid, catplot, lmplot), themes, palettes, axes-level vs figure-level API, and combining with Matplotlib.
 
 **Why it matters:**
-Seaborn produces statistical charts - confidence intervals, regression lines, density curves - with much less code than Matplotlib. It is the standard for exploratory data analysis.
+Seaborn produces statistical charts -- confidence intervals, regression lines, density curves -- with much less code than Matplotlib. It is the standard for exploratory data analysis.
 
 | Resource | Description |
 |---|---|
-| seaborn_masterclass.md | Full masterclass - 26 sections with 15 practice questions and solutions |
+| seaborn_masterclass.md | Full masterclass -- 26 sections with 15 practice questions and solutions |
 
 **Key concepts checklist:**
 - Axes-level vs figure-level functions
 - Statistical aggregation built into plots
 - hue, size, style for multi-dimensional encoding
 - FacetGrid for automatic subplot grids
-- All distribution plots - hist, kde, ecdf
-- All categorical plots - box, violin, strip, point, bar
-- Regression plots - regplot, lmplot
+- All distribution plots -- hist, kde, ecdf
+- All categorical plots -- box, violin, strip, point, bar
+- Regression plots -- regplot, lmplot
 - Heatmaps and pairplots
 - Themes, styles, contexts, palettes
 
@@ -410,14 +410,14 @@ Most data in the world lives in relational databases. SQL is the language of dat
 
 ---
 
-## Phase 4 - Specialisation
+## Phase 4 -- Specialisation
 ### Estimated time: 3 to 12 months depending on path
 
 After completing Phases 1-3, you have enough to choose a direction. Each path below builds on the same core. Pick the one that aligns with your goal.
 
 ---
 
-### Path A - Data Analyst
+### Path A -- Data Analyst
 
 **Goal:** Turn raw data into business decisions. Build reports, dashboards, and data stories.
 
@@ -432,7 +432,7 @@ After completing Phases 1-3, you have enough to choose a direction. Each path be
 
 ---
 
-### Path B - Data Scientist
+### Path B -- Data Scientist
 
 **Goal:** Build predictive models and extract deeper insight from data.
 
@@ -448,7 +448,7 @@ After completing Phases 1-3, you have enough to choose a direction. Each path be
 
 ---
 
-### Path C - Machine Learning Engineer
+### Path C -- Machine Learning Engineer
 
 **Goal:** Build, train, and deploy machine learning models at scale in production.
 
@@ -464,7 +464,7 @@ After completing Phases 1-3, you have enough to choose a direction. Each path be
 
 ---
 
-### Path D - AI / LLM Engineer
+### Path D -- AI / LLM Engineer
 
 **Goal:** Build applications powered by large language models. One of the fastest-growing roles as of 2024.
 
@@ -481,7 +481,7 @@ After completing Phases 1-3, you have enough to choose a direction. Each path be
 
 ---
 
-### Path E - Backend Engineer
+### Path E -- Backend Engineer
 
 **Goal:** Build the APIs and server-side logic that power web and mobile applications.
 
@@ -499,7 +499,7 @@ After completing Phases 1-3, you have enough to choose a direction. Each path be
 
 ---
 
-### Path F - Data Engineer
+### Path F -- Data Engineer
 
 **Goal:** Build the pipelines that move, transform, and store data at scale.
 
@@ -549,7 +549,7 @@ Use this table to track what you have completed.
 | Phase 4 | 3 to 12 months | 2 to 6 months |
 | Total to first job | 6 to 18 months | 4 to 12 months |
 
-The range is wide because it depends on your starting point, how much you practice, and the quality of your projects. The most important variable is not how many tutorials you watch - it is how many problems you solve yourself.
+The range is wide because it depends on your starting point, how much you practice, and the quality of your projects. The most important variable is not how many tutorials you watch -- it is how many problems you solve yourself.
 
 ---
 

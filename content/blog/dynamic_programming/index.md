@@ -10,15 +10,15 @@ toc: true
 tocopen: true
 draft: false
 tags:
- - dsa
- - dynamic-programming
+  - dsa
+  - dynamic-programming
 
 cover:
- image: "images/dynamic-programming-cover.png"
- alt: "Dynamic programming concepts"
- caption: "Understanding overlapping subproblems and optimal substructure"
- relative: true
- hidden: false
+  image: "images/dynamic-programming-cover.png"
+  alt: "Dynamic programming concepts"
+  caption: "Understanding overlapping subproblems and optimal substructure"
+  relative: true
+  hidden: false
 ---
 
 Dynamic Programming (DP) is a powerful algorithmic technique used to solve problems that can be broken down into smaller subproblems whose solutions are reused to efficiently compute the final result.
@@ -31,10 +31,10 @@ Unlike brute-force approaches or naive recursion, Dynamic Programming avoids unn
 
 Dynamic Programming is a method of solving problems by:
 
-- Dividing a problem into smaller subproblems 
-- Solving each subproblem only once 
-- Storing the solution of each subproblem 
-- Using stored solutions to build the final answer 
+- Dividing a problem into smaller subproblems  
+- Solving each subproblem only once  
+- Storing the solution of each subproblem  
+- Using stored solutions to build the final answer  
 
 The word dynamic refers to solving problems step by step, while programming refers to structured problem-solving rather than coding.
 
@@ -54,9 +54,9 @@ Repeated computation of the same subproblems makes naive solutions inefficient.
 
 When subproblems overlap:
 
-- Recursive solutions perform redundant computations 
-- Time complexity increases rapidly 
-- The same values are recalculated again and again 
+- Recursive solutions perform redundant computations  
+- Time complexity increases rapidly  
+- The same values are recalculated again and again  
 
 Dynamic Programming addresses this issue by storing the result of each subproblem so that it is computed only once.
 
@@ -70,9 +70,9 @@ F(n) depends on F(n−1) and F(n−2)
 
 While computing F(5):
 
-- F(5) depends on F(4) and F(3) 
-- F(4) again depends on F(3) and F(2) 
-- F(3) is calculated multiple times 
+- F(5) depends on F(4) and F(3)  
+- F(4) again depends on F(3) and F(2)  
+- F(3) is calculated multiple times  
 
 Here, F(3) and F(2) are overlapping subproblems.
 
@@ -80,16 +80,16 @@ Here, F(3) and F(2) are overlapping subproblems.
 
 ### Impact Without Dynamic Programming
 
-- Time complexity becomes exponential 
-- A large number of repeated calculations occur 
+- Time complexity becomes exponential  
+- A large number of repeated calculations occur  
 
 ---
 
 ### Impact With Dynamic Programming
 
-- Computed values are stored in a table or array 
-- Each subproblem is solved once 
-- Time complexity reduces significantly, often to linear 
+- Computed values are stored in a table or array  
+- Each subproblem is solved once  
+- Time complexity reduces significantly, often to linear  
 
 ---
 
@@ -113,8 +113,8 @@ In simpler terms, solving smaller parts optimally leads to an optimal solution f
 
 Dynamic Programming assumes that:
 
-- Subproblems can be solved optimally 
-- Combining optimal subproblem solutions produces a global optimal solution 
+- Subproblems can be solved optimally  
+- Combining optimal subproblem solutions produces a global optimal solution  
 
 If this assumption does not hold, Dynamic Programming cannot guarantee correct results.
 
@@ -126,8 +126,8 @@ Consider finding the shortest path from city A to city D via city B.
 
 The shortest path from A to D consists of:
 
-- The shortest path from A to B 
-- The shortest path from B to D 
+- The shortest path from A to B  
+- The shortest path from B to D  
 
 If either subpath is not optimal, the final path will also not be optimal.
 
@@ -139,8 +139,8 @@ This confirms that the shortest path problem has optimal substructure.
 
 In the 0/1 Knapsack problem:
 
-- The optimal solution for capacity W 
-- Depends on optimal solutions for smaller capacities 
+- The optimal solution for capacity W  
+- Depends on optimal solutions for smaller capacities  
 
 This confirms the existence of optimal substructure.
 
@@ -156,10 +156,10 @@ Optimal substructure ensures that local optimal solutions contribute to a global
 
 Dynamic Programming is applicable only when both properties exist.
 
-Overlapping subproblems help avoid repeated work. 
+Overlapping subproblems help avoid repeated work.  
 Optimal substructure ensures correctness of the solution.
 
-If subproblems do not overlap, Dynamic Programming provides no efficiency benefit. 
+If subproblems do not overlap, Dynamic Programming provides no efficiency benefit.  
 If optimal substructure does not exist, Dynamic Programming may produce incorrect results.
 
 ---
@@ -168,12 +168,12 @@ If optimal substructure does not exist, Dynamic Programming may produce incorrec
 
 To apply Dynamic Programming effectively:
 
-- Identify the subproblems 
-- Check whether subproblems repeat 
-- Verify the presence of optimal substructure 
-- Define a DP state to represent subproblems 
-- Formulate a recurrence relation 
-- Store and reuse results 
+- Identify the subproblems  
+- Check whether subproblems repeat  
+- Verify the presence of optimal substructure  
+- Define a DP state to represent subproblems  
+- Formulate a recurrence relation  
+- Store and reuse results  
 
 ---
 
@@ -181,9 +181,9 @@ To apply Dynamic Programming effectively:
 
 Problem: Minimum cost to reach the end.
 
-- Cost to reach a step depends on minimum cost of previous steps 
-- The same steps are evaluated multiple times 
-- Optimal cost at each step depends on optimal costs of earlier steps 
+- Cost to reach a step depends on minimum cost of previous steps  
+- The same steps are evaluated multiple times  
+- Optimal cost at each step depends on optimal costs of earlier steps  
 
 This problem has both overlapping subproblems and optimal substructure.
 
@@ -195,33 +195,33 @@ Therefore, Dynamic Programming is applicable.
 
 Dynamic Programming is not suitable when:
 
-- Subproblems are independent 
-- A greedy approach produces better results 
-- Recursion depth is small and no repetition occurs 
+- Subproblems are independent  
+- A greedy approach produces better results  
+- Recursion depth is small and no repetition occurs  
 
 ---
 
 ## Summary
 
-- Overlapping subproblems reduce efficiency without Dynamic Programming 
-- Optimal substructure ensures correctness of solutions 
-- Both properties are essential for applying Dynamic Programming 
+- Overlapping subproblems reduce efficiency without Dynamic Programming  
+- Optimal substructure ensures correctness of solutions  
+- Both properties are essential for applying Dynamic Programming  
 
 A solid understanding of these concepts is crucial for mastering advanced algorithmic problem solving.
 
-## Dynamic Programming playlists
+##  Dynamic Programming playlists
 
 Here are some curated playlists you can follow:
 
 ### Python & DSA
 
 <iframe
- width="560"
- height="315"
- src="https://youtube.com/playlist?list=PLo8TPLc6QbB-64yhKXib333YGRpq_rPYr&si=6UOY9RvW8dpemRyQ"
- title="Dynamic Programming playlist"
- frameborder="0"
- allowfullscreen>
+  width="560"
+  height="315"
+  src="https://youtube.com/playlist?list=PLo8TPLc6QbB-64yhKXib333YGRpq_rPYr&si=6UOY9RvW8dpemRyQ"
+  title="Dynamic Programming playlist"
+  frameborder="0"
+  allowfullscreen>
 </iframe>
 
 ---

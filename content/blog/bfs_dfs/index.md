@@ -10,26 +10,26 @@ toc: true
 tocopen: true
 draft: false
 tags:
- - dsa
- - bfs
- - dfs
- - graphs
- - traversal
- - algorithms
+  - dsa
+  - bfs
+  - dfs
+  - graphs
+  - traversal
+  - algorithms
 cover:
- image: "/images//bfs-dfs.jpg"
- alt: "BFS vs DFS graph traversal"
- caption: "Understanding BFS and DFS traversal techniques"
- relative: true
- hidden: false
+  image: "/images//bfs-dfs.jpg"
+  alt: "BFS vs DFS graph traversal"
+  caption: "Understanding BFS and DFS traversal techniques"
+  relative: true
+  hidden: false
 ---
 
 Graphs and trees are non-linear data structures. To process or explore them, traversal algorithms are used.
 
 The two most important traversal techniques are:
 
-- Breadth-First Search (BFS) 
-- Depth-First Search (DFS) 
+- Breadth-First Search (BFS)  
+- Depth-First Search (DFS)  
 
 Both algorithms visit all nodes in a graph or tree, but their strategies and use-cases differ significantly.
 
@@ -49,11 +49,11 @@ In simple terms, BFS explores nodes in increasing order of distance from the sta
 
 ### How BFS Works
 
-- Start from a source node 
-- Visit the node and mark it as visited 
-- Visit all its immediate neighbors 
-- Then visit neighbors of neighbors 
-- Continue until all reachable nodes are visited 
+- Start from a source node  
+- Visit the node and mark it as visited  
+- Visit all its immediate neighbors  
+- Then visit neighbors of neighbors  
+- Continue until all reachable nodes are visited  
 
 ---
 
@@ -75,16 +75,16 @@ Nodes discovered earlier are processed first, ensuring level-wise traversal.
 
 Graph structure:
 
-A connected to B and C 
-B connected to D 
+A connected to B and C  
+B connected to D  
 
 Starting from node A:
 
-- Visit A, queue contains A 
-- Visit B and C, queue contains B and C 
-- Visit D, queue contains C and D 
+- Visit A, queue contains A  
+- Visit B and C, queue contains B and C  
+- Visit D, queue contains C and D  
 
-Traversal order becomes: 
+Traversal order becomes:  
 A → B → C → D
 
 ---
@@ -94,8 +94,8 @@ A → B → C → D
 Time complexity of BFS is O(V + E)
 
 Where:
-- V is the number of vertices 
-- E is the number of edges 
+- V is the number of vertices  
+- E is the number of edges  
 
 Each vertex and edge is processed once.
 
@@ -111,11 +111,11 @@ This is because the queue and visited structure may store all vertices.
 
 ### Applications of BFS
 
-- Finding shortest path in unweighted graphs 
-- Level-order traversal of trees 
-- Finding minimum number of steps 
-- Social networks (degrees of connection) 
-- Web crawling 
+- Finding shortest path in unweighted graphs  
+- Level-order traversal of trees  
+- Finding minimum number of steps  
+- Social networks (degrees of connection)  
+- Web crawling  
 
 ---
 
@@ -131,11 +131,11 @@ In simple terms, DFS explores one complete path before trying another path.
 
 ### How DFS Works
 
-- Start from a source node 
-- Visit a neighbor 
-- Continue visiting deeper neighbors 
-- When no unvisited neighbor exists, backtrack 
-- Repeat until all nodes are visited 
+- Start from a source node  
+- Visit a neighbor  
+- Continue visiting deeper neighbors  
+- When no unvisited neighbor exists, backtrack  
+- Repeat until all nodes are visited  
 
 ---
 
@@ -144,8 +144,8 @@ In simple terms, DFS explores one complete path before trying another path.
 Stack
 
 This can be:
-- An explicit stack 
-- Or an implicit recursion stack 
+- An explicit stack  
+- Or an implicit recursion stack  
 
 ---
 
@@ -161,18 +161,18 @@ The most recently visited node is explored first.
 
 Graph structure:
 
-A connected to B and C 
-B connected to D 
+A connected to B and C  
+B connected to D  
 
 Starting from node A:
 
-- Visit A 
-- Go to B 
-- Go to D 
-- Backtrack 
-- Visit C 
+- Visit A  
+- Go to B  
+- Go to D  
+- Backtrack  
+- Visit C  
 
-Traversal order becomes: 
+Traversal order becomes:  
 A → B → D → C
 
 ---
@@ -195,12 +195,12 @@ This is due to the recursion stack or explicit stack used during traversal.
 
 ### Applications of DFS
 
-- Cycle detection 
-- Topological sorting 
-- Finding connected components 
-- Path existence problems 
-- Solving mazes and puzzles 
-- Backtracking problems 
+- Cycle detection  
+- Topological sorting  
+- Finding connected components  
+- Path existence problems  
+- Solving mazes and puzzles  
+- Backtracking problems  
 
 ---
 
@@ -208,50 +208,50 @@ This is due to the recursion stack or explicit stack used during traversal.
 
 ### Traversal Strategy
 
-BFS explores breadth first. 
+BFS explores breadth first.  
 DFS explores depth first.
 
 ---
 
 ### Data Structure
 
-BFS uses a queue. 
+BFS uses a queue.  
 DFS uses a stack or recursion.
 
 ---
 
 ### Shortest Path
 
-BFS guarantees the shortest path in unweighted graphs. 
+BFS guarantees the shortest path in unweighted graphs.  
 DFS does not guarantee the shortest path.
 
 ---
 
 ## 4. BFS vs DFS Comparison
 
-Traversal Style 
-BFS: Level-wise 
-DFS: Depth-wise 
+Traversal Style  
+BFS: Level-wise  
+DFS: Depth-wise  
 
-Data Structure 
-BFS: Queue 
-DFS: Stack or recursion 
+Data Structure  
+BFS: Queue  
+DFS: Stack or recursion  
 
-Shortest Path 
-BFS: Yes (for unweighted graphs) 
-DFS: No 
+Shortest Path  
+BFS: Yes (for unweighted graphs)  
+DFS: No  
 
-Memory Usage 
-BFS: Higher 
-DFS: Lower 
+Memory Usage  
+BFS: Higher  
+DFS: Lower  
 
-Implementation 
-BFS: Iterative 
-DFS: Recursive or iterative 
+Implementation  
+BFS: Iterative  
+DFS: Recursive or iterative  
 
-Use Case 
-BFS: Minimum distance problems 
-DFS: Exhaustive search problems 
+Use Case  
+BFS: Minimum distance problems  
+DFS: Exhaustive search problems  
 
 ---
 
@@ -259,19 +259,19 @@ DFS: Exhaustive search problems
 
 ### Use BFS When
 
-- You need the shortest path 
-- Distance or level matters 
-- The graph is unweighted 
-- You are searching for the nearest solution 
+- You need the shortest path  
+- Distance or level matters  
+- The graph is unweighted  
+- You are searching for the nearest solution  
 
 ---
 
 ### Use DFS When
 
-- You need to explore all possibilities 
-- Memory is limited 
-- Solving puzzles or backtracking problems 
-- Detecting cycles or connectivity 
+- You need to explore all possibilities  
+- Memory is limited  
+- Solving puzzles or backtracking problems  
+- Detecting cycles or connectivity  
 
 ---
 

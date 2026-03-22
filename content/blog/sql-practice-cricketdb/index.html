@@ -12,15 +12,15 @@ toc: false
 tocopen: false
 draft: false
 tags:
- - sql
- - data-analysis
+  - sql
+  - data-analysis
 
 cover:
- image: "/images/SQL-Practice - cricketdb.png"
- alt: "introduction to SQL"
- caption: "introduction to SQL"
- relative: true
- hidden: false
+  image: "/images/SQL-Practice - cricketdb.png"
+  alt: "introduction to SQL"
+  caption: "introduction to SQL"
+  relative: true
+  hidden: false
 ---
 
 ## Pratice easy, medium and hard questions on cricket dataset.
@@ -30,933 +30,933 @@ cover:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SQL Practice: CricketDB - Codeverra</title>
+<title>SQL Practice: CricketDB — Codeverra</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
- :root {
- - bg: #faf8f3;
- - surface: #ffffff;
- - border: #e8e2d9;
- - accent: #1a6b3c;
- - accent-light: #e8f5ee;
- - accent2: #c8440a;
- - text: #1c1a18;
- - muted: #6b6560;
- - code-bg: #1e2227;
- - easy: #1a6b3c;
- - easy-bg: #e8f5ee;
- - medium: #b45309;
- - medium-bg: #fef3c7;
- - hard: #be123c;
- - hard-bg: #ffe4e6;
- - alt: #1d4ed8;
- - alt-bg: #eff6ff;
- }
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --border: #e8e2d9;
+    --accent: #1a6b3c;
+    --accent-light: #e8f5ee;
+    --accent2: #c8440a;
+    --text: #1c1a18;
+    --muted: #6b6560;
+    --code-bg: #1e2227;
+    --easy: #1a6b3c;
+    --easy-bg: #e8f5ee;
+    --medium: #b45309;
+    --medium-bg: #fef3c7;
+    --hard: #be123c;
+    --hard-bg: #ffe4e6;
+    --alt: #1d4ed8;
+    --alt-bg: #eff6ff;
+  }
 
- * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
- body {
- background: var( - bg);
- color: var( - text);
- font-family: 'DM Sans', sans-serif;
- font-weight: 300;
- line-height: 1.75;
- padding-bottom: 80px;
- }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    padding-bottom: 80px;
+  }
 
- /* HERO */
- .hero {
- background: var( - accent);
- color: white;
- padding: 64px 40px 56px;
- position: relative;
- overflow: hidden;
- }
- .hero::before {
- content: '🏏';
- position: absolute;
- right: 40px;
- top: 50%;
- transform: translateY(-50%);
- font-size: 140px;
- opacity: 0.12;
- line-height: 1;
- }
- .hero-tag {
- display: inline-block;
- background: rgba(255,255,255,0.2);
- font-family: 'DM Mono', monospace;
- font-size: 11px;
- letter-spacing: 2px;
- text-transform: uppercase;
- padding: 4px 12px;
- margin-bottom: 20px;
- }
- .hero h1 {
- font-family: 'Fraunces', serif;
- font-size: clamp(32px, 5vw, 58px);
- font-weight: 900;
- line-height: 1.1;
- max-width: 700px;
- margin-bottom: 16px;
- }
- .hero p {
- font-size: 15px;
- opacity: 0.85;
- max-width: 560px;
- line-height: 1.7;
- }
+  /* HERO */
+  .hero {
+    background: var(--accent);
+    color: white;
+    padding: 64px 40px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🏏';
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 140px;
+    opacity: 0.12;
+    line-height: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.85;
+    max-width: 560px;
+    line-height: 1.7;
+  }
 
- /* SCHEMA BOX */
- .schema-section {
- max-width: 860px;
- margin: 48px auto;
- padding: 0 40px;
- }
- .schema-card {
- background: var( - code-bg);
- border-left: 4px solid var( - accent);
- padding: 28px 32px;
- }
- .schema-label {
- font-family: 'DM Mono', monospace;
- font-size: 11px;
- letter-spacing: 2px;
- text-transform: uppercase;
- color: #6b7280;
- margin-bottom: 14px;
- }
- .schema-card pre {
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- color: #abb2bf;
- line-height: 1.8;
- overflow-x: auto;
- }
- .schema-card .tbl { color: #e06c75; }
- .schema-card .col { color: #98c379; }
- .schema-card .typ { color: #d19a66; }
- .schema-card .cmt { color: #5c6370; font-style: italic; }
+  /* SCHEMA BOX */
+  .schema-section {
+    max-width: 860px;
+    margin: 48px auto;
+    padding: 0 40px;
+  }
+  .schema-card {
+    background: var(--code-bg);
+    border-left: 4px solid var(--accent);
+    padding: 28px 32px;
+  }
+  .schema-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 14px;
+  }
+  .schema-card pre {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #abb2bf;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .schema-card .tbl { color: #e06c75; }
+  .schema-card .col { color: #98c379; }
+  .schema-card .typ { color: #d19a66; }
+  .schema-card .cmt { color: #5c6370; font-style: italic; }
 
- /* SETUP LINK */
- .setup-banner {
- max-width: 860px;
- margin: 0 auto 48px;
- padding: 0 40px;
- }
- .setup-link-box {
- background: var( - accent-light);
- border: 1px solid #b7dfc8;
- padding: 16px 24px;
- display: flex;
- align-items: center;
- gap: 14px;
- }
- .setup-link-box .icon { font-size: 22px; }
- .setup-link-box p { font-size: 14px; color: var( - accent); }
- .setup-link-box a {
- color: var( - accent);
- font-weight: 500;
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- text-decoration: underline;
- }
+  /* SETUP LINK */
+  .setup-banner {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    padding: 0 40px;
+  }
+  .setup-link-box {
+    background: var(--accent-light);
+    border: 1px solid #b7dfc8;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .setup-link-box .icon { font-size: 22px; }
+  .setup-link-box p { font-size: 14px; color: var(--accent); }
+  .setup-link-box a {
+    color: var(--accent);
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-decoration: underline;
+  }
 
- /* DIFFICULTY LEGEND */
- .legend {
- max-width: 860px;
- margin: 0 auto 40px;
- padding: 0 40px;
- display: flex;
- gap: 24px;
- flex-wrap: wrap;
- }
- .legend-item {
- display: flex;
- align-items: center;
- gap: 8px;
- font-size: 13px;
- font-family: 'DM Mono', monospace;
- color: var( - muted);
- }
- .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  /* DIFFICULTY LEGEND */
+  .legend {
+    max-width: 860px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 
- /* SECTION HEADER */
- .section-header {
- max-width: 860px;
- margin: 0 auto;
- padding: 0 40px;
- }
- .difficulty-banner {
- padding: 12px 20px;
- margin-bottom: 32px;
- display: flex;
- align-items: center;
- gap: 12px;
- }
- .difficulty-banner .d-label {
- font-family: 'Fraunces', serif;
- font-size: 22px;
- font-weight: 700;
- }
- .difficulty-banner .d-desc {
- font-size: 13px;
- opacity: 0.8;
- }
- .easy-banner { background: var( - easy-bg); color: var( - easy); }
- .medium-banner { background: var( - medium-bg); color: var( - medium); }
- .hard-banner { background: var( - hard-bg); color: var( - hard); }
+  /* SECTION HEADER */
+  .section-header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .difficulty-banner {
+    padding: 12px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .difficulty-banner .d-label {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .difficulty-banner .d-desc {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+  .easy-banner { background: var(--easy-bg); color: var(--easy); }
+  .medium-banner { background: var(--medium-bg); color: var(--medium); }
+  .hard-banner { background: var(--hard-bg); color: var(--hard); }
 
- /* QUESTION CARD */
- .questions-wrap {
- max-width: 860px;
- margin: 0 auto;
- padding: 0 40px;
- }
- .q-card {
- background: var( - surface);
- border: 1px solid var( - border);
- margin-bottom: 32px;
- box-shadow: 0 1px 3px rgba(0,0,0,0.04);
- }
- .q-header {
- padding: 24px 28px 0;
- display: flex;
- gap: 16px;
- align-items: flex-start;
- }
- .q-num {
- font-family: 'Fraunces', serif;
- font-size: 36px;
- font-weight: 900;
- line-height: 1;
- min-width: 44px;
- color: var( - border);
- }
- .q-card.easy .q-num { color: #b7dfc8; }
- .q-card.medium .q-num { color: #fcd34d; }
- .q-card.hard .q-num { color: #fca5a5; }
+  /* QUESTION CARD */
+  .questions-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .q-header {
+    padding: 24px 28px 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .q-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    min-width: 44px;
+    color: var(--border);
+  }
+  .q-card.easy .q-num { color: #b7dfc8; }
+  .q-card.medium .q-num { color: #fcd34d; }
+  .q-card.hard .q-num { color: #fca5a5; }
 
- .q-meta { flex: 1; }
- .q-badge {
- display: inline-block;
- font-family: 'DM Mono', monospace;
- font-size: 10px;
- font-weight: 500;
- letter-spacing: 1.5px;
- text-transform: uppercase;
- padding: 3px 10px;
- margin-bottom: 10px;
- }
- .easy .q-badge { background: var( - easy-bg); color: var( - easy); }
- .medium .q-badge { background: var( - medium-bg); color: var( - medium); }
- .hard .q-badge { background: var( - hard-bg); color: var( - hard); }
+  .q-meta { flex: 1; }
+  .q-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .easy .q-badge { background: var(--easy-bg); color: var(--easy); }
+  .medium .q-badge { background: var(--medium-bg); color: var(--medium); }
+  .hard .q-badge { background: var(--hard-bg); color: var(--hard); }
 
- .q-title {
- font-family: 'Fraunces', serif;
- font-size: 18px;
- font-weight: 700;
- color: var( - text);
- line-height: 1.4;
- margin-bottom: 8px;
- }
- .q-concepts {
- font-family: 'DM Mono', monospace;
- font-size: 11px;
- color: var( - muted);
- letter-spacing: 0.5px;
- }
+  .q-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .q-concepts {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
 
- .q-body { padding: 20px 28px 28px; }
+  .q-body { padding: 20px 28px 28px; }
 
- .q-scenario {
- background: #f9f7f3;
- border-left: 3px solid var( - border);
- padding: 14px 18px;
- font-size: 14px;
- color: var( - muted);
- margin-bottom: 18px;
- line-height: 1.7;
- }
- .q-scenario strong { color: var( - text); font-weight: 500; }
+  .q-scenario {
+    background: #f9f7f3;
+    border-left: 3px solid var(--border);
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+  .q-scenario strong { color: var(--text); font-weight: 500; }
 
- .approach-label {
- font-family: 'DM Mono', monospace;
- font-size: 10px;
- letter-spacing: 2px;
- text-transform: uppercase;
- color: var( - accent);
- margin-bottom: 6px;
- margin-top: 18px;
- }
- .approach-text {
- font-size: 14px;
- color: var( - text);
- background: var( - accent-light);
- border-left: 3px solid var( - accent);
- padding: 10px 14px;
- margin-bottom: 14px;
- line-height: 1.6;
- }
- .approach-text code {
- font-family: 'DM Mono', monospace;
- font-size: 12px;
- background: rgba(26,107,60,0.1);
- padding: 1px 5px;
- }
+  .approach-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    margin-top: 18px;
+  }
+  .approach-text {
+    font-size: 14px;
+    color: var(--text);
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .approach-text code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: rgba(26,107,60,0.1);
+    padding: 1px 5px;
+  }
 
- /* ALT APPROACH */
- .alt-label {
- font-family: 'DM Mono', monospace;
- font-size: 10px;
- letter-spacing: 2px;
- text-transform: uppercase;
- color: var( - alt);
- margin-bottom: 6px;
- margin-top: 20px;
- }
- .alt-note {
- font-size: 13.5px;
- color: var( - text);
- background: var( - alt-bg);
- border-left: 3px solid var( - alt);
- padding: 10px 14px;
- margin-bottom: 10px;
- line-height: 1.6;
- }
- .alt-note code {
- font-family: 'DM Mono', monospace;
- font-size: 12px;
- background: rgba(29,78,216,0.1);
- padding: 1px 5px;
- }
+  /* ALT APPROACH */
+  .alt-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--alt);
+    margin-bottom: 6px;
+    margin-top: 20px;
+  }
+  .alt-note {
+    font-size: 13.5px;
+    color: var(--text);
+    background: var(--alt-bg);
+    border-left: 3px solid var(--alt);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .alt-note code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: rgba(29,78,216,0.1);
+    padding: 1px 5px;
+  }
 
- /* CODE */
- pre.sql {
- background: var( - code-bg);
- padding: 20px 24px;
- overflow-x: auto;
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- line-height: 1.8;
- color: #abb2bf;
- margin-bottom: 6px;
- }
- .kw { color: #c678dd; }
- .fn { color: #61afef; }
- .str { color: #98c379; }
- .num { color: #d19a66; }
- .cm { color: #5c6370; font-style: italic; }
- .tbl-name { color: #e06c75; }
- .op { color: #56b6c2; }
+  /* CODE */
+  pre.sql {
+    background: var(--code-bg);
+    padding: 20px 24px;
+    overflow-x: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #abb2bf;
+    margin-bottom: 6px;
+  }
+  .kw { color: #c678dd; }
+  .fn { color: #61afef; }
+  .str { color: #98c379; }
+  .num { color: #d19a66; }
+  .cm { color: #5c6370; font-style: italic; }
+  .tbl-name { color: #e06c75; }
+  .op { color: #56b6c2; }
 
- .explain-label {
- font-family: 'DM Mono', monospace;
- font-size: 10px;
- letter-spacing: 2px;
- text-transform: uppercase;
- color: var( - muted);
- margin-top: 16px;
- margin-bottom: 6px;
- }
- .explain-text {
- font-size: 13.5px;
- color: var( - muted);
- line-height: 1.75;
- border-top: 1px solid var( - border);
- padding-top: 14px;
- }
- .explain-text code {
- font-family: 'DM Mono', monospace;
- font-size: 12px;
- background: #f0ece6;
- padding: 1px 5px;
- color: var( - accent2);
- }
- .explain-text strong { color: var( - text); font-weight: 500; }
+  .explain-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  .explain-text {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .explain-text code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: #f0ece6;
+    padding: 1px 5px;
+    color: var(--accent2);
+  }
+  .explain-text strong { color: var(--text); font-weight: 500; }
 
- /* DIVIDER */
- .section-divider {
- max-width: 860px;
- margin: 16px auto 40px;
- padding: 0 40px;
- border: none;
- border-top: 2px dashed var( - border);
- }
+  /* DIVIDER */
+  .section-divider {
+    max-width: 860px;
+    margin: 16px auto 40px;
+    padding: 0 40px;
+    border: none;
+    border-top: 2px dashed var(--border);
+  }
 
- /* SUMMARY */
- .summary {
- max-width: 860px;
- margin: 48px auto 0;
- padding: 0 40px;
- }
- .summary-card {
- background: var( - accent);
- color: white;
- padding: 36px 40px;
- }
- .summary-card h2 {
- font-family: 'Fraunces', serif;
- font-size: 26px;
- font-weight: 700;
- margin-bottom: 16px;
- }
- .summary-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
- gap: 12px;
- margin-top: 20px;
- }
- .summary-item {
- background: rgba(255,255,255,0.1);
- padding: 14px 16px;
- font-size: 13px;
- line-height: 1.6;
- }
- .summary-item strong {
- display: block;
- font-family: 'DM Mono', monospace;
- font-size: 10px;
- letter-spacing: 1.5px;
- text-transform: uppercase;
- opacity: 0.7;
- margin-bottom: 4px;
- }
+  /* SUMMARY */
+  .summary {
+    max-width: 860px;
+    margin: 48px auto 0;
+    padding: 0 40px;
+  }
+  .summary-card {
+    background: var(--accent);
+    color: white;
+    padding: 36px 40px;
+  }
+  .summary-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .summary-item {
+    background: rgba(255,255,255,0.1);
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .summary-item strong {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
 
- @media (max-width: 640px) {
- .hero, .schema-section, .setup-banner, .legend, .section-header, .questions-wrap, .summary { padding-left: 20px; padding-right: 20px; }
- .hero::before { display: none; }
- .q-num { font-size: 28px; min-width: 36px; }
- }
+  @media (max-width: 640px) {
+    .hero, .schema-section, .setup-banner, .legend, .section-header, .questions-wrap, .summary { padding-left: 20px; padding-right: 20px; }
+    .hero::before { display: none; }
+    .q-num { font-size: 28px; min-width: 36px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="hero">
- <div class="hero-tag">Codeverra · SQL Practice</div>
- <h1>SQL Practice Set<br>CricketDB</h1>
- <p>12 questions on a cricket dataset - players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.</p>
+  <div class="hero-tag">Codeverra · SQL Practice</div>
+  <h1>SQL Practice Set<br>CricketDB</h1>
+  <p>12 questions on a cricket dataset — players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.</p>
 </div>
 
-<! - SCHEMA - >
+<!-- SCHEMA -->
 <div class="schema-section">
- <div class="schema-card">
- <div class="schema-label">Dataset Schema</div>
- <pre><span class="tbl">players</span> <span class="cmt"> - 15 rows</span>
- <span class="col">id</span> <span class="typ">SERIAL PRIMARY KEY</span>
- <span class="col">name</span> <span class="typ">VARCHAR</span>
- <span class="col">role</span> <span class="typ">VARCHAR</span> <span class="cmt"> - 'Batsman' | 'Bowler' | 'All-rounder' | 'Wicket-keeper'</span>
- <span class="col">batting_style</span> <span class="typ">VARCHAR</span> <span class="cmt"> - 'Right-hand' | 'Left-hand'</span>
- <span class="col">bowling_style</span> <span class="typ">VARCHAR</span> <span class="cmt"> - NULL for batsmen and wicket-keepers</span>
- <span class="col">is_active</span> <span class="typ">BOOLEAN</span>
+  <div class="schema-card">
+    <div class="schema-label">Dataset Schema</div>
+    <pre><span class="tbl">players</span>        <span class="cmt">-- 15 rows</span>
+  <span class="col">id</span>              <span class="typ">SERIAL PRIMARY KEY</span>
+  <span class="col">name</span>            <span class="typ">VARCHAR</span>
+  <span class="col">role</span>            <span class="typ">VARCHAR</span>        <span class="cmt">-- 'Batsman' | 'Bowler' | 'All-rounder' | 'Wicket-keeper'</span>
+  <span class="col">batting_style</span>   <span class="typ">VARCHAR</span>        <span class="cmt">-- 'Right-hand' | 'Left-hand'</span>
+  <span class="col">bowling_style</span>   <span class="typ">VARCHAR</span>        <span class="cmt">-- NULL for batsmen and wicket-keepers</span>
+  <span class="col">is_active</span>       <span class="typ">BOOLEAN</span>
 
-<span class="tbl">matches</span> <span class="cmt"> - 8 rows</span>
- <span class="col">id</span> <span class="typ">SERIAL PRIMARY KEY</span>
- <span class="col">opponent</span> <span class="typ">VARCHAR</span>
- <span class="col">venue</span> <span class="typ">VARCHAR</span>
- <span class="col">format</span> <span class="typ">VARCHAR</span> <span class="cmt"> - 'Test' | 'ODI' | 'T20'</span>
- <span class="col">match_date</span> <span class="typ">DATE</span>
- <span class="col">result</span> <span class="typ">VARCHAR</span> <span class="cmt"> - 'Won' | 'Lost' | 'Draw'</span>
+<span class="tbl">matches</span>        <span class="cmt">-- 8 rows</span>
+  <span class="col">id</span>              <span class="typ">SERIAL PRIMARY KEY</span>
+  <span class="col">opponent</span>        <span class="typ">VARCHAR</span>
+  <span class="col">venue</span>           <span class="typ">VARCHAR</span>
+  <span class="col">format</span>          <span class="typ">VARCHAR</span>        <span class="cmt">-- 'Test' | 'ODI' | 'T20'</span>
+  <span class="col">match_date</span>      <span class="typ">DATE</span>
+  <span class="col">result</span>          <span class="typ">VARCHAR</span>        <span class="cmt">-- 'Won' | 'Lost' | 'Draw'</span>
 
-<span class="tbl">performances</span> <span class="cmt"> - 30 rows - one per player per match</span>
- <span class="col">id</span> <span class="typ">SERIAL PRIMARY KEY</span>
- <span class="col">match_id</span> <span class="typ">INT → matches.id</span>
- <span class="col">player_id</span> <span class="typ">INT → players.id</span>
- <span class="col">runs</span> <span class="typ">INT</span>
- <span class="col">wickets</span> <span class="typ">INT</span>
- <span class="col">catches</span> <span class="typ">INT</span></pre>
- </div>
+<span class="tbl">performances</span>   <span class="cmt">-- 30 rows — one per player per match</span>
+  <span class="col">id</span>              <span class="typ">SERIAL PRIMARY KEY</span>
+  <span class="col">match_id</span>        <span class="typ">INT → matches.id</span>
+  <span class="col">player_id</span>       <span class="typ">INT → players.id</span>
+  <span class="col">runs</span>            <span class="typ">INT</span>
+  <span class="col">wickets</span>         <span class="typ">INT</span>
+  <span class="col">catches</span>         <span class="typ">INT</span></pre>
+  </div>
 </div>
 
-<! - SETUP LINK - >
+<!-- SETUP LINK -->
 <div class="setup-banner">
- <div class="setup-link-box">
- <span class="icon">📄</span>
- <p>Download the setup file to create and populate CricketDB in PostgreSQL (pgAdmin):
- <br><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/cricketDB-setup.sql" target="_blank" download="cricketdb_setup.sql">→ cricketdb_setup.sql ↓</a>
- &nbsp;·&nbsp; Run it once and all 15 players, 8 matches, and 30 performances are ready to query.
- </p>
- </div>
+  <div class="setup-link-box">
+    <span class="icon">📄</span>
+    <p>Download the setup file to create and populate CricketDB in PostgreSQL (pgAdmin):
+      <br><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/cricketDB-setup.sql" target="_blank" download="cricketdb_setup.sql">→ cricketdb_setup.sql ↓</a>
+      &nbsp;·&nbsp; Run it once and all 15 players, 8 matches, and 30 performances are ready to query.
+    </p>
+  </div>
 </div>
 
-<! - LEGEND - >
+<!-- LEGEND -->
 <div class="legend">
- <div class="legend-item"><div class="legend-dot" style="background:var( - easy)"></div> Easy - single table, basic clauses</div>
- <div class="legend-item"><div class="legend-dot" style="background:var( - medium)"></div> Medium - JOINs, GROUP BY, HAVING</div>
- <div class="legend-item"><div class="legend-dot" style="background:var( - hard)"></div> Hard - window functions, CTEs, subqueries</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--easy)"></div> Easy — single table, basic clauses</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--medium)"></div> Medium — JOINs, GROUP BY, HAVING</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--hard)"></div> Hard — window functions, CTEs, subqueries</div>
 </div>
 
-<! - ==================== EASY ==================== - >
+<!-- ==================== EASY ==================== -->
 <div class="section-header">
- <div class="difficulty-banner easy-banner">
- <div class="d-label">Easy</div>
- <div class="d-desc">Single table · WHERE · ORDER BY · basic aggregates</div>
- </div>
+  <div class="difficulty-banner easy-banner">
+    <div class="d-label">Easy</div>
+    <div class="d-desc">Single table · WHERE · ORDER BY · basic aggregates</div>
+  </div>
 </div>
 
 <div class="questions-wrap">
 
- <! - Q1 - >
- <div class="q-card easy">
- <div class="q-header">
- <div class="q-num">01</div>
- <div class="q-meta">
- <div class="q-badge">Easy</div>
- <div class="q-title">List all active players and their roles, sorted alphabetically</div>
- <div class="q-concepts">SELECT · WHERE · ORDER BY</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">You're building a squad page. You need every currently active player's name and role - nothing from retired players, sorted so it's easy to scan.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Filter <code>is_active = TRUE</code> on the <code>players</code> table and sort by <code>name</code>. Single table, no JOIN needed.</div>
+  <!-- Q1 -->
+  <div class="q-card easy">
+    <div class="q-header">
+      <div class="q-num">01</div>
+      <div class="q-meta">
+        <div class="q-badge">Easy</div>
+        <div class="q-title">List all active players and their roles, sorted alphabetically</div>
+        <div class="q-concepts">SELECT · WHERE · ORDER BY</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">You're building a squad page. You need every currently active player's name and role — nothing from retired players, sorted so it's easy to scan.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Filter <code>is_active = TRUE</code> on the <code>players</code> table and sort by <code>name</code>. Single table, no JOIN needed.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- name,
- role,
- batting_style
-<span class="kw">FROM</span> <span class="tbl-name">players</span>
-<span class="kw">WHERE</span> is_active = <span class="kw">TRUE</span>
+    name,
+    role,
+    batting_style
+<span class="kw">FROM</span>   <span class="tbl-name">players</span>
+<span class="kw">WHERE</span>  is_active = <span class="kw">TRUE</span>
 <span class="kw">ORDER BY</span> name;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">11 rows - the 4 retired players (Dhoni, Sachin, Kumble, Dhawan) are excluded. <code>is_active</code> is a BOOLEAN column - comparing it to <code>TRUE</code> is the same as just writing <code>WHERE is_active</code>, which also works in PostgreSQL.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">11 rows — the 4 retired players (Dhoni, Sachin, Kumble, Dhawan) are excluded. <code>is_active</code> is a BOOLEAN column — comparing it to <code>TRUE</code> is the same as just writing <code>WHERE is_active</code>, which also works in PostgreSQL.</div>
+    </div>
+  </div>
 
- <! - Q2 - >
- <div class="q-card easy">
- <div class="q-header">
- <div class="q-num">02</div>
- <div class="q-meta">
- <div class="q-badge">Easy</div>
- <div class="q-title">How many players are in each role?</div>
- <div class="q-concepts">GROUP BY · COUNT · ORDER BY</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">The selection committee wants a quick squad breakdown - how many batsmen, bowlers, all-rounders, and wicket-keepers are in the 15-man squad.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Group the <code>players</code> table by <code>role</code> and count rows per group. No JOIN, no WHERE - aggregate the whole table.</div>
+  <!-- Q2 -->
+  <div class="q-card easy">
+    <div class="q-header">
+      <div class="q-num">02</div>
+      <div class="q-meta">
+        <div class="q-badge">Easy</div>
+        <div class="q-title">How many players are in each role?</div>
+        <div class="q-concepts">GROUP BY · COUNT · ORDER BY</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">The selection committee wants a quick squad breakdown — how many batsmen, bowlers, all-rounders, and wicket-keepers are in the 15-man squad.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Group the <code>players</code> table by <code>role</code> and count rows per group. No JOIN, no WHERE — aggregate the whole table.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- role,
- <span class="fn">COUNT</span>(*) <span class="kw">AS</span> player_count
-<span class="kw">FROM</span> <span class="tbl-name">players</span>
+    role,
+    <span class="fn">COUNT</span>(*) <span class="kw">AS</span> player_count
+<span class="kw">FROM</span>   <span class="tbl-name">players</span>
 <span class="kw">GROUP BY</span> role
 <span class="kw">ORDER BY</span> player_count <span class="kw">DESC</span>;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Batsmen: 7 · Bowlers: 4 · All-rounders: 3 · Wicket-keepers: 1. This includes both active and retired players - add <code>WHERE is_active = TRUE</code> before GROUP BY if you want only current players.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Batsmen: 7 · Bowlers: 4 · All-rounders: 3 · Wicket-keepers: 1. This includes both active and retired players — add <code>WHERE is_active = TRUE</code> before GROUP BY if you want only current players.</div>
+    </div>
+  </div>
 
- <! - Q3 - >
- <div class="q-card easy">
- <div class="q-header">
- <div class="q-num">03</div>
- <div class="q-meta">
- <div class="q-badge">Easy</div>
- <div class="q-title">Show all players who have a bowling style recorded - use COALESCE for the rest</div>
- <div class="q-concepts">IS NULL · COALESCE · WHERE</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">You need a bowling roster. Pure batsmen and the wicket-keeper have NULL in <code>bowling_style</code>. Display "N/A" for them instead of a blank, and only show players who actually bowl.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Use <code>WHERE bowling_style IS NOT NULL</code> for the bowling roster. For the full squad with "N/A" fallback, remove the WHERE and wrap the column in <code>COALESCE(bowling_style, 'N/A')</code>.</div>
-<pre class="sql"><span class="cm"> - Bowlers only</span>
+  <!-- Q3 -->
+  <div class="q-card easy">
+    <div class="q-header">
+      <div class="q-num">03</div>
+      <div class="q-meta">
+        <div class="q-badge">Easy</div>
+        <div class="q-title">Show all players who have a bowling style recorded — use COALESCE for the rest</div>
+        <div class="q-concepts">IS NULL · COALESCE · WHERE</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">You need a bowling roster. Pure batsmen and the wicket-keeper have NULL in <code>bowling_style</code>. Display "N/A" for them instead of a blank, and only show players who actually bowl.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Use <code>WHERE bowling_style IS NOT NULL</code> for the bowling roster. For the full squad with "N/A" fallback, remove the WHERE and wrap the column in <code>COALESCE(bowling_style, 'N/A')</code>.</div>
+<pre class="sql"><span class="cm">-- Bowlers only</span>
 <span class="kw">SELECT</span> name, role, bowling_style
-<span class="kw">FROM</span> <span class="tbl-name">players</span>
-<span class="kw">WHERE</span> bowling_style <span class="kw">IS NOT NULL</span>
+<span class="kw">FROM</span>   <span class="tbl-name">players</span>
+<span class="kw">WHERE</span>  bowling_style <span class="kw">IS NOT NULL</span>
 <span class="kw">ORDER BY</span> bowling_style, name;
 
-<span class="cm"> - Full squad with 'N/A' for non-bowlers</span>
+<span class="cm">-- Full squad with 'N/A' for non-bowlers</span>
 <span class="kw">SELECT</span>
- name,
- role,
- <span class="fn">COALESCE</span>(bowling_style, <span class="str">'N/A'</span>) <span class="kw">AS</span> bowling_style
-<span class="kw">FROM</span> <span class="tbl-name">players</span>
+    name,
+    role,
+    <span class="fn">COALESCE</span>(bowling_style, <span class="str">'N/A'</span>) <span class="kw">AS</span> bowling_style
+<span class="kw">FROM</span>   <span class="tbl-name">players</span>
 <span class="kw">ORDER BY</span> role, name;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text"><strong>Never write <code>WHERE bowling_style = NULL</code></strong> - that always returns zero rows. NULL comparisons require <code>IS NULL</code> / <code>IS NOT NULL</code>. <code>COALESCE</code> returns the first non-NULL argument, so <code>COALESCE(bowling_style, 'N/A')</code> gives 'N/A' only when bowling_style is NULL.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text"><strong>Never write <code>WHERE bowling_style = NULL</code></strong> — that always returns zero rows. NULL comparisons require <code>IS NULL</code> / <code>IS NOT NULL</code>. <code>COALESCE</code> returns the first non-NULL argument, so <code>COALESCE(bowling_style, 'N/A')</code> gives 'N/A' only when bowling_style is NULL.</div>
+    </div>
+  </div>
 
- <! - Q4 - >
- <div class="q-card easy">
- <div class="q-header">
- <div class="q-num">04</div>
- <div class="q-meta">
- <div class="q-badge">Easy</div>
- <div class="q-title">India's win/loss record - how many matches won, lost, and drawn per format?</div>
- <div class="q-concepts">GROUP BY · COUNT · FILTER</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">A journalist wants India's record broken down by format - Tests, ODIs, and T20s separately, with wins, losses, and draws in each.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Group <code>matches</code> by <code>format</code>, then use <code>COUNT(*) FILTER (WHERE result = '...')</code> to count each outcome within the same row. Avoids writing three separate queries.</div>
+  <!-- Q4 -->
+  <div class="q-card easy">
+    <div class="q-header">
+      <div class="q-num">04</div>
+      <div class="q-meta">
+        <div class="q-badge">Easy</div>
+        <div class="q-title">India's win/loss record — how many matches won, lost, and drawn per format?</div>
+        <div class="q-concepts">GROUP BY · COUNT · FILTER</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">A journalist wants India's record broken down by format — Tests, ODIs, and T20s separately, with wins, losses, and draws in each.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Group <code>matches</code> by <code>format</code>, then use <code>COUNT(*) FILTER (WHERE result = '...')</code> to count each outcome within the same row. Avoids writing three separate queries.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- format,
- <span class="fn">COUNT</span>(*) <span class="kw">AS</span> played,
- <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Won'</span>) <span class="kw">AS</span> wins,
- <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Lost'</span>) <span class="kw">AS</span> losses,
- <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Draw'</span>) <span class="kw">AS</span> draws
-<span class="kw">FROM</span> <span class="tbl-name">matches</span>
+    format,
+    <span class="fn">COUNT</span>(*)                                       <span class="kw">AS</span> played,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Won'</span>)        <span class="kw">AS</span> wins,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Lost'</span>)       <span class="kw">AS</span> losses,
+    <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> result = <span class="str">'Draw'</span>)       <span class="kw">AS</span> draws
+<span class="kw">FROM</span>   <span class="tbl-name">matches</span>
 <span class="kw">GROUP BY</span> format
 <span class="kw">ORDER BY</span> format;</pre>
- <div class="alt-label">Alternative - CASE WHEN (works in all databases)</div>
- <div class="alt-note">Replace each <code>FILTER</code> with <code>SUM(CASE WHEN result = 'Won' THEN 1 ELSE 0 END)</code>. <code>FILTER</code> is PostgreSQL-specific and cleaner; <code>CASE WHEN</code> is standard SQL that works everywhere including MySQL and SQLite.</div>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">ODI: 2 played, 2 wins · T20: 3 played, 2 wins, 1 loss · Test: 3 played, 2 wins, 1 loss. This dataset has no draws - all draw counts will be 0, which is correct.</div>
- </div>
- </div>
+      <div class="alt-label">Alternative — CASE WHEN (works in all databases)</div>
+      <div class="alt-note">Replace each <code>FILTER</code> with <code>SUM(CASE WHEN result = 'Won' THEN 1 ELSE 0 END)</code>. <code>FILTER</code> is PostgreSQL-specific and cleaner; <code>CASE WHEN</code> is standard SQL that works everywhere including MySQL and SQLite.</div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">ODI: 2 played, 2 wins · T20: 3 played, 2 wins, 1 loss · Test: 3 played, 2 wins, 1 loss. This dataset has no draws — all draw counts will be 0, which is correct.</div>
+    </div>
+  </div>
 
-</div><! - /easy questions - >
+</div><!-- /easy questions -->
 
 <hr class="section-divider">
 
-<! - ==================== MEDIUM ==================== - >
+<!-- ==================== MEDIUM ==================== -->
 <div class="section-header">
- <div class="difficulty-banner medium-banner">
- <div class="d-label">Medium</div>
- <div class="d-desc">JOINs · GROUP BY + HAVING · multi-table aggregation</div>
- </div>
+  <div class="difficulty-banner medium-banner">
+    <div class="d-label">Medium</div>
+    <div class="d-desc">JOINs · GROUP BY + HAVING · multi-table aggregation</div>
+  </div>
 </div>
 
 <div class="questions-wrap">
 
- <! - Q5 - >
- <div class="q-card medium">
- <div class="q-header">
- <div class="q-num">05</div>
- <div class="q-meta">
- <div class="q-badge">Medium</div>
- <div class="q-title">Show each player's career totals - runs, wickets, and matches played</div>
- <div class="q-concepts">JOIN · GROUP BY · SUM · COUNT</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">You need a career statistics page - one row per player showing their aggregate numbers across all matches they appeared in.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">JOIN <code>performances</code> → <code>players</code>, then GROUP BY player to aggregate. Always include the player's <code>id</code> in GROUP BY alongside <code>name</code> - two players could theoretically share a name, and the id prevents incorrect grouping.</div>
+  <!-- Q5 -->
+  <div class="q-card medium">
+    <div class="q-header">
+      <div class="q-num">05</div>
+      <div class="q-meta">
+        <div class="q-badge">Medium</div>
+        <div class="q-title">Show each player's career totals — runs, wickets, and matches played</div>
+        <div class="q-concepts">JOIN · GROUP BY · SUM · COUNT</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">You need a career statistics page — one row per player showing their aggregate numbers across all matches they appeared in.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">JOIN <code>performances</code> → <code>players</code>, then GROUP BY player to aggregate. Always include the player's <code>id</code> in GROUP BY alongside <code>name</code> — two players could theoretically share a name, and the id prevents incorrect grouping.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- pl.name,
- pl.role,
- <span class="fn">COUNT</span>(*) <span class="kw">AS</span> matches_played,
- <span class="fn">SUM</span>(p.runs) <span class="kw">AS</span> total_runs,
- <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets,
- <span class="fn">SUM</span>(p.catches) <span class="kw">AS</span> total_catches,
- <span class="fn">MAX</span>(p.runs) <span class="kw">AS</span> highest_score,
- <span class="fn">ROUND</span>(<span class="fn">AVG</span>(p.runs), <span class="num">1</span>) <span class="kw">AS</span> batting_avg
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
+    pl.name,
+    pl.role,
+    <span class="fn">COUNT</span>(*)            <span class="kw">AS</span> matches_played,
+    <span class="fn">SUM</span>(p.runs)         <span class="kw">AS</span> total_runs,
+    <span class="fn">SUM</span>(p.wickets)      <span class="kw">AS</span> total_wickets,
+    <span class="fn">SUM</span>(p.catches)      <span class="kw">AS</span> total_catches,
+    <span class="fn">MAX</span>(p.runs)         <span class="kw">AS</span> highest_score,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(p.runs), <span class="num">1</span>) <span class="kw">AS</span> batting_avg
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
 <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Kohli tops the run chart at 388 across 6 appearances. Only 13 players appear - 4 in the squad (Dhoni, Sachin, Kumble, Dhawan) were never selected for these 8 matches and have no rows in <code>performances</code>. An INNER JOIN only returns players who played.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Kohli tops the run chart at 388 across 6 appearances. Only 13 players appear — 4 in the squad (Dhoni, Sachin, Kumble, Dhawan) were never selected for these 8 matches and have no rows in <code>performances</code>. An INNER JOIN only returns players who played.</div>
+    </div>
+  </div>
 
- <! - Q6 - >
- <div class="q-card medium">
- <div class="q-header">
- <div class="q-num">06</div>
- <div class="q-meta">
- <div class="q-badge">Medium</div>
- <div class="q-title">Find players who never took a single wicket in any match</div>
- <div class="q-concepts">LEFT JOIN · anti-join · IS NULL · NOT EXISTS</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">The bowling coach wants a list of players in the squad who contributed zero wickets across all recorded matches - pure batsmen who were selected but never bowled.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Two valid patterns: <strong>(1)</strong> LEFT JOIN from players to performances and filter on <code>IS NULL</code> (players with no performances at all), or <strong>(2)</strong> JOIN then HAVING to find players who played but had total wickets = 0.</div>
-<pre class="sql"><span class="cm"> - Approach A: Players in squad but never selected (no performances)</span>
+  <!-- Q6 -->
+  <div class="q-card medium">
+    <div class="q-header">
+      <div class="q-num">06</div>
+      <div class="q-meta">
+        <div class="q-badge">Medium</div>
+        <div class="q-title">Find players who never took a single wicket in any match</div>
+        <div class="q-concepts">LEFT JOIN · anti-join · IS NULL · NOT EXISTS</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">The bowling coach wants a list of players in the squad who contributed zero wickets across all recorded matches — pure batsmen who were selected but never bowled.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Two valid patterns: <strong>(1)</strong> LEFT JOIN from players to performances and filter on <code>IS NULL</code> (players with no performances at all), or <strong>(2)</strong> JOIN then HAVING to find players who played but had total wickets = 0.</div>
+<pre class="sql"><span class="cm">-- Approach A: Players in squad but never selected (no performances)</span>
 <span class="kw">SELECT</span> pl.name, pl.role
-<span class="kw">FROM</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl
+<span class="kw">FROM</span>   <span class="tbl-name">players</span>      <span class="kw">AS</span> pl
 <span class="kw">LEFT JOIN</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p <span class="kw">ON</span> p.player_id = pl.id
-<span class="kw">WHERE</span> p.id <span class="kw">IS NULL</span>
+<span class="kw">WHERE</span>  p.id <span class="kw">IS NULL</span>
 <span class="kw">ORDER BY</span> pl.name;
 
-<span class="cm"> - Approach B: Players who played but took 0 wickets</span>
+<span class="cm">-- Approach B: Players who played but took 0 wickets</span>
 <span class="kw">SELECT</span>
- pl.name,
- pl.role,
- <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
+    pl.name,
+    pl.role,
+    <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
 <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
-<span class="kw">HAVING</span> <span class="fn">SUM</span>(p.wickets) = <span class="num">0</span>
+<span class="kw">HAVING</span>  <span class="fn">SUM</span>(p.wickets) = <span class="num">0</span>
 <span class="kw">ORDER BY</span> pl.name;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text"><strong>Approach A</strong> returns 4 players never selected at all (Dhoni, Sachin, Kumble, Dhawan). <strong>Approach B</strong> returns players who did play but bowled zero wickets - Kohli, Rohit, KL Rahul, Shreyas, Suryakumar. These are different questions despite sounding similar. Read carefully which one you actually need.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text"><strong>Approach A</strong> returns 4 players never selected at all (Dhoni, Sachin, Kumble, Dhawan). <strong>Approach B</strong> returns players who did play but bowled zero wickets — Kohli, Rohit, KL Rahul, Shreyas, Suryakumar. These are different questions despite sounding similar. Read carefully which one you actually need.</div>
+    </div>
+  </div>
 
- <! - Q7 - >
- <div class="q-card medium">
- <div class="q-header">
- <div class="q-num">07</div>
- <div class="q-meta">
- <div class="q-badge">Medium</div>
- <div class="q-title">Which all-rounders contributed both runs AND wickets in the same match?</div>
- <div class="q-concepts">JOIN · WHERE with AND · multiple conditions</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">The team analyst wants to identify matches where all-rounders delivered on both fronts - not just with the bat or ball, but both in the same game.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Three-table JOIN (performances → players → matches), then filter with <code>WHERE pl.role = 'All-rounder' AND p.runs > 0 AND p.wickets > 0</code>. All conditions go in WHERE - no aggregation needed because we want individual match rows.</div>
+  <!-- Q7 -->
+  <div class="q-card medium">
+    <div class="q-header">
+      <div class="q-num">07</div>
+      <div class="q-meta">
+        <div class="q-badge">Medium</div>
+        <div class="q-title">Which all-rounders contributed both runs AND wickets in the same match?</div>
+        <div class="q-concepts">JOIN · WHERE with AND · multiple conditions</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">The team analyst wants to identify matches where all-rounders delivered on both fronts — not just with the bat or ball, but both in the same game.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Three-table JOIN (performances → players → matches), then filter with <code>WHERE pl.role = 'All-rounder' AND p.runs > 0 AND p.wickets > 0</code>. All conditions go in WHERE — no aggregation needed because we want individual match rows.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- pl.name,
- m.opponent,
- m.format,
- m.result,
- p.runs,
- p.wickets
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
-<span class="kw">JOIN</span> <span class="tbl-name">matches</span> <span class="kw">AS</span> m <span class="kw">ON</span> m.id = p.match_id
-<span class="kw">WHERE</span> pl.role = <span class="str">'All-rounder'</span>
- <span class="kw">AND</span> p.runs > <span class="num">0</span>
- <span class="kw">AND</span> p.wickets > <span class="num">0</span>
+    pl.name,
+    m.opponent,
+    m.format,
+    m.result,
+    p.runs,
+    p.wickets
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+<span class="kw">JOIN</span>   <span class="tbl-name">matches</span>       <span class="kw">AS</span> m   <span class="kw">ON</span> m.id  = p.match_id
+<span class="kw">WHERE</span>  pl.role    = <span class="str">'All-rounder'</span>
+  <span class="kw">AND</span>  p.runs     > <span class="num">0</span>
+  <span class="kw">AND</span>  p.wickets  > <span class="num">0</span>
 <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Jadeja appears 3 times - he consistently contributed with both bat and ball. Ashwin shows up twice. Pandya twice. This is the kind of query coaches use for form analysis - identifying players whose match impact is genuinely two-dimensional.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Jadeja appears 3 times — he consistently contributed with both bat and ball. Ashwin shows up twice. Pandya twice. This is the kind of query coaches use for form analysis — identifying players whose match impact is genuinely two-dimensional.</div>
+    </div>
+  </div>
 
- <! - Q8 - >
- <div class="q-card medium">
- <div class="q-header">
- <div class="q-num">08</div>
- <div class="q-meta">
- <div class="q-badge">Medium</div>
- <div class="q-title">Players with over 50 runs AND over 3 wickets - the true all-rounders</div>
- <div class="q-concepts">JOIN · GROUP BY · HAVING with multiple conditions</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">You want to rank players by genuine all-round contribution - not just role label, but actual numbers. Show only players who cleared both the batting and bowling thresholds.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Aggregate total runs and wickets per player with GROUP BY, then use HAVING to filter on both aggregates simultaneously. WHERE runs before grouping - HAVING filters after. You can't use WHERE here because SUM(runs) doesn't exist until after aggregation.</div>
+  <!-- Q8 -->
+  <div class="q-card medium">
+    <div class="q-header">
+      <div class="q-num">08</div>
+      <div class="q-meta">
+        <div class="q-badge">Medium</div>
+        <div class="q-title">Players with over 50 runs AND over 3 wickets — the true all-rounders</div>
+        <div class="q-concepts">JOIN · GROUP BY · HAVING with multiple conditions</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">You want to rank players by genuine all-round contribution — not just role label, but actual numbers. Show only players who cleared both the batting and bowling thresholds.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Aggregate total runs and wickets per player with GROUP BY, then use HAVING to filter on both aggregates simultaneously. WHERE runs before grouping — HAVING filters after. You can't use WHERE here because SUM(runs) doesn't exist until after aggregation.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- pl.name,
- pl.role,
- <span class="fn">SUM</span>(p.runs) <span class="kw">AS</span> total_runs,
- <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
+    pl.name,
+    pl.role,
+    <span class="fn">SUM</span>(p.runs)    <span class="kw">AS</span> total_runs,
+    <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
 <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
-<span class="kw">HAVING</span> <span class="fn">SUM</span>(p.runs) > <span class="num">50</span>
- <span class="kw">AND</span> <span class="fn">SUM</span>(p.wickets) > <span class="num">3</span>
+<span class="kw">HAVING</span>  <span class="fn">SUM</span>(p.runs)    > <span class="num">50</span>
+   <span class="kw">AND</span>  <span class="fn">SUM</span>(p.wickets) > <span class="num">3</span>
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Jadeja (165 runs, 7 wickets) and Ashwin (48 runs, 10 wickets) clear both bars - though Ashwin is close on runs. Pandya (62 runs, 3 wickets) falls just short on wickets if you use <code>> 3</code> strictly. Try changing the thresholds to see who enters and exits the list.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Jadeja (165 runs, 7 wickets) and Ashwin (48 runs, 10 wickets) clear both bars — though Ashwin is close on runs. Pandya (62 runs, 3 wickets) falls just short on wickets if you use <code>> 3</code> strictly. Try changing the thresholds to see who enters and exits the list.</div>
+    </div>
+  </div>
 
-</div><! - /medium questions - >
+</div><!-- /medium questions -->
 
 <hr class="section-divider">
 
-<! - ==================== HARD ==================== - >
+<!-- ==================== HARD ==================== -->
 <div class="section-header">
- <div class="difficulty-banner hard-banner">
- <div class="d-label">Hard</div>
- <div class="d-desc">Window functions · CTEs · subqueries · complex aggregation</div>
- </div>
+  <div class="difficulty-banner hard-banner">
+    <div class="d-label">Hard</div>
+    <div class="d-desc">Window functions · CTEs · subqueries · complex aggregation</div>
+  </div>
 </div>
 
 <div class="questions-wrap">
 
- <! - Q9 - >
- <div class="q-card hard">
- <div class="q-header">
- <div class="q-num">09</div>
- <div class="q-meta">
- <div class="q-badge">Hard</div>
- <div class="q-title">Top scorer in each match - without removing other players from the result</div>
- <div class="q-concepts">ROW_NUMBER · OVER · PARTITION BY · subquery</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">For every match, identify who scored the most runs. The catch: you want to see all players in each match, but flag who the top scorer was. A GROUP BY would collapse the rows - you need a window function.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Use <code>ROW_NUMBER() OVER (PARTITION BY match_id ORDER BY runs DESC)</code> to rank players within each match. Then wrap it in a subquery (or CTE) and filter on <code>rn = 1</code> to get only the top scorer per match.</div>
-<pre class="sql"><span class="cm"> - Full ranking (all players visible, with their rank per match)</span>
+  <!-- Q9 -->
+  <div class="q-card hard">
+    <div class="q-header">
+      <div class="q-num">09</div>
+      <div class="q-meta">
+        <div class="q-badge">Hard</div>
+        <div class="q-title">Top scorer in each match — without removing other players from the result</div>
+        <div class="q-concepts">ROW_NUMBER · OVER · PARTITION BY · subquery</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">For every match, identify who scored the most runs. The catch: you want to see all players in each match, but flag who the top scorer was. A GROUP BY would collapse the rows — you need a window function.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Use <code>ROW_NUMBER() OVER (PARTITION BY match_id ORDER BY runs DESC)</code> to rank players within each match. Then wrap it in a subquery (or CTE) and filter on <code>rn = 1</code> to get only the top scorer per match.</div>
+<pre class="sql"><span class="cm">-- Full ranking (all players visible, with their rank per match)</span>
 <span class="kw">SELECT</span>
- pl.name,
- m.opponent,
- m.format,
- p.runs,
- <span class="fn">ROW_NUMBER</span>() <span class="kw">OVER</span> (
- <span class="kw">PARTITION BY</span> p.match_id
- <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>
- ) <span class="kw">AS</span> rank_in_match
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
-<span class="kw">JOIN</span> <span class="tbl-name">matches</span> <span class="kw">AS</span> m <span class="kw">ON</span> m.id = p.match_id
+    pl.name,
+    m.opponent,
+    m.format,
+    p.runs,
+    <span class="fn">ROW_NUMBER</span>() <span class="kw">OVER</span> (
+        <span class="kw">PARTITION BY</span> p.match_id
+        <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>
+    ) <span class="kw">AS</span> rank_in_match
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+<span class="kw">JOIN</span>   <span class="tbl-name">matches</span>       <span class="kw">AS</span> m   <span class="kw">ON</span> m.id  = p.match_id
 <span class="kw">ORDER BY</span> m.match_date, rank_in_match;
 
-<span class="cm"> - Top scorer only per match</span>
+<span class="cm">-- Top scorer only per match</span>
 <span class="kw">SELECT</span> name, opponent, format, runs
 <span class="kw">FROM</span> (
- <span class="kw">SELECT</span>
- pl.name, m.opponent, m.format, p.runs,
- <span class="fn">ROW_NUMBER</span>() <span class="kw">OVER</span> (
- <span class="kw">PARTITION BY</span> p.match_id
- <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>
- ) <span class="kw">AS</span> rn
- <span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
- <span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
- <span class="kw">JOIN</span> <span class="tbl-name">matches</span> <span class="kw">AS</span> m <span class="kw">ON</span> m.id = p.match_id
+    <span class="kw">SELECT</span>
+        pl.name, m.opponent, m.format, p.runs,
+        <span class="fn">ROW_NUMBER</span>() <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> p.match_id
+            <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>
+        ) <span class="kw">AS</span> rn
+    <span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+    <span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+    <span class="kw">JOIN</span>   <span class="tbl-name">matches</span>       <span class="kw">AS</span> m   <span class="kw">ON</span> m.id  = p.match_id
 ) <span class="kw">AS</span> ranked
 <span class="kw">WHERE</span> rn = <span class="num">1</span>
 <span class="kw">ORDER BY</span> runs <span class="kw">DESC</span>;</pre>
- <div class="alt-label">Alternative - RANK() instead of ROW_NUMBER()</div>
- <div class="alt-note">If two players score the same runs in a match, <code>ROW_NUMBER</code> picks one arbitrarily. Use <code>RANK()</code> instead - tied players both get <code>rn = 1</code> and both appear in the filtered result. Use ROW_NUMBER when you want exactly one row per group regardless of ties; RANK when ties should both show.</div>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Kohli's 121 against England (Test, Ahmedabad) is the highest individual score. You cannot do this with a plain GROUP BY - <code>MAX(runs)</code> gives you the number but not the player's name without a second join. Window functions solve this cleanly by operating across rows without collapsing them.</div>
- </div>
- </div>
+      <div class="alt-label">Alternative — RANK() instead of ROW_NUMBER()</div>
+      <div class="alt-note">If two players score the same runs in a match, <code>ROW_NUMBER</code> picks one arbitrarily. Use <code>RANK()</code> instead — tied players both get <code>rn = 1</code> and both appear in the filtered result. Use ROW_NUMBER when you want exactly one row per group regardless of ties; RANK when ties should both show.</div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Kohli's 121 against England (Test, Ahmedabad) is the highest individual score. You cannot do this with a plain GROUP BY — <code>MAX(runs)</code> gives you the number but not the player's name without a second join. Window functions solve this cleanly by operating across rows without collapsing them.</div>
+    </div>
+  </div>
 
- <! - Q10 - >
- <div class="q-card hard">
- <div class="q-header">
- <div class="q-num">10</div>
- <div class="q-meta">
- <div class="q-badge">Hard</div>
- <div class="q-title">Kohli's running career total - cumulative runs match by match</div>
- <div class="q-concepts">SUM OVER · PARTITION BY · ORDER BY · running total</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">Show Kohli's runs in each match chronologically, and alongside each match show his cumulative career total at that point - the running total that grows with every game.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Filter performances to Kohli only, then use <code>SUM(runs) OVER (ORDER BY match_date)</code>. The <code>PARTITION BY</code> is omitted here - since we've already filtered to one player, the window covers all his rows, accumulating in date order.</div>
+  <!-- Q10 -->
+  <div class="q-card hard">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-meta">
+        <div class="q-badge">Hard</div>
+        <div class="q-title">Kohli's running career total — cumulative runs match by match</div>
+        <div class="q-concepts">SUM OVER · PARTITION BY · ORDER BY · running total</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">Show Kohli's runs in each match chronologically, and alongside each match show his cumulative career total at that point — the running total that grows with every game.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Filter performances to Kohli only, then use <code>SUM(runs) OVER (ORDER BY match_date)</code>. The <code>PARTITION BY</code> is omitted here — since we've already filtered to one player, the window covers all his rows, accumulating in date order.</div>
 <pre class="sql"><span class="kw">SELECT</span>
- m.match_date,
- m.opponent,
- m.format,
- m.result,
- p.runs <span class="kw">AS</span> runs_this_match,
- <span class="fn">SUM</span>(p.runs) <span class="kw">OVER</span> (
- <span class="kw">ORDER BY</span> m.match_date
- ) <span class="kw">AS</span> career_total
-<span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
-<span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
-<span class="kw">JOIN</span> <span class="tbl-name">matches</span> <span class="kw">AS</span> m <span class="kw">ON</span> m.id = p.match_id
-<span class="kw">WHERE</span> pl.name = <span class="str">'Virat Kohli'</span>
+    m.match_date,
+    m.opponent,
+    m.format,
+    m.result,
+    p.runs                                           <span class="kw">AS</span> runs_this_match,
+    <span class="fn">SUM</span>(p.runs) <span class="kw">OVER</span> (
+        <span class="kw">ORDER BY</span> m.match_date
+    )                                                <span class="kw">AS</span> career_total
+<span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+<span class="kw">JOIN</span>   <span class="tbl-name">matches</span>       <span class="kw">AS</span> m   <span class="kw">ON</span> m.id  = p.match_id
+<span class="kw">WHERE</span>  pl.name = <span class="str">'Virat Kohli'</span>
 <span class="kw">ORDER BY</span> m.match_date;</pre>
- <div class="alt-label">Extension - all players at once using PARTITION BY</div>
- <div class="alt-note">Remove the WHERE clause and add <code>PARTITION BY pl.id</code> inside the OVER - the running total then resets per player. Without PARTITION BY on multi-player data, the total would accumulate across all players combined, which is wrong.</div>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">The final row shows career_total = 388 (Kohli's total across 6 matches in this dataset). <strong>Key insight:</strong> <code>SUM() OVER</code> keeps every row intact while adding the accumulated value. A plain <code>GROUP BY + SUM</code> would give you one total row, not a row-by-row progression.</div>
- </div>
- </div>
+      <div class="alt-label">Extension — all players at once using PARTITION BY</div>
+      <div class="alt-note">Remove the WHERE clause and add <code>PARTITION BY pl.id</code> inside the OVER — the running total then resets per player. Without PARTITION BY on multi-player data, the total would accumulate across all players combined, which is wrong.</div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">The final row shows career_total = 388 (Kohli's total across 6 matches in this dataset). <strong>Key insight:</strong> <code>SUM() OVER</code> keeps every row intact while adding the accumulated value. A plain <code>GROUP BY + SUM</code> would give you one total row, not a row-by-row progression.</div>
+    </div>
+  </div>
 
- <! - Q11 - >
- <div class="q-card hard">
- <div class="q-header">
- <div class="q-num">11</div>
- <div class="q-meta">
- <div class="q-badge">Hard</div>
- <div class="q-title">Players who scored above the average score across all performances</div>
- <div class="q-concepts">CTE · subquery · AVG · correlated comparison</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">Find players whose career total runs exceed the average career total across all players who appeared in matches - a measure of who's punching above the squad average.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Two-step problem: first calculate total runs per player, then find the average of those totals. Use a CTE to name the first step cleanly, then compare each player's total against the average in the outer query.</div>
+  <!-- Q11 -->
+  <div class="q-card hard">
+    <div class="q-header">
+      <div class="q-num">11</div>
+      <div class="q-meta">
+        <div class="q-badge">Hard</div>
+        <div class="q-title">Players who scored above the average score across all performances</div>
+        <div class="q-concepts">CTE · subquery · AVG · correlated comparison</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">Find players whose career total runs exceed the average career total across all players who appeared in matches — a measure of who's punching above the squad average.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Two-step problem: first calculate total runs per player, then find the average of those totals. Use a CTE to name the first step cleanly, then compare each player's total against the average in the outer query.</div>
 <pre class="sql"><span class="kw">WITH</span> player_totals <span class="kw">AS</span> (
- <span class="kw">SELECT</span>
- pl.id,
- pl.name,
- pl.role,
- <span class="fn">SUM</span>(p.runs) <span class="kw">AS</span> total_runs
- <span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
- <span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
- <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
+    <span class="kw">SELECT</span>
+        pl.id,
+        pl.name,
+        pl.role,
+        <span class="fn">SUM</span>(p.runs) <span class="kw">AS</span> total_runs
+    <span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+    <span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+    <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
 )
 <span class="kw">SELECT</span>
- name,
- role,
- total_runs,
- <span class="fn">ROUND</span>(<span class="fn">AVG</span>(total_runs) <span class="kw">OVER</span> (), <span class="num">1</span>) <span class="kw">AS</span> squad_avg
-<span class="kw">FROM</span> player_totals
-<span class="kw">WHERE</span> total_runs > (<span class="kw">SELECT</span> <span class="fn">AVG</span>(total_runs) <span class="kw">FROM</span> player_totals)
+    name,
+    role,
+    total_runs,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(total_runs) <span class="kw">OVER</span> (), <span class="num">1</span>) <span class="kw">AS</span> squad_avg
+<span class="kw">FROM</span>   player_totals
+<span class="kw">WHERE</span>  total_runs > (<span class="kw">SELECT</span> <span class="fn">AVG</span>(total_runs) <span class="kw">FROM</span> player_totals)
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
- <div class="alt-label">Alternative - scalar subquery inline (no CTE)</div>
- <div class="alt-note">You can compute the average inline: <code>HAVING SUM(p.runs) > (SELECT AVG(sub.total) FROM (SELECT SUM(runs) AS total FROM performances GROUP BY player_id) sub)</code>. This works but is harder to read - the CTE version names each step clearly and is easier to debug.</div>
- <div class="explain-label">What to observe</div>
- <div class="explain-text"><code>AVG() OVER ()</code> with an empty OVER clause computes the average across the entire result - a window function trick that lets you show the squad average alongside each player's number without a second query or a self-join.</div>
- </div>
- </div>
+      <div class="alt-label">Alternative — scalar subquery inline (no CTE)</div>
+      <div class="alt-note">You can compute the average inline: <code>HAVING SUM(p.runs) > (SELECT AVG(sub.total) FROM (SELECT SUM(runs) AS total FROM performances GROUP BY player_id) sub)</code>. This works but is harder to read — the CTE version names each step clearly and is easier to debug.</div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text"><code>AVG() OVER ()</code> with an empty OVER clause computes the average across the entire result — a window function trick that lets you show the squad average alongside each player's number without a second query or a self-join.</div>
+    </div>
+  </div>
 
- <! - Q12 - >
- <div class="q-card hard">
- <div class="q-header">
- <div class="q-num">12</div>
- <div class="q-meta">
- <div class="q-badge">Hard</div>
- <div class="q-title">Full player report card with CASE WHEN performance tier</div>
- <div class="q-concepts">CTE · multiple aggregates · CASE WHEN classification · ROUND</div>
- </div>
- </div>
- <div class="q-body">
- <div class="q-scenario">Build a one-page squad report: every player's matches, runs, wickets, batting average, highest score, and a performance tier label (Star / Solid / Support) based on their numbers.</div>
- <div class="approach-label">Approach</div>
- <div class="approach-text">Use a CTE to compute all raw aggregates in one place, then apply CASE WHEN in the outer SELECT to assign the tier. Separating aggregation from classification makes both steps readable and individually testable.</div>
+  <!-- Q12 -->
+  <div class="q-card hard">
+    <div class="q-header">
+      <div class="q-num">12</div>
+      <div class="q-meta">
+        <div class="q-badge">Hard</div>
+        <div class="q-title">Full player report card with CASE WHEN performance tier</div>
+        <div class="q-concepts">CTE · multiple aggregates · CASE WHEN classification · ROUND</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-scenario">Build a one-page squad report: every player's matches, runs, wickets, batting average, highest score, and a performance tier label (Star / Solid / Support) based on their numbers.</div>
+      <div class="approach-label">Approach</div>
+      <div class="approach-text">Use a CTE to compute all raw aggregates in one place, then apply CASE WHEN in the outer SELECT to assign the tier. Separating aggregation from classification makes both steps readable and individually testable.</div>
 <pre class="sql"><span class="kw">WITH</span> stats <span class="kw">AS</span> (
- <span class="kw">SELECT</span>
- pl.id,
- pl.name,
- pl.role,
- pl.is_active,
- <span class="fn">COUNT</span>(*) <span class="kw">AS</span> matches_played,
- <span class="fn">SUM</span>(p.runs) <span class="kw">AS</span> total_runs,
- <span class="fn">SUM</span>(p.wickets) <span class="kw">AS</span> total_wickets,
- <span class="fn">MAX</span>(p.runs) <span class="kw">AS</span> highest_score,
- <span class="fn">ROUND</span>(<span class="fn">AVG</span>(p.runs), <span class="num">1</span>) <span class="kw">AS</span> batting_avg
- <span class="kw">FROM</span> <span class="tbl-name">performances</span> <span class="kw">AS</span> p
- <span class="kw">JOIN</span> <span class="tbl-name">players</span> <span class="kw">AS</span> pl <span class="kw">ON</span> pl.id = p.player_id
- <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role, pl.is_active
+    <span class="kw">SELECT</span>
+        pl.id,
+        pl.name,
+        pl.role,
+        pl.is_active,
+        <span class="fn">COUNT</span>(*)              <span class="kw">AS</span> matches_played,
+        <span class="fn">SUM</span>(p.runs)           <span class="kw">AS</span> total_runs,
+        <span class="fn">SUM</span>(p.wickets)        <span class="kw">AS</span> total_wickets,
+        <span class="fn">MAX</span>(p.runs)           <span class="kw">AS</span> highest_score,
+        <span class="fn">ROUND</span>(<span class="fn">AVG</span>(p.runs), <span class="num">1</span>) <span class="kw">AS</span> batting_avg
+    <span class="kw">FROM</span>   <span class="tbl-name">performances</span>  <span class="kw">AS</span> p
+    <span class="kw">JOIN</span>   <span class="tbl-name">players</span>       <span class="kw">AS</span> pl  <span class="kw">ON</span> pl.id = p.player_id
+    <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role, pl.is_active
 )
 <span class="kw">SELECT</span>
- name,
- role,
- <span class="kw">CASE</span> <span class="kw">WHEN</span> is_active <span class="kw">THEN</span> <span class="str">'Active'</span> <span class="kw">ELSE</span> <span class="str">'Retired'</span> <span class="kw">END</span> <span class="kw">AS</span> status,
- matches_played,
- total_runs,
- total_wickets,
- highest_score,
- batting_avg,
- <span class="kw">CASE</span>
- <span class="kw">WHEN</span> total_runs >= <span class="num">200</span> <span class="kw">OR</span> total_wickets >= <span class="num">8</span> <span class="kw">THEN</span> <span class="str">'⭐ Star'</span>
- <span class="kw">WHEN</span> total_runs >= <span class="num">80</span> <span class="kw">OR</span> total_wickets >= <span class="num">4</span> <span class="kw">THEN</span> <span class="str">'✅ Solid'</span>
- <span class="kw">ELSE</span> <span class="str">'🔧 Support'</span>
- <span class="kw">END</span> <span class="kw">AS</span> tier
-<span class="kw">FROM</span> stats
+    name,
+    role,
+    <span class="kw">CASE</span> <span class="kw">WHEN</span> is_active <span class="kw">THEN</span> <span class="str">'Active'</span> <span class="kw">ELSE</span> <span class="str">'Retired'</span> <span class="kw">END</span>   <span class="kw">AS</span> status,
+    matches_played,
+    total_runs,
+    total_wickets,
+    highest_score,
+    batting_avg,
+    <span class="kw">CASE</span>
+        <span class="kw">WHEN</span> total_runs >= <span class="num">200</span> <span class="kw">OR</span>  total_wickets >= <span class="num">8</span>   <span class="kw">THEN</span> <span class="str">'⭐ Star'</span>
+        <span class="kw">WHEN</span> total_runs >= <span class="num">80</span>  <span class="kw">OR</span>  total_wickets >= <span class="num">4</span>   <span class="kw">THEN</span> <span class="str">'✅ Solid'</span>
+        <span class="kw">ELSE</span>                                                     <span class="str">'🔧 Support'</span>
+    <span class="kw">END</span>                                                       <span class="kw">AS</span> tier
+<span class="kw">FROM</span>   stats
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
- <div class="explain-label">What to observe</div>
- <div class="explain-text">Kohli (388 runs) and Rohit (243) are clear Stars by runs. Bumrah (11 wickets) and Ashwin (10 wickets) earn Star by the bowling route. The CASE WHEN checks conditions top to bottom - first match wins. Adjust the thresholds and rerun to see the tier boundaries shift.</div>
- </div>
- </div>
+      <div class="explain-label">What to observe</div>
+      <div class="explain-text">Kohli (388 runs) and Rohit (243) are clear Stars by runs. Bumrah (11 wickets) and Ashwin (10 wickets) earn Star by the bowling route. The CASE WHEN checks conditions top to bottom — first match wins. Adjust the thresholds and rerun to see the tier boundaries shift.</div>
+    </div>
+  </div>
 
-</div><! - /hard questions - >
+</div><!-- /hard questions -->
 
-<! - SUMMARY - >
+<!-- SUMMARY -->
 <div class="summary">
- <div class="summary-card">
- <h2>Concepts Covered</h2>
- <p style="opacity:0.8; font-size:14px;">Run these 12 questions in order - each builds on what came before.</p>
- <div class="summary-grid">
- <div class="summary-item"><strong>Easy</strong>SELECT, WHERE, IS NULL, COALESCE, GROUP BY, COUNT, FILTER</div>
- <div class="summary-item"><strong>Medium</strong>INNER JOIN, LEFT JOIN, anti-join, GROUP BY + HAVING, multi-condition filters</div>
- <div class="summary-item"><strong>Hard</strong>ROW_NUMBER, RANK, SUM OVER, PARTITION BY, CTEs, CASE WHEN classification</div>
- <div class="summary-item"><strong>Download</strong><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/cricketDB-setup.sql" target="_blank" download="cricketdb_setup.sql" style="color:rgba(255,255,255,0.7); font-family:'DM Mono',monospace; font-size:12px;">cricketdb_setup.sql ↓</a></div>
- </div>
- </div>
+  <div class="summary-card">
+    <h2>Concepts Covered</h2>
+    <p style="opacity:0.8; font-size:14px;">Run these 12 questions in order — each builds on what came before.</p>
+    <div class="summary-grid">
+      <div class="summary-item"><strong>Easy</strong>SELECT, WHERE, IS NULL, COALESCE, GROUP BY, COUNT, FILTER</div>
+      <div class="summary-item"><strong>Medium</strong>INNER JOIN, LEFT JOIN, anti-join, GROUP BY + HAVING, multi-condition filters</div>
+      <div class="summary-item"><strong>Hard</strong>ROW_NUMBER, RANK, SUM OVER, PARTITION BY, CTEs, CASE WHEN classification</div>
+      <div class="summary-item"><strong>Download</strong><a href="https://raw.githubusercontent.com/Ramendra611/SQL-with-Python-FastAPI-and-MCP/main/class%20files/cricketDB-setup.sql" target="_blank" download="cricketdb_setup.sql" style="color:rgba(255,255,255,0.7); font-family:'DM Mono',monospace; font-size:12px;">cricketdb_setup.sql ↓</a></div>
+    </div>
+  </div>
 </div>
 
 </body>
