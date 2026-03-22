@@ -1,6 +1,6 @@
 ---
-title: "Object-Oriented Programming in Python — Masterclass"
-description: "A comprehensive guide to OOP in Python — classes, objects, inheritance, encapsulation, and polymorphism."
+title: "Object-Oriented Programming in Python  -  Masterclass"
+description: "A comprehensive guide to OOP in Python  -  classes, objects, inheritance, encapsulation, and polymorphism."
 date: 2026-03-21
 author: "codeverra"
 toc: true

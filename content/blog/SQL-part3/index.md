@@ -31,8 +31,8 @@ cover:
 ## Before You Start
 
 This lesson uses both databases you have already built:
-- **CricketDB** — players, matches, performances (Lesson 2.1)
-- **ShopDB** — customers, products, orders, order_items (Lesson 2.2)
+- **CricketDB**  -  players, matches, performances (Lesson 2.1)
+- **ShopDB**  -  customers, products, orders, order_items (Lesson 2.2)
 
 Run the `setup_check.sql` from this lesson folder to confirm both are ready.
 Each section tells you which database to connect to in pgAdmin.
@@ -46,15 +46,15 @@ Each section tells you which database to connect to in pgAdmin.
 | `HAVING` with multiple conditions | Filter groups on complex criteria |
 | `FILTER` clause | Conditional aggregation without CASE WHEN |
 | `ROLLUP` | Automatically add subtotals and grand total |
-| Window functions — `ROW_NUMBER` | Assign a rank within a group |
-| Window functions — `RANK` / `DENSE_RANK` | Rank with tie-handling |
-| Window functions — `SUM OVER` | Running totals without collapsing rows |
+| Window functions  -  `ROW_NUMBER` | Assign a rank within a group |
+| Window functions  -  `RANK` / `DENSE_RANK` | Rank with tie-handling |
+| Window functions  -  `SUM OVER` | Running totals without collapsing rows |
 
 ---
 
-## Part 1 — Recap: Single-Column GROUP BY
+## Part 1  -  Recap: Single-Column GROUP BY
 
-*(CricketDB — connect to cricketdb in pgAdmin)*
+*(CricketDB  -  connect to cricketdb in pgAdmin)*
 
 You already know the basics. Let's start with a quick recap and build from there.
 
@@ -74,7 +74,7 @@ The problem: `player_id = 1` means nothing to a reader.
 The fix: JOIN before grouping.
 
 ```sql
--- Same query — but with actual player names
+-- Same query  -  but with actual player names
 SELECT
     pl.name,
     SUM(p.runs)     AS total_runs,
@@ -92,7 +92,7 @@ ORDER BY total_runs DESC;
 
 ---
 
-## Part 2 — Multi-Column GROUP BY
+## Part 2  -  Multi-Column GROUP BY
 
 Group by more than one column to get finer breakdowns.
 
@@ -112,7 +112,7 @@ GROUP BY pl.id, pl.name, m.format
 ORDER BY pl.name, m.format;
 ```
 
-Each row now represents one player in one format — a finer grain than before.
+Each row now represents one player in one format  -  a finer grain than before.
 
 ```sql
 -- Which format does each player perform best in?
@@ -160,7 +160,7 @@ ORDER BY month, revenue_inr DESC;
 
 ---
 
-### ✏️ Practice Set 1 — Multi-column GROUP BY
+### ✏️ Practice Set 1  -  Multi-column GROUP BY
 
 **Q1.** *(CricketDB)* For each match result (Won / Lost / Draw), show:
 - Total runs scored by Indian players
@@ -181,7 +181,7 @@ Exclude cancelled orders.)
 
 ---
 
-## Part 3 — HAVING With Multiple Conditions
+## Part 3  -  HAVING With Multiple Conditions
 
 `HAVING` filters groups after aggregation.
 You can combine conditions in `HAVING` just like in `WHERE`.
@@ -248,7 +248,7 @@ ORDER BY total_revenue DESC;
 
 ---
 
-### ✏️ Practice Set 2 — HAVING with multiple conditions
+### ✏️ Practice Set 2  -  HAVING with multiple conditions
 
 **Q5.** *(CricketDB)* Find players who have taken wickets in at least 2 innings
 AND have a total wicket count of 4 or more.
@@ -267,7 +267,7 @@ all orders? Show product name, times ordered, and total quantity sold.
 
 ---
 
-## Part 4 — The FILTER Clause
+## Part 4  -  The FILTER Clause
 
 `FILTER (WHERE ...)` is a cleaner alternative to `CASE WHEN` inside aggregates.
 It is PostgreSQL-specific but very readable.
@@ -289,7 +289,7 @@ ORDER BY runs_in_wins DESC;
 ```
 
 ```sql
--- Exact same result — using FILTER (much more readable)
+-- Exact same result  -  using FILTER (much more readable)
 SELECT
     pl.name,
     SUM(p.runs) FILTER (WHERE m.result = 'Won')   AS runs_in_wins,
@@ -335,14 +335,14 @@ ORDER BY delivered DESC;
 
 ---
 
-## Part 5 — ROLLUP: Subtotals and Grand Totals
+## Part 5  -  ROLLUP: Subtotals and Grand Totals
 
 `ROLLUP` automatically adds subtotal and grand total rows to a GROUP BY.
 
 *(ShopDB)*
 
 ```sql
--- Orders per status — with a grand total row added automatically
+-- Orders per status  -  with a grand total row added automatically
 SELECT
     COALESCE(status, 'GRAND TOTAL')  AS status,
     COUNT(*)                          AS order_count
@@ -351,11 +351,11 @@ GROUP BY ROLLUP(status)
 ORDER BY status NULLS LAST;
 ```
 
-The `ROLLUP(status)` adds one extra row where `status` is NULL —
+The `ROLLUP(status)` adds one extra row where `status` is NULL  - 
 that is the grand total row. `COALESCE` replaces the NULL with a readable label.
 
 ```sql
--- Revenue by category — with category subtotals
+-- Revenue by category  -  with category subtotals
 SELECT
     COALESCE(cat.name, '── TOTAL')       AS category,
     SUM(oi.quantity * oi.unit_price)      AS revenue_inr
@@ -380,13 +380,13 @@ ORDER BY month, payment_method NULLS LAST;
 ```
 
 > `ROLLUP(a, b)` produces groups for:
-> - (a, b) — each unique combination
-> - (a)    — subtotal per a across all b
-> - ()     — grand total
+> - (a, b)  -  each unique combination
+> - (a)     -  subtotal per a across all b
+> - ()      -  grand total
 
 ---
 
-## Part 6 — Window Functions
+## Part 6  -  Window Functions
 
 This is the most powerful concept in this lesson.
 
@@ -396,7 +396,7 @@ This is the most powerful concept in this lesson.
 
 Think of it like: GROUP BY destroys rows. Window functions don't.
 
-### 6.1 — ROW_NUMBER: Number Rows Within a Group
+### 6.1  -  ROW_NUMBER: Number Rows Within a Group
 
 *(CricketDB)*
 
@@ -418,8 +418,8 @@ ORDER BY m.id, rank_in_match;
 ```
 
 `OVER (PARTITION BY ... ORDER BY ...)` is the window specification:
-- `PARTITION BY match_id` — restart the counter for each match
-- `ORDER BY runs DESC` — assign 1 to the highest scorer in that match
+- `PARTITION BY match_id`  -  restart the counter for each match
+- `ORDER BY runs DESC`  -  assign 1 to the highest scorer in that match
 
 ```sql
 -- Top scorer in each match (using ROW_NUMBER in a subquery)
@@ -442,11 +442,11 @@ WHERE rn = 1
 ORDER BY runs DESC;
 ```
 
-This pattern — compute a window function in a subquery, then filter on it in the outer query — is one of the most useful SQL patterns you will use in real work.
+This pattern  -  compute a window function in a subquery, then filter on it in the outer query  -  is one of the most useful SQL patterns you will use in real work.
 
 ---
 
-### 6.2 — RANK and DENSE_RANK: Handle Ties
+### 6.2  -  RANK and DENSE_RANK: Handle Ties
 
 `ROW_NUMBER` gives unique numbers even to tied rows (arbitrary tiebreak).
 `RANK` gives tied rows the same number, then skips (1, 1, 3, 4).
@@ -487,7 +487,7 @@ ORDER BY cat.name, price_rank;
 
 ---
 
-### 6.3 — SUM OVER: Running Totals
+### 6.3  -  SUM OVER: Running Totals
 
 A running total accumulates as you move down the rows.
 
@@ -504,7 +504,7 @@ GROUP BY order_date
 ORDER BY order_date;
 ```
 
-`SUM(COUNT(*)) OVER (ORDER BY order_date)` — the inner `COUNT(*)` runs per group (per day), then `SUM OVER` accumulates those counts in date order.
+`SUM(COUNT(*)) OVER (ORDER BY order_date)`  -  the inner `COUNT(*)` runs per group (per day), then `SUM OVER` accumulates those counts in date order.
 
 ```sql
 -- Running revenue total across months (non-cancelled orders)
@@ -541,7 +541,7 @@ ORDER BY cat.name, p.price_inr DESC;
 
 ---
 
-### ✏️ Practice Set 3 — Window Functions
+### ✏️ Practice Set 3  -  Window Functions
 
 **Q9.** *(CricketDB)* Assign a rank to each player's performance (innings)
 within each match format (Test / ODI / T20), based on runs scored.
@@ -564,7 +564,7 @@ Label this column `category_avg_price`.
 
 ---
 
-## Part 7 — Putting It All Together
+## Part 7  -  Putting It All Together
 
 Two realistic "analyst-level" queries that combine everything from this lesson.
 
@@ -620,7 +620,7 @@ Study both queries carefully. Every clause in them was introduced in this lesson
 
 ---
 
-## Part 8 — Practice Set Answers
+## Part 8  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -808,19 +808,19 @@ ORDER BY cat.name, p.price_inr DESC;
 ## What's Next
 
 You have covered:
-- ✅ Multi-column `GROUP BY` — group by two or more columns
-- ✅ `GROUP BY` with `JOIN` — aggregate across related tables
-- ✅ `HAVING` with multiple conditions — filter groups on complex criteria
-- ✅ `FILTER` clause — clean conditional aggregation
-- ✅ `ROLLUP` — automatic subtotals and grand totals
-- ✅ `ROW_NUMBER` — unique row numbering within partitions
-- ✅ `RANK` / `DENSE_RANK` — ranking with tie-handling
-- ✅ `SUM OVER` — running totals without collapsing rows
-- ✅ The subquery + window function pattern — filter on a computed rank
+- ✅ Multi-column `GROUP BY`  -  group by two or more columns
+- ✅ `GROUP BY` with `JOIN`  -  aggregate across related tables
+- ✅ `HAVING` with multiple conditions  -  filter groups on complex criteria
+- ✅ `FILTER` clause  -  clean conditional aggregation
+- ✅ `ROLLUP`  -  automatic subtotals and grand totals
+- ✅ `ROW_NUMBER`  -  unique row numbering within partitions
+- ✅ `RANK` / `DENSE_RANK`  -  ranking with tie-handling
+- ✅ `SUM OVER`  -  running totals without collapsing rows
+- ✅ The subquery + window function pattern  -  filter on a computed rank
 
 **In Lesson 2.4** we go deep on **JOINs & Relationships**:
 - INNER, LEFT, RIGHT, and FULL OUTER JOIN compared side by side
-- Self-joins — a table joined to itself
+- Self-joins  -  a table joined to itself
 - JOINs across 4 tables
 - Common JOIN mistakes and how to spot them
 - When to use a JOIN vs a subquery

@@ -25,7 +25,7 @@ cover:
 ---
 
 
-# Pandas Practice Sheet — IPL Dataset
+# Pandas Practice Sheet  -  IPL Dataset
 ### A complete two-table exploration: from match summaries to ball-by-ball intelligence
 
 ---
@@ -34,22 +34,22 @@ cover:
 
 The Zomato dataset taught you how to clean a single messy table. The IPL dataset teaches you something more important: **how to work with two related tables and merge them to answer questions neither table can answer alone.**
 
-This is how data exists in every real company — not as one giant flat file, but as a set of related tables that you must join, aggregate across levels, and reason about carefully.
+This is how data exists in every real company  -  not as one giant flat file, but as a set of related tables that you must join, aggregate across levels, and reason about carefully.
 
 The IPL dataset has two tables:
 
-- **`matches.csv`** — one row per match (meta-data: who played, who won, when, where)
-- **`deliveries.csv`** — one row per ball bowled (~180,000 rows: the ball-by-ball record)
+- **`matches.csv`**  -  one row per match (meta-data: who played, who won, when, where)
+- **`deliveries.csv`**  -  one row per ball bowled (~180,000 rows: the ball-by-ball record)
 
 Answering most interesting questions requires combining both. Who is the best death-overs bowler? You need the bowler's name (deliveries), linked to the season (matches). What is a team's win rate in knockout matches at Wankhede? You need venue and match type (matches) linked to team info (deliveries).
 
-This practice sheet takes you from basic aggregation on a single table, through multi-table merges, through window functions and ranking, all the way to a full player performance scorecard. By the end, you will be comfortable working with any multi-table sports dataset — and that skill transfers directly to e-commerce order data, financial transaction data, and healthcare records.
+This practice sheet takes you from basic aggregation on a single table, through multi-table merges, through window functions and ranking, all the way to a full player performance scorecard. By the end, you will be comfortable working with any multi-table sports dataset  -  and that skill transfers directly to e-commerce order data, financial transaction data, and healthcare records.
 
 ---
 
 ## Getting the Datasets
 
-Both files are available as direct raw CSVs — no login required.
+Both files are available as direct raw CSVs  -  no login required.
 
 ```python
 import pandas as pd
@@ -79,13 +79,13 @@ print("Deliveries shape:", deliveries.shape)    # (~179000, 21)
 https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020
 ```
 
-> Throughout this sheet we use `matches` and `deliveries` as the variable names. The `id` column in `matches` corresponds to `match_id` in `deliveries` — this is the join key between the two tables.
+> Throughout this sheet we use `matches` and `deliveries` as the variable names. The `id` column in `matches` corresponds to `match_id` in `deliveries`  -  this is the join key between the two tables.
 
 ---
 
 ## Column Dictionaries
 
-### `matches` — One Row Per Match
+### `matches`  -  One Row Per Match
 
 ```
 ┌──────────────────────┬──────────┬───────────────────────────────────────────────────────┐
@@ -112,7 +112,7 @@ https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020
 └──────────────────────┴──────────┴───────────────────────────────────────────────────────┘
 ```
 
-### `deliveries` — One Row Per Ball
+### `deliveries`  -  One Row Per Ball
 
 ```
 ┌──────────────────────┬──────────┬───────────────────────────────────────────────────────┐
@@ -123,7 +123,7 @@ https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020
 │ batting_team         │ string   │ Team currently batting.                               │
 │ bowling_team         │ string   │ Team currently bowling.                               │
 │ over                 │ int      │ Over number (0-indexed in some versions, 1-indexed     │
-│                      │          │ in others — always check!).                           │
+│                      │          │ in others  -  always check!).                           │
 │ ball                 │ int      │ Ball number within the over (1–6, or more for extras). │
 │ batsman              │ string   │ Batsman on strike.                                    │
 │ non_striker          │ string   │ Batsman at the non-striking end.                      │
@@ -186,7 +186,7 @@ print("Over numbering starts at:", deliveries["over"].min())  # 1 or 0?
 
 ---
 
-# SECTION 1 — Matches Table Basics (Questions 1–5)
+# SECTION 1  -  Matches Table Basics (Questions 1–5)
 ### Learn the structure of the match-level data before touching deliveries
 
 ---
@@ -201,7 +201,7 @@ print("Over numbering starts at:", deliveries["over"].min())  # 1 or 0?
 ### Answer
 
 ```python
-# Method 1 — value_counts sorted by season year
+# Method 1  -  value_counts sorted by season year
 matches_per_season = matches["season"].value_counts().sort_index()
 print(matches_per_season)
 # 2008     58
@@ -217,7 +217,7 @@ print(matches_per_season)
 # 2018     60
 # 2019     60
 
-# Method 2 — groupby for the same result
+# Method 2  -  groupby for the same result
 print(matches.groupby("season").size().rename("match_count"))
 
 # Most and fewest
@@ -231,7 +231,7 @@ print(f"\nTotal matches in dataset: {len(matches)}")
 > **Domain insight:** 2009 had slightly fewer matches because the tournament was moved to South Africa due to general elections in India. 2011 onwards had more matches because the league expanded to 10 teams (adding Pune Warriors and Kochi Tuskers Kerala). Understanding *why* numbers fluctuate across time is as important as reading the numbers themselves.
 
 > **`sort_index()` vs `sort_values()`:**
-> `value_counts()` sorts by frequency (most common first) by default. For time series data like seasons, you almost always want chronological order — use `.sort_index()` to get that.
+> `value_counts()` sorts by frequency (most common first) by default. For time series data like seasons, you almost always want chronological order  -  use `.sort_index()` to get that.
 
 ---
 
@@ -272,9 +272,9 @@ print(team_record)
 team_record["total_losses"] = team_record["total_played"] - team_record["total_wins"]
 ```
 
-> **The `pd.concat([team1, team2])` pattern** is the standard way to count appearances across two columns. `team1` and `team2` are two perspectives on the same fact ("this team was in this match"), and concatenating them before `value_counts()` counts total appearances correctly. This pattern appears constantly in sports data — goals scored/conceded, home/away records, etc.
+> **The `pd.concat([team1, team2])` pattern** is the standard way to count appearances across two columns. `team1` and `team2` are two perspectives on the same fact ("this team was in this match"), and concatenating them before `value_counts()` counts total appearances correctly. This pattern appears constantly in sports data  -  goals scored/conceded, home/away records, etc.
 
-> **Why `dropna()` here?** `total_wins` comes from `matches["winner"]`, which has NaN for no-result matches. When we merge, teams that never won or were never in a result have NaN wins. `dropna()` removes them — but in production you'd want to `fillna(0)` instead to keep all teams with 0 wins.
+> **Why `dropna()` here?** `total_wins` comes from `matches["winner"]`, which has NaN for no-result matches. When we merge, teams that never won or were never in a result have NaN wins. `dropna()` removes them  -  but in production you'd want to `fillna(0)` instead to keep all teams with 0 wins.
 
 ---
 
@@ -320,7 +320,7 @@ ct = pd.crosstab(
 print("\nCrosstab:")
 print(ct)
 
-# Normalize by row — win rate per decision type
+# Normalize by row  -  win rate per decision type
 ct_pct = pd.crosstab(
     index     = valid["toss_decision"],
     columns   = valid["toss_won_match"].map({1: "Won", 0: "Lost"}),
@@ -330,7 +330,7 @@ print("\nNormalized:")
 print(ct_pct)
 ```
 
-> **Insight:** Across most IPL seasons, fielding first (chasing) has been slightly more advantageous. Teams that elected to field after winning the toss have a marginally higher win rate than those who batted. This trend has strengthened over the years as T20 teams got better at chasing. The toss is not destiny — but the *decision* matters more than people think.
+> **Insight:** Across most IPL seasons, fielding first (chasing) has been slightly more advantageous. Teams that elected to field after winning the toss have a marginally higher win rate than those who batted. This trend has strengthened over the years as T20 teams got better at chasing. The toss is not destiny  -  but the *decision* matters more than people think.
 
 ---
 
@@ -349,7 +349,7 @@ top10_venues = matches["venue"].value_counts().head(10)
 print("Top 10 venues:")
 print(top10_venues)
 
-# Win margins — separated by type
+# Win margins  -  separated by type
 # Batting-first wins: win_by_runs > 0
 # Chasing wins: win_by_wickets > 0
 
@@ -378,7 +378,7 @@ print("\nVenue statistics for top 10:")
 print(venue_stats.head(10).to_string())
 ```
 
-> **Separate filtering before groupby** is often cleaner than a conditional inside agg. Matches won by runs and matches won by wickets are mutually exclusive — filtering first, then aggregating, keeps the logic explicit and avoids the need for `np.where()` or lambda gymnastics.
+> **Separate filtering before groupby** is often cleaner than a conditional inside agg. Matches won by runs and matches won by wickets are mutually exclusive  -  filtering first, then aggregating, keeps the logic explicit and avoids the need for `np.where()` or lambda gymnastics.
 
 ---
 
@@ -426,7 +426,7 @@ print(top_pom.to_string(index=False))
 
 ---
 
-# SECTION 2 — Deliveries Table Basics (Questions 6–9)
+# SECTION 2  -  Deliveries Table Basics (Questions 6–9)
 ### Learn the ball-by-ball table before joining the two tables
 
 ---
@@ -473,7 +473,7 @@ print(deliveries["total_runs"].value_counts().sort_index())
 # 6    ~5%
 ```
 
-> **`total_runs` vs `batsman_runs`:** Always be deliberate about which column you use. For team scoring totals (match scores), use `total_runs` — it includes extras. For individual batting statistics (strike rate, batting average), use `batsman_runs` — extras don't count toward a batsman's personal tally. Using the wrong column is a very common mistake in cricket analytics.
+> **`total_runs` vs `batsman_runs`:** Always be deliberate about which column you use. For team scoring totals (match scores), use `total_runs`  -  it includes extras. For individual batting statistics (strike rate, batting average), use `batsman_runs`  -  extras don't count toward a batsman's personal tally. Using the wrong column is a very common mistake in cricket analytics.
 
 ---
 
@@ -615,7 +615,7 @@ print(top10_bowlers[["bowler", "wickets", "overs_bowled",
                        "total_runs_conceded", "economy_rate", "bowling_avg"]].to_string())
 ```
 
-> **Why exclude run-outs from bowler wickets?** In cricket scoring rules, run-outs, retired hurts, and obstruction are not credited to the bowler. Counting them would inflate a bowler's wicket tally incorrectly. This kind of domain knowledge is essential — pandas will happily count them if you don't filter explicitly.
+> **Why exclude run-outs from bowler wickets?** In cricket scoring rules, run-outs, retired hurts, and obstruction are not credited to the bowler. Counting them would inflate a bowler's wicket tally incorrectly. This kind of domain knowledge is essential  -  pandas will happily count them if you don't filter explicitly.
 
 > **Economy rate uses TOTAL runs conceded** (including wides and no-balls), but **overs bowled counts only LEGAL deliveries**. This is the official cricket convention. A bowler who bowls 3 wides in an over has a 7-ball over (those 3 wides are counted toward runs but the over length is still 6 legal balls).
 
@@ -689,8 +689,8 @@ print(phase_summary)
 
 ---
 
-# SECTION 3 — Merging the Two Tables (Questions 10–13)
-### The most important section — joining match-level and ball-level data
+# SECTION 3  -  Merging the Two Tables (Questions 10–13)
+### The most important section  -  joining match-level and ball-level data
 
 ---
 
@@ -812,7 +812,7 @@ print(top_death_batsmen[["batsman", "runs_scored", "balls_faced",
                            "fours", "sixes", "strike_rate"]].to_string())
 ```
 
-> **Phase-based analysis** (powerplay, middle, death) is the backbone of modern T20 analytics. Most batting and bowling records are meaningless without phase context — a batsman with SR 120 in the middle overs is average; the same SR in death overs is weak. Always segment by phase before comparing players.
+> **Phase-based analysis** (powerplay, middle, death) is the backbone of modern T20 analytics. Most batting and bowling records are meaningless without phase context  -  a batsman with SR 120 in the middle overs is average; the same SR in death overs is weak. Always segment by phase before comparing players.
 
 ---
 
@@ -866,7 +866,7 @@ print("\nHead-to-head win matrix (row team beat column team N times):")
 print(win_matrix)
 ```
 
-> **Using `apply(axis=1)` with a lambda** is the right tool for row-level logic that depends on multiple columns simultaneously. Here we need both `winner` and `team1`/`team2` to determine the loser. This can't be done with a simple vectorized operation — `apply(axis=1)` iterates row-by-row, which is slower but correct.
+> **Using `apply(axis=1)` with a lambda** is the right tool for row-level logic that depends on multiple columns simultaneously. Here we need both `winner` and `team1`/`team2` to determine the loser. This can't be done with a simple vectorized operation  -  `apply(axis=1)` iterates row-by-row, which is slower but correct.
 
 > **`axis=1` in apply vs `axis=0`:**
 > - `axis=0` (default) → function applied to each COLUMN
@@ -930,18 +930,18 @@ overall_avg = (
 result = pom_runs.merge(overall_avg, on="player", how="left")
 result = result[result["pom_count"] >= 3].sort_values("pom_count", ascending=False)
 
-print("Players with 3+ PoM awards — PoM match avg vs overall avg:")
+print("Players with 3+ PoM awards  -  PoM match avg vs overall avg:")
 print(result[["player", "pom_count", "avg_runs_pom_match",
               "overall_avg_runs_per_ball"]].to_string(index=False))
 ```
 
-> **`nunique()` in groupby** is the correct way to count distinct match IDs — if a player faces multiple balls in a match (which they always do), counting rows would massively overcount. `nunique()` on `match_id` gives the number of distinct matches.
+> **`nunique()` in groupby** is the correct way to count distinct match IDs  -  if a player faces multiple balls in a match (which they always do), counting rows would massively overcount. `nunique()` on `match_id` gives the number of distinct matches.
 
 ---
 
 ---
 
-# SECTION 4 — Advanced Aggregation & Window Analysis (Questions 14–18)
+# SECTION 4  -  Advanced Aggregation & Window Analysis (Questions 14–18)
 
 ---
 
@@ -992,7 +992,7 @@ print(nrr_df.nlargest(10, "nrr")[["season", "team", "run_rate_for",
                                     "run_rate_against", "nrr"]].to_string(index=False))
 ```
 
-> **NRR requires two separate groupbys** — one where your team is batting, one where your team is bowling — then merging on team+season. This is a classic "self-join by role" pattern in sports analytics. The same player or team appears in two different roles (batter/bowler, home/away), and you must aggregate each role separately before combining.
+> **NRR requires two separate groupbys**  -  one where your team is batting, one where your team is bowling  -  then merging on team+season. This is a classic "self-join by role" pattern in sports analytics. The same player or team appears in two different roles (batter/bowler, home/away), and you must aggregate each role separately before combining.
 
 ---
 
@@ -1006,7 +1006,7 @@ print(nrr_df.nlargest(10, "nrr")[["season", "team", "run_rate_for",
 ### Answer
 
 ```python
-# (a) Total innings runs — broadcast back to every ball in that innings
+# (a) Total innings runs  -  broadcast back to every ball in that innings
 deliveries["innings_total"] = (
     deliveries.groupby(["match_id", "inning"])["total_runs"]
     .transform("sum")
@@ -1107,7 +1107,7 @@ print(momentum_shifts.nsmallest(10, "rrr_change")[["match_id", "over",
                                                      "rrr", "rrr_change"]].to_string())
 ```
 
-> **`groupby().diff()`** computes the difference between consecutive rows within a group. Combined with `groupby().last()` to get end-of-over snapshots, this creates a powerful pattern for detecting changes over time — wicket clusters, run-rate swings, or any "before vs after" within a grouped sequence.
+> **`groupby().diff()`** computes the difference between consecutive rows within a group. Combined with `groupby().last()` to get end-of-over snapshots, this creates a powerful pattern for detecting changes over time  -  wicket clusters, run-rate swings, or any "before vs after" within a grouped sequence.
 
 ---
 
@@ -1189,7 +1189,7 @@ for phase in ["Powerplay", "Middle", "Death"]:
     print(top.to_string(index=False))
 ```
 
-> **`rank(method='dense')`** ensures no gaps in the ranking sequence when there are ties — if two bowlers have the same economy, both get rank 1 and the next gets rank 2 (not rank 3). For leaderboards and "top N" selections, `dense` is almost always what you want.
+> **`rank(method='dense')`** ensures no gaps in the ranking sequence when there are ties  -  if two bowlers have the same economy, both get rank 1 and the next gets rank 2 (not rank 3). For leaderboards and "top N" selections, `dense` is almost always what you want.
 
 ---
 
@@ -1266,19 +1266,19 @@ top20 = (
 )
 top20.index += 1
 
-print("Complete IPL Batting Scorecard — Top 20 Run Scorers:")
+print("Complete IPL Batting Scorecard  -  Top 20 Run Scorers:")
 cols = ["batsman", "innings", "total_runs", "batting_avg", "strike_rate",
         "highest_score", "fifties", "hundreds", "ducks", "balls_faced"]
 print(top20[cols].to_string())
 ```
 
-> **Batting average ≠ runs per innings.** In cricket, batting average is total runs ÷ number of times dismissed. A batsman who scored 1000 runs in 20 innings with 15 dismissals has an average of 66.67, not 50. The distinction matters enormously — it penalises batsmen who get out often, and rewards those who are not out frequently. Always compute average from dismissal count, not innings count.
+> **Batting average ≠ runs per innings.** In cricket, batting average is total runs ÷ number of times dismissed. A batsman who scored 1000 runs in 20 innings with 15 dismissals has an average of 66.67, not 50. The distinction matters enormously  -  it penalises batsmen who get out often, and rewards those who are not out frequently. Always compute average from dismissal count, not innings count.
 
 ---
 
 ---
 
-# SECTION 5 — Season Trends & Time Analysis (Questions 19–22)
+# SECTION 5  -  Season Trends & Time Analysis (Questions 19–22)
 
 ---
 
@@ -1337,7 +1337,7 @@ print("\nRolling 3-season average score:")
 print(season_scores[["season", "avg_score", "rolling_3yr_avg"]].to_string(index=False))
 ```
 
-> **`rolling(window=3).mean()`** computes a moving average — the average of the current season and the two preceding ones. This smooths out noise from single anomalous seasons (like 2009's different pitches in South Africa). Rolling averages are the standard technique for revealing trends in time series data.
+> **`rolling(window=3).mean()`** computes a moving average  -  the average of the current season and the two preceding ones. This smooths out noise from single anomalous seasons (like 2009's different pitches in South Africa). Rolling averages are the standard technique for revealing trends in time series data.
 
 ---
 
@@ -1400,7 +1400,7 @@ print(venue_scores[venue_scores["venue_type"] == "Bowler-Friendly"]
       .tail(8)[["venue", "matches", "avg_score", "highest_score"]].to_string(index=False))
 ```
 
-> **`np.where(condition, value_if_true, value_if_false)`** is the vectorized ternary operator — far faster than `apply(lambda row: ...)` for creating conditional columns. Use it whenever your new column depends on a single boolean condition applied element-wise.
+> **`np.where(condition, value_if_true, value_if_false)`** is the vectorized ternary operator  -  far faster than `apply(lambda row: ...)` for creating conditional columns. Use it whenever your new column depends on a single boolean condition applied element-wise.
 
 ---
 
@@ -1538,12 +1538,12 @@ print(team_summary[["team", "total_played", "total_wins", "win_rate",
 
 ---
 
-# SECTION 6 — Advanced Patterns & Practice Problems (Questions 23–27)
+# SECTION 6  -  Advanced Patterns & Practice Problems (Questions 23–27)
 
 ---
 
 ## Question 23
-### Identify "impact players" — batsmen whose runs in the first 6 overs (powerplay) have the highest correlation with their team's match outcome. Use `groupby()` and `merge()` to build the dataset, then compute correlations.
+### Identify "impact players"  -  batsmen whose runs in the first 6 overs (powerplay) have the highest correlation with their team's match outcome. Use `groupby()` and `merge()` to build the dataset, then compute correlations.
 
 **Concepts:** Multi-level groupby, merging aggregated data with match results, `corr()`, defining an analytical metric from scratch
 
@@ -1568,7 +1568,7 @@ powerplay_batting = (
     .rename(columns={"batsman_runs": "pp_runs"})
 )
 
-# Step 2: Attach match outcome — did batting team win?
+# Step 2: Attach match outcome  -  did batting team win?
 powerplay_batting = powerplay_batting.merge(
     deliveries[["match_id", "batting_team"]].drop_duplicates(subset=["match_id", "batting_team"]),
     on="match_id"
@@ -1647,7 +1647,7 @@ print("Top 20 All-Time IPL Partnerships by Total Runs:")
 print(all_time_partnerships.head(20).to_string(index=False))
 ```
 
-> **Canonical key creation** (`sorted()` + `join()`) solves the ordering problem: the batsman on strike and the non-striker switch roles between balls, but they're in the same partnership. By sorting the two names alphabetically and joining them, we create a consistent key regardless of who was on strike. This pattern — creating a canonical representation to group bidirectional relationships — is essential for pair/edge analysis in any domain (user pairs, transaction pairs, etc.).
+> **Canonical key creation** (`sorted()` + `join()`) solves the ordering problem: the batsman on strike and the non-striker switch roles between balls, but they're in the same partnership. By sorting the two names alphabetically and joining them, we create a consistent key regardless of who was on strike. This pattern  -  creating a canonical representation to group bidirectional relationships  -  is essential for pair/edge analysis in any domain (user pairs, transaction pairs, etc.).
 
 ---
 
@@ -1686,7 +1686,7 @@ dismissal_matrix = pd.crosstab(
 # Sort rows by total wickets descending
 dismissal_matrix = dismissal_matrix.sort_values("Total", ascending=False)
 
-print("Dismissal Type Matrix — Top 15 IPL Wicket-Takers:")
+print("Dismissal Type Matrix  -  Top 15 IPL Wicket-Takers:")
 print(dismissal_matrix)
 
 # Normalize: what % of each bowler's wickets came via each type?
@@ -1700,12 +1700,12 @@ print("\nDismissal type % per bowler:")
 print(dismissal_pct.sort_values("caught", ascending=False))
 ```
 
-> **`crosstab` with `normalize='index'`** gives the row-wise percentage — for each bowler, what percentage of their wickets were caught vs bowled vs lbw. This reveals each bowler's "style" — a spinner who takes 70% of wickets caught vs a fast bowler who takes 40% bowled.
+> **`crosstab` with `normalize='index'`** gives the row-wise percentage  -  for each bowler, what percentage of their wickets were caught vs bowled vs lbw. This reveals each bowler's "style"  -  a spinner who takes 70% of wickets caught vs a fast bowler who takes 40% bowled.
 
 ---
 
 ## Question 26
-### Calculate the "Pressure Index" for each bowler in death overs: economy rate × (1 - wicket rate). Lower is better — it means they're economical AND taking wickets.
+### Calculate the "Pressure Index" for each bowler in death overs: economy rate × (1 - wicket rate). Lower is better  -  it means they're economical AND taking wickets.
 
 **Concepts:** Derived multi-metric scoring formula, `groupby()` with multiple agg functions, applying a custom scoring formula
 
@@ -1751,7 +1751,7 @@ death_bowler_stats["pressure_index"] = (
 # Filter: minimum 10 overs in death
 qualified = death_bowler_stats[death_bowler_stats["overs"] >= 10]
 
-print("Death Over Bowling — Pressure Index (lower is better, min 10 overs):")
+print("Death Over Bowling  -  Pressure Index (lower is better, min 10 overs):")
 print(
     qualified.nsmallest(15, "pressure_index")
     [["bowler", "overs", "wickets", "economy", "wicket_rate", "pressure_index"]]
@@ -1760,7 +1760,7 @@ print(
 )
 ```
 
-> **Composite scoring in sports analytics** always involves a tradeoff — a single metric is never sufficient. Economy rate doesn't account for wickets; wicket rate doesn't account for runs. The Pressure Index combines both: a bowler who goes at 12 per over but takes wickets is worse than one who goes at 9 but takes none. The formula `economy × (1 - wicket_rate)` rewards both dimensions simultaneously.
+> **Composite scoring in sports analytics** always involves a tradeoff  -  a single metric is never sufficient. Economy rate doesn't account for wickets; wicket rate doesn't account for runs. The Pressure Index combines both: a bowler who goes at 12 per over but takes wickets is worse than one who goes at 9 but takes none. The formula `economy × (1 - wicket_rate)` rewards both dimensions simultaneously.
 
 ---
 
@@ -1829,7 +1829,7 @@ def minmax(s):
 allrounders["norm_runs"]    = minmax(allrounders["bat_runs"])
 allrounders["norm_sr"]      = minmax(allrounders["bat_sr"])
 allrounders["norm_wickets"] = minmax(allrounders["wickets"])
-# For economy: LOWER is BETTER — so invert
+# For economy: LOWER is BETTER  -  so invert
 allrounders["norm_economy"] = 1 - minmax(allrounders["economy"])
 
 # --- Composite score (weights reflect importance) ---
@@ -1848,7 +1848,7 @@ top_allrounders = (
 )
 top_allrounders.index += 1
 
-print("\nTop 20 IPL All-Rounders — Composite Score:")
+print("\nTop 20 IPL All-Rounders  -  Composite Score:")
 print(top_allrounders.to_string())
 ```
 
@@ -1860,57 +1860,57 @@ print(top_allrounders.to_string())
 BASICS
 ✅ shape, dtypes, info(), describe() on two tables
 ✅ value_counts(), sort_index() for time-ordered counts
-✅ isnull().sum() — missing value audit
-✅ nunique() — unique value counts
+✅ isnull().sum()  -  missing value audit
+✅ nunique()  -  unique value counts
 
 SINGLE-TABLE AGGREGATION
 ✅ groupby().size()
 ✅ groupby().count() vs groupby().size()
 ✅ groupby().mean(), .sum(), .median(), .max(), .min()
 ✅ Named multi-metric aggregations: agg(col=("src", "fn"))
-✅ Lambda inside agg() — e.g., (x == 4).sum(), mode()
+✅ Lambda inside agg()  -  e.g., (x == 4).sum(), mode()
 ✅ nlargest(), nsmallest()
-✅ value_counts(normalize=True) — proportions
+✅ value_counts(normalize=True)  -  proportions
 
 FILTERING
 ✅ Boolean filtering with & and |
-✅ ~isin() — exclusion filter
-✅ notna() / isna() — null filters
+✅ ~isin()  -  exclusion filter
+✅ notna() / isna()  -  null filters
 ✅ Multi-condition filtering with complex logic
-✅ .between() — range filter
+✅ .between()  -  range filter
 
 MERGING (THE CORE SKILL)
-✅ pd.merge() — left join vs inner join
+✅ pd.merge()  -  left join vs inner join
 ✅ merge() on different key names (left_on / right_on)
 ✅ Bringing only needed columns from right table
 ✅ Verifying row counts before and after merge
 ✅ Multi-step multi-table pipeline
 
 RESHAPING
-✅ pd.concat([col1, col2]) — stacking columns into a series
-✅ pd.crosstab() — frequency tables with margins
+✅ pd.concat([col1, col2])  -  stacking columns into a series
+✅ pd.crosstab()  -  frequency tables with margins
 ✅ pd.crosstab(normalize='index'/'columns'/True)
-✅ pivot() — long to wide format
-✅ unstack() — multi-level index to columns
-✅ pd.pivot_table() — flexible pivot with aggfunc
+✅ pivot()  -  long to wide format
+✅ unstack()  -  multi-level index to columns
+✅ pd.pivot_table()  -  flexible pivot with aggfunc
 
 TRANSFORMS
-✅ groupby().transform("sum") — broadcast group total to rows
-✅ groupby().transform("mean") — broadcast group mean to rows
-✅ groupby().cumsum() — running total within groups
-✅ groupby().diff() — change from previous row within group
-✅ groupby().rank() — rank within group (dense, pct)
-✅ groupby().transform(lambda) — custom within-group computation
+✅ groupby().transform("sum")  -  broadcast group total to rows
+✅ groupby().transform("mean")  -  broadcast group mean to rows
+✅ groupby().cumsum()  -  running total within groups
+✅ groupby().diff()  -  change from previous row within group
+✅ groupby().rank()  -  rank within group (dense, pct)
+✅ groupby().transform(lambda)  -  custom within-group computation
 
 ADVANCED
-✅ pd.cut() — custom phase bins (powerplay/middle/death)
-✅ rolling(window=n).mean() — rolling average over time
-✅ apply(axis=1) — row-level logic using multiple columns
-✅ groupby().idxmax() — index of max value per group
-✅ groupby().apply() with nlargest() — top N per group
-✅ corr() within groupby — correlation by group
-✅ np.where() — vectorized conditional column creation
-✅ sorted() + join() — canonical pair keys
+✅ pd.cut()  -  custom phase bins (powerplay/middle/death)
+✅ rolling(window=n).mean()  -  rolling average over time
+✅ apply(axis=1)  -  row-level logic using multiple columns
+✅ groupby().idxmax()  -  index of max value per group
+✅ groupby().apply() with nlargest()  -  top N per group
+✅ corr() within groupby  -  correlation by group
+✅ np.where()  -  vectorized conditional column creation
+✅ sorted() + join()  -  canonical pair keys
 ✅ Composite scoring with min-max normalisation
 ✅ Multi-perspective merging (batting + bowling perspectives)
 ✅ Wicket filtering with ~isin() for proper credit attribution
@@ -1920,5 +1920,5 @@ ADVANCED
 
 ---
 
-*End of Practice Sheet — IPL Dataset*
-*Codeverra — codeverra.com*
+*End of Practice Sheet  -  IPL Dataset*
+*Codeverra  -  codeverra.com*

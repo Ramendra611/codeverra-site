@@ -36,15 +36,15 @@ cover:
 ## Table of Contents
 
 1. [What is Pandas and Why Use It?](#1-what-is-pandas-and-why-use-it)
-2. [Series — The 1D Structure](#2-series--the-1d-structure)
-3. [DataFrame — The 2D Structure](#3-dataframe--the-2d-structure)
+2. [Series  -  The 1D Structure](#2-series--the-1d-structure)
+3. [DataFrame  -  The 2D Structure](#3-dataframe--the-2d-structure)
 4. [Loading and Saving Data](#4-loading-and-saving-data)
 5. [Exploring Your Data](#5-exploring-your-data)
 6. [Selecting and Filtering](#6-selecting-and-filtering)
 7. [Adding and Modifying Columns](#7-adding-and-modifying-columns)
 8. [Sorting](#8-sorting)
-9. [Cleaning Data — Handling Missing Values](#9-cleaning-data--handling-missing-values)
-10. [Cleaning Data — Duplicates and Types](#10-cleaning-data--duplicates-and-types)
+9. [Cleaning Data  -  Handling Missing Values](#9-cleaning-data--handling-missing-values)
+10. [Cleaning Data  -  Duplicates and Types](#10-cleaning-data--duplicates-and-types)
 11. [String Operations](#11-string-operations)
 12. [Datetime Operations](#12-datetime-operations)
 13. [Groupby and Aggregation](#13-groupby-and-aggregation)
@@ -58,7 +58,7 @@ cover:
 
 ## 1. What is Pandas and Why Use It?
 
-Pandas provides two core data structures — `Series` (1D) and `DataFrame` (2D) — that make working with labeled, tabular data as natural as working with a spreadsheet, but with the full power of Python.
+Pandas provides two core data structures  -  `Series` (1D) and `DataFrame` (2D)  -  that make working with labeled, tabular data as natural as working with a spreadsheet, but with the full power of Python.
 
 ### What Pandas gives you
 
@@ -80,14 +80,14 @@ print(pd.__version__)
 
 ---
 
-## 2. Series — The 1D Structure
+## 2. Series  -  The 1D Structure
 
 A `Series` is a one-dimensional labeled array. Think of it as a column with an index.
 
 ### Creating a Series
 
 ```python
-# From a list — index defaults to 0, 1, 2, ...
+# From a list  -  index defaults to 0, 1, 2, ...
 s = pd.Series([10, 20, 30, 40, 50])
 print(s)
 # 0    10
@@ -147,7 +147,7 @@ s + 10         # 11 12 13 14 15
 s ** 2         # 1 4 9 16 25
 s[s > 3]       # 4, 5
 
-# Alignment on index — missing = NaN
+# Alignment on index  -  missing = NaN
 s1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
 s2 = pd.Series([10, 20, 30], index=['b', 'c', 'd'])
 s1 + s2        # a=NaN, b=22, c=53, d=NaN
@@ -170,9 +170,9 @@ s.sort_index()      # sort by index
 
 ---
 
-## 3. DataFrame — The 2D Structure
+## 3. DataFrame  -  The 2D Structure
 
-A `DataFrame` is a 2D table — rows and columns, each column being a `Series` sharing the same index.
+A `DataFrame` is a 2D table  -  rows and columns, each column being a `Series` sharing the same index.
 
 ### Creating a DataFrame
 
@@ -229,7 +229,7 @@ df.ndim       # 2
 ### Reading files
 
 ```python
-# CSV — most common
+# CSV  -  most common
 df = pd.read_csv('data.csv')
 
 # With options
@@ -401,7 +401,7 @@ df.loc[0:2, 'name':'dept']    # rows 0-2, columns name through dept
 ### Row selection with `.iloc` (position-based)
 
 ```python
-# .iloc[row_pos, col_pos]  — always uses integers, end is EXCLUSIVE
+# .iloc[row_pos, col_pos]   -  always uses integers, end is EXCLUSIVE
 
 df.iloc[0]           # first row
 df.iloc[-1]          # last row
@@ -414,8 +414,8 @@ df.iloc[-5:]         # last 5 rows
 ```
 
 > **loc vs iloc summary:**  
-> `.loc` uses **labels** (index values, column names) — stop is **inclusive**  
-> `.iloc` uses **integers** (positions 0, 1, 2...) — stop is **exclusive**
+> `.loc` uses **labels** (index values, column names)  -  stop is **inclusive**  
+> `.iloc` uses **integers** (positions 0, 1, 2...)  -  stop is **exclusive**
 
 ### Boolean filtering
 
@@ -426,24 +426,24 @@ df[df['dept'] == 'Eng']
 df[df['active'] == True]
 df[df['name'] != 'Bob']
 
-# Multiple conditions — use & (and), | (or), ~ (not)
+# Multiple conditions  -  use & (and), | (or), ~ (not)
 # MUST use parentheses around each condition!
 df[(df['salary'] > 60000) & (df['dept'] == 'Eng')]
 df[(df['age'] < 30) | (df['salary'] > 80000)]
 df[~(df['dept'] == 'HR')]    # all except HR
 
-# .query() — cleaner syntax for complex filters
+# .query()  -  cleaner syntax for complex filters
 df.query('salary > 60000')
 df.query('dept == "Eng"')
 df.query('age > 25 and salary > 60000')
 df.query('dept in ["Eng", "HR"]')
 df.query('salary > @threshold')    # reference a Python variable with @
 
-# .isin() — check membership
+# .isin()  -  check membership
 df[df['dept'].isin(['Eng', 'Mkt'])]
 df[~df['dept'].isin(['HR'])]       # exclude HR
 
-# .between() — range filter (inclusive)
+# .between()  -  range filter (inclusive)
 df[df['age'].between(25, 35)]
 df[df['salary'].between(50000, 80000)]
 
@@ -532,7 +532,7 @@ df.sort_index(ascending=False)
 df.sort_values('salary', inplace=True)        # modifies df
 new_df = df.sort_values('salary')             # returns new sorted df
 
-# nlargest / nsmallest — get top/bottom N rows
+# nlargest / nsmallest  -  get top/bottom N rows
 df.nlargest(3, 'salary')        # top 3 by salary
 df.nsmallest(2, 'age')          # bottom 2 by age
 df.nlargest(3, ['salary', 'age'])  # sort by multiple cols
@@ -543,7 +543,7 @@ df.sort_values('salary').reset_index(drop=True)
 
 ---
 
-## 9. Cleaning Data — Handling Missing Values
+## 9. Cleaning Data  -  Handling Missing Values
 
 Missing data in Pandas is represented as `NaN` (Not a Number) for numeric columns, or `None`/`NaN` for objects.
 
@@ -603,24 +603,24 @@ df['age'].fillna(df['age'].mean())
 df['age'].fillna(df['age'].median())
 df['dept'].fillna(df['dept'].mode()[0])   # most common value
 
-# Forward fill — propagate last valid value forward
+# Forward fill  -  propagate last valid value forward
 df.fillna(method='ffill')    # fill NaN with the value above it
 df['salary'].ffill()         # forward fill a column
 
-# Backward fill — propagate next valid value backward
+# Backward fill  -  propagate next valid value backward
 df.fillna(method='bfill')
 
-# Interpolate — for time series / sequential data
+# Interpolate  -  for time series / sequential data
 df['temperature'].interpolate()           # linear interpolation
 df['temperature'].interpolate(method='polynomial', order=2)
 
-# Limit — only fill a certain number of consecutive NaNs
+# Limit  -  only fill a certain number of consecutive NaNs
 df.fillna(method='ffill', limit=2)
 ```
 
 ---
 
-## 10. Cleaning Data — Duplicates and Types
+## 10. Cleaning Data  -  Duplicates and Types
 
 ### Handling duplicates
 
@@ -781,7 +781,7 @@ df[df['date'].between('2024-01-01', '2024-06-30')]
 df[df['date'].dt.year == 2024]
 df[df['date'].dt.month == 3]           # all March rows
 
-# Resample — aggregate by time period (requires datetime index)
+# Resample  -  aggregate by time period (requires datetime index)
 df = df.set_index('date')
 df.resample('ME').sum()         # monthly totals
 df.resample('W').mean()         # weekly averages
@@ -872,7 +872,7 @@ for dept_name, group_df in df.groupby('dept'):
     print(group_df)
 ```
 
-### `transform` — keep original shape
+### `transform`  -  keep original shape
 
 ```python
 # transform returns a Series with same length as the original df
@@ -891,7 +891,7 @@ df['salary_norm'] = df.groupby('dept')['salary'].transform(
 )
 ```
 
-### `filter` — include or exclude entire groups
+### `filter`  -  include or exclude entire groups
 
 ```python
 # Keep only departments with more than 2 employees
@@ -905,7 +905,7 @@ df.groupby('dept').filter(lambda x: x['salary'].max() > 80000)
 
 ## 14. Merging, Joining and Concatenating
 
-### `pd.merge` — SQL-style joins
+### `pd.merge`  -  SQL-style joins
 
 ```python
 employees = pd.DataFrame({
@@ -918,19 +918,19 @@ departments = pd.DataFrame({
     'dept_name': ['Engineering', 'Marketing', 'Finance']
 })
 
-# INNER join — only matching rows in both (default)
+# INNER join  -  only matching rows in both (default)
 pd.merge(employees, departments, on='dept_id')
-# Alice, Bob, Carol — Dave is excluded (dept_id 30 not in departments)
+# Alice, Bob, Carol  -  Dave is excluded (dept_id 30 not in departments)
 
-# LEFT join — all rows from left, NaN where no match on right
+# LEFT join  -  all rows from left, NaN where no match on right
 pd.merge(employees, departments, on='dept_id', how='left')
 # All 4 employees, Dave gets NaN for dept_name
 
-# RIGHT join — all rows from right, NaN where no match on left
+# RIGHT join  -  all rows from right, NaN where no match on left
 pd.merge(employees, departments, on='dept_id', how='right')
-# Engineering, Marketing, Finance — Finance has no employees (NaN)
+# Engineering, Marketing, Finance  -  Finance has no employees (NaN)
 
-# OUTER join — all rows from both
+# OUTER join  -  all rows from both
 pd.merge(employees, departments, on='dept_id', how='outer')
 
 # Join on columns with different names
@@ -944,10 +944,10 @@ pd.merge(df1, df2, on=['name', 'date'])
 pd.merge(df1, df2, on='id', suffixes=('_left', '_right'))
 ```
 
-### `pd.concat` — stacking DataFrames
+### `pd.concat`  -  stacking DataFrames
 
 ```python
-# Stack vertically (add rows) — same columns
+# Stack vertically (add rows)  -  same columns
 df_all = pd.concat([df_jan, df_feb, df_mar])
 
 # Reset index (avoid duplicate index values)
@@ -956,7 +956,7 @@ df_all = pd.concat([df_jan, df_feb], ignore_index=True)
 # Add a key to identify each source
 df_all = pd.concat([df1, df2], keys=['file1', 'file2'])
 
-# Stack horizontally (add columns) — same rows
+# Stack horizontally (add columns)  -  same rows
 df_wide = pd.concat([df1, df2], axis=1)
 
 # Handling mismatched columns
@@ -964,7 +964,7 @@ df_all = pd.concat([df1, df2], join='outer')   # NaN for missing (default)
 df_all = pd.concat([df1, df2], join='inner')   # only common columns
 ```
 
-### `.join` — index-based merge
+### `.join`  -  index-based merge
 
 ```python
 df1 = pd.DataFrame({'salary': [80000, 72000]}, index=['Alice', 'Bob'])
@@ -1011,7 +1011,7 @@ pd.pivot_table(df,
 )
 ```
 
-### `melt` — wide to long format
+### `melt`  -  wide to long format
 
 ```python
 # Wide format (one row per person, multiple time columns)
@@ -1039,14 +1039,14 @@ long = pd.melt(wide,
 ### `stack` and `unstack`
 
 ```python
-# unstack — move row index level to columns
+# unstack  -  move row index level to columns
 df.set_index(['dept', 'city'])['salary'].unstack()
 
-# stack — move column level to row index
+# stack  -  move column level to row index
 df.stack()     # columns become row labels
 ```
 
-### `crosstab` — frequency table
+### `crosstab`  -  frequency table
 
 ```python
 pd.crosstab(df['dept'], df['city'])           # counts
@@ -1059,7 +1059,7 @@ pd.crosstab(df['dept'], df['city'], normalize='index')  # row percentages
 
 ## 16. Apply, Map and Lambda Functions
 
-### `.apply()` — apply a function to rows or columns
+### `.apply()`  -  apply a function to rows or columns
 
 ```python
 df = pd.DataFrame({
@@ -1082,18 +1082,18 @@ def categorize(salary):
 
 df['level'] = df['salary'].apply(categorize)
 
-# Apply across rows (axis=1) — each row is passed as a Series
+# Apply across rows (axis=1)  -  each row is passed as a Series
 df['take_home'] = df.apply(
     lambda row: row['salary'] * (1 - row['tax_rate']),
     axis=1
 )
 
-# Apply across columns (axis=0 default) — returns aggregate per column
+# Apply across columns (axis=0 default)  -  returns aggregate per column
 df.apply('mean')         # mean of each column
 df.apply(lambda x: x.max() - x.min())   # range of each column
 ```
 
-### `.map()` — element-wise mapping on Series
+### `.map()`  -  element-wise mapping on Series
 
 ```python
 s = pd.Series(['Eng', 'Mkt', 'HR', 'Eng'])
@@ -1110,7 +1110,7 @@ s.map(len)              # length of each string
 s.map({'Eng': 'Engineering'})   # Mkt and HR → NaN
 ```
 
-### `.applymap()` / `.map()` on DataFrame — element-wise
+### `.applymap()` / `.map()` on DataFrame  -  element-wise
 
 ```python
 # Apply a function to every single element in a DataFrame
@@ -1118,13 +1118,13 @@ df.map(lambda x: round(x, 2) if isinstance(x, float) else x)
 df.map(str)     # convert everything to string
 ```
 
-### Vectorized operations vs apply — performance
+### Vectorized operations vs apply  -  performance
 
 ```python
-# SLOW — use apply only when necessary
+# SLOW  -  use apply only when necessary
 df['salary'].apply(lambda x: x * 1.1)
 
-# FAST — use vectorized operations instead
+# FAST  -  use vectorized operations instead
 df['salary'] * 1.1
 
 # apply is needed when:
@@ -1226,7 +1226,7 @@ df[df['dept'] == 'Eng']['salary'] = 90000  # BAD
 df.loc[df['dept'] == 'Eng', 'salary'] = 90000  # GOOD
 ```
 
-### Avoid iterrows — use vectorized or apply
+### Avoid iterrows  -  use vectorized or apply
 
 ```python
 # SLOW (Python-speed loop)

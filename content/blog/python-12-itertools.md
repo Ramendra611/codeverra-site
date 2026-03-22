@@ -34,7 +34,7 @@ Here's what changes your mind. Imagine you're asked to generate all possible bat
 
 Without `itertools`, you end up writing nested loops, managing index variables, building intermediate lists, and generally fighting Python to do what should be simple. With `itertools`, each of those problems is one function call.
 
-This guide is a complete reference for `itertools` — written not as a dry API listing, but as a walkthrough that builds your intuition for *when to reach for it* and *why it works the way it does*.
+This guide is a complete reference for `itertools`  -  written not as a dry API listing, but as a walkthrough that builds your intuition for *when to reach for it* and *why it works the way it does*.
 
 ---
 
@@ -42,7 +42,7 @@ This guide is a complete reference for `itertools` — written not as a dry API 
 
 `itertools` is a module in Python's standard library - no installation needed, just `import itertools`. It provides a collection of **fast, memory-efficient tools for working with iterators**.
 
-The name is a compound of two words: *iter* (as in iterators) and *tools* (as in building blocks). That framing is intentional. The module's author, Raymond Hettinger, designed it specifically to give you composable primitives — small, focused functions that you can chain together into powerful pipelines.
+The name is a compound of two words: *iter* (as in iterators) and *tools* (as in building blocks). That framing is intentional. The module's author, Raymond Hettinger, designed it specifically to give you composable primitives  -  small, focused functions that you can chain together into powerful pipelines.
 
 Every function in `itertools` returns an **iterator**, not a list. This is the fundamental design choice that makes the whole module useful:
 
@@ -52,14 +52,14 @@ import itertools
 # This does NOT build a list of 1 trillion numbers in memory
 counter = itertools.count(start=1)
 
-# It creates a lazy iterator — values computed one at a time, on demand
+# It creates a lazy iterator  -  values computed one at a time, on demand
 print(next(counter))   # 1
 print(next(counter))   # 2
 print(next(counter))   # 3
 # The other 999,999,999,997 values haven't been computed yet
 ```
 
-If it returned a list, `itertools.count()` would be impossible to use. Because it returns an iterator, it's perfectly fine — you pull values out one at a time.
+If it returned a list, `itertools.count()` would be impossible to use. Because it returns an iterator, it's perfectly fine  -  you pull values out one at a time.
 
 ---
 
@@ -72,7 +72,7 @@ Let's be concrete. Here are three real situations where `itertools` replaces mes
 You want to test every possible pair of columns in a dataset with 10 columns. How many pairs is that? `10 * 9 / 2 = 45`. Writing nested loops is clunky and error-prone.
 
 ```python
-# Without itertools — manual nested loop
+# Without itertools  -  manual nested loop
 columns = ['age', 'salary', 'score', 'tenure']
 pairs = []
 for i in range(len(columns)):
@@ -80,7 +80,7 @@ for i in range(len(columns)):
         pairs.append((columns[i], columns[j]))
 print(pairs)
 
-# With itertools — one line
+# With itertools  -  one line
 import itertools
 pairs = list(itertools.combinations(columns, 2))
 print(pairs)
@@ -118,21 +118,21 @@ for category, group in groupby(sorted_txns, key=itemgetter(0)):
 You need to cycle through a list of colours to assign alternating row colours in a report. You don't know the number of rows ahead of time.
 
 ```python
-# Without itertools — manual index tracking
+# Without itertools  -  manual index tracking
 colours = ['white', 'lightgrey']
 rows = get_report_rows()   # could be any length
 for i, row in enumerate(rows):
     colour = colours[i % len(colours)]
     render_row(row, background=colour)
 
-# With itertools — the intent is crystal clear
+# With itertools  -  the intent is crystal clear
 from itertools import cycle
 colours = cycle(['white', 'lightgrey'])
 for row, colour in zip(get_report_rows(), colours):
     render_row(row, background=colour)
 ```
 
-In every case, `itertools` doesn't just shorten the code — it makes the *intent* clearer. The function name tells you exactly what's happening.
+In every case, `itertools` doesn't just shorten the code  -  it makes the *intent* clearer. The function name tells you exactly what's happening.
 
 ---
 
@@ -206,10 +206,10 @@ for key, group in groupby(data):
 
 ```python
 from itertools import chain
-# chain(*args) — pass iterables directly
+# chain(*args)  -  pass iterables directly
 list(chain([1,2], [3,4], [5,6]))         # [1, 2, 3, 4, 5, 6]
 
-# chain.from_iterable — pass one iterable that contains iterables
+# chain.from_iterable  -  pass one iterable that contains iterables
 nested = [[1,2], [3,4], [5,6]]
 list(chain.from_iterable(nested))         # [1, 2, 3, 4, 5, 6]
 ```
@@ -220,7 +220,7 @@ list(chain.from_iterable(nested))         # [1, 2, 3, 4, 5, 6]
 
 These three functions generate values indefinitely. They're the simplest functions in the module but among the most useful.
 
-### `count(start=0, step=1)` — An Infinite Counter
+### `count(start=0, step=1)`  -  An Infinite Counter
 
 `count` produces an infinite sequence of evenly-spaced numbers. Think of it as a programmable counter that never stops.
 
@@ -271,7 +271,7 @@ for player in assign_ids(players):
 
 ---
 
-### `cycle(iterable)` — Loop an Iterable Forever
+### `cycle(iterable)`  -  Loop an Iterable Forever
 
 `cycle` takes any iterable and loops through it indefinitely: A, B, C, A, B, C, A, B, ...
 
@@ -318,7 +318,7 @@ route_request("/api/users")    # → server-1 (cycles back)
 
 ---
 
-### `repeat(object, times=None)` — Repeat a Value
+### `repeat(object, times=None)`  -  Repeat a Value
 
 `repeat` produces the same value over and over, either a fixed number of times or infinitely.
 
@@ -330,7 +330,7 @@ print(list(repeat("hello", 4)))   # ['hello', 'hello', 'hello', 'hello']
 
 # Often used with map to supply a constant second argument
 doubles = list(map(pow, range(1, 6), repeat(2)))
-print(doubles)   # [1, 4, 9, 16, 25]  — same as [x**2 for x in range(1,6)]
+print(doubles)   # [1, 4, 9, 16, 25]   -  same as [x**2 for x in range(1,6)]
 
 # Filling a default grid
 grid = [list(repeat(0, 4)) for _ in repeat(None, 3)]
@@ -344,7 +344,7 @@ print(grid)
 
 These are the workhorses of the module. They transform, filter, slice, and combine iterables.
 
-### `chain(*iterables)` — Flatten Multiple Iterables Into One
+### `chain(*iterables)`  -  Flatten Multiple Iterables Into One
 
 `chain` takes multiple iterables and yields from each in sequence, as if they were one long iterable. It's the lazy version of concatenation.
 
@@ -355,12 +355,12 @@ from itertools import chain
 combined = list(chain([1, 2, 3], [4, 5], [6, 7, 8, 9]))
 print(combined)   # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-# Works with any iterables — lists, tuples, strings, generators
+# Works with any iterables  -  lists, tuples, strings, generators
 result = list(chain("IPL", [2024], ("T20", "Cricket")))
 print(result)   # ['I', 'P', 'L', 2024, 'T20', 'Cricket']
 ```
 
-**`chain.from_iterable`** — when you have a list of lists (dynamic nesting):
+**`chain.from_iterable`**  -  when you have a list of lists (dynamic nesting):
 
 ```python
 from itertools import chain
@@ -383,9 +383,9 @@ print(words)
 
 ---
 
-### `islice(iterable, stop)` / `islice(iterable, start, stop, step)` — Lazy Slicing
+### `islice(iterable, stop)` / `islice(iterable, start, stop, step)`  -  Lazy Slicing
 
-`islice` is like Python's slice notation `[start:stop:step]` but for any iterator — including infinite ones. It does not support negative indices.
+`islice` is like Python's slice notation `[start:stop:step]` but for any iterator  -  including infinite ones. It does not support negative indices.
 
 ```python
 from itertools import islice, count
@@ -402,7 +402,7 @@ print(result)       # [5, 6, 7, 8, 9]
 result = list(islice(range(100), 0, 30, 5))
 print(result)       # [0, 5, 10, 15, 20, 25]
 
-# Paginate a large dataset — page 3, 10 items per page
+# Paginate a large dataset  -  page 3, 10 items per page
 def get_page(iterable, page_number, page_size=10):
     start = (page_number - 1) * page_size
     return list(islice(iterable, start, start + page_size))
@@ -413,7 +413,7 @@ print(get_page(data, page=3, page_size=10))   # [21, 22, ..., 30]
 
 ---
 
-### `zip_longest(*iterables, fillvalue=None)` — Zip Without Truncating
+### `zip_longest(*iterables, fillvalue=None)`  -  Zip Without Truncating
 
 Python's built-in `zip` stops at the shortest iterable. `zip_longest` continues until all iterables are exhausted, filling missing values with a default.
 
@@ -432,7 +432,7 @@ for row in result:
 # ('Dhoni', 'N/A', 15.2)
 # ('N/A', 'N/A', 19.1)
 
-# Merging two ordered streams — useful in merge sort logic
+# Merging two ordered streams  -  useful in merge sort logic
 stream_a = [1, 3, 5, 7]
 stream_b = [2, 4, 6]
 pairs = list(zip_longest(stream_a, stream_b, fillvalue=0))
@@ -441,9 +441,9 @@ print(pairs)   # [(1, 2), (3, 4), (5, 6), (7, 0)]
 
 ---
 
-### `accumulate(iterable, func=operator.add, *, initial=None)` — Running Totals
+### `accumulate(iterable, func=operator.add, *, initial=None)`  -  Running Totals
 
-`accumulate` applies a function cumulatively — each output value is the result of applying the function to all elements seen so far. The default function is addition, giving running totals.
+`accumulate` applies a function cumulatively  -  each output value is the result of applying the function to all elements seen so far. The default function is addition, giving running totals.
 
 ```python
 from itertools import accumulate
@@ -454,7 +454,7 @@ sales = [120, 340, 210, 450, 180, 300]
 running_total = list(accumulate(sales))
 print(running_total)   # [120, 460, 670, 1120, 1300, 1600]
 
-# Running maximum — track best score seen so far
+# Running maximum  -  track best score seen so far
 match_scores = [67, 82, 45, 95, 71, 88, 100, 55]
 running_max  = list(accumulate(match_scores, func=max))
 print(running_max)
@@ -479,9 +479,9 @@ for month, rain, total in zip(months, rainfall_mm, cumulative):
 
 ---
 
-### `takewhile(predicate, iterable)` — Take While Condition Holds
+### `takewhile(predicate, iterable)`  -  Take While Condition Holds
 
-`takewhile` yields elements as long as the predicate returns True. **It stops permanently at the first False** — it does not resume.
+`takewhile` yields elements as long as the predicate returns True. **It stops permanently at the first False**  -  it does not resume.
 
 ```python
 from itertools import takewhile
@@ -509,7 +509,7 @@ def safe_readings(sensor_stream, max_temp=80):
 
 ---
 
-### `dropwhile(predicate, iterable)` — Skip While Condition Holds
+### `dropwhile(predicate, iterable)`  -  Skip While Condition Holds
 
 `dropwhile` is the mirror of `takewhile`. It skips elements while the predicate is True, then yields everything from the first False onward.
 
@@ -537,7 +537,7 @@ print(non_comment_lines)
 
 ---
 
-### `filterfalse(predicate, iterable)` — Keep What a Filter Would Reject
+### `filterfalse(predicate, iterable)`  -  Keep What a Filter Would Reject
 
 While `filter(func, iterable)` keeps elements where `func` returns True, `filterfalse` keeps elements where it returns False.
 
@@ -574,7 +574,7 @@ print("Failed:", [s["name"] for s in failing])   # ['Priya', 'Meera']
 
 ---
 
-### `compress(data, selectors)` — Boolean Masking
+### `compress(data, selectors)`  -  Boolean Masking
 
 `compress` takes two iterables: data and boolean selectors. It yields only the data items where the corresponding selector is True (or truthy). Think of it as numpy boolean indexing, but for any iterator.
 
@@ -603,7 +603,7 @@ print(available)   # ['Laptop', 'Tablet', 'Watch']
 
 ---
 
-### `groupby(iterable, key=None)` — Group Consecutive Elements
+### `groupby(iterable, key=None)`  -  Group Consecutive Elements
 
 `groupby` scans through an iterable and groups consecutive elements that share the same key. It yields `(key, group_iterator)` pairs.
 
@@ -642,7 +642,7 @@ for category, group in groupby(sorted_txns, key=itemgetter(0)):
 # utilities: 1 transactions, total Rs.450
 ```
 
-**Advanced groupby — group by computed property:**
+**Advanced groupby  -  group by computed property:**
 
 ```python
 from itertools import groupby
@@ -667,7 +667,7 @@ for team, members in groupby(sorted_players, key=lambda p: p["team"]):
 
 ---
 
-### `starmap(func, iterable)` — Map with Argument Unpacking
+### `starmap(func, iterable)`  -  Map with Argument Unpacking
 
 `starmap` is like `map`, but it unpacks each element of the iterable as arguments to the function. Useful when your iterable contains tuples of arguments.
 
@@ -705,7 +705,7 @@ for (name, price, rate), tax in zip(products, taxes):
 
 ---
 
-### `pairwise(iterable)` — Sliding Window of Size 2 (Python 3.10+)
+### `pairwise(iterable)`  -  Sliding Window of Size 2 (Python 3.10+)
 
 `pairwise` yields consecutive overlapping pairs from an iterable. This is the most common sliding window pattern.
 
@@ -746,7 +746,7 @@ def pairwise(iterable):
 
 ---
 
-### `batched(iterable, n)` — Split Into Fixed-Size Chunks (Python 3.12+)
+### `batched(iterable, n)`  -  Split Into Fixed-Size Chunks (Python 3.12+)
 
 `batched` yields tuples of exactly `n` elements, with the last batch being smaller if the iterable doesn't divide evenly.
 
@@ -781,7 +781,7 @@ def batched(iterable, n):
 
 ---
 
-### `tee(iterable, n=2)` — Clone an Iterator
+### `tee(iterable, n=2)`  -  Clone an Iterator
 
 `tee` creates `n` independent copies of a single iterator. This lets you iterate over the same sequence multiple times from different starting points.
 
@@ -820,9 +820,9 @@ print(describe([67, 82, 45, 95, 71, 88]))
 
 These are the functions that generate structured combinations of items. They're invaluable for testing, optimization, search, and mathematical work.
 
-### `product(*iterables, repeat=1)` — Cartesian Product
+### `product(*iterables, repeat=1)`  -  Cartesian Product
 
-`product` generates the Cartesian product of iterables — every possible combination of one element from each iterable. It's the equivalent of nested `for` loops.
+`product` generates the Cartesian product of iterables  -  every possible combination of one element from each iterable. It's the equivalent of nested `for` loops.
 
 ```python
 from itertools import product
@@ -835,7 +835,7 @@ for colour, size in product(colours, sizes):
     print(f"{colour}-{size}", end="  ")
 # red-S  red-M  red-L  blue-S  blue-M  blue-L  green-S  green-M  green-L
 
-# The `repeat` argument — same iterable crossed with itself
+# The `repeat` argument  -  same iterable crossed with itself
 # All 2-digit combinations of 0 and 1 (binary numbers)
 binary_pairs = list(product([0, 1], repeat=2))
 print(binary_pairs)   # [(0, 0), (0, 1), (1, 0), (1, 1)]
@@ -859,7 +859,7 @@ for method, version, auth in test_matrix(params):
 
 ---
 
-### `permutations(iterable, r=None)` — Ordered Arrangements
+### `permutations(iterable, r=None)`  -  Ordered Arrangements
 
 `permutations` yields all possible ordered arrangements of `r` items from the iterable. Order matters: (A, B) and (B, A) are different permutations.
 
@@ -878,7 +878,7 @@ for perm in permutations(players):
 # ('Dhoni', 'Rohit', 'Virat')
 # ('Dhoni', 'Virat', 'Rohit')
 
-# r=2 — all possible batting pairs (order matters: opening vs #3)
+# r=2  -  all possible batting pairs (order matters: opening vs #3)
 batting_pairs = list(permutations(players, r=2))
 print(batting_pairs)
 # [('Rohit','Virat'), ('Rohit','Dhoni'), ('Virat','Rohit'),
@@ -906,16 +906,16 @@ for order in permutations(steps):
 
 ---
 
-### `combinations(iterable, r)` — Unordered Selections (No Repeats)
+### `combinations(iterable, r)`  -  Unordered Selections (No Repeats)
 
-`combinations` yields all possible selections of `r` items where order does NOT matter and each item can only be used once. (A, B) and (B, A) are the same combination — only `(A, B)` is produced.
+`combinations` yields all possible selections of `r` items where order does NOT matter and each item can only be used once. (A, B) and (B, A) are the same combination  -  only `(A, B)` is produced.
 
 ```python
 from itertools import combinations
 
 squad = ['Rohit', 'Virat', 'Dhoni', 'Jadeja', 'Bumrah']
 
-# Choose 3 from 5 — order doesn't matter
+# Choose 3 from 5  -  order doesn't matter
 playing_11_selections = list(combinations(squad, 3))
 for combo in playing_11_selections:
     print(combo)
@@ -926,7 +926,7 @@ for combo in playing_11_selections:
 
 print(f"Ways to choose 3 from 5: {len(playing_11_selections)}")   # 10
 
-# Feature selection in ML — test every pair of features
+# Feature selection in ML  -  test every pair of features
 features = ['age', 'salary', 'experience', 'score']
 for f1, f2 in combinations(features, 2):
     print(f"Testing pair: ({f1}, {f2})")
@@ -945,20 +945,20 @@ print(f"Valid triangles: {triangles}")
 
 ---
 
-### `combinations_with_replacement(iterable, r)` — Unordered Selections (With Repeats)
+### `combinations_with_replacement(iterable, r)`  -  Unordered Selections (With Repeats)
 
 Like `combinations`, but each item can appear more than once in a selection.
 
 ```python
 from itertools import combinations_with_replacement
 
-# Toss a coin 3 times — how many distinct outcomes by count?
+# Toss a coin 3 times  -  how many distinct outcomes by count?
 outcomes = list(combinations_with_replacement(['H', 'T'], 3))
 print(outcomes)
 # [('H', 'H', 'H'), ('H', 'H', 'T'), ('H', 'T', 'T'), ('T', 'T', 'T')]
 # Only 4 distinct "types" of 3-toss outcome by composition (not sequence)
 
-# Compare with combinations (no repeat) — shows the difference
+# Compare with combinations (no repeat)  -  shows the difference
 from itertools import combinations
 print(list(combinations(['H', 'T'], 3)))
 # [('H', 'T')]  ← only one selection of 3 from 2 without repetition? Actually 0 exist for r > n
@@ -976,7 +976,7 @@ print("With replacement:   ", list(combinations_with_replacement(items, 2)))
 
 ---
 
-## Building Pipelines — Putting It All Together
+## Building Pipelines  -  Putting It All Together
 
 The real power of `itertools` shows up when you chain multiple functions together into a data pipeline. Because every function returns an iterator, you can compose them with essentially zero memory overhead.
 
@@ -1016,7 +1016,7 @@ def analyze_errors(filepath):
     sorted_errors = sorted(errors, key=get_hour)   # groupby needs sorted input
     for hour, group in groupby(sorted_errors, key=get_hour):
         error_list = list(group)
-        print(f"{hour}:xx — {len(error_list)} errors")
+        print(f"{hour}:xx  -  {len(error_list)} errors")
         for e in islice(error_list, 3):   # show first 3 per hour
             print(f"   {e['message']}")
 ```
@@ -1079,7 +1079,7 @@ Work through these problems before looking at the solutions. Each one targets a 
 
 ---
 
-### Problem 1 — Running Maximum
+### Problem 1  -  Running Maximum
 
 **Task:** Given a list of daily temperatures, use `accumulate` to compute the running maximum temperature seen so far for each day.
 
@@ -1101,7 +1101,7 @@ print(running_max)
 
 ---
 
-### Problem 2 — Round-Robin Tournament Fixtures
+### Problem 2  -  Round-Robin Tournament Fixtures
 
 **Task:** Given a list of 4 cricket teams, generate all possible match fixtures using `combinations`. Each pair plays exactly once.
 
@@ -1132,7 +1132,7 @@ for match_num, (team_a, team_b) in enumerate(fixtures, start=1):
 
 ---
 
-### Problem 3 — Flatten a Nested List
+### Problem 3  -  Flatten a Nested List
 
 **Task:** Flatten a list of lists (one level deep) using `chain.from_iterable`.
 
@@ -1155,7 +1155,7 @@ print(flat)   # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ---
 
-### Problem 4 — Paginate a Large Dataset
+### Problem 4  -  Paginate a Large Dataset
 
 **Task:** Write a function `paginate(data, page_size)` using `islice` that returns a generator. Each call to `next()` on the generator should yield one page of data as a list.
 
@@ -1185,7 +1185,7 @@ for i, page in enumerate(pages, 1):
 
 ---
 
-### Problem 5 — Find First Duplicate in a Stream
+### Problem 5  -  Find First Duplicate in a Stream
 
 **Task:** Using `pairwise` (or `tee`), find the first value that appears consecutively in a list.
 
@@ -1222,7 +1222,7 @@ def first_consecutive_duplicate_v2(seq):
 
 ---
 
-### Problem 6 — Group and Summarize Orders
+### Problem 6  -  Group and Summarize Orders
 
 **Task:** Given a list of order records (already sorted by status), use `groupby` to count and total the orders in each status group.
 
@@ -1255,7 +1255,7 @@ for status, group in groupby(orders, key=itemgetter("status")):
 
 ---
 
-### Problem 7 — Generate a Test Matrix
+### Problem 7  -  Generate a Test Matrix
 
 **Task:** You are testing a login function. Using `product`, generate all combinations of these test parameters and count them.
 
@@ -1286,7 +1286,7 @@ for i, (user, pw, rem) in enumerate(test_cases, 1):
 
 ---
 
-### Problem 8 — Consecutive Price Changes
+### Problem 8  -  Consecutive Price Changes
 
 **Task:** Given a list of daily stock closing prices, use `pairwise` to compute the percentage change between each consecutive pair. Then use `takewhile` to find how many consecutive days a stock was rising from the start.
 
@@ -1314,7 +1314,7 @@ print(f"Changes during rise: {rising_days}")                       # [5.0, 2.86]
 
 ---
 
-### Problem 9 — Interleave Two Lists
+### Problem 9  -  Interleave Two Lists
 
 **Task:** Without `zip`, use `chain` and `zip_longest` together to interleave two lists element by element, even if they have different lengths.
 
@@ -1352,7 +1352,7 @@ print(interleave_v2([1, 2, 3, 4], ['a', 'b', 'c']))
 
 ---
 
-## Summary — When to Use What
+## Summary  -  When to Use What
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
@@ -1398,5 +1398,5 @@ GOLDEN RULES
 
 ---
 
-*End of Guide — Python's `itertools`*
-*Codeverra — codeverra.com*
+*End of Guide  -  Python's `itertools`*
+*Codeverra  -  codeverra.com*

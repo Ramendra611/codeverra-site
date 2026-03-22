@@ -75,7 +75,7 @@ O(2ⁿ) – Exponential
 
 ---
 
-## 5. O(1) — Constant Time
+## 5. O(1)  -  Constant Time
 
 ### Explanation
 The execution time does not depend on the input size.
@@ -93,7 +93,7 @@ This is the fastest possible time complexity.
 
 ---
 
-## 6. O(log n) — Logarithmic Time
+## 6. O(log n)  -  Logarithmic Time
 
 ### Explanation
 The input size is reduced by half in every step.
@@ -111,7 +111,7 @@ Because the input is halved every time, the complexity is O(log n).
 
 ---
 
-## 7. O(n) — Linear Time
+## 7. O(n)  -  Linear Time
 
 ### Explanation
 Execution time grows directly proportional to input size.
@@ -128,7 +128,7 @@ If the input size doubles, execution time also doubles.
 
 ---
 
-## 8. O(n log n) — Linearithmic Time
+## 8. O(n log n)  -  Linearithmic Time
 
 ### Explanation
 This complexity appears in efficient sorting algorithms.
@@ -143,7 +143,7 @@ Overall complexity becomes O(n log n), which is optimal for sorting.
 
 ---
 
-## 9. O(n²) — Quadratic Time
+## 9. O(n²)  -  Quadratic Time
 
 ### Explanation
 Occurs when nested loops are used over the input.
@@ -160,7 +160,7 @@ If input size doubles, execution time becomes four times slower.
 
 ---
 
-## 10. O(2ⁿ) — Exponential Time
+## 10. O(2ⁿ)  -  Exponential Time
 
 ### Explanation
 Each input creates multiple recursive calls.

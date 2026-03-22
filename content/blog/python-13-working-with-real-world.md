@@ -1,6 +1,6 @@
 ---
 title: "Working with the Real World in Python"
-description: "Learn how Python interacts with real-world systems — APIs, files, databases, and external libraries."
+description: "Learn how Python interacts with real-world systems  -  APIs, files, databases, and external libraries."
 date: 2026-03-21
 author: "codeverra"
 toc: true

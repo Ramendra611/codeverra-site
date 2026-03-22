@@ -1,5 +1,5 @@
 ---
-title: "Stacks in Python — Complete Guide"
+title: "Stacks in Python  -  Complete Guide"
 description: "Learn how stacks work, how to implement them in Python, and how to solve common stack-based problems."
 date: 2026-03-21
 author: "codeverra"
@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-7.png"
+  alt: "Stacks in DSA"
+  caption: "Stacks in DSA"
+  relative: true
+  hidden: false
 ---
 
 # Stacks

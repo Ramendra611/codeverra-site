@@ -35,9 +35,9 @@ cover:
 2. [Types of Databases](#2-types-of-databases)
 3. [What is SQL?](#3-what-is-sql)
 4. [How SQL Commands Are Grouped](#4-how-sql-commands-are-grouped)
-5. [Creating a Table — Full Breakdown](#5-creating-a-table--full-breakdown)
+5. [Creating a Table  -  Full Breakdown](#5-creating-a-table--full-breakdown)
 6. [Data Types in PostgreSQL](#6-data-types-in-postgresql)
-7. [Constraints — Rules for Your Data](#7-constraints--rules-for-your-data)
+7. [Constraints  -  Rules for Your Data](#7-constraints--rules-for-your-data)
 8. [Primary Key & Foreign Key](#8-primary-key--foreign-key)
 9. [Common SQL Commands with Examples](#9-common-sql-commands-with-examples)
 10. [What Happens When You Violate a Constraint?](#10-what-happens-when-you-violate-a-constraint)
@@ -85,7 +85,7 @@ Use when: Structured data, relationships matter, consistency is critical
 ```
 
 ### Non-Relational Databases (NoSQL)
-Data is stored in other formats — documents, key-value pairs, graphs, etc.
+Data is stored in other formats  -  documents, key-value pairs, graphs, etc.
 
 ```
 Examples: MongoDB (documents), Redis (key-value), Neo4j (graph)
@@ -111,7 +111,7 @@ SQL is the language you use to **talk to a relational database**. You use it to:
 SELECT * FROM students;
 ```
 
-The `--` means it's a **comment** — ignored by the database, just for humans reading the code.
+The `--` means it's a **comment**  -  ignored by the database, just for humans reading the code.
 
 ---
 
@@ -142,11 +142,11 @@ SQL commands are organised into 5 categories:
 └──────────┴──────────────────────────────┴───────────────────────┘
 ```
 
-> **For beginners:** Focus on DDL + DML + DQL — that's 90% of what you'll write day to day.
+> **For beginners:** Focus on DDL + DML + DQL  -  that's 90% of what you'll write day to day.
 
 ---
 
-## 5. Creating a Table — Full Breakdown
+## 5. Creating a Table  -  Full Breakdown
 
 ### Basic Syntax
 
@@ -158,7 +158,7 @@ CREATE TABLE table_name (
 );
 ```
 
-### Real Example — Step by Step
+### Real Example  -  Step by Step
 
 ```sql
 CREATE TABLE students (
@@ -198,12 +198,12 @@ Let's break down each part:
 ├──────────────┼────────────────────────────────────────────────────┤
 │ INT          │ Whole numbers: 1, 42, -7                           │
 │ BIGINT       │ Very large whole numbers                           │
-│ SERIAL       │ Auto-incrementing integer (1, 2, 3…) — use for IDs │
+│ SERIAL       │ Auto-incrementing integer (1, 2, 3…)  -  use for IDs │
 │ NUMERIC(p,s) │ Exact decimal: NUMERIC(10,2) → 99999999.99         │
 │ FLOAT        │ Approximate decimal (for science, not money)       │
 │ VARCHAR(n)   │ Text up to n characters: VARCHAR(50)               │
 │ TEXT         │ Unlimited length text                              │
-│ CHAR(n)      │ Fixed-length text — always exactly n chars         │
+│ CHAR(n)      │ Fixed-length text  -  always exactly n chars         │
 │ BOOLEAN      │ TRUE or FALSE                                      │
 │ DATE         │ Date only: '2024-01-15'                            │
 │ TIMESTAMP    │ Date + time: '2024-01-15 09:30:00'                 │
@@ -228,7 +228,7 @@ age          VARCHAR(10)      -- BAD: age is a number, not text
 
 ---
 
-## 7. Constraints — Rules for Your Data
+## 7. Constraints  -  Rules for Your Data
 
 Constraints are **rules enforced by the database**. If you try to break them, the database **refuses** and gives an error.
 
@@ -277,7 +277,7 @@ CREATE TABLE employees (
 
 ### Primary Key
 
-A **Primary Key** is the unique identifier for each row in a table. Think of it like a fingerprint — no two rows can have the same primary key, and it can never be NULL.
+A **Primary Key** is the unique identifier for each row in a table. Think of it like a fingerprint  -  no two rows can have the same primary key, and it can never be NULL.
 
 ```sql
 -- When you use SERIAL PRIMARY KEY:
@@ -352,7 +352,7 @@ CREATE TABLE products (
 
 ---
 
-### CREATE — Make a new table or database
+### CREATE  -  Make a new table or database
 
 ```sql
 -- Create a database
@@ -366,7 +366,7 @@ CREATE TABLE products ( ... );
 
 ---
 
-### INSERT — Add new rows of data
+### INSERT  -  Add new rows of data
 
 ```sql
 -- Insert one row
@@ -382,12 +382,12 @@ VALUES
     ('USB-C Cable',       'Accessories',   9.99, 200);
 ```
 
-> **Note:** You don't provide `product_id` — `SERIAL` generates it automatically.
-> **Note:** You don't provide `is_available` — it uses the `DEFAULT TRUE`.
+> **Note:** You don't provide `product_id`  -  `SERIAL` generates it automatically.
+> **Note:** You don't provide `is_available`  -  it uses the `DEFAULT TRUE`.
 
 ---
 
-### SELECT — Read / query data
+### SELECT  -  Read / query data
 
 ```sql
 -- Get all columns, all rows
@@ -418,7 +418,7 @@ WHERE category = 'Laptops' AND price < 2000;
 
 ---
 
-### UPDATE — Modify existing rows
+### UPDATE  -  Modify existing rows
 
 ```sql
 -- Update one column for one specific row
@@ -441,13 +441,13 @@ WHERE stock = 0;
 > ⚠️ **Always use WHERE with UPDATE.** Without it, you update EVERY row in the table!
 
 ```sql
--- DANGEROUS — updates ALL products:
+-- DANGEROUS  -  updates ALL products:
 UPDATE products SET price = 0;   -- ❌ Don't do this by accident!
 ```
 
 ---
 
-### DELETE — Remove rows from a table
+### DELETE  -  Remove rows from a table
 
 ```sql
 -- Delete one specific row
@@ -466,7 +466,7 @@ DELETE FROM products;
 
 ---
 
-### ALTER — Change the structure of an existing table
+### ALTER  -  Change the structure of an existing table
 
 ```sql
 -- Add a new column
@@ -495,13 +495,13 @@ ALTER TABLE products RENAME TO inventory;
 
 ---
 
-### DROP — Permanently delete a table or database
+### DROP  -  Permanently delete a table or database
 
 ```sql
 -- Delete the entire table (structure AND all data)
 DROP TABLE products;
 
--- Safe version — won't error if table doesn't exist
+-- Safe version  -  won't error if table doesn't exist
 DROP TABLE IF EXISTS products;
 
 -- Delete a database entirely
@@ -512,7 +512,7 @@ DROP DATABASE school;
 
 ---
 
-### TRUNCATE — Remove all data but keep the table
+### TRUNCATE  -  Remove all data but keep the table
 
 ```sql
 -- Empties the table completely, but the table itself still exists
@@ -604,7 +604,7 @@ VALUES (1, 'Duplicate Product', 99.99);
 ERROR: duplicate key value violates unique constraint "products_pkey"
 DETAIL: Key (product_id)=(1) already exists.
 ```
-**Fix:** Use SERIAL and don't specify product_id — let the database generate it.
+**Fix:** Use SERIAL and don't specify product_id  -  let the database generate it.
 
 ---
 
@@ -711,7 +711,7 @@ Try to write the query yourself before looking at the answer!
 
 ---
 
-**Q1.** Show all books in the table — every column, every row.
+**Q1.** Show all books in the table  -  every column, every row.
 
 <details>
 <summary>Answer</summary>
@@ -872,7 +872,7 @@ WHERE title = 'Dune';
 ├──────────────────────┴────────────────────────────────────────┤
 │ GOLDEN RULES:                                                 │
 │  ✅ Always use WHERE with UPDATE and DELETE                   │
-│  ✅ DROP is permanent — double-check before running           │
+│  ✅ DROP is permanent  -  double-check before running           │
 │  ✅ SERIAL handles your ID column automatically               │
 │  ✅ Constraints protect your data quality                     │
 │  ✅ Foreign Key = link between two tables                     │
@@ -881,4 +881,4 @@ WHERE title = 'Dune';
 
 ---
 
-*End of Lecture 01 — Happy querying! 🐘*
+*End of Lecture 01  -  Happy querying! 🐘*

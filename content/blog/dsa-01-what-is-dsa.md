@@ -1,6 +1,6 @@
 ---
 title: "What is DSA and Why Do We Learn It"
-description: "A clear introduction to Data Structures and Algorithms — what they are, why they matter, and how to approach learning them."
+description: "A clear introduction to Data Structures and Algorithms  -  what they are, why they matter, and how to approach learning them."
 date: 2026-03-21
 author: "codeverra"
 toc: true
@@ -8,6 +8,12 @@ tocopen: false
 draft: false
 tags:
   - dsa
+cover:
+  image: "/images/dsa-1.png"
+  alt: "What is DSA"
+  caption: "What is DSA"
+  relative: true
+  hidden: false
 ---
 
 # What is DSA and Why Do We Learn It

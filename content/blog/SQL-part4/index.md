@@ -57,7 +57,7 @@ UNION ALL SELECT 'order_items',COUNT(*) FROM order_items;
 
 ---
 
-## Part 1 — The Four JOIN Types, Side by Side
+## Part 1  -  The Four JOIN Types, Side by Side
 
 The best way to understand JOINs is to see them compared on the same data.
 
@@ -71,7 +71,7 @@ Let us use two small subsets to make the differences crystal clear.
 -- No orders for: 11 (Ravi), 13 (Kavya), 14 (Aditya), 16 (Nikhil), 18 (Rahul), 19 (Tanvi)
 ```
 
-### INNER JOIN — the intersection
+### INNER JOIN  -  the intersection
 
 Returns only rows that have a matching record in **both** tables.
 Customers with no orders are excluded. Orders with no customer are excluded (impossible here due to FK, but worth knowing).
@@ -89,13 +89,13 @@ INNER JOIN orders AS o  ON o.customer_id = c.id
 ORDER BY c.name;
 ```
 
-Result: 15 rows — one per order. The 6 customers who never ordered are absent.
+Result: 15 rows  -  one per order. The 6 customers who never ordered are absent.
 
-> `JOIN` and `INNER JOIN` are identical. `INNER` is optional — most developers write just `JOIN`.
+> `JOIN` and `INNER JOIN` are identical. `INNER` is optional  -  most developers write just `JOIN`.
 
 ---
 
-### LEFT JOIN — keep all from the left
+### LEFT JOIN  -  keep all from the left
 
 Returns **all rows from the left table** (customers), plus matching rows from the right (orders).
 Customers with no orders appear once, with NULL in all order columns.
@@ -113,7 +113,7 @@ LEFT JOIN orders  AS o  ON o.customer_id = c.id
 ORDER BY c.name;
 ```
 
-Result: 20 rows — all customers. The 6 who never ordered show NULL for order columns.
+Result: 20 rows  -  all customers. The 6 who never ordered show NULL for order columns.
 
 ```sql
 -- Find customers who have NEVER placed an order
@@ -129,15 +129,15 @@ WHERE o.id IS NULL
 ORDER BY c.name;
 ```
 
-This is called the **anti-join pattern** — one of the most useful LEFT JOIN techniques.
+This is called the **anti-join pattern**  -  one of the most useful LEFT JOIN techniques.
 The WHERE clause filters to only the rows where no match was found on the right side.
 
 ---
 
-### RIGHT JOIN — keep all from the right
+### RIGHT JOIN  -  keep all from the right
 
 Returns **all rows from the right table** (orders), plus matching rows from the left (customers).
-In practice, `RIGHT JOIN` is rare — you can always rewrite it as a `LEFT JOIN` by swapping table order.
+In practice, `RIGHT JOIN` is rare  -  you can always rewrite it as a `LEFT JOIN` by swapping table order.
 
 ```sql
 -- RIGHT JOIN: keep all orders even if customer data is missing
@@ -154,17 +154,17 @@ ORDER BY o.id;
 ```
 
 > **Tip:** Most developers avoid `RIGHT JOIN` entirely.
-> `A RIGHT JOIN B` = `B LEFT JOIN A`  — just swap the tables.
+> `A RIGHT JOIN B` = `B LEFT JOIN A`   -  just swap the tables.
 > Sticking to LEFT JOIN makes queries easier to read and reason about.
 
 ---
 
-### FULL OUTER JOIN — keep everything
+### FULL OUTER JOIN  -  keep everything
 
 Returns **all rows from both tables**. Where there is no match, NULLs fill the gaps.
 
 ```sql
--- All customers and all orders — matched where possible
+-- All customers and all orders  -  matched where possible
 SELECT
     c.name        AS customer,
     c.city,
@@ -178,7 +178,7 @@ ORDER BY c.name NULLS LAST;
 Result: 20+ rows. Customers without orders show NULL on the right. If there were orphan orders (no customer), they'd show NULL on the left.
 
 > `FULL OUTER JOIN` is rare in day-to-day work. The most useful application is
-> **data reconciliation** — comparing two lists to find what's in A but not B,
+> **data reconciliation**  -  comparing two lists to find what's in A but not B,
 > what's in B but not A, and what's in both.
 
 ---
@@ -205,7 +205,7 @@ Rows returned:       Rows returned:      Rows returned:      Rows returned:
 
 ---
 
-### ✏️ Practice Set 1 — JOIN types
+### ✏️ Practice Set 1  -  JOIN types
 
 **Q1.** Write a query using LEFT JOIN to find all products that have
 **never appeared in any order**. Show product name, category_id, and price.
@@ -224,7 +224,7 @@ and the number of cancelled orders.
 
 ---
 
-## Part 2 — JOINs Across Multiple Tables
+## Part 2  -  JOINs Across Multiple Tables
 
 ShopDB has 5 tables. A full order summary requires linking all of them:
 
@@ -280,7 +280,7 @@ ORDER BY o.order_date, p.name;
 ```
 
 ```sql
--- Step 4: add categories (all 5 tables — the full chain)
+-- Step 4: add categories (all 5 tables  -  the full chain)
 SELECT
     c.name            AS customer,
     c.city,
@@ -306,7 +306,7 @@ This 5-table query is the backbone of most e-commerce reports.
 
 ---
 
-## Part 3 — JOIN + GROUP BY: Aggregating Across Relationships
+## Part 3  -  JOIN + GROUP BY: Aggregating Across Relationships
 
 The most common real-world pattern: join to get context, then group to summarise.
 
@@ -344,7 +344,7 @@ ORDER BY gross_revenue DESC;
 
 ```sql
 -- Best-selling product per category
--- (most units sold — uses the window function pattern from Lesson 2.3)
+-- (most units sold  -  uses the window function pattern from Lesson 2.3)
 SELECT category, product, units_sold
 FROM (
     SELECT
@@ -368,7 +368,7 @@ ORDER BY category;
 
 ---
 
-### ✏️ Practice Set 2 — Multi-table JOINs
+### ✏️ Practice Set 2  -  Multi-table JOINs
 
 **Q5.** Write a 4-table JOIN query showing each order's total value
 (sum of all its line items). Show order_id, customer name, order_date,
@@ -392,10 +392,10 @@ Order by revenue descending.
 
 ---
 
-## Part 4 — Self-Join: A Table Joined to Itself
+## Part 4  -  Self-Join: A Table Joined to Itself
 
 A self-join is when a table references its own rows.
-It looks unusual at first but it is just a regular JOIN — both sides happen to be the same table.
+It looks unusual at first but it is just a regular JOIN  -  both sides happen to be the same table.
 
 **Use case:** Find customers in the same city as another customer.
 
@@ -413,8 +413,8 @@ ORDER BY a.city, a.name, b.name;
 
 The key details:
 - Two aliases for the same table: `a` and `b`
-- `ON a.city = b.city` — the join condition
-- `AND a.id <> b.id` — prevents a row matching itself
+- `ON a.city = b.city`  -  the join condition
+- `AND a.id <> b.id`  -  prevents a row matching itself
 
 ```sql
 -- One row per city pair (avoid showing both A-B and B-A)
@@ -447,7 +447,7 @@ ORDER BY cat.name, price_difference;
 
 ---
 
-## Part 5 — Common JOIN Mistakes
+## Part 5  -  Common JOIN Mistakes
 
 These are the mistakes every SQL developer makes at least once.
 Reading about them now will save you significant debugging time.
@@ -468,7 +468,7 @@ FROM customers AS c
 JOIN orders    AS o  ON o.customer_id = c.id;  -- ✅
 ```
 
-A missing `ON` clause creates a **Cartesian product** — every row in the left table
+A missing `ON` clause creates a **Cartesian product**  -  every row in the left table
 matched with every row in the right table. With large tables this can produce
 billions of rows and crash your database session.
 
@@ -477,7 +477,7 @@ billions of rows and crash your database session.
 ### Mistake 2: Duplicate rows from one-to-many JOINs
 
 ```sql
--- This looks like it counts customers — but it doesn't
+-- This looks like it counts customers  -  but it doesn't
 -- Each customer with 2 orders is counted twice!
 SELECT COUNT(*) AS customer_count
 FROM customers  AS c
@@ -519,7 +519,7 @@ GROUP BY cat.id, cat.name;
 
 With `LEFT JOIN`, unmatched rows have `NULL` for all right-side columns.
 `COUNT(*)` counts the row anyway (it counts rows, not values).
-`COUNT(p.id)` skips NULLs — which is what you almost always want.
+`COUNT(p.id)` skips NULLs  -  which is what you almost always want.
 
 ---
 
@@ -543,14 +543,14 @@ LEFT JOIN orders AS o  ON o.customer_id = c.id
 ```
 
 When you filter on a RIGHT-side column in `WHERE`, rows that had `NULL` (no match)
-are eliminated — turning your `LEFT JOIN` into an `INNER JOIN` silently.
+are eliminated  -  turning your `LEFT JOIN` into an `INNER JOIN` silently.
 Move those filters into the `ON` clause instead.
 
 ---
 
-### ✏️ Practice Set 3 — JOIN mistakes and self-joins
+### ✏️ Practice Set 3  -  JOIN mistakes and self-joins
 
-**Q9.** The following query has a bug — it returns the wrong count.
+**Q9.** The following query has a bug  -  it returns the wrong count.
 Identify the bug and fix it:
 ```sql
 SELECT COUNT(*) AS customers_who_ordered
@@ -583,7 +583,7 @@ ORDER BY order_count DESC;
 
 ---
 
-## Part 6 — JOIN vs Subquery: When to Use Which
+## Part 6  -  JOIN vs Subquery: When to Use Which
 
 Both JOINs and subqueries can answer the same questions in different ways.
 Knowing which to reach for makes you a better SQL writer.
@@ -624,11 +624,11 @@ All three return the same result. Which should you use?
 | You only need to check *existence* | `EXISTS` |
 | You are matching against a list of values | `IN` (subquery) |
 | You want to exclude rows based on another table | `NOT EXISTS` or `LEFT JOIN + IS NULL` |
-| The subquery returns many rows and is reused | `CTE (WITH ...)` — covered in Lesson 2.5 |
+| The subquery returns many rows and is reused | `CTE (WITH ...)`  -  covered in Lesson 2.5 |
 
 ---
 
-## Part 7 — Full Realistic Query: Customer Order Report
+## Part 7  -  Full Realistic Query: Customer Order Report
 
 This query combines everything from this lesson into a single, production-ready report.
 
@@ -659,14 +659,14 @@ ORDER BY total_spent_inr DESC;
 Read this query carefully. Every clause has a reason:
 - `LEFT JOIN` so customers with no orders appear (with 0s)
 - `LEFT JOIN order_items` because we need item-level data for the sum
-- `COUNT(DISTINCT o.id)` because each order has multiple items — without DISTINCT we'd count items, not orders
+- `COUNT(DISTINCT o.id)` because each order has multiple items  -  without DISTINCT we'd count items, not orders
 - `FILTER` for the delivered/cancelled breakdown
 - `COALESCE(..., 0)` so customers with no orders show 0, not NULL
-- `GROUP BY c.id, c.name, c.city, c.state` — all non-aggregate SELECT columns
+- `GROUP BY c.id, c.name, c.city, c.state`  -  all non-aggregate SELECT columns
 
 ---
 
-## Part 8 — Practice Set Answers
+## Part 8  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -822,11 +822,11 @@ WHERE oi.id IS NULL
 ORDER BY p.name;
 ```
 
-**Q13.** Fix the query — all customers including those with 0 orders:
+**Q13.** Fix the query  -  all customers including those with 0 orders:
 ```sql
 SELECT
     c.name,
-    COUNT(o.id) AS order_count   -- COUNT(o.id) not COUNT(*) — handles NULLs correctly
+    COUNT(o.id) AS order_count   -- COUNT(o.id) not COUNT(*)  -  handles NULLs correctly
 FROM customers  AS c
 LEFT JOIN orders AS o  ON o.customer_id = c.id   -- LEFT JOIN not JOIN
 GROUP BY c.id, c.name
@@ -838,21 +838,21 @@ ORDER BY order_count DESC;
 ## What's Next
 
 You have covered:
-- ✅ `INNER JOIN` — only matching rows
-- ✅ `LEFT JOIN` — all left rows + matches
-- ✅ `RIGHT JOIN` — all right rows + matches (and why to avoid it)
-- ✅ `FULL OUTER JOIN` — all rows from both
-- ✅ The anti-join pattern — `LEFT JOIN + WHERE IS NULL`
-- ✅ 4-table JOIN — the full ShopDB chain
-- ✅ JOIN + GROUP BY — aggregating across relationships
-- ✅ Self-joins — a table joined to itself
+- ✅ `INNER JOIN`  -  only matching rows
+- ✅ `LEFT JOIN`  -  all left rows + matches
+- ✅ `RIGHT JOIN`  -  all right rows + matches (and why to avoid it)
+- ✅ `FULL OUTER JOIN`  -  all rows from both
+- ✅ The anti-join pattern  -  `LEFT JOIN + WHERE IS NULL`
+- ✅ 4-table JOIN  -  the full ShopDB chain
+- ✅ JOIN + GROUP BY  -  aggregating across relationships
+- ✅ Self-joins  -  a table joined to itself
 - ✅ The 4 most common JOIN mistakes and how to fix them
-- ✅ JOIN vs subquery vs EXISTS — when to use which
+- ✅ JOIN vs subquery vs EXISTS  -  when to use which
 
-**In Lesson 2.5** we build **StreamDB** — a Hotstar-style streaming platform —
+**In Lesson 2.5** we build **StreamDB**  -  a Hotstar-style streaming platform  - 
 and go deep on **Subqueries & CTEs**:
 - Subqueries in `WHERE`, `FROM`, and `SELECT`
 - `IN`, `NOT IN`, `EXISTS`, `NOT EXISTS`
 - Correlated subqueries
-- `WITH` (CTEs) — named, chainable subqueries
+- `WITH` (CTEs)  -  named, chainable subqueries
 - When a CTE is cleaner than a nested subquery

@@ -30,7 +30,7 @@ cover:
 
 > **Who is this for?**
 > You've done the NumPy Masterclass (or know the basics of Python and arrays).
-> Now you want to work with **real tabular data** — rows, columns, missing values, merges, and group-level summaries.
+> Now you want to work with **real tabular data**  -  rows, columns, missing values, merges, and group-level summaries.
 > That's exactly what Pandas is for.
 
 ---
@@ -43,7 +43,7 @@ cover:
 4. [Creating DataFrames](#4-creating-dataframes)
 5. [Reading and Writing Data](#5-reading-and-writing-data)
 6. [Exploring a DataFrame](#6-exploring-a-dataframe)
-7. [Selecting Data — loc, iloc, and Column Access](#7-selecting-data--loc-iloc-and-column-access)
+7. [Selecting Data  -  loc, iloc, and Column Access](#7-selecting-data--loc-iloc-and-column-access)
 8. [Filtering Rows](#8-filtering-rows)
 9. [Adding, Modifying, and Dropping Columns](#9-adding-modifying-and-dropping-columns)
 10. [Sorting Data](#10-sorting-data)
@@ -51,10 +51,10 @@ cover:
 12. [String Operations](#12-string-operations)
 13. [Working with Dates and Times](#13-working-with-dates-and-times)
 14. [apply(), map(), and applymap()](#14-apply-map-and-applymap)
-15. [GroupBy — Aggregation and Split-Apply-Combine](#15-groupby--aggregation-and-split-apply-combine)
+15. [GroupBy  -  Aggregation and Split-Apply-Combine](#15-groupby--aggregation-and-split-apply-combine)
 16. [Merging and Joining DataFrames](#16-merging-and-joining-dataframes)
 17. [Pivot Tables and Crosstabs](#17-pivot-tables-and-crosstabs)
-18. [Reshaping — melt() and stack()/unstack()](#18-reshaping--melt-and-stackunstack)
+18. [Reshaping  -  melt() and stack()/unstack()](#18-reshaping--melt-and-stackunstack)
 19. [MultiIndex DataFrames](#19-multiindex-dataframes)
 20. [Performance Tips](#20-performance-tips)
 21. [Practice Questions](#21-practice-questions)
@@ -66,15 +66,15 @@ cover:
 
 NumPy arrays are powerful, but they have one limitation: **every column must be the same data type**, and there are no column names or row labels.
 
-Real-world data doesn't look like that. A sales table has strings (city names), integers (quantities), floats (prices), and dates — all in the same table.
+Real-world data doesn't look like that. A sales table has strings (city names), integers (quantities), floats (prices), and dates  -  all in the same table.
 
 **Pandas** gives you:
 
-- A `DataFrame` — a 2D table with named columns and labeled rows, where each column can be a different type
-- A `Series` — a single labeled column
+- A `DataFrame`  -  a 2D table with named columns and labeled rows, where each column can be a different type
+- A `Series`  -  a single labeled column
 - Built-in tools for reading CSVs, Excel files, SQL, and JSON
 - Powerful data cleaning (missing values, duplicates, type conversions)
-- Grouping, aggregating, merging, pivoting — the full analytics toolkit
+- Grouping, aggregating, merging, pivoting  -  the full analytics toolkit
 
 > **Think of it this way:** NumPy is a calculator. Pandas is a spreadsheet that also knows how to do the math.
 
@@ -95,7 +95,7 @@ import numpy as np   # often used alongside pandas
 
 ## 3. The Two Core Data Structures
 
-### 3.1 Series — A Labeled 1D Array
+### 3.1 Series  -  A Labeled 1D Array
 
 A `Series` is like a single column from a spreadsheet. It has values and an **index** (labels for each row).
 
@@ -120,9 +120,9 @@ print(revenue[["Jan", "Mar", "May"]])   # Multiple labels
 print(revenue.mean())   # 15.67
 ```
 
-> A `Series` always has an **index**. By default it's 0, 1, 2... but you can make it anything — dates, city names, IDs.
+> A `Series` always has an **index**. By default it's 0, 1, 2... but you can make it anything  -  dates, city names, IDs.
 
-### 3.2 DataFrame — A Labeled 2D Table
+### 3.2 DataFrame  -  A Labeled 2D Table
 
 A `DataFrame` is a collection of `Series` sharing the same index. Think of it as a table where each column is a `Series`.
 
@@ -195,7 +195,7 @@ employees.set_index("emp_id", inplace=True)
 
 ## 5. Reading and Writing Data
 
-In practice, you almost never create DataFrames manually — you read them from files.
+In practice, you almost never create DataFrames manually  -  you read them from files.
 
 ### Reading CSV
 
@@ -252,7 +252,7 @@ The first thing to do when you load any dataset is to **understand its shape and
 
 ```python
 # Using a sample employee dataset
-print(df.shape)          # (105, 5) — 105 rows, 5 columns
+print(df.shape)          # (105, 5)  -  105 rows, 5 columns
 print(df.head())         # First 5 rows
 print(df.head(10))       # First 10 rows
 print(df.tail())         # Last 5 rows
@@ -271,11 +271,11 @@ print(df["city"].unique())         # Distinct city values
 print(df.isnull().sum())           # Count of missing values per column
 ```
 
-> **`df.info()` is your best friend** on a new dataset. It tells you data types AND which columns have nulls — both critical for cleaning.
+> **`df.info()` is your best friend** on a new dataset. It tells you data types AND which columns have nulls  -  both critical for cleaning.
 
 ---
 
-## 7. Selecting Data — loc, iloc, and Column Access
+## 7. Selecting Data  -  loc, iloc, and Column Access
 
 Pandas gives you multiple ways to select rows and columns. The two main methods are `loc` (label-based) and `iloc` (position-based).
 
@@ -360,7 +360,7 @@ delhi_team = employees[employees["city"] == "Delhi"]
 ### Multiple Conditions
 
 ```python
-# Use & for AND, | for OR — always wrap each condition in parentheses
+# Use & for AND, | for OR  -  always wrap each condition in parentheses
 
 # Engineers in Bangalore
 eng_blr = employees[
@@ -381,7 +381,7 @@ mid_level = employees[
 ]
 ```
 
-### isin() — Filter by List of Values
+### isin()  -  Filter by List of Values
 
 ```python
 # Employees in specific cities
@@ -391,13 +391,13 @@ metro_employees = employees[employees["city"].isin(["Mumbai", "Delhi", "Bangalor
 non_tech = employees[~employees["department"].isin(["Engineering", "Data Science"])]
 ```
 
-### between() — Numeric Range Filter
+### between()  -  Numeric Range Filter
 
 ```python
 mid_salary = employees[employees["salary"].between(50000, 70000)]
 ```
 
-### query() — SQL-style Filtering
+### query()  -  SQL-style Filtering
 
 ```python
 # Cleaner syntax for complex filters
@@ -521,7 +521,7 @@ df.isnull()           # True/False for each cell
 df.isnull().sum()     # Count of nulls per column
 df.isnull().sum() / len(df) * 100  # Percentage missing
 
-df.notnull()          # Inverse — True where NOT null
+df.notnull()          # Inverse  -  True where NOT null
 ```
 
 ### Dropping Missing Values
@@ -551,10 +551,10 @@ df["city"].fillna("Unknown", inplace=True)
 df["age"].fillna(df["age"].mean(), inplace=True)
 df["income"].fillna(df["income"].median(), inplace=True)
 
-# Forward fill — use the previous row's value
+# Forward fill  -  use the previous row's value
 df["income"].fillna(method="ffill")
 
-# Backward fill — use the next row's value
+# Backward fill  -  use the next row's value
 df["income"].fillna(method="bfill")
 
 # Fill different columns with different values
@@ -576,7 +576,7 @@ temps.interpolate()   # Fills gaps linearly between known values
 
 ## 12. String Operations
 
-Pandas provides a `.str` accessor to apply string methods to an entire Series at once — no loops needed.
+Pandas provides a `.str` accessor to apply string methods to an entire Series at once  -  no loops needed.
 
 ```python
 df = pd.DataFrame({
@@ -684,7 +684,7 @@ quarterly = df["amount"].resample("QE").mean()
 
 These three methods let you apply custom functions to your data in different ways.
 
-### map() — Element-wise on a Series
+### map()  -  Element-wise on a Series
 
 Apply a function or mapping to each element of a **Series**.
 
@@ -702,7 +702,7 @@ students["grade_dict"] = students["marks"].map(grade_map)
 students["marks_normalized"] = students["marks"].map(lambda x: round(x / 100, 2))
 ```
 
-### apply() — Row-wise or Column-wise on a DataFrame
+### apply()  -  Row-wise or Column-wise on a DataFrame
 
 The most powerful and flexible method. Apply a function along rows (`axis=1`) or columns (`axis=0`).
 
@@ -714,7 +714,7 @@ students["grade"] = students["marks"].apply(lambda x:
     "B"  if x >= 70 else "C"
 )
 
-# apply() across rows (axis=1) — access multiple columns at once
+# apply() across rows (axis=1)  -  access multiple columns at once
 students["result_summary"] = students.apply(
     lambda row: f"{row['name']} scored {row['marks']} and got {row['grade']}",
     axis=1
@@ -731,7 +731,7 @@ students["performance"] = students["marks"].apply(classify_performance)
 ```
 
 ```python
-# apply() across columns (axis=0) — summarize each column
+# apply() across columns (axis=0)  -  summarize each column
 df_scores = pd.DataFrame({
     "Maths":   [78, 92, 65, 88],
     "Science": [85, 76, 70, 91],
@@ -745,7 +745,7 @@ df_scores.apply(lambda col: col.max() - col.min(), axis=0)
 df_scores.apply(lambda row: row.sum(), axis=1)
 ```
 
-### DataFrame.map() (formerly applymap) — Element-wise on Entire DataFrame
+### DataFrame.map() (formerly applymap)  -  Element-wise on Entire DataFrame
 
 Apply a function to every single cell.
 
@@ -763,12 +763,12 @@ df_scores_float.map(lambda x: round(x, 1))
 
 ---
 
-## 15. GroupBy — Aggregation and Split-Apply-Combine
+## 15. GroupBy  -  Aggregation and Split-Apply-Combine
 
 GroupBy is one of the most important Pandas features. It splits your data into groups, applies a function to each group, and combines the results.
 
 ```python
-# E-commerce order data — a Flipkart-style dataset
+# E-commerce order data  -  a Flipkart-style dataset
 orders = pd.DataFrame({
     "order_id":  [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010],
     "customer":  ["Aarav", "Priya", "Aarav", "Rohan", "Priya", "Sneha", "Rohan", "Aarav", "Sneha", "Priya"],
@@ -822,9 +822,9 @@ orders.groupby(["city", "category"])["amount"].sum()
 orders.groupby(["city", "status"])["order_id"].count()
 ```
 
-### transform() — GroupBy Without Reducing
+### transform()  -  GroupBy Without Reducing
 
-`transform` applies a function to each group but **returns a result the same size as the original DataFrame** — very useful for adding group-level stats back to the original rows.
+`transform` applies a function to each group but **returns a result the same size as the original DataFrame**  -  very useful for adding group-level stats back to the original rows.
 
 ```python
 # Add "city_avg_order" as a new column (same value for all rows in the same city)
@@ -834,7 +834,7 @@ orders["city_avg_order"] = orders.groupby("city")["amount"].transform("mean")
 orders["above_city_avg"] = orders["amount"] > orders["city_avg_order"]
 ```
 
-### filter() — Keep Only Groups That Meet a Condition
+### filter()  -  Keep Only Groups That Meet a Condition
 
 ```python
 # Keep only cities where total revenue > 30000
@@ -865,28 +865,28 @@ orders = pd.DataFrame({
 })
 ```
 
-### Inner Join (default) — Only matching rows
+### Inner Join (default)  -  Only matching rows
 
 ```python
 merged = pd.merge(orders, customers, on="cust_id")
 # Only orders where cust_id exists in both tables (cust_id 6 dropped)
 ```
 
-### Left Join — All rows from left, match from right
+### Left Join  -  All rows from left, match from right
 
 ```python
 merged = pd.merge(orders, customers, on="cust_id", how="left")
 # All 6 orders kept; cust_id=6 gets NaN for customer columns
 ```
 
-### Right Join — All rows from right, match from left
+### Right Join  -  All rows from right, match from left
 
 ```python
 merged = pd.merge(orders, customers, on="cust_id", how="right")
 # All 5 customers kept; Karan (no orders) gets NaN for order columns
 ```
 
-### Outer Join — All rows from both
+### Outer Join  -  All rows from both
 
 ```python
 merged = pd.merge(orders, customers, on="cust_id", how="outer")
@@ -902,7 +902,7 @@ pd.merge(orders, customers,
          right_on="customer_id")
 ```
 
-### concat() — Stack DataFrames
+### concat()  -  Stack DataFrames
 
 Use `concat` when tables have the same structure (same columns) and you want to stack them.
 
@@ -931,9 +931,9 @@ OUTER  → All rows from BOTH tables; NaN where no match
 
 ## 17. Pivot Tables and Crosstabs
 
-### pivot_table() — Spreadsheet-style Summarization
+### pivot_table()  -  Spreadsheet-style Summarization
 
-If you've used pivot tables in Excel, this is the same idea — but in code.
+If you've used pivot tables in Excel, this is the same idea  -  but in code.
 
 ```python
 ipl = pd.DataFrame({
@@ -966,7 +966,7 @@ ipl.pivot_table(values="runs", index="team", columns="season",
                 aggfunc="sum", margins=True, margins_name="Total")
 ```
 
-### crosstab() — Frequency Tables
+### crosstab()  -  Frequency Tables
 
 Crosstab is a shortcut for counting combinations of categorical variables.
 
@@ -992,11 +992,11 @@ pd.crosstab(employees["department"], employees["level"],
 
 ---
 
-## 18. Reshaping — melt() and stack()/unstack()
+## 18. Reshaping  -  melt() and stack()/unstack()
 
 Sometimes your data is in the wrong shape for analysis. These tools reshape it.
 
-### melt() — Wide to Long Format
+### melt()  -  Wide to Long Format
 
 "Wide" data has one column per category. "Long" data has a category column and a value column. Long format is required by most plotting libraries.
 
@@ -1026,7 +1026,7 @@ print(long)
 # ... and so on
 ```
 
-### pivot() — Long to Wide Format (inverse of melt)
+### pivot()  -  Long to Wide Format (inverse of melt)
 
 ```python
 # Convert long back to wide
@@ -1132,14 +1132,14 @@ df["department"] = df["department"].astype("category")
 # Can cut memory by 10-50x for string columns!
 ```
 
-### Avoid Loops — Use Vectorized Operations
+### Avoid Loops  -  Use Vectorized Operations
 
 ```python
-# SLOW — Python loop
+# SLOW  -  Python loop
 for i in range(len(df)):
     df.loc[i, "tax"] = df.loc[i, "salary"] * 0.30
 
-# FAST — vectorized
+# FAST  -  vectorized
 df["tax"] = df["salary"] * 0.30
 ```
 
@@ -1166,7 +1166,7 @@ for chunk in pd.read_csv("huge_file.csv", chunksize=10000):
 ```python
 # When slicing a DataFrame and modifying it, always copy first
 subset = df[df["city"] == "Delhi"].copy()
-subset["new_col"] = "value"   # Safe — no warning
+subset["new_col"] = "value"   # Safe  -  no warning
 ```
 
 ---
@@ -1177,12 +1177,12 @@ Work through these on your own. They cover the full range of what you've learned
 
 ---
 
-**Q1 — DataFrame Creation and Exploration**
+**Q1  -  DataFrame Creation and Exploration**
 Create a DataFrame for 8 students with columns: `name`, `city`, `marks_theory`, `marks_practical`. Add a `total` column and display basic statistics using `describe()`.
 
 ---
 
-**Q2 — loc and iloc**
+**Q2  -  loc and iloc**
 Using the DataFrame below, extract:
 - Rows where `emp_id` is between 102 and 104 using `loc`
 - The last 3 rows using `iloc`
@@ -1198,7 +1198,7 @@ df = pd.DataFrame({
 
 ---
 
-**Q3 — Filtering**
+**Q3  -  Filtering**
 Using the Zomato-style dataset below, find:
 - All restaurants in Koramangala with rating above 4.0
 - Restaurants that serve "North Indian" OR "Chinese" cuisine
@@ -1216,7 +1216,7 @@ zomato = pd.DataFrame({
 
 ---
 
-**Q4 — Missing Data**
+**Q4  -  Missing Data**
 Load the dataset below and:
 - Count nulls in each column
 - Fill `age` with the median, `city` with "Unknown", `salary` with column mean
@@ -1232,7 +1232,7 @@ df = pd.DataFrame({
 
 ---
 
-**Q5 — String Operations**
+**Q5  -  String Operations**
 Given the dataset below:
 - Standardize `name` to title case and strip whitespace
 - Extract the domain from each email (e.g. "gmail.com")
@@ -1246,7 +1246,7 @@ df = pd.DataFrame({
 
 ---
 
-**Q6 — Date Operations**
+**Q6  -  Date Operations**
 Given a dataset of Diwali sale orders:
 - Convert `order_date` to datetime
 - Extract month name and day of week
@@ -1262,7 +1262,7 @@ df = pd.DataFrame({
 
 ---
 
-**Q7 — apply() and map()**
+**Q7  -  apply() and map()**
 Using the employee dataset:
 - Use `apply()` to create an `experience_band` column: "Fresher" (<2yr), "Mid-level" (2–5yr), "Senior" (>5yr)
 - Use `map()` to create a `city_tier` column (Delhi/Mumbai/Bangalore = Tier 1, others = Tier 2)
@@ -1276,7 +1276,7 @@ employees = pd.DataFrame({
 
 ---
 
-**Q8 — GroupBy**
+**Q8  -  GroupBy**
 Using the IPL dataset:
 - Find total runs per team
 - Find average strike rate per player
@@ -1295,7 +1295,7 @@ ipl = pd.DataFrame({
 
 ---
 
-**Q9 — Merging**
+**Q9  -  Merging**
 You have two tables: `students` and `exam_results`. Merge them to:
 - Show all students even if they didn't appear in the exam
 - Show only students who appeared in the exam
@@ -1315,7 +1315,7 @@ exam_results = pd.DataFrame({
 
 ---
 
-**Q10 — Pivot Table**
+**Q10  -  Pivot Table**
 Using the sales data below, create a pivot table showing total `revenue` for each `product` across each `city`. Add row and column totals.
 ```python
 sales = pd.DataFrame({
@@ -1327,7 +1327,7 @@ sales = pd.DataFrame({
 
 ---
 
-**Q11 — melt() and Reshape**
+**Q11  -  melt() and Reshape**
 The table below is in wide format. Melt it into long format with columns `student`, `subject`, and `marks`. Then find the subject-wise average.
 ```python
 wide = pd.DataFrame({
@@ -1341,7 +1341,7 @@ wide = pd.DataFrame({
 
 ---
 
-**Q12 — Performance Optimization**
+**Q12  -  Performance Optimization**
 Take the dataset below (or create a similar one with 100,000 rows using `pd.concat`) and:
 - Check memory usage before and after
 - Convert `city` and `department` to category dtype
@@ -1360,7 +1360,7 @@ df = pd.DataFrame({
 
 ---
 
-**Q13 — Full Analysis Pipeline**
+**Q13  -  Full Analysis Pipeline**
 You are given sales data from a fictional Indian retail chain. Answer the following:
 1. Which city has the highest average order value?
 2. What percentage of orders are "Delivered" vs "Cancelled"?
@@ -1399,7 +1399,7 @@ sales = pd.DataFrame({
 | Column Operations | Add, modify, rename, drop, reorder |
 | Sorting | sort_values, sort_index, reset_index |
 | Missing Data | isnull, dropna, fillna, interpolate |
-| Strings | .str accessor — case, contains, split, replace |
+| Strings | .str accessor  -  case, contains, split, replace |
 | Dates & Times | to_datetime, dt accessors, resample |
 | apply / map | map, apply (row + column), DataFrame.map |
 | GroupBy | groupby, agg, transform, filter |
@@ -1417,10 +1417,10 @@ sales = pd.DataFrame({
 Visualize your Pandas DataFrames. Line charts, bar plots, histograms, heatmaps, pair plots. Data without visuals is half the story.
 
 **2. Plotly / Plotly Express**
-Interactive charts in the browser. Drag, zoom, hover — much better for dashboards and presentations.
+Interactive charts in the browser. Drag, zoom, hover  -  much better for dashboards and presentations.
 
 **3. Real Datasets**
-Go to [Kaggle.com](https://kaggle.com) and pick a dataset you care about. IPL, Zomato Bangalore, Indian census, air quality — all available free. Real data will teach you more than any masterclass.
+Go to [Kaggle.com](https://kaggle.com) and pick a dataset you care about. IPL, Zomato Bangalore, Indian census, air quality  -  all available free. Real data will teach you more than any masterclass.
 
 **4. Pandas + SQL**
 `pd.read_sql()` and `df.to_sql()` let Pandas talk directly to databases. Combined with SQLAlchemy, you can build full data pipelines.
@@ -1429,7 +1429,7 @@ Go to [Kaggle.com](https://kaggle.com) and pick a dataset you care about. IPL, Z
 Once your data is clean and shaped with Pandas, Scikit-learn turns it into machine learning models. Feature engineering with Pandas + model training with Scikit-learn is a standard workflow.
 
 **6. Polars**
-A newer, faster alternative to Pandas written in Rust. If you ever need to process datasets with tens of millions of rows, Polars is worth learning — and the API is similar.
+A newer, faster alternative to Pandas written in Rust. If you ever need to process datasets with tens of millions of rows, Polars is worth learning  -  and the API is similar.
 
 **7. dask**
 Pandas for data that doesn't fit in RAM. If you need to process a 50GB CSV, dask wraps Pandas in a parallel, lazy computation model.
@@ -1437,9 +1437,9 @@ Pandas for data that doesn't fit in RAM. If you need to process a 50GB CSV, dask
 ---
 
 > **Final thought:**
-> Pandas is where most data stories actually get told. The code patterns you've learned here — groupby, merge, pivot, filter — are the same ones used at every analytics team in the country.
+> Pandas is where most data stories actually get told. The code patterns you've learned here  -  groupby, merge, pivot, filter  -  are the same ones used at every analytics team in the country.
 >
-> The best next step is simple: open a real Indian dataset (IPL, Zomato, NIFTY 50, census) and start asking questions. The answers are in the data — Pandas is just the language to find them. 🇮🇳
+> The best next step is simple: open a real Indian dataset (IPL, Zomato, NIFTY 50, census) and start asking questions. The answers are in the data  -  Pandas is just the language to find them. 🇮🇳
 
 ---
 

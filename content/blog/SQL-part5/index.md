@@ -24,13 +24,13 @@ cover:
 ---
 
 # Lesson 5 - Subqueries & CTEs
-### Theory + Practice | StreamDB — Indian Streaming Platform
+### Theory + Practice | StreamDB  -  Indian Streaming Platform
 
 ---
 
 ## Before You Start
 
-This lesson introduces **StreamDB** — a Hotstar-style streaming platform.
+This lesson introduces **StreamDB**  -  a Hotstar-style streaming platform.
 
 1. Run `setup.sql` to create and populate StreamDB
 2. Verify you see 6 tables with the correct row counts
@@ -67,13 +67,13 @@ subscriptions                watch_history
 | Subquery in `FROM` | Use a query result as a table |
 | Scalar subquery in `SELECT` | One value computed per row |
 | Correlated subquery | Subquery that references the outer query |
-| `WITH` — CTE | Named, reusable query blocks |
+| `WITH`  -  CTE | Named, reusable query blocks |
 | Chained CTEs | Multiple CTEs in sequence |
 | CTE vs subquery vs JOIN | When to use which |
 
 ---
 
-## Part 1 — What Is a Subquery?
+## Part 1  -  What Is a Subquery?
 
 A subquery is a **query inside another query**. The inner query runs first and its result is used by the outer query.
 
@@ -99,16 +99,16 @@ WHERE user_id IN (
 );
 ```
 
-The inner query — `SELECT id FROM users WHERE plan = 'Premium'` — runs first.
+The inner query  -  `SELECT id FROM users WHERE plan = 'Premium'`  -  runs first.
 Its result (a list of ids) is handed to the outer query's `IN` clause.
 
 You never have to know the actual ids. The query figures it out dynamically.
 
 ---
 
-## Part 2 — Subquery in WHERE with IN
+## Part 2  -  Subquery in WHERE with IN
 
-`IN (subquery)` — include rows where the column matches any value in the subquery result.
+`IN (subquery)`  -  include rows where the column matches any value in the subquery result.
 
 ```sql
 -- Shows that have at least one watch history entry
@@ -137,7 +137,7 @@ WHERE id IN (
 ORDER BY name;
 ```
 
-This is a **nested subquery** — a subquery inside a subquery.
+This is a **nested subquery**  -  a subquery inside a subquery.
 Read from the innermost outward:
 1. `SELECT id FROM shows WHERE is_premium = TRUE` → premium show ids
 2. `SELECT DISTINCT user_id FROM watch_history WHERE show_id IN (...)` → users who watched them
@@ -161,9 +161,9 @@ ORDER BY name;
 
 ---
 
-## Part 3 — Subquery in WHERE with NOT IN
+## Part 3  -  Subquery in WHERE with NOT IN
 
-`NOT IN (subquery)` — include rows where the column matches **none** of the subquery values.
+`NOT IN (subquery)`  -  include rows where the column matches **none** of the subquery values.
 
 ```sql
 -- Shows that have NEVER been watched
@@ -207,7 +207,7 @@ This is one of the most dangerous mistakes in SQL. Memorise it.
 
 ```sql
 -- Suppose watch_history had a NULL in the show_id column
--- This query would return ZERO rows — not the shows that were never watched
+-- This query would return ZERO rows  -  not the shows that were never watched
 
 SELECT title FROM shows
 WHERE id NOT IN (
@@ -230,11 +230,11 @@ WHERE id NOT IN (
 );
 ```
 
-**Better fix: use `NOT EXISTS` instead (Part 4) — it handles NULLs correctly by design.**
+**Better fix: use `NOT EXISTS` instead (Part 4)  -  it handles NULLs correctly by design.**
 
 ---
 
-### ✏️ Practice Set 1 — IN and NOT IN
+### ✏️ Practice Set 1  -  IN and NOT IN
 
 **Q1.** Find all shows (title and rating) that have been watched
 by users from **Tamil Nadu or Kerala**.
@@ -252,14 +252,14 @@ Show name, joined_on, and plan.
 
 ---
 
-## Part 4 — EXISTS and NOT EXISTS
+## Part 4  -  EXISTS and NOT EXISTS
 
 `EXISTS (subquery)` returns TRUE if the subquery produces **any rows at all**.
-It does not care about the values — just whether a row exists.
+It does not care about the values  -  just whether a row exists.
 
 `EXISTS` is generally **faster than IN** for large datasets because it stops
 as soon as it finds the first match, rather than building the whole list.
-It also handles NULLs correctly — making it the preferred choice over `NOT IN`.
+It also handles NULLs correctly  -  making it the preferred choice over `NOT IN`.
 
 ```sql
 -- Users who have watched at least one show
@@ -274,9 +274,9 @@ WHERE EXISTS (
 ORDER BY name;
 ```
 
-`SELECT 1` — we don't care what the subquery returns, just whether a row exists.
+`SELECT 1`  -  we don't care what the subquery returns, just whether a row exists.
 The `WHERE wh.user_id = u.id` links the inner query to each row of the outer query.
-This makes it a **correlated subquery** — explained in detail in Part 5.
+This makes it a **correlated subquery**  -  explained in detail in Part 5.
 
 ```sql
 -- Users who have NEVER watched anything (NOT EXISTS)
@@ -321,11 +321,11 @@ ORDER BY name;
 > - Use `IN` when the subquery returns a **small, static list** of values
 > - Use `EXISTS` when checking for the **existence** of a related row
 > - Always use `NOT EXISTS` instead of `NOT IN` when NULLs might be present
-> - Both often produce the same result — EXISTS is usually safer and sometimes faster
+> - Both often produce the same result  -  EXISTS is usually safer and sometimes faster
 
 ---
 
-### ✏️ Practice Set 2 — EXISTS and NOT EXISTS
+### ✏️ Practice Set 2  -  EXISTS and NOT EXISTS
 
 **Q5.** Using `EXISTS`, find all shows that have at least one
 Drama genre tag. Show title, language, and rating.
@@ -343,10 +343,10 @@ on a Free plan. Use EXISTS. Show title and rating.
 
 ---
 
-## Part 5 — Correlated Subqueries
+## Part 5  -  Correlated Subqueries
 
 A **correlated subquery** references a column from the outer query.
-This means the inner query runs once **per row** of the outer query — making it powerful but potentially slow on large tables.
+This means the inner query runs once **per row** of the outer query  -  making it powerful but potentially slow on large tables.
 
 ```sql
 -- For each user, show how many shows they have watched
@@ -394,7 +394,7 @@ HAVING SUM(wh.minutes_watched) > (
 ORDER BY total_minutes DESC;
 ```
 
-The subquery in `HAVING` — `SELECT AVG(minutes_watched) FROM watch_history` — computes
+The subquery in `HAVING`  -  `SELECT AVG(minutes_watched) FROM watch_history`  -  computes
 one value (the overall average) and the `HAVING` clause compares each user's total against it.
 
 ```sql
@@ -421,11 +421,11 @@ ORDER BY language, rating DESC;
 
 > **Performance note:** Correlated subqueries can be slow because they run
 > once per outer row. For large tables, a JOIN or CTE is usually faster.
-> Use correlated subqueries when they make the query clearest — then optimise if needed.
+> Use correlated subqueries when they make the query clearest  -  then optimise if needed.
 
 ---
 
-## Part 6 — Subquery in FROM (Derived Tables)
+## Part 6  -  Subquery in FROM (Derived Tables)
 
 You can use a subquery as if it were a table in the `FROM` clause.
 This is called a **derived table** or **inline view**.
@@ -471,12 +471,12 @@ WHERE rnk <= 3
 ORDER BY language, total_minutes DESC;
 ```
 
-Derived tables work — but when a subquery is complex or reused in multiple places,
+Derived tables work  -  but when a subquery is complex or reused in multiple places,
 a **CTE** is much cleaner. That is what Part 7 is for.
 
 ---
 
-## Part 7 — WITH: Common Table Expressions (CTEs)
+## Part 7  -  WITH: Common Table Expressions (CTEs)
 
 A CTE names a subquery so you can:
 - Reference it by name instead of nesting it
@@ -537,7 +537,7 @@ ORDER BY total_minutes DESC;
 
 ---
 
-## Part 8 — Chained CTEs
+## Part 8  -  Chained CTEs
 
 You can define multiple CTEs in one `WITH` block, each building on the previous.
 
@@ -581,7 +581,7 @@ user_summary AS (
     LEFT JOIN active_subs   AS a   ON a.user_id  = u.id
 )
 
--- Final query: Free/Mobile users who watch a lot — candidates to upsell
+-- Final query: Free/Mobile users who watch a lot  -  candidates to upsell
 SELECT
     name,
     plan,
@@ -595,7 +595,7 @@ WHERE plan IN ('Free', 'Mobile')
 ORDER BY total_minutes DESC;
 ```
 
-Read the CTEs from top to bottom — each one is a named, reusable step.
+Read the CTEs from top to bottom  -  each one is a named, reusable step.
 The final `SELECT` reads cleanly because all the complexity is named above.
 
 ```sql
@@ -637,7 +637,7 @@ ORDER BY ps.watcher_count DESC, s.rating DESC;
 
 ---
 
-### ✏️ Practice Set 3 — Correlated Subqueries, Derived Tables, CTEs
+### ✏️ Practice Set 3  -  Correlated Subqueries, Derived Tables, CTEs
 
 **Q9.** Write a correlated subquery that shows each user's name,
 plan, and the title of the **last show they watched** (most recent `watched_on`).
@@ -662,7 +662,7 @@ Only include shows that appear in watch_history.
 
 ---
 
-## Part 9 — CTE vs Subquery vs JOIN: Decision Guide
+## Part 9  -  CTE vs Subquery vs JOIN: Decision Guide
 
 ```
                     ┌─────────────────────────────────────┐
@@ -697,14 +697,14 @@ Only include shows that appear in watch_history.
 | `JOIN` | You need columns from both tables, or aggregating across a relationship |
 | `IN (subquery)` | Filtering against a small list from another table |
 | `EXISTS` | Checking if any related row exists (especially with possible NULLs) |
-| `NOT EXISTS` | Excluding rows where a related row exists — always prefer over `NOT IN` |
+| `NOT EXISTS` | Excluding rows where a related row exists  -  always prefer over `NOT IN` |
 | Subquery in `FROM` | You need to pre-aggregate before the main query |
 | Scalar subquery in `SELECT` | One computed value per row, infrequently |
 | `CTE` | Subquery is reused, the query has multiple steps, or readability matters |
 
 ---
 
-## Part 10 — Practice Set Answers
+## Part 10  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -933,19 +933,19 @@ ORDER BY language, rank_in_language;
 You have covered:
 - ✅ Subquery in `WHERE` with `IN` and `NOT IN`
 - ✅ The NULL trap with `NOT IN` and how to avoid it
-- ✅ `EXISTS` and `NOT EXISTS` — safer and often faster
-- ✅ Correlated subqueries — inner query references outer query
-- ✅ Subquery in `FROM` — derived tables
-- ✅ Scalar subquery in `SELECT` — one value per row
-- ✅ `WITH` — CTE syntax and single-CTE usage
-- ✅ Chained CTEs — multi-step analysis with named blocks
+- ✅ `EXISTS` and `NOT EXISTS`  -  safer and often faster
+- ✅ Correlated subqueries  -  inner query references outer query
+- ✅ Subquery in `FROM`  -  derived tables
+- ✅ Scalar subquery in `SELECT`  -  one value per row
+- ✅ `WITH`  -  CTE syntax and single-CTE usage
+- ✅ Chained CTEs  -  multi-step analysis with named blocks
 - ✅ CTE vs subquery vs JOIN decision guide
 
 **In Lesson 2.6** we cover **Modifying Data & Schema Changes** back on ShopDB:
-- `INSERT` variations — single row, multi-row, INSERT from SELECT
-- `UPDATE` — single column, multiple columns, UPDATE with a subquery
-- `DELETE` — safe deletion with WHERE, cascade effects
-- `TRUNCATE` — fast full-table wipe
-- `ALTER TABLE` — add/drop columns, change types, rename
-- Transactions — `BEGIN`, `COMMIT`, `ROLLBACK`
-- Savepoints — partial rollback within a transaction
+- `INSERT` variations  -  single row, multi-row, INSERT from SELECT
+- `UPDATE`  -  single column, multiple columns, UPDATE with a subquery
+- `DELETE`  -  safe deletion with WHERE, cascade effects
+- `TRUNCATE`  -  fast full-table wipe
+- `ALTER TABLE`  -  add/drop columns, change types, rename
+- Transactions  -  `BEGIN`, `COMMIT`, `ROLLBACK`
+- Savepoints  -  partial rollback within a transaction

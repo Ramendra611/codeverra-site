@@ -24,7 +24,7 @@ cover:
 ---
 
 # Lesson 2 - Filtering & Querying Data
-### Theory + Practice | ShopDB — Indian E-commerce Dataset
+### Theory + Practice | ShopDB  -  Indian E-commerce Dataset
 
 ---
 
@@ -54,7 +54,7 @@ All queries in this lesson run on ShopDB. The dataset has:
 
 ---
 
-## Part 1 — Quick Refresh: The ShopDB Schema
+## Part 1  -  Quick Refresh: The ShopDB Schema
 
 ```
 customers                          orders
@@ -90,7 +90,7 @@ ORDER BY state;
 ```
 
 ```sql
--- With DISTINCT — each state appears only once
+-- With DISTINCT  -  each state appears only once
 SELECT DISTINCT state
 FROM customers
 ORDER BY state;
@@ -122,7 +122,7 @@ ORDER BY state, city;
 
 ---
 
-## Part 3 — IN and NOT IN: Match a List
+## Part 3  -  IN and NOT IN: Match a List
 
 `IN` is a cleaner way to write multiple `OR` conditions.
 
@@ -166,9 +166,9 @@ ORDER BY category_id, price_inr DESC;
 
 ---
 
-## Part 4 — BETWEEN: Filter a Range
+## Part 4  -  BETWEEN: Filter a Range
 
-`BETWEEN low AND high` is inclusive — both endpoints are included.
+`BETWEEN low AND high` is inclusive  -  both endpoints are included.
 
 ```sql
 -- Products priced between ₹500 and ₹3000
@@ -199,12 +199,12 @@ ORDER BY price_inr;
 
 ---
 
-### ✏️ Practice Set 1 — DISTINCT, IN, BETWEEN
+### ✏️ Practice Set 1  -  DISTINCT, IN, BETWEEN
 
 **Q1.** List all distinct roles (job roles) in the players table from CricketDB.
 *(Switch to cricketdb for this one: `\c cricketdb` or reconnect in pgAdmin)*
 
-Actually — stay in ShopDB for all questions in this lesson.
+Actually  -  stay in ShopDB for all questions in this lesson.
 
 **Q1.** List all distinct cities our customers come from, alphabetically.
 
@@ -222,7 +222,7 @@ How many are there? (Use COUNT)
 
 ---
 
-## Part 5 — LIKE and ILIKE: Pattern Matching
+## Part 5  -  LIKE and ILIKE: Pattern Matching
 
 `LIKE` matches text patterns using wildcards:
 - `%` matches **any sequence** of characters (including none)
@@ -258,14 +258,14 @@ WHERE email LIKE '%@gmail.com';
 
 ```sql
 -- Products with exactly 5 characters before a space (pattern: _____ %)
--- e.g. "Nivia Football" — 5 chars then space
+-- e.g. "Nivia Football"  -  5 chars then space
 SELECT name FROM products WHERE name LIKE '_____ %';
 ```
 
-### ILIKE — Case-Insensitive LIKE (PostgreSQL only)
+### ILIKE  -  Case-Insensitive LIKE (PostgreSQL only)
 
 ```sql
--- Find products with "samsung" in the name — regardless of capitalisation
+-- Find products with "samsung" in the name  -  regardless of capitalisation
 SELECT name, price_inr
 FROM products
 WHERE name ILIKE '%samsung%';
@@ -277,9 +277,9 @@ WHERE name ILIKE '%samsung%';
 
 ---
 
-## Part 6 — IS NULL and IS NOT NULL
+## Part 6  -  IS NULL and IS NOT NULL
 
-Some columns allow NULL — `batting_style` in CricketDB, or optional fields.
+Some columns allow NULL  -  `batting_style` in CricketDB, or optional fields.
 In ShopDB, `categories.description` can be NULL.
 
 ```sql
@@ -305,13 +305,13 @@ SELECT
 FROM categories;
 ```
 
-> **Rule:** Never write `WHERE column = NULL` — it always returns 0 rows.
+> **Rule:** Never write `WHERE column = NULL`  -  it always returns 0 rows.
 > SQL uses three-value logic: TRUE, FALSE, and NULL (unknown).
 > `NULL = NULL` evaluates to NULL, not TRUE.
 
 ---
 
-## Part 7 — CASE WHEN: Conditional Logic
+## Part 7  -  CASE WHEN: Conditional Logic
 
 `CASE WHEN` is SQL's version of if/else. It creates a new column
 based on conditions evaluated row by row.
@@ -356,7 +356,7 @@ SELECT
 FROM orders;
 ```
 
-This last pattern is called a **pivot** — turning row values into columns.
+This last pattern is called a **pivot**  -  turning row values into columns.
 Very useful for dashboards and summary reports.
 
 ```sql
@@ -377,7 +377,7 @@ ORDER BY stock_quantity;
 
 ---
 
-### ✏️ Practice Set 2 — LIKE, IS NULL, CASE WHEN
+### ✏️ Practice Set 2  -  LIKE, IS NULL, CASE WHEN
 
 **Q6.** Find all products whose name contains the word "Maths" or "Cricket".
 Hint: use two LIKE conditions with OR.
@@ -387,9 +387,9 @@ Use LIKE and COUNT.
 
 **Q8.** Write a query that shows every product's name, price_inr,
 and a new column called `affordability` with these labels:
-- `'Under ₹500'` — price below 500
-- `'₹500–₹5000'` — price between 500 and 5000
-- `'Above ₹5000'` — price above 5000
+- `'Under ₹500'`  -  price below 500
+- `'₹500–₹5000'`  -  price between 500 and 5000
+- `'Above ₹5000'`  -  price above 5000
 
 **Q9.** List categories that have a description (IS NOT NULL).
 Show name and description.
@@ -401,7 +401,7 @@ to show all four payment methods in a single row.
 
 ---
 
-## Part 8 — Date Functions
+## Part 8  -  Date Functions
 
 PostgreSQL has rich built-in date functions.
 Our `orders` and `customers` tables both have date columns.
@@ -478,7 +478,7 @@ FROM orders;
 
 ---
 
-## Part 9 — Putting It All Together: Multi-Condition Queries
+## Part 9  -  Putting It All Together: Multi-Condition Queries
 
 Real queries combine multiple clauses. Here are some realistic business queries on ShopDB.
 
@@ -542,7 +542,7 @@ ORDER BY price_inr DESC;
 
 ---
 
-### ✏️ Practice Set 3 — Date Functions & Combined Queries
+### ✏️ Practice Set 3  -  Date Functions & Combined Queries
 
 **Q11.** How many orders were placed in each month of 2024?
 Show month number and order_count, sorted by month.
@@ -554,10 +554,10 @@ Show month number and order_count, sorted by month.
 Show order_id, customer_id, order_date.
 
 **Q14.** Write a query that labels each order with a quarter:
-- 'Q1' — January to March
-- 'Q2' — April to June
-- 'Q3' — July to September
-- 'Q4' — October to December
+- 'Q1'  -  January to March
+- 'Q2'  -  April to June
+- 'Q3'  -  July to September
+- 'Q4'  -  October to December
 Show order_id, order_date, and the quarter label.
 
 **Q15.** Find products where the name starts with 'B' AND the price
@@ -565,7 +565,7 @@ is under ₹1000. Show name and price_inr.
 
 ---
 
-## Part 10 — Practice Set Answers
+## Part 10  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -726,14 +726,14 @@ ORDER BY price_inr;
 ## What's Next
 
 You have covered:
-- ✅ `DISTINCT` — remove duplicate rows
-- ✅ `IN` / `NOT IN` — match against a list of values
-- ✅ `BETWEEN` — filter by range (inclusive)
-- ✅ `LIKE` / `ILIKE` — pattern matching with `%` and `_`
-- ✅ `IS NULL` / `IS NOT NULL` — handle missing values
-- ✅ `COALESCE` — fallback value for NULLs
-- ✅ `CASE WHEN` — conditional logic and pivot pattern
-- ✅ Date functions — `EXTRACT`, `TO_CHAR`, `CURRENT_DATE`, `INTERVAL`
+- ✅ `DISTINCT`  -  remove duplicate rows
+- ✅ `IN` / `NOT IN`  -  match against a list of values
+- ✅ `BETWEEN`  -  filter by range (inclusive)
+- ✅ `LIKE` / `ILIKE`  -  pattern matching with `%` and `_`
+- ✅ `IS NULL` / `IS NOT NULL`  -  handle missing values
+- ✅ `COALESCE`  -  fallback value for NULLs
+- ✅ `CASE WHEN`  -  conditional logic and pivot pattern
+- ✅ Date functions  -  `EXTRACT`, `TO_CHAR`, `CURRENT_DATE`, `INTERVAL`
 - ✅ Multi-condition queries combining all of the above
 
 **In Lesson 2.3** we go deep on **Aggregations & Grouping**:

@@ -35,7 +35,7 @@ This guide covers:
 
 ---
 
-## Beginner Level — Python Foundations
+## Beginner Level  -  Python Foundations
 
 ### 1. Introduction to Python
 
@@ -96,7 +96,7 @@ This guide covers:
 
 ---
 
-## Intermediate Level — Core Python Concepts
+## Intermediate Level  -  Core Python Concepts
 
 ### 5. Strings
 
@@ -176,7 +176,7 @@ This guide covers:
 
 ---
 
-## Advanced Level — Professional Python
+## Advanced Level  -  Professional Python
 
 ### 12. File Handling
 

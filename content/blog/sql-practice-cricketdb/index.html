@@ -30,7 +30,7 @@ cover:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SQL Practice: CricketDB — Codeverra</title>
+<title>SQL Practice: CricketDB  -  Codeverra</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -435,7 +435,7 @@ cover:
 <div class="hero">
   <div class="hero-tag">Codeverra · SQL Practice</div>
   <h1>SQL Practice Set<br>CricketDB</h1>
-  <p>12 questions on a cricket dataset — players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.</p>
+  <p>12 questions on a cricket dataset  -  players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.</p>
 </div>
 
 <!-- SCHEMA -->
@@ -458,7 +458,7 @@ cover:
   <span class="col">match_date</span>      <span class="typ">DATE</span>
   <span class="col">result</span>          <span class="typ">VARCHAR</span>        <span class="cmt">-- 'Won' | 'Lost' | 'Draw'</span>
 
-<span class="tbl">performances</span>   <span class="cmt">-- 30 rows — one per player per match</span>
+<span class="tbl">performances</span>   <span class="cmt">-- 30 rows  -  one per player per match</span>
   <span class="col">id</span>              <span class="typ">SERIAL PRIMARY KEY</span>
   <span class="col">match_id</span>        <span class="typ">INT → matches.id</span>
   <span class="col">player_id</span>       <span class="typ">INT → players.id</span>
@@ -481,9 +481,9 @@ cover:
 
 <!-- LEGEND -->
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:var(--easy)"></div> Easy — single table, basic clauses</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--medium)"></div> Medium — JOINs, GROUP BY, HAVING</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--hard)"></div> Hard — window functions, CTEs, subqueries</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--easy)"></div> Easy  -  single table, basic clauses</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--medium)"></div> Medium  -  JOINs, GROUP BY, HAVING</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--hard)"></div> Hard  -  window functions, CTEs, subqueries</div>
 </div>
 
 <!-- ==================== EASY ==================== -->
@@ -507,7 +507,7 @@ cover:
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">You're building a squad page. You need every currently active player's name and role — nothing from retired players, sorted so it's easy to scan.</div>
+      <div class="q-scenario">You're building a squad page. You need every currently active player's name and role  -  nothing from retired players, sorted so it's easy to scan.</div>
       <div class="approach-label">Approach</div>
       <div class="approach-text">Filter <code>is_active = TRUE</code> on the <code>players</code> table and sort by <code>name</code>. Single table, no JOIN needed.</div>
 <pre class="sql"><span class="kw">SELECT</span>
@@ -518,7 +518,7 @@ cover:
 <span class="kw">WHERE</span>  is_active = <span class="kw">TRUE</span>
 <span class="kw">ORDER BY</span> name;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">11 rows — the 4 retired players (Dhoni, Sachin, Kumble, Dhawan) are excluded. <code>is_active</code> is a BOOLEAN column — comparing it to <code>TRUE</code> is the same as just writing <code>WHERE is_active</code>, which also works in PostgreSQL.</div>
+      <div class="explain-text">11 rows  -  the 4 retired players (Dhoni, Sachin, Kumble, Dhawan) are excluded. <code>is_active</code> is a BOOLEAN column  -  comparing it to <code>TRUE</code> is the same as just writing <code>WHERE is_active</code>, which also works in PostgreSQL.</div>
     </div>
   </div>
 
@@ -533,9 +533,9 @@ cover:
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">The selection committee wants a quick squad breakdown — how many batsmen, bowlers, all-rounders, and wicket-keepers are in the 15-man squad.</div>
+      <div class="q-scenario">The selection committee wants a quick squad breakdown  -  how many batsmen, bowlers, all-rounders, and wicket-keepers are in the 15-man squad.</div>
       <div class="approach-label">Approach</div>
-      <div class="approach-text">Group the <code>players</code> table by <code>role</code> and count rows per group. No JOIN, no WHERE — aggregate the whole table.</div>
+      <div class="approach-text">Group the <code>players</code> table by <code>role</code> and count rows per group. No JOIN, no WHERE  -  aggregate the whole table.</div>
 <pre class="sql"><span class="kw">SELECT</span>
     role,
     <span class="fn">COUNT</span>(*) <span class="kw">AS</span> player_count
@@ -543,7 +543,7 @@ cover:
 <span class="kw">GROUP BY</span> role
 <span class="kw">ORDER BY</span> player_count <span class="kw">DESC</span>;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Batsmen: 7 · Bowlers: 4 · All-rounders: 3 · Wicket-keepers: 1. This includes both active and retired players — add <code>WHERE is_active = TRUE</code> before GROUP BY if you want only current players.</div>
+      <div class="explain-text">Batsmen: 7 · Bowlers: 4 · All-rounders: 3 · Wicket-keepers: 1. This includes both active and retired players  -  add <code>WHERE is_active = TRUE</code> before GROUP BY if you want only current players.</div>
     </div>
   </div>
 
@@ -553,7 +553,7 @@ cover:
       <div class="q-num">03</div>
       <div class="q-meta">
         <div class="q-badge">Easy</div>
-        <div class="q-title">Show all players who have a bowling style recorded — use COALESCE for the rest</div>
+        <div class="q-title">Show all players who have a bowling style recorded  -  use COALESCE for the rest</div>
         <div class="q-concepts">IS NULL · COALESCE · WHERE</div>
       </div>
     </div>
@@ -575,7 +575,7 @@ cover:
 <span class="kw">FROM</span>   <span class="tbl-name">players</span>
 <span class="kw">ORDER BY</span> role, name;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text"><strong>Never write <code>WHERE bowling_style = NULL</code></strong> — that always returns zero rows. NULL comparisons require <code>IS NULL</code> / <code>IS NOT NULL</code>. <code>COALESCE</code> returns the first non-NULL argument, so <code>COALESCE(bowling_style, 'N/A')</code> gives 'N/A' only when bowling_style is NULL.</div>
+      <div class="explain-text"><strong>Never write <code>WHERE bowling_style = NULL</code></strong>  -  that always returns zero rows. NULL comparisons require <code>IS NULL</code> / <code>IS NOT NULL</code>. <code>COALESCE</code> returns the first non-NULL argument, so <code>COALESCE(bowling_style, 'N/A')</code> gives 'N/A' only when bowling_style is NULL.</div>
     </div>
   </div>
 
@@ -585,12 +585,12 @@ cover:
       <div class="q-num">04</div>
       <div class="q-meta">
         <div class="q-badge">Easy</div>
-        <div class="q-title">India's win/loss record — how many matches won, lost, and drawn per format?</div>
+        <div class="q-title">India's win/loss record  -  how many matches won, lost, and drawn per format?</div>
         <div class="q-concepts">GROUP BY · COUNT · FILTER</div>
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">A journalist wants India's record broken down by format — Tests, ODIs, and T20s separately, with wins, losses, and draws in each.</div>
+      <div class="q-scenario">A journalist wants India's record broken down by format  -  Tests, ODIs, and T20s separately, with wins, losses, and draws in each.</div>
       <div class="approach-label">Approach</div>
       <div class="approach-text">Group <code>matches</code> by <code>format</code>, then use <code>COUNT(*) FILTER (WHERE result = '...')</code> to count each outcome within the same row. Avoids writing three separate queries.</div>
 <pre class="sql"><span class="kw">SELECT</span>
@@ -602,10 +602,10 @@ cover:
 <span class="kw">FROM</span>   <span class="tbl-name">matches</span>
 <span class="kw">GROUP BY</span> format
 <span class="kw">ORDER BY</span> format;</pre>
-      <div class="alt-label">Alternative — CASE WHEN (works in all databases)</div>
+      <div class="alt-label">Alternative  -  CASE WHEN (works in all databases)</div>
       <div class="alt-note">Replace each <code>FILTER</code> with <code>SUM(CASE WHEN result = 'Won' THEN 1 ELSE 0 END)</code>. <code>FILTER</code> is PostgreSQL-specific and cleaner; <code>CASE WHEN</code> is standard SQL that works everywhere including MySQL and SQLite.</div>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">ODI: 2 played, 2 wins · T20: 3 played, 2 wins, 1 loss · Test: 3 played, 2 wins, 1 loss. This dataset has no draws — all draw counts will be 0, which is correct.</div>
+      <div class="explain-text">ODI: 2 played, 2 wins · T20: 3 played, 2 wins, 1 loss · Test: 3 played, 2 wins, 1 loss. This dataset has no draws  -  all draw counts will be 0, which is correct.</div>
     </div>
   </div>
 
@@ -629,14 +629,14 @@ cover:
       <div class="q-num">05</div>
       <div class="q-meta">
         <div class="q-badge">Medium</div>
-        <div class="q-title">Show each player's career totals — runs, wickets, and matches played</div>
+        <div class="q-title">Show each player's career totals  -  runs, wickets, and matches played</div>
         <div class="q-concepts">JOIN · GROUP BY · SUM · COUNT</div>
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">You need a career statistics page — one row per player showing their aggregate numbers across all matches they appeared in.</div>
+      <div class="q-scenario">You need a career statistics page  -  one row per player showing their aggregate numbers across all matches they appeared in.</div>
       <div class="approach-label">Approach</div>
-      <div class="approach-text">JOIN <code>performances</code> → <code>players</code>, then GROUP BY player to aggregate. Always include the player's <code>id</code> in GROUP BY alongside <code>name</code> — two players could theoretically share a name, and the id prevents incorrect grouping.</div>
+      <div class="approach-text">JOIN <code>performances</code> → <code>players</code>, then GROUP BY player to aggregate. Always include the player's <code>id</code> in GROUP BY alongside <code>name</code>  -  two players could theoretically share a name, and the id prevents incorrect grouping.</div>
 <pre class="sql"><span class="kw">SELECT</span>
     pl.name,
     pl.role,
@@ -651,7 +651,7 @@ cover:
 <span class="kw">GROUP BY</span> pl.id, pl.name, pl.role
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Kohli tops the run chart at 388 across 6 appearances. Only 13 players appear — 4 in the squad (Dhoni, Sachin, Kumble, Dhawan) were never selected for these 8 matches and have no rows in <code>performances</code>. An INNER JOIN only returns players who played.</div>
+      <div class="explain-text">Kohli tops the run chart at 388 across 6 appearances. Only 13 players appear  -  4 in the squad (Dhoni, Sachin, Kumble, Dhawan) were never selected for these 8 matches and have no rows in <code>performances</code>. An INNER JOIN only returns players who played.</div>
     </div>
   </div>
 
@@ -666,7 +666,7 @@ cover:
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">The bowling coach wants a list of players in the squad who contributed zero wickets across all recorded matches — pure batsmen who were selected but never bowled.</div>
+      <div class="q-scenario">The bowling coach wants a list of players in the squad who contributed zero wickets across all recorded matches  -  pure batsmen who were selected but never bowled.</div>
       <div class="approach-label">Approach</div>
       <div class="approach-text">Two valid patterns: <strong>(1)</strong> LEFT JOIN from players to performances and filter on <code>IS NULL</code> (players with no performances at all), or <strong>(2)</strong> JOIN then HAVING to find players who played but had total wickets = 0.</div>
 <pre class="sql"><span class="cm">-- Approach A: Players in squad but never selected (no performances)</span>
@@ -687,7 +687,7 @@ cover:
 <span class="kw">HAVING</span>  <span class="fn">SUM</span>(p.wickets) = <span class="num">0</span>
 <span class="kw">ORDER BY</span> pl.name;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text"><strong>Approach A</strong> returns 4 players never selected at all (Dhoni, Sachin, Kumble, Dhawan). <strong>Approach B</strong> returns players who did play but bowled zero wickets — Kohli, Rohit, KL Rahul, Shreyas, Suryakumar. These are different questions despite sounding similar. Read carefully which one you actually need.</div>
+      <div class="explain-text"><strong>Approach A</strong> returns 4 players never selected at all (Dhoni, Sachin, Kumble, Dhawan). <strong>Approach B</strong> returns players who did play but bowled zero wickets  -  Kohli, Rohit, KL Rahul, Shreyas, Suryakumar. These are different questions despite sounding similar. Read carefully which one you actually need.</div>
     </div>
   </div>
 
@@ -702,9 +702,9 @@ cover:
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">The team analyst wants to identify matches where all-rounders delivered on both fronts — not just with the bat or ball, but both in the same game.</div>
+      <div class="q-scenario">The team analyst wants to identify matches where all-rounders delivered on both fronts  -  not just with the bat or ball, but both in the same game.</div>
       <div class="approach-label">Approach</div>
-      <div class="approach-text">Three-table JOIN (performances → players → matches), then filter with <code>WHERE pl.role = 'All-rounder' AND p.runs > 0 AND p.wickets > 0</code>. All conditions go in WHERE — no aggregation needed because we want individual match rows.</div>
+      <div class="approach-text">Three-table JOIN (performances → players → matches), then filter with <code>WHERE pl.role = 'All-rounder' AND p.runs > 0 AND p.wickets > 0</code>. All conditions go in WHERE  -  no aggregation needed because we want individual match rows.</div>
 <pre class="sql"><span class="kw">SELECT</span>
     pl.name,
     m.opponent,
@@ -720,7 +720,7 @@ cover:
   <span class="kw">AND</span>  p.wickets  > <span class="num">0</span>
 <span class="kw">ORDER BY</span> p.runs <span class="kw">DESC</span>;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Jadeja appears 3 times — he consistently contributed with both bat and ball. Ashwin shows up twice. Pandya twice. This is the kind of query coaches use for form analysis — identifying players whose match impact is genuinely two-dimensional.</div>
+      <div class="explain-text">Jadeja appears 3 times  -  he consistently contributed with both bat and ball. Ashwin shows up twice. Pandya twice. This is the kind of query coaches use for form analysis  -  identifying players whose match impact is genuinely two-dimensional.</div>
     </div>
   </div>
 
@@ -730,14 +730,14 @@ cover:
       <div class="q-num">08</div>
       <div class="q-meta">
         <div class="q-badge">Medium</div>
-        <div class="q-title">Players with over 50 runs AND over 3 wickets — the true all-rounders</div>
+        <div class="q-title">Players with over 50 runs AND over 3 wickets  -  the true all-rounders</div>
         <div class="q-concepts">JOIN · GROUP BY · HAVING with multiple conditions</div>
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">You want to rank players by genuine all-round contribution — not just role label, but actual numbers. Show only players who cleared both the batting and bowling thresholds.</div>
+      <div class="q-scenario">You want to rank players by genuine all-round contribution  -  not just role label, but actual numbers. Show only players who cleared both the batting and bowling thresholds.</div>
       <div class="approach-label">Approach</div>
-      <div class="approach-text">Aggregate total runs and wickets per player with GROUP BY, then use HAVING to filter on both aggregates simultaneously. WHERE runs before grouping — HAVING filters after. You can't use WHERE here because SUM(runs) doesn't exist until after aggregation.</div>
+      <div class="approach-text">Aggregate total runs and wickets per player with GROUP BY, then use HAVING to filter on both aggregates simultaneously. WHERE runs before grouping  -  HAVING filters after. You can't use WHERE here because SUM(runs) doesn't exist until after aggregation.</div>
 <pre class="sql"><span class="kw">SELECT</span>
     pl.name,
     pl.role,
@@ -750,7 +750,7 @@ cover:
    <span class="kw">AND</span>  <span class="fn">SUM</span>(p.wickets) > <span class="num">3</span>
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Jadeja (165 runs, 7 wickets) and Ashwin (48 runs, 10 wickets) clear both bars — though Ashwin is close on runs. Pandya (62 runs, 3 wickets) falls just short on wickets if you use <code>> 3</code> strictly. Try changing the thresholds to see who enters and exits the list.</div>
+      <div class="explain-text">Jadeja (165 runs, 7 wickets) and Ashwin (48 runs, 10 wickets) clear both bars  -  though Ashwin is close on runs. Pandya (62 runs, 3 wickets) falls just short on wickets if you use <code>> 3</code> strictly. Try changing the thresholds to see who enters and exits the list.</div>
     </div>
   </div>
 
@@ -774,12 +774,12 @@ cover:
       <div class="q-num">09</div>
       <div class="q-meta">
         <div class="q-badge">Hard</div>
-        <div class="q-title">Top scorer in each match — without removing other players from the result</div>
+        <div class="q-title">Top scorer in each match  -  without removing other players from the result</div>
         <div class="q-concepts">ROW_NUMBER · OVER · PARTITION BY · subquery</div>
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">For every match, identify who scored the most runs. The catch: you want to see all players in each match, but flag who the top scorer was. A GROUP BY would collapse the rows — you need a window function.</div>
+      <div class="q-scenario">For every match, identify who scored the most runs. The catch: you want to see all players in each match, but flag who the top scorer was. A GROUP BY would collapse the rows  -  you need a window function.</div>
       <div class="approach-label">Approach</div>
       <div class="approach-text">Use <code>ROW_NUMBER() OVER (PARTITION BY match_id ORDER BY runs DESC)</code> to rank players within each match. Then wrap it in a subquery (or CTE) and filter on <code>rn = 1</code> to get only the top scorer per match.</div>
 <pre class="sql"><span class="cm">-- Full ranking (all players visible, with their rank per match)</span>
@@ -812,10 +812,10 @@ cover:
 ) <span class="kw">AS</span> ranked
 <span class="kw">WHERE</span> rn = <span class="num">1</span>
 <span class="kw">ORDER BY</span> runs <span class="kw">DESC</span>;</pre>
-      <div class="alt-label">Alternative — RANK() instead of ROW_NUMBER()</div>
-      <div class="alt-note">If two players score the same runs in a match, <code>ROW_NUMBER</code> picks one arbitrarily. Use <code>RANK()</code> instead — tied players both get <code>rn = 1</code> and both appear in the filtered result. Use ROW_NUMBER when you want exactly one row per group regardless of ties; RANK when ties should both show.</div>
+      <div class="alt-label">Alternative  -  RANK() instead of ROW_NUMBER()</div>
+      <div class="alt-note">If two players score the same runs in a match, <code>ROW_NUMBER</code> picks one arbitrarily. Use <code>RANK()</code> instead  -  tied players both get <code>rn = 1</code> and both appear in the filtered result. Use ROW_NUMBER when you want exactly one row per group regardless of ties; RANK when ties should both show.</div>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Kohli's 121 against England (Test, Ahmedabad) is the highest individual score. You cannot do this with a plain GROUP BY — <code>MAX(runs)</code> gives you the number but not the player's name without a second join. Window functions solve this cleanly by operating across rows without collapsing them.</div>
+      <div class="explain-text">Kohli's 121 against England (Test, Ahmedabad) is the highest individual score. You cannot do this with a plain GROUP BY  -  <code>MAX(runs)</code> gives you the number but not the player's name without a second join. Window functions solve this cleanly by operating across rows without collapsing them.</div>
     </div>
   </div>
 
@@ -825,14 +825,14 @@ cover:
       <div class="q-num">10</div>
       <div class="q-meta">
         <div class="q-badge">Hard</div>
-        <div class="q-title">Kohli's running career total — cumulative runs match by match</div>
+        <div class="q-title">Kohli's running career total  -  cumulative runs match by match</div>
         <div class="q-concepts">SUM OVER · PARTITION BY · ORDER BY · running total</div>
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">Show Kohli's runs in each match chronologically, and alongside each match show his cumulative career total at that point — the running total that grows with every game.</div>
+      <div class="q-scenario">Show Kohli's runs in each match chronologically, and alongside each match show his cumulative career total at that point  -  the running total that grows with every game.</div>
       <div class="approach-label">Approach</div>
-      <div class="approach-text">Filter performances to Kohli only, then use <code>SUM(runs) OVER (ORDER BY match_date)</code>. The <code>PARTITION BY</code> is omitted here — since we've already filtered to one player, the window covers all his rows, accumulating in date order.</div>
+      <div class="approach-text">Filter performances to Kohli only, then use <code>SUM(runs) OVER (ORDER BY match_date)</code>. The <code>PARTITION BY</code> is omitted here  -  since we've already filtered to one player, the window covers all his rows, accumulating in date order.</div>
 <pre class="sql"><span class="kw">SELECT</span>
     m.match_date,
     m.opponent,
@@ -847,8 +847,8 @@ cover:
 <span class="kw">JOIN</span>   <span class="tbl-name">matches</span>       <span class="kw">AS</span> m   <span class="kw">ON</span> m.id  = p.match_id
 <span class="kw">WHERE</span>  pl.name = <span class="str">'Virat Kohli'</span>
 <span class="kw">ORDER BY</span> m.match_date;</pre>
-      <div class="alt-label">Extension — all players at once using PARTITION BY</div>
-      <div class="alt-note">Remove the WHERE clause and add <code>PARTITION BY pl.id</code> inside the OVER — the running total then resets per player. Without PARTITION BY on multi-player data, the total would accumulate across all players combined, which is wrong.</div>
+      <div class="alt-label">Extension  -  all players at once using PARTITION BY</div>
+      <div class="alt-note">Remove the WHERE clause and add <code>PARTITION BY pl.id</code> inside the OVER  -  the running total then resets per player. Without PARTITION BY on multi-player data, the total would accumulate across all players combined, which is wrong.</div>
       <div class="explain-label">What to observe</div>
       <div class="explain-text">The final row shows career_total = 388 (Kohli's total across 6 matches in this dataset). <strong>Key insight:</strong> <code>SUM() OVER</code> keeps every row intact while adding the accumulated value. A plain <code>GROUP BY + SUM</code> would give you one total row, not a row-by-row progression.</div>
     </div>
@@ -865,7 +865,7 @@ cover:
       </div>
     </div>
     <div class="q-body">
-      <div class="q-scenario">Find players whose career total runs exceed the average career total across all players who appeared in matches — a measure of who's punching above the squad average.</div>
+      <div class="q-scenario">Find players whose career total runs exceed the average career total across all players who appeared in matches  -  a measure of who's punching above the squad average.</div>
       <div class="approach-label">Approach</div>
       <div class="approach-text">Two-step problem: first calculate total runs per player, then find the average of those totals. Use a CTE to name the first step cleanly, then compare each player's total against the average in the outer query.</div>
 <pre class="sql"><span class="kw">WITH</span> player_totals <span class="kw">AS</span> (
@@ -886,10 +886,10 @@ cover:
 <span class="kw">FROM</span>   player_totals
 <span class="kw">WHERE</span>  total_runs > (<span class="kw">SELECT</span> <span class="fn">AVG</span>(total_runs) <span class="kw">FROM</span> player_totals)
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
-      <div class="alt-label">Alternative — scalar subquery inline (no CTE)</div>
-      <div class="alt-note">You can compute the average inline: <code>HAVING SUM(p.runs) > (SELECT AVG(sub.total) FROM (SELECT SUM(runs) AS total FROM performances GROUP BY player_id) sub)</code>. This works but is harder to read — the CTE version names each step clearly and is easier to debug.</div>
+      <div class="alt-label">Alternative  -  scalar subquery inline (no CTE)</div>
+      <div class="alt-note">You can compute the average inline: <code>HAVING SUM(p.runs) > (SELECT AVG(sub.total) FROM (SELECT SUM(runs) AS total FROM performances GROUP BY player_id) sub)</code>. This works but is harder to read  -  the CTE version names each step clearly and is easier to debug.</div>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text"><code>AVG() OVER ()</code> with an empty OVER clause computes the average across the entire result — a window function trick that lets you show the squad average alongside each player's number without a second query or a self-join.</div>
+      <div class="explain-text"><code>AVG() OVER ()</code> with an empty OVER clause computes the average across the entire result  -  a window function trick that lets you show the squad average alongside each player's number without a second query or a self-join.</div>
     </div>
   </div>
 
@@ -939,7 +939,7 @@ cover:
 <span class="kw">FROM</span>   stats
 <span class="kw">ORDER BY</span> total_runs <span class="kw">DESC</span>;</pre>
       <div class="explain-label">What to observe</div>
-      <div class="explain-text">Kohli (388 runs) and Rohit (243) are clear Stars by runs. Bumrah (11 wickets) and Ashwin (10 wickets) earn Star by the bowling route. The CASE WHEN checks conditions top to bottom — first match wins. Adjust the thresholds and rerun to see the tier boundaries shift.</div>
+      <div class="explain-text">Kohli (388 runs) and Rohit (243) are clear Stars by runs. Bumrah (11 wickets) and Ashwin (10 wickets) earn Star by the bowling route. The CASE WHEN checks conditions top to bottom  -  first match wins. Adjust the thresholds and rerun to see the tier boundaries shift.</div>
     </div>
   </div>
 
@@ -949,7 +949,7 @@ cover:
 <div class="summary">
   <div class="summary-card">
     <h2>Concepts Covered</h2>
-    <p style="opacity:0.8; font-size:14px;">Run these 12 questions in order — each builds on what came before.</p>
+    <p style="opacity:0.8; font-size:14px;">Run these 12 questions in order  -  each builds on what came before.</p>
     <div class="summary-grid">
       <div class="summary-item"><strong>Easy</strong>SELECT, WHERE, IS NULL, COALESCE, GROUP BY, COUNT, FILTER</div>
       <div class="summary-item"><strong>Medium</strong>INNER JOIN, LEFT JOIN, anti-join, GROUP BY + HAVING, multi-condition filters</div>

@@ -1,5 +1,5 @@
 ---
-title: "HashMap and Frequency Counting Pattern — Complete Guide"
+title: "HashMap and Frequency Counting Pattern  -  Complete Guide"
 description: "Learn how to use hashmaps and frequency counting to solve common DSA problems efficiently in Python."
 date: 2026-03-21
 author: "codeverra"
@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-05.png"
+  alt: "Hashmap Frequency Pattern"
+  caption: "Hashmap Frequency Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 4: HashMap / Frequency Counting
@@ -36,12 +42,12 @@ tags:
 
 ## What is the HashMap Pattern?
 
-In the previous patterns, we've already used hashmaps as a supporting tool — tracking character frequencies in sliding window, storing prefix sums for subarray problems. In this section, we focus on problems where **the hashmap is the core of the solution**, not just a helper.
+In the previous patterns, we've already used hashmaps as a supporting tool  -  tracking character frequencies in sliding window, storing prefix sums for subarray problems. In this section, we focus on problems where **the hashmap is the core of the solution**, not just a helper.
 
 A hashmap (dictionary in Python) gives us two superpowers:
 
-1. **O(1) lookup**: "Have I seen this value before?" — answered instantly.
-2. **O(1) counting**: "How many times has this value appeared?" — tracked effortlessly.
+1. **O(1) lookup**: "Have I seen this value before?"  -  answered instantly.
+2. **O(1) counting**: "How many times has this value appeared?"  -  tracked effortlessly.
 
 These two operations are at the heart of an enormous number of array and string problems.
 
@@ -49,7 +55,7 @@ Let's see why this matters with the most classic example.
 
 **Problem:** Given an array `[2, 7, 11, 15]` and target `9`, find two numbers that add up to 9.
 
-**Without a hashmap (brute force):** Check every pair — O(n²).
+**Without a hashmap (brute force):** Check every pair  -  O(n²).
 
 ```
 (2,7)  → 9 ✅ Found!
@@ -65,7 +71,7 @@ num=7:  need 9-7=2, seen={2: idx 0}  → 2 IS seen! ✅ Done in 2 steps.
 
 The hashmap turns "searching for a complement" from O(n) to O(1), reducing the overall time from O(n²) to O(n).
 
-This trade-off — **spending O(n) space to save O(n) time per operation** — is the fundamental idea behind every problem in this section.
+This trade-off  -  **spending O(n) space to save O(n) time per operation**  -  is the fundamental idea behind every problem in this section.
 
 ---
 
@@ -182,8 +188,8 @@ def find_complement(arr, target):
     """
     For each element, check if the complement (target - element) was seen before.
     
-    Time Complexity: O(n) — single pass
-    Space Complexity: O(n) — storing seen elements
+    Time Complexity: O(n)  -  single pass
+    Space Complexity: O(n)  -  storing seen elements
     """
     seen = {}  # value → index
     
@@ -205,8 +211,8 @@ def frequency_analysis(arr):
     """
     Count occurrences of each element and use the counts.
     
-    Time Complexity: O(n) — one pass to count
-    Space Complexity: O(k) — where k is the number of distinct elements
+    Time Complexity: O(n)  -  one pass to count
+    Space Complexity: O(k)  -  where k is the number of distinct elements
     """
     freq = Counter(arr)
     
@@ -228,8 +234,8 @@ def group_by_property(items):
     """
     Group elements that share some computed property.
     
-    Time Complexity: O(n × key_cost) — one pass, key computation per element
-    Space Complexity: O(n) — storing all elements in groups
+    Time Complexity: O(n × key_cost)  -  one pass, key computation per element
+    Space Complexity: O(n)  -  storing all elements in groups
     """
     groups = defaultdict(list)
     
@@ -293,7 +299,7 @@ Output: [0, 1]  (because nums[0] + nums[1] = 2 + 7 = 9)
 - **Problem:** Sorting changes the indices. You'd need to track original indices.
 - **Time:** O(n log n), **Space:** O(n)
 
-**Approach 3: HashMap — Complement Lookup (Optimal) ✅**
+**Approach 3: HashMap  -  Complement Lookup (Optimal) ✅**
 - For each number, check if `target - num` is already in the map.
 - If yes → return the two indices.
 - If no → store `num: index` in the map for future lookups.
@@ -306,7 +312,7 @@ Two pointers needs a sorted array. Sorting costs O(n log n) and loses index info
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n²)
+# APPROACH 1: Brute Force  -  O(n²)
 # ============================================================
 def twoSum_brute(nums: list[int], target: int) -> list[int]:
     """
@@ -324,7 +330,7 @@ def twoSum_brute(nums: list[int], target: int) -> list[int]:
 
 
 # ============================================================
-# APPROACH 3: HashMap — O(n) ✅
+# APPROACH 3: HashMap  -  O(n) ✅
 # ============================================================
 def twoSum(nums: list[int], target: int) -> list[int]:
     """
@@ -336,7 +342,7 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     
     Why single pass works:
     When we reach the second number of the pair, the first number
-    is already in the map. We don't need to look ahead — only behind.
+    is already in the map. We don't need to look ahead  -  only behind.
     
     Time Complexity: O(n) - single pass, O(1) per lookup
     Space Complexity: O(n) - storing up to n elements in the map
@@ -347,7 +353,7 @@ def twoSum(nums: list[int], target: int) -> list[int]:
         complement = target - num
         
         if complement in seen:
-            # The complement was seen earlier — return both indices
+            # The complement was seen earlier  -  return both indices
             return [seen[complement], i]
         
         # Store this number's index for future lookups
@@ -409,18 +415,18 @@ Output: True
 
 **Approach 2: Frequency Count with Two Maps**
 - Count character frequencies in both strings, compare the maps.
-- **Time:** O(n), **Space:** O(1) — at most 26 lowercase letters.
+- **Time:** O(n), **Space:** O(1)  -  at most 26 lowercase letters.
 
 **Approach 3: Single Frequency Count (Optimal) ✅**
 - Use one map. Increment for characters in `s`, decrement for characters in `t`.
 - If all counts are zero at the end, they're anagrams.
-- **Time:** O(n), **Space:** O(1) — at most 26 entries.
+- **Time:** O(n), **Space:** O(1)  -  at most 26 entries.
 
 #### Code (All Three Approaches)
 
 ```python
 # ============================================================
-# APPROACH 1: Sort — O(n log n)
+# APPROACH 1: Sort  -  O(n log n)
 # ============================================================
 def isAnagram_sort(s: str, t: str) -> bool:
     """
@@ -433,7 +439,7 @@ def isAnagram_sort(s: str, t: str) -> bool:
 
 
 # ============================================================
-# APPROACH 2: Two Counters — O(n)
+# APPROACH 2: Two Counters  -  O(n)
 # ============================================================
 from collections import Counter
 
@@ -448,7 +454,7 @@ def isAnagram_two_counters(s: str, t: str) -> bool:
 
 
 # ============================================================
-# APPROACH 3: Single Counter — O(n) ✅
+# APPROACH 3: Single Counter  -  O(n) ✅
 # ============================================================
 def isAnagram(s: str, t: str) -> bool:
     """
@@ -542,7 +548,7 @@ Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
 **Approach 2: Frequency Tuple as Key (Slightly Better) ✅**
 - Instead of sorting, count character frequencies and use the frequency as a key.
 - For lowercase English: a tuple of 26 counts like `(1, 0, 0, ..., 1, 0)` for "ae".
-- **Time:** O(n × k) — counting is O(k), no sorting needed.
+- **Time:** O(n × k)  -  counting is O(k), no sorting needed.
 - **Space:** O(n × k)
 
 Both approaches use the **grouping by key** pattern. The key insight is: two strings are anagrams if and only if they produce the same key (whether that key is a sorted string or a frequency tuple).
@@ -553,7 +559,7 @@ Both approaches use the **grouping by key** pattern. The key insight is: two str
 from collections import defaultdict
 
 # ============================================================
-# APPROACH 1: Sort as Key — O(n × k log k)
+# APPROACH 1: Sort as Key  -  O(n × k log k)
 # ============================================================
 def groupAnagrams_sort(strs: list[str]) -> list[list[str]]:
     """
@@ -575,7 +581,7 @@ def groupAnagrams_sort(strs: list[str]) -> list[list[str]]:
 
 
 # ============================================================
-# APPROACH 2: Frequency Tuple as Key — O(n × k) ✅
+# APPROACH 2: Frequency Tuple as Key  -  O(n × k) ✅
 # ============================================================
 def groupAnagrams(strs: list[str]) -> list[list[str]]:
     """
@@ -674,7 +680,7 @@ from collections import Counter
 import heapq
 
 # ============================================================
-# APPROACH 1: Sort by Frequency — O(n log n)
+# APPROACH 1: Sort by Frequency  -  O(n log n)
 # ============================================================
 def topKFrequent_sort(nums: list[int], k: int) -> list[int]:
     """
@@ -689,14 +695,14 @@ def topKFrequent_sort(nums: list[int], k: int) -> list[int]:
 
 
 # ============================================================
-# APPROACH 2: Min-Heap of Size k — O(n log k)
+# APPROACH 2: Min-Heap of Size k  -  O(n log k)
 # ============================================================
 def topKFrequent_heap(nums: list[int], k: int) -> list[int]:
     """
     Use a min-heap of size k to efficiently find top k elements.
     
     We push (frequency, element) pairs. When the heap exceeds size k,
-    pop the smallest — this ensures only the k largest remain.
+    pop the smallest  -  this ensures only the k largest remain.
     
     Time Complexity: O(n log k) - n insertions, each O(log k)
     Space Complexity: O(n) for frequency map + O(k) for heap
@@ -715,7 +721,7 @@ def topKFrequent_heap(nums: list[int], k: int) -> list[int]:
 
 
 # ============================================================
-# APPROACH 3: Bucket Sort — O(n) ✅
+# APPROACH 3: Bucket Sort  -  O(n) ✅
 # ============================================================
 def topKFrequent(nums: list[int], k: int) -> list[int]:
     """
@@ -727,8 +733,8 @@ def topKFrequent(nums: list[int], k: int) -> list[int]:
     
     Why this is O(n):
     - Counting frequencies: O(n)
-    - Filling buckets: O(n) — each element goes into exactly one bucket
-    - Collecting results: O(n) — we scan at most n buckets
+    - Filling buckets: O(n)  -  each element goes into exactly one bucket
+    - Collecting results: O(n)  -  we scan at most n buckets
     
     Time Complexity: O(n)
     Space Complexity: O(n) - for the frequency map and buckets
@@ -808,7 +814,7 @@ Output: 4  (sequence: [1, 2, 3, 4])
 
 - Elements can be negative and can contain duplicates.
 - "Consecutive" means the values differ by 1: `[1, 2, 3, 4]` not `[1, 3, 5, 7]`.
-- Must be O(n) — so sorting (O(n log n)) is not allowed.
+- Must be O(n)  -  so sorting (O(n log n)) is not allowed.
 
 #### Approach Discussion
 
@@ -819,7 +825,7 @@ Output: 4  (sequence: [1, 2, 3, 4])
 
 **Approach 2: HashSet + Smart Sequence Start Detection (Optimal) ✅**
 
-The key insight: we only want to start counting a sequence from its **beginning** — the smallest number in that sequence.
+The key insight: we only want to start counting a sequence from its **beginning**  -  the smallest number in that sequence.
 
 How do we know if a number is the start of a sequence? **If `num - 1` is NOT in the set.** If `num - 1` exists, then `num` is in the middle of some sequence, and we'll count it when we process the actual start.
 
@@ -827,13 +833,13 @@ How do we know if a number is the start of a sequence? **If `num - 1` is NOT in 
 - For each number, if it's a sequence start (`num - 1` not in set), count how long the sequence goes (`num`, `num+1`, `num+2`, ...).
 - Track the maximum length.
 
-**Time:** O(n) — each number is visited at most twice (once when checking if it's a start, once when extending a sequence). **Space:** O(n).
+**Time:** O(n)  -  each number is visited at most twice (once when checking if it's a start, once when extending a sequence). **Space:** O(n).
 
 #### Code (Both Approaches)
 
 ```python
 # ============================================================
-# APPROACH 1: Sort — O(n log n)
+# APPROACH 1: Sort  -  O(n log n)
 # ============================================================
 def longestConsecutive_sort(nums: list[int]) -> int:
     """
@@ -862,7 +868,7 @@ def longestConsecutive_sort(nums: list[int]) -> int:
 
 
 # ============================================================
-# APPROACH 2: HashSet — O(n) ✅
+# APPROACH 2: HashSet  -  O(n) ✅
 # ============================================================
 def longestConsecutive(nums: list[int]) -> int:
     """
@@ -892,7 +898,7 @@ def longestConsecutive(nums: list[int]) -> int:
         # Only start counting if this is the BEGINNING of a sequence
         # (i.e., num-1 is NOT in the set)
         if num - 1 not in num_set:
-            # This is a sequence start — count how far it goes
+            # This is a sequence start  -  count how far it goes
             current = num
             length = 1
             
@@ -965,7 +971,7 @@ Output: True  (nums[0] == nums[3] and |0 - 3| = 3 ≤ 3)
 - For each pair `(i, j)`, check both conditions.
 - **Time:** O(n × k) or O(n²), **Space:** O(1)
 
-**Approach 2: HashMap — Track Last Index (Optimal) ✅**
+**Approach 2: HashMap  -  Track Last Index (Optimal) ✅**
 - Store each value's most recent index.
 - When we see a value again, check if the distance to the previous index is ≤ k.
 - **Time:** O(n), **Space:** O(n)
@@ -979,7 +985,7 @@ Output: True  (nums[0] == nums[3] and |0 - 3| = 3 ≤ 3)
 
 ```python
 # ============================================================
-# APPROACH 2: HashMap — Track Last Index — O(n) ✅
+# APPROACH 2: HashMap  -  Track Last Index  -  O(n) ✅
 # ============================================================
 def containsNearbyDuplicate(nums: list[int], k: int) -> bool:
     """
@@ -1008,7 +1014,7 @@ def containsNearbyDuplicate(nums: list[int], k: int) -> bool:
 
 
 # ============================================================
-# APPROACH 3: Sliding Window Set — O(n), O(k) space ✅
+# APPROACH 3: Sliding Window Set  -  O(n), O(k) space ✅
 # ============================================================
 def containsNearbyDuplicate_set(nums: list[int], k: int) -> bool:
     """
@@ -1087,7 +1093,7 @@ Output: [2, 2]
 - **Time:** O(n log n + m log m), **Space:** O(1) extra.
 - ✅ Good when arrays are already sorted or memory is limited.
 
-**Approach 2: HashMap — Frequency Intersection (Optimal) ✅**
+**Approach 2: HashMap  -  Frequency Intersection (Optimal) ✅**
 - Count frequencies in the smaller array (saves space).
 - Iterate through the larger array; for each match, decrement the count.
 - **Time:** O(n + m), **Space:** O(min(n, m)).
@@ -1098,7 +1104,7 @@ Output: [2, 2]
 from collections import Counter
 
 # ============================================================
-# APPROACH 1: Sort + Two Pointers — O(n log n + m log m)
+# APPROACH 1: Sort + Two Pointers  -  O(n log n + m log m)
 # ============================================================
 def intersect_sort(nums1: list[int], nums2: list[int]) -> list[int]:
     """
@@ -1127,7 +1133,7 @@ def intersect_sort(nums1: list[int], nums2: list[int]) -> list[int]:
 
 
 # ============================================================
-# APPROACH 2: HashMap — O(n + m) ✅
+# APPROACH 2: HashMap  -  O(n + m) ✅
 # ============================================================
 def intersect(nums1: list[int], nums2: list[int]) -> list[int]:
     """
@@ -1212,7 +1218,7 @@ Output: 0  ('l' appears only once and is the first such character)
 **Approach 2: Two-Pass with Frequency Map (Optimal) ✅**
 - Pass 1: Count the frequency of every character.
 - Pass 2: Scan left to right, return the first character with count 1.
-- **Time:** O(n), **Space:** O(1) — at most 26 entries.
+- **Time:** O(n), **Space:** O(1)  -  at most 26 entries.
 
 **Why two passes?**
 In one pass, when we see a character for the first time, we don't yet know if it will repeat later. We need the full frequency picture before we can answer "which character is unique."
@@ -1306,14 +1312,14 @@ Tuples: (0,0,0,1) → 1+(-2)+(-1)+2 = 0
 
 #### Approach Discussion
 
-**Approach 1: Brute Force — Four Nested Loops**
+**Approach 1: Brute Force  -  Four Nested Loops**
 - Check every combination of `(i, j, k, l)`.
-- **Time:** O(n⁴) ❌ — way too slow even for n=200 (1.6 billion operations).
+- **Time:** O(n⁴) ❌  -  way too slow even for n=200 (1.6 billion operations).
 
 **Approach 2: Three Loops + Set Lookup**
 - Precompute all values of `nums4` into a set.
 - Three nested loops for `nums1, nums2, nums3`, check if `-(a+b+c)` is in the set.
-- **Time:** O(n³) — still too slow for n=200.
+- **Time:** O(n³)  -  still too slow for n=200.
 
 **Approach 3: Two-Map Split (Optimal) ✅**
 - Split the four arrays into two groups: `(nums1, nums2)` and `(nums3, nums4)`.
@@ -1321,7 +1327,7 @@ Tuples: (0,0,0,1) → 1+(-2)+(-1)+2 = 0
 - Compute all possible sums of pairs from group 2 → look up `-(c+d)` in the map.
 - **Time:** O(n²), **Space:** O(n²)
 
-This is the "meet in the middle" technique — a powerful application of the complement lookup pattern.
+This is the "meet in the middle" technique  -  a powerful application of the complement lookup pattern.
 
 #### Code (Optimal Solution)
 
@@ -1333,7 +1339,7 @@ def fourSumCount(nums1: list[int], nums2: list[int],
     """
     Count tuples (i,j,k,l) where nums1[i]+nums2[j]+nums3[k]+nums4[l] = 0.
     
-    Strategy — "Meet in the Middle":
+    Strategy  -  "Meet in the Middle":
     1. Compute all possible sums (a + b) for a in nums1, b in nums2.
        Store each sum and how many ways it can be formed.
     2. For each possible sum (c + d) where c in nums3, d in nums4,
@@ -1411,7 +1417,7 @@ original = decode(tiny) # "https://leetcode.com/problems/design-tinyurl"
 
 - There's no restriction on how your encode/decode algorithm works.
 - The short URL should map back to exactly the original long URL.
-- This is a design problem — the focus is on demonstrating hashmap-based bidirectional mapping.
+- This is a design problem  -  the focus is on demonstrating hashmap-based bidirectional mapping.
 
 #### Approach Discussion
 
@@ -1432,7 +1438,7 @@ original = decode(tiny) # "https://leetcode.com/problems/design-tinyurl"
 - **Pros:** Deterministic (same URL always gets same code).
 - **Cons:** Hash collisions need handling.
 
-The core data structure for all approaches is a **bidirectional hashmap** — two maps that let you look up in both directions.
+The core data structure for all approaches is a **bidirectional hashmap**  -  two maps that let you look up in both directions.
 
 #### Code (Approaches 1 and 2)
 
@@ -1441,7 +1447,7 @@ import random
 import string
 
 # ============================================================
-# APPROACH 1: Counter-Based — Simple
+# APPROACH 1: Counter-Based  -  Simple
 # ============================================================
 class Codec_Counter:
     """
@@ -1475,7 +1481,7 @@ class Codec_Counter:
 
 
 # ============================================================
-# APPROACH 2: Random Code — More Realistic ✅
+# APPROACH 2: Random Code  -  More Realistic ✅
 # ============================================================
 class Codec:
     """
@@ -1529,7 +1535,7 @@ class Codec:
 
 - **Same URL encoded twice:** Should return the same short URL (handled by `url_to_code` check).
 - **Empty URL:** Works, but unusual.
-- **Very long URL:** No issue — the code length is independent of the URL length.
+- **Very long URL:** No issue  -  the code length is independent of the URL length.
 - **Decode an invalid short URL:** Would raise a KeyError (in production, return an error).
 
 #### Dry Run
@@ -1571,7 +1577,7 @@ encode("https://leetcode.com/problems/design-tinyurl") again:
 | 4Sum II | Meet in the middle | O(n²) | O(n²) | Split into two halves, complement |
 | Encode/Decode TinyURL | Bidirectional map | O(1) | O(n) | Two maps: code↔URL |
 
-### The Five HashMap Patterns — When to Use Each
+### The Five HashMap Patterns  -  When to Use Each
 
 ```
 What does the problem ask you to do?
@@ -1602,7 +1608,7 @@ What does the problem ask you to do?
       Examples: Encode/Decode TinyURL
 ```
 
-### HashMap vs Other Approaches — Choosing Wisely
+### HashMap vs Other Approaches  -  Choosing Wisely
 
 | Scenario | HashMap | Sorting | Two Pointers | Notes |
 |----------|---------|---------|-------------|-------|
@@ -1626,7 +1632,7 @@ What does the problem ask you to do?
 
 ### What's Next?
 
-We've now covered four core array patterns: Two Pointers, Sliding Window, Prefix Sum, and HashMap. These four alone will handle the majority of array problems you'll encounter. Next up is **Pattern 5: Kadane's Algorithm** — a deceptively simple technique for maximum subarray problems that shows up constantly in interviews. Stay tuned!
+We've now covered four core array patterns: Two Pointers, Sliding Window, Prefix Sum, and HashMap. These four alone will handle the majority of array problems you'll encounter. Next up is **Pattern 5: Kadane's Algorithm**  -  a deceptively simple technique for maximum subarray problems that shows up constantly in interviews. Stay tuned!
 
 ---
 

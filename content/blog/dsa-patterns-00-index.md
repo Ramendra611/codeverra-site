@@ -1,5 +1,5 @@
 ---
-title: "Array Patterns — The Complete Study Guide"
+title: "Array Patterns  -  The Complete Study Guide"
 description: "A complete index of the most important array problem-solving patterns for DSA, with links to each pattern guide."
 date: 2026-03-21
 author: "codeverra"
@@ -9,13 +9,20 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+
+cover:
+  image: "/images/array-patterns.png"
+  alt: "Two Pointers Pattern"
+  caption: "Two Pointers Pattern"
+  relative: true
+  hidden: false
 ---
 
-# 🗺️ Array Patterns — The Complete Study Guide
+# 🗺️ Array Patterns  -  The Complete Study Guide
 
 ## Welcome
 
-This is a structured, beginner-friendly study guide for mastering **array and string patterns** — the building blocks of coding interviews. Each pattern has a dedicated deep-dive document with theory, intuition, templates, and 10 LeetCode problems solved step by step.
+This is a structured, beginner-friendly study guide for mastering **array and string patterns**  -  the building blocks of coding interviews. Each pattern has a dedicated deep-dive document with theory, intuition, templates, and 10 LeetCode problems solved step by step.
 
 **Who is this for?**
 
@@ -25,7 +32,7 @@ This is a structured, beginner-friendly study guide for mastering **array and st
 
 **How to use this guide:**
 
-1. Follow the patterns in order — they build on each other
+1. Follow the patterns in order  -  they build on each other
 2. Read the theory and templates first
 3. Try each problem yourself for 15-20 minutes before reading the solution
 4. If stuck, read only the approach section (not the code) and try again
@@ -37,11 +44,11 @@ This is a structured, beginner-friendly study guide for mastering **array and st
 
 | # | Pattern | Document | Key Idea | Problems |
 |---|---------|----------|----------|----------|
-| 1 | [Two Pointers](./01_Two_Pointers.md) | `01_Two_Pointers.md` | Two indices moving through an array — toward each other or in the same direction — to find pairs, partition, or rearrange | 10 |
+| 1 | [Two Pointers](./01_Two_Pointers.md) | `01_Two_Pointers.md` | Two indices moving through an array  -  toward each other or in the same direction  -  to find pairs, partition, or rearrange | 10 |
 | 2 | [Binary Search](./02_Binary_Search.md) | `02_Binary_Search.md` | Halving the search space each step by exploiting sorted order or a monotonic condition | 10 |
 | 3 | [Sliding Window](./03_Sliding_Window.md) | `03_Sliding_Window.md` | A moving range between two pointers, tracking a running state (sum, frequency, etc.) to avoid redundant computation | 10 |
 | 4 | [Prefix Sum](./04_Prefix_Sum.md) | `04_Prefix_Sum.md` | Precomputing cumulative sums so any range sum can be answered in O(1) via subtraction | 10 |
-| 5 | [HashMap / Frequency Counting](./05_HashMap_Frequency_Counting.md) | `05_HashMap_Frequency_Counting.md` | Trading O(n) space for O(1) lookups — complement search, frequency counting, grouping, and index tracking | 10 |
+| 5 | [HashMap / Frequency Counting](./05_HashMap_Frequency_Counting.md) | `05_HashMap_Frequency_Counting.md` | Trading O(n) space for O(1) lookups  -  complement search, frequency counting, grouping, and index tracking | 10 |
 | 6 | Kadane's Algorithm | `06_Kadanes_Algorithm.md` | Finding the maximum (or minimum) subarray sum in one pass using a local vs global max decision | *Coming soon* |
 | 7 | Sorting-Based Patterns | `07_Sorting_Based.md` | Sorting as a preprocessing step to simplify pair-finding, interval merging, and greedy decisions | *Coming soon* |
 | 8 | Interval / Merge Intervals | `08_Intervals.md` | Sorting intervals by start time and merging or processing overlaps | *Coming soon* |
@@ -208,24 +215,24 @@ If you're just starting out, here's a suggested order of problems across all pat
 
 Every pattern document is organized the same way so you always know what to expect:
 
-1. **What is [Pattern]?** — Concept explained from scratch with a concrete example
-2. **When to Use It?** — Signals and triggers to recognize in problem statements
-3. **Types / Variations** — Sub-patterns within the main technique
-4. **Template Code** — Reusable Python templates with comments
-5. **Problem Set (10 problems)** — Each with:
+1. **What is [Pattern]?**  -  Concept explained from scratch with a concrete example
+2. **When to Use It?**  -  Signals and triggers to recognize in problem statements
+3. **Types / Variations**  -  Sub-patterns within the main technique
+4. **Template Code**  -  Reusable Python templates with comments
+5. **Problem Set (10 problems)**  -  Each with:
    - Problem statement & LeetCode link
    - Clarifying questions & constraints
    - Multiple approaches (brute force → optimal) with complexity analysis
    - Well-documented Python code
    - Edge case discussion
    - Step-by-step dry run
-6. **Key Takeaways & Summary** — Tables, decision trees, and cheat sheets
+6. **Key Takeaways & Summary**  -  Tables, decision trees, and cheat sheets
 
 ---
 
 ## Getting Started
 
-Open [`01_Two_Pointers.md`](./01_Two_Pointers.md) and begin. Good luck, and remember — the struggle is where the learning happens. Don't rush to the solutions.
+Open Two Pointer Guide and begin. Good luck, and remember that the struggle is where the learning happens. Don't rush to the solutions.
 
 ---
 

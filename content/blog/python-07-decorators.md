@@ -30,8 +30,8 @@ cover:
 1. [The Big Picture](#the-big-picture)
 2. [Functions as First-Class Objects](#functions-as-first-class-objects)
 3. [Higher-Order Functions](#higher-order-functions)
-4. [Closures — The Foundation of Decorators](#closures--the-foundation-of-decorators)
-5. [Decorators — Core Concept](#decorators--core-concept)
+4. [Closures  -  The Foundation of Decorators](#closures--the-foundation-of-decorators)
+5. [Decorators  -  Core Concept](#decorators--core-concept)
 6. [The `@` Syntax](#the--syntax)
 7. [Preserving Metadata with `functools.wraps`](#preserving-metadata-with-functoolswraps)
 8. [Decorators with Arguments](#decorators-with-arguments)
@@ -75,7 +75,7 @@ cover:
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-> **Core Idea:** A decorator is just a callable that takes a function and returns a new callable. Everything else — the `@` syntax, `functools.wraps`, parameterised decorators — builds on top of this single idea.
+> **Core Idea:** A decorator is just a callable that takes a function and returns a new callable. Everything else  -  the `@` syntax, `functools.wraps`, parameterised decorators  -  builds on top of this single idea.
 
 ---
 
@@ -95,9 +95,9 @@ This is the foundational property that makes higher-order functions and decorato
 def greet(name):
     return f"Hello, {name}!"
 
-say_hello = greet             # no parentheses — we assign the function itself
+say_hello = greet             # no parentheses  -  we assign the function itself
 print(say_hello("Priya"))     # Hello, Priya!
-print(greet is say_hello)     # True — same object
+print(greet is say_hello)     # True  -  same object
 
 # 2. Passed as an argument
 def apply(func, value):
@@ -136,7 +136,7 @@ A **Higher-Order Function (HOF)** is a function that either:
 
 ### Python's Built-in HOFs
 
-#### `map(func, iterable)` — Apply a function to every element
+#### `map(func, iterable)`  -  Apply a function to every element
 
 ```python
 numbers = [1, 2, 3, 4, 5]
@@ -160,7 +160,7 @@ sums = list(map(lambda x, y: x + y, a, b))
 print(sums)   # [11, 22, 33]
 ```
 
-#### `filter(func, iterable)` — Keep elements where func returns True
+#### `filter(func, iterable)`  -  Keep elements where func returns True
 
 ```python
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -168,7 +168,7 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 evens = list(filter(lambda x: x % 2 == 0, numbers))
 print(evens)   # [2, 4, 6, 8, 10]
 
-# Filter with None — removes falsy values
+# Filter with None  -  removes falsy values
 mixed = [0, 1, "", "hello", None, [1, 2], [], False, True]
 truthy_only = list(filter(None, mixed))
 print(truthy_only)   # [1, 'hello', [1, 2], True]
@@ -183,7 +183,7 @@ active_users = list(filter(lambda u: u["active"], users))
 print([u["name"] for u in active_users])   # ['Ravi', 'Arjun']
 ```
 
-#### `reduce(func, iterable)` — Fold a sequence into a single value
+#### `reduce(func, iterable)`  -  Fold a sequence into a single value
 
 ```python
 from functools import reduce
@@ -200,7 +200,7 @@ print(product)  # 120
 total_with_offset = reduce(lambda acc, x: acc + x, numbers, 100)
 print(total_with_offset)   # 115
 
-# Step by step — seeing how reduce works:
+# Step by step  -  seeing how reduce works:
 # Step 1: acc=1,  x=2  → 3
 # Step 2: acc=3,  x=3  → 6
 # Step 3: acc=6,  x=4  → 10
@@ -243,7 +243,7 @@ print(sorted_data)  # [('Bob', 25), ('Dave', 25), ('Alice', 30), ('Charlie', 30)
 ### Writing Your Own HOFs
 
 ```python
-# HOF that returns a function — a "factory"
+# HOF that returns a function  -  a "factory"
 def make_validator(min_val, max_val):
     """Returns a function that checks if a value is in range."""
     def validator(value):
@@ -260,7 +260,7 @@ print(is_valid_score(95.5))  # True
 print(is_valid_pin(9999))    # True
 
 
-# HOF that takes a function — a "pipeline" builder
+# HOF that takes a function  -  a "pipeline" builder
 def pipeline(*funcs):
     """Returns a function that passes data through all funcs in sequence."""
     def execute(data):
@@ -282,13 +282,13 @@ print(process("  PYTHON Rocks  "))  # python_rocks
 
 ---
 
-## Closures — The Foundation of Decorators
+## Closures  -  The Foundation of Decorators
 
 A **closure** is a function that **remembers the variables from its enclosing scope** even after that scope has finished executing. Decorators are closures.
 
 ```python
 def outer(x):
-    # x is a "free variable" — it lives in outer's scope
+    # x is a "free variable"  -  it lives in outer's scope
     def inner(y):
         return x + y    # inner "closes over" x
     return inner
@@ -296,9 +296,9 @@ def outer(x):
 add_five = outer(5)
 add_ten  = outer(10)
 
-print(add_five(3))    # 8   — x=5 is remembered
-print(add_ten(3))     # 13  — x=10 is remembered
-print(add_five(3))    # 8   — still 8, x=5 is not gone
+print(add_five(3))    # 8    -  x=5 is remembered
+print(add_ten(3))     # 13   -  x=10 is remembered
+print(add_five(3))    # 8    -  still 8, x=5 is not gone
 ```
 
 ### Inspecting a Closure
@@ -322,7 +322,7 @@ print(c.__code__.co_freevars)   # ('count',)
 print(c.__closure__[0].cell_contents)  # 3  ← current value of count
 ```
 
-### `nonlocal` — Modifying an Enclosing Variable
+### `nonlocal`  -  Modifying an Enclosing Variable
 
 ```python
 def make_accumulator():
@@ -341,7 +341,7 @@ print(acc(5))    # 35
 
 ---
 
-## Decorators — Core Concept
+## Decorators  -  Core Concept
 
 A **decorator** is a function that wraps another function, adding behaviour without modifying the original function's source code. It follows this exact pattern:
 
@@ -385,7 +385,7 @@ def shout(func):
         return result.upper()
     return wrapper
 
-# Using @ — clean, readable
+# Using @  -  clean, readable
 @shout
 def greet(name):
     return f"hello, {name}!"
@@ -396,7 +396,7 @@ print(greet("priya"))   # HELLO, PRIYA!
 # greet = shout(greet)
 ```
 
-### A Timing Decorator — Classic Example
+### A Timing Decorator  -  Classic Example
 
 ```python
 import time
@@ -454,12 +454,12 @@ add(a=10, b=20)
 
 ## Preserving Metadata with `functools.wraps`
 
-Without `functools.wraps`, decorating a function **replaces its identity** — its name, docstring, and other metadata are overwritten by the wrapper.
+Without `functools.wraps`, decorating a function **replaces its identity**  -  its name, docstring, and other metadata are overwritten by the wrapper.
 
 ```python
 import functools
 
-# WITHOUT functools.wraps — identity is lost
+# WITHOUT functools.wraps  -  identity is lost
 def bad_decorator(func):
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
@@ -474,7 +474,7 @@ print(important_function.__name__)   # 'wrapper'     ← WRONG
 print(important_function.__doc__)    # None          ← WRONG
 
 
-# WITH functools.wraps — identity is preserved
+# WITH functools.wraps  -  identity is preserved
 def good_decorator(func):
     @functools.wraps(func)    # copies __name__, __doc__, __module__, __qualname__, __annotations__
     def wrapper(*args, **kwargs):
@@ -497,7 +497,7 @@ print(important_function.__wrapped__)  # <function important_function ...>  ← 
 
 ## Decorators with Arguments
 
-Sometimes you want to parameterize a decorator: `@retry(times=3)`. This requires **one more layer of nesting** — a factory function that returns the actual decorator.
+Sometimes you want to parameterize a decorator: `@retry(times=3)`. This requires **one more layer of nesting**  -  a factory function that returns the actual decorator.
 
 ```python
 # Structure: factory → decorator → wrapper
@@ -762,7 +762,7 @@ get_dashboard(user={"name": "Ravi", "authenticated": True})
 
 Python ships with several powerful built-in decorators.
 
-### `@staticmethod` — No implicit first argument
+### `@staticmethod`  -  No implicit first argument
 
 ```python
 class MathHelper:
@@ -780,7 +780,7 @@ print(MathHelper().is_even(4))      # True
 # No `self` or `cls` passed
 ```
 
-### `@classmethod` — Receives the class as first argument
+### `@classmethod`  -  Receives the class as first argument
 
 ```python
 class Employee:
@@ -792,7 +792,7 @@ class Employee:
 
     @classmethod
     def from_dict(cls, data):
-        """Alternative constructor — creates instance from a dict."""
+        """Alternative constructor  -  creates instance from a dict."""
         return cls(data["name"], data["salary"])
 
     @classmethod
@@ -809,7 +809,7 @@ Employee.change_company("Codeverra Pro")
 print(emp)   # Employee(Priya, 75000, Codeverra Pro)
 ```
 
-### `@property` — Computed attributes
+### `@property`  -  Computed attributes
 
 ```python
 class Circle:
@@ -848,25 +848,25 @@ print(c.area)            # 314.159...
 c.radius = -1            # ValueError: Radius cannot be negative
 ```
 
-### `@functools.lru_cache` — Memoization
+### `@functools.lru_cache`  -  Memoization
 
 ```python
 import functools
 
-# Without cache — exponential time
+# Without cache  -  exponential time
 def fib_slow(n):
     if n < 2:
         return n
     return fib_slow(n - 1) + fib_slow(n - 2)
 
-# With lru_cache — linear time (results cached in memory)
+# With lru_cache  -  linear time (results cached in memory)
 @functools.lru_cache(maxsize=None)
 def fib(n):
     if n < 2:
         return n
     return fib(n - 1) + fib(n - 2)
 
-print(fib(50))     # 12586269025 — instant
+print(fib(50))     # 12586269025  -  instant
 print(fib.cache_info())   # CacheInfo(hits=48, misses=51, maxsize=None, currsize=51)
 fib.cache_clear()          # clear the cache
 
@@ -876,7 +876,7 @@ def factorial(n):
     return 1 if n <= 1 else n * factorial(n - 1)
 ```
 
-### `@functools.cached_property` — Property computed once per instance
+### `@functools.cached_property`  -  Property computed once per instance
 
 ```python
 import functools
@@ -897,14 +897,14 @@ class DataSet:
 
 ds = DataSet([10, 20, 30, 40, 50])
 print(ds.stats)   # Computing stats... → {'mean': 30, ...}
-print(ds.stats)   # Cached — does NOT print "Computing stats..." again
+print(ds.stats)   # Cached  -  does NOT print "Computing stats..." again
 ```
 
 ---
 
 ## Practical Decorator Patterns
 
-### Pattern 1 — Access Control / Authorization
+### Pattern 1  -  Access Control / Authorization
 
 ```python
 import functools
@@ -946,7 +946,7 @@ except PermissionError as e:
     print(e)   # User role 'viewer' not in ('admin', 'superuser')
 ```
 
-### Pattern 2 — Caching / Memoization (Custom)
+### Pattern 2  -  Caching / Memoization (Custom)
 
 ```python
 import functools
@@ -982,7 +982,7 @@ time.sleep(0.1)
 print(get_exchange_rate("USD"))   # [cache hit] → 83.5
 ```
 
-### Pattern 3 — Input Validation
+### Pattern 3  -  Input Validation
 
 ```python
 import functools
@@ -1020,7 +1020,7 @@ print(register_student("Arjun", 22, 95.5))    # OK
 register_student(123, 22, 95.5)                # TypeError: 'name' must be str
 ```
 
-### Pattern 4 — Deprecation Warning
+### Pattern 4  -  Deprecation Warning
 
 ```python
 import functools
@@ -1047,7 +1047,7 @@ result = calculate(3, 4)
 # DeprecationWarning: calculate is deprecated. Use calculate_v2() instead.
 ```
 
-### Pattern 5 — Singleton Pattern
+### Pattern 5  -  Singleton Pattern
 
 ```python
 import functools
@@ -1071,9 +1071,9 @@ class DatabaseConnection:
         print(f"Connecting to {host}...")
 
 db1 = DatabaseConnection("prod-server")   # Connecting to prod-server...
-db2 = DatabaseConnection("other-server")  # NOT printed — returns existing instance
+db2 = DatabaseConnection("other-server")  # NOT printed  -  returns existing instance
 
-print(db1 is db2)        # True — same object
+print(db1 is db2)        # True  -  same object
 print(db2.host)          # prod-server
 ```
 
@@ -1081,7 +1081,7 @@ print(db2.host)          # prod-server
 
 ## Common Mistakes to Avoid
 
-### Mistake 1 — Forgetting `functools.wraps`
+### Mistake 1  -  Forgetting `functools.wraps`
 
 ```python
 # BAD
@@ -1099,7 +1099,7 @@ def my_decorator(func):
     return wrapper
 ```
 
-### Mistake 2 — Calling the Function When Applying the Decorator
+### Mistake 2  -  Calling the Function When Applying the Decorator
 
 ```python
 def greet():
@@ -1111,12 +1111,12 @@ def my_decorator(func):
         return func().upper()
     return wrapper
 
-# BAD — calling greet() at decoration time, not at call time
+# BAD  -  calling greet() at decoration time, not at call time
 @my_decorator
 def greet():      # This is fine, but...
     return "Hello!"
 
-greet_result = my_decorator(greet())   # WRONG — passing the result "Hello!", not the function
+greet_result = my_decorator(greet())   # WRONG  -  passing the result "Hello!", not the function
 
 # GOOD
 @my_decorator    # pass the function object, without ()
@@ -1124,10 +1124,10 @@ def greet():
     return "Hello!"
 ```
 
-### Mistake 3 — Forgetting `*args, **kwargs` in the Wrapper
+### Mistake 3  -  Forgetting `*args, **kwargs` in the Wrapper
 
 ```python
-# BAD — wrapper only works for functions with no arguments
+# BAD  -  wrapper only works for functions with no arguments
 def timer(func):
     def wrapper():           # only works for zero-argument functions
         start  = time.time()
@@ -1137,10 +1137,10 @@ def timer(func):
     return wrapper
 
 @timer
-def greet(name):    # This will break — wrapper() takes 0 args
+def greet(name):    # This will break  -  wrapper() takes 0 args
     return f"Hi {name}"
 
-# GOOD — wrapper accepts any arguments and passes them through
+# GOOD  -  wrapper accepts any arguments and passes them through
 def timer(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):   # accepts any signature
@@ -1151,10 +1151,10 @@ def timer(func):
     return wrapper
 ```
 
-### Mistake 4 — Decorator Applied at Import Time Has Side Effects
+### Mistake 4  -  Decorator Applied at Import Time Has Side Effects
 
 ```python
-# BAD — executes code at class/module definition time
+# BAD  -  executes code at class/module definition time
 import time
 
 def timer(func):
@@ -1164,7 +1164,7 @@ def timer(func):
         return func(*args, **kwargs)
     return wrapper
 
-# GOOD — timing must be INSIDE wrapper
+# GOOD  -  timing must be INSIDE wrapper
 def timer(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -1175,10 +1175,10 @@ def timer(func):
     return wrapper
 ```
 
-### Mistake 5 — Not Returning the Function's Result
+### Mistake 5  -  Not Returning the Function's Result
 
 ```python
-# BAD — silently drops the return value
+# BAD  -  silently drops the return value
 def my_decorator(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -1189,7 +1189,7 @@ def my_decorator(func):
 def add(a, b):
     return a + b
 
-print(add(3, 4))   # None — not 7!
+print(add(3, 4))   # None  -  not 7!
 
 # GOOD
 def my_decorator(func):
@@ -1199,7 +1199,7 @@ def my_decorator(func):
     return wrapper
 ```
 
-### Mistake 6 — Stacking Order Confusion
+### Mistake 6  -  Stacking Order Confusion
 
 ```python
 @decorator_A
@@ -1213,8 +1213,8 @@ def func():
 
 # If A checks authentication and B logs timing,
 # and you want auth checked BEFORE logging starts:
-@auth_check    # outer — runs first
-@log_timing    # inner — runs second
+@auth_check    # outer  -  runs first
+@log_timing    # inner  -  runs second
 def endpoint():
     pass
 ```
@@ -1225,7 +1225,7 @@ def endpoint():
 
 ---
 
-### Question 1 — HOF Basics
+### Question 1  -  HOF Basics
 
 **Q:** Using `map` and `filter`, transform a list of temperatures from Celsius to Fahrenheit and keep only temperatures above 100°F.
 
@@ -1248,7 +1248,7 @@ print(hot)         # [113.0, 140.0, 212.0]
 
 ---
 
-### Question 2 — Write a Closure
+### Question 2  -  Write a Closure
 
 **Q:** Write a closure `make_power(n)` that returns a function which raises its argument to the power `n`.
 
@@ -1273,7 +1273,7 @@ print(square.__code__.co_freevars)   # ('n',)
 
 ---
 
-### Question 3 — Basic Decorator
+### Question 3  -  Basic Decorator
 
 **Q:** Write a decorator `@uppercase` that converts a function's string return value to uppercase.
 
@@ -1305,7 +1305,7 @@ print(get_city())       # HYDERABAD
 
 ---
 
-### Question 4 — Decorator with Arguments
+### Question 4  -  Decorator with Arguments
 
 **Q:** Write a decorator `@truncate(max_len)` that truncates a function's string return value to `max_len` characters, appending `"..."` if truncated.
 
@@ -1339,7 +1339,7 @@ print(get_title())         # Introduction to Pyt...
 
 ---
 
-### Question 5 — Class-Based Decorator
+### Question 5  -  Class-Based Decorator
 
 **Q:** Write a class-based decorator `Memoize` that caches the return value of a function based on its arguments.
 
@@ -1377,7 +1377,7 @@ print(expensive.cache_info())
 
 ---
 
-### Question 6 — Stacking Decorators
+### Question 6  -  Stacking Decorators
 
 **Q:** Write two decorators: `@add_html_tag(tag)` that wraps output in an HTML tag. Then apply them to produce `<p><em>Hello</em></p>`.
 
@@ -1408,7 +1408,7 @@ print(hello())   # <p><em>Hello</em></p>
 
 ---
 
-### Question 7 — Real World: Rate Limiter
+### Question 7  -  Real World: Rate Limiter
 
 **Q:** Write a decorator `@rate_limit(calls, period)` that raises a `RuntimeError` if a function is called more than `calls` times within `period` seconds.
 
@@ -1455,7 +1455,7 @@ except RuntimeError as e:
 
 ---
 
-### Question 8 — Predict the Output
+### Question 8  -  Predict the Output
 
 **Q:** What is printed?
 
@@ -1562,5 +1562,5 @@ HOF vs DECORATOR
 
 ---
 
-*End of Lesson — Higher-Order Functions & Decorators in Python*
-*Codeverra — codeverra.com*
+*End of Lesson  -  Higher-Order Functions & Decorators in Python*
+*Codeverra  -  codeverra.com*

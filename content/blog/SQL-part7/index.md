@@ -23,7 +23,7 @@ cover:
   hidden: false
 ---
 
-# Lesson 2.7 — Indexes, Constraints & Schema Design
+# Lesson 2.7  -  Indexes, Constraints & Schema Design
 ### Theory + Practice | All Three Databases
 
 ---
@@ -33,7 +33,7 @@ cover:
 This lesson uses all three databases.
 Each section tells you which one to connect to.
 
-Quick check — run this in each database before starting:
+Quick check  -  run this in each database before starting:
 
 ```sql
 -- In cricketdb:
@@ -57,12 +57,12 @@ SELECT COUNT(*) FROM watch_history;  -- expect 50
 | Unique index | Enforce uniqueness via an index |
 | `EXPLAIN` / `EXPLAIN ANALYZE` | Read a query execution plan |
 | FK behaviours | CASCADE, SET NULL, RESTRICT, SET DEFAULT |
-| Normalization | 1NF, 2NF, 3NF — design rules with examples |
+| Normalization | 1NF, 2NF, 3NF  -  design rules with examples |
 | Common schema mistakes | Real anti-patterns and how to fix them |
 
 ---
 
-## Part 1 — How PostgreSQL Finds Rows
+## Part 1  -  How PostgreSQL Finds Rows
 
 Before learning about indexes, you need to understand what problem they solve.
 
@@ -84,7 +84,7 @@ PostgreSQL reads:
   ... continues to end of table (must check all rows)
 ```
 
-For 25 rows — no problem. For 25 million rows — very slow.
+For 25 rows  -  no problem. For 25 million rows  -  very slow.
 
 ### Index Scan
 
@@ -102,18 +102,18 @@ Index on products.name (sorted):
   ...
 ```
 
-PostgreSQL jumps directly to the matching location — like looking up a word
+PostgreSQL jumps directly to the matching location  -  like looking up a word
 in a dictionary rather than reading every page.
 
 **Cost comparison:**
-- Sequential scan: O(n) — reads every row
-- Index scan: O(log n) — follows the tree to the answer
+- Sequential scan: O(n)  -  reads every row
+- Index scan: O(log n)  -  follows the tree to the answer
 
 For 1 million rows: sequential = 1,000,000 reads. Index = ~20 reads.
 
 ---
 
-## Part 2 — CREATE INDEX
+## Part 2  -  CREATE INDEX
 
 *(Connect to shopdb)*
 
@@ -136,7 +136,7 @@ SELECT * FROM products WHERE category_id = 1;
 ```
 
 ```sql
--- Index on order status — very common filter
+-- Index on order status  -  very common filter
 CREATE INDEX idx_orders_status
 ON orders (status);
 
@@ -146,7 +146,7 @@ SELECT * FROM orders WHERE status IN ('Pending', 'Shipped');
 ```
 
 ```sql
--- Index on a date column — speeds up range queries
+-- Index on a date column  -  speeds up range queries
 CREATE INDEX idx_orders_order_date
 ON orders (order_date);
 
@@ -169,16 +169,16 @@ Do not index:
 - Columns you never filter or sort by
 - Very small tables (sequential scan is faster for <1000 rows)
 - Columns that change very frequently (index must be updated on every write)
-- Boolean columns with low selectivity — an index on `is_active` where
+- Boolean columns with low selectivity  -  an index on `is_active` where
   95% of rows are TRUE is nearly useless (PostgreSQL will ignore it)
 
 > **The trade-off:** Indexes speed up reads but slow down writes.
 > Every `INSERT`, `UPDATE`, and `DELETE` must also update all relevant indexes.
-> Do not index everything — index the columns your slow queries filter on.
+> Do not index everything  -  index the columns your slow queries filter on.
 
 ---
 
-## Part 3 — Composite Index
+## Part 3  -  Composite Index
 
 A composite index covers two or more columns together.
 It is useful when you commonly filter by multiple columns at the same time.
@@ -210,7 +210,7 @@ idx_orders_customer_status:
 This index helps:
 - `WHERE customer_id = 1 AND status = 'Delivered'` ✅ (both columns)
 - `WHERE customer_id = 1` ✅ (leading column only)
-- `WHERE status = 'Delivered'` ❌ (non-leading column — index NOT used)
+- `WHERE status = 'Delivered'` ❌ (non-leading column  -  index NOT used)
 
 **Rule:** A composite index can be used if your query filters on the
 **leading column(s)** of the index. Filtering on a non-leading column alone
@@ -232,7 +232,7 @@ SELECT * FROM watch_history WHERE show_id = 3;  -- non-leading
 
 ---
 
-## Part 4 — Partial Index
+## Part 4  -  Partial Index
 
 A partial index only indexes rows that match a condition.
 It is smaller and faster than a full index when you mostly query a subset of rows.
@@ -270,13 +270,13 @@ ORDER BY rating DESC;
 ```
 
 **Benefits of partial indexes:**
-- Smaller than full index — less memory, faster to scan
-- Faster to update — only rebuilt when indexed rows change
+- Smaller than full index  -  less memory, faster to scan
+- Faster to update  -  only rebuilt when indexed rows change
 - Very effective when a small fraction of rows are "hot" (frequently queried)
 
 ---
 
-## Part 5 — Unique Index
+## Part 5  -  Unique Index
 
 A `UNIQUE` constraint automatically creates a unique index.
 You can also create one explicitly for fine-grained control.
@@ -291,7 +291,7 @@ UNIQUE (name, category_id);
 
 ```sql
 -- Partial unique index: email must be unique among active customers only
--- (hypothetical — useful when soft-deleting records)
+-- (hypothetical  -  useful when soft-deleting records)
 CREATE UNIQUE INDEX uq_active_customer_email
 ON customers (email)
 WHERE is_active = TRUE;   -- if customers had an is_active column
@@ -299,9 +299,9 @@ WHERE is_active = TRUE;   -- if customers had an is_active column
 
 ---
 
-## Part 6 — EXPLAIN: Reading a Query Plan
+## Part 6  -  EXPLAIN: Reading a Query Plan
 
-`EXPLAIN` shows you *how* PostgreSQL plans to execute a query —
+`EXPLAIN` shows you *how* PostgreSQL plans to execute a query  - 
 without actually running it.
 `EXPLAIN ANALYZE` runs the query and shows actual timing.
 
@@ -354,8 +354,8 @@ ORDER BY revenue DESC;
 | `Seq Scan` | Read every row in the table |
 | `Index Scan` | Use an index to find rows |
 | `Bitmap Heap Scan` | Use index to find row locations, then read from table |
-| `Hash Join` | Join method using a hash table — good for larger joins |
-| `Nested Loop` | Join method — one table iterated per row of the other |
+| `Hash Join` | Join method using a hash table  -  good for larger joins |
+| `Nested Loop` | Join method  -  one table iterated per row of the other |
 | `cost=X..Y` | X = startup cost, Y = total cost (arbitrary units) |
 | `rows=N` | Estimated number of rows returned |
 | `actual time=X..Y` | Real time in ms (EXPLAIN ANALYZE only) |
@@ -366,7 +366,7 @@ ORDER BY revenue DESC;
 
 ---
 
-### ✏️ Practice Set 1 — Indexes and EXPLAIN
+### ✏️ Practice Set 1  -  Indexes and EXPLAIN
 
 **Q1.** *(shopdb)* Create an index that would speed up this query:
 ```sql
@@ -393,7 +393,7 @@ using the `pg_indexes` system view. What indexes exist?
 
 ---
 
-## Part 7 — Foreign Key Behaviours
+## Part 7  -  Foreign Key Behaviours
 
 You have used `REFERENCES table(col)` as a foreign key.
 But you can control what happens when the **parent row is deleted**.
@@ -419,7 +419,7 @@ FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET DEFAULT
 
 | Behaviour | Use when |
 |---|---|
-| `RESTRICT` | Child rows should never be orphaned — deletion must be manual |
+| `RESTRICT` | Child rows should never be orphaned  -  deletion must be manual |
 | `CASCADE` | Child rows are meaningless without the parent (order items without an order) |
 | `SET NULL` | Child rows remain valid without the parent (a product can be uncategorised) |
 | `SET DEFAULT` | Child rows fall back to a "general" parent (e.g. default category) |
@@ -466,7 +466,7 @@ ROLLBACK;  -- undo the demo
 
 ---
 
-## Part 8 — Normalization: Designing Good Schemas
+## Part 8  -  Normalization: Designing Good Schemas
 
 Normalization is a set of rules for organizing data in a relational database
 to reduce redundancy and prevent update anomalies.
@@ -489,7 +489,7 @@ orders_flat (BAD DESIGN)
 ```
 
 **Problems:**
-- Aarav's email appears twice — update one, miss the other → inconsistency
+- Aarav's email appears twice  -  update one, miss the other → inconsistency
 - Delete the iPhone row → lose the fact that Aarav is from Mumbai
 - Can't add a product without an associated order
 
@@ -512,7 +512,7 @@ products
 └────┴─────────────┴──────────────────────────────────┘
 ```
 
-**Fix:** Split into two tables with a junction table — exactly what `show_genres` is in StreamDB.
+**Fix:** Split into two tables with a junction table  -  exactly what `show_genres` is in StreamDB.
 
 ```
 shows                    show_genres           genres
@@ -551,7 +551,7 @@ order_items_bad (composite PK: order_id + product_id)
 └──────────┴────────────┴──────────┴───────────────┴──────────────────┘
 ```
 
-`product_name` and `product_category` depend only on `product_id` —
+`product_name` and `product_category` depend only on `product_id`  - 
 not the full composite key `(order_id, product_id)`.
 
 **Fix:** Move product details to their own table.
@@ -572,7 +572,7 @@ order_items                    products
 **2NF checklist:**
 - [ ] Table is in 1NF
 - [ ] Every non-key column depends on the **entire** primary key
-- [ ] No partial dependencies — each fact is stored in the right table
+- [ ] No partial dependencies  -  each fact is stored in the right table
 
 ---
 
@@ -580,7 +580,7 @@ order_items                    products
 
 **Rule:** Must be in 2NF, AND every non-key column must depend **directly** on the primary key, not on another non-key column.
 
-In other words: no **transitive dependencies** — A → B → C (where B is not the key).
+In other words: no **transitive dependencies**  -  A → B → C (where B is not the key).
 
 **Violation example:**
 
@@ -598,7 +598,7 @@ orders_bad
 
 The dependency chain is: `order.id` → `customer_id` → `city` → `state`
 
-`state` depends on `city` (a non-key column) — transitive dependency.
+`state` depends on `city` (a non-key column)  -  transitive dependency.
 
 **Fix:** Move customer details to the customers table where they belong.
 
@@ -612,7 +612,7 @@ orders                          customers
 └────┴─────────────┴──────────┘  └────┴──────────────┴─────────┴────────────┘
 ```
 
-ShopDB already follows 3NF — this is exactly how it is designed.
+ShopDB already follows 3NF  -  this is exactly how it is designed.
 
 **3NF checklist:**
 - [ ] Table is in 2NF
@@ -636,15 +636,15 @@ ShopDB already follows 3NF — this is exactly how it is designed.
 
 **In practice:** Most well-designed databases are in 3NF by default
 if you follow the "one table per thing" principle from the start.
-The normalization forms are a diagnostic tool — use them to evaluate
+The normalization forms are a diagnostic tool  -  use them to evaluate
 and fix existing schemas, not as a step-by-step process for new ones.
 
 ---
 
-### ✏️ Practice Set 2 — Normalization
+### ✏️ Practice Set 2  -  Normalization
 
 For each scenario below, identify the normalization violation and write
-the corrected table structure (you do not need to write SQL — table diagrams are fine).
+the corrected table structure (you do not need to write SQL  -  table diagrams are fine).
 
 **Q5.** This table violates 1NF. Identify why and propose a fix:
 ```
@@ -689,7 +689,7 @@ employees
 
 ---
 
-## Part 9 — Common Schema Mistakes
+## Part 9  -  Common Schema Mistakes
 
 These are real patterns that cause problems in production databases.
 
@@ -716,7 +716,7 @@ CREATE TABLE products_good (
 CREATE TABLE orders_bad (
     subtotal    NUMERIC(10,2),
     tax         NUMERIC(10,2),
-    total       NUMERIC(10,2)   -- subtotal + tax — can go stale!
+    total       NUMERIC(10,2)   -- subtotal + tax  -  can go stale!
 );
 
 -- GOOD: calculate at query time
@@ -730,7 +730,7 @@ SELECT subtotal + tax AS total FROM orders;
 -- BAD: NULL used to mean "not yet shipped"
 UPDATE orders SET shipped_at = NULL WHERE status = 'Pending';
 -- But NULL also means "we don't know when it shipped"
--- These are different concepts — you can't tell them apart
+-- These are different concepts  -  you can't tell them apart
 
 -- GOOD: use a proper status column + nullable timestamp
 CREATE TABLE orders (
@@ -763,9 +763,9 @@ CREATE INDEX idx_performances_match_id  ON performances (match_id);
 CREATE TABLE users_bad (
     favourite_genres VARCHAR(200)   -- 'Drama,Action,Comedy'
 );
--- Cannot query: WHERE 'Drama' IN (favourite_genres) — doesn't work
+-- Cannot query: WHERE 'Drama' IN (favourite_genres)  -  doesn't work
 -- Cannot JOIN to genres table
--- Searching requires LIKE '%Drama%' — slow and fragile
+-- Searching requires LIKE '%Drama%'  -  slow and fragile
 
 -- GOOD: junction table
 CREATE TABLE user_genres (
@@ -793,7 +793,7 @@ CREATE TABLE products_good (
 
 ---
 
-### ✏️ Practice Set 3 — Schema Mistakes and Indexes
+### ✏️ Practice Set 3  -  Schema Mistakes and Indexes
 
 **Q9.** The following table is poorly designed. List every problem you can find
 and write the corrected `CREATE TABLE` statement:
@@ -834,7 +834,7 @@ ORDER BY wh.minutes_watched DESC;
 
 ---
 
-## Part 10 — Practice Set Answers
+## Part 10  -  Practice Set Answers
 
 ### Answers: Practice Set 1
 
@@ -850,7 +850,7 @@ ON order_items (product_id);
 -- After (run EXPLAIN again to see Index Scan)
 EXPLAIN SELECT * FROM order_items WHERE product_id = 5;
 ```
-With only 30 rows PostgreSQL may still choose a sequential scan —
+With only 30 rows PostgreSQL may still choose a sequential scan  - 
 it is faster for tiny tables. The index becomes meaningful at 1000+ rows.
 
 **Q2.** Composite index for watch_history:
@@ -860,7 +860,7 @@ CREATE INDEX idx_watch_history_user_date
 ON watch_history (user_id, watched_on);
 ```
 `user_id` should be first because it is the equality filter (`user_id = 3`).
-Date is a range filter — ranges work best as the trailing column in a composite index.
+Date is a range filter  -  ranges work best as the trailing column in a composite index.
 Equality conditions first, range conditions last.
 
 **Q3.** Partial index on pending orders:
@@ -869,7 +869,7 @@ CREATE INDEX idx_orders_pending_customer
 ON orders (customer_id)
 WHERE status = 'Pending';
 ```
-Advantage: the index is much smaller — it only contains Pending orders,
+Advantage: the index is much smaller  -  it only contains Pending orders,
 not all 15 orders. On a real system with millions of orders, most are Delivered.
 A partial index covers only the fraction you actually query frequently,
 using less memory and updating faster.
@@ -886,7 +886,7 @@ ORDER BY indexname;
 
 ### Answers: Practice Set 2
 
-**Q5.** 1NF violation — courses_enrolled contains a comma-separated list.
+**Q5.** 1NF violation  -  courses_enrolled contains a comma-separated list.
 Fix: split into two tables with a junction:
 ```
 students:          student_courses:       courses:
@@ -898,7 +898,7 @@ id | name          student_id | course_id  id | name
                   2          | 4
 ```
 
-**Q6.** 2NF violation — `player_name` and `player_role` depend only on
+**Q6.** 2NF violation  -  `player_name` and `player_role` depend only on
 `player_id`, not the full composite key `(match_id, player_id)`.
 Fix: move player details to a separate `players` table.
 ```
@@ -909,7 +909,7 @@ match_id | player_id | runs | wickets   id | name         | role
 ```
 This is exactly how CricketDB is designed.
 
-**Q7.** 3NF violation — `dept_name` and `dept_budget` depend on `dept_id`,
+**Q7.** 3NF violation  -  `dept_name` and `dept_budget` depend on `dept_id`,
 not directly on `employee.id`. Transitive chain: `id → dept_id → dept_name → dept_budget`.
 Fix: create a departments table.
 ```
@@ -934,12 +934,12 @@ the sessions table (which is both a junction and an entity with its own attribut
 ### Answers: Practice Set 3
 
 **Q9.** Problems with orders_bad:
-- `id VARCHAR` — should be `SERIAL PRIMARY KEY` (integer, auto-increment)
-- `customer VARCHAR(200)` — stores multiple facts (name, city, state) — violates 1NF and 3NF. Should be `customer_id INT REFERENCES customers(id)`
-- `items TEXT` — stores a list in one column — violates 1NF. Should be a separate `order_items` table
-- `total VARCHAR(20)` — stores a calculated value as text with currency symbol. Should be computed or `NUMERIC(10,2)`
-- `date VARCHAR(20)` — should be `DATE` type
-- `paid VARCHAR(5)` — should be `BOOLEAN` or a `status` enum
+- `id VARCHAR`  -  should be `SERIAL PRIMARY KEY` (integer, auto-increment)
+- `customer VARCHAR(200)`  -  stores multiple facts (name, city, state)  -  violates 1NF and 3NF. Should be `customer_id INT REFERENCES customers(id)`
+- `items TEXT`  -  stores a list in one column  -  violates 1NF. Should be a separate `order_items` table
+- `total VARCHAR(20)`  -  stores a calculated value as text with currency symbol. Should be computed or `NUMERIC(10,2)`
+- `date VARCHAR(20)`  -  should be `DATE` type
+- `paid VARCHAR(5)`  -  should be `BOOLEAN` or a `status` enum
 
 ```sql
 -- Corrected version:
@@ -998,12 +998,12 @@ can also benefit from including it in the composite index.
 ## What's Next
 
 You have covered:
-- ✅ Sequential scan vs index scan — the fundamental read performance difference
-- ✅ `CREATE INDEX` — when, why, and what to index
-- ✅ Composite indexes — column order and the leading-column rule
-- ✅ Partial indexes — indexing a subset of rows
-- ✅ Unique indexes — enforcing uniqueness
-- ✅ `EXPLAIN` / `EXPLAIN ANALYZE` — reading query plans
-- ✅ Foreign key behaviours — CASCADE, SET NULL, RESTRICT, SET DEFAULT
-- ✅ 1NF, 2NF, 3NF — normalization rules with real examples
+- ✅ Sequential scan vs index scan  -  the fundamental read performance difference
+- ✅ `CREATE INDEX`  -  when, why, and what to index
+- ✅ Composite indexes  -  column order and the leading-column rule
+- ✅ Partial indexes  -  indexing a subset of rows
+- ✅ Unique indexes  -  enforcing uniqueness
+- ✅ `EXPLAIN` / `EXPLAIN ANALYZE`  -  reading query plans
+- ✅ Foreign key behaviours  -  CASCADE, SET NULL, RESTRICT, SET DEFAULT
+- ✅ 1NF, 2NF, 3NF  -  normalization rules with real examples
 - ✅ Six common schema mistakes and their fixes

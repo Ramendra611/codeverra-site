@@ -1,5 +1,5 @@
 ---
-title: "Sliding Window Pattern — Complete Guide"
+title: "Sliding Window Pattern  -  Complete Guide"
 description: "Learn the sliding window technique to efficiently solve subarray and substring problems in Python."
 date: 2026-03-21
 author: "codeverra"
@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - dsa-patterns
+cover:
+  image: "/images/dsa-patterns-03.png"
+  alt: "Sliding Window Pattern"
+  caption: "Sliding Window Pattern"
+  relative: true
+  hidden: false
 ---
 
 # 🔰 Pattern 2: Sliding Window
@@ -36,7 +42,7 @@ tags:
 
 ## What is the Sliding Window Technique?
 
-In the Two Pointers pattern, we learned how two indices can traverse an array efficiently. Sliding Window builds on that idea — it maintains a **range (window) between two pointers** and cares about the elements *inside* that range.
+In the Two Pointers pattern, we learned how two indices can traverse an array efficiently. Sliding Window builds on that idea  -  it maintains a **range (window) between two pointers** and cares about the elements *inside* that range.
 
 Let's see why this matters with a concrete problem.
 
@@ -72,7 +78,7 @@ Max = 9
 
 Instead of recalculating the entire sum each time, we **update** it by subtracting the element that left the window and adding the element that entered. This turns O(n × k) into O(n).
 
-> **Sliding Window** is a technique where you maintain a window (a contiguous subarray or substring) defined by two pointers, and slide it across the data — expanding or shrinking the window as needed — while efficiently tracking some property of the elements inside (sum, count, frequency, etc.).
+> **Sliding Window** is a technique where you maintain a window (a contiguous subarray or substring) defined by two pointers, and slide it across the data  -  expanding or shrinking the window as needed  -  while efficiently tracking some property of the elements inside (sum, count, frequency, etc.).
 
 ### Why is it useful?
 
@@ -94,12 +100,12 @@ Look for these **signals** in a problem:
 | Involves **frequency counting** in a range | "Check if string contains a permutation of another" |
 | "At most k distinct" or "at most k changes" | "Longest substring with at most 2 distinct characters" |
 
-### Sliding Window vs Two Pointers — What's the Difference?
+### Sliding Window vs Two Pointers  -  What's the Difference?
 
 Both use two pointers, so the line can feel blurry. The key distinction:
 
 - **Two Pointers**: You care about the elements **at** the two pointer positions (e.g., `nums[left] + nums[right]`).
-- **Sliding Window**: You care about **all elements between** the two pointers — the window as a whole (e.g., sum of the window, frequency map of the window).
+- **Sliding Window**: You care about **all elements between** the two pointers  -  the window as a whole (e.g., sum of the window, frequency map of the window).
 
 In practice, if you're maintaining some running state (a sum, a hashmap, a count) that represents the content of a range, you're using a sliding window.
 
@@ -167,8 +173,8 @@ def fixed_window(arr, k):
     """
     Template for fixed-size sliding window.
     
-    Time Complexity: O(n) — one pass through the array
-    Space Complexity: O(1) — only tracking the window state
+    Time Complexity: O(n)  -  one pass through the array
+    Space Complexity: O(1)  -  only tracking the window state
     """
     n = len(arr)
     
@@ -199,10 +205,10 @@ def fixed_window(arr, k):
 ```python
 def variable_window_longest(arr):
     """
-    Template for variable-size window — finding the LONGEST valid window.
+    Template for variable-size window  -  finding the LONGEST valid window.
     Expand right always, shrink left only when window becomes invalid.
     
-    Time Complexity: O(n) — each element is added and removed at most once
+    Time Complexity: O(n)  -  each element is added and removed at most once
     Space Complexity: depends on what state you track (often O(k) for a hashmap)
     """
     left = 0
@@ -229,7 +235,7 @@ def variable_window_longest(arr):
 ```python
 def variable_window_shortest(arr, target):
     """
-    Template for variable-size window — finding the SHORTEST valid window.
+    Template for variable-size window  -  finding the SHORTEST valid window.
     Expand right always, shrink left while window REMAINS valid.
     
     Time Complexity: O(n)
@@ -264,11 +270,11 @@ def variable_window_shortest(arr, target):
 | 1 | Max Sum Subarray of Size K | Easy | Fixed window basics |
 | 2 | Longest Substring Without Repeating Characters | Medium | Variable window + hashmap |
 | 3 | Maximum Average Subarray I | Easy | Fixed window with division |
-| 4 | Minimum Size Subarray Sum | Medium | Variable window — shortest |
+| 4 | Minimum Size Subarray Sum | Medium | Variable window  -  shortest |
 | 5 | Permutation in String | Medium | Fixed window + frequency matching |
 | 6 | Longest Repeating Character Replacement | Medium | Variable window + character count |
-| 7 | Fruit Into Baskets | Medium | Variable window — at most k distinct |
-| 8 | Minimum Window Substring | Hard | Variable window — shortest with frequency |
+| 7 | Fruit Into Baskets | Medium | Variable window  -  at most k distinct |
+| 8 | Minimum Window Substring | Hard | Variable window  -  shortest with frequency |
 | 9 | Sliding Window Maximum | Hard | Window + monotonic deque |
 | 10 | Substring with Concatenation of All Words | Hard | Fixed window + word-level matching |
 
@@ -290,28 +296,28 @@ Output: 9  (subarray [5, 1, 3])
 
 #### Clarifying Questions & Constraints
 
-- `1 <= k <= len(nums)` — there's always at least one window.
+- `1 <= k <= len(nums)`  -  there's always at least one window.
 - Elements can be negative.
 
 #### Approach Discussion
 
 **Approach 1: Brute Force**
 - For each starting index `i`, sum up `k` elements: `sum(nums[i:i+k])`.
-- **Time:** O(n × k) — summing k elements for each of n positions.
+- **Time:** O(n × k)  -  summing k elements for each of n positions.
 - **Space:** O(1)
 - ❌ Redundant: most of the sum stays the same between adjacent windows.
 
 **Approach 2: Fixed-Size Sliding Window (Optimal) ✅**
 - Compute the sum of the first `k` elements.
 - Slide: subtract the element going out, add the element coming in.
-- **Time:** O(n) — single pass.
+- **Time:** O(n)  -  single pass.
 - **Space:** O(1)
 
 #### Code (Both Solutions)
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n × k)
+# APPROACH 1: Brute Force  -  O(n × k)
 # ============================================================
 def max_sum_brute(nums: list[int], k: int) -> int:
     """
@@ -333,7 +339,7 @@ def max_sum_brute(nums: list[int], k: int) -> int:
 
 
 # ============================================================
-# APPROACH 2: Fixed-Size Sliding Window — O(n) ✅
+# APPROACH 2: Fixed-Size Sliding Window  -  O(n) ✅
 # ============================================================
 def max_sum_sliding_window(nums: list[int], k: int) -> int:
     """
@@ -366,7 +372,7 @@ def max_sum_sliding_window(nums: list[int], k: int) -> int:
 
 #### Edge Cases
 
-- **k equals array length:** Only one window — return the total sum.
+- **k equals array length:** Only one window  -  return the total sum.
 - **All negative:** `[-3, -2, -5], k=2` → return `-5` (least negative).
 - **Single element windows:** `k=1` → return the maximum element.
 
@@ -419,26 +425,26 @@ Output: 3  (substring "abc")
 
 **Approach 1: Brute Force**
 - Check every substring, verify it has no duplicates.
-- **Time:** O(n³) — O(n²) substrings × O(n) to check each.
+- **Time:** O(n³)  -  O(n²) substrings × O(n) to check each.
 - **Space:** O(min(n, 26)) for the character set.
 - ❌ Far too slow.
 
 **Approach 2: Sliding Window + HashSet (Good)**
 - Expand `right` to include characters. If a duplicate is found, shrink from `left` one step at a time until the duplicate is removed.
-- **Time:** O(2n) = O(n) — in the worst case, each character is added and removed once.
+- **Time:** O(2n) = O(n)  -  in the worst case, each character is added and removed once.
 - **Space:** O(min(n, charset_size))
 
 **Approach 3: Sliding Window + HashMap (Optimal) ✅**
 - Instead of shrinking one step at a time, store the **last seen index** of each character.
 - When we find a duplicate, jump `left` directly to `last_seen[char] + 1`.
-- **Time:** O(n) — single pass, no inner shrinking loop.
+- **Time:** O(n)  -  single pass, no inner shrinking loop.
 - **Space:** O(min(n, charset_size))
 
 #### Code (Approaches 2 and 3)
 
 ```python
 # ============================================================
-# APPROACH 2: Sliding Window + HashSet — O(n)
+# APPROACH 2: Sliding Window + HashSet  -  O(n)
 # ============================================================
 def lengthOfLongestSubstring_set(s: str) -> int:
     """
@@ -469,7 +475,7 @@ def lengthOfLongestSubstring_set(s: str) -> int:
 
 
 # ============================================================
-# APPROACH 3: Sliding Window + HashMap — O(n) ✅ (Optimized)
+# APPROACH 3: Sliding Window + HashMap  -  O(n) ✅ (Optimized)
 # ============================================================
 def lengthOfLongestSubstring(s: str) -> int:
     """
@@ -570,7 +576,7 @@ Output: 12.75  (subarray [12, -5, -6, 50] → sum=51, avg=51/4=12.75)
 - **Time:** O(n × k), **Space:** O(1)
 
 **Approach 2: Fixed-Size Sliding Window (Optimal) ✅**
-- Identical to "Max Sum Subarray of Size K" — just divide the max sum by k at the end.
+- Identical to "Max Sum Subarray of Size K"  -  just divide the max sum by k at the end.
 - No need to divide at every step since `max(sum/k)` = `max(sum) / k` when k is constant.
 - **Time:** O(n), **Space:** O(1)
 
@@ -596,7 +602,7 @@ def findMaxAverage(nums: list[int], k: int) -> float:
         window_sum += nums[right] - nums[right - k]
         max_sum = max(max_sum, window_sum)
     
-    # Divide at the end (not at each step — avoids floating point operations in the loop)
+    # Divide at the end (not at each step  -  avoids floating point operations in the loop)
     return max_sum / k
 ```
 
@@ -640,7 +646,7 @@ Output: 2  (subarray [4, 3] has sum 7 ≥ 7)
 
 #### Clarifying Questions & Constraints
 
-- All numbers are **positive** (this is important — it guarantees that adding more elements always increases the sum).
+- All numbers are **positive** (this is important  -  it guarantees that adding more elements always increases the sum).
 - Return 0 if no valid subarray exists.
 - We want the **shortest** valid subarray.
 
@@ -650,10 +656,10 @@ Output: 2  (subarray [4, 3] has sum 7 ≥ 7)
 - Try every subarray, check if its sum ≥ target, track the shortest.
 - **Time:** O(n²), **Space:** O(1)
 
-**Approach 2: Variable-Size Sliding Window — Shortest (Optimal) ✅**
+**Approach 2: Variable-Size Sliding Window  -  Shortest (Optimal) ✅**
 - Expand `right` to grow the window sum.
 - Once the sum ≥ target (window is **valid**), try to **shrink** from the left to find the minimum length.
-- This works because all numbers are positive — shrinking the window always decreases the sum.
+- This works because all numbers are positive  -  shrinking the window always decreases the sum.
 - **Time:** O(n), **Space:** O(1)
 
 **Why does this only work with positive numbers?**
@@ -663,7 +669,7 @@ If there were negative numbers, shrinking from the left might actually *increase
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n²)
+# APPROACH 1: Brute Force  -  O(n²)
 # ============================================================
 def minSubArrayLen_brute(target: int, nums: list[int]) -> int:
     """
@@ -681,13 +687,13 @@ def minSubArrayLen_brute(target: int, nums: list[int]) -> int:
             current_sum += nums[j]
             if current_sum >= target:
                 min_length = min(min_length, j - i + 1)
-                break  # No point continuing — longer subarrays won't be shorter
+                break  # No point continuing  -  longer subarrays won't be shorter
     
     return min_length if min_length != float('inf') else 0
 
 
 # ============================================================
-# APPROACH 2: Variable-Size Sliding Window — O(n) ✅
+# APPROACH 2: Variable-Size Sliding Window  -  O(n) ✅
 # ============================================================
 def minSubArrayLen(target: int, nums: list[int]) -> int:
     """
@@ -712,7 +718,7 @@ def minSubArrayLen(target: int, nums: list[int]) -> int:
         
         # SHRINK: While the window is valid (sum >= target), try to make it smaller
         while window_sum >= target:
-            # Current window [left..right] is valid — record its length
+            # Current window [left..right] is valid  -  record its length
             min_length = min(min_length, right - left + 1)
             
             # Remove the left element and shrink
@@ -785,8 +791,8 @@ Output: True  (s2 contains "ba" which is a permutation of "ab")
 
 **Approach 1: Generate All Permutations**
 - Generate all permutations of `s1`, check if any exists in `s2`.
-- **Time:** O(n! × m) — there are n! permutations, checking each in s2 takes O(m).
-- ❌ Factorial time — completely impractical.
+- **Time:** O(n! × m)  -  there are n! permutations, checking each in s2 takes O(m).
+- ❌ Factorial time  -  completely impractical.
 
 **Approach 2: Sort + Fixed Window (Decent)**
 - Sort `s1`. For every window of size `len(s1)` in `s2`, sort the window and compare.
@@ -797,8 +803,8 @@ Output: True  (s2 contains "ba" which is a permutation of "ab")
 - A permutation has the exact same character frequencies as the original.
 - Maintain a frequency count for a window of size `len(s1)` sliding over `s2`.
 - Compare the window's frequency count with `s1`'s frequency count.
-- **Time:** O(m) where m = len(s2) — O(26) comparison at each step is constant.
-- **Space:** O(1) — frequency arrays of size 26.
+- **Time:** O(m) where m = len(s2)  -  O(26) comparison at each step is constant.
+- **Space:** O(1)  -  frequency arrays of size 26.
 
 #### Code (Optimal Solution)
 
@@ -1015,7 +1021,7 @@ def characterReplacement(s: str, k: int) -> int:
             freq[s[left]] -= 1
             left += 1
             # Note: we DON'T decrease max_freq here.
-            # It might be stale, but that's okay — we only need max_freq
+            # It might be stale, but that's okay  -  we only need max_freq
             # to increase to find a LONGER valid window.
         
         # UPDATE: Record the current window length
@@ -1085,7 +1091,7 @@ Return the **maximum number of fruits** you can pick.
 **Example:**
 ```
 Input: fruits = [1, 2, 1, 2, 3]
-Output: 4  (subarray [1, 2, 1, 2] — only 2 types)
+Output: 4  (subarray [1, 2, 1, 2]  -  only 2 types)
 ```
 
 #### Clarifying Questions & Constraints
@@ -1103,7 +1109,7 @@ Output: 4  (subarray [1, 2, 1, 2] — only 2 types)
 - Maintain a frequency map of fruit types in the window.
 - Expand `right` to add fruits.
 - When the window has more than 2 distinct types, shrink from `left`.
-- **Time:** O(n), **Space:** O(1) — at most 3 entries in the map before shrinking.
+- **Time:** O(n), **Space:** O(1)  -  at most 3 entries in the map before shrinking.
 
 #### Code (Optimal Solution)
 
@@ -1232,7 +1238,7 @@ Output: "BANC"
 - Check every substring of `s`, see if it contains all characters of `t`.
 - **Time:** O(n² × m) where n = len(s), m = len(t). ❌ Way too slow.
 
-**Approach 2: Variable-Size Sliding Window — Shortest (Optimal) ✅**
+**Approach 2: Variable-Size Sliding Window  -  Shortest (Optimal) ✅**
 - Expand `right` to include more characters until the window contains everything in `t`.
 - Once valid, **shrink** from `left` to find the minimum length.
 - Track character frequencies with a counter, and use a `formed` variable to know when all required characters have been satisfied.
@@ -1247,7 +1253,7 @@ def minWindow(s: str, t: str) -> str:
     """
     Find the shortest substring of s containing all characters of t.
     
-    Strategy (Variable-size window — finding the SHORTEST valid window):
+    Strategy (Variable-size window  -  finding the SHORTEST valid window):
     1. Count the required frequencies from t.
     2. Expand right to include characters.
     3. Track how many required characters are fully satisfied.
@@ -1406,7 +1412,7 @@ Window [3,6,7] → max=7
 
 **Approach 2: Sorted Container / Heap**
 - Use a max-heap. Add new element, remove old element.
-- **Time:** O(n log k) — heap operations are O(log k).
+- **Time:** O(n log k)  -  heap operations are O(log k).
 - Tricky to implement correctly (lazy deletion).
 
 **Approach 3: Monotonic Deque (Optimal) ✅**
@@ -1422,7 +1428,7 @@ The key insight: if `nums[i] >= nums[j]` and `i > j`, then `nums[j]` can **never
 
 ```python
 # ============================================================
-# APPROACH 1: Brute Force — O(n × k)
+# APPROACH 1: Brute Force  -  O(n × k)
 # ============================================================
 def maxSlidingWindow_brute(nums: list[int], k: int) -> list[int]:
     """
@@ -1438,7 +1444,7 @@ def maxSlidingWindow_brute(nums: list[int], k: int) -> list[int]:
 
 
 # ============================================================
-# APPROACH 3: Monotonic Deque — O(n) ✅
+# APPROACH 3: Monotonic Deque  -  O(n) ✅
 # ============================================================
 from collections import deque
 
@@ -1594,7 +1600,7 @@ Explanation:
 - Since all words have the same length `w`, we can think of the problem as a sliding window **at the word level**.
 - We try `w` different starting offsets (0, 1, ..., w-1) to cover all alignments.
 - For each offset, slide a word-level window, comparing word-sized chunks to the required frequency.
-- **Time:** O(n × w) — for each of the w offsets, we scan the string once.
+- **Time:** O(n × w)  -  for each of the w offsets, we scan the string once.
 - **Space:** O(m) for the frequency map.
 
 #### Code (Both Solutions)
@@ -1603,7 +1609,7 @@ Explanation:
 from collections import Counter
 
 # ============================================================
-# APPROACH 1: Brute Force — Check each position
+# APPROACH 1: Brute Force  -  Check each position
 # ============================================================
 def findSubstring_brute(s: str, words: list[str]) -> list[int]:
     """
@@ -1646,7 +1652,7 @@ def findSubstring_brute(s: str, words: list[str]) -> list[int]:
 
 
 # ============================================================
-# APPROACH 2: Word-Level Sliding Window — O(n × w) ✅
+# APPROACH 2: Word-Level Sliding Window  -  O(n × w) ✅
 # ============================================================
 def findSubstring(s: str, words: list[str]) -> list[int]:
     """
@@ -1696,7 +1702,7 @@ def findSubstring(s: str, words: list[str]) -> list[int]:
                 if window[word] == word_count[word]:
                     formed += 1
                 elif window[word] == word_count[word] + 1:
-                    # We just went over — was matching, now isn't
+                    # We just went over  -  was matching, now isn't
                     formed -= 1
             
                 # SHRINK: If we have too many of this word, shrink from left
@@ -1715,7 +1721,7 @@ def findSubstring(s: str, words: list[str]) -> list[int]:
                     result.append(left)
             
             else:
-                # Word not in our required set — reset the window
+                # Word not in our required set  -  reset the window
                 window.clear()
                 formed = 0
                 left = right_start + word_len
@@ -1816,7 +1822,7 @@ Does the problem involve contiguous subarrays/substrings?
 
 ### What's Next?
 
-With Two Pointers and Sliding Window covered, the next pattern is **Prefix Sum** — a technique for answering range-sum queries in O(1) after O(n) preprocessing. It pairs naturally with hashmaps for powerful subarray-sum problems like "Subarray Sum Equals K". Stay tuned for Pattern 3!
+With Two Pointers and Sliding Window covered, the next pattern is **Prefix Sum**  -  a technique for answering range-sum queries in O(1) after O(n) preprocessing. It pairs naturally with hashmaps for powerful subarray-sum problems like "Subarray Sum Equals K". Stay tuned for Pattern 3!
 
 ---
 

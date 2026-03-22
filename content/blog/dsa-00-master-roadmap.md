@@ -1,5 +1,5 @@
 ---
-title: "The Complete DSA with Python — Master Roadmap"
+title: "The Complete DSA with Python  -  Master Roadmap"
 description: "A structured roadmap to mastering Data Structures and Algorithms using Python, from basics to advanced topics."
 date: 2026-03-21
 author: "codeverra"
@@ -9,6 +9,12 @@ draft: false
 tags:
   - dsa
   - learning-roadmap
+cover:
+  image: "/images/dsa-0.png"
+  alt: "The Complete DSA with Python Master Roadmap"
+  caption: "The Complete DSA with Python Master Roadmap"
+  relative: true
+  hidden: false
 ---
 
 # The Complete DSA with Python -- Master Roadmap

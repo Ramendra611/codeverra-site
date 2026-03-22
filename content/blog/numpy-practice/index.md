@@ -30,7 +30,7 @@ cover:
 ---
 
 > **Who is this for?**
-> You know Python basics — lists, loops, functions — and you want to level up into data science.
+> You know Python basics  -  lists, loops, functions  -  and you want to level up into data science.
 > NumPy is your first real step. Everything in data science (Pandas, Scikit-learn, TensorFlow) is built on top of it.
 
 ---
@@ -42,7 +42,7 @@ cover:
 3. [Creating Arrays](#3-creating-arrays)
 4. [Array Attributes](#4-array-attributes)
 5. [Indexing and Slicing](#5-indexing-and-slicing)
-6. [Array Operations — Math Made Easy](#6-array-operations--math-made-easy)
+6. [Array Operations  -  Math Made Easy](#6-array-operations--math-made-easy)
 7. [Universal Functions (ufuncs)](#7-universal-functions-ufuncs)
 8. [Aggregation Functions](#8-aggregation-functions)
 9. [Reshaping and Transposing](#9-reshaping-and-transposing)
@@ -61,9 +61,9 @@ cover:
 
 ## 1. What is NumPy and Why Should You Care?
 
-Python lists are flexible and easy to use — but they are **slow** when it comes to heavy number crunching. If you have a million exam scores and want to find the average, a Python loop will take noticeably longer than it should.
+Python lists are flexible and easy to use  -  but they are **slow** when it comes to heavy number crunching. If you have a million exam scores and want to find the average, a Python loop will take noticeably longer than it should.
 
-**NumPy** (Numerical Python) solves this by storing data in tightly packed arrays in memory — similar to how C and Fortran work internally. The result? Operations on NumPy arrays can be **10x to 100x faster** than equivalent Python loops.
+**NumPy** (Numerical Python) solves this by storing data in tightly packed arrays in memory  -  similar to how C and Fortran work internally. The result? Operations on NumPy arrays can be **10x to 100x faster** than equivalent Python loops.
 
 **NumPy gives you:**
 
@@ -72,7 +72,7 @@ Python lists are flexible and easy to use — but they are **slow** when it come
 - Tools for linear algebra, random number generation, and statistics
 - The foundation that Pandas, Matplotlib, and Scikit-learn are all built on
 
-> **Think of it this way:** If Python lists are a notebook, NumPy arrays are a spreadsheet column — structured, typed, and ready for bulk operations.
+> **Think of it this way:** If Python lists are a notebook, NumPy arrays are a spreadsheet column  -  structured, typed, and ready for bulk operations.
 
 ---
 
@@ -83,7 +83,7 @@ pip install numpy
 ```
 
 ```python
-import numpy as np   # 'np' is the universal alias — use this everywhere
+import numpy as np   # 'np' is the universal alias  -  use this everywhere
 ```
 
 ---
@@ -120,13 +120,13 @@ print(marks)
 These are shortcuts to generate common arrays quickly.
 
 ```python
-# All zeros — placeholder when you don't have data yet
+# All zeros  -  placeholder when you don't have data yet
 np.zeros((3, 4))          # 3 rows, 4 columns of 0.0
 
-# All ones — useful for initializations
+# All ones  -  useful for initializations
 np.ones((2, 3))
 
-# Identity matrix — used in linear algebra
+# Identity matrix  -  used in linear algebra
 np.eye(4)
 
 # Fill with a specific value
@@ -144,7 +144,7 @@ np.linspace(0, 1, 5)      # [0.0, 0.25, 0.5, 0.75, 1.0]
 
 ### 3.4 Array Data Types
 
-NumPy arrays are **typed** — every element is the same data type. This is what makes them fast.
+NumPy arrays are **typed**  -  every element is the same data type. This is what makes them fast.
 
 ```python
 # Default type is inferred
@@ -213,10 +213,10 @@ marks = np.array([
     [65, 70, 80, 75]    # Rohan
 ])
 
-print(marks[0, 0])    # 78  — Aarav's first subject
-print(marks[1, 3])    # 95  — Priya's fourth subject
-print(marks[2, :])    # [65 70 80 75] — Rohan's all marks (entire row)
-print(marks[:, 1])    # [85 76 70] — All students' second subject (entire column)
+print(marks[0, 0])    # 78   -  Aarav's first subject
+print(marks[1, 3])    # 95   -  Priya's fourth subject
+print(marks[2, :])    # [65 70 80 75]  -  Rohan's all marks (entire row)
+print(marks[:, 1])    # [85 76 70]  -  All students' second subject (entire column)
 print(marks[0:2, 1:3]) # Rows 0-1, Columns 1-2 (submatrix)
 ```
 
@@ -229,7 +229,7 @@ marks[2, :] = [70, 75, 85, 80]   # Replace Rohan's entire row
 
 ---
 
-## 6. Array Operations — Math Made Easy
+## 6. Array Operations  -  Math Made Easy
 
 One of NumPy's biggest strengths: operations apply to **every element at once**, no loops needed.
 
@@ -428,37 +428,37 @@ print(marks.T)
 ```python
 a = np.array([1, 2, 3])          # shape: (3,)
 
-b = np.expand_dims(a, axis=0)    # shape: (1, 3) — adds a row dimension
-c = np.expand_dims(a, axis=1)    # shape: (3, 1) — adds a column dimension
+b = np.expand_dims(a, axis=0)    # shape: (1, 3)  -  adds a row dimension
+c = np.expand_dims(a, axis=1)    # shape: (3, 1)  -  adds a column dimension
 
-d = np.squeeze(b)                # shape: (3,)  — removes size-1 dimensions
+d = np.squeeze(b)                # shape: (3,)   -  removes size-1 dimensions
 ```
 
 ---
 
 ## 10. Stacking and Splitting Arrays
 
-### 10.1 Stacking — Combining Arrays
+### 10.1 Stacking  -  Combining Arrays
 
 ```python
 # Marks from two class sections
 section_a = np.array([[78, 85], [92, 76]])
 section_b = np.array([[88, 91], [70, 80]])
 
-# Vertical stack — add more rows
+# Vertical stack  -  add more rows
 combined_v = np.vstack([section_a, section_b])
 print(combined_v.shape)   # (4, 2)
 
-# Horizontal stack — add more columns
+# Horizontal stack  -  add more columns
 combined_h = np.hstack([section_a, section_b])
 print(combined_h.shape)   # (2, 4)
 
-# np.concatenate — explicit and flexible
+# np.concatenate  -  explicit and flexible
 np.concatenate([section_a, section_b], axis=0)  # same as vstack
 np.concatenate([section_a, section_b], axis=1)  # same as hstack
 ```
 
-### 10.2 Splitting — Breaking Arrays Apart
+### 10.2 Splitting  -  Breaking Arrays Apart
 
 ```python
 data = np.arange(1, 13).reshape(4, 3)
@@ -507,7 +507,7 @@ good_air_cities = cities[~poor_air]
 
 ### 11.2 np.where()
 
-`np.where` is like a vectorized `if-else` — apply a label or value based on a condition.
+`np.where` is like a vectorized `if-else`  -  apply a label or value based on a condition.
 
 ```python
 # Grade students based on marks
@@ -548,14 +548,14 @@ print(marks[[0, 1, 2], [2, 0, 1]])   # [90, 92, 70]
 
 ## 12. Broadcasting
 
-Broadcasting is how NumPy handles operations between arrays of **different shapes**. Instead of raising an error, NumPy "stretches" the smaller array to match the larger one — without actually copying data.
+Broadcasting is how NumPy handles operations between arrays of **different shapes**. Instead of raising an error, NumPy "stretches" the smaller array to match the larger one  -  without actually copying data.
 
 ### Simple Example
 
 ```python
 prices = np.array([100, 200, 300, 400])
 
-# Add ₹50 to all prices — the scalar 50 is broadcast across the array
+# Add ₹50 to all prices  -  the scalar 50 is broadcast across the array
 discounted = prices - 50
 print(discounted)   # [ 50 150 250 350]
 ```
@@ -613,21 +613,21 @@ rng.random(5)
 # Random integers (e.g., simulate dice rolls)
 rng.integers(1, 7, size=10)   # 10 rolls of a dice
 
-# Random floats in a range — simulate stock prices
+# Random floats in a range  -  simulate stock prices
 rng.uniform(low=100, high=500, size=8)
 ```
 
 ### Sampling from Distributions
 
 ```python
-# Normal distribution — e.g., heights of students in Mumbai
+# Normal distribution  -  e.g., heights of students in Mumbai
 heights = rng.normal(loc=165, scale=10, size=1000)   # mean=165cm, std=10cm
 print(f"Mean: {heights.mean():.1f}, Std: {heights.std():.1f}")
 
-# Binomial — simulate 50 coin flips (10 times)
+# Binomial  -  simulate 50 coin flips (10 times)
 rng.binomial(n=50, p=0.5, size=10)
 
-# Poisson — number of customers arriving at a Hyderabad store per hour
+# Poisson  -  number of customers arriving at a Hyderabad store per hour
 rng.poisson(lam=15, size=24)   # 24 hours
 
 # Exponential
@@ -673,7 +673,7 @@ print(weighted)
 ```
 
 ```python
-# np.dot — same as @ for 2D arrays
+# np.dot  -  same as @ for 2D arrays
 result = np.dot(marks, weights)
 ```
 
@@ -745,7 +745,7 @@ print(np.sort(rainfall)[::-1])
 rainfall.sort()
 ```
 
-### 15.2 argsort() — Indices of Sorted Order
+### 15.2 argsort()  -  Indices of Sorted Order
 
 Very useful when you want to rank items.
 
@@ -852,12 +852,12 @@ Test yourself. Try to solve these without looking at the solutions first.
 
 ---
 
-**Q1 — Array Creation**
+**Q1  -  Array Creation**
 Create a NumPy array of the first 20 odd numbers. Then reshape it into a 4×5 matrix.
 
 ---
 
-**Q2 — Slicing**
+**Q2  -  Slicing**
 Given the array below (representing daily temperatures in Delhi for a week), extract temperatures from Tuesday to Friday.
 ```python
 temps = np.array([22, 25, 27, 24, 26, 23, 28])
@@ -866,7 +866,7 @@ temps = np.array([22, 25, 27, 24, 26, 23, 28])
 
 ---
 
-**Q3 — Broadcasting**
+**Q3  -  Broadcasting**
 You have the base price of 5 products on Flipkart. Apply a 12% GST to all prices using a single operation (no loops).
 ```python
 base_prices = np.array([299, 499, 1299, 2499, 9999])
@@ -874,7 +874,7 @@ base_prices = np.array([299, 499, 1299, 2499, 9999])
 
 ---
 
-**Q4 — Boolean Masking**
+**Q4  -  Boolean Masking**
 Given a list of student names and their marks, print the names of students who scored above 70.
 ```python
 names = np.array(["Aarav", "Priya", "Rohan", "Sneha", "Karan"])
@@ -883,7 +883,7 @@ marks = np.array([65, 82, 58, 91, 74])
 
 ---
 
-**Q5 — Aggregation with Axis**
+**Q5  -  Aggregation with Axis**
 You have quarterly revenue (₹ crore) for 3 branches (Delhi, Mumbai, Hyderabad) over 4 quarters. Find:
 - Total annual revenue per branch
 - Best performing quarter across all branches
@@ -897,7 +897,7 @@ revenue = np.array([
 
 ---
 
-**Q6 — argsort Ranking**
+**Q6  -  argsort Ranking**
 Given IPL teams and their win counts this season, print team names ranked from most wins to fewest.
 ```python
 teams = np.array(["CSK", "MI", "RCB", "KKR", "DC"])
@@ -906,7 +906,7 @@ wins  = np.array([9, 7, 5, 10, 6])
 
 ---
 
-**Q7 — np.where**
+**Q7  -  np.where**
 Given AQI readings for 8 cities, create a label array: "Good" (AQI < 100), "Moderate" (100–200), "Poor" (> 200).
 ```python
 aqi = np.array([65, 145, 312, 88, 220, 175, 55, 280])
@@ -914,7 +914,7 @@ aqi = np.array([65, 145, 312, 88, 220, 175, 55, 280])
 
 ---
 
-**Q8 — Linear Algebra**
+**Q8  -  Linear Algebra**
 Solve the following system of equations using `np.linalg.solve`:
 ```
 3x + 2y = 16
@@ -923,14 +923,14 @@ x  + 4y = 14
 
 ---
 
-**Q9 — Random Simulation**
+**Q9  -  Random Simulation**
 Simulate the scores of 500 students in an exam where scores follow a normal distribution with mean = 68 and standard deviation = 12. Then find:
 - How many students scored above 80
 - The percentage of students who failed (scored below 40)
 
 ---
 
-**Q10 — Copies vs Views**
+**Q10  -  Copies vs Views**
 Predict the output of the following code **before** running it:
 ```python
 a = np.array([1, 2, 3, 4, 5])
@@ -942,7 +942,7 @@ Then fix it so that modifying `b` does not affect `a`.
 
 ---
 
-**Q11 — Stacking**
+**Q11  -  Stacking**
 You have exam marks from two different test dates for the same 4 students. Stack them vertically and horizontally and explain the shape of each result.
 ```python
 test1 = np.array([[55, 70], [80, 65]])
@@ -951,7 +951,7 @@ test2 = np.array([[60, 72], [85, 68]])
 
 ---
 
-**Q12 — Rainfall Analysis**
+**Q12  -  Rainfall Analysis**
 Use the rainfall data below to answer:
 - Which month had the highest average rainfall across all cities?
 - Which city had the most total annual rainfall?
@@ -966,7 +966,7 @@ rainfall = np.array([
 
 ---
 
-**Q13 — Normalization**
+**Q13  -  Normalization**
 Normalize the following array of house prices (in ₹ lakhs) to a 0–1 scale using min-max normalization:
 `normalized = (x - min) / (max - min)`
 ```python
@@ -975,7 +975,7 @@ prices = np.array([25, 45, 60, 80, 35, 120, 55])
 
 ---
 
-**Q14 — Matrix Operations**
+**Q14  -  Matrix Operations**
 Create a 4×4 matrix with values from 1 to 16. Then:
 - Extract the diagonal
 - Find the trace (sum of diagonal)
@@ -983,7 +983,7 @@ Create a 4×4 matrix with values from 1 to 16. Then:
 
 ---
 
-**Q15 — Full Pipeline**
+**Q15  -  Full Pipeline**
 You are given marks of 6 students across 5 subjects. Write NumPy code to:
 1. Calculate each student's total and average
 2. Find the class topper (highest average)
@@ -1037,7 +1037,7 @@ If this masterclass felt comfortable, here's where to go next:
 The next layer on top of NumPy. Pandas adds labels (column names, row indices), handles missing data, and makes tabular data analysis much more convenient. Every data analyst uses it daily.
 
 **2. Matplotlib & Seaborn**
-Visualize your NumPy and Pandas data. Histograms, scatter plots, heatmaps, line charts — all powered by arrays underneath.
+Visualize your NumPy and Pandas data. Histograms, scatter plots, heatmaps, line charts  -  all powered by arrays underneath.
 
 **3. Structured Arrays**
 NumPy supports arrays where each column can have a different dtype (like a lightweight table). Useful for low-memory work.
@@ -1049,12 +1049,12 @@ Understanding `C-order` vs `F-order`, memory contiguity, and how strides work. I
 Machine learning library that expects NumPy arrays as input. Once you're comfortable with array math, the transition to ML is much smoother.
 
 **6. SciPy**
-Built on top of NumPy. Adds advanced scientific computing — integration, optimization, signal processing, statistics.
+Built on top of NumPy. Adds advanced scientific computing  -  integration, optimization, signal processing, statistics.
 
 ---
 
 > **Final thought:**
-> NumPy's real power isn't any single function — it's the **mindset shift** from "loop over every element" to "operate on the whole array at once." The more naturally you think in arrays, the faster and cleaner your data code becomes.
+> NumPy's real power isn't any single function  -  it's the **mindset shift** from "loop over every element" to "operate on the whole array at once." The more naturally you think in arrays, the faster and cleaner your data code becomes.
 >
 > Keep practicing. The practice questions above are your gym. 💪
 

@@ -71,7 +71,7 @@ Before diving in, here's the conceptual map you need to hold in your head:
 ┌──────────────────────────────────────────────────┐
 │                   GENERATOR                      │
 │  A convenient way to create iterators using      │
-│  the `yield` keyword — Python auto-builds the   │
+│  the `yield` keyword  -  Python auto-builds the   │
 │  iterator protocol for you                       │
 └──────────────────────────────────────────────────┘
 ```
@@ -179,7 +179,7 @@ print(next(it))   # 2
 # You cannot reset (unless you call iter() again on the original list)
 
 # The iterator and the list are SEPARATE objects:
-print(id(my_list) == id(it))    # False — different objects
+print(id(my_list) == id(it))    # False  -  different objects
 ```
 
 ### Key Difference: Iterable vs Iterator
@@ -188,13 +188,13 @@ print(id(my_list) == id(it))    # False — different objects
 my_list = [1, 2, 3]
 it      = iter(my_list)
 
-# A list is NOT an iterator — it has no __next__
+# A list is NOT an iterator  -  it has no __next__
 print(hasattr(my_list, '__next__'))  # False
 print(hasattr(it,      '__next__'))  # True
 
-# An iterator IS an iterable — iter(it) returns itself
+# An iterator IS an iterable  -  iter(it) returns itself
 print(iter(it) is it)               # True
-print(iter(my_list) is my_list)     # False — a new iterator is created
+print(iter(my_list) is my_list)     # False  -  a new iterator is created
 ```
 
 ---
@@ -221,7 +221,7 @@ print(isinstance(iter("hello"),   Iterator))  # True
 
 ## Building Custom Iterators
 
-### Example 1 — A Simple Counter
+### Example 1  -  A Simple Counter
 
 ```python
 class Counter:
@@ -232,7 +232,7 @@ class Counter:
         self.stop    = stop
 
     def __iter__(self):
-        """Return self — this object IS the iterator."""
+        """Return self  -  this object IS the iterator."""
         return self
 
     def __next__(self):
@@ -254,7 +254,7 @@ for num in counter:
 print(list(Counter(10, 14)))    # [10, 11, 12, 13]
 ```
 
-### Example 2 — Infinite Iterator (Fibonacci)
+### Example 2  -  Infinite Iterator (Fibonacci)
 
 Iterators don't have to end! This is one of their most powerful features.
 
@@ -284,7 +284,7 @@ print(first_10)
 # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 ```
 
-### Example 3 — Separating Iterable from Iterator
+### Example 3  -  Separating Iterable from Iterator
 
 The best practice for containers (like lists) is to keep the **iterable** (the data holder) separate from the **iterator** (the traversal state):
 
@@ -302,7 +302,7 @@ class NumberRange:
 
 
 class NumberRangeIterator:
-    """The actual iterator — holds traversal state."""
+    """The actual iterator  -  holds traversal state."""
 
     def __init__(self, start, stop):
         self.current = start
@@ -337,7 +337,7 @@ print(list(it))  # []  ← exhausted!
 
 ### What is a Generator?
 
-A **generator** is a special kind of function that uses the `yield` keyword to produce values one at a time, **pausing execution** between each yield. Python automatically creates an iterator object for you — you get all the benefits of writing an iterator without the boilerplate.
+A **generator** is a special kind of function that uses the `yield` keyword to produce values one at a time, **pausing execution** between each yield. Python automatically creates an iterator object for you  -  you get all the benefits of writing an iterator without the boilerplate.
 
 ```python
 def simple_generator():
@@ -363,14 +363,14 @@ next(gen)          # prints "Done!", then raises StopIteration
 ### Generator vs Regular Function
 
 ```python
-# Regular function — computes everything, returns all at once
+# Regular function  -  computes everything, returns all at once
 def get_squares_list(n):
     result = []
     for i in range(n):
         result.append(i * i)
     return result           # Returns a list of ALL values
 
-# Generator function — produces one value at a time, on demand
+# Generator function  -  produces one value at a time, on demand
 def get_squares_gen(n):
     for i in range(n):
         yield i * i         # Yields one value, then pauses
@@ -421,7 +421,7 @@ print(list(CounterIterator(1, 5)))  # [1, 2, 3, 4]
 print(list(counter_gen(1, 5)))      # [1, 2, 3, 4]
 ```
 
-### `yield from` — Delegating to Sub-Generators
+### `yield from`  -  Delegating to Sub-Generators
 
 `yield from` lets a generator delegate to another iterable or generator:
 
@@ -454,13 +454,13 @@ print(list(flatten(data)))   # [1, 2, 3, 4, 5, 6, 7]
 
 ## Generator Expressions
 
-Just like list comprehensions, Python has **generator expressions** — a compact syntax for simple generators.
+Just like list comprehensions, Python has **generator expressions**  -  a compact syntax for simple generators.
 
 ```python
-# List comprehension — creates the full list in memory
+# List comprehension  -  creates the full list in memory
 squares_list = [x**2 for x in range(10)]
 
-# Generator expression — lazy, no memory allocated upfront
+# Generator expression  -  lazy, no memory allocated upfront
 squares_gen = (x**2 for x in range(10))
 
 print(type(squares_list))   # <class 'list'>
@@ -482,7 +482,7 @@ print(list(big_even_squares))   # [144, 196, 256, ..., 9604]
 
 ## Advanced Generator Features
 
-### `send()` — Two-Way Communication
+### `send()`  -  Two-Way Communication
 
 Generators can **receive values** back from the caller using `send()`. This transforms them from simple producers into coroutines.
 
@@ -504,7 +504,7 @@ print(gen.send(20))   # 30
 print(gen.send(5))    # 35
 ```
 
-### `throw()` — Injecting Exceptions
+### `throw()`  -  Injecting Exceptions
 
 ```python
 def safe_generator():
@@ -521,7 +521,7 @@ print(gen.throw(ValueError, "oops!"))  # 'caught error: oops!'
 print(next(gen))                        # 'recovered'
 ```
 
-### `close()` — Shutting Down a Generator
+### `close()`  -  Shutting Down a Generator
 
 ```python
 def countdown():
@@ -631,7 +631,7 @@ def gen():
 
 g = gen()
 print(next(g))   # 1
-next(g)          # StopIteration — the return triggered it
+next(g)          # StopIteration  -  the return triggered it
 ```
 
 ### ⚠️ 6. Lazy Evaluation Can Surprise You
@@ -645,7 +645,7 @@ gens  = [(lambda: i)() for i in range(3)] # captured correctly in list comp
 
 # With generators, be careful with closures:
 multipliers = [lambda x, n=n: x * n for n in range(5)]
-print(multipliers[3](10))   # 30 — n=3 captured correctly with default arg
+print(multipliers[3](10))   # 30  -  n=3 captured correctly with default arg
 ```
 
 ### ⚠️ 7. Infinite Generators Need a Break Condition
@@ -657,7 +657,7 @@ def infinite_counter():
         yield n
         n += 1
 
-# NEVER do this — it will run forever:
+# NEVER do this  -  it will run forever:
 # for x in infinite_counter(): print(x)
 
 # Always pair infinite generators with a limit:
@@ -685,7 +685,7 @@ print(results)   # [inf, inf, inf, inf]
 
 ## Real-Life Applications
 
-### Application 1 — Reading Large Files Line by Line
+### Application 1  -  Reading Large Files Line by Line
 
 When processing log files or CSVs that are gigabytes large, loading the entire file into memory is not feasible.
 
@@ -716,7 +716,7 @@ def parse_csv_generator(filepath):
 #     process(row)    # only ONE row in memory at a time
 ```
 
-### Application 2 — Database Query Streaming
+### Application 2  -  Database Query Streaming
 
 ```python
 import sqlite3
@@ -737,12 +737,12 @@ def stream_query_results(db_path, query, params=()):
         conn.close()
 
 
-# Usage — stream 1 million rows without loading them all into memory
+# Usage  -  stream 1 million rows without loading them all into memory
 # for player_row in stream_query_results('cricket.db', 'SELECT * FROM matches'):
 #     analyze(player_row)
 ```
 
-### Application 3 — Infinite Data Pipelines
+### Application 3  -  Infinite Data Pipelines
 
 ```python
 import time
@@ -775,13 +775,13 @@ raw_stream     = sensor_data_stream()
 anomaly_stream = filter_anomalies(raw_stream, threshold=21.5)
 enriched       = enrich_readings(anomaly_stream)
 
-# Read from the pipeline — processing is LAZY, only happens when pulled
+# Read from the pipeline  -  processing is LAZY, only happens when pulled
 import itertools
 for reading in itertools.islice(enriched, 3):
     print(reading)
 ```
 
-### Application 4 — Pagination / API Scrolling
+### Application 4  -  Pagination / API Scrolling
 
 ```python
 import time
@@ -818,7 +818,7 @@ for item in paginate_api(fake_api):
 # 1 2 3 4 5 6 7 8 9 10 ... 25
 ```
 
-### Application 5 — Tree/Graph Traversal
+### Application 5  -  Tree/Graph Traversal
 
 ```python
 class TreeNode:
@@ -862,7 +862,7 @@ print(list(inorder_traversal(root)))   # [1, 2, 3, 4, 5, 6, 7]
 print(list(bfs_traversal(root)))       # [4, 2, 6, 1, 3, 5, 7]
 ```
 
-### Application 6 — Data Transformation Pipelines (ETL)
+### Application 6  -  Data Transformation Pipelines (ETL)
 
 ```python
 def extract(raw_records):
@@ -893,7 +893,7 @@ def load(records, output_file):
         for record in records:
             f.write(json.dumps(record) + '\n')
 
-# ETL pipeline — each stage is a generator, completely lazy
+# ETL pipeline  -  each stage is a generator, completely lazy
 raw_data = [
     {'name': '  ravi kumar ', 'salary': '75000', 'dept': 'engineering'},
     {'name': 'Priya Sharma', 'salary': '45000', 'dept': 'marketing'},
@@ -914,15 +914,15 @@ for result in pipeline:
 
 ---
 
-### ✅ Question 1 — Basics
+### ✅ Question 1  -  Basics
 
 **Q:** What is the difference between an iterable and an iterator? Give two examples of each.
 
 **A:**
 
-An **iterable** is any object you can loop over — it has a `__iter__()` method that returns an iterator when called. Examples: `list`, `str`, `dict`, `tuple`, `set`, `range`.
+An **iterable** is any object you can loop over  -  it has a `__iter__()` method that returns an iterator when called. Examples: `list`, `str`, `dict`, `tuple`, `set`, `range`.
 
-An **iterator** is an object that maintains traversal state — it has both `__iter__()` (returns `self`) and `__next__()` (returns the next value or raises `StopIteration`). Examples: the object returned by `iter([1, 2, 3])`, or a generator object.
+An **iterator** is an object that maintains traversal state  -  it has both `__iter__()` (returns `self`) and `__next__()` (returns the next value or raises `StopIteration`). Examples: the object returned by `iter([1, 2, 3])`, or a generator object.
 
 ```python
 lst = [1, 2, 3]           # iterable, NOT an iterator
@@ -930,12 +930,12 @@ it  = iter(lst)           # iterator
 
 print(hasattr(lst, '__next__'))   # False
 print(hasattr(it,  '__next__'))   # True
-print(iter(it) is it)             # True — iterator is its own iterable
+print(iter(it) is it)             # True  -  iterator is its own iterable
 ```
 
 ---
 
-### ✅ Question 2 — Custom Iterator
+### ✅ Question 2  -  Custom Iterator
 
 **Q:** Implement a class `Squares` that works as an iterator, yielding the squares of integers from 1 up to `n`.
 
@@ -974,7 +974,7 @@ for val in Squares(4):
 
 ---
 
-### ✅ Question 3 — Generator Function
+### ✅ Question 3  -  Generator Function
 
 **Q:** Write a generator function `even_numbers(limit)` that yields all even numbers from 0 up to `limit` (inclusive).
 
@@ -996,7 +996,7 @@ print(list(gen))   # [0, 2, 4, 6, 8, 10]
 
 ---
 
-### ✅ Question 4 — Infinite Generator + `itertools.islice`
+### ✅ Question 4  -  Infinite Generator + `itertools.islice`
 
 **Q:** Write a generator `powers_of_two()` that yields `1, 2, 4, 8, 16, ...` indefinitely. Then use `itertools.islice` to print the first 8 values.
 
@@ -1018,7 +1018,7 @@ print(result)   # [1, 2, 4, 8, 16, 32, 64, 128]
 
 ---
 
-### ✅ Question 5 — `yield from`
+### ✅ Question 5  -  `yield from`
 
 **Q:** Write a generator `chain_iterables(*iterables)` that yields all items from multiple iterables one after another (similar to `itertools.chain`).
 
@@ -1036,7 +1036,7 @@ print(result)   # [1, 2, 3, 4, '5', '6']
 
 ---
 
-### ✅ Question 6 — Memory Efficiency
+### ✅ Question 6  -  Memory Efficiency
 
 **Q:** You have a list of 10 million numbers. Using a generator, compute the sum of squares of all even numbers. Explain why this is more memory efficient.
 
@@ -1047,12 +1047,12 @@ import sys
 
 n = 10_000_000
 
-# List approach — creates 3 large lists in memory
+# List approach  -  creates 3 large lists in memory
 even_list   = [x for x in range(n) if x % 2 == 0]
 squares_list = [x**2 for x in even_list]
 result_list  = sum(squares_list)
 
-# Generator approach — processes one number at a time
+# Generator approach  -  processes one number at a time
 result_gen = sum(x**2 for x in range(n) if x % 2 == 0)
 
 # Both give the same result:
@@ -1069,7 +1069,7 @@ The generator is more memory efficient because it **never stores the intermediat
 
 ---
 
-### ✅ Question 7 — Tricky Exhaustion
+### ✅ Question 7  -  Tricky Exhaustion
 
 **Q:** What is the output of the following code? Explain why.
 
@@ -1090,7 +1090,7 @@ print(a, b)
 
 ---
 
-### ✅ Question 8 — Pipeline Design
+### ✅ Question 8  -  Pipeline Design
 
 **Q:** Write a generator pipeline to:
 1. Take a list of strings
@@ -1131,7 +1131,7 @@ print(result)   # ['HELLO', 'PYTHON', 'WORLD']
 
 ---
 
-### ✅ Question 9 — `send()` Coroutine
+### ✅ Question 9  -  `send()` Coroutine
 
 **Q:** Write a generator function `running_average()` that receives numbers via `send()` and yields the current running average after each number.
 
@@ -1162,7 +1162,7 @@ print(gen.send(40))    # 25.0
 
 ---
 
-### ✅ Question 10 — Real World: Chunked File Processing
+### ✅ Question 10  -  Real World: Chunked File Processing
 
 **Q:** Write a generator that reads a file and yields it in chunks of `n` lines (useful for batch-processing large files).
 
@@ -1246,5 +1246,5 @@ Use a GENERATOR EXPRESSION when:
 
 ---
 
-*End of Lesson — Iterables, Iterators & Generators*
-*Codeverra — codeverra.com*
+*End of Lesson  -  Iterables, Iterators & Generators*
+*Codeverra  -  codeverra.com*
