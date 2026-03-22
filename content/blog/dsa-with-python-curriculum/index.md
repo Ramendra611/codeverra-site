@@ -1,6 +1,5 @@
 ---
 title: "DSA With Python - Zero to Hero (Curriculum)"
-weight: 2
 description: Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field."
 
 date: 2025-12-30

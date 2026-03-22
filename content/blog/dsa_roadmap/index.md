@@ -1,6 +1,5 @@
 ---
 title: "A Practical DSA Learning Roadmap"
-weight: 1
 description: "A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation"
 
 date: 2025-12-30
