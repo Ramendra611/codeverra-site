@@ -15,7 +15,7 @@ tags:
 
 ---
 
-## Before We Begin -- How This Guide is Organised
+## Before We Begin - How This Guide is Organised
 
 Most OOP tutorials throw syntax at you immediately. You copy the code, it works,
 and you think you understand it. Two weeks later you cannot write a class from scratch.
@@ -179,7 +179,7 @@ And a student can calculate their own average and grade."**
 
 That is exactly what OOP gives you.
 
-### The OOP solution -- bundle data and behaviour together
+### The OOP solution - bundle data and behaviour together
 
 ```python
 class Student:
@@ -282,7 +282,7 @@ print(type(account1).__name__)             # BankAccount
 
 ---
 
-## 3. The __init__ Method and Instance Attributes
+## 3. The init Method and Instance Attributes
 
 Right now our `BankAccount` class creates empty objects. That is not very useful.
 We need a way to set up each object with its own data when it is created.

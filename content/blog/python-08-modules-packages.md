@@ -8,6 +8,13 @@ tocopen: false
 draft: false
 tags:
   - python
+
+cover:
+  image: "/images/modules.png"
+  alt: "modules in python"
+  caption: "modules using Python"
+  relative: true
+  hidden: false
 ---
 
 # Modules, Packages, and the Python Ecosystem

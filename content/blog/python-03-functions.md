@@ -13,7 +13,7 @@ tags:
   - python
 
 cover:
-  image: "/images/functions-masterclass.png"
+  image: "/images/functions.png"
   alt: "file handling in python"
   caption: "file handling in python"
   relative: true
