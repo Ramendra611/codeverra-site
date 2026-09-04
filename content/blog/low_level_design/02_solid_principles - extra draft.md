@@ -1,3 +1,27 @@
+---
+title: "LLD Foundations - SOLID Principles"
+description: "A complete guide to  solid principles which are fundamental of object oriented design."
+
+date: 2026-09-04
+lastmod: 2026-09-04
+author: "codeverra"
+
+toc: true
+tocopen: true
+draft: false
+tags:
+  - lld
+  - oop
+  - python
+
+cover:
+  image: "/images/LLD - 2.png"
+  alt: "SOLID principles explained using Python"
+  caption: "SOLID principles in Python: A Deep Dive"
+  relative: true
+  hidden: false
+---
+
 # SOLID Principles
 
 **Prerequisite:** This material assumes familiarity with Python object-oriented programming, including classes, inheritance, polymorphism, and abstraction. The discussion builds directly on that foundation and extends it toward writing object-oriented code that remains maintainable as a system grows.

@@ -2,8 +2,8 @@
 title: "UML Deep Dive: Class Diagrams and Sequence Diagrams"
 description: "A standardized visual language for communicating class structures and runtime interactions: class diagrams and sequence diagrams explained."
 
-date: 2026-09-11
-lastmod: 2026-09-11
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true

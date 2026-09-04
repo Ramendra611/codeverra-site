@@ -13,6 +13,8 @@ tags:
   - lld
   - oop
   - python
+  - low level design
+  - system design
 
 cover:
   image: "/images/LLD - 1.png"

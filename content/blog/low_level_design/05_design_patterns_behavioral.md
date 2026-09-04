@@ -2,8 +2,8 @@
 title: "Design Patterns, Part 3: Behavioral Patterns"
 description: "Behavioral design patterns: how objects communicate, divide responsibility, and coordinate behavior in complex systems."
 
-date: 2026-09-08
-lastmod: 2026-09-08
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true

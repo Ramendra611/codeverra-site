@@ -2,8 +2,8 @@
 title: "Advanced LLD Topics: A Deep Dive"
 description: "Advanced low-level design topics for real systems, interviews, and production code: building on SOLID and design patterns."
 
-date: 2026-09-10
-lastmod: 2026-09-10
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true

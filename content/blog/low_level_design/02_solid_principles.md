@@ -2,8 +2,8 @@
 title: "SOLID Principles: A Complete Deep Dive"
 description: "A rigorous treatment of the five SOLID principles: formal statements, worked examples, tradeoffs, and when not to apply them."
 
-date: 2026-09-05
-lastmod: 2026-09-05
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true
