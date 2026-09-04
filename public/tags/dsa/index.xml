@@ -4,23 +4,114 @@
     <title>Dsa on codeverra</title>
     <link>http://localhost:1313/tags/dsa/</link>
     <description>Recent content in Dsa on codeverra</description>
-    <generator>Hugo -- 0.158.0</generator>
+    <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 22:02:00 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/dsa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Array Patterns  -  The Complete Study Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-00-index/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-00-index/</guid>
+      <description>A complete index of the most important array problem-solving patterns for DSA, with links to each pattern guide.</description>
+    </item>
+    <item>
+      <title>Arrays in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-04-arrays/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-04-arrays/</guid>
+      <description>Everything you need to know about arrays and lists in Python for DSA  -  operations, patterns, and common problems.</description>
+    </item>
+    <item>
+      <title>Binary Search Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-02-binary-search/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-02-binary-search/</guid>
+      <description>Understand binary search as a pattern beyond sorted arrays  -  templates, variations, and common problems.</description>
+    </item>
+    <item>
+      <title>Complexity Analysis  -  Time and Space</title>
+      <link>http://localhost:1313/blog/dsa-03-complexity-analysis/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-03-complexity-analysis/</guid>
+      <description>Understand Big O notation, time complexity, and space complexity with clear examples in Python.</description>
+    </item>
+    <item>
+      <title>HashMap and Frequency Counting Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/</guid>
+      <description>Learn how to use hashmaps and frequency counting to solve common DSA problems efficiently in Python.</description>
+    </item>
+    <item>
+      <title>Linked Lists in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-06-linked-lists/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-06-linked-lists/</guid>
+      <description>Understand linked lists from scratch  -  nodes, pointers, singly and doubly linked lists with Python implementations.</description>
+    </item>
+    <item>
+      <title>Prefix Sum Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-04-prefix-sum/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-04-prefix-sum/</guid>
+      <description>Master the prefix sum technique for range query problems with Python examples and practice problems.</description>
+    </item>
+    <item>
+      <title>Python Refresher for DSA</title>
+      <link>http://localhost:1313/blog/dsa-02-python-refresher/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-02-python-refresher/</guid>
+      <description>A quick refresher on the Python concepts you need before diving into Data Structures and Algorithms.</description>
+    </item>
+    <item>
+      <title>Sliding Window Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-03-sliding-window/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-03-sliding-window/</guid>
+      <description>Learn the sliding window technique to efficiently solve subarray and substring problems in Python.</description>
+    </item>
+    <item>
+      <title>Stacks in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-07-stacks/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-07-stacks/</guid>
+      <description>Learn how stacks work, how to implement them in Python, and how to solve common stack-based problems.</description>
+    </item>
+    <item>
+      <title>Strings in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-05-strings/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-05-strings/</guid>
+      <description>A practical guide to string operations and manipulation in Python for DSA problem solving.</description>
+    </item>
+    <item>
+      <title>The Complete DSA with Python  -  Master Roadmap</title>
+      <link>http://localhost:1313/blog/dsa-00-master-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-00-master-roadmap/</guid>
+      <description>A structured roadmap to mastering Data Structures and Algorithms using Python, from basics to advanced topics.</description>
+    </item>
+    <item>
+      <title>Two Pointers Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-01-two-pointers/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-01-two-pointers/</guid>
+      <description>Master the two pointers technique with clear explanations, Python implementations, and practice problems.</description>
+    </item>
+    <item>
+      <title>What is DSA and Why Do We Learn It</title>
+      <link>http://localhost:1313/blog/dsa-01-what-is-dsa/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-01-what-is-dsa/</guid>
+      <description>A clear introduction to Data Structures and Algorithms  -  what they are, why they matter, and how to approach learning them.</description>
+    </item>
     <item>
       <title>A Practical DSA Learning Roadmap</title>
       <link>http://localhost:1313/blog/dsa_roadmap/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/dsa_roadmap/</guid>
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
-    </item>
-    <item>
-      <title>DSA With Python - Zero to Hero (Curriculum)</title>
-      <link>http://localhost:1313/blog/dsa-with-python-curriculum/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/dsa-with-python-curriculum/</guid>
-      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
     </item>
     <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
@@ -63,6 +154,13 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/sorting_algo/</guid>
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
+    </item>
+    <item>
+      <title>DSA With Python - Zero to Hero (Curriculum)</title>
+      <link>http://localhost:1313/blog/dsa-with-python-curriculum/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-with-python-curriculum/</guid>
+      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
     </item>
     <item>
       <title>Recursion Explained from Basics</title>

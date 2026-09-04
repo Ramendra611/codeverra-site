@@ -4,22 +4,293 @@
     <title>Blogs on codeverra</title>
     <link>http://localhost:1313/blog/</link>
     <description>Recent content in Blogs on codeverra</description>
-    <generator>Hugo -- 0.158.0</generator>
+    <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A Practical DSA Learning Roadmap</title>
-      <link>http://localhost:1313/blog/dsa_roadmap/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/dsa_roadmap/</guid>
-      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
+      <title>Object-Oriented Programming in Python: A Deep Dive</title>
+      <link>http://localhost:1313/blog/low_level_design/01_oop_in_python/</link>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/01_oop_in_python/</guid>
+      <description>A complete guide to Python OOP: why it exists, what problems it solves, and how to wield it well in real systems.</description>
     </item>
     <item>
-      <title>DSA With Python - Zero to Hero (Curriculum)</title>
-      <link>http://localhost:1313/blog/dsa-with-python-curriculum/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/dsa-with-python-curriculum/</guid>
-      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
+      <title>Array Patterns  -  The Complete Study Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-00-index/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-00-index/</guid>
+      <description>A complete index of the most important array problem-solving patterns for DSA, with links to each pattern guide.</description>
+    </item>
+    <item>
+      <title>Arrays in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-04-arrays/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-04-arrays/</guid>
+      <description>Everything you need to know about arrays and lists in Python for DSA  -  operations, patterns, and common problems.</description>
+    </item>
+    <item>
+      <title>Binary Search Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-02-binary-search/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-02-binary-search/</guid>
+      <description>Understand binary search as a pattern beyond sorted arrays  -  templates, variations, and common problems.</description>
+    </item>
+    <item>
+      <title>Complexity Analysis  -  Time and Space</title>
+      <link>http://localhost:1313/blog/dsa-03-complexity-analysis/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-03-complexity-analysis/</guid>
+      <description>Understand Big O notation, time complexity, and space complexity with clear examples in Python.</description>
+    </item>
+    <item>
+      <title>Control Flow in Python</title>
+      <link>http://localhost:1313/blog/python-02-control-flow/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-02-control-flow/</guid>
+      <description>&lt;h1 id=&#34;control-flow-in-python&#34;&gt;Control Flow in Python&lt;/h1&gt;
+&lt;h3 id=&#34;making-decisions-in-your-code--if-elif-else-and-beyond&#34;&gt;Making Decisions in Your Code &amp;ndash; if, elif, else, and Beyond&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-control-flow-is-everything&#34;&gt;Before We Begin &amp;ndash; Why Control Flow is Everything&lt;/h2&gt;
+&lt;p&gt;Every program you have ever used makes decisions.&lt;/p&gt;
+&lt;p&gt;When you log into a website: if the password is correct, show the dashboard,
+otherwise show an error. When your food delivery app calculates the delivery fee:
+if the order is above Rs.200, delivery is free, else charge Rs.30.
+When a data pipeline processes records: if the record is valid, process it,
+else log an error and skip it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HashMap and Frequency Counting Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/</guid>
+      <description>Learn how to use hashmaps and frequency counting to solve common DSA problems efficiently in Python.</description>
+    </item>
+    <item>
+      <title>Linked Lists in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-06-linked-lists/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-06-linked-lists/</guid>
+      <description>Understand linked lists from scratch  -  nodes, pointers, singly and doubly linked lists with Python implementations.</description>
+    </item>
+    <item>
+      <title>Logging and System Interaction in Python</title>
+      <link>http://localhost:1313/blog/python-16-logging-and-os/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-16-logging-and-os/</guid>
+      <description>&lt;h1 id=&#34;logging-and-system-interaction-in-python&#34;&gt;Logging and System Interaction in Python&lt;/h1&gt;
+&lt;h3 id=&#34;professional-observability-with-the-logging-module-and-the-os-module&#34;&gt;Professional Observability with the logging Module and the os Module&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-this-matters-more-than-it-looks&#34;&gt;Before We Begin &amp;ndash; Why This Matters More Than It Looks&lt;/h2&gt;
+&lt;p&gt;Here is a situation every developer eventually faces.&lt;/p&gt;
+&lt;p&gt;You write a script that processes data overnight. It runs on a server
+while you sleep. In the morning you check the output and something is
+wrong. Half the records are missing. You have no idea what happened
+because your script used &lt;code&gt;print()&lt;/code&gt; for all its messages and those prints
+went nowhere &amp;ndash; there was nobody watching the terminal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modules, Packages, and the Python Ecosystem</title>
+      <link>http://localhost:1313/blog/python-10-modules-packages/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-10-modules-packages/</guid>
+      <description>Understand how Python modules and packages work, how to create your own, and how to navigate the Python ecosystem.</description>
+    </item>
+    <item>
+      <title>Object-Oriented Programming in Python  -  Masterclass</title>
+      <link>http://localhost:1313/blog/python-11-oop-masterclass/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-11-oop-masterclass/</guid>
+      <description>A comprehensive guide to OOP in Python  -  classes, objects, inheritance, encapsulation, and polymorphism.</description>
+    </item>
+    <item>
+      <title>OOP Practice - Problems and Solutions</title>
+      <link>http://localhost:1313/blog/python-12-oop-practice/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-12-oop-practice/</guid>
+      <description>&lt;h1 id=&#34;object-oriented-programming--assignment&#34;&gt;Object-Oriented Programming &amp;ndash; Assignment&lt;/h1&gt;
+&lt;h3 id=&#34;four-real-world-problems-to-solve-using-oop&#34;&gt;Four Real-World Problems to Solve Using OOP&lt;/h3&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This assignment covers OOP Basics and Intermediate concepts.
+For each problem, read the description carefully, understand what the
+system needs to do, and design your classes before writing any code.
+Planning on paper first is not optional &amp;ndash; it is part of the exercise.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-approach-each-problem&#34;&gt;How to Approach Each Problem&lt;/h2&gt;
+&lt;p&gt;Before writing a single line of code for any problem:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Prefix Sum Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-04-prefix-sum/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-04-prefix-sum/</guid>
+      <description>Master the prefix sum technique for range query problems with Python examples and practice problems.</description>
+    </item>
+    <item>
+      <title>Python Basics Masterclass</title>
+      <link>http://localhost:1313/blog/python-01-python-basics/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-01-python-basics/</guid>
+      <description>A complete beginner-friendly guide to Python basics  -  syntax, data types, variables, and core concepts.</description>
+    </item>
+    <item>
+      <title>Python Collections - Theory</title>
+      <link>http://localhost:1313/blog/python-05-collections-theory/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-05-collections-theory/</guid>
+      <description>&lt;h1 id=&#34;python-collections&#34;&gt;Python Collections&lt;/h1&gt;
+&lt;h3 id=&#34;lists-tuples-dictionaries-and-sets--the-four-ways-to-store-data&#34;&gt;Lists, Tuples, Dictionaries, and Sets &amp;ndash; The Four Ways to Store Data&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-collections-are-central-to-everything&#34;&gt;Before We Begin &amp;ndash; Why Collections Are Central to Everything&lt;/h2&gt;
+&lt;p&gt;At some point you stop writing programs that work on one value at a time
+and start writing programs that work on many values at once. A list of
+students. A dictionary of city populations. A set of unique tags.
+A tuple representing a coordinate.&lt;/p&gt;
+&lt;p&gt;Collections are the bridge between &amp;ldquo;I know Python basics&amp;rdquo; and &amp;ldquo;I can solve
+real problems.&amp;rdquo; Everything that follows in this curriculum &amp;ndash; loops,
+functions, Pandas, APIs &amp;ndash; assumes you are comfortable with collections.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Learning Roadmap</title>
+      <link>http://localhost:1313/blog/python-00-python-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-00-python-roadmap/</guid>
+      <description>A structured roadmap to learning Python from scratch to advanced  -  what to learn, in what order, and why.</description>
+    </item>
+    <item>
+      <title>Python Loops Masterclass</title>
+      <link>http://localhost:1313/blog/python-03-loops-masterclass/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-03-loops-masterclass/</guid>
+      <description>&lt;h1 id=&#34;-python-loops-masterclass&#34;&gt;🔁 Python Loops Masterclass&lt;/h1&gt;
+&lt;h3 id=&#34;complete-command-over-for-and-while-loops--from-basics-to-patterns&#34;&gt;&lt;em&gt;Complete Command Over for and while Loops — From Basics to Patterns&lt;/em&gt;&lt;/h3&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who is this for?&lt;/strong&gt;
+You know Python basics — variables, conditionals, functions.
+Now you want to truly master loops — not just use them, but &lt;em&gt;think&lt;/em&gt; in them.
+This guide covers every loop concept in Python, with simple examples before every idea.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-table-of-contents&#34;&gt;📌 Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-why-loops-exist&#34;&gt;Why Loops Exist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-the-for-loop&#34;&gt;The for Loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-iterating-over-different-data-types&#34;&gt;Iterating Over Different Data Types&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-the-range-function&#34;&gt;The range() Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-the-while-loop&#34;&gt;The while Loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-break--exit-the-loop-early&#34;&gt;break — Exit the Loop Early&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-continue--skip-to-the-next-iteration&#34;&gt;continue — Skip to the Next Iteration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-pass--do-nothing-placeholder&#34;&gt;pass — Do Nothing (Placeholder)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-else-with-loops&#34;&gt;else with Loops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-enumerate--loop-with-an-index&#34;&gt;enumerate() — Loop with an Index&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-zip--loop-over-multiple-sequences&#34;&gt;zip() — Loop Over Multiple Sequences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-nested-loops&#34;&gt;Nested Loops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-list-comprehensions&#34;&gt;List Comprehensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-dictionary-and-set-comprehensions&#34;&gt;Dictionary and Set Comprehensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-loop-patterns-every-programmer-uses&#34;&gt;Loop Patterns Every Programmer Uses&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#16-common-loop-mistakes-and-how-to-avoid-them&#34;&gt;Common Loop Mistakes and How to Avoid Them&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#17-practice-questions&#34;&gt;Practice Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#18-what-we-covered--whats-next&#34;&gt;What We Covered + What&amp;rsquo;s Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-why-loops-exist&#34;&gt;1. Why Loops Exist&lt;/h2&gt;
+&lt;p&gt;Imagine you need to print a welcome message for 500 students. Without loops:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Refresher for DSA</title>
+      <link>http://localhost:1313/blog/dsa-02-python-refresher/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-02-python-refresher/</guid>
+      <description>A quick refresher on the Python concepts you need before diving into Data Structures and Algorithms.</description>
+    </item>
+    <item>
+      <title>Regular Expressions in Python</title>
+      <link>http://localhost:1313/blog/python-17-regex-guide/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-17-regex-guide/</guid>
+      <description>&lt;h1 id=&#34;regular-expressions-in-python&#34;&gt;Regular Expressions in Python&lt;/h1&gt;
+&lt;h3 id=&#34;pattern-matching-text-processing-and-the-re-module&#34;&gt;Pattern Matching, Text Processing, and the re Module&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-regular-expressions-matter&#34;&gt;Before We Begin &amp;ndash; Why Regular Expressions Matter&lt;/h2&gt;
+&lt;p&gt;Here is a real problem. You have a CSV file with 50,000 rows of customer
+data. The phone number column is a mess:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;+91-9876543210
+9876 543 210
+(091) 9876-543210
+91-98765-43210
+9876543210
++919876543210
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All of these are the same phone number in different formats. You need to
+extract just the 10-digit number from all of them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sliding Window Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-03-sliding-window/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-03-sliding-window/</guid>
+      <description>Learn the sliding window technique to efficiently solve subarray and substring problems in Python.</description>
+    </item>
+    <item>
+      <title>Stacks in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-07-stacks/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-07-stacks/</guid>
+      <description>Learn how stacks work, how to implement them in Python, and how to solve common stack-based problems.</description>
+    </item>
+    <item>
+      <title>Strings in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-05-strings/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-05-strings/</guid>
+      <description>A practical guide to string operations and manipulation in Python for DSA problem solving.</description>
+    </item>
+    <item>
+      <title>The Complete DSA with Python  -  Master Roadmap</title>
+      <link>http://localhost:1313/blog/dsa-00-master-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-00-master-roadmap/</guid>
+      <description>A structured roadmap to mastering Data Structures and Algorithms using Python, from basics to advanced topics.</description>
+    </item>
+    <item>
+      <title>Two Pointers Pattern  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-patterns-01-two-pointers/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-patterns-01-two-pointers/</guid>
+      <description>Master the two pointers technique with clear explanations, Python implementations, and practice problems.</description>
+    </item>
+    <item>
+      <title>Type Hints in Python</title>
+      <link>http://localhost:1313/blog/python-18-type-hints/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-18-type-hints/</guid>
+      <description>&lt;h1 id=&#34;type-hints-in-python&#34;&gt;Type Hints in Python&lt;/h1&gt;
+&lt;h3 id=&#34;writing-code-that-explains-itself--the-typing-module-and-beyond&#34;&gt;Writing Code That Explains Itself &amp;ndash; The typing Module and Beyond&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-type-hints-matter&#34;&gt;Before We Begin &amp;ndash; Why Type Hints Matter&lt;/h2&gt;
+&lt;p&gt;Here is a function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;calculate_discount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;discount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_member&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What type is &lt;code&gt;price&lt;/code&gt;? A float? An int? A string like &lt;code&gt;&amp;quot;1299&amp;quot;&lt;/code&gt;?
+What is &lt;code&gt;discount&lt;/code&gt;? A percentage like &lt;code&gt;18.5&lt;/code&gt;? Or a multiplier like &lt;code&gt;0.185&lt;/code&gt;?
+What does &lt;code&gt;is_member&lt;/code&gt; do to the result?&lt;/p&gt;
+&lt;p&gt;You cannot tell without reading the implementation. In a codebase with
+hundreds of functions, this adds up to an enormous cognitive load.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What is DSA and Why Do We Learn It</title>
+      <link>http://localhost:1313/blog/dsa-01-what-is-dsa/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-01-what-is-dsa/</guid>
+      <description>A clear introduction to Data Structures and Algorithms  -  what they are, why they matter, and how to approach learning them.</description>
+    </item>
+    <item>
+      <title>Working with the Real World in Python</title>
+      <link>http://localhost:1313/blog/python-19-working-with-real-world/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-19-working-with-real-world/</guid>
+      <description>Learn how Python interacts with real-world systems  -  APIs, files, databases, and external libraries.</description>
     </item>
     <item>
       <title>Complete Guide to Numpy Library in Python</title>
@@ -37,16 +308,16 @@
     </item>
     <item>
       <title>Master Collections in Python</title>
-      <link>http://localhost:1313/blog/collections-practice/</link>
+      <link>http://localhost:1313/blog/python-06-collections-practice/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/collections-practice/</guid>
-      <description>Complete practice session on colletions in python</description>
+      <guid>http://localhost:1313/blog/python-06-collections-practice/</guid>
+      <description>Complete practice session on collections in python</description>
     </item>
     <item>
       <title>Master Loops in Python</title>
-      <link>http://localhost:1313/blog/python-loops-practice/</link>
+      <link>http://localhost:1313/blog/python-04-loops-practice/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/python-loops-practice/</guid>
+      <guid>http://localhost:1313/blog/python-04-loops-practice/</guid>
       <description>Complete practice session on Loops in python</description>
     </item>
     <item>
@@ -65,16 +336,16 @@
     </item>
     <item>
       <title>Exception Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/exception_handling/</link>
+      <link>http://localhost:1313/blog/python-08-exception-handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/exception_handling/</guid>
+      <guid>http://localhost:1313/blog/python-08-exception-handling/</guid>
       <description>Learn about try-except-finally and custom exceptions in Python</description>
     </item>
     <item>
       <title>File Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/file-handling-in-python/</link>
+      <link>http://localhost:1313/blog/python-09-file-handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/file-handling-in-python/</guid>
+      <guid>http://localhost:1313/blog/python-09-file-handling/</guid>
       <description>Learn about  working with files in Python</description>
     </item>
     <item>
@@ -86,9 +357,9 @@
     </item>
     <item>
       <title>Functions in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/functions-in-python/</link>
+      <link>http://localhost:1313/blog/python-07-functions/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/functions-in-python/</guid>
+      <guid>http://localhost:1313/blog/python-07-functions/</guid>
       <description>Learn everything about writing fcuntions in Python</description>
     </item>
     <item>
@@ -100,9 +371,9 @@
     </item>
     <item>
       <title>Higher Order Functions and Decorators in Python</title>
-      <link>http://localhost:1313/blog/decorators/</link>
+      <link>http://localhost:1313/blog/python-13-decorators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/decorators/</guid>
+      <guid>http://localhost:1313/blog/python-13-decorators/</guid>
       <description>Learn about higher order functions like map, filter, reduce and decorators </description>
     </item>
     <item>
@@ -121,16 +392,16 @@
     </item>
     <item>
       <title>Iterators and Generators in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/iterators_generators/</link>
+      <link>http://localhost:1313/blog/python-14-iterators-generators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/iterators_generators/</guid>
+      <guid>http://localhost:1313/blog/python-14-iterators-generators/</guid>
       <description>Learn about iterables and iterators and generators in python</description>
     </item>
     <item>
       <title>Itertools Module in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/itertools/</link>
+      <link>http://localhost:1313/blog/python-15-itertools/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/itertools/</guid>
+      <guid>http://localhost:1313/blog/python-15-itertools/</guid>
       <description>Learn about the very useful itertools library in python</description>
     </item>
     <item>
@@ -190,6 +461,13 @@
       <description>Pratice easy, medium and hard questions on cricket dataset.</description>
     </item>
     <item>
+      <title>A Practical DSA Learning Roadmap</title>
+      <link>http://localhost:1313/blog/dsa_roadmap/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa_roadmap/</guid>
+      <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
+    </item>
+    <item>
       <title>Analysis of Time Complexity Explained with Python Examples</title>
       <link>http://localhost:1313/blog/time_complexity/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -219,9 +497,9 @@
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:1313/blog/python_syllabus/</link>
+      <link>http://localhost:1313/blog/python-syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/python_syllabus/</guid>
+      <guid>http://localhost:1313/blog/python-syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
     <item>
@@ -239,6 +517,13 @@
       <description>A structured and easy-to-understand explanation of major sorting algorithms, their working ideas, time and space complexities, and real-world usage.</description>
     </item>
     <item>
+      <title>DSA With Python - Zero to Hero (Curriculum)</title>
+      <link>http://localhost:1313/blog/dsa-with-python-curriculum/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-with-python-curriculum/</guid>
+      <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
+    </item>
+    <item>
       <title>Recursion Explained from Basics</title>
       <link>http://localhost:1313/blog/recursion/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
@@ -251,6 +536,1139 @@
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/searching_in_arrays/</guid>
       <description>A clear and practical guide to searching techniques in arrays, explaining linear search and binary search with concepts, complexities, and real-world use cases.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/02_solid_principles---extra-draft/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/02_solid_principles---extra-draft/</guid>
+      <description>&lt;h1 id=&#34;solid-principles&#34;&gt;SOLID Principles&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Prerequisite:&lt;/strong&gt; This material assumes familiarity with Python object-oriented programming, including classes, inheritance, polymorphism, and abstraction. The discussion builds directly on that foundation and extends it toward writing object-oriented code that remains maintainable as a system grows.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-why-solid-exists&#34;&gt;Why SOLID Exists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-what-solid-stands-for&#34;&gt;What SOLID Stands For&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-single-responsibility-principle-srp&#34;&gt;Single Responsibility Principle (SRP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-openclosed-principle-ocp&#34;&gt;Open/Closed Principle (OCP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-liskov-substitution-principle-lsp&#34;&gt;Liskov Substitution Principle (LSP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-interface-segregation-principle-isp&#34;&gt;Interface Segregation Principle (ISP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-dependency-inversion-principle-dip&#34;&gt;Dependency Inversion Principle (DIP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-how-the-five-principles-reinforce-each-other&#34;&gt;How the Five Principles Reinforce Each Other&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-capstone-example&#34;&gt;Capstone Example: Applying All Five Together&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-common-pitfalls&#34;&gt;Common Pitfalls and Anti-Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-when-not-to-apply-solid&#34;&gt;When Not to Apply SOLID&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-summary&#34;&gt;Summary and Key Takeaways&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-self-assessment-questions&#34;&gt;Self-Assessment Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-practice-exercises&#34;&gt;Practice Exercises with Solutions&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-why-solid-exists&#34;&gt;1. Why SOLID Exists&lt;/h2&gt;
+&lt;p&gt;A learner who has completed a course on object-oriented programming knows how to define classes, establish inheritance hierarchies, and use polymorphism. A natural question follows: if these tools are already available, why does a separate set of principles need to be learned before writing &amp;ldquo;good&amp;rdquo; object-oriented code?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/02a_solid_practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/02a_solid_practice/</guid>
+      <description>&lt;h1 id=&#34;solid-principles-practice-workbook&#34;&gt;SOLID Principles: Practice Workbook&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Prerequisite:&lt;/strong&gt; &lt;code&gt;02_solid_principles.md&lt;/code&gt;. This workbook assumes the five principles have already been defined and demonstrated. It contains no new theory. Its purpose is to convert conceptual knowledge into diagnostic skill.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-how-to-use-this-workbook&#34;&gt;How to Use This Workbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-vocabulary-and-the-diagnostic-method&#34;&gt;Vocabulary and the Diagnostic Method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-section-a-recognition-drills&#34;&gt;Section A: Recognition Drills&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-section-b-single-responsibility-principle&#34;&gt;Section B: Single Responsibility Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-section-c-openclosed-principle&#34;&gt;Section C: Open/Closed Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-section-d-liskov-substitution-principle&#34;&gt;Section D: Liskov Substitution Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-section-e-interface-segregation-principle&#34;&gt;Section E: Interface Segregation Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-section-f-dependency-inversion-principle&#34;&gt;Section F: Dependency Inversion Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-section-g-combined-violations&#34;&gt;Section G: Combined Violations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-section-h-capstone-refactor&#34;&gt;Section H: Capstone Refactor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-self-review-checklist&#34;&gt;Self-Review Checklist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-summary-and-key-takeaways&#34;&gt;Summary and Key Takeaways&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-appendix-violation-signature-reference&#34;&gt;Appendix: Violation Signature Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-how-to-use-this-workbook&#34;&gt;1. How to Use This Workbook&lt;/h2&gt;
+&lt;h3 id=&#34;11-what-this-document-is-for&#34;&gt;1.1 What this document is for&lt;/h3&gt;
+&lt;p&gt;Knowing the definition of the Single Responsibility Principle and being able to detect a Single Responsibility violation in unfamiliar code are two different competencies. The first is declarative knowledge and can be acquired by reading. The second is a diagnostic skill and can only be acquired by repeated exposure to examples, followed by correction.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/03_design_patterns_creational/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/03_design_patterns_creational/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;Design Patterns, Part 1: Foundations and Creational Patterns&amp;rdquo;
+description: &amp;ldquo;Foundations of the GoF design pattern catalogue and creational patterns: Singleton, Factory, Builder, Prototype, and Abstract Factory.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-06
+lastmod: 2026-09-06
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 3.png&amp;rdquo;
+alt: &amp;ldquo;Creational Design Patterns&amp;rdquo;
+caption: &amp;ldquo;Design Patterns, Part 1: Foundations and Creational Patterns&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;design-patterns-part-1-foundations-and-creational-patterns&#34;&gt;Design Patterns, Part 1: Foundations and Creational Patterns&lt;/h1&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-what-a-design-pattern-is&#34;&gt;What a Design Pattern Is&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-why-design-patterns-are-studied&#34;&gt;Why Design Patterns Are Studied&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-classification-of-the-gof-catalogue&#34;&gt;Classification of the GoF Catalogue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-the-template-used-for-each-pattern&#34;&gt;The Template Used for Each Pattern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-the-problem-space-of-creational-patterns&#34;&gt;The Problem Space of Creational Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-singleton&#34;&gt;Singleton&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-factory-method&#34;&gt;Factory Method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-abstract-factory&#34;&gt;Abstract Factory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-builder&#34;&gt;Builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-prototype&#34;&gt;Prototype&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-comparative-summary-of-the-five-patterns&#34;&gt;Comparative Summary of the Five Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-key-takeaways&#34;&gt;Key Takeaways&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-practice-exercises-with-solutions&#34;&gt;Practice Exercises with Solutions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-self-assessment-questions&#34;&gt;Self-Assessment Questions&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-what-a-design-pattern-is&#34;&gt;1. What a Design Pattern Is&lt;/h2&gt;
+&lt;h3 id=&#34;11-definition&#34;&gt;1.1 Definition&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Design pattern.&lt;/strong&gt; A named, general, reusable solution to a problem that recurs within a particular context of software design. A pattern is a description of communicating objects and classes that are customised to solve a general design problem in that context.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/04_design_patterns_structural/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/04_design_patterns_structural/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;Design Patterns, Part 2: Structural Patterns&amp;rdquo;
+description: &amp;ldquo;Structural design patterns: how to combine classes and objects into larger structures that stay flexible and maintainable.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-07
+lastmod: 2026-09-07
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 4.png&amp;rdquo;
+alt: &amp;ldquo;Structural Design Patterns&amp;rdquo;
+caption: &amp;ldquo;Design Patterns, Part 2: Structural Patterns&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;design-patterns--part-2-structural-patterns&#34;&gt;Design Patterns — Part 2: Structural Patterns&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone who has worked through the Creational patterns and is ready to learn how objects fit together — how to combine classes and objects into larger structures that stay flexible and maintainable.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/05_design_patterns_behavioral/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/05_design_patterns_behavioral/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;Design Patterns, Part 3: Behavioral Patterns&amp;rdquo;
+description: &amp;ldquo;Behavioral design patterns: how objects communicate, divide responsibility, and coordinate behavior in complex systems.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-08
+lastmod: 2026-09-08
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 5.png&amp;rdquo;
+alt: &amp;ldquo;Behavioral Design Patterns&amp;rdquo;
+caption: &amp;ldquo;Design Patterns, Part 3: Behavioral Patterns&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;design-patterns--part-3-behavioral-patterns&#34;&gt;Design Patterns — Part 3: Behavioral Patterns&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone who has worked through Creational and Structural patterns and is ready for the final, largest, and arguably most important family — the patterns that govern how objects &lt;em&gt;communicate&lt;/em&gt; and &lt;em&gt;divide responsibility&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/06_design_patterns_practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/06_design_patterns_practice/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;Design Patterns: Practice Workbook&amp;rdquo;
+description: &amp;ldquo;Hands-on design pattern practice problems to prove you understand creational, structural, and behavioral patterns.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-09
+lastmod: 2026-09-09
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 6.png&amp;rdquo;
+alt: &amp;ldquo;Design Patterns Practice&amp;rdquo;
+caption: &amp;ldquo;Design Patterns: Practice Workbook&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;design-patterns--practice-workbook&#34;&gt;Design Patterns — Practice Workbook&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone who has worked through the three teaching files — &lt;code&gt;03_design_patterns_creational.md&lt;/code&gt;, &lt;code&gt;04_design_patterns_structural.md&lt;/code&gt;, and &lt;code&gt;05_design_patterns_behavioral.md&lt;/code&gt; — and now wants to &lt;em&gt;prove they actually understand&lt;/em&gt; by solving problems independently.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/06_lld_interview_questions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/06_lld_interview_questions/</guid>
+      <description>&lt;h1 id=&#34;low-level-design-interview-questions--a-complete-walkthrough&#34;&gt;Low-Level Design Interview Questions — A Complete Walkthrough&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone preparing for low-level design interviews — or anyone who wants to see the OOP, SOLID, and design-pattern concepts from the previous documents come together into real, working designs. We&amp;rsquo;ll walk through six classic problems end-to-end.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-how-to-approach-any-lld-interview-problem&#34;&gt;How to Approach Any LLD Interview Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-the-universal-framework&#34;&gt;The Universal Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-common-pitfalls&#34;&gt;Common Pitfalls in LLD Interviews&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-problem-1--design-a-parking-lot&#34;&gt;Problem 1 — Design a Parking Lot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-problem-2--design-an-elevator-system&#34;&gt;Problem 2 — Design an Elevator System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-problem-3--design-a-library-management-system&#34;&gt;Problem 3 — Design a Library Management System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-problem-4--design-a-vending-machine&#34;&gt;Problem 4 — Design a Vending Machine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-problem-5--design-a-splitwise-like-expense-sharing-system&#34;&gt;Problem 5 — Design a Splitwise-Like Expense Sharing System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-problem-6--design-a-ride-hailing-system&#34;&gt;Problem 6 — Design a Ride-Hailing System (Uber-Lite)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-meta-patterns&#34;&gt;Meta-Patterns Across All Six Problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-final-interview-tips&#34;&gt;Final Interview Tips&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-how-to-approach-any-lld-interview-problem&#34;&gt;1. How to Approach Any LLD Interview Problem&lt;/h2&gt;
+&lt;p&gt;The LLD interview isn&amp;rsquo;t really about the specific problem — parking lot, elevator, chess, whatever. &lt;strong&gt;It&amp;rsquo;s about demonstrating a structured thinking process.&lt;/strong&gt; The interviewer watches &lt;em&gt;how&lt;/em&gt; you decompose ambiguity, handle tradeoffs, and communicate design decisions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/07_advanced_lld_topics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/07_advanced_lld_topics/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;Advanced LLD Topics: A Deep Dive&amp;rdquo;
+description: &amp;ldquo;Advanced low-level design topics for real systems, interviews, and production code: building on SOLID and design patterns.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-10
+lastmod: 2026-09-10
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 7.png&amp;rdquo;
+alt: &amp;ldquo;Advanced LLD Topics&amp;rdquo;
+caption: &amp;ldquo;Advanced LLD Topics: A Deep Dive&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;advanced-lld-topics--a-deep-dive&#34;&gt;Advanced LLD Topics — A Deep Dive&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone who has finished the SOLID principles and the three design-pattern modules (Creational, Structural, Behavioural) and is ready to learn how to use that knowledge &lt;em&gt;well&lt;/em&gt; — in real systems, in real interviews, in real production code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/08_uml_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/08_uml_deep_dive/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;title: &amp;ldquo;UML Deep Dive: Class Diagrams and Sequence Diagrams&amp;rdquo;
+description: &amp;ldquo;A standardized visual language for communicating class structures and runtime interactions: class diagrams and sequence diagrams explained.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;date: 2026-09-11
+lastmod: 2026-09-11
+author: &amp;ldquo;codeverra&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;toc: true
+tocopen: true
+draft: false
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lld&lt;/li&gt;
+&lt;li&gt;uml&lt;/li&gt;
+&lt;li&gt;design-patterns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hidden-false&#34;&gt;cover:
+image: &amp;ldquo;/images/LLD - 8.png&amp;rdquo;
+alt: &amp;ldquo;UML Class and Sequence Diagrams&amp;rdquo;
+caption: &amp;ldquo;UML Deep Dive: Class Diagrams and Sequence Diagrams&amp;rdquo;
+relative: true
+hidden: false&lt;/h2&gt;
+&lt;h1 id=&#34;uml-deep-dive-class-diagrams-and-sequence-diagrams&#34;&gt;UML Deep Dive: Class Diagrams and Sequence Diagrams&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who this is for:&lt;/strong&gt; Anyone who has been designing classes and systems (perhaps through OOP, SOLID, and design patterns) and now wants a standardized visual language to communicate those designs to teammates, interviewers, and their own future self.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06a_lld_parking_lot_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06a_lld_parking_lot_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-1--designing-a-parking-lot&#34;&gt;LLD Deep Dive #1 — Designing a Parking Lot&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A genuine, step-by-step walkthrough of how to &lt;em&gt;think through&lt;/em&gt; a Parking Lot LLD problem in an interview. Not a finished design dropped on you — but the reasoning, the false starts, the alternatives weighed, and the justifications that lead to each design decision.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time investment:&lt;/strong&gt; Read this slowly. If you&amp;rsquo;re doing this for interview prep, it&amp;rsquo;s worth treating each section as its own thinking exercise — pause and ask yourself &amp;ldquo;what would I do here?&amp;rdquo; before reading on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06b_lld_elevator_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06b_lld_elevator_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-2--designing-an-elevator-system&#34;&gt;LLD Deep Dive #2 — Designing an Elevator System&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A genuine, step-by-step walkthrough of how to think through an Elevator LLD problem in an interview. We&amp;rsquo;ll reason from first principles, weigh alternatives, and document each design decision — building toward a clean, extensible design centered on the State pattern.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-why-this-problem-matters&#34;&gt;Why This Problem Matters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-stage-1--receiving-the-problem&#34;&gt;Stage 1 — Receiving the Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-stage-2--clarifying-requirements&#34;&gt;Stage 2 — Clarifying Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-stage-3--identifying-entities&#34;&gt;Stage 3 — Identifying Entities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-stage-4--modeling-requests&#34;&gt;Stage 4 — Modeling Requests (Internal vs External)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-stage-5--the-state-pattern-decision&#34;&gt;Stage 5 — The State Pattern Decision&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-stage-6--implementing-the-states&#34;&gt;Stage 6 — Implementing the States&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-stage-7--the-elevator-class&#34;&gt;Stage 7 — The Elevator Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-stage-8--the-dispatcher-and-scheduling-strategy&#34;&gt;Stage 8 — The Dispatcher and Scheduling Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-stage-9--the-building-top-level-coordinator&#34;&gt;Stage 9 — The Building (Top-Level Coordinator)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-stage-10--validating-with-a-mental-walkthrough&#34;&gt;Stage 10 — Validating with a Mental Walkthrough&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-stage-11--anticipating-follow-up-questions&#34;&gt;Stage 11 — Anticipating Follow-Up Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-final-reflection&#34;&gt;Final Reflection — What This Problem Teaches&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-why-this-problem-matters&#34;&gt;1. Why This Problem Matters&lt;/h2&gt;
+&lt;p&gt;If Parking Lot is the canonical &amp;ldquo;model relationships&amp;rdquo; problem, Elevator is the canonical &amp;ldquo;model state transitions&amp;rdquo; problem. It&amp;rsquo;s specifically designed (whether interviewers know it or not) to make the &lt;strong&gt;State pattern&lt;/strong&gt; shine.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06c_lld_library_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06c_lld_library_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-3--designing-a-library-management-system&#34;&gt;LLD Deep Dive #3 — Designing a Library Management System&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A genuine, step-by-step walkthrough of how to think through a Library Management LLD problem. We&amp;rsquo;ll reason from first principles, weigh alternatives, and document each design decision — building toward a clean, extensible system that handles books, members, loans, fines, and reservations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-why-this-problem-matters&#34;&gt;Why This Problem Matters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-stage-1--receiving-the-problem&#34;&gt;Stage 1 — Receiving the Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-stage-2--clarifying-requirements&#34;&gt;Stage 2 — Clarifying Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-stage-3--identifying-entities&#34;&gt;Stage 3 — Identifying Entities (And the Big Modeling Decision)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-stage-4--modeling-books-vs-book-copies&#34;&gt;Stage 4 — Modeling Books vs Book Copies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-stage-5--modeling-members-and-their-policies&#34;&gt;Stage 5 — Modeling Members and Their Policies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-stage-6--the-loan-lifecycle&#34;&gt;Stage 6 — The Loan Lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-stage-7--the-reservation-queue&#34;&gt;Stage 7 — The Reservation Queue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-stage-8--search-functionality&#34;&gt;Stage 8 — Search Functionality&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-stage-9--the-library-top-level-coordinator&#34;&gt;Stage 9 — The Library (Top-Level Coordinator)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-stage-10--validating-with-a-mental-walkthrough&#34;&gt;Stage 10 — Validating with a Mental Walkthrough&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-stage-11--anticipating-follow-up-questions&#34;&gt;Stage 11 — Anticipating Follow-Up Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-final-reflection&#34;&gt;Final Reflection — What This Problem Teaches&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-why-this-problem-matters&#34;&gt;1. Why This Problem Matters&lt;/h2&gt;
+&lt;p&gt;The library system is the canonical &amp;ldquo;policy-driven domain modeling&amp;rdquo; interview problem. What it tests:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06d_lld_tic_tac_toe_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06d_lld_tic_tac_toe_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4-designing-a-tic-tac-toe-game&#34;&gt;LLD Deep Dive #4: Designing a Tic Tac Toe Game&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document covers:&lt;/strong&gt; A rigorous, step-by-step examination of how to approach a Tic Tac Toe Low-Level Design (LLD) problem in a technical interview. The document walks through the reasoning process at each design juncture, evaluates competing alternatives, and provides justification for every decision made. The finished design is a consequence of the reasoning, not its starting point.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How to read this document:&lt;/strong&gt; Read it slowly and deliberately. The problem appears trivial at the surface, since Tic Tac Toe requires only a three by three grid, two players, and a rule for detecting three marks in a row. That surface simplicity is precisely why the problem is used in interviews: it invites the unwary candidate to produce a short procedural script, when the actual expectation is a properly modelled, extensible, and testable object-oriented design.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06e_lld_ecommerce_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06e_lld_ecommerce_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4-designing-a-grocery--e-commerce-management-system&#34;&gt;LLD Deep Dive #4: Designing a Grocery / E-Commerce Management System&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A step-by-step walkthrough of the reasoning process required to design an e-commerce LLD problem in an interview setting. The specific flavour is a grocery store, though the design generalises to any online retail system. Every design decision is derived from first principles, alternatives are evaluated at each fork, and the resulting system is one whose components can be explained, defended, and extended.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06f_lld_ride_sharing_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06f_lld_ride_sharing_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4-designing-a-ride-sharing-system&#34;&gt;LLD Deep Dive #4: Designing a Ride-Sharing System&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is.&lt;/strong&gt; This is a comprehensive, first-principles walkthrough of how to design a ride-sharing system (of the Uber or Ola variety) as a low-level design (LLD) interview problem. It reasons from the vague problem statement through requirement clarification, entity identification, class hierarchy decisions, behavioural modelling with design patterns, and finally a fully composed system. Every design choice is stated together with the alternatives that were considered and the criteria that decided between them, so that a learner reading this can not only reproduce the design but also defend it and adapt it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06g_lld_atm_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06g_lld_atm_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4-designing-an-atm-system&#34;&gt;LLD Deep Dive #4: Designing an ATM System&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A structured, step-by-step walkthrough of the ATM low-level design problem as it would be reasoned through in a technical interview. The document proceeds from first principles, weighs alternative designs at each decision point, and arrives at a solution that combines the State pattern, the Strategy pattern, the Command pattern, and a clean separation between hardware and software concerns. Definitions of every technical term are provided when the term is introduced, so the document can be read without prior familiarity with the design-pattern literature.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06h_lld_movie_booking_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06h_lld_movie_booking_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4-designing-a-movie-ticket-booking-system-bookmyshow-style&#34;&gt;LLD Deep Dive #4: Designing a Movie Ticket Booking System (BookMyShow-style)&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Purpose of this document.&lt;/strong&gt; A staged walkthrough of how to reason through a Movie Ticket Booking Low-Level Design (LLD) problem in an interview setting. Each design decision is presented alongside the alternatives that were considered and the rationale for the final choice. The resulting design is modular, extensible, and treats concurrency as a first-class concern rather than a post-hoc extension.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06i_lld_text_editor_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06i_lld_text_editor_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-4--designing-a-text-editor&#34;&gt;LLD Deep Dive #4 — Designing a Text Editor&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is:&lt;/strong&gt; A genuine, step-by-step walkthrough of how to &lt;em&gt;think through&lt;/em&gt; a Text Editor LLD problem in an interview. Not a finished design dropped on you — but the reasoning, the false starts, the alternatives weighed, and the justifications behind each design decision.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time investment:&lt;/strong&gt; Read this slowly. If you&amp;rsquo;re doing this for interview prep, treat each stage as its own thinking exercise — pause and ask yourself &amp;ldquo;what would I do here?&amp;rdquo; before reading on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/low_level_design/interview_questions/06j_lld_splitwise_deep_dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/interview_questions/06j_lld_splitwise_deep_dive/</guid>
+      <description>&lt;h1 id=&#34;lld-deep-dive-5-designing-splitwise-expense-sharing&#34;&gt;LLD Deep Dive #5: Designing Splitwise (Expense Sharing)&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;What this document is.&lt;/strong&gt; This is a complete, step by step walkthrough of how to design an expense sharing system of the kind popularised by the Splitwise application. It reasons from first principles, states the alternatives at every decision point, and justifies the option that is chosen. The design developed here is implemented as a small, runnable, modular Python project that accompanies this document, so that every concept discussed in prose can be examined and executed as real code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/python-beginners-introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-beginners-introduction/</guid>
+      <description>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+&lt;meta charset=&#34;UTF-8&#34;&gt;
+&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;Python: Where to Start and Where It Can Take You | Codeverra&lt;/title&gt;
+&lt;link rel=&#34;preconnect&#34; href=&#34;https://fonts.googleapis.com&#34;&gt;
+&lt;link href=&#34;https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Sans+3:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&#34; rel=&#34;stylesheet&#34;&gt;
+&lt;style&gt;
+ :root {
+ - ink: #1a1a1a;
+ - ink-light: #444;
+ - ink-faint: #888;
+ - paper: #f7f4ef;
+ - paper-dark: #ede9e2;
+ - rule: #d8d2c8;
+ - accent: #c0392b;
+ - accent-2: #2c6e8a;
+ - accent-3: #27704a;
+ - code-bg: #1e1e2e;
+ - code-text: #cdd6f4;
+ - code-green: #a6e3a1;
+ - code-blue: #89b4fa;
+ - code-pink: #f38ba8;
+ - code-yellow:#f9e2af;
+ - serif: &#39;Playfair Display&#39;, Georgia, serif;
+ - sans: &#39;Source Sans 3&#39;, system-ui, sans-serif;
+ - mono: &#39;JetBrains Mono&#39;, &#39;Fira Code&#39;, monospace;
+ }
+
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+ html { scroll-behavior: smooth; }
+
+ body {
+ background: var( - paper);
+ color: var( - ink);
+ font-family: var( - sans);
+ font-size: 17px;
+ line-height: 1.75;
+ -webkit-font-smoothing: antialiased;
+ }
+
+ /* ---- HEADER ---- */
+ .site-header {
+ background: var( - ink);
+ padding: 14px 40px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ border-bottom: 2px solid var( - accent);
+ }
+ .site-logo {
+ font-family: var( - mono);
+ font-size: 15px;
+ color: #fff;
+ letter-spacing: 0.08em;
+ text-decoration: none;
+ }
+ .site-logo span { color: var( - accent); }
+ .header-tag {
+ font-family: var( - sans);
+ font-size: 12px;
+ font-weight: 500;
+ color: #888;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ }
+
+ /* ---- HERO ---- */
+ .hero {
+ background: var( - ink);
+ color: #fff;
+ padding: 80px 40px 70px;
+ position: relative;
+ overflow: hidden;
+ }
+ .hero::before {
+ content: &#39;&#39;;
+ position: absolute;
+ top: 0; left: 0; right: 0; bottom: 0;
+ background:
+ repeating-linear-gradient(
+ 90deg,
+ transparent,
+ transparent 79px,
+ rgba(255,255,255,0.03) 79px,
+ rgba(255,255,255,0.03) 80px
+ );
+ pointer-events: none;
+ }
+ .hero-inner {
+ max-width: 820px;
+ margin: 0 auto;
+ position: relative;
+ }
+ .hero-label {
+ font-family: var( - mono);
+ font-size: 12px;
+ color: var( - accent);
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ margin-bottom: 24px;
+ display: block;
+ }
+ .hero h1 {
+ font-family: var( - serif);
+ font-size: clamp(36px, 5vw, 58px);
+ font-weight: 700;
+ line-height: 1.15;
+ margin-bottom: 28px;
+ letter-spacing: -0.01em;
+ }
+ .hero h1 em {
+ font-style: italic;
+ color: #c8bfae;
+ }
+ .hero-sub {
+ font-size: 18px;
+ color: #b0a898;
+ font-weight: 300;
+ max-width: 600px;
+ line-height: 1.6;
+ margin-bottom: 40px;
+ }
+ .hero-meta {
+ display: flex;
+ gap: 32px;
+ font-size: 13px;
+ color: #666;
+ font-family: var( - mono);
+ flex-wrap: wrap;
+ }
+ .hero-meta span { color: #888; }
+ .hero-meta strong { color: #aaa; }
+
+ /* ---- TABLE OF CONTENTS ---- */
+ .toc-bar {
+ background: var( - paper-dark);
+ border-bottom: 1px solid var( - rule);
+ padding: 0;
+ }
+ .toc-inner {
+ max-width: 820px;
+ margin: 0 auto;
+ padding: 20px 40px;
+ }
+ .toc-title {
+ font-family: var( - mono);
+ font-size: 11px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var( - ink-faint);
+ margin-bottom: 12px;
+ }
+ .toc-list {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px 0;
+ list-style: none;
+ counter-reset: toc;
+ }
+ .toc-list li {
+ counter-increment: toc;
+ width: 50%;
+ font-size: 14px;
+ color: var( - ink-light);
+ padding: 2px 0;
+ }
+ .toc-list li::before {
+ content: counter(toc, decimal-leading-zero) &#34;. &#34;;
+ font-family: var( - mono);
+ font-size: 11px;
+ color: var( - accent);
+ margin-right: 6px;
+ }
+ .toc-list a {
+ color: inherit;
+ text-decoration: none;
+ border-bottom: 1px solid transparent;
+ transition: border-color 0.2s, color 0.2s;
+ }
+ .toc-list a:hover { color: var( - ink); border-bottom-color: var( - accent); }
+
+ /* ---- MAIN CONTENT ---- */
+ .main {
+ max-width: 820px;
+ margin: 0 auto;
+ padding: 60px 40px 80px;
+ }
+
+ /* ---- SECTIONS ---- */
+ .section { margin-bottom: 72px; }
+
+ .section-label {
+ font-family: var( - mono);
+ font-size: 11px;
+ color: var( - accent);
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ display: block;
+ margin-bottom: 12px;
+ }
+
+ h2 {
+ font-family: var( - serif);
+ font-size: 32px;
+ font-weight: 700;
+ line-height: 1.2;
+ color: var( - ink);
+ margin-bottom: 20px;
+ padding-bottom: 14px;
+ border-bottom: 2px solid var( - rule);
+ }
+
+ h3 {
+ font-family: var( - serif);
+ font-size: 22px;
+ font-weight: 600;
+ margin-top: 40px;
+ margin-bottom: 14px;
+ color: var( - ink);
+ }
+
+ h4 {
+ font-family: var( - sans);
+ font-size: 14px;
+ font-weight: 600;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: var( - ink-faint);
+ margin-top: 28px;
+ margin-bottom: 10px;
+ }
+
+ p { margin-bottom: 18px; color: var( - ink-light); }
+ p strong { color: var( - ink); font-weight: 600; }
+
+ /* ---- PULLQUOTE ---- */
+ .pullquote {
+ border-left: 4px solid var( - accent);
+ margin: 36px 0;
+ padding: 20px 28px;
+ background: var( - paper-dark);
+ font-family: var( - serif);
+ font-size: 20px;
+ font-style: italic;
+ color: var( - ink);
+ line-height: 1.5;
+ }
+
+ /* ---- CALLOUT BOX ---- */
+ .callout {
+ border: 1px solid var( - rule);
+ border-left: 4px solid var( - accent-2);
+ background: #f0f6fa;
+ padding: 20px 24px;
+ margin: 28px 0;
+ border-radius: 0 4px 4px 0;
+ }
+ .callout.green { border-left-color: var( - accent-3); background: #f0faf4; }
+ .callout-title {
+ font-family: var( - mono);
+ font-size: 11px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var( - accent-2);
+ margin-bottom: 8px;
+ display: block;
+ }
+ .callout.green .callout-title { color: var( - accent-3); }
+ .callout p { margin: 0; font-size: 15px; }
+
+ /* ---- CODE BLOCKS ---- */
+ pre {
+ background: var( - code-bg);
+ border-radius: 6px;
+ padding: 24px 28px;
+ overflow-x: auto;
+ margin: 24px 0;
+ position: relative;
+ border: 1px solid #313244;
+ }
+ pre .lang-tag {
+ position: absolute;
+ top: 10px;
+ right: 14px;
+ font-family: var( - mono);
+ font-size: 10px;
+ color: #45475a;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ }
+ code {
+ font-family: var( - mono);
+ font-size: 14px;
+ line-height: 1.7;
+ color: var( - code-text);
+ }
+ p code, li code {
+ background: var( - paper-dark);
+ color: var( - accent);
+ padding: 1px 6px;
+ border-radius: 3px;
+ font-size: 13.5px;
+ border: 1px solid var( - rule);
+ }
+ .kw { color: var( - code-pink); }
+ .fn { color: var( - code-blue); }
+ .st { color: var( - code-green); }
+ .cm { color: #6c7086; font-style: italic; }
+ .nm { color: var( - code-yellow); }
+ .op { color: #cba6f7; }
+
+ /* ---- COMPARISON TABLE ---- */
+ .compare-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 28px 0;
+ font-size: 15px;
+ }
+ .compare-table thead tr {
+ background: var( - ink);
+ color: #fff;
+ }
+ .compare-table th {
+ font-family: var( - sans);
+ font-weight: 600;
+ font-size: 13px;
+ letter-spacing: 0.05em;
+ padding: 12px 16px;
+ text-align: left;
+ }
+ .compare-table td {
+ padding: 11px 16px;
+ border-bottom: 1px solid var( - rule);
+ color: var( - ink-light);
+ vertical-align: top;
+ }
+ .compare-table tbody tr:nth-child(even) { background: var( - paper-dark); }
+ .compare-table tbody tr:hover { background: #e8e3da; }
+ .badge {
+ display: inline-block;
+ font-family: var( - mono);
+ font-size: 11px;
+ padding: 2px 8px;
+ border-radius: 2px;
+ font-weight: 500;
+ }
+ .badge-green { background: #e6f4ea; color: #27704a; }
+ .badge-yellow { background: #fef9e7; color: #9a7d0a; }
+ .badge-red { background: #fdecea; color: #c0392b; }
+
+ /* ---- SYNTAX RULES LIST ---- */
+ .rules-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+ margin: 24px 0;
+ }
+ .rule-card {
+ background: var( - paper-dark);
+ border: 1px solid var( - rule);
+ border-top: 3px solid var( - accent-2);
+ padding: 18px 20px;
+ border-radius: 0 0 4px 4px;
+ }
+ .rule-card h5 {
+ font-family: var( - sans);
+ font-size: 13px;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ color: var( - ink);
+ margin-bottom: 8px;
+ }
+ .rule-card p { font-size: 14px; margin: 0; }
+
+ /* ---- DATATYPE CARDS ---- */
+ .dtype-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 16px;
+ margin: 28px 0;
+ }
+ .dtype-card {
+ background: var( - paper-dark);
+ border: 1px solid var( - rule);
+ padding: 20px;
+ border-radius: 4px;
+ transition: box-shadow 0.2s, transform 0.2s;
+ }
+ .dtype-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+ .dtype-name {
+ font-family: var( - mono);
+ font-size: 13px;
+ font-weight: 500;
+ color: var( - accent);
+ display: block;
+ margin-bottom: 4px;
+ }
+ .dtype-label {
+ font-size: 16px;
+ font-weight: 600;
+ color: var( - ink);
+ display: block;
+ margin-bottom: 8px;
+ }
+ .dtype-eg {
+ font-family: var( - mono);
+ font-size: 12px;
+ color: var( - accent-2);
+ background: #e8f0f5;
+ padding: 4px 8px;
+ border-radius: 3px;
+ display: inline-block;
+ margin-bottom: 10px;
+ }
+ .dtype-card p { font-size: 13px; margin: 0; color: var( - ink-faint); }
+
+ /* ---- INSTALL STEPS ---- */
+ .steps { list-style: none; counter-reset: steps; margin: 24px 0; }
+ .steps li {
+ counter-increment: steps;
+ display: flex;
+ gap: 20px;
+ margin-bottom: 24px;
+ align-items: flex-start;
+ }
+ .steps li::before {
+ content: counter(steps);
+ flex-shrink: 0;
+ width: 36px;
+ height: 36px;
+ background: var( - ink);
+ color: #fff;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: var( - mono);
+ font-size: 13px;
+ font-weight: 500;
+ margin-top: 2px;
+ }
+ .steps li div { flex: 1; }
+ .steps li strong { display: block; font-size: 16px; margin-bottom: 4px; color: var( - ink); }
+ .steps li p { font-size: 15px; margin: 0; }
+
+ /* ---- DIVIDER ---- */
+ .divider {
+ border: none;
+ border-top: 1px solid var( - rule);
+ margin: 56px 0;
+ }
+
+ /* ===================== ROADMAP ===================== */
+ .roadmap-section {
+ background: var( - ink);
+ color: #fff;
+ margin: 0 -40px;
+ padding: 72px 40px;
+ }
+ .roadmap-section h2 {
+ color: #fff;
+ border-bottom-color: #333;
+ font-size: 36px;
+ }
+ .roadmap-section p { color: #a0998e; }
+
+ /* Phase selector */
+ .phase-tabs {
+ display: flex;
+ gap: 0;
+ margin: 40px 0 0;
+ border-bottom: 1px solid #333;
+ flex-wrap: wrap;
+ }
+ .phase-tab {
+ font-family: var( - mono);
+ font-size: 12px;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ padding: 12px 22px;
+ border: none;
+ background: none;
+ color: #555;
+ cursor: pointer;
+ border-bottom: 3px solid transparent;
+ margin-bottom: -1px;
+ transition: color 0.2s, border-color 0.2s;
+ }
+ .phase-tab.active { color: #fff; border-bottom-color: var( - accent); }
+ .phase-tab:hover:not(.active) { color: #aaa; }
+
+ /* Phase content */
+ .phase-panel { display: none; padding-top: 36px; }
+ .phase-panel.active { display: block; }
+
+ .phase-header {
+ display: flex;
+ align-items: flex-start;
+ gap: 24px;
+ margin-bottom: 32px;
+ }
+ .phase-num {
+ font-family: var( - serif);
+ font-size: 72px;
+ font-weight: 700;
+ color: #2a2a2a;
+ line-height: 1;
+ flex-shrink: 0;
+ }
+ .phase-info h3 {
+ font-family: var( - serif);
+ font-size: 28px;
+ font-weight: 600;
+ color: #fff;
+ margin: 0 0 6px;
+ }
+ .phase-info p { font-size: 15px; color: #888; margin: 0; }
+
+ .topics-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 12px;
+ margin-bottom: 32px;
+ }
+ .topic-item {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ background: #1e1e1e;
+ border: 1px solid #2a2a2a;
+ border-radius: 4px;
+ padding: 14px 16px;
+ transition: border-color 0.2s, background 0.2s;
+ cursor: default;
+ }
+ .topic-item:hover { background: #222; border-color: #444; }
+ .topic-dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ flex-shrink: 0;
+ background: var( - accent);
+ }
+ .topic-dot.blue { background: var( - accent-2); }
+ .topic-dot.green { background: var( - accent-3); }
+ .topic-dot.yellow { background: #d4a017; }
+ .topic-dot.purple { background: #8b5cf6; }
+
+ .topic-text {
+ font-size: 14px;
+ color: #ccc;
+ flex: 1;
+ }
+ .topic-badge {
+ font-family: var( - mono);
+ font-size: 10px;
+ padding: 2px 7px;
+ border-radius: 2px;
+ background: #2a2a2a;
+ color: #666;
+ white-space: nowrap;
+ }
+ .topic-badge.core { background: #2a1a1a; color: var( - accent); }
+ .topic-badge.practice { background: #1a2a1a; color: var( - accent-3); }
+ .topic-badge.advanced { background: #1a1a2a; color: var( - accent-2); }
+
+ /* Resource links within phase */
+ .phase-resources {
+ background: #161616;
+ border: 1px solid #2a2a2a;
+ border-left: 3px solid var( - accent);
+ padding: 20px 24px;
+ border-radius: 0 4px 4px 0;
+ }
+ .phase-resources h5 {
+ font-family: var( - mono);
+ font-size: 11px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var( - accent);
+ margin-bottom: 12px;
+ }
+ .resource-links { list-style: none; }
+ .resource-links li {
+ font-size: 14px;
+ color: #888;
+ padding: 5px 0;
+ border-bottom: 1px solid #222;
+ }
+ .resource-links li:last-child { border-bottom: none; }
+ .resource-links a { color: #6ba8c4; text-decoration: none; }
+ .resource-links a:hover { color: #89b4fa; text-decoration: underline; }
+
+ /* ---- SPECIALISATIONS ---- */
+ .spec-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 16px;
+ margin: 32px 0;
+ }
+ .spec-card {
+ background: #161616;
+ border: 1px solid #2a2a2a;
+ border-radius: 4px;
+ padding: 24px;
+ transition: border-color 0.2s;
+ }
+ .spec-card:hover { border-color: #444; }
+ .spec-tag {
+ font-family: var( - mono);
+ font-size: 10px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ padding: 3px 9px;
+ border-radius: 2px;
+ display: inline-block;
+ margin-bottom: 14px;
+ }
+ .spec-card h4 {
+ font-family: var( - sans);
+ font-size: 17px;
+ font-weight: 600;
+ text-transform: none;
+ letter-spacing: 0;
+ color: #e0d8cc;
+ margin-bottom: 10px;
+ margin-top: 0;
+ }
+ .spec-card p { font-size: 13.5px; color: #777; margin-bottom: 14px; }
+ .spec-skills {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 6px;
+ }
+ .skill-chip {
+ font-family: var( - mono);
+ font-size: 11px;
+ padding: 3px 8px;
+ background: #222;
+ border: 1px solid #333;
+ border-radius: 2px;
+ color: #999;
+ }
+
+ /* FOOTER */
+ .site-footer {
+ background: #111;
+ color: #555;
+ text-align: center;
+ padding: 40px;
+ font-size: 13px;
+ font-family: var( - mono);
+ border-top: 1px solid #222;
+ }
+ .site-footer a { color: #777; text-decoration: none; }
+ .site-footer a:hover { color: #aaa; }
+
+ /* ---- RESPONSIVE ---- */
+ @media (max-width: 680px) {
+ .hero { padding: 50px 24px 40px; }
+ .main { padding: 40px 24px 60px; }
+ .toc-inner { padding: 16px 24px; }
+ .toc-list li { width: 100%; }
+ .rules-grid { grid-template-columns: 1fr; }
+ .dtype-grid { grid-template-columns: 1fr 1fr; }
+ .topics-grid { grid-template-columns: 1fr; }
+ .spec-grid { grid-template-columns: 1fr; }
+ .roadmap-section { margin: 0 -24px; padding: 48px 24px; }
+ .site-header { padding: 12px 24px; }
+ h2 { font-size: 26px; }
+ }
+
+ /* ANIMATIONS */
+ @keyframes fadeUp {
+ from { opacity: 0; transform: translateY(20px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+ .hero-inner { animation: fadeUp 0.6s ease both; }
+ .section { animation: fadeUp 0.5s ease both; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;! - HEADER - &gt;
+&lt;header class=&#34;site-header&#34;&gt;
+ &lt;a class=&#34;site-logo&#34; href=&#34;https://codeverra.com&#34;&gt;&lt;span&gt;//&lt;/span&gt; codeverra&lt;/a&gt;
+ &lt;span class=&#34;header-tag&#34;&gt;Python Fundamentals Series&lt;/span&gt;
+&lt;/header&gt;
+
+&lt;! - HERO - &gt;
+&lt;div class=&#34;hero&#34;&gt;
+ &lt;div class=&#34;hero-inner&#34;&gt;
+ &lt;span class=&#34;hero-label&#34;&gt;Lecture 01 / Python Fundamentals&lt;/span&gt;
+ &lt;h1&gt;Python: Where to Start&lt;br&gt;and &lt;em&gt;Where It Can Take You&lt;/em&gt;&lt;/h1&gt;
+ &lt;p class=&#34;hero-sub&#34;&gt;
+ A complete introduction to why Python matters, how to set it up, the basics of its syntax,
+ and an honest roadmap of everything that lies ahead for you.
+ &lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

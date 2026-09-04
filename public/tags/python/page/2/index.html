@@ -18,7 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../../../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../../../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../../../../css/github-markdown.css">
+<link rel="stylesheet" href="../../../../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -80,6 +81,7 @@
     }
 
 </script>
+<script defer src="../../../../js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -144,18 +146,60 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
 
 
 <header class="page-header"><div class="breadcrumbs">
-    <a href="https://codeverra.com/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+    <a href="https://codeverra.com/">Home</a></div>
     <h1>
         Python
     </h1>
 </header>
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="../../../../blog/"
+     class="topic-pill">All</a>
+  <a href="../../../../tags/python/"
+     class="topic-pill topic-pill--active">Python</a>
+  <a href="../../../../tags/dsa/"
+     class="topic-pill">Dsa</a>
+  <a href="../../../../tags/data-analysis/"
+     class="topic-pill">Data-Analysis</a>
+  <a href="../../../../tags/sql/"
+     class="topic-pill">Sql</a>
+  <a href="../../../../tags/dsa-patterns/"
+     class="topic-pill">Dsa-Patterns</a>
+  <a href="../../../../tags/learning-roadmap/"
+     class="topic-pill">Learning-Roadmap</a>
+  <a href="../../../../tags/pandas/"
+     class="topic-pill">Pandas</a>
+  <a href="../../../../tags/algorithms/"
+     class="topic-pill">Algorithms</a>
+  <a href="../../../../tags/numpy/"
+     class="topic-pill">Numpy</a>
+  <a href="../../../../tags/searching/"
+     class="topic-pill">Searching</a>
+</nav>
 
 
 
@@ -163,19 +207,16 @@
 
 <article class="post-entry">
      
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/iterators%20and%20generators%20in%20python.png" alt="iterators and generators in python">
-</figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Iterators and Generators in Python - Complete Guide
+        <h2 class="entry-hint-parent">Python Loops Masterclass
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python Iterables, Iterators &amp; Generators A Complete Lesson Plan &amp; Reference Guide Table of Contents The Big Picture Iterables Iterators The Iterator Protocol Building Custom Iterators Generators Generator Expressions Advanced Generator Features Common Pitfalls &amp; Things to Keep in Mind Real-Life Applications Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture Before diving in, here’s the conceptual map you need to hold in your head:
-┌──────────────────────────────────────────────────┐ │ ITERABLE │ │ Any object you can loop over with a for loop │ │ Examples: list, tuple, str, dict, set, file │ │ │ │ Has __iter__() → returns an Iterator │ └──────────────────────┬───────────────────────────┘ │ __iter__() called ▼ ┌──────────────────────────────────────────────────┐ │ ITERATOR │ │ An object that knows where it is in a sequence │ │ and can produce the next value on demand │ │ │ │ Has __iter__() → returns self │ │ Has __next__() → returns next value or raises │ │ StopIteration │ └──────────────────────┬───────────────────────────┘ │ special case of ▼ ┌──────────────────────────────────────────────────┐ │ GENERATOR │ │ A convenient way to create iterators using │ │ the `yield` keyword — Python auto-builds the │ │ iterator protocol for you │ └──────────────────────────────────────────────────┘ Key Insight: Every iterator is an iterable, but not every iterable is an iterator. A list is an iterable but NOT an iterator. iter(list) gives you an iterator.
+        <p>🔁 Python Loops Masterclass Complete Command Over for and while Loops — From Basics to Patterns Who is this for? You know Python basics — variables, conditionals, functions. Now you want to truly master loops — not just use them, but think in them. This guide covers every loop concept in Python, with simple examples before every idea.
+📌 Table of Contents Why Loops Exist The for Loop Iterating Over Different Data Types The range() Function The while Loop break — Exit the Loop Early continue — Skip to the Next Iteration pass — Do Nothing (Placeholder) else with Loops enumerate() — Loop with an Index zip() — Loop Over Multiple Sequences Nested Loops List Comprehensions Dictionary and Set Comprehensions Loop Patterns Every Programmer Uses Common Loop Mistakes and How to Avoid Them Practice Questions What We Covered &#43; What’s Next 1. Why Loops Exist Imagine you need to print a welcome message for 500 students. Without loops:
 ...</p>
     </div>
 
@@ -183,28 +224,28 @@
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4112 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5150 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Iterators and Generators in Python - Complete Guide" href="http://localhost:1313/blog/iterators_generators/"></a>
+    <a class="entry-link" aria-label="post link to Python Loops Masterclass" href="http://localhost:1313/blog/python-03-loops-masterclass/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/itertools.png" alt="itertools module in python">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-2.png" alt="Python Refresher for DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Itertools Module in Python - Complete Guide
+        <h2 class="entry-hint-parent">Python Refresher for DSA
         </h2>
     </header>
     <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python’s itertools - The Missing Manual A deep dive into one of Python’s most underused standard library modules Wait, Why Should I Care About Another Module? You’ve written Python for a while. You know how to use for loops, list comprehensions, zip, and enumerate. Things work. So when someone says “hey, you should learn itertools”, it’s easy to nod politely and move on.
-Here’s what changes your mind. Imagine you’re asked to generate all possible batting orders for 4 players chosen from a squad of 11. Or you need to group a massive log file by date without loading it all into memory. Or you want to pair up every possible combination of feature columns for a machine learning experiment.
+        <p>Python Refresher for DSA Table of Contents What You Will Learn in This Blog Python Built-in Data Types for DSA Lists Dictionaries Sets Tuples The Collections Module deque defaultdict Counter List Comprehensions Important Built-in Functions for DSA Sorting in Python String Operations heapq – The Built-in Min Heap Common Python Patterns in DSA Summary Key Takeaways Next Steps What You Will Learn in This Blog The Python built-in data types you will use constantly in DSA How lists, dictionaries, sets, and tuples work and when to use each Important Python built-in functions and their complexities The collections module – deque, defaultdict, Counter List comprehensions and when to use them Common Python patterns that appear repeatedly in DSA problems This is not a complete Python tutorial. It covers exactly what you need to follow the rest of this guide comfortably. If you are already confident with all of the above, you can skim this and move on.
 ...</p>
     </div>
 
@@ -212,30 +253,140 @@ Here’s what changes your mind. Imagine you’re asked to generate all possible
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>29 min</span>&nbsp;·&nbsp;<span>6049 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>16 min</span>&nbsp;·&nbsp;<span>3233 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Itertools Module in Python - Complete Guide" href="http://localhost:1313/blog/itertools/"></a>
+    <a class="entry-link" aria-label="post link to Python Refresher for DSA" href="http://localhost:1313/blog/dsa-02-python-refresher/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Regular Expressions in Python
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Regular Expressions in Python Pattern Matching, Text Processing, and the re Module Before We Begin – Why Regular Expressions Matter Here is a real problem. You have a CSV file with 50,000 rows of customer data. The phone number column is a mess:
+&#43;91-9876543210 9876 543 210 (091) 9876-543210 91-98765-43210 9876543210 &#43;919876543210 All of these are the same phone number in different formats. You need to extract just the 10-digit number from all of them.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4608 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Regular Expressions in Python" href="http://localhost:1313/blog/python-17-regex-guide/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/pandas_ipl.png" alt="pandas practice on IPL dataset">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-5.png" alt="Strings in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Practice Pandas on IPL Dataset
+        <h2 class="entry-hint-parent">Strings in Python  -  Complete Guide
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Strings Table of Contents What You Will Learn in This Blog What is a String ASCII Unicode Strings in Python – Immutability String Operations and Time Complexity Common String Methods Strings as Arrays Patterns and Techniques Pattern 1 – Two Pointers on Strings Pattern 2 – Sliding Window on Strings Pattern 3 – Hashing for String Problems Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog What a string is at the byte level – characters, ASCII, and Unicode How Python represents strings in memory Why strings in Python are immutable and what that means in practice All common string operations and their time complexity How to build strings efficiently and avoid a common O(n^2) trap Three patterns applied to strings: Sliding Window, Two Pointers, and Hashing Solved LeetCode problems for each pattern with full explanation A practice problem table for further study What is a String At the most fundamental level, a string is a sequence of characters. But computers do not natively understand characters – they only understand numbers. So every character is mapped to a number, and that number is stored in memory.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4117 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Strings in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-05-strings/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Type Hints in Python
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Type Hints in Python Writing Code That Explains Itself – The typing Module and Beyond Before We Begin – Why Type Hints Matter Here is a function:
+def calculate_discount(price, discount, is_member): ... What type is price? A float? An int? A string like &#34;1299&#34;? What is discount? A percentage like 18.5? Or a multiplier like 0.185? What does is_member do to the result?
+You cannot tell without reading the implementation. In a codebase with hundreds of functions, this adds up to an enormous cognitive load.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>16 min</span>&nbsp;·&nbsp;<span>3344 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Type Hints in Python" href="http://localhost:1313/blog/python-18-type-hints/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Working with the Real World in Python
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Working with the Real World APIs, JSON, Dates, and HTTP Requests in Python Before We Begin – What Changes After This Guide Everything you have learned so far has worked entirely inside your own machine. You write code, it runs, it produces output, it reads files you already have.
+This guide is where that changes.
+After this guide your Python programs will be able to:
+Ask a server in another country for the current weather in Mumbai Get the latest currency exchange rate between INR and USD Pull real-time cricket scores from a sports API Send data to a web service and get a response back Work with dates and times the way real applications do This is not tutorial-level Python anymore. This is the Python that powers every data pipeline, every web application, every automation script, and every data science project that talks to the outside world.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>37 min</span>&nbsp;·&nbsp;<span>7715 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Working with the Real World in Python" href="http://localhost:1313/blog/python-19-working-with-real-world/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/numpy-practice.png" alt="Python programming">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Complete Guide to Numpy Library in Python
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/numpy/">numpy</a>
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
     </div>
     <div class="entry-content">
-        <p>Pandas Practice Sheet — IPL Dataset A complete two-table exploration: from match summaries to ball-by-ball intelligence Why IPL Is the Best Dataset for Pandas After Zomato The Zomato dataset taught you how to clean a single messy table. The IPL dataset teaches you something more important: how to work with two related tables and merge them to answer questions neither table can answer alone.
-This is how data exists in every real company — not as one giant flat file, but as a set of related tables that you must join, aggregate across levels, and reason about carefully.
+        <p>🔢 NumPy Masterclass and Practice Sheet From Zero to Confident - A Beginner’s Guide to Numerical Computing in Python Who is this for? You know Python basics - lists, loops, functions - and you want to level up into data science. NumPy is your first real step. Everything in data science (Pandas, Scikit-learn, TensorFlow) is built on top of it.
+📌 Table of Contents What is NumPy and Why Should You Care? Installing and Importing NumPy Creating Arrays Array Attributes Indexing and Slicing Array Operations - Math Made Easy Universal Functions (ufuncs) Aggregation Functions Reshaping and Transposing Stacking and Splitting Arrays Boolean Masking and Fancy Indexing Broadcasting Working with Random Numbers Linear Algebra with NumPy Sorting and Searching Copies vs Views Saving and Loading Arrays Practice Questions What We Covered &#43; What’s Next 1. What is NumPy and Why Should You Care? Python lists are flexible and easy to use - but they are slow when it comes to heavy number crunching. If you have a million exam scores and want to find the average, a Python loop will take noticeably longer than it should.
 ...</p>
     </div>
 
@@ -243,54 +394,20 @@ This is how data exists in every real company — not as one giant flat file, bu
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>38 min</span>&nbsp;·&nbsp;<span>8014 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5194 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Practice Pandas on IPL Dataset" href="http://localhost:1313/blog/ipl_pandas/"></a>
+    <a class="entry-link" aria-label="post link to Complete Guide to Numpy Library in Python" href="http://localhost:1313/blog/numpy-practice/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/pandas_titanic.png" alt="pandas practice on titanic dataset">
+        <img loading="lazy" src="http://localhost:1313/images/pandas-practice.png" alt="Python programming">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Practice Pandas on Titanic Dataset
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
-    </div>
-    <div class="entry-content">
-        <p>Pandas Practice Sheet — Titanic Dataset 20 Questions from Zero to Advanced, with Full Solutions Getting the Dataset The Titanic dataset is hosted publicly and can be loaded directly into pandas — no download needed.
-Direct CSV URL (no login required):
-https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv Load it in one line:
-import pandas as pd df = pd.read_csv(&#34;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&#34;) Or load via seaborn (also free, slightly different column names):
-import seaborn as sns df = sns.load_dataset(&#34;titanic&#34;) Always run df.head() and df.info() before answering any question — knowing your data is half the battle.
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5165 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Practice Pandas on Titanic Dataset" href="http://localhost:1313/blog/titanic_pandas/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/pandas_zomato.png" alt="practice pandas on zomato dataset">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Practice Pandas on Zomato Dataset
+        <h2 class="entry-hint-parent">Complete Guide to Pandas in Python
         </h2>
     </header>
     <div class="entry-tags">
@@ -299,7 +416,8 @@ import seaborn as sns df = sns.load_dataset(&#34;titanic&#34;) Always run df.hea
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>Pandas Practice Sheet — Zomato Bangalore Dataset A complete guided exploration: from raw messy data to real business insights Why This Dataset? The Titanic dataset is clean, small, and predictable. The Zomato Bangalore dataset is the opposite — it is genuinely messy in the way real-world data is messy. Ratings stored as strings like &#34;3.8/5&#34;. Costs formatted as &#34;450&#34; with comma-separators (&#34;1,200&#34;). The cuisines column has multiple cuisines packed into one cell separated by commas. Several columns have inconsistent values, duplicates, and missing data scattered across them.
+        <p>🐼 Pandas Masterclass From Raw Data to Real Insights - A Beginner’s Guide to Data Analysis in Python Who is this for? You’ve done the NumPy Masterclass (or know the basics of Python and arrays). Now you want to work with real tabular data - rows, columns, missing values, merges, and group-level summaries. That’s exactly what Pandas is for.
+📌 Table of Contents What is Pandas and Why Do You Need It? Installing and Importing Pandas The Two Core Data Structures Creating DataFrames Reading and Writing Data Exploring a DataFrame Selecting Data - loc, iloc, and Column Access Filtering Rows Adding, Modifying, and Dropping Columns Sorting Data Handling Missing Data String Operations Working with Dates and Times apply(), map(), and applymap() GroupBy - Aggregation and Split-Apply-Combine Merging and Joining DataFrames Pivot Tables and Crosstabs Reshaping - melt() and stack()/unstack() MultiIndex DataFrames Performance Tips Practice Questions What We Covered &#43; What’s Next 1. What is Pandas and Why Do You Need It? NumPy arrays are powerful, but they have one limitation: every column must be the same data type, and there are no column names or row labels.
 ...</p>
     </div>
 
@@ -307,42 +425,39 @@ import seaborn as sns df = sns.load_dataset(&#34;titanic&#34;) Always run df.hea
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>34 min</span>&nbsp;·&nbsp;<span>7207 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>30 min</span>&nbsp;·&nbsp;<span>6333 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Practice Pandas on Zomato Dataset" href="http://localhost:1313/blog/pandas_zomato/"></a>
+    <a class="entry-link" aria-label="post link to Complete Guide to Pandas in Python" href="http://localhost:1313/blog/pandas-practice/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/python-syllabus-cover.png" alt="Python programming learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/collections-practice.png" alt="Python programming">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Complete Python Programming Syllabus (Beginner to Advanced)
+        <h2 class="entry-hint-parent">Master Collections in Python
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
     </div>
     <div class="entry-content">
-        <p>Python is one of the most versatile and beginner-friendly programming languages in the world. From web development and automation to data science and AI, Python forms the backbone of modern software development.
-This syllabus is designed as a structured learning roadmap, not just a list of topics. It focuses on building strong fundamentals, clear thinking, and professional-level coding skills.
-This guide covers:
-Python fundamentals from scratch Core programming concepts Advanced Python features Career-oriented applications Interview and professional preparation Beginner Level — Python Foundations 1. Introduction to Python What is Python History and features of Python Applications of Python Python vs other languages Installing Python Python versions Running Python programs Python interactive shell Writing your first Python program 2. Python Basics &amp; Syntax Python keywords Identifiers Indentation and code structure Comments (single-line and multi-line) Variables and naming conventions Data types overview Type checking using type() Type conversion 3. Input, Output &amp; Operators Input using input() Output using print() Formatted output Arithmetic operators Relational operators Logical operators Assignment operators Operator precedence 4. Control Flow Conditional Statements if if-else elif Nested conditions Looping Statements for loop while loop Loop Control break continue pass Intermediate Level — Core Python Concepts 5. Strings String creation Indexing and slicing String methods String formatting Escape characters Immutability String operations 6. Lists Creating lists Indexing and slicing List methods Nested lists Iterating through lists List comprehensions 7. Tuples Creating tuples Tuple operations Tuple unpacking Difference between list and tuple Use cases 8. Sets Set creation Set methods Set operations Difference between set and list Use cases 9. Dictionaries Dictionary creation Accessing elements Dictionary methods Iterating dictionaries Nested dictionaries Real-world use cases 10. Functions Defining functions Function parameters Return values Default arguments Keyword arguments Variable-length arguments (*args, **kwargs) Scope (local and global) Lambda functions 11. Modules &amp; Packages Importing modules Built-in modules Creating custom modules Python packages __name__ == &#34;__main__&#34; Virtual environments Advanced Level — Professional Python 12. File Handling Reading files Writing files File modes Working with CSV files JSON handling Context managers using with 13. Exception Handling Types of errors try and except else and finally Multiple exceptions Custom exceptions Debugging techniques 14. Object-Oriented Programming (OOP) Classes and objects Constructors Instance and class variables Methods Encapsulation Inheritance Polymorphism Abstraction Magic methods (__str__, __len__, etc.) 15. Advanced Python Concepts List, set, and dictionary comprehensions Iterators and generators Decorators Closures Shallow vs deep copy Memory management Garbage collection 16. Python Standard Library math random datetime collections itertools functools os sys 17. Testing &amp; Debugging Assertions Unit testing Writing test cases Testing frameworks overview Debugging tools Logging Specialized &amp; Career-Oriented Topics 18. Data Structures &amp; Algorithms with Python Time and space complexity Arrays and strings Stacks and queues Linked lists Trees Graphs Dynamic programming Greedy algorithms Recursion and backtracking 19. Automation &amp; Scripting File and folder automation Web scraping basics Task scheduling Command-line tools Automation projects 20. Python for Web Development Backend fundamentals REST APIs JSON and HTTP Web frameworks overview Request–response cycle 21. Python for Data &amp; AI NumPy basics Pandas basics Data cleaning Basic data visualization Working with datasets 22. Performance &amp; Optimization Code optimization Profiling Efficient data handling Best practices PEP 8 guidelines Type hints 23. Real-World Projects Beginner mini projects Automation projects API-based projects Data-driven projects End-to-end Python applications 24. Interview &amp; Professional Topics Common Python interview questions DSA problem solving Design patterns Code optimization Packaging and distribution Resume and project preparation 25. Python Programming Playlist --- More structured Python learning guides and hands-on roadmaps coming soon.
-</p>
+        <p>Python Collections - Practice Questions and Solutions List, Tuple, Dictionary, Set – Complete Practice Set This practice set covers strings and all four major Python collections. Questions are grouped by collection type, then by difficulty within each section. The final section has mixed questions that combine multiple collections, loops, and conditionals. Try each question before reading the solution.
+Table of Contents Part 1 – Lists Part 2 – Strings Part 3 – Tuples Part 4 – Dictionaries Part 5 – Sets Part 6 – Mixed Questions Quick Reference Part 1 – Lists A list is an ordered, mutable collection. It allows duplicate values and supports indexing, slicing, appending, and sorting.
+...</p>
     </div>
 
     
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>581 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5163 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Complete Python Programming Syllabus (Beginner to Advanced)" href="http://localhost:1313/blog/python_syllabus/"></a>
+    <a class="entry-link" aria-label="post link to Master Collections in Python" href="http://localhost:1313/blog/python-06-collections-practice/"></a>
     
 </article>
 </div>
@@ -350,6 +465,8 @@ Python fundamentals from scratch Core programming concepts Advanced Python featu
     <nav class="pagination">
         <a class="prev" href="http://localhost:1313/tags/python/">
             «&nbsp;Prev&nbsp;
+        </a>
+        <a class="next" href="http://localhost:1313/tags/python/page/3/">Next&nbsp;&nbsp;»
         </a>
     </nav>
 </footer>

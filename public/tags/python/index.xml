@@ -4,10 +4,204 @@
     <title>Python on codeverra</title>
     <link>http://localhost:1313/tags/python/</link>
     <description>Recent content in Python on codeverra</description>
-    <generator>Hugo -- 0.158.0</generator>
+    <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 09:28:32 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control Flow in Python</title>
+      <link>http://localhost:1313/blog/python-02-control-flow/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-02-control-flow/</guid>
+      <description>&lt;h1 id=&#34;control-flow-in-python&#34;&gt;Control Flow in Python&lt;/h1&gt;
+&lt;h3 id=&#34;making-decisions-in-your-code--if-elif-else-and-beyond&#34;&gt;Making Decisions in Your Code &amp;ndash; if, elif, else, and Beyond&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-control-flow-is-everything&#34;&gt;Before We Begin &amp;ndash; Why Control Flow is Everything&lt;/h2&gt;
+&lt;p&gt;Every program you have ever used makes decisions.&lt;/p&gt;
+&lt;p&gt;When you log into a website: if the password is correct, show the dashboard,
+otherwise show an error. When your food delivery app calculates the delivery fee:
+if the order is above Rs.200, delivery is free, else charge Rs.30.
+When a data pipeline processes records: if the record is valid, process it,
+else log an error and skip it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Logging and System Interaction in Python</title>
+      <link>http://localhost:1313/blog/python-16-logging-and-os/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-16-logging-and-os/</guid>
+      <description>&lt;h1 id=&#34;logging-and-system-interaction-in-python&#34;&gt;Logging and System Interaction in Python&lt;/h1&gt;
+&lt;h3 id=&#34;professional-observability-with-the-logging-module-and-the-os-module&#34;&gt;Professional Observability with the logging Module and the os Module&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-this-matters-more-than-it-looks&#34;&gt;Before We Begin &amp;ndash; Why This Matters More Than It Looks&lt;/h2&gt;
+&lt;p&gt;Here is a situation every developer eventually faces.&lt;/p&gt;
+&lt;p&gt;You write a script that processes data overnight. It runs on a server
+while you sleep. In the morning you check the output and something is
+wrong. Half the records are missing. You have no idea what happened
+because your script used &lt;code&gt;print()&lt;/code&gt; for all its messages and those prints
+went nowhere &amp;ndash; there was nobody watching the terminal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modules, Packages, and the Python Ecosystem</title>
+      <link>http://localhost:1313/blog/python-10-modules-packages/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-10-modules-packages/</guid>
+      <description>Understand how Python modules and packages work, how to create your own, and how to navigate the Python ecosystem.</description>
+    </item>
+    <item>
+      <title>Object-Oriented Programming in Python  -  Masterclass</title>
+      <link>http://localhost:1313/blog/python-11-oop-masterclass/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-11-oop-masterclass/</guid>
+      <description>A comprehensive guide to OOP in Python  -  classes, objects, inheritance, encapsulation, and polymorphism.</description>
+    </item>
+    <item>
+      <title>OOP Practice - Problems and Solutions</title>
+      <link>http://localhost:1313/blog/python-12-oop-practice/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-12-oop-practice/</guid>
+      <description>&lt;h1 id=&#34;object-oriented-programming--assignment&#34;&gt;Object-Oriented Programming &amp;ndash; Assignment&lt;/h1&gt;
+&lt;h3 id=&#34;four-real-world-problems-to-solve-using-oop&#34;&gt;Four Real-World Problems to Solve Using OOP&lt;/h3&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This assignment covers OOP Basics and Intermediate concepts.
+For each problem, read the description carefully, understand what the
+system needs to do, and design your classes before writing any code.
+Planning on paper first is not optional &amp;ndash; it is part of the exercise.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-approach-each-problem&#34;&gt;How to Approach Each Problem&lt;/h2&gt;
+&lt;p&gt;Before writing a single line of code for any problem:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Basics Masterclass</title>
+      <link>http://localhost:1313/blog/python-01-python-basics/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-01-python-basics/</guid>
+      <description>A complete beginner-friendly guide to Python basics  -  syntax, data types, variables, and core concepts.</description>
+    </item>
+    <item>
+      <title>Python Collections - Theory</title>
+      <link>http://localhost:1313/blog/python-05-collections-theory/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-05-collections-theory/</guid>
+      <description>&lt;h1 id=&#34;python-collections&#34;&gt;Python Collections&lt;/h1&gt;
+&lt;h3 id=&#34;lists-tuples-dictionaries-and-sets--the-four-ways-to-store-data&#34;&gt;Lists, Tuples, Dictionaries, and Sets &amp;ndash; The Four Ways to Store Data&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-collections-are-central-to-everything&#34;&gt;Before We Begin &amp;ndash; Why Collections Are Central to Everything&lt;/h2&gt;
+&lt;p&gt;At some point you stop writing programs that work on one value at a time
+and start writing programs that work on many values at once. A list of
+students. A dictionary of city populations. A set of unique tags.
+A tuple representing a coordinate.&lt;/p&gt;
+&lt;p&gt;Collections are the bridge between &amp;ldquo;I know Python basics&amp;rdquo; and &amp;ldquo;I can solve
+real problems.&amp;rdquo; Everything that follows in this curriculum &amp;ndash; loops,
+functions, Pandas, APIs &amp;ndash; assumes you are comfortable with collections.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Learning Roadmap</title>
+      <link>http://localhost:1313/blog/python-00-python-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-00-python-roadmap/</guid>
+      <description>A structured roadmap to learning Python from scratch to advanced  -  what to learn, in what order, and why.</description>
+    </item>
+    <item>
+      <title>Python Loops Masterclass</title>
+      <link>http://localhost:1313/blog/python-03-loops-masterclass/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-03-loops-masterclass/</guid>
+      <description>&lt;h1 id=&#34;-python-loops-masterclass&#34;&gt;🔁 Python Loops Masterclass&lt;/h1&gt;
+&lt;h3 id=&#34;complete-command-over-for-and-while-loops--from-basics-to-patterns&#34;&gt;&lt;em&gt;Complete Command Over for and while Loops — From Basics to Patterns&lt;/em&gt;&lt;/h3&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Who is this for?&lt;/strong&gt;
+You know Python basics — variables, conditionals, functions.
+Now you want to truly master loops — not just use them, but &lt;em&gt;think&lt;/em&gt; in them.
+This guide covers every loop concept in Python, with simple examples before every idea.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-table-of-contents&#34;&gt;📌 Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-why-loops-exist&#34;&gt;Why Loops Exist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-the-for-loop&#34;&gt;The for Loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-iterating-over-different-data-types&#34;&gt;Iterating Over Different Data Types&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-the-range-function&#34;&gt;The range() Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-the-while-loop&#34;&gt;The while Loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-break--exit-the-loop-early&#34;&gt;break — Exit the Loop Early&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-continue--skip-to-the-next-iteration&#34;&gt;continue — Skip to the Next Iteration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-pass--do-nothing-placeholder&#34;&gt;pass — Do Nothing (Placeholder)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-else-with-loops&#34;&gt;else with Loops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-enumerate--loop-with-an-index&#34;&gt;enumerate() — Loop with an Index&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-zip--loop-over-multiple-sequences&#34;&gt;zip() — Loop Over Multiple Sequences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-nested-loops&#34;&gt;Nested Loops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-list-comprehensions&#34;&gt;List Comprehensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-dictionary-and-set-comprehensions&#34;&gt;Dictionary and Set Comprehensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-loop-patterns-every-programmer-uses&#34;&gt;Loop Patterns Every Programmer Uses&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#16-common-loop-mistakes-and-how-to-avoid-them&#34;&gt;Common Loop Mistakes and How to Avoid Them&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#17-practice-questions&#34;&gt;Practice Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#18-what-we-covered--whats-next&#34;&gt;What We Covered + What&amp;rsquo;s Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-why-loops-exist&#34;&gt;1. Why Loops Exist&lt;/h2&gt;
+&lt;p&gt;Imagine you need to print a welcome message for 500 students. Without loops:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Refresher for DSA</title>
+      <link>http://localhost:1313/blog/dsa-02-python-refresher/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-02-python-refresher/</guid>
+      <description>A quick refresher on the Python concepts you need before diving into Data Structures and Algorithms.</description>
+    </item>
+    <item>
+      <title>Regular Expressions in Python</title>
+      <link>http://localhost:1313/blog/python-17-regex-guide/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-17-regex-guide/</guid>
+      <description>&lt;h1 id=&#34;regular-expressions-in-python&#34;&gt;Regular Expressions in Python&lt;/h1&gt;
+&lt;h3 id=&#34;pattern-matching-text-processing-and-the-re-module&#34;&gt;Pattern Matching, Text Processing, and the re Module&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-regular-expressions-matter&#34;&gt;Before We Begin &amp;ndash; Why Regular Expressions Matter&lt;/h2&gt;
+&lt;p&gt;Here is a real problem. You have a CSV file with 50,000 rows of customer
+data. The phone number column is a mess:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;+91-9876543210
+9876 543 210
+(091) 9876-543210
+91-98765-43210
+9876543210
++919876543210
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All of these are the same phone number in different formats. You need to
+extract just the 10-digit number from all of them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Strings in Python  -  Complete Guide</title>
+      <link>http://localhost:1313/blog/dsa-05-strings/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-05-strings/</guid>
+      <description>A practical guide to string operations and manipulation in Python for DSA problem solving.</description>
+    </item>
+    <item>
+      <title>Type Hints in Python</title>
+      <link>http://localhost:1313/blog/python-18-type-hints/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-18-type-hints/</guid>
+      <description>&lt;h1 id=&#34;type-hints-in-python&#34;&gt;Type Hints in Python&lt;/h1&gt;
+&lt;h3 id=&#34;writing-code-that-explains-itself--the-typing-module-and-beyond&#34;&gt;Writing Code That Explains Itself &amp;ndash; The typing Module and Beyond&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;before-we-begin--why-type-hints-matter&#34;&gt;Before We Begin &amp;ndash; Why Type Hints Matter&lt;/h2&gt;
+&lt;p&gt;Here is a function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;calculate_discount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;discount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_member&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What type is &lt;code&gt;price&lt;/code&gt;? A float? An int? A string like &lt;code&gt;&amp;quot;1299&amp;quot;&lt;/code&gt;?
+What is &lt;code&gt;discount&lt;/code&gt;? A percentage like &lt;code&gt;18.5&lt;/code&gt;? Or a multiplier like &lt;code&gt;0.185&lt;/code&gt;?
+What does &lt;code&gt;is_member&lt;/code&gt; do to the result?&lt;/p&gt;
+&lt;p&gt;You cannot tell without reading the implementation. In a codebase with
+hundreds of functions, this adds up to an enormous cognitive load.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Working with the Real World in Python</title>
+      <link>http://localhost:1313/blog/python-19-working-with-real-world/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-19-working-with-real-world/</guid>
+      <description>Learn how Python interacts with real-world systems  -  APIs, files, databases, and external libraries.</description>
+    </item>
     <item>
       <title>Complete Guide to Numpy Library in Python</title>
       <link>http://localhost:1313/blog/numpy-practice/</link>
@@ -24,16 +218,16 @@
     </item>
     <item>
       <title>Master Collections in Python</title>
-      <link>http://localhost:1313/blog/collections-practice/</link>
+      <link>http://localhost:1313/blog/python-06-collections-practice/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/collections-practice/</guid>
-      <description>Complete practice session on colletions in python</description>
+      <guid>http://localhost:1313/blog/python-06-collections-practice/</guid>
+      <description>Complete practice session on collections in python</description>
     </item>
     <item>
       <title>Master Loops in Python</title>
-      <link>http://localhost:1313/blog/python-loops-practice/</link>
+      <link>http://localhost:1313/blog/python-04-loops-practice/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/python-loops-practice/</guid>
+      <guid>http://localhost:1313/blog/python-04-loops-practice/</guid>
       <description>Complete practice session on Loops in python</description>
     </item>
     <item>
@@ -52,44 +246,44 @@
     </item>
     <item>
       <title>Exception Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/exception_handling/</link>
+      <link>http://localhost:1313/blog/python-08-exception-handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/exception_handling/</guid>
+      <guid>http://localhost:1313/blog/python-08-exception-handling/</guid>
       <description>Learn about try-except-finally and custom exceptions in Python</description>
     </item>
     <item>
       <title>File Handling in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/file-handling-in-python/</link>
+      <link>http://localhost:1313/blog/python-09-file-handling/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/file-handling-in-python/</guid>
+      <guid>http://localhost:1313/blog/python-09-file-handling/</guid>
       <description>Learn about  working with files in Python</description>
     </item>
     <item>
       <title>Functions in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/functions-in-python/</link>
+      <link>http://localhost:1313/blog/python-07-functions/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/functions-in-python/</guid>
+      <guid>http://localhost:1313/blog/python-07-functions/</guid>
       <description>Learn everything about writing fcuntions in Python</description>
     </item>
     <item>
       <title>Higher Order Functions and Decorators in Python</title>
-      <link>http://localhost:1313/blog/decorators/</link>
+      <link>http://localhost:1313/blog/python-13-decorators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/decorators/</guid>
+      <guid>http://localhost:1313/blog/python-13-decorators/</guid>
       <description>Learn about higher order functions like map, filter, reduce and decorators </description>
     </item>
     <item>
       <title>Iterators and Generators in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/iterators_generators/</link>
+      <link>http://localhost:1313/blog/python-14-iterators-generators/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/iterators_generators/</guid>
+      <guid>http://localhost:1313/blog/python-14-iterators-generators/</guid>
       <description>Learn about iterables and iterators and generators in python</description>
     </item>
     <item>
       <title>Itertools Module in Python - Complete Guide</title>
-      <link>http://localhost:1313/blog/itertools/</link>
+      <link>http://localhost:1313/blog/python-15-itertools/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/itertools/</guid>
+      <guid>http://localhost:1313/blog/python-15-itertools/</guid>
       <description>Learn about the very useful itertools library in python</description>
     </item>
     <item>
@@ -115,9 +309,9 @@
     </item>
     <item>
       <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:1313/blog/python_syllabus/</link>
+      <link>http://localhost:1313/blog/python-syllabus/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/python_syllabus/</guid>
+      <guid>http://localhost:1313/blog/python-syllabus/</guid>
       <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
   </channel>

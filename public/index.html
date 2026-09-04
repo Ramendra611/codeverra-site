@@ -2,7 +2,7 @@
 <html lang="en" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.158.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.153.3"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -19,7 +19,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="./assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="./assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="./css/github-markdown.css">
+<link rel="stylesheet" href="./css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -28,6 +29,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="http://localhost:1313/index.json" title="json">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/">
 <noscript>
     <style>
@@ -81,6 +83,7 @@
     }
 
 </script>
+<script defer src="./js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -145,7 +148,25 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
@@ -285,20 +306,20 @@
 <article class="post-entry">
      
 <figure class="entry-cover">
-            <img loading="lazy" src="http://localhost:1313/images/dsa-roadmap-cover.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/array-patterns.png" alt="Two Pointers Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">A Practical DSA Learning Roadmap
+        <h2 class="entry-hint-parent">Array Patterns  -  The Complete Study Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Data Structures and Algorithms (DSA) are often treated as a necessary evil, something you grind through only to clear technical interviews. This narrow framing has done more harm than good. It leads to shallow learning, memorized solutions, and frustration when problems slightly change.
-The truth is simple: DSA is not just about interviews. It is about learning how to think clearly, reason about efficiency, and design solutions that scale.
-This blog lays out:
+        <p>🗺️ Array Patterns - The Complete Study Guide Welcome This is a structured, beginner-friendly study guide for mastering array and string patterns - the building blocks of coding interviews. Each pattern has a dedicated deep-dive document with theory, intuition, templates, and 10 LeetCode problems solved step by step.
+Who is this for?
+You’re preparing for coding interviews and want a systematic approach You can solve easy problems but struggle to recognize which technique to apply You want to understand why an approach works, not just memorize solutions How to use this guide:
 ...</p>
     </div>
 
@@ -306,30 +327,27 @@ This blog lays out:
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>886 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1229 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to A Practical DSA Learning Roadmap" href="http://localhost:1313/blog/dsa_roadmap/"></a>
+    <a class="entry-link" aria-label="post link to Array Patterns  -  The Complete Study Guide" href="http://localhost:1313/blog/dsa-patterns-00-index/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/DSA-with-python-live-course.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-4.png" alt="Arrays in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">DSA With Python - Zero to Hero (Curriculum)
+        <h2 class="entry-hint-parent">Arrays in Python  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
     </div>
     <div class="entry-content">
-        <p>About This Guide Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! This guide serves as the complete reference material for our live course, organizing all topics, concepts, and learning outcomes in a structured, progressive manner.
-For Course Students If you’re enrolled in the live course, this blog is your companion resource that:
-Mirrors the course structure - Every module taught in class is documented here Serves as a reference - Quickly look up concepts, syntax, and examples Tracks your progress - Follow along and check off completed modules Provides continuity - Never miss a beat even if you miss a session For Self-Learners Even if you’re not enrolled in the course, this roadmap is designed to be:
+        <p>Arrays Table of Contents What You Will Learn in This Blog How Data is Stored in Computer Memory What is an Array Arrays in Python Python Lists The array Module NumPy Arrays Comparison of the Three Referential Arrays vs Value Arrays Dynamic Arrays – How Python Lists Grow Time and Space Complexity of Array Operations Two-Dimensional Arrays Patterns and Techniques Pattern 1 – Two Pointers Pattern 2 – Sliding Window Pattern 3 – Prefix Sum Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog How data is stored in computer memory and why it matters What an array is and how it uses contiguous memory How Python represents arrays – lists, the array module, and NumPy The difference between referential arrays and value arrays How dynamic arrays work and how Python lists resize themselves Time and space complexity of every common array operation Three core patterns that come from arrays: Two Pointers, Sliding Window, and Prefix Sum Solved LeetCode problems for each pattern A practice problem table for further study How Data is Stored in Computer Memory Before we talk about arrays, we need to understand the environment arrays live in – computer memory.
 ...</p>
     </div>
 
@@ -337,30 +355,28 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>2324 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>23 min</span>&nbsp;·&nbsp;<span>4718 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to DSA With Python - Zero to Hero (Curriculum)" href="http://localhost:1313/blog/dsa-with-python-curriculum/"></a>
+    <a class="entry-link" aria-label="post link to Arrays in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-04-arrays/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/numpy-practice.png" alt="Python programming">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-02.png" alt="Binary Search Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Complete Guide to Numpy Library in Python
+        <h2 class="entry-hint-parent">Binary Search Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/numpy/">numpy</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>🔢 NumPy Masterclass and Practice Sheet From Zero to Confident - A Beginner’s Guide to Numerical Computing in Python Who is this for? You know Python basics — lists, loops, functions — and you want to level up into data science. NumPy is your first real step. Everything in data science (Pandas, Scikit-learn, TensorFlow) is built on top of it.
-📌 Table of Contents What is NumPy and Why Should You Care? Installing and Importing NumPy Creating Arrays Array Attributes Indexing and Slicing Array Operations — Math Made Easy Universal Functions (ufuncs) Aggregation Functions Reshaping and Transposing Stacking and Splitting Arrays Boolean Masking and Fancy Indexing Broadcasting Working with Random Numbers Linear Algebra with NumPy Sorting and Searching Copies vs Views Saving and Loading Arrays Practice Questions What We Covered &#43; What’s Next 1. What is NumPy and Why Should You Care? Python lists are flexible and easy to use — but they are slow when it comes to heavy number crunching. If you have a million exam scores and want to find the average, a Python loop will take noticeably longer than it should.
+        <p>🔰 Pattern 2: Binary Search Table of Contents What is Binary Search? The Core Idea - Why Halving Works The Three Binary Search Templates Binary Search on Answer - The Hidden Pattern Common Pitfalls Problem Set Problem 1: Binary Search Problem 2: Search Insert Position Problem 3: Find First and Last Position of Element in Sorted Array Problem 4: Search a 2D Matrix Problem 5: Search in Rotated Sorted Array Problem 6: Find Minimum in Rotated Sorted Array Problem 7: Koko Eating Bananas Problem 8: Capacity to Ship Packages Within D Days Problem 9: Split Array Largest Sum Problem 10: Median of Two Sorted Arrays Key Takeaways &amp; Summary What is Binary Search? In the Two Pointers pattern, we used two indices to narrow down a search space. Binary search takes that idea to its most powerful form: instead of narrowing one step at a time, we cut the search space in half at every step.
 ...</p>
     </div>
 
@@ -368,10 +384,10 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5194 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>37 min</span>&nbsp;·&nbsp;<span>7715 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Complete Guide to Numpy Library in Python" href="http://localhost:1313/blog/numpy-practice/"></a>
+    <a class="entry-link" aria-label="post link to Binary Search Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-02-binary-search/"></a>
     
 </article>
 </div>

@@ -19,7 +19,8 @@ This section will grow over time with structured posts and practical insights.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../../../css/github-markdown.css">
+<link rel="stylesheet" href="../../../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -81,6 +82,7 @@ This section will grow over time with structured posts and practical insights.">
     }
 
 </script>
+<script defer src="../../../js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -145,7 +147,25 @@ This section will grow over time with structured posts and practical insights.">
                     <span class="active">Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
@@ -157,11 +177,90 @@ This section will grow over time with structured posts and practical insights.">
         Blogs
     </h1>
 </header>
-<div class="post-content"><p>Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.</p>
+<div class="post-content markdown-body"><p>Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.</p>
 <p>This section will grow over time with structured posts and practical insights.</p>
 
 
 </div>
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="../../../blog/"
+     class="topic-pill topic-pill--active">All</a>
+  <a href="../../../tags/python/"
+     class="topic-pill">Python</a>
+  <a href="../../../tags/dsa/"
+     class="topic-pill">Dsa</a>
+  <a href="../../../tags/data-analysis/"
+     class="topic-pill">Data-Analysis</a>
+  <a href="../../../tags/sql/"
+     class="topic-pill">Sql</a>
+  <a href="../../../tags/dsa-patterns/"
+     class="topic-pill">Dsa-Patterns</a>
+  <a href="../../../tags/learning-roadmap/"
+     class="topic-pill">Learning-Roadmap</a>
+  <a href="../../../tags/pandas/"
+     class="topic-pill">Pandas</a>
+  <a href="../../../tags/algorithms/"
+     class="topic-pill">Algorithms</a>
+  <a href="../../../tags/numpy/"
+     class="topic-pill">Numpy</a>
+  <a href="../../../tags/searching/"
+     class="topic-pill">Searching</a>
+</nav>
+<div class="blog-with-sidebar">
+<aside class="blog-sidebar">
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Recent</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/low_level_design/01_oop_in_python/">Object-Oriented Programming in Python: A Deep Dive</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-00-index/">Array Patterns  -  The Complete Study Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-04-arrays/">Arrays in Python  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-02-binary-search/">Binary Search Pattern  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-03-complexity-analysis/">Complexity Analysis  -  Time and Space</a></li>
+      <li><a href="http://localhost:1313/blog/python-02-control-flow/">Control Flow in Python</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Python</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/low_level_design/01_oop_in_python/">Object-Oriented Programming in Python: A Deep Dive</a></li>
+      <li><a href="http://localhost:1313/blog/python-02-control-flow/">Control Flow in Python</a></li>
+      <li><a href="http://localhost:1313/blog/python-16-logging-and-os/">Logging and System Interaction in Python</a></li>
+      <li><a href="http://localhost:1313/blog/python-10-modules-packages/">Modules, Packages, and the Python Ecosystem</a></li>
+      <li><a href="http://localhost:1313/blog/python-11-oop-masterclass/">Object-Oriented Programming in Python  -  Masterclass</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">DSA</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/dsa-patterns-00-index/">Array Patterns  -  The Complete Study Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-04-arrays/">Arrays in Python  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-02-binary-search/">Binary Search Pattern  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-03-complexity-analysis/">Complexity Analysis  -  Time and Space</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/">HashMap and Frequency Counting Pattern  -  Complete Guide</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">SQL</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/sql-part2/">Filtering and Querying data</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part3/">Group by and Aggregations</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part7/">Indexes and Schema Design</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part1/">Introduction to SQL and Databases</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part4/">Joins and Relationships</a></li>
+    </ul>
+  </div>
+
+</aside>
+
+<div class="blog-main-content">
 
 
 
@@ -170,48 +269,19 @@ This section will grow over time with structured posts and practical insights.">
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-2.png" alt="introduction to SQL">
+        <img loading="lazy" src="http://localhost:1313/images/modules.png" alt="modules in python">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Filtering and Querying data
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>Lesson 2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB — Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
-Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN Match against a list of values BETWEEN Filter within a range LIKE / ILIKE Pattern matching on text IS NULL / IS NOT NULL Handle missing values CASE WHEN Conditional logic inside a query Date functions Filter and extract parts of dates COALESCE Replace NULL with a fallback value All queries in this lesson run on ShopDB. The dataset has:
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2494 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Filtering and Querying data" href="http://localhost:1313/blog/sql-part2/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/functions-masterclass.png" alt="file handling in python">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Functions in Python - Complete Guide
+        <h2 class="entry-hint-parent">Modules, Packages, and the Python Ecosystem
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python Functions Masterclass A Complete Guide from Basics to Advanced Concepts Who is this for? You know Python basics and have some experience with loops and collections. This guide covers every important concept around functions in Python – from defining your first function all the way through decorators and closures. Every concept is explained with a simple example first.
-Table of Contents What is a Function and Why Use One? Defining and Calling Functions Parameters and Arguments Default Parameters *args – Variable Positional Arguments **kwargs – Variable Keyword Arguments Combining All Argument Types Return Values Scope and the LEGB Rule global and nonlocal Keywords Docstrings and Function Annotations Lambda Functions Higher Order Functions map(), filter(), and reduce() Closures Decorators Decorators with Arguments Chaining Multiple Decorators Recursion Generator Functions and yield Practice Questions Solutions What We Covered and What is Next 1. What is a Function and Why Use One? Imagine you need to calculate GST on product prices in three different parts of your program. Without a function, you write the same calculation three times. If the GST rate changes, you update it in three places – and likely miss one.
+        <p>Modules, Packages, and the Python Ecosystem Understanding Imports, the Standard Library, pip, and Virtual Environments Before We Begin – Why This Topic Is More Important Than It Looks Here is something that happens to almost every beginner.
+You are working through a tutorial. It says import pandas as pd and moves on. You copy it. It works. You move on too.
+Six months later you are working on two projects at the same time. One needs pandas 1.5. The other needs pandas 2.1. You install one and the other breaks. You have no idea why. You cannot share your project with a teammate because it works on your machine and crashes on theirs.
 ...</p>
     </div>
 
@@ -219,58 +289,25 @@ Table of Contents What is a Function and Why Use One? Defining and Calling Funct
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>35 min</span>&nbsp;·&nbsp;<span>7283 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>38 min</span>&nbsp;·&nbsp;<span>8049 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Functions in Python - Complete Guide" href="http://localhost:1313/blog/functions-in-python/"></a>
+    <a class="entry-link" aria-label="post link to Modules, Packages, and the Python Ecosystem" href="http://localhost:1313/blog/python-10-modules-packages/"></a>
     
 </article>
 
 <article class="post-entry">
      
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-3.png" alt="introduction to SQL">
-</figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Group by and Aggregations
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>Lesson 3 - Aggregations &amp; Grouping Theory &#43; Practice | CricketDB &#43; ShopDB Before You Start This lesson uses both databases you have already built:
-CricketDB — players, matches, performances (Lesson 2.1) ShopDB — customers, products, orders, order_items (Lesson 2.2) Run the setup_check.sql from this lesson folder to confirm both are ready. Each section tells you which database to connect to in pgAdmin.
-What you will learn in this lesson:
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3134 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Group by and Aggregations" href="http://localhost:1313/blog/sql-part3/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/decorators%20in%20python.png" alt="higher order functions and decorators in python">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Higher Order Functions and Decorators in Python
+        <h2 class="entry-hint-parent">Object-Oriented Programming in Python  -  Masterclass
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python Higher-Order Functions &amp; Decorators A Complete Reference Guide Table of Contents The Big Picture Functions as First-Class Objects Higher-Order Functions Closures — The Foundation of Decorators Decorators — Core Concept The @ Syntax Preserving Metadata with functools.wraps Decorators with Arguments Class-Based Decorators Stacking Multiple Decorators Built-in Decorators Practical Decorator Patterns Common Mistakes to Avoid Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture ┌─────────────────────────────────────────────────────────────────────┐ │ THE DECORATOR MENTAL MODEL │ │ │ │ A decorator is a function that WRAPS another function │ │ to add behaviour before, after, or around it. │ │ │ │ Original Function │ │ ┌────────────────┐ │ │ │ do_thing() │ │ │ └────────────────┘ │ │ │ decorator applied │ │ ▼ │ │ ┌────────────────────────────────────┐ │ │ │ wrapper() │ │ │ │ ┌──────────────────────────────┐ │ │ │ │ │ before logic (logging etc) │ │ │ │ │ ├──────────────────────────────┤ │ │ │ │ │ do_thing() ← called │ │ │ │ │ ├──────────────────────────────┤ │ │ │ │ │ after logic (timing etc) │ │ │ │ │ └──────────────────────────────┘ │ │ │ └────────────────────────────────────┘ │ │ │ │ @decorator is sugar for: func = decorator(func) │ └─────────────────────────────────────────────────────────────────────┘ Core Idea: A decorator is just a callable that takes a function and returns a new callable. Everything else — the @ syntax, functools.wraps, parameterised decorators — builds on top of this single idea.
+        <p>Object-Oriented Programming in Python A Structured Guide from First Principles to Advanced Patterns Before We Begin - How This Guide is Organised Most OOP tutorials throw syntax at you immediately. You copy the code, it works, and you think you understand it. Two weeks later you cannot write a class from scratch.
+This guide takes a different approach. We build understanding in three layers, each one preparing you for the next.
 ...</p>
     </div>
 
@@ -278,89 +315,25 @@ What you will learn in this lesson:
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4597 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>63 min</span>&nbsp;·&nbsp;<span>13310 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Higher Order Functions and Decorators in Python" href="http://localhost:1313/blog/decorators/"></a>
+    <a class="entry-link" aria-label="post link to Object-Oriented Programming in Python  -  Masterclass" href="http://localhost:1313/blog/python-11-oop-masterclass/"></a>
     
 </article>
 
 <article class="post-entry">
      
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-7.png" alt="introduction to SQL">
-</figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Indexes and Schema Design
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>Lesson 2.7 — Indexes, Constraints &amp; Schema Design Theory &#43; Practice | All Three Databases Before You Start This lesson uses all three databases. Each section tells you which one to connect to.
-Quick check — run this in each database before starting:
--- In cricketdb: SELECT COUNT(*) FROM performances; -- expect 30 -- In shopdb: SELECT COUNT(*) FROM order_items; -- expect 30&#43; -- In streamdb: SELECT COUNT(*) FROM watch_history; -- expect 50 What you will learn:
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4563 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Indexes and Schema Design" href="http://localhost:1313/blog/sql-part7/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-1.png" alt="introduction to SQL">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Introduction to SQL and Databases
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>SQL Lecture 01 - Introduction to SQL &amp; Databases PostgreSQL | Beginner Reference Sheet | Use this during class 🐘
-Table of Contents What is a Database? Types of Databases What is SQL? How SQL Commands Are Grouped Creating a Table — Full Breakdown Data Types in PostgreSQL Constraints — Rules for Your Data Primary Key &amp; Foreign Key Common SQL Commands with Examples What Happens When You Violate a Constraint? Practice Table &amp; 10 Beginner Questions 1. What is a Database? A database is an organised collection of data stored so it can be easily accessed, managed, and updated.
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3192 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Introduction to SQL and Databases" href="http://localhost:1313/blog/sql-part1/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/iterators%20and%20generators%20in%20python.png" alt="iterators and generators in python">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Iterators and Generators in Python - Complete Guide
+        <h2 class="entry-hint-parent">OOP Practice - Problems and Solutions
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python Iterables, Iterators &amp; Generators A Complete Lesson Plan &amp; Reference Guide Table of Contents The Big Picture Iterables Iterators The Iterator Protocol Building Custom Iterators Generators Generator Expressions Advanced Generator Features Common Pitfalls &amp; Things to Keep in Mind Real-Life Applications Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture Before diving in, here’s the conceptual map you need to hold in your head:
-┌──────────────────────────────────────────────────┐ │ ITERABLE │ │ Any object you can loop over with a for loop │ │ Examples: list, tuple, str, dict, set, file │ │ │ │ Has __iter__() → returns an Iterator │ └──────────────────────┬───────────────────────────┘ │ __iter__() called ▼ ┌──────────────────────────────────────────────────┐ │ ITERATOR │ │ An object that knows where it is in a sequence │ │ and can produce the next value on demand │ │ │ │ Has __iter__() → returns self │ │ Has __next__() → returns next value or raises │ │ StopIteration │ └──────────────────────┬───────────────────────────┘ │ special case of ▼ ┌──────────────────────────────────────────────────┐ │ GENERATOR │ │ A convenient way to create iterators using │ │ the `yield` keyword — Python auto-builds the │ │ iterator protocol for you │ └──────────────────────────────────────────────────┘ Key Insight: Every iterator is an iterable, but not every iterable is an iterator. A list is an iterable but NOT an iterator. iter(list) gives you an iterator.
+        <p>Object-Oriented Programming – Assignment Four Real-World Problems to Solve Using OOP This assignment covers OOP Basics and Intermediate concepts. For each problem, read the description carefully, understand what the system needs to do, and design your classes before writing any code. Planning on paper first is not optional – it is part of the exercise.
+How to Approach Each Problem Before writing a single line of code for any problem:
 ...</p>
     </div>
 
@@ -368,28 +341,54 @@ Table of Contents What is a Database? Types of Databases What is SQL? How SQL Co
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4112 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>32 min</span>&nbsp;·&nbsp;<span>6778 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Iterators and Generators in Python - Complete Guide" href="http://localhost:1313/blog/iterators_generators/"></a>
+    <a class="entry-link" aria-label="post link to OOP Practice - Problems and Solutions" href="http://localhost:1313/blog/python-12-oop-practice/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/itertools.png" alt="itertools module in python">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-04.png" alt="Prefix Sum Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Itertools Module in Python - Complete Guide
+        <h2 class="entry-hint-parent">Prefix Sum Pattern  -  Complete Guide
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
+    </div>
+    <div class="entry-content">
+        <p>🔰 Pattern 3: Prefix Sum Table of Contents What is Prefix Sum? Building the Intuition Step by Step The Range Sum Formula - Why It Works Common Variations Template Code Problem Set Problem 1: Range Sum Query – Immutable Problem 2: Running Sum of 1D Array Problem 3: Find Pivot Index Problem 4: Subarray Sum Equals K Problem 5: Contiguous Array Problem 6: Product of Array Except Self Problem 7: Subarray Sums Divisible by K Problem 8: Range Sum Query 2D – Immutable Problem 9: Continuous Subarray Sum Problem 10: Count Number of Nice Subarrays Key Takeaways &amp; Summary What is Prefix Sum? Consider this scenario: you have an array of numbers and someone keeps asking you “what’s the sum of elements from index i to index j?” - not once, but hundreds of times with different i and j values.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>41 min</span>&nbsp;·&nbsp;<span>8588 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Prefix Sum Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-04-prefix-sum/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Python Basics Masterclass
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Python’s itertools - The Missing Manual A deep dive into one of Python’s most underused standard library modules Wait, Why Should I Care About Another Module? You’ve written Python for a while. You know how to use for loops, list comprehensions, zip, and enumerate. Things work. So when someone says “hey, you should learn itertools”, it’s easy to nod politely and move on.
-Here’s what changes your mind. Imagine you’re asked to generate all possible batting orders for 4 players chosen from a squad of 11. Or you need to group a massive log file by date without loading it all into memory. Or you want to pair up every possible combination of feature columns for a machine learning experiment.
+        <p>Python Basics Masterclass Variables, Data Types, Strings, Operators, and Input/Output – A Complete Foundation Who is this for? You are new to Python or just getting started. This is the very first thing to read and practice before moving on to collections, loops, functions, or anything else in the curriculum. Every concept is explained simply, with small Indian-context examples, before moving to the next.
+Table of Contents How Python Works Your First Python Program Comments Variables and Assignment Naming Rules and Conventions Python Keywords Numbers – int, float, complex The math Module Booleans None – The Absence of a Value Strings – Complete Guide Operators Type Conversion Input and Output f-strings and String Formatting Practice Questions Solutions What Comes Next 1. How Python Works When you write Python code and run it, here is what happens behind the scenes:
 ...</p>
     </div>
 
@@ -397,31 +396,108 @@ Here’s what changes your mind. Imagine you’re asked to generate all possible
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>29 min</span>&nbsp;·&nbsp;<span>6049 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>35 min</span>&nbsp;·&nbsp;<span>7279 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Itertools Module in Python - Complete Guide" href="http://localhost:1313/blog/itertools/"></a>
+    <a class="entry-link" aria-label="post link to Python Basics Masterclass" href="http://localhost:1313/blog/python-01-python-basics/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Python Collections - Theory
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Python Collections Lists, Tuples, Dictionaries, and Sets – The Four Ways to Store Data Before We Begin – Why Collections Are Central to Everything At some point you stop writing programs that work on one value at a time and start writing programs that work on many values at once. A list of students. A dictionary of city populations. A set of unique tags. A tuple representing a coordinate.
+Collections are the bridge between “I know Python basics” and “I can solve real problems.” Everything that follows in this curriculum – loops, functions, Pandas, APIs – assumes you are comfortable with collections.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4610 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Python Collections - Theory" href="http://localhost:1313/blog/python-05-collections-theory/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Python Learning Roadmap
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+    </div>
+    <div class="entry-content">
+        <p>Python Learning Roadmap The Complete Codeverra Curriculum – Your Navigation Hub This document is the master index for everything published at Codeverra. Every blog, masterclass, and practice workbook links back here. Bookmark this page. Return to it whenever you finish a topic and want to know what is next.
+How to Use This Roadmap The curriculum is divided into four phases. Each phase builds on the previous one.
+Do not skip phases. A student who rushes into Pandas without knowing loops and functions will struggle badly. Each topic has a blog (concept explanation), a practice workbook (questions), and a solutions file. The estimated time per phase assumes consistent practice of 1 to 2 hours per day. Phase 1 – Python Foundations Estimated time: 4 to 6 weeks This is where everything starts. Master these before touching any library or framework. Every data scientist, backend engineer, ML engineer, and data engineer uses these concepts every day.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>2607 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Python Learning Roadmap" href="http://localhost:1313/blog/python-00-python-roadmap/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Python Loops Masterclass
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>🔁 Python Loops Masterclass Complete Command Over for and while Loops — From Basics to Patterns Who is this for? You know Python basics — variables, conditionals, functions. Now you want to truly master loops — not just use them, but think in them. This guide covers every loop concept in Python, with simple examples before every idea.
+📌 Table of Contents Why Loops Exist The for Loop Iterating Over Different Data Types The range() Function The while Loop break — Exit the Loop Early continue — Skip to the Next Iteration pass — Do Nothing (Placeholder) else with Loops enumerate() — Loop with an Index zip() — Loop Over Multiple Sequences Nested Loops List Comprehensions Dictionary and Set Comprehensions Loop Patterns Every Programmer Uses Common Loop Mistakes and How to Avoid Them Practice Questions What We Covered &#43; What’s Next 1. Why Loops Exist Imagine you need to print a welcome message for 500 students. Without loops:
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5150 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Python Loops Masterclass" href="http://localhost:1313/blog/python-03-loops-masterclass/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-4.png" alt="introduction to SQL">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-2.png" alt="Python Refresher for DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Joins and Relationships
+        <h2 class="entry-hint-parent">Python Refresher for DSA
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Lesson 4 - JOINs &amp; Relationships Theory &#43; Practice | ShopDB Before You Start This lesson uses ShopDB exclusively. Connect to shopdb in pgAdmin before running any query.
-Run this to confirm your data is ready:
-SELECT &#39;customers&#39; AS t, COUNT(*) FROM customers UNION ALL SELECT &#39;products&#39;, COUNT(*) FROM products UNION ALL SELECT &#39;orders&#39;, COUNT(*) FROM orders UNION ALL SELECT &#39;order_items&#39;,COUNT(*) FROM order_items; -- Expected: 20, 25, 15, 30 What you will learn:
-Concept What it does INNER JOIN Only rows that match in both tables LEFT JOIN All left rows &#43; matches from right (NULL if no match) RIGHT JOIN All right rows &#43; matches from left (NULL if no match) FULL OUTER JOIN All rows from both tables Self-join A table joined to itself 4-table JOIN The full ShopDB chain Common mistakes Duplicate rows, wrong COUNT, missing ON clause JOIN vs subquery When to use which Part 1 — The Four JOIN Types, Side by Side The best way to understand JOINs is to see them compared on the same data.
+        <p>Python Refresher for DSA Table of Contents What You Will Learn in This Blog Python Built-in Data Types for DSA Lists Dictionaries Sets Tuples The Collections Module deque defaultdict Counter List Comprehensions Important Built-in Functions for DSA Sorting in Python String Operations heapq – The Built-in Min Heap Common Python Patterns in DSA Summary Key Takeaways Next Steps What You Will Learn in This Blog The Python built-in data types you will use constantly in DSA How lists, dictionaries, sets, and tuples work and when to use each Important Python built-in functions and their complexities The collections module – deque, defaultdict, Counter List comprehensions and when to use them Common Python patterns that appear repeatedly in DSA problems This is not a complete Python tutorial. It covers exactly what you need to follow the rest of this guide comfortably. If you are already confident with all of the above, you can skim this and move on.
 ...</p>
     </div>
 
@@ -429,41 +505,10 @@ Concept What it does INNER JOIN Only rows that match in both tables LEFT JOIN Al
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>3562 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>16 min</span>&nbsp;·&nbsp;<span>3233 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Joins and Relationships" href="http://localhost:1313/blog/sql-part4/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/SQL-5.png" alt="introduction to SQL">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Joins and Relationships
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/sql/">sql</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>Lesson 5 - Subqueries &amp; CTEs Theory &#43; Practice | StreamDB — Indian Streaming Platform Before You Start This lesson introduces StreamDB — a Hotstar-style streaming platform.
-Run setup.sql to create and populate StreamDB Verify you see 6 tables with the correct row counts Connect to streamdb in pgAdmin before running any query The StreamDB schema:
-users shows genres ┌────┬───────┬──────┐ ┌────┬────────┬──────────┐ ┌────┬──────────┐ │ id │ name │ plan │ │ id │ title │is_premium│ │ id │ name │ └────┴───────┴──────┘ └────┴────────┴──────────┘ └────┴──────────┘ │ │ │ │ │ show_genres │ │ │ ┌──────────────┘ ┌────────────┘ │ │ show_id | genre_id │ │ └──────────────────────────┘ (many-to-many) │ subscriptions watch_history ┌────┬─────────┬──────────────┐ ┌────┬─────────┬─────────┬─────────┐ │ id │ user_id │ plan │ │ id │ user_id │ show_id │ minutes │ │ │ │ started_on │ │ │ │ watched │ watched │ │ │ │ expires_on │ └────┴─────────┴─────────┴─────────┘ └────┴─────────┴──────────────┘ What you will learn:
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>3549 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Joins and Relationships" href="http://localhost:1313/blog/sql-part5/"></a>
+    <a class="entry-link" aria-label="post link to Python Refresher for DSA" href="http://localhost:1313/blog/dsa-02-python-refresher/"></a>
     
 </article>
 </div>
@@ -476,6 +521,8 @@ users shows genres ┌────┬───────┬──────�
         </a>
     </nav>
 </footer>
+</div>
+</div>
     </main>
     
 <footer class="footer">

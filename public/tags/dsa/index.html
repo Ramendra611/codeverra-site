@@ -18,7 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../../css/github-markdown.css">
+<link rel="stylesheet" href="../../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -80,6 +81,7 @@
     }
 
 </script>
+<script defer src="../../js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -144,7 +146,25 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
@@ -156,6 +176,30 @@
         Dsa
     </h1>
 </header>
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="../../blog/"
+     class="topic-pill">All</a>
+  <a href="../../tags/python/"
+     class="topic-pill">Python</a>
+  <a href="../../tags/dsa/"
+     class="topic-pill topic-pill--active">Dsa</a>
+  <a href="../../tags/data-analysis/"
+     class="topic-pill">Data-Analysis</a>
+  <a href="../../tags/sql/"
+     class="topic-pill">Sql</a>
+  <a href="../../tags/dsa-patterns/"
+     class="topic-pill">Dsa-Patterns</a>
+  <a href="../../tags/learning-roadmap/"
+     class="topic-pill">Learning-Roadmap</a>
+  <a href="../../tags/pandas/"
+     class="topic-pill">Pandas</a>
+  <a href="../../tags/algorithms/"
+     class="topic-pill">Algorithms</a>
+  <a href="../../tags/numpy/"
+     class="topic-pill">Numpy</a>
+  <a href="../../tags/searching/"
+     class="topic-pill">Searching</a>
+</nav>
 
 
 
@@ -164,20 +208,20 @@
 <article class="post-entry">
      
 <figure class="entry-cover">
-            <img loading="lazy" src="http://localhost:1313/images/dsa-roadmap-cover.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/array-patterns.png" alt="Two Pointers Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">A Practical DSA Learning Roadmap
+        <h2 class="entry-hint-parent">Array Patterns  -  The Complete Study Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Data Structures and Algorithms (DSA) are often treated as a necessary evil, something you grind through only to clear technical interviews. This narrow framing has done more harm than good. It leads to shallow learning, memorized solutions, and frustration when problems slightly change.
-The truth is simple: DSA is not just about interviews. It is about learning how to think clearly, reason about efficiency, and design solutions that scale.
-This blog lays out:
+        <p>🗺️ Array Patterns - The Complete Study Guide Welcome This is a structured, beginner-friendly study guide for mastering array and string patterns - the building blocks of coding interviews. Each pattern has a dedicated deep-dive document with theory, intuition, templates, and 10 LeetCode problems solved step by step.
+Who is this for?
+You’re preparing for coding interviews and want a systematic approach You can solve easy problems but struggle to recognize which technique to apply You want to understand why an approach works, not just memorize solutions How to use this guide:
 ...</p>
     </div>
 
@@ -185,30 +229,27 @@ This blog lays out:
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>886 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1229 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to A Practical DSA Learning Roadmap" href="http://localhost:1313/blog/dsa_roadmap/"></a>
+    <a class="entry-link" aria-label="post link to Array Patterns  -  The Complete Study Guide" href="http://localhost:1313/blog/dsa-patterns-00-index/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/DSA-with-python-live-course.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-4.png" alt="Arrays in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">DSA With Python - Zero to Hero (Curriculum)
+        <h2 class="entry-hint-parent">Arrays in Python  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
     </div>
     <div class="entry-content">
-        <p>About This Guide Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! This guide serves as the complete reference material for our live course, organizing all topics, concepts, and learning outcomes in a structured, progressive manner.
-For Course Students If you’re enrolled in the live course, this blog is your companion resource that:
-Mirrors the course structure - Every module taught in class is documented here Serves as a reference - Quickly look up concepts, syntax, and examples Tracks your progress - Follow along and check off completed modules Provides continuity - Never miss a beat even if you miss a session For Self-Learners Even if you’re not enrolled in the course, this roadmap is designed to be:
+        <p>Arrays Table of Contents What You Will Learn in This Blog How Data is Stored in Computer Memory What is an Array Arrays in Python Python Lists The array Module NumPy Arrays Comparison of the Three Referential Arrays vs Value Arrays Dynamic Arrays – How Python Lists Grow Time and Space Complexity of Array Operations Two-Dimensional Arrays Patterns and Techniques Pattern 1 – Two Pointers Pattern 2 – Sliding Window Pattern 3 – Prefix Sum Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog How data is stored in computer memory and why it matters What an array is and how it uses contiguous memory How Python represents arrays – lists, the array module, and NumPy The difference between referential arrays and value arrays How dynamic arrays work and how Python lists resize themselves Time and space complexity of every common array operation Three core patterns that come from arrays: Two Pointers, Sliding Window, and Prefix Sum Solved LeetCode problems for each pattern A practice problem table for further study How Data is Stored in Computer Memory Before we talk about arrays, we need to understand the environment arrays live in – computer memory.
 ...</p>
     </div>
 
@@ -216,30 +257,28 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>2324 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>23 min</span>&nbsp;·&nbsp;<span>4718 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to DSA With Python - Zero to Hero (Curriculum)" href="http://localhost:1313/blog/dsa-with-python-curriculum/"></a>
+    <a class="entry-link" aria-label="post link to Arrays in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-04-arrays/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/time-complexity-analysis.png" alt="Analysis of time complexity">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-02.png" alt="Binary Search Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Analysis of Time Complexity Explained with Python Examples
+        <h2 class="entry-hint-parent">Binary Search Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/time-complexity/">time-complexity</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Time complexity is one of the most important concepts in Data Structures and Algorithms. It helps you understand how an algorithm behaves as the input size grows and why some solutions fail to scale.
-This guide explains time complexity step-by-step using simple explanations and Python examples written purely as text, focusing on intuition rather than heavy mathematics.
-1. What Is Time Complexity? Time complexity measures how the running time of an algorithm grows as the input size increases.
+        <p>🔰 Pattern 2: Binary Search Table of Contents What is Binary Search? The Core Idea - Why Halving Works The Three Binary Search Templates Binary Search on Answer - The Hidden Pattern Common Pitfalls Problem Set Problem 1: Binary Search Problem 2: Search Insert Position Problem 3: Find First and Last Position of Element in Sorted Array Problem 4: Search a 2D Matrix Problem 5: Search in Rotated Sorted Array Problem 6: Find Minimum in Rotated Sorted Array Problem 7: Koko Eating Bananas Problem 8: Capacity to Ship Packages Within D Days Problem 9: Split Array Largest Sum Problem 10: Median of Two Sorted Arrays Key Takeaways &amp; Summary What is Binary Search? In the Two Pointers pattern, we used two indices to narrow down a search space. Binary search takes that idea to its most powerful form: instead of narrowing one step at a time, we cut the search space in half at every step.
 ...</p>
     </div>
 
@@ -247,31 +286,27 @@ This guide explains time complexity step-by-step using simple explanations and P
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>784 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>37 min</span>&nbsp;·&nbsp;<span>7715 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Analysis of Time Complexity Explained with Python Examples" href="http://localhost:1313/blog/time_complexity/"></a>
+    <a class="entry-link" aria-label="post link to Binary Search Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-02-binary-search/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/array-patterns.jpg" alt="Array problem-solving patterns">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-3.png" alt="Complexity Analysis">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Array Patterns for Problem Solving
+        <h2 class="entry-hint-parent">Complexity Analysis  -  Time and Space
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/arrays/">arrays</a>
     </div>
     <div class="entry-content">
-        <p>Array patterns are recurring problem-solving techniques used to solve a wide variety of array problems efficiently.
-Instead of memorizing individual solutions, understanding these patterns helps you recognize how to approach a problem and design an optimal solution.
-1. Traversal Pattern Concept The traversal pattern involves visiting each element of the array once or in a fixed manner.
-When to Use Finding maximum or minimum elements Printing all elements Counting frequency Simple condition checks Explanation Example Traverse the array from the first element to the last, updating the required result as you move forward.
+        <p>Complexity Analysis – Time and Space Table of Contents What You Will Learn in This Blog Why Do We Need Complexity Analysis Building Intuition First How We Evaluate Algorithms – A Brief History Approach 1 – Experimental Analysis Approach 2 – Counting Every Operation Exactly Approach 3 – Asymptotic Analysis Primitive Operations – The Foundation of the Model What is Big O Notation The Common Complexity Classes O(1) – Constant Time O(log n) – Logarithmic Time O(n) – Linear Time O(n log n) – Linearithmic Time O(n^2) – Quadratic Time O(2^n) – Exponential Time O(n!) – Factorial Time Comparing the Complexity Classes How to Analyse Code Step by Step Space Complexity Common Misconceptions Complexity of Python Built-ins Practice Problems Summary Key Takeaways Next Steps What You Will Learn in This Blog Why complexity analysis exists and what problem it solves How to think about the efficiency of code intuitively before using any formula What Big O notation is and what it actually means The most common complexity classes with examples and code for each How to analyse any piece of code step by step Space complexity and how to think about memory usage Common misconceptions that trip up beginners Practice problems to test your understanding Why Do We Need Complexity Analysis Before anything else, let us answer the most important question: why does this topic exist at all?
 ...</p>
     </div>
 
@@ -279,36 +314,28 @@ When to Use Finding maximum or minimum elements Printing all elements Counting f
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>715 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>24 min</span>&nbsp;·&nbsp;<span>4942 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Array Patterns for Problem Solving" href="http://localhost:1313/blog/array_patterns/"></a>
+    <a class="entry-link" aria-label="post link to Complexity Analysis  -  Time and Space" href="http://localhost:1313/blog/dsa-03-complexity-analysis/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/bfs-dfs.jpg" alt="BFS vs DFS graph traversal">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-05.png" alt="Hashmap Frequency Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">BFS vs DFS Explained Clearly
+        <h2 class="entry-hint-parent">HashMap and Frequency Counting Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/bfs/">bfs</a>
-        <a class="tag" href="http://localhost:1313/tags/dfs/">dfs</a>
-        <a class="tag" href="http://localhost:1313/tags/graphs/">graphs</a>
-        <a class="tag" href="http://localhost:1313/tags/traversal/">traversal</a>
-        <a class="tag" href="http://localhost:1313/tags/algorithms/">algorithms</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Graphs and trees are non-linear data structures. To process or explore them, traversal algorithms are used.
-The two most important traversal techniques are:
-Breadth-First Search (BFS) Depth-First Search (DFS) Both algorithms visit all nodes in a graph or tree, but their strategies and use-cases differ significantly.
-1. Breadth-First Search (BFS) Concept Breadth-First Search explores a graph level by level.
-It visits all neighbors of a node before moving deeper into the graph.
+        <p>🔰 Pattern 4: HashMap / Frequency Counting Table of Contents What is the HashMap Pattern? When to Use HashMaps? Types of HashMap Patterns Template Code Problem Set Problem 1: Two Sum Problem 2: Valid Anagram Problem 3: Group Anagrams Problem 4: Top K Frequent Elements Problem 5: Longest Consecutive Sequence Problem 6: Contains Duplicate II Problem 7: Intersection of Two Arrays II Problem 8: First Unique Character in a String Problem 9: 4Sum II Problem 10: Encode and Decode TinyURL Key Takeaways &amp; Summary What is the HashMap Pattern? In the previous patterns, we’ve already used hashmaps as a supporting tool - tracking character frequencies in sliding window, storing prefix sums for subarray problems. In this section, we focus on problems where the hashmap is the core of the solution, not just a helper.
 ...</p>
     </div>
 
@@ -316,32 +343,27 @@ It visits all neighbors of a node before moving deeper into the graph.
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>630 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>36 min</span>&nbsp;·&nbsp;<span>7599 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to BFS vs DFS Explained Clearly" href="http://localhost:1313/blog/bfs_dfs/"></a>
+    <a class="entry-link" aria-label="post link to HashMap and Frequency Counting Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/binary-search.jpg" alt="Binary search algorithm">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-6.png" alt="Linked Lists in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Binary Search Explained Clearly
+        <h2 class="entry-hint-parent">Linked Lists in Python  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/binary-search/">binary-search</a>
-        <a class="tag" href="http://localhost:1313/tags/searching/">searching</a>
     </div>
     <div class="entry-content">
-        <p>Binary Search is an efficient searching algorithm used to find an element in a sorted array by repeatedly dividing the search space into half.
-Unlike linear search, which checks elements one by one, binary search eliminates half of the remaining elements at each step. This makes it significantly faster for large datasets.
-Key Requirement Binary search can only be applied when the array is already sorted.
-The sorting order can be:
+        <p>Linked Lists Table of Contents What You Will Learn in This Blog Why Linked Lists Exist What is a Node What is a Linked List Singly Linked List Building the Node Class Building the LinkedList Class Append – Insert at Tail Prepend – Insert at Head Insert at Position Delete by Value Delete at Position Search Traverse and Print Length of the List Reverse a Linked List Singly Linked List – Complete Implementation Time and Space Complexity Summary Doubly Linked List Building the DoublyNode Class Building the DoublyLinkedList Class Append and Prepend Insert at Position Delete by Value Traverse Forward and Backward Doubly Linked List – Complete Implementation Time and Space Complexity Summary Circular Linked List What Makes it Circular Building the CircularLinkedList Class Append and Prepend Delete by Value Traverse Circular Linked List – Complete Implementation Time and Space Complexity Summary Arrays vs Linked Lists – When to Use Which Python and Linked Lists Patterns and Techniques Pattern 1 – Fast and Slow Pointers Pattern 2 – In-place Reversal Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog Why linked lists exist and what problem they solve compared to arrays What a node and a pointer are How to build a Singly Linked List from scratch with all operations How to build a Doubly Linked List from scratch with all operations How to build a Circular Linked List from scratch with all operations Time and space complexity of every operation Two patterns: Fast and Slow Pointers, and In-place Reversal Solved LeetCode problems with full explanation A practice problem table for further study Why Linked Lists Exist In the Arrays blog, we learned that arrays store elements in contiguous memory – one right after the other. This gives us O(1) access by index, which is powerful. But contiguous memory comes with a cost:
 ...</p>
     </div>
 
@@ -349,31 +371,28 @@ The sorting order can be:
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>484 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>31 min</span>&nbsp;·&nbsp;<span>6482 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Binary Search Explained Clearly" href="http://localhost:1313/blog/binary_search/"></a>
+    <a class="entry-link" aria-label="post link to Linked Lists in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-06-linked-lists/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/dynamic-programming-cover.png" alt="Dynamic programming concepts">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-04.png" alt="Prefix Sum Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Concept of Dynamic Programming Explained Clearly
+        <h2 class="entry-hint-parent">Prefix Sum Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/dynamic-programming/">dynamic-programming</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Dynamic Programming (DP) is a powerful algorithmic technique used to solve problems that can be broken down into smaller subproblems whose solutions are reused to efficiently compute the final result.
-Unlike brute-force approaches or naive recursion, Dynamic Programming avoids unnecessary recomputation and significantly improves performance.
-1. What Is Dynamic Programming? Dynamic Programming is a method of solving problems by:
-Dividing a problem into smaller subproblems Solving each subproblem only once Storing the solution of each subproblem Using stored solutions to build the final answer The word dynamic refers to solving problems step by step, while programming refers to structured problem-solving rather than coding.
+        <p>🔰 Pattern 3: Prefix Sum Table of Contents What is Prefix Sum? Building the Intuition Step by Step The Range Sum Formula - Why It Works Common Variations Template Code Problem Set Problem 1: Range Sum Query – Immutable Problem 2: Running Sum of 1D Array Problem 3: Find Pivot Index Problem 4: Subarray Sum Equals K Problem 5: Contiguous Array Problem 6: Product of Array Except Self Problem 7: Subarray Sums Divisible by K Problem 8: Range Sum Query 2D – Immutable Problem 9: Continuous Subarray Sum Problem 10: Count Number of Nice Subarrays Key Takeaways &amp; Summary What is Prefix Sum? Consider this scenario: you have an array of numbers and someone keeps asking you “what’s the sum of elements from index i to index j?” - not once, but hundreds of times with different i and j values.
 ...</p>
     </div>
 
@@ -381,30 +400,28 @@ Dividing a problem into smaller subproblems Solving each subproblem only once St
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>698 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>41 min</span>&nbsp;·&nbsp;<span>8588 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Concept of Dynamic Programming Explained Clearly" href="http://localhost:1313/blog/dynamic_programming/"></a>
+    <a class="entry-link" aria-label="post link to Prefix Sum Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-04-prefix-sum/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/sorting-algorithms-cover.png" alt="Sorting algorithms">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-2.png" alt="Python Refresher for DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Different Sorting Algorithms Explained Clearly
+        <h2 class="entry-hint-parent">Python Refresher for DSA
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/sorting/">sorting</a>
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
     </div>
     <div class="entry-content">
-        <p>Sorting is the process of arranging elements in a specific order, usually ascending or descending, to make data easier to search, analyze, and process.
-Sorting plays a critical role in computer science because many algorithms perform efficiently only on sorted data.
-1. Bubble Sort Concept Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order. Larger elements gradually move to the end of the array, similar to bubbles rising to the surface.
+        <p>Python Refresher for DSA Table of Contents What You Will Learn in This Blog Python Built-in Data Types for DSA Lists Dictionaries Sets Tuples The Collections Module deque defaultdict Counter List Comprehensions Important Built-in Functions for DSA Sorting in Python String Operations heapq – The Built-in Min Heap Common Python Patterns in DSA Summary Key Takeaways Next Steps What You Will Learn in This Blog The Python built-in data types you will use constantly in DSA How lists, dictionaries, sets, and tuples work and when to use each Important Python built-in functions and their complexities The collections module – deque, defaultdict, Counter List comprehensions and when to use them Common Python patterns that appear repeatedly in DSA problems This is not a complete Python tutorial. It covers exactly what you need to follow the rest of this guide comfortably. If you are already confident with all of the above, you can skim this and move on.
 ...</p>
     </div>
 
@@ -412,31 +429,28 @@ Sorting plays a critical role in computer science because many algorithms perfor
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>857 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>16 min</span>&nbsp;·&nbsp;<span>3233 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Different Sorting Algorithms Explained Clearly" href="http://localhost:1313/blog/sorting_algo/"></a>
+    <a class="entry-link" aria-label="post link to Python Refresher for DSA" href="http://localhost:1313/blog/dsa-02-python-refresher/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/recursion-cover.png" alt="Recursion concept">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-03.png" alt="Sliding Window Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Recursion Explained from Basics
+        <h2 class="entry-hint-parent">Sliding Window Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/recursion/">recursion</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Recursion is a programming technique in which a function calls itself to solve a problem by breaking it down into smaller and simpler subproblems.
-Instead of solving the entire problem at once, recursion focuses on solving a reduced version of the problem repeatedly until a stopping condition is reached.
-What Is Recursion? In recursion, a function solves a problem by calling itself with a smaller input.
-Each recursive call works on a reduced version of the original problem until it reaches a point where no further calls are needed.
+        <p>🔰 Pattern 2: Sliding Window Table of Contents What is the Sliding Window Technique? When to Use Sliding Window? Types of Sliding Window Template Code Problem Set Problem 1: Maximum Sum Subarray of Size K Problem 2: Longest Substring Without Repeating Characters Problem 3: Maximum Average Subarray I Problem 4: Minimum Size Subarray Sum Problem 5: Permutation in String Problem 6: Longest Repeating Character Replacement Problem 7: Fruit Into Baskets Problem 8: Minimum Window Substring Problem 9: Sliding Window Maximum Problem 10: Substring with Concatenation of All Words Key Takeaways &amp; Summary What is the Sliding Window Technique? In the Two Pointers pattern, we learned how two indices can traverse an array efficiently. Sliding Window builds on that idea - it maintains a range (window) between two pointers and cares about the elements inside that range.
 ...</p>
     </div>
 
@@ -444,45 +458,19 @@ Each recursive call works on a reduced version of the original problem until it 
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>522 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>42 min</span>&nbsp;·&nbsp;<span>8899 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Recursion Explained from Basics" href="http://localhost:1313/blog/recursion/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/searching-arrays-cover.png" alt="Searching in arrays">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Searching in Arrays (Sorted and Unsorted)
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/searching/">searching</a>
-        <a class="tag" href="http://localhost:1313/tags/algorithms/">algorithms</a>
-    </div>
-    <div class="entry-content">
-        <p>Searching is the process of determining whether a given element exists in an array and, if required, returning its index.
-The choice of searching technique depends entirely on whether the array is sorted or unsorted. Selecting the correct approach directly impacts performance and scalability.
-1. Searching in an Unsorted Array Characteristics Elements are not arranged in any specific order No assumptions can be made about element positions Linear search is the primary technique used Linear Search Concept Each element of the array is checked one by one until the target element is found or the array ends.
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>547 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Searching in Arrays (Sorted and Unsorted)" href="http://localhost:1313/blog/searching_in_arrays/"></a>
+    <a class="entry-link" aria-label="post link to Sliding Window Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-03-sliding-window/"></a>
     
 </article>
 </div>
+<footer class="page-footer">
+    <nav class="pagination">
+        <a class="next" href="http://localhost:1313/tags/dsa/page/2/">Next&nbsp;&nbsp;»
+        </a>
+    </nav>
+</footer>
     </main>
     
 <footer class="footer">
