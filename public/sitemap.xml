@@ -2,17 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/dsa_roadmap/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/courses/dsa-python-zero-to-hero/</loc>
-    <lastmod>2026-03-18T15:01:31+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/dsa-with-python-curriculum/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/courses/dsa-live-practice/</loc>
-    <lastmod>2026-03-17T13:58:25+05:30</lastmod>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-00-index/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-04-arrays/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-02-binary-search/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-03-complexity-analysis/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-02-control-flow/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/dsa/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/dsa-patterns/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/learning-roadmap/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-06-linked-lists/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-16-logging-and-os/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-10-modules-packages/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-11-oop-masterclass/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-12-oop-practice/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-04-prefix-sum/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-01-python-basics/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-05-collections-theory/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-00-python-roadmap/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-03-loops-masterclass/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-02-python-refresher/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-17-regex-guide/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-03-sliding-window/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-07-stacks/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-05-strings/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-00-master-roadmap/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-patterns-01-two-pointers/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-18-type-hints/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/dsa-01-what-is-dsa/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-19-working-with-real-world/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/numpy-practice/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
@@ -23,10 +110,10 @@
     <loc>http://localhost:1313/tags/data-analysis/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/collections-practice/</loc>
+    <loc>http://localhost:1313/blog/python-06-collections-practice/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/python-loops-practice/</loc>
+    <loc>http://localhost:1313/blog/python-04-loops-practice/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/numpy/</loc>
@@ -41,28 +128,22 @@
     <loc>http://localhost:1313/blog/pandas-masterclass/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/exception_handling/</loc>
+    <loc>http://localhost:1313/blog/python-08-exception-handling/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/file-handling-in-python/</loc>
+    <loc>http://localhost:1313/blog/python-09-file-handling/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sql-part2/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/functions-in-python/</loc>
+    <loc>http://localhost:1313/blog/python-07-functions/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sql-part3/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/decorators/</loc>
+    <loc>http://localhost:1313/blog/python-13-decorators/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sql-part7/</loc>
@@ -71,10 +152,10 @@
     <loc>http://localhost:1313/blog/sql-part1/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/iterators_generators/</loc>
+    <loc>http://localhost:1313/blog/python-14-iterators-generators/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/itertools/</loc>
+    <loc>http://localhost:1313/blog/python-15-itertools/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sql-part4/</loc>
@@ -104,6 +185,9 @@
     <loc>http://localhost:1313/blog/sql-practice-shopdb/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/dsa_roadmap/</loc>
+    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/algorithms/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
@@ -128,7 +212,7 @@
     <loc>http://localhost:1313/tags/binary-search/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/python_syllabus/</loc>
+    <loc>http://localhost:1313/blog/python-syllabus/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/dynamic_programming/</loc>
@@ -140,16 +224,13 @@
     <loc>http://localhost:1313/blog/sorting_algo/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dsa/</loc>
+    <loc>http://localhost:1313/blog/dsa-with-python-curriculum/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/dynamic-programming/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/graphs/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/learning-roadmap/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/recursion/</loc>
@@ -173,18 +254,87 @@
     <loc>http://localhost:1313/tags/traversal/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/01_oop_in_python/</loc>
+    <lastmod>2026-08-29T07:06:07+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/02_solid_principles---extra-draft/</loc>
+    <lastmod>2026-09-04T08:49:49+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/02_solid_principles/</loc>
+    <lastmod>2026-09-04T08:28:31+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/02a_solid_practice/</loc>
+    <lastmod>2026-09-04T08:29:33+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/03_design_patterns_creational/</loc>
+    <lastmod>2026-09-04T08:47:52+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/04_design_patterns_structural/</loc>
+    <lastmod>2026-08-29T07:06:07+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/05_design_patterns_behavioral/</loc>
+    <lastmod>2026-08-29T07:06:07+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/06_design_patterns_practice/</loc>
+    <lastmod>2026-08-29T07:06:07+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/06_lld_interview_questions/</loc>
+    <lastmod>2026-04-25T07:02:26+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/07_advanced_lld_topics/</loc>
+    <lastmod>2026-08-29T06:41:54+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/08_uml_deep_dive/</loc>
+    <lastmod>2026-08-29T17:04:59+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06a_lld_parking_lot_deep_dive/</loc>
+    <lastmod>2026-04-25T07:02:26+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06b_lld_elevator_deep_dive/</loc>
+    <lastmod>2026-04-25T07:02:26+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06c_lld_library_deep_dive/</loc>
+    <lastmod>2026-04-25T07:02:26+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06d_lld_tic_tac_toe_deep_dive/</loc>
+    <lastmod>2026-09-02T05:33:11+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06e_lld_ecommerce_deep_dive/</loc>
+    <lastmod>2026-08-30T07:42:59+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06f_lld_ride_sharing_deep_dive/</loc>
+    <lastmod>2026-09-02T05:48:51+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06g_lld_atm_deep_dive/</loc>
+    <lastmod>2026-09-02T05:32:27+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06h_lld_movie_booking_deep_dive/</loc>
+    <lastmod>2026-09-02T05:34:47+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06i_lld_text_editor_deep_dive/</loc>
+    <lastmod>2026-08-29T07:10:59+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/low_level_design/interview_questions/06j_lld_splitwise_deep_dive/</loc>
+    <lastmod>2026-09-04T08:31:15+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/python-beginners-introduction/</loc>
+    <lastmod>2026-09-04T09:28:32+05:30</lastmod>
+  </url><url>
     <loc>http://localhost:1313/about/</loc>
-    <lastmod>2026-03-16T00:26:19+05:30</lastmod>
+    <lastmod>2026-03-13T11:41:24+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2026-03-17T17:33:57+05:30</lastmod>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-03-16T00:26:19+05:30</lastmod>
+    <lastmod>2026-03-13T11:41:24+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/courses/</loc>
-    <lastmod>2026-03-16T00:26:19+05:30</lastmod>
+    <lastmod>2026-03-13T11:41:24+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/search/</loc>
+    <lastmod>2026-04-02T22:02:00+05:30</lastmod>
   </url>
 </urlset>

@@ -18,7 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../../css/github-markdown.css">
+<link rel="stylesheet" href="../../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -80,6 +81,7 @@
     }
 
 </script>
+<script defer src="../../js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -144,7 +146,25 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
@@ -156,6 +176,30 @@
         Sql
     </h1>
 </header>
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="../../blog/"
+     class="topic-pill">All</a>
+  <a href="../../tags/python/"
+     class="topic-pill">Python</a>
+  <a href="../../tags/dsa/"
+     class="topic-pill">Dsa</a>
+  <a href="../../tags/data-analysis/"
+     class="topic-pill">Data-Analysis</a>
+  <a href="../../tags/sql/"
+     class="topic-pill topic-pill--active">Sql</a>
+  <a href="../../tags/dsa-patterns/"
+     class="topic-pill">Dsa-Patterns</a>
+  <a href="../../tags/learning-roadmap/"
+     class="topic-pill">Learning-Roadmap</a>
+  <a href="../../tags/pandas/"
+     class="topic-pill">Pandas</a>
+  <a href="../../tags/algorithms/"
+     class="topic-pill">Algorithms</a>
+  <a href="../../tags/numpy/"
+     class="topic-pill">Numpy</a>
+  <a href="../../tags/searching/"
+     class="topic-pill">Searching</a>
+</nav>
 
 
 
@@ -175,7 +219,7 @@
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>Lesson 2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB — Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
+        <p>Lesson 2 - Filtering &amp; Querying Data Theory &#43; Practice | ShopDB - Indian E-commerce Dataset Before You Start Run setup.sql in pgAdmin to create and populate ShopDB. Verify you see 5 tables with the correct row counts. Then work through this file top to bottom. What you’ll learn in this lesson:
 Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN Match against a list of values BETWEEN Filter within a range LIKE / ILIKE Pattern matching on text IS NULL / IS NOT NULL Handle missing values CASE WHEN Conditional logic inside a query Date functions Filter and extract parts of dates COALESCE Replace NULL with a fallback value All queries in this lesson run on ShopDB. The dataset has:
 ...</p>
     </div>
@@ -206,7 +250,7 @@ Concept What it does DISTINCT Remove duplicate values from results IN / NOT IN M
     </div>
     <div class="entry-content">
         <p>Lesson 3 - Aggregations &amp; Grouping Theory &#43; Practice | CricketDB &#43; ShopDB Before You Start This lesson uses both databases you have already built:
-CricketDB — players, matches, performances (Lesson 2.1) ShopDB — customers, products, orders, order_items (Lesson 2.2) Run the setup_check.sql from this lesson folder to confirm both are ready. Each section tells you which database to connect to in pgAdmin.
+CricketDB - players, matches, performances (Lesson 2.1) ShopDB - customers, products, orders, order_items (Lesson 2.2) Run the setup_check.sql from this lesson folder to confirm both are ready. Each section tells you which database to connect to in pgAdmin.
 What you will learn in this lesson:
 ...</p>
     </div>
@@ -236,8 +280,8 @@ What you will learn in this lesson:
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>Lesson 2.7 — Indexes, Constraints &amp; Schema Design Theory &#43; Practice | All Three Databases Before You Start This lesson uses all three databases. Each section tells you which one to connect to.
-Quick check — run this in each database before starting:
+        <p>Lesson 2.7 - Indexes, Constraints &amp; Schema Design Theory &#43; Practice | All Three Databases Before You Start This lesson uses all three databases. Each section tells you which one to connect to.
+Quick check - run this in each database before starting:
 -- In cricketdb: SELECT COUNT(*) FROM performances; -- expect 30 -- In shopdb: SELECT COUNT(*) FROM order_items; -- expect 30&#43; -- In streamdb: SELECT COUNT(*) FROM watch_history; -- expect 50 What you will learn:
 ...</p>
     </div>
@@ -268,7 +312,7 @@ Quick check — run this in each database before starting:
     </div>
     <div class="entry-content">
         <p>SQL Lecture 01 - Introduction to SQL &amp; Databases PostgreSQL | Beginner Reference Sheet | Use this during class 🐘
-Table of Contents What is a Database? Types of Databases What is SQL? How SQL Commands Are Grouped Creating a Table — Full Breakdown Data Types in PostgreSQL Constraints — Rules for Your Data Primary Key &amp; Foreign Key Common SQL Commands with Examples What Happens When You Violate a Constraint? Practice Table &amp; 10 Beginner Questions 1. What is a Database? A database is an organised collection of data stored so it can be easily accessed, managed, and updated.
+Table of Contents What is a Database? Types of Databases What is SQL? How SQL Commands Are Grouped Creating a Table - Full Breakdown Data Types in PostgreSQL Constraints - Rules for Your Data Primary Key &amp; Foreign Key Common SQL Commands with Examples What Happens When You Violate a Constraint? Practice Table &amp; 10 Beginner Questions 1. What is a Database? A database is an organised collection of data stored so it can be easily accessed, managed, and updated.
 ...</p>
     </div>
 
@@ -300,7 +344,6 @@ Table of Contents What is a Database? Types of Databases What is SQL? How SQL Co
         <p>Lesson 4 - JOINs &amp; Relationships Theory &#43; Practice | ShopDB Before You Start This lesson uses ShopDB exclusively. Connect to shopdb in pgAdmin before running any query.
 Run this to confirm your data is ready:
 SELECT &#39;customers&#39; AS t, COUNT(*) FROM customers UNION ALL SELECT &#39;products&#39;, COUNT(*) FROM products UNION ALL SELECT &#39;orders&#39;, COUNT(*) FROM orders UNION ALL SELECT &#39;order_items&#39;,COUNT(*) FROM order_items; -- Expected: 20, 25, 15, 30 What you will learn:
-Concept What it does INNER JOIN Only rows that match in both tables LEFT JOIN All left rows &#43; matches from right (NULL if no match) RIGHT JOIN All right rows &#43; matches from left (NULL if no match) FULL OUTER JOIN All rows from both tables Self-join A table joined to itself 4-table JOIN The full ShopDB chain Common mistakes Duplicate rows, wrong COUNT, missing ON clause JOIN vs subquery When to use which Part 1 — The Four JOIN Types, Side by Side The best way to understand JOINs is to see them compared on the same data.
 ...</p>
     </div>
 
@@ -329,7 +372,7 @@ Concept What it does INNER JOIN Only rows that match in both tables LEFT JOIN Al
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>Lesson 5 - Subqueries &amp; CTEs Theory &#43; Practice | StreamDB — Indian Streaming Platform Before You Start This lesson introduces StreamDB — a Hotstar-style streaming platform.
+        <p>Lesson 5 - Subqueries &amp; CTEs Theory &#43; Practice | StreamDB - Indian Streaming Platform Before You Start This lesson introduces StreamDB - a Hotstar-style streaming platform.
 Run setup.sql to create and populate StreamDB Verify you see 6 tables with the correct row counts Connect to streamdb in pgAdmin before running any query The StreamDB schema:
 users shows genres ┌────┬───────┬──────┐ ┌────┬────────┬──────────┐ ┌────┬──────────┐ │ id │ name │ plan │ │ id │ title │is_premium│ │ id │ name │ └────┴───────┴──────┘ └────┴────────┴──────────┘ └────┴──────────┘ │ │ │ │ │ show_genres │ │ │ ┌──────────────┘ ┌────────────┘ │ │ show_id | genre_id │ │ └──────────────────────────┘ (many-to-many) │ subscriptions watch_history ┌────┬─────────┬──────────────┐ ┌────┬─────────┬─────────┬─────────┐ │ id │ user_id │ plan │ │ id │ user_id │ show_id │ minutes │ │ │ │ started_on │ │ │ │ watched │ watched │ │ │ │ expires_on │ └────┴─────────┴─────────┴─────────┘ └────┴─────────┴──────────────┘ What you will learn:
 ...</p>
@@ -361,7 +404,7 @@ users shows genres ┌────┬───────┬──────�
     </div>
     <div class="entry-content">
         <p>Lesson 6 - Modifying Data &amp; Schema Changes Theory &#43; Practice | ShopDB Before You Start This lesson uses ShopDB. Connect to shopdb in pgAdmin before running any query.
-Important: This lesson modifies real data. Some queries will permanently change your database. The section on transactions shows you how to do this safely — read Part 7 before running anything you are unsure about.
+Important: This lesson modifies real data. Some queries will permanently change your database. The section on transactions shows you how to do this safely - read Part 7 before running anything you are unsure about.
 Quick data check:
 SELECT &#39;customers&#39; AS t, COUNT(*) FROM customers UNION ALL SELECT &#39;products&#39;, COUNT(*) FROM products UNION ALL SELECT &#39;orders&#39;, COUNT(*) FROM orders UNION ALL SELECT &#39;order_items&#39;, COUNT(*) FROM order_items; -- Expected: 20, 25, 15, 30 What you will learn:
 ...</p>
@@ -392,8 +435,8 @@ SELECT &#39;customers&#39; AS t, COUNT(*) FROM customers UNION ALL SELECT &#39;p
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>## Pratice easy, medium and hard questions on cricket dataset. &lt;!DOCTYPE html&gt; SQL Practice: CricketDB — Codeverra Codeverra · SQL Practice SQL Practice Set
-CricketDB 12 questions on a cricket dataset — players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.
+        <p>## Pratice easy, medium and hard questions on cricket dataset. &lt;!DOCTYPE html&gt; SQL Practice: CricketDB - Codeverra Codeverra · SQL Practice SQL Practice Set
+CricketDB 12 questions on a cricket dataset - players, matches, and ball-by-ball performances. Easy to hard. Every question has a one-line approach, a clean solution, and alternatives where they exist.
 ...</p>
     </div>
 
@@ -422,8 +465,8 @@ CricketDB 12 questions on a cricket dataset — players, matches, and ball-by-ba
         <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>## Practice SQL questions on the shopping dataset. &lt;!DOCTYPE html&gt; SQL Practice: ShopDB — Codeverra Codeverra · SQL Practice SQL Practice Set
-ShopDB 12 questions on an Indian e-commerce dataset — customers, products, orders, and line items. Easy to hard. Every question includes the business context, a one-line approach, a clean query, and alternatives where they exist.
+        <p>## Practice SQL questions on the shopping dataset. &lt;!DOCTYPE html&gt; SQL Practice: ShopDB - Codeverra Codeverra · SQL Practice SQL Practice Set
+ShopDB 12 questions on an Indian e-commerce dataset - customers, products, orders, and line items. Easy to hard. Every question includes the business context, a one-line approach, a clean query, and alternatives where they exist.
 ...</p>
     </div>
 
@@ -431,7 +474,7 @@ ShopDB 12 questions on an Indian e-commerce dataset — customers, products, ord
     <footer class="entry-footer">
         
         
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>2602 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>2603 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
     <a class="entry-link" aria-label="post link to SQL Practice on Shopping Dataset: SQL Questions with Solutions" href="http://localhost:1313/blog/sql-practice-shopdb/"></a>

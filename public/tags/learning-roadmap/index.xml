@@ -4,10 +4,24 @@
     <title>Learning-Roadmap on codeverra</title>
     <link>http://localhost:1313/tags/learning-roadmap/</link>
     <description>Recent content in Learning-Roadmap on codeverra</description>
-    <generator>Hugo -- 0.158.0</generator>
+    <generator>Hugo -- 0.153.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 09:28:32 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/learning-roadmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Learning Roadmap</title>
+      <link>http://localhost:1313/blog/python-00-python-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-00-python-roadmap/</guid>
+      <description>A structured roadmap to learning Python from scratch to advanced  -  what to learn, in what order, and why.</description>
+    </item>
+    <item>
+      <title>The Complete DSA with Python  -  Master Roadmap</title>
+      <link>http://localhost:1313/blog/dsa-00-master-roadmap/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/dsa-00-master-roadmap/</guid>
+      <description>A structured roadmap to mastering Data Structures and Algorithms using Python, from basics to advanced topics.</description>
+    </item>
     <item>
       <title>A Practical DSA Learning Roadmap</title>
       <link>http://localhost:1313/blog/dsa_roadmap/</link>
@@ -16,18 +30,18 @@
       <description>A structured roadmap to learn Data Structures and Algorithms the right way and why it matters beyond interview preparation</description>
     </item>
     <item>
+      <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
+      <link>http://localhost:1313/blog/python-syllabus/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/python-syllabus/</guid>
+      <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
+    </item>
+    <item>
       <title>DSA With Python - Zero to Hero (Curriculum)</title>
       <link>http://localhost:1313/blog/dsa-with-python-curriculum/</link>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/dsa-with-python-curriculum/</guid>
       <description>Learn Python programming along with Data Structures and Algorithms from scratch and become a hero in the field.&amp;#34;</description>
-    </item>
-    <item>
-      <title>Complete Python Programming Syllabus (Beginner to Advanced)</title>
-      <link>http://localhost:1313/blog/python_syllabus/</link>
-      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/python_syllabus/</guid>
-      <description>A structured Python programming roadmap from zero to professional level, covering fundamentals, core concepts, advanced topics, and real-world applications.</description>
     </item>
   </channel>
 </rss>

@@ -19,7 +19,8 @@ This section will grow over time with structured posts and practical insights.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../css/github-markdown.css">
+<link rel="stylesheet" href="../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -81,6 +82,7 @@ This section will grow over time with structured posts and practical insights.">
     }
 
 </script>
+<script defer src="../js/nav-search.js"></script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -145,7 +147,25 @@ This section will grow over time with structured posts and practical insights.">
                     <span class="active">Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main"> 
@@ -157,11 +177,90 @@ This section will grow over time with structured posts and practical insights.">
         Blogs
     </h1>
 </header>
-<div class="post-content"><p>Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.</p>
+<div class="post-content markdown-body"><p>Thoughts, notes, and explanations on Python, Data Structures, Algorithms, Machine Learning, and learning how to learn effectively.</p>
 <p>This section will grow over time with structured posts and practical insights.</p>
 
 
 </div>
+<nav class="blog-topic-filter" aria-label="Filter by topic">
+  <a href="../blog/"
+     class="topic-pill topic-pill--active">All</a>
+  <a href="../tags/python/"
+     class="topic-pill">Python</a>
+  <a href="../tags/dsa/"
+     class="topic-pill">Dsa</a>
+  <a href="../tags/data-analysis/"
+     class="topic-pill">Data-Analysis</a>
+  <a href="../tags/sql/"
+     class="topic-pill">Sql</a>
+  <a href="../tags/dsa-patterns/"
+     class="topic-pill">Dsa-Patterns</a>
+  <a href="../tags/learning-roadmap/"
+     class="topic-pill">Learning-Roadmap</a>
+  <a href="../tags/pandas/"
+     class="topic-pill">Pandas</a>
+  <a href="../tags/algorithms/"
+     class="topic-pill">Algorithms</a>
+  <a href="../tags/numpy/"
+     class="topic-pill">Numpy</a>
+  <a href="../tags/searching/"
+     class="topic-pill">Searching</a>
+</nav>
+<div class="blog-with-sidebar">
+<aside class="blog-sidebar">
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Recent</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/low_level_design/01_oop_in_python/">Object-Oriented Programming in Python: A Deep Dive</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-00-index/">Array Patterns  -  The Complete Study Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-04-arrays/">Arrays in Python  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-02-binary-search/">Binary Search Pattern  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-03-complexity-analysis/">Complexity Analysis  -  Time and Space</a></li>
+      <li><a href="http://localhost:1313/blog/python-02-control-flow/">Control Flow in Python</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Python</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/low_level_design/01_oop_in_python/">Object-Oriented Programming in Python: A Deep Dive</a></li>
+      <li><a href="http://localhost:1313/blog/python-02-control-flow/">Control Flow in Python</a></li>
+      <li><a href="http://localhost:1313/blog/python-16-logging-and-os/">Logging and System Interaction in Python</a></li>
+      <li><a href="http://localhost:1313/blog/python-10-modules-packages/">Modules, Packages, and the Python Ecosystem</a></li>
+      <li><a href="http://localhost:1313/blog/python-11-oop-masterclass/">Object-Oriented Programming in Python  -  Masterclass</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">DSA</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/dsa-patterns-00-index/">Array Patterns  -  The Complete Study Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-04-arrays/">Arrays in Python  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-02-binary-search/">Binary Search Pattern  -  Complete Guide</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-03-complexity-analysis/">Complexity Analysis  -  Time and Space</a></li>
+      <li><a href="http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/">HashMap and Frequency Counting Pattern  -  Complete Guide</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">SQL</h3>
+    <ul class="sidebar-links">
+      <li><a href="http://localhost:1313/blog/sql-part2/">Filtering and Querying data</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part3/">Group by and Aggregations</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part7/">Indexes and Schema Design</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part1/">Introduction to SQL and Databases</a></li>
+      <li><a href="http://localhost:1313/blog/sql-part4/">Joins and Relationships</a></li>
+    </ul>
+  </div>
+
+</aside>
+
+<div class="blog-main-content">
 
 
 
@@ -170,20 +269,51 @@ This section will grow over time with structured posts and practical insights.">
 <article class="post-entry">
      
 <figure class="entry-cover">
-            <img loading="lazy" src="http://localhost:1313/images/dsa-roadmap-cover.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/LLD%20-%201.png" alt="Object-Oriented Programming in Python">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">A Practical DSA Learning Roadmap
+        <h2 class="entry-hint-parent">Object-Oriented Programming in Python: A Deep Dive
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/lld/">lld</a>
+        <a class="tag" href="http://localhost:1313/tags/oop/">oop</a>
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Object-Oriented Programming in Python — A Deep Dive Who this is for: Anyone who knows basic Python (variables, functions, lists, dicts) and wants to truly understand OOP — not just the syntax, but why it exists, what problems it solves, and how to wield it well in real systems.
+Table of Contents The World Before OOP — Why Do We Even Need It? Classes and Objects — The Blueprint and the Building The self Parameter — Python’s Most Misunderstood Keyword Attributes — Instance vs Class Attributes Methods — Instance, Class, and Static The Four Pillars of OOP Encapsulation — The Art of Hiding Inheritance — Building on What Exists Polymorphism — Many Forms, One Interface Abstraction — Focusing on What Matters Dunder Methods — Making Your Objects Feel Native Properties — Controlled Attribute Access Multiple Inheritance and the MRO 13A. Mixins as a Pattern — Composable Capabilities Composition vs Inheritance Dataclasses — OOP with Less Boilerplate 15A. ABC vs Protocol — Two Ways to Define an Interface 15B. @classmethod as a Factory — Named Constructors Summary &amp; Key Takeaways Practice Problems 1. The World Before OOP Before we learn what OOP is, let’s understand why humanity invented it. Imagine you’ve been hired to build software for a ride-hailing company (think Uber). You start writing code procedurally — just functions and dictionaries.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-09-04 00:00:00 +0000 UTC'>September 4, 2026</span>&nbsp;·&nbsp;<span>65 min</span>&nbsp;·&nbsp;<span>13774 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Object-Oriented Programming in Python: A Deep Dive" href="http://localhost:1313/blog/low_level_design/01_oop_in_python/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:1313/images/array-patterns.png" alt="Two Pointers Pattern">
+</figure>
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Array Patterns  -  The Complete Study Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Data Structures and Algorithms (DSA) are often treated as a necessary evil, something you grind through only to clear technical interviews. This narrow framing has done more harm than good. It leads to shallow learning, memorized solutions, and frustration when problems slightly change.
-The truth is simple: DSA is not just about interviews. It is about learning how to think clearly, reason about efficiency, and design solutions that scale.
-This blog lays out:
+        <p>🗺️ Array Patterns - The Complete Study Guide Welcome This is a structured, beginner-friendly study guide for mastering array and string patterns - the building blocks of coding interviews. Each pattern has a dedicated deep-dive document with theory, intuition, templates, and 10 LeetCode problems solved step by step.
+Who is this for?
+You’re preparing for coding interviews and want a systematic approach You can solve easy problems but struggle to recognize which technique to apply You want to understand why an approach works, not just memorize solutions How to use this guide:
 ...</p>
     </div>
 
@@ -191,30 +321,27 @@ This blog lays out:
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>886 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1229 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to A Practical DSA Learning Roadmap" href="http://localhost:1313/blog/dsa_roadmap/"></a>
+    <a class="entry-link" aria-label="post link to Array Patterns  -  The Complete Study Guide" href="http://localhost:1313/blog/dsa-patterns-00-index/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/DSA-with-python-live-course.png" alt="DSA learning roadmap">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-4.png" alt="Arrays in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">DSA With Python - Zero to Hero (Curriculum)
+        <h2 class="entry-hint-parent">Arrays in Python  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
-        <a class="tag" href="http://localhost:1313/tags/learning-roadmap/">learning-roadmap</a>
     </div>
     <div class="entry-content">
-        <p>About This Guide Welcome to the DSA with Python: Zero to Hero comprehensive learning roadmap! This guide serves as the complete reference material for our live course, organizing all topics, concepts, and learning outcomes in a structured, progressive manner.
-For Course Students If you’re enrolled in the live course, this blog is your companion resource that:
-Mirrors the course structure - Every module taught in class is documented here Serves as a reference - Quickly look up concepts, syntax, and examples Tracks your progress - Follow along and check off completed modules Provides continuity - Never miss a beat even if you miss a session For Self-Learners Even if you’re not enrolled in the course, this roadmap is designed to be:
+        <p>Arrays Table of Contents What You Will Learn in This Blog How Data is Stored in Computer Memory What is an Array Arrays in Python Python Lists The array Module NumPy Arrays Comparison of the Three Referential Arrays vs Value Arrays Dynamic Arrays – How Python Lists Grow Time and Space Complexity of Array Operations Two-Dimensional Arrays Patterns and Techniques Pattern 1 – Two Pointers Pattern 2 – Sliding Window Pattern 3 – Prefix Sum Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog How data is stored in computer memory and why it matters What an array is and how it uses contiguous memory How Python represents arrays – lists, the array module, and NumPy The difference between referential arrays and value arrays How dynamic arrays work and how Python lists resize themselves Time and space complexity of every common array operation Three core patterns that come from arrays: Two Pointers, Sliding Window, and Prefix Sum Solved LeetCode problems for each pattern A practice problem table for further study How Data is Stored in Computer Memory Before we talk about arrays, we need to understand the environment arrays live in – computer memory.
 ...</p>
     </div>
 
@@ -222,30 +349,28 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2025-12-30 00:00:00 +0000 UTC'>December 30, 2025</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>2324 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Dec 31, 2025</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>23 min</span>&nbsp;·&nbsp;<span>4718 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to DSA With Python - Zero to Hero (Curriculum)" href="http://localhost:1313/blog/dsa-with-python-curriculum/"></a>
+    <a class="entry-link" aria-label="post link to Arrays in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-04-arrays/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/numpy-practice.png" alt="Python programming">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-02.png" alt="Binary Search Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Complete Guide to Numpy Library in Python
+        <h2 class="entry-hint-parent">Binary Search Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/numpy/">numpy</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>🔢 NumPy Masterclass and Practice Sheet From Zero to Confident - A Beginner’s Guide to Numerical Computing in Python Who is this for? You know Python basics — lists, loops, functions — and you want to level up into data science. NumPy is your first real step. Everything in data science (Pandas, Scikit-learn, TensorFlow) is built on top of it.
-📌 Table of Contents What is NumPy and Why Should You Care? Installing and Importing NumPy Creating Arrays Array Attributes Indexing and Slicing Array Operations — Math Made Easy Universal Functions (ufuncs) Aggregation Functions Reshaping and Transposing Stacking and Splitting Arrays Boolean Masking and Fancy Indexing Broadcasting Working with Random Numbers Linear Algebra with NumPy Sorting and Searching Copies vs Views Saving and Loading Arrays Practice Questions What We Covered &#43; What’s Next 1. What is NumPy and Why Should You Care? Python lists are flexible and easy to use — but they are slow when it comes to heavy number crunching. If you have a million exam scores and want to find the average, a Python loop will take noticeably longer than it should.
+        <p>🔰 Pattern 2: Binary Search Table of Contents What is Binary Search? The Core Idea - Why Halving Works The Three Binary Search Templates Binary Search on Answer - The Hidden Pattern Common Pitfalls Problem Set Problem 1: Binary Search Problem 2: Search Insert Position Problem 3: Find First and Last Position of Element in Sorted Array Problem 4: Search a 2D Matrix Problem 5: Search in Rotated Sorted Array Problem 6: Find Minimum in Rotated Sorted Array Problem 7: Koko Eating Bananas Problem 8: Capacity to Ship Packages Within D Days Problem 9: Split Array Largest Sum Problem 10: Median of Two Sorted Arrays Key Takeaways &amp; Summary What is Binary Search? In the Two Pointers pattern, we used two indices to narrow down a search space. Binary search takes that idea to its most powerful form: instead of narrowing one step at a time, we cut the search space in half at every step.
 ...</p>
     </div>
 
@@ -253,30 +378,27 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>25 min</span>&nbsp;·&nbsp;<span>5194 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>37 min</span>&nbsp;·&nbsp;<span>7715 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Complete Guide to Numpy Library in Python" href="http://localhost:1313/blog/numpy-practice/"></a>
+    <a class="entry-link" aria-label="post link to Binary Search Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-02-binary-search/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/pandas-practice.png" alt="Python programming">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-3.png" alt="Complexity Analysis">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Complete Guide to Pandas in Python
+        <h2 class="entry-hint-parent">Complexity Analysis  -  Time and Space
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
     </div>
     <div class="entry-content">
-        <p>🐼 Pandas Masterclass From Raw Data to Real Insights - A Beginner’s Guide to Data Analysis in Python Who is this for? You’ve done the NumPy Masterclass (or know the basics of Python and arrays). Now you want to work with real tabular data — rows, columns, missing values, merges, and group-level summaries. That’s exactly what Pandas is for.
-📌 Table of Contents What is Pandas and Why Do You Need It? Installing and Importing Pandas The Two Core Data Structures Creating DataFrames Reading and Writing Data Exploring a DataFrame Selecting Data — loc, iloc, and Column Access Filtering Rows Adding, Modifying, and Dropping Columns Sorting Data Handling Missing Data String Operations Working with Dates and Times apply(), map(), and applymap() GroupBy — Aggregation and Split-Apply-Combine Merging and Joining DataFrames Pivot Tables and Crosstabs Reshaping — melt() and stack()/unstack() MultiIndex DataFrames Performance Tips Practice Questions What We Covered &#43; What’s Next 1. What is Pandas and Why Do You Need It? NumPy arrays are powerful, but they have one limitation: every column must be the same data type, and there are no column names or row labels.
+        <p>Complexity Analysis – Time and Space Table of Contents What You Will Learn in This Blog Why Do We Need Complexity Analysis Building Intuition First How We Evaluate Algorithms – A Brief History Approach 1 – Experimental Analysis Approach 2 – Counting Every Operation Exactly Approach 3 – Asymptotic Analysis Primitive Operations – The Foundation of the Model What is Big O Notation The Common Complexity Classes O(1) – Constant Time O(log n) – Logarithmic Time O(n) – Linear Time O(n log n) – Linearithmic Time O(n^2) – Quadratic Time O(2^n) – Exponential Time O(n!) – Factorial Time Comparing the Complexity Classes How to Analyse Code Step by Step Space Complexity Common Misconceptions Complexity of Python Built-ins Practice Problems Summary Key Takeaways Next Steps What You Will Learn in This Blog Why complexity analysis exists and what problem it solves How to think about the efficiency of code intuitively before using any formula What Big O notation is and what it actually means The most common complexity classes with examples and code for each How to analyse any piece of code step by step Space complexity and how to think about memory usage Common misconceptions that trip up beginners Practice problems to test your understanding Why Do We Need Complexity Analysis Before anything else, let us answer the most important question: why does this topic exist at all?
 ...</p>
     </div>
 
@@ -284,28 +406,54 @@ Mirrors the course structure - Every module taught in class is documented here S
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>30 min</span>&nbsp;·&nbsp;<span>6333 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>24 min</span>&nbsp;·&nbsp;<span>4942 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Complete Guide to Pandas in Python" href="http://localhost:1313/blog/pandas-practice/"></a>
+    <a class="entry-link" aria-label="post link to Complexity Analysis  -  Time and Space" href="http://localhost:1313/blog/dsa-03-complexity-analysis/"></a>
+    
+</article>
+
+<article class="post-entry">
+     
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Control Flow in Python
+        </h2>
+    </header>
+    <div class="entry-tags">
+        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+    </div>
+    <div class="entry-content">
+        <p>Control Flow in Python Making Decisions in Your Code – if, elif, else, and Beyond Before We Begin – Why Control Flow is Everything Every program you have ever used makes decisions.
+When you log into a website: if the password is correct, show the dashboard, otherwise show an error. When your food delivery app calculates the delivery fee: if the order is above Rs.200, delivery is free, else charge Rs.30. When a data pipeline processes records: if the record is valid, process it, else log an error and skip it.
+...</p>
+    </div>
+
+    
+    <footer class="entry-footer">
+        
+        
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>28 min</span>&nbsp;·&nbsp;<span>5891 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        
+    </footer>
+    <a class="entry-link" aria-label="post link to Control Flow in Python" href="http://localhost:1313/blog/python-02-control-flow/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/collections-practice.png" alt="Python programming">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-patterns-05.png" alt="Hashmap Frequency Pattern">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Master Collections in Python
+        <h2 class="entry-hint-parent">HashMap and Frequency Counting Pattern  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa-patterns/">dsa-patterns</a>
     </div>
     <div class="entry-content">
-        <p>Python Collections - Practice Questions and Solutions List, Tuple, Dictionary, Set – Complete Practice Set This practice set covers all four major Python collections. Questions are grouped by collection type, then by difficulty within each section. The final section has mixed questions that combine multiple collections, loops, and conditionals. Try each question before reading the solution.
-Table of Contents Part 1 – Lists Part 2 – Tuples Part 3 – Dictionaries Part 4 – Sets Part 5 – Mixed Questions Quick Reference Part 1 – Lists A list is an ordered, mutable collection. It allows duplicate values and supports indexing, slicing, appending, and sorting.
+        <p>🔰 Pattern 4: HashMap / Frequency Counting Table of Contents What is the HashMap Pattern? When to Use HashMaps? Types of HashMap Patterns Template Code Problem Set Problem 1: Two Sum Problem 2: Valid Anagram Problem 3: Group Anagrams Problem 4: Top K Frequent Elements Problem 5: Longest Consecutive Sequence Problem 6: Contains Duplicate II Problem 7: Intersection of Two Arrays II Problem 8: First Unique Character in a String Problem 9: 4Sum II Problem 10: Encode and Decode TinyURL Key Takeaways &amp; Summary What is the HashMap Pattern? In the previous patterns, we’ve already used hashmaps as a supporting tool - tracking character frequencies in sliding window, storing prefix sums for subarray problems. In this section, we focus on problems where the hashmap is the core of the solution, not just a helper.
 ...</p>
     </div>
 
@@ -313,28 +461,27 @@ Table of Contents Part 1 – Lists Part 2 – Tuples Part 3 – Dictionaries Par
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>22 min</span>&nbsp;·&nbsp;<span>4613 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>36 min</span>&nbsp;·&nbsp;<span>7599 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Master Collections in Python" href="http://localhost:1313/blog/collections-practice/"></a>
+    <a class="entry-link" aria-label="post link to HashMap and Frequency Counting Pattern  -  Complete Guide" href="http://localhost:1313/blog/dsa-patterns-05-hashmap-frequency/"></a>
     
 </article>
 
 <article class="post-entry">
      
 <figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/loops-practice.png" alt="Python programming">
+        <img loading="lazy" src="http://localhost:1313/images/dsa-6.png" alt="Linked Lists in DSA">
 </figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Master Loops in Python
+        <h2 class="entry-hint-parent">Linked Lists in Python  -  Complete Guide
         </h2>
     </header>
     <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
+        <a class="tag" href="http://localhost:1313/tags/dsa/">dsa</a>
     </div>
     <div class="entry-content">
-        <p>Python Loops - Practice Questions and Solutions 20 Questions from Easy to Hard All 20 questions are based on the Loops Masterclass. Try each question on your own before reading the solution. The questions are ordered by difficulty: Easy (1-7), Medium (8-14), Hard (15-20).
-Table of Contents Easy Questions (1-7) Medium Questions (8-14) Hard Questions (15-20) Easy Questions (1-7) Q1 – Basic for Loop with range() Print all numbers from 1 to 30 that are divisible by both 3 and 5.
+        <p>Linked Lists Table of Contents What You Will Learn in This Blog Why Linked Lists Exist What is a Node What is a Linked List Singly Linked List Building the Node Class Building the LinkedList Class Append – Insert at Tail Prepend – Insert at Head Insert at Position Delete by Value Delete at Position Search Traverse and Print Length of the List Reverse a Linked List Singly Linked List – Complete Implementation Time and Space Complexity Summary Doubly Linked List Building the DoublyNode Class Building the DoublyLinkedList Class Append and Prepend Insert at Position Delete by Value Traverse Forward and Backward Doubly Linked List – Complete Implementation Time and Space Complexity Summary Circular Linked List What Makes it Circular Building the CircularLinkedList Class Append and Prepend Delete by Value Traverse Circular Linked List – Complete Implementation Time and Space Complexity Summary Arrays vs Linked Lists – When to Use Which Python and Linked Lists Patterns and Techniques Pattern 1 – Fast and Slow Pointers Pattern 2 – In-place Reversal Summary Key Takeaways Practice Problems Next Steps What You Will Learn in This Blog Why linked lists exist and what problem they solve compared to arrays What a node and a pointer are How to build a Singly Linked List from scratch with all operations How to build a Doubly Linked List from scratch with all operations How to build a Circular Linked List from scratch with all operations Time and space complexity of every operation Two patterns: Fast and Slow Pointers, and In-place Reversal Solved LeetCode problems with full explanation A practice problem table for further study Why Linked Lists Exist In the Arrays blog, we learned that arrays store elements in contiguous memory – one right after the other. This gives us O(1) access by index, which is powerful. But contiguous memory comes with a cost:
 ...</p>
     </div>
 
@@ -342,32 +489,25 @@ Table of Contents Easy Questions (1-7) Medium Questions (8-14) Hard Questions (1
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3085 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>31 min</span>&nbsp;·&nbsp;<span>6482 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Apr 2, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Master Loops in Python" href="http://localhost:1313/blog/python-loops-practice/"></a>
+    <a class="entry-link" aria-label="post link to Linked Lists in Python  -  Complete Guide" href="http://localhost:1313/blog/dsa-06-linked-lists/"></a>
     
 </article>
 
 <article class="post-entry">
      
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/numpy-masterclass.png" alt="learn about numpy library">
-</figure>
     <header class="entry-header">
-        <h2 class="entry-hint-parent">Numpy Masterclass - Beginner to Advanced
+        <h2 class="entry-hint-parent">Logging and System Interaction in Python
         </h2>
     </header>
     <div class="entry-tags">
         <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/numpy/">numpy</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
     </div>
     <div class="entry-content">
-        <p>NumPy Masterclass - From Basics to Advanced Prerequisites: Python basics, lists, loops, functions
-Install: pip install numpy
-Import convention: import numpy as np
-Table of Contents What is NumPy and Why Use It? Creating Arrays Array Properties Indexing and Slicing Modifying Arrays Reshaping and Stacking Math Operations and Broadcasting Universal Functions (ufuncs) Aggregations and Statistics Sorting and Searching Boolean Operations and Masking Random Number Generation Linear Algebra Working with Files Performance Tips and Best Practices 1. What is NumPy and Why Use It? NumPy (Numerical Python) is the foundation of the entire Python data science stack. Pandas, Matplotlib, Scikit-learn, and TensorFlow all build on top of it.
+        <p>Logging and System Interaction in Python Professional Observability with the logging Module and the os Module Before We Begin – Why This Matters More Than It Looks Here is a situation every developer eventually faces.
+You write a script that processes data overnight. It runs on a server while you sleep. In the morning you check the output and something is wrong. Half the records are missing. You have no idea what happened because your script used print() for all its messages and those prints went nowhere – there was nobody watching the terminal.
 ...</p>
     </div>
 
@@ -375,99 +515,10 @@ Table of Contents What is NumPy and Why Use It? Creating Arrays Array Properties
     <footer class="entry-footer">
         
         
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>19 min</span>&nbsp;·&nbsp;<span>3867 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
+        <span title='2026-03-21 00:00:00 +0000 UTC'>March 21, 2026</span>&nbsp;·&nbsp;<span>26 min</span>&nbsp;·&nbsp;<span>5537 words</span>&nbsp;·&nbsp;<span class='post-meta-updated'>Last Edited  Sep 4, 2026</span>&nbsp;·&nbsp;<span>By codeverra</span>
         
     </footer>
-    <a class="entry-link" aria-label="post link to Numpy Masterclass - Beginner to Advanced" href="http://localhost:1313/blog/numpy-masterclass/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/pandas-masterclass.png" alt="learn about pandas library">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Pandas Masterclass - Beginner to Advanced
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-        <a class="tag" href="http://localhost:1313/tags/pandas/">pandas</a>
-        <a class="tag" href="http://localhost:1313/tags/data-analysis/">data-analysis</a>
-    </div>
-    <div class="entry-content">
-        <p>Pandas Masterclass - From Basics to Advanced Prerequisites: Python basics, NumPy fundamentals
-Install: pip install pandas openpyxl xlrd
-Import convention: import pandas as pd
-Table of Contents What is Pandas and Why Use It? Series — The 1D Structure DataFrame — The 2D Structure Loading and Saving Data Exploring Your Data Selecting and Filtering Adding and Modifying Columns Sorting Cleaning Data — Handling Missing Values Cleaning Data — Duplicates and Types String Operations Datetime Operations Groupby and Aggregation Merging, Joining and Concatenating Pivot Tables and Reshaping Apply, Map and Lambda Functions Plotting with Pandas Performance Tips 1. What is Pandas and Why Use It? Pandas provides two core data structures — Series (1D) and DataFrame (2D) — that make working with labeled, tabular data as natural as working with a spreadsheet, but with the full power of Python.
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4166 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Pandas Masterclass - Beginner to Advanced" href="http://localhost:1313/blog/pandas-masterclass/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/exception%20handling%20in%20python.png" alt="Exception handling in python">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">Exception Handling in Python - Complete Guide
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-    </div>
-    <div class="entry-content">
-        <p>Python Exception Handling A Complete Reference Guide Table of Contents The Big Picture What Are Exceptions? The Exception Hierarchy try / except — The Foundation else and finally Clauses Raising Exceptions Custom Exceptions Exception Chaining Context Managers and Exceptions Logging Exceptions Common Mistakes to Avoid Real-Life Patterns Practice Questions &amp; Answers Quick Reference Cheat Sheet The Big Picture ┌─────────────────────────────────────────────────────────────────┐ │ EXCEPTION HANDLING FLOW │ │ │ │ try: │ │ ── risky code runs here ──────────────────────────────┐ │ │ │ │ │ except SomeError: ◄── exception caught here │ │ │ ── handle it ── │ │ │ ▼ │ │ except (TypeError, ValueError): ◄── multiple types │ │ ── handle them ── │ │ │ │ except Exception as e: ◄── catch with reference │ │ ── inspect e ── │ │ │ │ else: ◄── runs ONLY if NO exception │ │ ── success path ── │ │ │ │ finally: ◄── ALWAYS runs, no matter what │ │ ── cleanup ── │ └─────────────────────────────────────────────────────────────────┘ Core Philosophy: Exceptions are not bugs — they are Python’s way of saying “something unexpected happened here, and I’m passing control to whoever knows how to handle it.”
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>4145 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to Exception Handling in Python - Complete Guide" href="http://localhost:1313/blog/exception_handling/"></a>
-    
-</article>
-
-<article class="post-entry">
-     
-<figure class="entry-cover">
-        <img loading="lazy" src="http://localhost:1313/images/file-handling-masterclass.png" alt="file handling in python">
-</figure>
-    <header class="entry-header">
-        <h2 class="entry-hint-parent">File Handling in Python - Complete Guide
-        </h2>
-    </header>
-    <div class="entry-tags">
-        <a class="tag" href="http://localhost:1313/tags/python/">python</a>
-    </div>
-    <div class="entry-content">
-        <p>Working with Files in Python — The Complete Guide Everything you need to read, write, parse, and manage files like a professional Why Files Matter More Than You Think Every meaningful program eventually needs to talk to the outside world. Not through a web API or a database — just a plain file sitting on disk. Your data science pipeline reads a CSV. Your web scraper writes results to JSON. Your deployment script reads a config file. Your ETL job processes gigabytes of logs.
-...</p>
-    </div>
-
-    
-    <footer class="entry-footer">
-        
-        
-        <span title='2026-03-17 00:00:00 +0000 UTC'>March 17, 2026</span>&nbsp;·&nbsp;<span>31 min</span>&nbsp;·&nbsp;<span>6439 words</span>&nbsp;·&nbsp;<span>By codeverra</span>
-        
-    </footer>
-    <a class="entry-link" aria-label="post link to File Handling in Python - Complete Guide" href="http://localhost:1313/blog/file-handling-in-python/"></a>
+    <a class="entry-link" aria-label="post link to Logging and System Interaction in Python" href="http://localhost:1313/blog/python-16-logging-and-os/"></a>
     
 </article>
 </div>
@@ -477,6 +528,8 @@ Table of Contents What is Pandas and Why Use It? Series — The 1D Structure Dat
         </a>
     </nav>
 </footer>
+</div>
+</div>
     </main>
     
 <footer class="footer">

@@ -18,7 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link crossorigin="anonymous" href="../../assets/css/stylesheet.15e00e4e7c0c1066f9f137b8ba86bdf8112ffc79651c2f5c824396aee47f736d.css" integrity="sha256-FeAOTnwMEGb58Te4uoa9&#43;BEv/HllHC9cgkOWruR/c20=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.8ceb1080620458feca18aa26dab455b1225b9e2318d0482fb805fbc308117182.css" integrity="sha256-jOsQgGIEWP7KGKom2rRVsSJbniMY0EgvuAX7wwgRcYI=" rel="preload stylesheet" as="style"><link rel="stylesheet" href="../../css/github-markdown.css">
+<link rel="stylesheet" href="../../css/github-markdown-post-content.css">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -79,6 +80,7 @@
     }
 
 </script>
+<script defer src="../../js/nav-search.js"></script>
 </head>
 <body id="top">
     <header class="header">
@@ -143,7 +145,25 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            
+            <li class="nav-search-item">
+                <button class="nav-search-toggle" aria-label="Search" onclick="navSearchToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </li>
         </ul>
+
+        
+        <div id="nav-search-bar" class="nav-search-bar" data-index="http://localhost:1313/index.json">
+            <input id="nav-search-inp" type="search" placeholder="Search posts…" autocomplete="off">
+            <div id="nav-search-dropdown" hidden></div>
+        </div>
     </nav>
 </header>
 <main class="main">
@@ -237,6 +257,9 @@
     </details>
 </div>
 
+  <div class="section-collapse-bar">
+    <button id="section-collapse-btn" onclick="toggleSections()">Collapse All</button>
+  </div>
   <div class="post-content"><p>Data Structures and Algorithms (DSA) are often treated as a necessary evil, something you grind through only to clear technical interviews. This narrow framing has done more harm than good. It leads to shallow learning, memorized solutions, and frustration when problems slightly change.</p>
 <p>The truth is simple: DSA is not just about interviews. It is about learning how to think clearly, reason about efficiency, and design solutions that scale.</p>
 <p>This blog lays out:</p>
@@ -689,6 +712,69 @@ Skipping recursion and fundamentals
 
 
   </div>
+  <script>
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.post-content');
+      var bar = document.querySelector('.section-collapse-bar');
+      if (!content || !bar) return;
+
+      var h2s = Array.from(content.querySelectorAll('h2'));
+      if (h2s.length === 0) { bar.style.display = 'none'; return; }
+
+      
+      h2s.forEach(function (h2) {
+        
+        var arrow = document.createElement('span');
+        arrow.className = 'section-toggle-arrow';
+        arrow.textContent = '▾';
+        arrow.setAttribute('aria-label', 'Toggle section');
+        h2.appendChild(arrow);
+
+        var wrapper = document.createElement('div');
+        wrapper.className = 'collapsible-body';
+        var node = h2.nextSibling;
+        while (node) {
+          if (node.nodeType === 1 && node.tagName === 'H2') break;
+          var next = node.nextSibling;
+          wrapper.appendChild(node);
+          node = next;
+        }
+        h2.insertAdjacentElement('afterend', wrapper);
+
+        
+        arrow.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isHidden = wrapper.hidden;
+          wrapper.hidden = !isHidden;
+          arrow.textContent = wrapper.hidden ? '▸' : '▾';
+          
+          syncCollapseBtn();
+        });
+      });
+    });
+
+    function syncCollapseBtn() {
+      var bodies = document.querySelectorAll('.collapsible-body');
+      var btn = document.getElementById('section-collapse-btn');
+      if (!btn || bodies.length === 0) return;
+      var allHidden = Array.from(bodies).every(function (b) { return b.hidden; });
+      collapsed = allHidden;
+      btn.textContent = allHidden ? 'Expand All' : 'Collapse All';
+    }
+
+    var collapsed = false;
+    window.toggleSections = function () {
+      var bodies = document.querySelectorAll('.collapsible-body');
+      var arrows = document.querySelectorAll('.section-toggle-arrow');
+      var btn = document.getElementById('section-collapse-btn');
+      collapsed = !collapsed;
+      bodies.forEach(function (b) { b.hidden = collapsed; });
+      arrows.forEach(function (a) { a.textContent = collapsed ? '▸' : '▾'; });
+      btn.textContent = collapsed ? 'Expand All' : 'Collapse All';
+    };
+  })();
+  </script>
 
   <footer class="post-footer">
     <ul class="post-tags">
