@@ -2,8 +2,8 @@
 title: "Design Patterns, Part 1: Foundations and Creational Patterns"
 description: "Foundations of the GoF design pattern catalogue and creational patterns: Singleton, Factory, Builder, Prototype, and Abstract Factory."
 
-date: 2026-09-06
-lastmod: 2026-09-06
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true

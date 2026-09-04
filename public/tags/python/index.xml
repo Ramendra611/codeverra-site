@@ -9,6 +9,20 @@
     <lastBuildDate>Fri, 04 Sep 2026 09:28:32 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>LLD FOundations - SOLID Principles</title>
+      <link>http://localhost:1313/blog/low_level_design/02_solid_principles---extra-draft/</link>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/02_solid_principles---extra-draft/</guid>
+      <description>A complete guide to  solid principles which are fundamental of object oriented design.</description>
+    </item>
+    <item>
+      <title>Object-Oriented Programming in Python: A Deep Dive</title>
+      <link>http://localhost:1313/blog/low_level_design/01_oop_in_python/</link>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/low_level_design/01_oop_in_python/</guid>
+      <description>A complete guide to Python OOP: why it exists, what problems it solves, and how to wield it well in real systems.</description>
+    </item>
+    <item>
       <title>Control Flow in Python</title>
       <link>http://localhost:1313/blog/python-02-control-flow/</link>
       <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>

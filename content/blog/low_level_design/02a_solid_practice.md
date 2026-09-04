@@ -1,3 +1,30 @@
+---
+title: "SOLID Principles: A Complete Deep Dive"
+description: "A rigorous treatment of the five SOLID principles: formal statements, worked examples, tradeoffs, and when not to apply them."
+
+date: 2026-09-04
+lastmod: 2026-09-04
+author: "codeverra"
+
+toc: true
+tocopen: true
+draft: false
+tags:
+  - lld
+  - solid
+  - python
+  - oop
+
+cover:
+  image: "/images/LLD - 2.png"
+  alt: "SOLID Principles"
+  caption: "SOLID Principles: A Complete Deep Dive"
+  relative: true
+  hidden: false
+---
+
+
+
 # SOLID Principles: Practice Workbook
 
 > **Prerequisite:** `02_solid_principles.md`. This workbook assumes the five principles have already been defined and demonstrated. It contains no new theory. Its purpose is to convert conceptual knowledge into diagnostic skill.

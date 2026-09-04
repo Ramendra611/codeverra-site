@@ -1,5 +1,5 @@
 ---
-title: "LLD FOundations - SOLID Principles"
+title: "LLD Foundations - SOLID Principles"
 description: "A complete guide to  solid principles which are fundamental of object oriented design."
 
 date: 2026-09-04

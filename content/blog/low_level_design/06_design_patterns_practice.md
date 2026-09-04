@@ -2,8 +2,8 @@
 title: "Design Patterns: Practice Workbook"
 description: "Hands-on design pattern practice problems to prove you understand creational, structural, and behavioral patterns."
 
-date: 2026-09-09
-lastmod: 2026-09-09
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true

@@ -2,8 +2,8 @@
 title: "Design Patterns, Part 2: Structural Patterns"
 description: "Structural design patterns: how to combine classes and objects into larger structures that stay flexible and maintainable."
 
-date: 2026-09-07
-lastmod: 2026-09-07
+date: 2026-09-04
+lastmod: 2026-09-04
 author: "codeverra"
 
 toc: true
